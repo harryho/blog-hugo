@@ -1,0 +1,22 @@
+baseurl = "https://harryho.github.io"
+title = "Welcome to Hello World"
+theme = "bootie-docs"
+copyright = "Copyright (c) 2015, harryho; All rights reserved."
+
+[params]
+  description = "Blog site for simple & reusable techies"
+  withSitePosts = false
+  searchDomain = "harryho.github.io"
+  noCategoryLink = true
+  repositoryUrl = "https://github.com/harryho/harryho.github.io.git"
+  highlightStyle = "agate"
+
+[[params.mainMenu]]
+  name = "Blog"
+  link = "blog/"
+
+[[params.mainMenu]]
+  name = "Project"
+  link = "project/"
+
+
