@@ -1,6 +1,8 @@
+languageCode = "en-us"
 baseurl = "https://harryho.github.io"
 title = "Welcome to Hello World"
 theme = "bootie-docs"
+uglyurls = false
 copyright = "Copyright (c) 2015, harryho; All rights reserved."
 
 [params]
@@ -18,5 +20,3 @@ copyright = "Copyright (c) 2015, harryho; All rights reserved."
 [[params.mainMenu]]
   name = "Project"
   link = "project/"
-
-

@@ -1,9 +1,8 @@
 +++
-date = "2017-02-13T16:52:05+11:00"
-title = "My project 1"
-tags = ["document"]
 categories = ["project"]
+date = "2017-02-15T16:56:21+11:00"
+title = "_project1"
+tags = ["document"]
 
 +++
 
-My Project 1
