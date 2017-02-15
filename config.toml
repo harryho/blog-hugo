@@ -7,7 +7,7 @@ copyright = "Copyright (c) 2015, harryho; All rights reserved."
   description = "Blog site for simple & reusable techies"
   withSitePosts = false
   searchDomain = "harryho.github.io"
-  noCategoryLink = true
+  noCategoryLink = false
   repositoryUrl = "https://github.com/harryho/harryho.github.io.git"
   highlightStyle = "agate"
 

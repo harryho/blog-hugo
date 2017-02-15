@@ -13,7 +13,7 @@ git add -A
 
 REM Commit changes.
 set msg="rebuilding site %date%"
-if  NOT "%1"==""    set msg=%1
+if  NOT "%1"=="" set msg=%1
 git commit -m '%msg%'
 
 REM Push source and build repos.

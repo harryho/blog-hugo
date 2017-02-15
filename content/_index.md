@@ -8,7 +8,7 @@ title = "_index"
 
 # Create a blog site on GitHub Pages within Windows environment  
 
-After I setup the test blog via hugo on my ubuntu machine, I decided to use this to create a blog to GitHub pages on my windows machine. If you use Unix-* system, I pretty sure you can follow the [Hugo Quick Start](https://gohugo.io/overview/quickstart/) and [Hosting on GitHub Pages](https://gohugo.io/tutorials/github-pages-blog) to create a blog to GitHub pages within 5 mins, but when I try to do the same on Windows machine, it took me over 30 mins. I hope this blog can help someone want to do sth similar within Windows environment. 
+After I setup a blog site with hugo on my ubuntu machine, I decided to use it to create a blog to GitHub pages on my windows machine, since I use Windows machine as workstation. If you use Unix-* system, I pretty sure you can follow the [Hugo Quick Start](https://gohugo.io/overview/quickstart/) and [Hosting on GitHub Pages](https://gohugo.io/tutorials/github-pages-blog) to create a blog to GitHub pages within 5 mins, but when I try to do the same on Windows machine, it took me over 30 mins. I hope this blog can help someone want to do sth similar within Windows environment. 
 
 ## Assumptions
 
