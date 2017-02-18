@@ -53,13 +53,10 @@ This article will continue the topic of Windows command & hotkeys, but it will f
 ### netstat 
 
 ```
-netstat -ano | find ":80"
+netstat -ano | find ":80" 
 ```
 
 ### ipconfig
-
-
-### tasklist
 
 
 ### Runas 
@@ -80,7 +77,9 @@ tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq not responding"
 tasklist /fi "pid eq 4444"
 ```
 
-### SC 
+### taskkill
+
+### sc
 * Query Service
 
 ```
