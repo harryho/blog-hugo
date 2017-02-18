@@ -12,9 +12,6 @@ draft = true
 ### Object and prototype
 
 
-
-
-
 ### Class and inheritant
 
 
@@ -24,9 +21,7 @@ draft = true
 ### Public and private
 
 
-
 ### Design pattern
-
 
 
 ** 

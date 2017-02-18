@@ -78,7 +78,7 @@ class Solution {
 }
 
 ```
---------------------
+
 
 ## binary gap
 
@@ -133,7 +133,7 @@ Test cases:
 66561
 1376796946
 
-------------------
+
 
 ## CyclicRotation
 
@@ -188,7 +188,7 @@ class Solution {
 }
 
 ```
----------------
+
 ## OddOccurrencesInArray
 
 A non-empty zero-indexed array A consisting of N integers is given. The array contains an odd number of elements, and each element of the array can be paired with another element that has the same value, except for one element that is left unpaired.
@@ -264,7 +264,7 @@ class Solution {
 }
 ```
 
----
+
 
 A small frog wants to get to the other side of the road. The frog is currently located at position X and wants to get to a position greater than or equal to Y. The small frog always jumps a fixed distance, D.
 
@@ -323,7 +323,7 @@ class Solution {
 }
 ```
 
----
+
 
 A zero-indexed array A consisting of N different integers is given. The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.
 
@@ -374,7 +374,7 @@ class Solution {
 
 ```
 
----
+
 
 ## FrogRiverOne
 

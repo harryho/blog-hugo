@@ -4,9 +4,9 @@ title = "_index"
 
 +++
 
->  This article had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I was tired to manage the WordPress. To manage blog site is not a piece of work, but sharing these tricks and techies online is good for myself and people to solve the problem, which has been solved before. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github Pages, and I wrote a blog: [Create a blog on GitHub Pages](https://harryho.github.io/blog/create-a-blog-on-github-pages) to show you how I did it on my Windows machine. You can follow the instruction and give a go. 
+>  This article had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I was tired to manage the WordPress. To manage a blog site is not a piece of work, but sharing these tricks and techies online is quite helpful for myself and others to solve similar problems, which has been solved before. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github Pages, and I posted a blog - [Create a blog on GitHub Pages](https://harryho.github.io/blog/create-a-blog-on-github-pages) to show you how I did it on my Windows machine. You can follow the instruction and give a go on your own. 
 
-> I leave the `Hello World` article on home page to make my blog not too boring. Many posts are just technical stuff, tricks, solutions, so I want the home page a bit fun. 
+> I leave the `Hello World` article on home page to make my blog not too boring. In theory, most posts here are just technical stuff, tricks, solutions, so I want the home page a bit fun at least. 
 
 ```
 Dutch : "Hello wereld",

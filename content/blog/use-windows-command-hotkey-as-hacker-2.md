@@ -51,8 +51,6 @@ This article will continue the topic of Windows command & hotkeys. Part-1 shows 
 * User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
 
 
-
-
 ### Runas 
 
 ```
@@ -64,6 +62,7 @@ runas /user:mydomain\administrator "cmd /C \" del /S /F /Q c:\dummy\* \" &  rmdi
 * tasklist[.exe] [/s computer] [/u domain\user [/p password]] [/fo {TABLE|LIST|CSV}] [/nh] [/fi FilterName [/fi FilterName2 [ ... ]]] [/m [ModuleName] | /svc | /v
 * FilterName: Status, Imagename,
 * Find process by pid
+
 ```
 tasklist /v /fo list /fi "imagename eq mysqld.exe"
 tasklist /v /fo list /fi "imagename eq mongod.exe"
@@ -78,26 +77,28 @@ tasklist /fi "pid eq 4444"
 * Query Service
 
 ```
-    sc query <service name>
-    sc query state= all | find "SERVICE_NAME" 
+sc query <service name>
+sc query state= all | find "SERVICE_NAME" 
 ```
+
 * Retrieve service name and state. type parameter can be used twice in some case.
 **state= {active | inactive | all}
 **type= {driver | service | all}
 **type= {own | share | interact | kernel | filesys | rec | adapt}
 
 
-> Note: If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled
+* Note: If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled
+
 ```
-    sc query state= inactive type= driver type= kernel
-    for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s    
-    for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(for /f "tokens=4" %t in ('sc query %s ^| find "STATE     "') do @echo %s -- %t)
+sc query state= inactive type= driver type= kernel
+for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s    
+for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(for /f "tokens=4" %t in ('sc query %s ^| find "STATE     "') do @echo %s -- %t)
 ```
 
 * Start or stop service
 ```
-    sc start  <service name>
-    sc stop  <service name>
+sc start  <service name>
+sc stop  <service name>
 ```
 
 
