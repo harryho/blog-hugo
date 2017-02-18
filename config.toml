@@ -4,12 +4,13 @@ title = "Welcome to Hello World"
 theme = "bootie-docs"
 uglyurls = false
 copyright = "Copyright (c) 2015, harryho; All rights reserved."
+enableRobotsTXT = true
 
 [params]
   description = "Blog site for simple & reusable techies"
   withSitePosts = false
   searchDomain = "harryho.github.io"
-  noCategoryLink = false
+  noCategoryLink = true
   repositoryUrl = "https://github.com/harryho/harryho.github.io.git"
   highlightStyle = "agate"
 
@@ -20,3 +21,7 @@ copyright = "Copyright (c) 2015, harryho; All rights reserved."
 [[params.mainMenu]]
   name = "Project"
   link = "project/"
+
+[[params.mainMenu]]
+  name = "Index"
+  link = "index/"

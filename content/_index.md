@@ -1,14 +1,12 @@
-﻿+++
-tags = ["shell","c","c++","go","java"]
-date = "2017-02-15T14:53:12+11:00"
++++
+date = "2015-11-06T16:43:12+11:00"
 title = "_index"
 
 +++
 
+>  This article had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I was tired to manage the WordPress. To manage blog site is not a piece of work, but sharing these tricks and techies online is good for myself and people to solve the problem, which has been solved before. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github Pages, and I wrote a blog: [Create a blog on GitHub Pages](https://harryho.github.io/blog/create-a-blog-on-github-pages) to show you how I did it on my Windows machine. You can follow the instruction and give a go. 
 
-
->  This article had been posted on my old WordPress blog for ages. I moved it here, because the blog site has been shut down. I was tired to manage the WordPress. To manage blog site is not a piece of work, but sharing these tricks and techies on the internet is good for the people working around me. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github pages, and wrote a blog about [Create a blog on GitHub](https://harryho.github.io/). You can follow the instruction and give a go. The content has been updated with more latest information. 
-
+> I leave the `Hello World` article on home page to make my blog not too boring. Many posts are just technical stuff, tricks, solutions, so I want the home page a bit fun. 
 
 ```
 Dutch : "Hello wereld",
@@ -25,15 +23,18 @@ Russian : "Здравствулте мир",
 Spanish : "Hola mundo"
 ```
 
+The different languages above say the same two words "Hello World" are just for fun. This article is for beginner who has interest in programming and want to try do some programming for fun. Here I am going to show you how to use different **programming** languages to say "Hello World". The languages I pick here are ordered by alphabet. 
 
+In my opinion, all languages in this article are useful and important for most software engineer or system analyst. Some languages which I don't choose, doesn't mean they are not important or useful. because usually they are not recognized as **programming** language.  e.g. SQL. It is not only the basic skill for DBA or software engineer but also data analyst and data scientist. 
 
-The the different languages above for "Hello World" are just for fun. This article is for beginner who have interest in programming. In this article I am going to demonstrate how to use different **PROGRAMMING** languages to say "Hello World". The languages I choose in this article are ordered by alphabet. 
+Some popular languages are not shown here, because they are not available for Windows or difficult to setup the playground to test. for instance, Swift, Objective-C. Some are designed for special purpose. R and Matlab are such typical samples. 
 
-In my opinion, all languages in this article are still very useful and important for most IT professional, even some of them were created 1960s. Some language which I don't choose, doesn't mean it is not important or useful. e.g. SQL. It is not just basic skill for DBA, software engineer, system analyst, even data analyst, data scientist will use it regularly. I don't choose it, because usually it is not recognized as **PROGRAMMING** language. Another reason is I haven't find interest sample to present this language. 
+And some are kind of terrible, e.g. Assembly language and C#(Installation of Visual Studio will let beginner down). Are you serious? No, I'm kidding. As I mentioned before, this article is for beginner to code for fun, so I just pick some which I am familiar with and convenient for people to play. 
+
 
 ## Assumptions
 
-* You have a proper computer instead of a tablet or large screen portal device.
+* You have a proper computer instead of a tablet or ipad.
 * You are ready to get your hands dirty. 
 * If you use Mac, the code for Linux should work on Mac as well
 * You know how to start a terminal on Mac or a command prompt on Windows. 
@@ -113,8 +114,7 @@ Go ,as known as golang, is a free and open source programming language created a
     }
     ```
 
-* Compile & run
-```go run helloworld.go```
+* Compile & run `go run hello.go`
   
 ## Java
 
@@ -122,8 +122,8 @@ Java is a general-purpose computer programming language that is concurrent, obje
 
 * Download and install [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
       * For any Ubuntu 12 or higher version I will suggest you follow this [instruction](http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html). It is pretty simple. 
-      * For CentOS 6 or highwer version I will suggest you follow this [instruction](https://wiki.centos.org/HowTos/JavaRuntimeEnvironment)
-      * For Windows please make sure you click the [JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) button. I will suggest beginner to download the installer file end with `exe` instead of the zip file, because you don't need to setup PATH system environment by yourself.  
+      * For CentOS 6 or higher version I will suggest you follow this [instruction](https://wiki.centos.org/HowTos/JavaRuntimeEnvironment)
+      * For Windows please make sure you click the [JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) button. I will suggest beginner to download the installer file end with `exe` instead of the zip file, because you don't need to setup **PATH** system environment by yourself.  
 
 * Create a program file HelloWorld.java
 
@@ -140,6 +140,7 @@ Java is a general-purpose computer programming language that is concurrent, obje
     ```
 
 * Compile & run 
+
     ```
     javac HelloWorld.java
     java HelloWorld
@@ -147,25 +148,61 @@ Java is a general-purpose computer programming language that is concurrent, obje
   
 ## Javascript
 
+JavaScript, not to be confused with Java, was created in 10 days in May 1995 by Brendan Eich, then working at Netscape and now of Mozilla. The original name of this language was Mocha, in September of 1995 it was changed to LiveScript, then in December of the same year, the name JavaScript was adopted, because of very popular Java around then. 
 
+JavaScript is the programming language of the web. It's one of the most popular and in demand skills in today's job market for good reason. As a web developer, it is essential that you have a solid understanding of this versatile language.
 
 * The sample will be presented as web page.
-
 * Create a program file HelloWorld.html
-```
-<!doctype html>
-<html>
-    <head>
-        <script>
-        function helloWorld() {
-            document.write("Hello World");
-        }
-        helloWorld();
-        </script>
-    </head>
-</html>
-```
-* Open file in your browser. 
+
+    ```
+    <!doctype html>
+    <html>
+        <head>
+            <script>
+            function helloWorld() {
+                document.write("Hello World");
+            }
+            helloWorld();
+            </script>
+        </head>
+    </html>
+    ```
+    
+* Open file HelloWorld.html with your browser. 
+
+
+## PHP
+
+PHP as it's known today is actually the successor to a product named PHP/FI. Created in 1994 by Rasmus Lerdorf, the very first incarnation of PHP was a simple set of Common Gateway Interface (CGI) binaries written in the C programming language. Originally used for tracking visits to his online resume, he named the suite of scripts "Personal Home Page Tools," more frequently referenced as "PHP Tools." Over time, more functionality was desired, and Rasmus rewrote PHP Tools, producing a much larger and richer implementation. 
+
+* Download and install [PHP 5.x](http://php.net/downloads.php)
+* Create a python script hello.py with notepad
+
+    ```
+    <?php
+        echo "Hello World!" 
+   ?>
+    ```
+    
+* Run the script `php hello.php` 
+
+## Python
+
+Python is currently one of the most popular dynamic programming languages, along with Perl, Tcl, PHP, and newcomer Ruby. Although it is often viewed as a "scripting" language, it is really a general purpose programming language along the lines of Lisp or Smalltalk (as are the others, by the way). Today, Python is used for everything from throw-away scripts to large scalable web servers that provide uninterrupted service 24x7. It is used for GUI and database programming, client- and server-side web programming, and application testing. It is used by scientists writing applications for the world's fastest supercomputers and by children first learning to program.
+
+* Download and install [python 3.x](https://www.python.org/downloads/)
+* Create a python script hello.py with notepad
+
+    ```
+    print "Hello World!"
+    ```
+    
+* Run the script `python hello.py` 
+
+
+
+
 
   
 

@@ -3,7 +3,7 @@
 echo  Deploying updates to GitHub...
 
 REM Build the project. If using a theme, replace by `hugo -t <yourtheme>`
-hugo -t bootie-docs -D
+hugo -t bootie-docs
 
 REM Go To Public folder
 cd public

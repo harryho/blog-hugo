@@ -1,5 +1,5 @@
 +++
-tags =  ["hugo"]
+tags =  ["hugo","git"]
 categories = ["blog"]
 date = "2017-02-15T14:59:31+11:00"
 title = "Create a blog site on GitHub Pages within Windows environment"
@@ -62,7 +62,7 @@ After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use i
 
 * Deploy the blog site to GitHub page with the script `deploy.bat`.
 * `deploy.bat "Your optional commit message"` will commit the changes to `<username>.github.io`.
-* You might want to commit the changes to `blog-hugo` repository. 
+* You might want to commit the changes to `blog-hugo` repository. Please don't forget to add `public` into the `.gitignore`.
 
     ```
     @echo OFF
