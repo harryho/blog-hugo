@@ -48,7 +48,7 @@ Before you start typing any cmd, I want to share a common mistake for most begin
 * Type `*.md *.txt` to ren all files under current directory with `md` extension to `txt` extension
 
 ### md / mkdir
-* Type `md a\b\c\d && tree a` to create all directories once and display result as follow
+* Use `md a\b\c\d && tree a` to create all directories once and display result as follow
 
     ```
     <current-directory>\a
@@ -59,10 +59,10 @@ Before you start typing any cmd, I want to share a common mistake for most begin
     ```
     
 ### copy 
-* Type `touch test.txt && copy test.txt C:\User\<yourname>\` to create a test.txt file and copy the test.txt to C:\User\<yourname>\    
+* Use `touch test.txt && copy test.txt C:\User\<yourname>\` to create a test.txt file and copy the test.txt to C:\User\<yourname>\    
 
-### mv /move
-* Type `move a b` to move folder a into folder b.
+### move
+* Type `move a b` to move folder `a` into folder `b`.
 
 
 ### rd / rmdir

@@ -33,6 +33,9 @@ This article will continue the topic of Windows command & hotkeys, but it will f
 
 * Use `net statistics workstation(/server)` to show the network statistics log for the Server or Workstation service
 
+**net localgroup**
+
+* Use `net localgroup` to show a list of local user group on your computer.
 
 **net user**
 
@@ -46,6 +49,85 @@ This article will continue the topic of Windows command & hotkeys, but it will f
 * Use`net accounts <user> /minpwlen:6` to set password minimum length requirement for user.
 * Use`net accounts <user> /maxpwage:30` to force user to reset password every 30 days, or use `unlimited` to replace the number `30`, then user's password will never expire.
 * User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
+
+### netstat 
+
+```
+netstat -ano | find ":80"
+```
+
+### ipconfig
+
+
+### tasklist
+
+
+### Runas 
+```
+    runas /user:mypc\administrator "cmd"
+    runas /user:mydomain\administrator "cmd /C \" del /S /F /Q c:\dummy\* \" &  rmdir /S /Q c:\dummy & md c:\dummy & xcopy c:\source c:\dummy /S /E /Y"
+```
+
+### tasklist
+* tasklist[.exe] [/s computer] [/u domain\user [/p password]] [/fo {TABLE|LIST|CSV}] [/nh] [/fi FilterName [/fi FilterName2 [ ... ]]] [/m [ModuleName] | /svc | /v
+* FilterName: Status, Imagename,
+* Find process by pid
+```
+tasklist /v /fo list /fi "imagename eq mysqld.exe"
+tasklist /v /fo list /fi "imagename eq mongod.exe"
+tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq running" 
+tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq not responding" 
+tasklist /fi "pid eq 4444"
+```
+
+### SC 
+* Query Service
+
+```
+    sc query <service name>
+    sc query state= all | find "SERVICE_NAME" 
+```
+* Retrieve service name and state. type parameter can be used twice in some case.
+**state= {active | inactive | all}
+**type= {driver | service | all}
+**type= {own | share | interact | kernel | filesys | rec | adapt}
+
+
+> Note: If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled
+```
+    sc query state= inactive type= driver type= kernel
+    for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s    
+    for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(for /f "tokens=4" %t in ('sc query %s ^| find "STATE     "') do @echo %s -- %t)
+```
+
+* Start or stop service
+```
+    sc start  <service name>
+    sc stop  <service name>
+```
+
+
+
+### Dual boot or multiple boot with Windows
+
+; Login windows with common prompt 
+# Restart windows, meanwhile press shift key
+# In the options page, choose change to other options
+#  Troubleshooting
+# Command Prompt
+# Login in Windows with Common prompt
+
+; Use BCDEdit to change windows boot manager. Change to boot ubuntu at first
+
+```
+REM backup
+bcdedit /enum > X:\Users\public\documents\bcdedit.txt
+REM change the bootmgr 
+bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
+```
+
+
+
 
 
 
