@@ -5,6 +5,7 @@ theme = "bootie-docs"
 uglyurls = false
 copyright = "Copyright (c) 2015, harryho; All rights reserved."
 enableRobotsTXT = true
+disqusShortname = "harryhounique"
 
 [params]
   description = "Blog site for simple & reusable techies"
