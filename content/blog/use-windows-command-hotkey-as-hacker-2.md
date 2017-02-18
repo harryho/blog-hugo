@@ -92,7 +92,9 @@ sc query state= all | find "SERVICE_NAME"
 ```
 sc query state= inactive type= driver type= kernel
 for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s    
-for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(for /f "tokens=4" %t in ('sc query %s ^| find "STATE     "') do @echo %s -- %t)
+for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
+    for /f "tokens=4" %t in ('sc query %s ^| find "STATE     "') do @echo %s -- %t
+    )
 ```
 
 * Start or stop service
