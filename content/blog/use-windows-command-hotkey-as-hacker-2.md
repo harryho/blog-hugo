@@ -8,74 +8,105 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 
 This article will continue the topic of Windows command & hotkeys. Part-1 shows you common hotkeys and short command lines for `Run` windnow dialog. The rest of this topic will focus on the common and useful commands and how to create a batch script with those commands. 
 
-## Most common and useful commands
 
-This article won't list all commands and all usages of each command. Here I will just choose the commands and some usages of command which are useful for most people. Some advanced command will be demonstrated in Part-3. 
+## Advanced commands and usages
 
-Before you start typing any cmd, I want to share a common mistake for most beginners, including myself. We always forget to use help command before we Google a solution, when we hit some impediment or roadblock. Actually help command is the most common built-in feature within any software or tool. Learn how to use help command or find the help information is first important when we are going to learn anything new. 
+### attrib 
 
-### help
-* Start command prompt and type `help`. You will get a list of command which you can use, and short decription of each command.
-* Use help command to see and learn other commands
-    ```
-    C:\>help
-    C:\>help cd 
-    ```
+* Type `attrib +h a.txt` to hide file and use `attrib -h a.txt` to unhide it. 
+* Type `attrib +r a.txt` to change file to read-only and reverse the action by `-r`
 
-### start 
-* Start another `cmd` window prompt. 
+### env 
+* Type `env>env.txt && notepad env.txt` Display all environment variable in text file
 
-### cd / chdir 
-* Displays the name of or changes the current directory
-    * Type `cd` to display the name of directory 
-    * Type `cd c:\windows` to change to `c:\Windows>` 
-    * Type `cd /d D:` to change to d driver if you have d driver
+### set 
+* Type `set path` to display **PATH** environment variable, which is useful to check if your **PATH** has been setup properly.
+* Type `set /P a=b` to set b as value to variable a. It will be used in bat/cmd script. 
 
-### dir 
-* Displays a list of files and subdirectories in a directory.
+### net 
 
-    * Type `dir /a:h/a:d` to display hidden subdirectories only
-    * Type `dir /p/w` to display many items per screen within wide list format
-    * Type `dir /o:-s` to display items sorted by size (biggest first)
-    * Type `dir /o:s` to display items sorted by size (smallest first)
-    * Type `dir /o:dn` to display items sorted by date/time  (oldest first) and name ( alphabetic)
+**net view**
 
-### tree  
-* Type `tree /f` graphically displays the folder structure of a drive or path.
+* Use `net view` to show a list of computers and network devices on the network.
 
-### ren / rename
-* Type `ren abc cba` to ren file name from "abc" to "cba" if there is file named abc under current directory. 
-* Type `*.md *.txt` to ren all files under current directory with `md` extension to `txt` extension
+**net statistics**
 
-### md / mkdir
-* Use `md a\b\c\d && tree a` to create all directories once and display result as follow
+* Use `net statistics workstation(/server)` to show the network statistics log for the Server or Workstation service
 
-    ```
-    <current-directory>\a
-    |___b
-        |___c
-            |___d
+**net localgroup**
 
-    ```
-    
-### copy 
-* Use `touch test.txt && copy test.txt C:\User\<yourname>\` to create a test.txt file and copy the test.txt to C:\User\<yourname>\    
+* Use `net localgroup` to show a list of local user group on your computer.
 
-### move
-* Type `move a b` to move folder `a` into folder `b`.
+**net user**
 
+* Type `net user %username%` to retrieve your user information 
+* Type `net user adminstrator` to check the status of administrator 
+* Type `net user administrator /active:yes` to activate adminstrator and inactivate by replacing `yes` with`no`
 
-### rd / rmdir
-* Type `rd a` to remove a empty directory `a` 
-* Type `rd /s a` to remove a directory `a` including all files and empty directories within folder `a`.
+**net accounts**
 
-### del 
-* Type `del` to delete files or `del *.txt` to delete all files with `txt` extension
-
-### cls
-* Type `cls` to clean the screen
+* Use`net accounts <user>` to show current user's password and login requirement.
+* Use`net accounts <user> /minpwlen:6` to set password minimum length requirement for user.
+* Use`net accounts <user> /maxpwage:30` to force user to reset password every 30 days, or use `unlimited` to replace the number `30`, then user's password will never expire.
+* User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
 
 
 
+
+### Runas 
+
+```
+runas /user:mypc\administrator "cmd"
+runas /user:mydomain\administrator "cmd /C \" del /S /F /Q c:\dummy\* \" &  rmdir /S /Q c:\dummy & md c:\dummy & xcopy c:\source c:\dummy /S /E /Y"
+```
+
+### tasklist
+* tasklist[.exe] [/s computer] [/u domain\user [/p password]] [/fo {TABLE|LIST|CSV}] [/nh] [/fi FilterName [/fi FilterName2 [ ... ]]] [/m [ModuleName] | /svc | /v
+* FilterName: Status, Imagename,
+* Find process by pid
+```
+tasklist /v /fo list /fi "imagename eq mysqld.exe"
+tasklist /v /fo list /fi "imagename eq mongod.exe"
+tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq running" 
+tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq not responding" 
+tasklist /fi "pid eq 4444"
+```
+
+### taskkill
+
+### sc
+* Query Service
+
+```
+    sc query <service name>
+    sc query state= all | find "SERVICE_NAME" 
+```
+* Retrieve service name and state. type parameter can be used twice in some case.
+**state= {active | inactive | all}
+**type= {driver | service | all}
+**type= {own | share | interact | kernel | filesys | rec | adapt}
+
+
+> Note: If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled
+```
+    sc query state= inactive type= driver type= kernel
+    for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s    
+    for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(for /f "tokens=4" %t in ('sc query %s ^| find "STATE     "') do @echo %s -- %t)
+```
+
+* Start or stop service
+```
+    sc start  <service name>
+    sc stop  <service name>
+```
+
+
+### netstat 
+
+```
+netstat -ano | find ":80" 
+```
+
+### ipconfig
 
 

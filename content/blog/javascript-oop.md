@@ -6,7 +6,7 @@ title = "Javascript and Object Oriented Programming"
 draft = true
 +++
 
-### Brief history 
+**Brief history**
 > Brief history of Javascript can be found on [Home Page](harryho.github.io/#Javascript)
 
 ### Object and prototype

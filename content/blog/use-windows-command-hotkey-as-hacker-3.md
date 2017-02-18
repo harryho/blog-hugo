@@ -107,25 +107,6 @@ tasklist /fi "pid eq 4444"
 
 
 
-### Dual boot or multiple boot with Windows
-
-; Login windows with common prompt 
-# Restart windows, meanwhile press shift key
-# In the options page, choose change to other options
-#  Troubleshooting
-# Command Prompt
-# Login in Windows with Common prompt
-
-; Use BCDEdit to change windows boot manager. Change to boot ubuntu at first
-
-```
-REM backup
-bcdedit /enum > X:\Users\public\documents\bcdedit.txt
-REM change the bootmgr 
-bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
-```
-
-
 
 
 
