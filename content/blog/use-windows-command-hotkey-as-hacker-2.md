@@ -77,7 +77,7 @@ tasklist /fi "pid eq 4444"
 * Query Service
 
 ```
-sc query <service name>
+sc query <servicename>
 sc query state= all | find "SERVICE_NAME" 
 ```
 
@@ -99,8 +99,8 @@ for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
 
 * Start or stop service
 ```
-sc start  <service name>
-sc stop  <service name>
+sc start  <servicename>
+sc stop  <servicename>
 ```
 
 
