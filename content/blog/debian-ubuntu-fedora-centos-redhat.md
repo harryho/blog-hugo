@@ -1,5 +1,5 @@
 +++
-tags =  ["linux","ubuntu"]
+tags =  ["linux","ubuntu","centos"]
 categories = ["blog"]
 date = "2016-01-10T14:59:31+11:00"
 title = "Debian/Ubuntu, Fedora/CentOS/Redhat Linux Setup"
@@ -42,14 +42,14 @@ A Linux distribution (often abbreviated as distro) is an operating system made f
 
 __*Let's get our hands dirty*__
 
-* Install VirtualBox on your computer. IMO, use VBox is quite handy and save you much effort, even it is free. Because in the real environment, you will use remote tool to do your admin task instead of really handling a phyiscal machine. And you can try another Liunx OS on VirtualBox.
+* Install VirtualBox/VMWare on your computer. IMO, use VirtualBox is quite handy and save you much effort, even it is free. Because in the real environment, you will use remote tool to do your admin task instead of really handling a phyiscal machine. And you can try another Liunx OS on VirtualBox.
 
 * If you lean to commercial product, you can choose VMWare. There is free trial option for you. 
 
 
 # Debian/Ubuntu
 
-**Brief history**
+### Breif History
 
 >Ubuntu is one of a number of Linux distributions. The source code that makes up the Ubuntu distribution originates from another, much older Linux distribution known as Debian (so called because it was started by two people named Debra and Ian). Debian is still a widely respected operating system but came under criticism for infrequent updates and less than user friendly installation and maintenance (though these areas have shown improvement recently). 
 
@@ -116,11 +116,7 @@ For multiple boot, you need to make sure your disk is formatted as GPT. It will 
     bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
     ```
 
-
-
 ### Things to do after installing Ubuntu server
-
-
 
 > Ubuntu 14.04 LTS
 > Desktop Environment LXDE
@@ -135,6 +131,7 @@ sudo ufw allow ssh
 sudo ufw allow 443/tcp
 sudo ufw allow 8000/tcp
 ```
+
 ***SSH server setup***
 ```
 sudo apt-get install openssh-server 
@@ -184,7 +181,7 @@ software-properties-common python-software-properties
 
 ***install docker (Ubuntu 14.04 LTS)***
 
-```
+```bash
 # add GBG Key
     sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 
@@ -208,7 +205,7 @@ deb https://apt.dockerproject.org/repo ubuntu-trusty main
 
 ***build vim***
 
-```
+```bash
 sudo apt-get build-dep vim
 git clone https://github.com/vim/vim.git ~/forks/vim
 cd ~/forks/vim

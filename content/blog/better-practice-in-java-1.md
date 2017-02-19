@@ -313,7 +313,7 @@ Usually most Java based system somehow needs such monitor function, there will b
 
 Following is sample of file watching service. I removed call back part which is relevant to the business. 
 
-```
+```java
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;

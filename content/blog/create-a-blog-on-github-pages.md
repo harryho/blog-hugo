@@ -61,7 +61,7 @@ title = "Create a blog site on GitHub Pages within Windows environment"
     ```
 
 * Deploy the blog site to GitHub page with the script `deploy.bat`.
-* `deploy.bat "Your optional commit message"` will commit the changes to `<username>.github.io`.
+* `deploy.bat "Your optional commit message"` will commit the changes to `<username>.github.io`. You can use and tailor the script below as your `deploy.bat`
 
     ```bash
     @echo OFF

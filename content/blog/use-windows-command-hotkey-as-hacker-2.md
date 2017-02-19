@@ -67,7 +67,7 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 
 ```bash
 runas /user:yourpc\administrator "cmd"
-runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pause & del c:\z.txt "
+runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pause & del c:\z.txt " 
 ```
 
 ### tasklist
@@ -88,7 +88,7 @@ tasklist /fi "pid eq 4444"
 ### sc
 * Query Service
 
-```
+```bash
 sc query <servicename>
 sc query state= all | find "SERVICE_NAME" 
 ```
@@ -101,7 +101,7 @@ sc query state= all | find "SERVICE_NAME"
 
 * Note: If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled
 
-```
+```bash
 sc query state= inactive type= driver type= kernel
 for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s    
 for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
@@ -110,7 +110,7 @@ for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
 ```
 
 * Start or stop service
-```
+```bash
 sc start  <servicename>
 sc stop  <servicename>
 ```

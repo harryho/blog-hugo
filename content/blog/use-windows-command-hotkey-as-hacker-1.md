@@ -26,6 +26,11 @@ C:\>User\<yourname>\cd \
 C:\>tree 
 ```
 
+### Use other command prompt 
+
+* [cmder](http://cmder.net/) is an awesome product. I suggest you just choose mini version to download and install if you are not the heavy git user. There are so many built-in features you can play around.   
+* [console2](https://sourceforge.net/projects/console/) is a very good as well. I used it for many years. I'm planning to migrate to `cmder`, but it will take me some time to do it, because I have some customized scripts need to run in `console2`. 
+
 ### Useful Windows hotkeys
 
 I believe the common hotkeys you should know. e.g. `Ctrl + C, Ctrl + V, Ctrl + A`. Here the hotkeys I list below are some rarely-used but very useful hotkys. 

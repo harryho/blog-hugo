@@ -31,7 +31,7 @@ draft = true
 
 
 *  Create a deploy slot ( webdeploy )
-  *  Create a web app from portal. Default deployment slot is not available##
+  *  Create a web app from portal. Default deployment slot is not available
   *  Change app service plan > Choose Standard tier 
   * Add slot > Type dev as name > leave the configuration plan as default
   * Change previous publish profile from Web Deploy to Web Deploy Package and create a package in local somewhere e.g. C:\webdeploy\webapp.zip
@@ -72,8 +72,9 @@ draft = true
   git push azure master 
 ```
 
-* Use Kudu 
- ** DEVELOPMENT TOOLS > Advanced Tools
+* Use Kudu
+
+ * DEVELOPMENT TOOLS > Advanced Tools
 
 * Create a webjob and deploy to azure (Start powershell as admin) 
 
@@ -160,7 +161,7 @@ draft = true
   authorityKeyIdentifier=keyid:always,issuer:always
   basicConstraints = CA:false
   keyUsage=nonRepudiation, digitalSignature, keyEncipherment
-  extendedKeyUsage = serverAuth
+  extendedKeyUsage = serverAuth  
   ```
 
 * In a command-line terminal, `CD` into your working directory and run the following command. Remember set your domain name as common name.

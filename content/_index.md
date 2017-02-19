@@ -62,7 +62,7 @@ And some are kind of terrible, e.g. Assembly language and C#(Installation of Vis
 
     * Create a script file hello.bat or hello.cmd with notepad
 
-    ```bash
+    ```dos
     @echo off
     set var='Hello World!'
     echo.%var%
@@ -92,7 +92,7 @@ Today C is one of the most used programming languages. Since C was designed to r
 
 * Unix/Linux includes `gcc` by default. You just need to compile and run the console app. For Windows, you might need install another tool [cygwin](https://cygwin.com/install.html) or [MinGW](http://www.mingw.org/wiki/MinGW_for_First_Time_Users_HOWTO)
 
-    ```bash
+    ```
     g++ hello.c -o hello
     ./hello
     ```
@@ -137,7 +137,7 @@ Java is a general-purpose computer programming language that is concurrent, obje
 
 * Compile & run 
 
-    ```bash
+    ```
     javac HelloWorld.java
     java HelloWorld
     ```
