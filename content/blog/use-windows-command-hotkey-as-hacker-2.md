@@ -51,7 +51,7 @@ This article will continue the topic of Windows command & hotkeys. Part-1 shows 
 * User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
 
 
-### Runas 
+### runas 
 
 ```
 runas /user:mypc\administrator "cmd"

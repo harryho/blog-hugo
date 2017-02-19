@@ -2,8 +2,8 @@
 tags = ["java"]
 categories = ["blog"]
 date = "2011-12-10T14:59:31+11:00"
-title = "Better practice in Java - Part 1"
-draft = false
+title = "Better practice in Java - Part 2"
+draft = true
 +++
 
 ## Refactor static final constant with Enum
@@ -267,7 +267,7 @@ To use this customized  is so easy. Just 3 lines coding you can test it by yours
 
 Automatic resource management is another attractive features of Java 7 and project coin. As name itself implies that now JVM is going to be handling all the external resource and make programmer free to bother about resource management. 
 
-Coming with the new IO, ARM is really great improvement, especially for people miss the using statement in C#, including myself. Sometimes I wonder why Java is such reluctant to learn some good features from C#. As we all know, C# comes after Java and copies most concept at the early stage, but it really pushed Java to new level and inspired Java world a lot with its many good feature. I really hope someday I can write Java getter and setter in C# coding style. Wise men learn by other men's mistakes; fools by their own. 
+Coming with the new IO, ARM is really great improvement, especially for people miss the using statement in C#. Sometimes I wonder why Java is such reluctant to learn some good features from C#. As we all know, C# comes after Java and copies most concept at the early stage, but it really pushed Java to new level and inspired Java world a lot with its many good feature. I really hope someday I can write Java getter and setter in C# coding style. Wise men learn by other men's mistakes; fools by their own. 
 
 In the past, java programmers use any external resources like file, printer or any devices to close after my program execution complete. Normally we close the resources which we have open in beginning of our program or we decide that if program finish normally how to manage the resource or if our program finish abnormally how to close the resource.
 
