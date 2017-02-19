@@ -6,7 +6,7 @@ title = "Better practice in Java - Part 1"
 draft = false
 +++
 
-## Refactor static final constant with Enum
+### Refactor constant variables with Enum
 
 Enum was a great improvement in Java 1.5. From that more and more developer abandom the interface or abstract class as constant variable container. 
 
@@ -40,7 +40,6 @@ Before Java 1.5 you will following coding in many Java program.
     	}
     }
 ```
-
 
 Above program looks very good. Please take a close look and check it carefully. You will find the program will never return __*en-au*__, since there is a typo in the constant AU. It should be __*Australia*__ instead of __*Australian*__. I believe many developers have short sight problem like me, and it happened again and again. Using string as constant flag is not a good option, but there is no other better solution before Java 1.5.
 
@@ -205,14 +204,14 @@ public class Util {
 If you are planning to refactor your code, please give a second thought. It is time to dump to try these new features. 
 
 
-## Good stuff from dull Java 7
+### Good stuff from not shiny Java 7
 
 When the Java 7 was released, I was kind of disappointed without lamda, jigsaw as most developers, but when I tried new Path, Files API, I found that is great improvement. The enhancement of this new IO is really useful. It save so much effort for Java developer. 
 
 To be hoenst, before Java 1.7, Coding file manipulation in Java is very headache task. I say "headache" it doesn't mean it is difficult. Just comparing with other program lanugage, you had to take much more effort to take care of the boilerplate, and all are tedious job. That is why sometimes I prefer cmd in Window or bash in Linux to complete the task instead of using Java to handle file manipulation. Now I think I can refactor old file manipulation coding and make it much more elegant. 
 
 
-### Better file visitor implementation
+#### Better file visitor implementation
 
 Following is simple customizaed file visitor which has been the part of my old util.
 
@@ -264,15 +263,13 @@ To use this customized  is so easy. Just 3 lines coding you can test it by yours
 		Files.walkFileTree(path, fileVisitor);
 ```
 
-### ARM 
+#### ARM 
 
-Automatic resource management is another attractive features of Java 7 and project coin. As name itself implies that now JVM is going to be handling all the external resource and make programmer free to bother about resource management. 
+Automatic resource management is another attractive features of Java 7 and project coin. As name itself implies that now JVM is going to be handling all the external resource and make programmer free to bother about resource management, especially for people like me miss the `using` statement in C#. Sometimes I wonder why Java is such stubborn not to learn some good features from C#. As we know, C# comes after Java and copies most concept at the early stage, but it really pushed Object Oriented Concept (OOC) to a new level and inspired Java world a lot with its many good feature. I really hope someday I can code in Java as simple as C#. Wise men learn by other men's mistakes; fools by their own. 
 
-Coming with the new IO, ARM is really great improvement, especially for people miss the using statement in C#, including myself. Sometimes I wonder why Java is such reluctant to learn some good features from C#. As we all know, C# comes after Java and copies most concept at the early stage, but it really pushed Java to new level and inspired Java world a lot with its many good feature. I really hope someday I can write Java getter and setter in C# coding style. Wise men learn by other men's mistakes; fools by their own. 
+In the past, java programmers use any external resources like file, printer or any devices to close after my program execution complete. Normally we close the resources which we have open in beginning of our program or we decide that if program finish normally how to manage the resource or if our program finish abnormally how to close the resource. Following are comparison of old and new style. 
 
-In the past, java programmers use any external resources like file, printer or any devices to close after my program execution complete. Normally we close the resources which we have open in beginning of our program or we decide that if program finish normally how to manage the resource or if our program finish abnormally how to close the resource.
-
-**Snippet of old style**
+*Snippet of old style*
 
 ```java
 FileInputStream exchangeCurrencyReader= null;
@@ -292,7 +289,7 @@ finally {
 }
 ```
 
-**Code in Java 7**
+*Code in Java 7*
 
 ```java
 try ( FileInputStream exchangeCurrencyReader = new FileInputStream("AUDvsUSD.txt");
@@ -308,7 +305,7 @@ In the code above we have declare two file stream one is input file we are readi
 
 
 
-### New file change monitor service
+#### New file change monitor service
 
 After some homework for new features of Java 7, I am tring to use file watch serviice from Java 7 to replace old file monitor program. It is great and quite simple to use. I have updated to production. 
 

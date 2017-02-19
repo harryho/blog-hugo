@@ -27,8 +27,6 @@ bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
 
 
 
-# C/C++ 
-g++ -std=c+=14 -O0 -g3 -Wall -o app.exe app.cpp
 
 
 

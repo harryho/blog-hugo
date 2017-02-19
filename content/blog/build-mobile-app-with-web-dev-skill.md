@@ -9,7 +9,7 @@ draft = true
 
 ## ionic 1.x
 
-; Getting started
+##Getting started
 ```
 ionic start demoApp slidemenu
 cd demoApp
@@ -50,37 +50,37 @@ ionic emulate android
 }
 
 ```
-; Debug
-# Browser is the best option for ionic mobile development debug tools
-# Use Telerik AppBuilder to debug
+##Debug
+*  Browser is the best option for ionic mobile development debug tools
+*  Use Telerik AppBuilder to debug
 
 
-; Test on emulator or device
+##Test on emulator or device
 
-# Android 
-## Install Android SDK
-## Download install at least one sdk platform
-##* ionic only support Android 4.1.x or later
-##* install x86 or x86_64 image for windows environment
-##* install Extra plugins: Google USB driver, X86 Emulator Accelerator
-## Create AVD 
+*  Android 
+  *  Install Android SDK
+  *  Download install at least one sdk platform
+    *  ionic only support Android 4.1.x or later
+    *  install x86 or x86_64 image for windows environment
+    *  install Extra plugins: Google USB driver, X86 Emulator Accelerator
+    *  Create AVD 
 
-# iPhone
-## Install AppBuilder on Visual Studio
-## Install Genymotion 
+*  iPhone
+  *  Install AppBuilder on Visual Studio
+  *  Install Genymotion 
 
 
 
-;Notes
+## Notes
 =======
 
-# Android emulator accelerator error due to version is too low to support the system image
-#* uninstall old version intel HAXM 
-#* install new version manually from `<Android_SDK_Location>\extras\intel\Hardware_Accelerated_Execution_Manager`
+*  Android emulator accelerator error due to version is too low to support the system image
+*   uninstall old version intel HAXM 
+*   install new version manually from `<Android_SDK_Location>\extras\intel\Hardware_Accelerated_Execution_Manager`
 
 
-# If app is not working on emulator, check cordova plugins or manually install cordova plugins
+*  If app is not working on emulator, check cordova plugins or manually install cordova plugins
 
-#* ` ionic plugins list `
-#* ` ionic plugins add XXXXX`
+*   ` ionic plugins list `
+*   ` ionic plugins add XXXXX`
 

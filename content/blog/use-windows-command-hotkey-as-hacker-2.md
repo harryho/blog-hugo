@@ -6,7 +6,9 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 
 +++
 
-*This article will continue the topic of Windows command & hotkeys. Part-1 shows you common hotkeys and short command lines for `Run` windnow dialog. The rest of this topic will focus on the common and useful commands and how to create a batch script with those commands.*
+*This article will continue the topic of Windows command & hotkeys. Part-1 shows you common hotkeys and short command lines for `Run` windnow dialog. The rest of this topic will focus on the advanced commands and how to create a batch script with all those commands.*
+
+*Let me clarify something first. Advanced command here does not mean that commands here are very complicated or much more powerful than common ones, which have been shown in the Part-1. Here we call them advanced, because they are used by experienced users to complete their given tasks, and those commands are used seldom by majority people. Comparing with Part-1, advanced commands have some specific features which allow them to do some special jobs, which usually are done by system admin. Advanced command is known as Admin command as well.*
 
 
 ## Advanced commands and usages
@@ -17,45 +19,55 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 * Type `attrib +r a.txt` to change file to read-only and reverse the action by `-r`
 
 ### env 
-* Type `env>env.txt && notepad env.txt` Display all environment variable in text file
+* Type `env>env.txt & notepad env.txt` Display all environment variable in text file
 
 ### set 
 * Type `set path` to display **PATH** environment variable, which is useful to check if your **PATH** has been setup properly.
 * Type `set /P a=b` to set b as value to variable a. It will be used in bat/cmd script. 
 
 ### net 
+    
+**get sub-commands** -- type `net /? `
 
-    **net view**
+```bash
+    [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |
+     HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START | 
+     STATISTICS | STOP | TIME | USE | USER | VIEW ]
+```
 
-    * Use `net view` to show a list of computers and network devices on the network.
+**get sub-command's help** -- type `net [sub-command] /?`
 
-    **net statistics**
+**net view**
 
-    * Use `net statistics workstation(/server)` to show the network statistics log for the Server or Workstation service
+* Use `net view` to show a list of computers and network devices on the network.
 
-    **net localgroup**
+**net statistics**
 
-    * Use `net localgroup` to show a list of local user group on your computer.
+* Use `net statistics workstation(/server)` to show the network statistics log for the Server or Workstation service
 
-    **net user**
+**net localgroup**
 
-    * Type `net user %username%` to retrieve your user information 
-    * Type `net user adminstrator` to check the status of administrator 
-    * Type `net user administrator /active:yes` to activate adminstrator and inactivate by replacing `yes` with`no`
+* Use `net localgroup` to show a list of local user group on your computer.
 
-    **net accounts**
+**net user**
 
-    * Use`net accounts <user>` to show current user's password and login requirement.
-    * Use`net accounts <user> /minpwlen:6` to set password minimum length requirement for user.
-    * Use`net accounts <user> /maxpwage:30` to force user to reset password every 30 days, or use `unlimited` to replace the number `30`, then user's password will never expire.
-    * User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
+* Type `net user %username%` to retrieve your user information 
+* Type `net user adminstrator` to check the status of administrator 
+* Type `net user administrator /active:yes` to activate adminstrator and inactivate by replacing `yes` with`no`
+
+**net accounts**
+
+* Use`net accounts <user>` to show current user's password and login requirement.
+* Use`net accounts <user> /minpwlen:6` to set password minimum length requirement for user.
+* Use`net accounts <user> /maxpwage:30` to force user to reset password every 30 days, or use `unlimited` to replace the number `30`, then user's password will never expire.
+* User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
 
 
 ### runas 
 
 ```bash
-runas /user:mypc\administrator "cmd"
-runas /user:mydomain\administrator "cmd /C \" del /S /F /Q c:\dummy\* \" &  rmdir /S /Q c:\dummy & md c:\dummy & xcopy c:\source c:\dummy /S /E /Y"
+runas /user:yourpc\administrator "cmd"
+runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pause & del c:\z.txt "
 ```
 
 ### tasklist
