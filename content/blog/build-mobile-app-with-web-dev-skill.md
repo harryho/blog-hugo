@@ -1,4 +1,5 @@
 +++
+tags=["mobile"]
 categories = ["blog"]
 date = "2016-07-10T14:59:31+11:00"
 title = "Build mobile app with web dev skill"
@@ -6,6 +7,8 @@ draft = true
 +++
 
 # Mobile App 
+
+
 
 ## ionic 1.x
 
