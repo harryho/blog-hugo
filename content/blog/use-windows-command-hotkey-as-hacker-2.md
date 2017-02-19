@@ -6,7 +6,7 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 
 +++
 
-This article will continue the topic of Windows command & hotkeys. Part-1 shows you common hotkeys and short command lines for `Run` windnow dialog. The rest of this topic will focus on the common and useful commands and how to create a batch script with those commands. 
+*This article will continue the topic of Windows command & hotkeys. Part-1 shows you common hotkeys and short command lines for `Run` windnow dialog. The rest of this topic will focus on the common and useful commands and how to create a batch script with those commands.*
 
 
 ## Advanced commands and usages
@@ -25,30 +25,30 @@ This article will continue the topic of Windows command & hotkeys. Part-1 shows 
 
 ### net 
 
-**net view**
+    **net view**
 
-* Use `net view` to show a list of computers and network devices on the network.
+    * Use `net view` to show a list of computers and network devices on the network.
 
-**net statistics**
+    **net statistics**
 
-* Use `net statistics workstation(/server)` to show the network statistics log for the Server or Workstation service
+    * Use `net statistics workstation(/server)` to show the network statistics log for the Server or Workstation service
 
-**net localgroup**
+    **net localgroup**
 
-* Use `net localgroup` to show a list of local user group on your computer.
+    * Use `net localgroup` to show a list of local user group on your computer.
 
-**net user**
+    **net user**
 
-* Type `net user %username%` to retrieve your user information 
-* Type `net user adminstrator` to check the status of administrator 
-* Type `net user administrator /active:yes` to activate adminstrator and inactivate by replacing `yes` with`no`
+    * Type `net user %username%` to retrieve your user information 
+    * Type `net user adminstrator` to check the status of administrator 
+    * Type `net user administrator /active:yes` to activate adminstrator and inactivate by replacing `yes` with`no`
 
-**net accounts**
+    **net accounts**
 
-* Use`net accounts <user>` to show current user's password and login requirement.
-* Use`net accounts <user> /minpwlen:6` to set password minimum length requirement for user.
-* Use`net accounts <user> /maxpwage:30` to force user to reset password every 30 days, or use `unlimited` to replace the number `30`, then user's password will never expire.
-* User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
+    * Use`net accounts <user>` to show current user's password and login requirement.
+    * Use`net accounts <user> /minpwlen:6` to set password minimum length requirement for user.
+    * Use`net accounts <user> /maxpwage:30` to force user to reset password every 30 days, or use `unlimited` to replace the number `30`, then user's password will never expire.
+    * User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
 
 
 ### runas 

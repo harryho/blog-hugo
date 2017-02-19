@@ -6,7 +6,7 @@ title = "Use Windows command & hotkey as a hacker - Part 1"
 
 +++
 
-Do you want to make your friends amazed by your computer skill and praise you as genius? Or the hacker as watched in Sci-Fi movies? You don't need Mac, Linux or other operating systems, just Windows, you can show-off and look like hacker and master of Zeroes and Ones, even you have no any idea of it. Here are some tricks by which you can make your friends' jaw drop. 
+*Do you want to make your friends amazed by your computer skill and praise you as genius? Or the hacker as watched in Sci-Fi movies? You don't need Mac, Linux or other operating systems, just Windows, you can show-off and look like hacker and master of Zeroes and Ones, even you have no any idea of it. Here are some tricks by which you can make your friends' jaw drop.*
 
 ### Start Windows command prompt as hacker
 

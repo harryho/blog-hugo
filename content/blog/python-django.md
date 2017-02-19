@@ -1,45 +1,43 @@
 +++
 categories = ["blog"]
 date = "2016-04-10T14:59:31+11:00"
-title = "Python"
+title = "Python & Django"
 draft = true
 +++
 
-
-
-!  Installation & setup
-
 # Python
 
-# Install Python
+## Install Python
 
-# Install pip
+## Install pip
 
-# Install virtualenv
+## Install virtualenv
 
 !! Setup virtualenv
 !!! Windows
 * Install django
-# create a folder virtualenvs within the location of python 3
-# create a new virtualenv named django18
-# Activate the new virtual env
-# Install Django 1.8.15 (LTS version ) 
-```
+## create a folder virtualenvs within the location of python 3
+## create a new virtualenv named django18
+## Activate the new virtual env
+## Install Django 1.x.x (LTS version ) 
+
+```bash
      cd  /path/to/python3
      cd  virtualenvs
      virtualenv django18
      cd django18
      Scripts\activate
      which python
-     pip install django==1.8.15
+     pip install django==1.x.x
 ```
-* Create django project 
-# SET PATH in current command promp
-# Navigate to workspace folder
-# Create new django project
-# Start the app
 
-```
+## Create django project 
+* SET PATH in current command promp
+* Navigate to workspace folder
+* Create new django project
+* Start the app
+
+```bash
      SET PATH=c:\apps\python3\virtualenvs\django18\Script;%PATH%
      which django-admin
      cd c:\ws\python\django\
@@ -56,7 +54,7 @@ draft = true
 
 **  following commands are just tested in django 1.8
 
-```
+```python
     python manage.py syncdb 
     python manage.py makemigrations new_app 
     pyrhon manage.py sqlmigrate new_app 0001 ( or python manage.py migrate new_app 0001 )
@@ -64,7 +62,7 @@ draft = true
 
     * use python shell Model API
 
-```
+```python
     python manage.py shell
     >>> from XXX.models import ModelClass
     >>> ModelClass.objects.all()
@@ -81,7 +79,6 @@ draft = true
 !!! Linux
 
 * activate virtual environment need to use source instead of executing sh file
-```
+```bash
     source path\to\virtualenv\bin\activate
-
 ```

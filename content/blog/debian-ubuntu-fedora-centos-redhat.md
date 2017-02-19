@@ -47,9 +47,6 @@ __*Let's get our hands dirty*__
 * If you lean to commercial product, you can choose VMWare. There is free trial option for you. 
 
 
-
-
-
 # Debian/Ubuntu
 
 **Brief history**

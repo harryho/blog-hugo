@@ -1,14 +1,14 @@
 +++
-date = "2015-11-06T16:43:12+11:00"
+date = "2016-03-06T16:43:12+11:00"
 title = "_index"
 
 +++
 
->  This article had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I was tired to manage the WordPress. To manage a blog site is not a piece of work, but sharing these tricks and techies online is quite helpful for myself and others to solve similar problems, which has been solved before. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github Pages, and I posted a blog - [Create a blog on GitHub Pages](https://harryho.github.io/blog/create-a-blog-on-github-pages) to show you how I did it on my Windows machine. You can follow the instruction and give a go on your own. 
+>*This article had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I was tired to manage the WordPress. To manage a blog site is not a piece of work, but sharing these tricks and solutions online is quite helpful for myself and other techies to solve similar problems, which have been solved before. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github Pages, and I posted a blog - [Create a blog on GitHub Pages](https://harryho.github.io/blog/create-a-blog-on-github-pages) to show you how I did it on my Windows machine. If you have interests in creating your blog, please take a look the instruction and give a go on your own.* 
 
-> I leave the `Hello World` article on home page to make my blog not too boring. In theory, most posts here are just technical stuff, tricks, solutions, so I want the home page a bit fun at least. 
+>*I leave the `Hello World` article on home page to make my blog not too boring. By the way, my blog is not wiki, so most posts here are just technical stuff, tricks, solutions. All those things are practical stuff instead of stories, so I want the home page a bit fun at least.*
 
-```text
+```bash
 Dutch : "Hello wereld",
 English : "Hello world",
 French : "Bonjour monde",
@@ -34,10 +34,9 @@ And some are kind of terrible, e.g. Assembly language and C#(Installation of Vis
 
 ## Assumptions
 
-* You have a proper computer instead of a tablet or ipad.
-* You are ready to get your hands dirty. 
-* If you use Mac, the code for Linux should work on Mac as well
-* You know how to start a terminal on Mac or a command prompt on Windows. 
+* You have a proper computer instead of a tablet or ipad. Actually you can write some code to create an app directly on your smart phone or tablet after installing some development apps. *AIDE*, *DroidScript* and *QPython* are such applications you can try if you want to play around.
+
+* If you use Mac, the code for Linux should work on Mac as well. You know how to start a terminal on Mac or a command prompt on Windows. Finally, you are ready to get your hands dirty. 
 
 
 ## Bash/Batch script
@@ -60,12 +59,13 @@ And some are kind of terrible, e.g. Assembly language and C#(Installation of Vis
     * Run the script `./hello.sh`
 
 * Batch/Cmd (Windows) 
-    *Create a script file hello.bat or hello.cmd with notepad
 
-    ```cmd
-    @ECHO OFF
-    SET VAR='Hello World!'
-    ECHO.%VAR%
+    * Create a script file hello.bat or hello.cmd with notepad
+
+    ```bash
+    @echo off
+    set var='Hello World!'
+    echo.%var%
     ```
 
     * Run the script `hello.bat` or `hello.cmd`
@@ -78,7 +78,7 @@ Today C is one of the most used programming languages. Since C was designed to r
 
 * Create a program file `hello.c ` or `hello.cpp` with vi or notepad
 
-    ```c++
+    ```cpp
     #include<stdio.h>
 
     int main( ) 
@@ -129,19 +129,15 @@ Java is a general-purpose computer programming language that is concurrent, obje
 
     ```java
     public class HelloWorld {
-
         public static void main(String[] args) {
-
             System.out.println("Hello, World");
-
         }
-
     }
     ```
 
 * Compile & run 
 
-    ```cmd
+    ```bash
     javac HelloWorld.java
     java HelloWorld
     ```
@@ -155,7 +151,7 @@ JavaScript is the programming language of the web. It's one of the most popular 
 * The sample will be presented as web page.
 * Create a program file HelloWorld.html
 
-    ```
+    ```html
     <!doctype html>
     <html>
         <head>

@@ -7,16 +7,16 @@ title = "Create a blog site on GitHub Pages within Windows environment"
 +++
 
 
-After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use it to create a blog to GitHub pages on my windows machine, since I use Windows machine as workstation. If you use Unix-* system, I pretty sure you can follow the [Hugo Quick Start](https://gohugo.io/overview/quickstart/) and [Hosting on GitHub Pages](https://gohugo.io/tutorials/github-pages-blog) to create a blog to GitHub pages within 5 mins, but when I try to do the same on Windows machine, it took me over 30 mins. I hope this blog can help someone want to do sth similar within Windows environment. 
+*After I setup a blog site with Hugo on my ubuntu machine, I decided to use it to create a blog to GitHub pages on my windows machine, since I use Windows machine as workstation. If you use Unix-style system, I pretty sure you can follow the [Hugo Quick Start](https://gohugo.io/overview/quickstart/) and [Hosting on GitHub Pages](https://gohugo.io/tutorials/github-pages-blog) to create a blog to GitHub pages within 5 mins, but when I try to do the same on Windows machine, it took me over 30 mins. I hope this blog can help someone want to do sth similar within Windows environment.*
 
 
 ## Assumptions
 
-* You already have **Hugo** on your computer. If not, please follow the instruction to [install hugo on Windows](https://gohugo.io/tutorials/installing-on-windows).
+* You already have *Hugo* on your computer. If not, please follow the instruction to [install hugo on Windows](https://gohugo.io/tutorials/installing-on-windows).
 * You will have two repositories `blog-hugo` and `<username>.github.io` repositories to hold your hugo content and blog site respectively.
 * The `blog-hugo` repository will host actual Hugo’s blog content.
 * `<username>.github.io repository` repository will host the static website.
-* Your hugo blog folder will be "C:\git\blog-hugo" in this example.
+* Your *Hugo* blog folder will be "C:\git\blog-hugo" in this example.
 * Your blog site will finally sit in C driver and map to repositories as follow
 
     ```bash
@@ -62,7 +62,6 @@ After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use i
 
 * Deploy the blog site to GitHub page with the script `deploy.bat`.
 * `deploy.bat "Your optional commit message"` will commit the changes to `<username>.github.io`.
-* You might want to commit the changes to `blog-hugo` repository. Please don't forget to add `public` into the `.gitignore`.
 
     ```bash
     @echo OFF
@@ -89,3 +88,5 @@ After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use i
     REM Come Back
     cd ..
     ```
+
+* You might want to commit the changes to `blog-hugo` repository. Please don't forget to add `public` into the `.gitignore`.

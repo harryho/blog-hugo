@@ -7,33 +7,34 @@ draft = true
 +++
 
 
-! Getting Started
+> *Here we are going to explore how to*
 
+# Getting Started
 
-# Register a Microsoft account. e.g. live.com, outlook.com, etc.
-# Start free trial account on Azure cloud 
-# Install Azure powershell, Azure CLI, Azure SDK for Visual Studio
+* Register a Microsoft account. e.g. live.com, outlook.com, etc.
+* Start free trial account on Azure cloud 
+* Install Azure powershell, Azure CLI, Azure SDK for Visual Studio
 
-! App Service
+# App Service
 
-; Web app
+## Web app
 
 *  Create a website from portal 
 
 *  Create a website from visual studio 
-*# Create Empty Asp.Net webstie with only index.html
-*# Publish it to Azure via Web Deploy
-*#*  Profile > Microsoft Azure App Service
-*#* Add Azure account > New app service ( name: webapp ) 
-*#* Publish method pick Web Deploy 
-*#* Validate Connection > Publish
+  * Create Empty Asp.Net webstie with only index.html
+  * Publish it to Azure via Web Deploy
+    * Profile > Microsoft Azure App Service
+    * Add Azure account > New app service ( name: webapp ) 
+    * Publish method pick Web Deploy 
+    * Validate Connection > Publish
 
 
 *  Create a deploy slot ( webdeploy )
-*#  Create a web app from portal. Default deployment slot is not available;
-*#  Change app service plan > Choose Standard tier 
-*# Add slot > Type dev as name > leave the configuration plan as default
-*# Change previous publish profile from Web Deploy to Web Deploy Package and create a package in local somewhere e.g. C:\webdeploy\webapp.zip
+  *  Create a web app from portal. Default deployment slot is not available##
+  *  Change app service plan > Choose Standard tier 
+  * Add slot > Type dev as name > leave the configuration plan as default
+  * Change previous publish profile from Web Deploy to Web Deploy Package and create a package in local somewhere e.g. C:\webdeploy\webapp.zip
 
 * Deploy to azure ( Start PowerShell as admin )
 ```
@@ -46,21 +47,21 @@ draft = true
 
 
 
-; Webjobs
+## Webjobs
 
 * Open previous app service ( webapp )
 * Set deployment credentials for Git / FTP
 * Set Git Repo
-*# Deploy options > Local Git Repository > Copy git URL https://xxxxxxx.git
-*# Create demoWeb project with only one index page.
-*#*  demoWeb ( folder ) 
+  * Deploy options > Local Git Repository > Copy git URL https://xxxxxxx.git
+  * Create demoWeb project with only one index page.
+* demoWeb ( folder ) 
 *#**  Index.html
 
 
 * Deploy project to azure git repo ( Start powershell as admin)
 
 
-```
+```bash
   git init 
   git status 
   git config user.name "harryho" 
@@ -76,7 +77,7 @@ draft = true
 
 * Create a webjob and deploy to azure (Start powershell as admin) 
 
-```
+```bash
   mkdir webjob01
   cd webjob01
   echo "Get-Date | Out-File -FilePath 'd:\home\site\wwwroot\dateoutput.txt -Append' ">getdatejob.ps1
@@ -92,73 +93,75 @@ draft = true
 ```
      
 * Create webjob from visual studio
-*# Create webjob project. Add one line program in the main method `Console.WriteLine("Hellow World"); `
-*# Right click project node >   Publish Azure Webjob ...
-*# Setup job schedule
-*# Publish to app service ( webapp )
+  * Create webjob project. Add one line program in the main method `Console.WriteLine("Hellow World"); `
+  * Right click project node >   Publish Azure Webjob ...
+  * Setup job schedule
+  * Publish to app service ( webapp )
 
 
 * Deploy Asp.net SPA with SQL database to Azure
-*# Create blank SQL database from portal. Remember the admin Id and password
-*# Install VS 2015, Azure SDK for VS 2015
-*# Create web project ( c# ), choose ASP.NET Web Application ( .Net Framework )
+  * Create blank SQL database from portal. Remember the admin Id and password
+  * Install VS 2015, Azure SDK for VS 2015
+  * Create web project ( c# ), choose ASP.NET Web Application ( .Net Framework )
 
 
 
-; Custom Domain
+## Custom Domain
+
 * Free tier cannot custom domain name
 * Bind the existing name  
 * Navigate to Custom Domain
-*# Copy the external IP ( e.g. 10.1.1.1 ) for later setup. 
-*# Enter the domain name, validate domain name ( First time is invalid )
-*# Open your domain register website, e.g. godaddy.com ( that is my domains register website)
-*# Choose the domain you want to bind. Unlock the domain. 
-*# Navigate to Zone tab 
-*# Remove existing A type which points to hosting server
-*# Add a new A Type pointing to azure 
-*# Add an additional TXT Type pointing to azure for azure's verify
-*# Save all changes and wait for DNS 
-*# Use the site  https://digwebinterface.com to verify the new DNS been updated world wildly
-*# Back to azure portal to validate the domain name. Once it is valid, save and update it.
+
+  * Copy the external IP ( e.g. 10.1.1.1 ) for later setup. 
+  * Enter the domain name, validate domain name ( First time is invalid )
+  * Open your domain register website, e.g. godaddy.com ( that is my domains register website)
+  * Choose the domain you want to bind. Unlock the domain. 
+  * Navigate to Zone tab 
+  * Remove existing A type which points to hosting server
+  * Add a new A Type pointing to azure 
+  * Add an additional TXT Type pointing to azure for azure's verify
+  * Save all changes and wait for DNS 
+  * Use the site  https://digwebinterface.com to verify the new DNS been updated world wildly
+  * Back to azure portal to validate the domain name. Once it is valid, save and update it.
 
 
+## Self-signed SSL setup
 
-; Self-signed SSL setup
 * Create a text file named serverauth.cnf, then copy the following content into it, and then save it in a working directory. 
 
-```
-[ req ]
-default_bits           = 2048
-default_keyfile        = privkey.pem
-distinguished_name     = req_distinguished_name
-attributes             = req_attributes
-x509_extensions        = v3_ca
+  ```ini
+  [ req ]
+  default_bits           = 2048
+  default_keyfile        = privkey.pem
+  distinguished_name     = req_distinguished_name
+  attributes             = req_attributes
+  x509_extensions        = v3_ca
 
-[ req_distinguished_name ]
-countryName         = Country Name (2 letter code)
-countryName_min         = 2
-countryName_max         = 2
-stateOrProvinceName     = State or Province Name (full name)
-localityName            = Locality Name (eg, city)
-0.organizationName      = Organization Name (eg, company)
-organizationalUnitName      = Organizational Unit Name (eg, section)
-commonName          = Common Name (eg, your app's domain name)
-commonName_max          = 64
-emailAddress            = Email Address
-emailAddress_max        = 40
+  [ req_distinguished_name ]
+  countryName         = Country Name (2 letter code)
+  countryName_min         = 2
+  countryName_max         = 2
+  stateOrProvinceName     = State or Province Name (full name)
+  localityName            = Locality Name (eg, city)
+  0.organizationName      = Organization Name (eg, company)
+  organizationalUnitName      = Organizational Unit Name (eg, section)
+  commonName          = Common Name (eg, your app's domain name)
+  commonName_max          = 64
+  emailAddress            = Email Address
+  emailAddress_max        = 40
 
-[ req_attributes ]
-challengePassword       = A challenge password
-challengePassword_min       = 4
-challengePassword_max       = 20
+  [ req_attributes ]
+  challengePassword       = A challenge password
+  challengePassword_min       = 4
+  challengePassword_max       = 20
 
-[ v3_ca ]
- subjectKeyIdentifier=hash
- authorityKeyIdentifier=keyid:always,issuer:always
- basicConstraints = CA:false
- keyUsage=nonRepudiation, digitalSignature, keyEncipherment
- extendedKeyUsage = serverAuth
-```
+  [ v3_ca ]
+  subjectKeyIdentifier=hash
+  authorityKeyIdentifier=keyid:always,issuer:always
+  basicConstraints = CA:false
+  keyUsage=nonRepudiation, digitalSignature, keyEncipherment
+  extendedKeyUsage = serverAuth
+  ```
 
 * In a command-line terminal, `CD` into your working directory and run the following command. Remember set your domain name as common name.
 
@@ -173,14 +176,14 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 ```
 
 * Add SSL binding 
-** SNI SSL type for CNAME setup
+  * SNI SSL type for CNAME setup
 
 * http to https redirect
-** DEVELOPMENT TOOLS > Advanced Tools > Debug Console> Powershell 
-** Navigate from site > wwwroot . 
-** Edit Web.config. Add url rewite into Web.config proply
+  * DEVELOPMENT TOOLS > Advanced Tools > Debug Console> Powershell 
+  * Navigate from site > wwwroot . 
+  * Edit Web.config. Add url rewite into Web.config proply
 
-```
+```xml
 <configuration>
   <system.webServer>
     <rewrite>

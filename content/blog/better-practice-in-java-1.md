@@ -276,20 +276,20 @@ In the past, java programmers use any external resources like file, printer or a
 
 ```java
 FileInputStream exchangeCurrencyReader= null;
-      FileOutputStream exchangeCurrencyWriter = null;
-      try {
-
-        exchangeCurrencyReader = new FileInputStream("AUDvsUSD.txt");
-        exchangeCurrencyWriter = new FileOutputStream("AUDvsUSD.txt");
-        int var;
-        while (var = exchangeCurrencyReader.read()) != -1)
-          exchangeCurrencyWriter.write(var);
-      } finally {
-        if (exchangeCurrencyReader!= null)
-          exchangeCurrencyReader.close();
-        if (exchangeCurrencyWriter!= null)
-          exchangeCurrencyWriter.close();
-      }
+FileOutputStream exchangeCurrencyWriter = null;
+try {
+	exchangeCurrencyReader = new FileInputStream("AUDvsUSD.txt");
+	exchangeCurrencyWriter = new FileOutputStream("AUDvsUSD.txt");
+	int var;
+	while (var = exchangeCurrencyReader.read()) != -1)
+		exchangeCurrencyWriter.write(var);
+} 
+finally {
+	if (exchangeCurrencyReader!= null)
+		exchangeCurrencyReader.close();
+	if (exchangeCurrencyWriter!= null)
+		exchangeCurrencyWriter.close();
+}
 ```
 
 **Code in Java 7**
