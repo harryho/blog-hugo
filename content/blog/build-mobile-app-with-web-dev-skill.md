@@ -5,8 +5,10 @@ title = "Build mobile app with web dev skill"
 draft = true
 +++
 
+# Mobile App 
 
-; ionic 1.x
+## ionic 1.x
+
 ; Getting started
 ```
 ionic start demoApp slidemenu

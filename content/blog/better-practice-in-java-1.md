@@ -11,7 +11,8 @@ draft = false
 Enum was a great improvement in Java 1.5. From that more and more developer abandom the interface or abstract class as constant variable container. 
 
 Before Java 1.5 you will following coding in many Java program. 
-```
+
+``` Java
     // Use interface or abstract class as constant variable container
     public interface Country {
          public static final String AU = "Australian";
@@ -45,31 +46,31 @@ Above program looks very good. Please take a close look and check it carefully. 
 
 After Java 1.5, you will see the change below. Enum is the best container for constants. It can help you check the program time. Meanwhile, it can simplfy your coding. 
 
-```
-    // Use Enum as constant variable container
-    public enum  Country {
-        Australia, UnitedKingdom, UnitedState
-    }
-    
-    public class Util {
-         
-    	public static String getLanguageCode(Country country) {
-    
-    		String languageCode = "en";
-    		switch (country) {
-    			case Australia:
-    				languageCode = "en-au";
-    				break;
-    			case UnitedKingdom:
-    				languageCode = "en-uk";
-    				break;
-    			case UnitedState:
-    				languageCode = "en-us";
-    				break;
-		    }
-		    return languageCode;
-    	}
-    }
+```java
+// Use Enum as constant variable container
+public enum  Country {
+	Australia, UnitedKingdom, UnitedState
+}
+
+public class Util {
+		
+	public static String getLanguageCode(Country country) {
+
+		String languageCode = "en";
+		switch (country) {
+			case Australia:
+				languageCode = "en-au";
+				break;
+			case UnitedKingdom:
+				languageCode = "en-uk";
+				break;
+			case UnitedState:
+				languageCode = "en-us";
+				break;
+		}
+		return languageCode;
+	}
+}
 ```
 
 Now you program will not be by any unintentional typo, since it will throw you compile error before you run the application. If you haven't refactor your static constants container, it is time to improve it now. 
@@ -82,40 +83,40 @@ With this new feature, the old Enum can be enhanced and the Util class can provi
 
 New Enum class, which can support flexible requirement. In the early version of Enum, the toString method only will return exactly the specified constanct name. Now the Enum can be override with toString to return different constant name. 
 
-```
-    // It can return customized name and simplify coding 
-    public enum Country {
-	    AU("Australia", "au","en-au"), 
-		UK("United Kingdom", "en-uk"),
-		US("United State", "us","en-us");
+```java
+// It can return customized name and simplify coding 
+public enum Country {
+	AU("Australia", "au","en-au"), 
+	UK("United Kingdom", "en-uk"),
+	US("United State", "us","en-us");
 
-    	String countryName;
-    	String countryCode;
-        String languageCode;
-        
-    	private Country(String name, String code) {
-    		countryName = name;
-    		countryCode = code;
-    	}
-    
-    	public String getCode() {
-    		return countryCode;
-    	}
-    	
-        public String getLanguageCode() {
-    		return languageCode;
-    	}
-    	
-    	@Override
-    	public String toString() {
-    		return countryName;
-    	}
+	String countryName;
+	String countryCode;
+	String languageCode;
+	
+	private Country(String name, String code) {
+		countryName = name;
+		countryCode = code;
 	}
+
+	public String getCode() {
+		return countryCode;
+	}
+	
+	public String getLanguageCode() {
+		return languageCode;
+	}
+	
+	@Override
+	public String toString() {
+		return countryName;
+	}
+}
 ```
 
 The Uitl class can convert any country name or country code to Enum Country, vice versa. Now developer can seamless convert the String from UI to the Enum, since on the UI, usually the country name will Australia or United Kingdom instead of just AU or UK. For coding, use AU or UK can simplify coding and is friendly to developer. 
-```
 
+```java
 public class Util {
         
     public static Country convertCountryNameOrCode(String nameOrCode ) {
@@ -215,7 +216,7 @@ To be hoenst, before Java 1.7, Coding file manipulation in Java is very headache
 
 Following is simple customizaed file visitor which has been the part of my old util.
 
-```
+```java
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
@@ -273,7 +274,7 @@ In the past, java programmers use any external resources like file, printer or a
 
 **Snippet of old style**
 
-```
+```java
 FileInputStream exchangeCurrencyReader= null;
       FileOutputStream exchangeCurrencyWriter = null;
       try {
@@ -293,7 +294,7 @@ FileInputStream exchangeCurrencyReader= null;
 
 **Code in Java 7**
 
-```
+```java
 try ( FileInputStream exchangeCurrencyReader = new FileInputStream("AUDvsUSD.txt");
 	FileOutputStream exchangeCurrencyWriter = new FileOutputStream("AUDvsUSD.txt")){
       int var;

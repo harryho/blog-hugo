@@ -8,7 +8,7 @@ title = "_index"
 
 > I leave the `Hello World` article on home page to make my blog not too boring. In theory, most posts here are just technical stuff, tricks, solutions, so I want the home page a bit fun at least. 
 
-```
+```text
 Dutch : "Hello wereld",
 English : "Hello world",
 French : "Bonjour monde",
@@ -50,7 +50,7 @@ And some are kind of terrible, e.g. Assembly language and C#(Installation of Vis
 
     * Create a script file `hello.sh` with vi or nano
 
-    ```
+    ```bash
     #!/bin/bash
     var="Hello World!"
     echo $var
@@ -62,7 +62,7 @@ And some are kind of terrible, e.g. Assembly language and C#(Installation of Vis
 * Batch/Cmd (Windows) 
     *Create a script file hello.bat or hello.cmd with notepad
 
-    ```
+    ```cmd
     @ECHO OFF
     SET VAR='Hello World!'
     ECHO.%VAR%
@@ -78,7 +78,7 @@ Today C is one of the most used programming languages. Since C was designed to r
 
 * Create a program file `hello.c ` or `hello.cpp` with vi or notepad
 
-    ```
+    ```c++
     #include<stdio.h>
 
     int main( ) 
@@ -92,7 +92,7 @@ Today C is one of the most used programming languages. Since C was designed to r
 
 * Unix/Linux includes `gcc` by default. You just need to compile and run the console app. For Windows, you might need install another tool [cygwin](https://cygwin.com/install.html) or [MinGW](http://www.mingw.org/wiki/MinGW_for_First_Time_Users_HOWTO)
 
-    ```
+    ```bash
     g++ hello.c -o hello
     ./hello
     ```
@@ -105,7 +105,7 @@ Go ,as known as golang, is a free and open source programming language created a
 * Follow the instruction to [install](https://golang.org/doc/install) golang on your computer
 * Create a program file hello.go
 
-    ```
+    ```go
     package main
 
     import "fmt"
@@ -127,7 +127,7 @@ Java is a general-purpose computer programming language that is concurrent, obje
 
 * Create a program file HelloWorld.java
 
-    ```
+    ```java
     public class HelloWorld {
 
         public static void main(String[] args) {
@@ -141,7 +141,7 @@ Java is a general-purpose computer programming language that is concurrent, obje
 
 * Compile & run 
 
-    ```
+    ```cmd
     javac HelloWorld.java
     java HelloWorld
     ```
@@ -179,7 +179,7 @@ PHP as it's known today is actually the successor to a product named PHP/FI. Cre
 * Download and install [PHP 5.x](http://php.net/downloads.php)
 * Create a python script hello.py with notepad
 
-    ```
+    ```php
     <?php
         echo "Hello World!" 
    ?>
@@ -194,7 +194,7 @@ Python is currently one of the most popular dynamic programming languages, along
 * Download and install [python 3.x](https://www.python.org/downloads/)
 * Create a python script hello.py with notepad
 
-    ```
+    ```python
     print "Hello World!"
     ```
     

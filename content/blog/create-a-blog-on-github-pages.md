@@ -19,7 +19,7 @@ After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use i
 * Your hugo blog folder will be "C:\git\blog-hugo" in this example.
 * Your blog site will finally sit in C driver and map to repositories as follow
 
-    ```
+    ```bash
     C:\>
     |--git 
         |--blog-hugo (https://github.com/<yourname>/blog-hugo.git
@@ -38,7 +38,7 @@ After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use i
 * Create on GitHub blog-hugo and <username>.github.io repositories  repository via GitHub website
 * Clone blog-hugo via Windows command prompt
 
-    ```
+    ```bash
     c:\>
     c:\>cd git
     c:\git>git clone <<your-project>-hugo-url> && cd <your-project>-hugo
@@ -46,7 +46,7 @@ After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use i
 
 * Create hugo site and setup the theme you like
 
-    ```
+    ```bash
     C:\git>hugo new site blog-hugo
     C:\git>hugo server -t <yourtheme> -D
     ```
@@ -54,7 +54,7 @@ After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use i
 * Clean up the `public` folder 
 * Set submodule inside the blog-hugo and map to folder `public`
 
-    ```
+    ```bash
     C:\>cd git
     C:\git>rm -rf public
     C:\git>git submodule add -b master https://github.com/<username>/<username>.github.io.git public
@@ -64,7 +64,7 @@ After I setup a blog site with **Hugo** on my ubuntu machine, I decided to use i
 * `deploy.bat "Your optional commit message"` will commit the changes to `<username>.github.io`.
 * You might want to commit the changes to `blog-hugo` repository. Please don't forget to add `public` into the `.gitignore`.
 
-    ```
+    ```bash
     @echo OFF
 
     echo  Deploying updates to GitHub...

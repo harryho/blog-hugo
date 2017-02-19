@@ -53,7 +53,7 @@ This article will continue the topic of Windows command & hotkeys. Part-1 shows 
 
 ### runas 
 
-```
+```bash
 runas /user:mypc\administrator "cmd"
 runas /user:mydomain\administrator "cmd /C \" del /S /F /Q c:\dummy\* \" &  rmdir /S /Q c:\dummy & md c:\dummy & xcopy c:\source c:\dummy /S /E /Y"
 ```
@@ -63,7 +63,7 @@ runas /user:mydomain\administrator "cmd /C \" del /S /F /Q c:\dummy\* \" &  rmdi
 * FilterName: Status, Imagename,
 * Find process by pid
 
-```
+```bash
 tasklist /v /fo list /fi "imagename eq mysqld.exe"
 tasklist /v /fo list /fi "imagename eq mongod.exe"
 tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq running" 
@@ -106,7 +106,7 @@ sc stop  <servicename>
 
 ### netstat 
 
-```
+```bash
 netstat -ano | find ":80" 
 ```
 
