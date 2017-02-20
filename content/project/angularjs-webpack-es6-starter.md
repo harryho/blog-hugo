@@ -22,31 +22,58 @@ This starter was inspired by another similar angular webpack starter repository.
 
 ## Structure of starter
 
-```
-angularjs-webpack-es6-starter
-|--src
-    |--app 
-        |--common
-            |--directives         <-// contains common directives
-                |--AppUiDirective.js
-                |--...
-            |--services           <-// contains common services
-                |--ApiService.js
-                |--...
-            |--views              <-// contains common views
-                |--header-view.html 
-            |--common.js          <-// common module
-            |--common.spec.js
-        |--main
-        |--app.js                  <-// app module
-        |--app.html                
-        |--app.route.js            <-// app route
-        |--app.runner.js
-        |--app.spec.js
-    |--style                       <-// css files including customized css
-    |--public                      <-// fonts, images
+```rust
+\path\to\angularjs-webpack-es6-starter
+|   .babelrc                                    <-// default setting es2015.
+|   karma.conf.js                               <-// tests and report setup 
+|   webpack.config.js                           <-// webpack config
+\---src
+    |   tests.webpack.js
+    |   
+    +---app
+    |   |   app.html                            <-// app view
+    |   |   app.js                              <-// app module
+    |   |   app.routes.js                       <-// app route to manage all routes 
+    |   |   app.runner.js                       <-// app runner for state change enhancement  
+    |   |   app.spec.js                         <-// app spec file for testing 
+    |   |   
+    |   +---common                              <-// common module for whole app
+    |   |   |   common.js
+    |   |   |   common.spec.js
+    |   |   +---directives                      <-// common directives for whole app
+    |   |   |       appUiDirectives.js
+    |   |   |       appUiDirectives.spec.js
+    |   |   |       commonDirectives.js
+    |   |   |       commonDirectives.spec.js
+    |   |   +---services                        <-// common views for whole app
+    |   |   |       ApiService.js
+    |   |   |       ApiService.spec.js
+    |   |   |       UtilService.js
+    |   |   |       UtilService.spec.js
+    |   |   \---views                           <-// contains common views
+    |   |           footer-view.html
+    |   |           header-view.html
+    |   |           sidebar-view.html
+    |   |           topbar-view.html
+    |   \---main                                <-// built-in fonts, css, images 
+    |       \---dashboard
+    |           +---controllers
+    |           |       dashboardController.js
+    |           |       dashboardController.spec.js
+    |           \---views
+    |                   dashboard-view.html
+    |                   
+    +---public                                  <-// built-in fonts, css, images 
+    |   |   index.html
+    |   +---fonts
+    |   |   +--- ...
+    |   \---img
+    |       +--- favicon.ico
+    \---style                                  <-// css files including customized css
+           
     
 ```
 
 
-## Browse [Repository](https://github.com/harryho/angularjs-webpack-es6-starter.git)
+## Browse [Repository](https://github.com/harryho/angularjs-webpack-es6-starter.git)Folder PATH listing for volume Windows8_OS
+
