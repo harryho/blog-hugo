@@ -634,5 +634,5 @@ There are a few useful and common yum commands.
 
 
 
-### Things to do after installing Ubuntu server
+### Things to do after installing CentOS server
 

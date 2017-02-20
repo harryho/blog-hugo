@@ -71,6 +71,9 @@ runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pau
 ```
 
 ### tasklist
+
+**syntax**
+
 * tasklist[.exe] [/s computer] [/u domain\user [/p password]] [/fo {TABLE|LIST|CSV}] [/nh] [/fi FilterName [/fi FilterName2 [ ... ]]] [/m [ModuleName] | /svc | /v
 * FilterName: Status, Imagename,
 * Find process by pid
@@ -86,35 +89,66 @@ tasklist /fi "pid eq 4444"
 ### taskkill
 
 ### sc
-* Query Service
 
+* sc command usage: `sc <server> [command] [service name] <option1> <option2>...`
+
+**sc query**
+
+* Basic usage 	
 ```bash
+sc \\yourpcname query
 sc query <servicename>
 sc query state= all | find "SERVICE_NAME" 
 ```
 
 * Retrieve service name and state. type parameter can be used twice in some case.
-**state= {active | inactive | all}
-**type= {driver | service | all}
-**type= {own | share | interact | kernel | filesys | rec | adapt}
+    * state = {active | inactive | all}
+    * type = {driver | service | all}
+    * type= {own | share | interact | kernel | filesys | rec | adapt}
 
+* __*IMPORTANT*__ 
+    * The command options for SC are case sensitive.
+    * If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled.
+    * Extra space within option is necessary. e.g. `state= all`
 
-* Note: If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled
-
-```bash
+```dos
+REM query all services which are inactive and type are driver and kernel
 sc query state= inactive type= driver type= kernel
-for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s    
+REM get all services' name 
+for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s 
+REM get all services' name and state
 for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
-    for /f "tokens=4" %t in ('sc query %s ^| find "STATE     "') do @echo %s -- %t
+    for /f "tokens=4" %t in ('sc query %s ^| find "STATE" ') do @echo %s -- %t
     )
 ```
 
-* Start or stop service
-```bash
-sc start  <servicename>
-sc stop  <servicename>
+**sc queryex**
+```
+REM get all services' name and pid
+for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
+    for /f "tokens=3" %t in ('sc queryex %s ^| find "PID" ') do @echo %s -- %t
+    )
+REM get all services' name and pid
+for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
+    for /f "tokens=3" %t in ('sc queryex %s ^| find "BINARY_PATH_NAME" ') do @echo %s -- %t
+    ) 
 ```
 
+**sc qc**
+```
+REM get all services' name and path
+for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(     for /f "tokens=3 delims==:" %t in ('sc qc %s ^| find "BINARY_PATH_NAME" ') do @echo %s -- C:%t     )   
+```
+
+**sc start/stop**
+```bash
+REM start and stop service
+sc start  <servicename>
+REM query service state
+sc query <servicename>
+REM stop service
+sc stop  <servicename>
+```
 
 ### netstat 
 
@@ -123,5 +157,27 @@ netstat -ano | find ":80"
 ```
 
 ### ipconfig
+* Type `ipconfig /all` to display full configuration information.
+* Type `ipconfig /flushdns`    to purge the DNS Resolver cache.
+
+### taskkill
+
+**syntax**
+```ini
+taskkill [/S system [/U username [/P [password]]]]
+         { [/FI filter] [/PID processid | /IM imagename] } [/F] [/T]
+```
+
+**samples**
+```bash
+taskkill /S system /F /IM notepad.exe /T
+taskkill /PID 1230 /PID 1241 /PID 1253 /T
+taskkill /F /IM notepad.exe /IM mspaint.exe
+taskkill /F /FI "PID ge 1000" /FI "WINDOWTITLE ne untitle*"
+taskkill /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM notepad.exe
+taskkill /S system /U domain\username /FI "USERNAME ne NT*" /IM *
+taskkill /S system /U username /P password /FI "IMAGENAME eq note*"
+```
 
 
+## script

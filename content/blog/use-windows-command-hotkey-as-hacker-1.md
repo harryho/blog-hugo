@@ -8,6 +8,7 @@ title = "Use Windows command & hotkey as a hacker - Part 1"
 
 *Do you want to make your friends amazed by your computer skill and praise you as genius? Or the hacker as watched in Sci-Fi movies? You don't need Mac, Linux or other operating systems, just Windows, you can show-off and look like hacker and master of Zeroes and Ones, even you have no any idea of it. Here are some tricks by which you can make your friends' jaw drop.*
 
+
 ### Start Windows command prompt as hacker
 
 * Use use hotkeys to open `Run` feature in two keystrokes: `WinKey + R`
@@ -137,10 +138,13 @@ Before you start typing any cmd, I want to share a common mistake for most begin
 
 ### rd / rmdir
 * Type `rd a` to remove a empty directory `a` 
-* Type `rd /s a` to remove a directory `a` including all files and empty directories within folder `a`.
+* Type `rd /s a` to remove a directory `a` including all files and empty subdirectories within folder `a`.
 
 ### del 
+* __*IMPORTANT*__ : The item deleted by `del` can not be restored from `bin`. Please be careful before you use this command. 
 * Type `del` to delete files or `del *.txt` to delete all files with `txt` extension
+* Combine `rd` can remove folder with not-empty subdirectories `del /s/q <folder> & rd /s/q <folder>'
+
 
 ### cls
 * Type `cls` to clean the screen
