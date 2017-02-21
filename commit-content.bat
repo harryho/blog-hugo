@@ -13,5 +13,3 @@ git commit -m '%msg%'
 REM Push source and build repos.
 git push origin master
 
-pause
-

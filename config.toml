@@ -13,7 +13,7 @@ disqusShortname = "harryhounique"
   searchDomain = "harryho.github.io"
   noCategoryLink = true
   repositoryUrl = "https://github.com/harryho/harryho.github.io.git"
-  highlightStyle = "agate"
+  highlightStyle = "railscasts"
 
 [[params.mainMenu]]
   name = "Blog"
