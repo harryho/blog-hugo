@@ -171,7 +171,8 @@ netstat -ano | find ":80"
 ```
 
 * Type the application which is using given port.
-```
+
+```bash
 for /f "tokens=5" %p in ( 'netstat -ano ^| find ":80"') do @(     
     for /f "tokens=1" %s in ( 'tasklist /fi "pid eq %p" ^| find "%p"') do @(
         echo PID:%p -- APP: %s
@@ -188,6 +189,7 @@ taskkill [/S system [/U username [/P [password]]]]
 ```
 
 **samples**
+
 ```bash
 REM force to stop notepad application and any children processes
 taskkill /F /IM notepad.exe /
@@ -218,11 +220,13 @@ SCHTASKS /Query /FO LIST /V
 REM get table of running tasks in details and output to csv file                                                                                                                          
 SCHTASKS /Query /FO TABLE /NH /V | find "Running">running_tasks.csv
 ```
+
 ## script
 
-### Basic hello world -- Please check it out from the home page
+### Basic hello world 
+* You can find it on the [home page](https://harryho.github.io)
 
-### Customized script to query bin and empty the bin 
+### Customized script to query temp folders and clean up log files within the folder
 
 * We assume you have multiple temp folders in different drives and You want to delete log files inside temp folder and its subdirectries from time to time. Before you delete them, you want to list all files first. You can confirm if you want to delete them or not. 
 * Create a file named clean-logs.bat 

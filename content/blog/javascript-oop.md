@@ -500,7 +500,7 @@ There are quite a lot of benefits from module and namespace, especially when you
 
 On the other hand, it is a good way to create reusable component, and it is easily for further enhancement, or maybe maintenance. JavaScript is very easy to create a module. One of the most widely used design patterns in JavaScript is the module pattern. The module pattern makes use of one of the nicer features of JavaScript – closures – in order to give you some control of the privacy of your methods so that third party applications cannot access private data or override it. 
 
-* Most simple closure   
+* Simple closure   
   
 ```javascript
 var closureObject = (function() {
