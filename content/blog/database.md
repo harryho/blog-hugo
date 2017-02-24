@@ -1,12 +1,12 @@
 +++
 categories = ["blog"]
 date = "2016-04-10T14:59:31+11:00"
-title = "Database "
+title = "Database / SQL skills used everyday"
 draft = true
 +++
 
 
-!!MySql/MariaDB
+MySql/MariaDB
 
 !!! Start mysql server
 ```

@@ -5,21 +5,23 @@ title = "Python & Django"
 draft = true
 +++
 
-# Python
+## Getting started
 
-## Install Python
+### Install Python
 
-## Install pip
+### Install pip
 
-## Install virtualenv
+### Install virtualenv
 
-## Setup virtualenv
-!!! Windows
+### Setup virtualenv
+
+**Windows**
+
 * Install django
-## create a folder virtualenvs within the location of python 3
-## create a new virtualenv named django18
-## Activate the new virtual env
-## Install Django 1.x.x (LTS version ) 
+ * create a folder virtualenvs within the location of python 3
+ * create a new virtualenv named django18
+ * Activate the new virtual env
+ * Install Django 1.x.x (LTS version ) 
 
 ```bash
      cd  /path/to/python3
@@ -31,7 +33,7 @@ draft = true
      pip install django==1.x.x
 ```
 
-## Create django project 
+### Create django project 
 * SET PATH in current command promp
 * Navigate to workspace folder
 * Create new django project
@@ -75,7 +77,7 @@ draft = true
 ```
 
 
----
+
 **Linux**
 
 * activate virtual environment need to use source instead of executing sh file
