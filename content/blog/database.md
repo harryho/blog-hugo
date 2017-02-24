@@ -30,7 +30,13 @@ mysql -e "update user set password=password('') \
 where user='root'; flush privileges;"
 ```
 
+###
+```sql
+DROP DATABASE   /*!32312 IF EXISTS*/ <your-database>;
 
+CREATE DATABASE <your-database> CHAR SET utf8 COLLATE 'utf8_unicode_ci';
+
+```
 
 ---
 ---

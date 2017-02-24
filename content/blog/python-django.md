@@ -13,7 +13,7 @@ draft = true
 
 ## Install virtualenv
 
-!! Setup virtualenv
+## Setup virtualenv
 !!! Windows
 * Install django
 ## create a folder virtualenvs within the location of python 3
@@ -76,7 +76,7 @@ draft = true
 
 
 ---
-!!! Linux
+**Linux**
 
 * activate virtual environment need to use source instead of executing sh file
 ```bash

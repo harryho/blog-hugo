@@ -70,23 +70,6 @@ runas /user:yourpc\administrator "cmd"
 runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pause & del c:\z.txt " 
 ```
 
-### tasklist
-
-**syntax**
-
-* tasklist[.exe] [/s computer] [/u domain\user [/p password]] [/fo {TABLE|LIST|CSV}] [/nh] [/fi FilterName [/fi FilterName2 [ ... ]]] [/m [ModuleName] | /svc | /v
-* FilterName: Status, Imagename,
-* Find process by pid
-
-```bash
-tasklist /v /fo list /fi "imagename eq mysqld.exe"
-tasklist /v /fo list /fi "imagename eq mongod.exe"
-tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq running" 
-tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq not responding" 
-tasklist /fi "pid eq 4444"
-```
-
-### taskkill
 
 ### sc
 
@@ -150,15 +133,48 @@ REM stop service
 sc stop  <servicename>
 ```
 
-### netstat 
-
-```bash
-netstat -ano | find ":80" 
-```
 
 ### ipconfig
 * Type `ipconfig /all` to display full configuration information.
 * Type `ipconfig /flushdns`    to purge the DNS Resolver cache.
+
+
+### tasklist
+
+**syntax**
+
+* tasklist[.exe] [/s computer] [/u domain\user [/p password]] [/fo {TABLE|LIST|CSV}] [/nh] [/fi FilterName [/fi FilterName2 [ ... ]]] [/m [ModuleName] | /svc | /v
+* FilterName: Status, Imagename,
+* Find process by pid
+
+```bash
+REM get the mysqld process info
+tasklist /v /fo list /fi "imagename eq mysqld.exe"
+REM get the mongod process info
+tasklist /v /fo list /fi "imagename eq mongod.exe"
+REM get list of running processes under given user  
+tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq running"
+REM get list of non-responding processes under given user   
+tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq not responding" 
+REM get process by PID
+tasklist /fi "pid eq 4444"
+```
+
+### netstat 
+
+* Type `netstat` to get all ports and IP addresses, which are connected or listening 
+
+* Type PID of process which is using some given port, such as 80, 443, 22, etc.
+```bash
+netstat -ano | find ":80" 
+```
+* Type the application which is using given port.
+```
+for /f "tokens=5" %p in ( 'netstat -ano ^| find ":80"') do @(     
+    for /f "tokens=1" %s in ( 'tasklist /fi "pid eq %p" ^| find "%p"') 
+    do @echo PID:%p -- APP: %s 
+)
+```
 
 ### taskkill
 
@@ -170,14 +186,80 @@ taskkill [/S system [/U username [/P [password]]]]
 
 **samples**
 ```bash
-taskkill /S system /F /IM notepad.exe /T
+REM force to stop notepad application and any children processes
+taskkill /F /IM notepad.exe /
+REM stop process by PID and any children processes
 taskkill /PID 1230 /PID 1241 /PID 1253 /T
-taskkill /F /IM notepad.exe /IM mspaint.exe
+REM force to stop applications which PID is equal or greater than 10000
+REM and windows' title of app is not equal to untitle*
 taskkill /F /FI "PID ge 1000" /FI "WINDOWTITLE ne untitle*"
+
 taskkill /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM notepad.exe
-taskkill /S system /U domain\username /FI "USERNAME ne NT*" /IM *
-taskkill /S system /U username /P password /FI "IMAGENAME eq note*"
 ```
 
+### schtasks
 
+* Syntax : schtasks /parameter [arguments]
+    * parameters include : Change, Create, Delete, End, Query, Run, ShowSid  
+* Type `schtasks` to list all scheduled tasks
+
+**schtasks /Query**
+
+```bash
+REM get help info                                                                                                                                                                           
+SCHTASKS /Query /?    
+REM query tasks which are scheduled on given system                                                                                                                                                                         
+SCHTASKS /Query /S system /U user /P       
+REM get list of tasks in details
+SCHTASKS /Query /FO LIST /V     
+REM get table of running tasks in details and output to csv file                                                                                                                          
+SCHTASKS /Query /FO TABLE /NH /V | find "Running">running_tasks.csv
+```
 ## script
+
+### Basic hello world -- Please check it out from the home page
+
+### Customized script to query bin and empty the bin 
+
+* We assume you have multiple temp folders in different drives and You want to delete log files inside temp folder and its subdirectries from time to time. Before you delete them, you want to list all files first. You can confirm if you want to delete them or not. 
+* Create a file named clean-logs.bat 
+* Copy the sample code and tailor anything you want. 
+* The sample shows you how to create interative command script and how to combine commands together with the condition statement and loop statement.   
+
+```bash
+@echo off
+
+@echo."Assumption: You have multiple temp folders in different drives. You want to delete log files inside temp folder and its subdirectries. Before you delete them, you want to list all files first, file list should be sorted by time"
+
+:again 
+   echo "Checking all Recycle bins for each drive ..."
+   echo.-----------------------
+   for /f  %%x in ('wmic logicaldisk get caption  ^| find ":"') do @(
+        for /f "tokens=*" %%s in ('tree /f /a %%x\temp ^| find  "log" '  ) do @(
+            echo.%%x\temp\%%s
+        )
+   )
+
+   set /p answer=Do you want to clean up log files (Y/N)?
+   if /i "%answer:~,1%" EQU "Y" ( 
+       @echo.Y
+       goto clean
+   )
+   if /i "%answer:~,1%" EQU "N" ( 
+       @echo.N 
+       goto end 
+   )  
+   echo Please type Y for Yes or N for No
+   goto again
+
+:clean
+    echo.'deleting logs'
+    for /f  %%x in ('wmic logicaldisk get caption  ^| find ":"') do @(
+        for /f "tokens=*" %%s in ('tree /f /a %%x\temp ^| find  "log" '  ) do @(
+            del "%%x\temp\%%s"
+        )
+    )
+
+:end
+    echo.'exiting program'
+```

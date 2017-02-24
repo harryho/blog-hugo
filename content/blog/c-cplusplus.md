@@ -6,6 +6,15 @@ title = "C/C++"
 draft = true
 +++
 
+# C / C++
 
-# C/C++ 
+## Brief history
+
+
+# C
+g++ -std=c+=14 -O0 -g3 -Wall -o app.exe app.cpp
+
+
+
+# C++
 g++ -std=c+=14 -O0 -g3 -Wall -o app.exe app.cpp
