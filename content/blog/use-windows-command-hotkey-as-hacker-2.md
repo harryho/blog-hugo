@@ -165,14 +165,17 @@ tasklist /fi "pid eq 4444"
 * Type `netstat` to get all ports and IP addresses, which are connected or listening 
 
 * Type PID of process which is using some given port, such as 80, 443, 22, etc.
+
 ```bash
 netstat -ano | find ":80" 
 ```
+
 * Type the application which is using given port.
 ```
 for /f "tokens=5" %p in ( 'netstat -ano ^| find ":80"') do @(     
-    for /f "tokens=1" %s in ( 'tasklist /fi "pid eq %p" ^| find "%p"') 
-    do @echo PID:%p -- APP: %s 
+    for /f "tokens=1" %s in ( 'tasklist /fi "pid eq %p" ^| find "%p"') do @(
+        echo PID:%p -- APP: %s
+    ) 
 )
 ```
 
