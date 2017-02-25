@@ -28,8 +28,6 @@ Here we just give the brief history of some stable and most popular distroes. It
 
 # Debian/Ubuntu
 
-### Breif History
-
 > *Ubuntu is one of a number of Linux distributions. The source code that makes up the Ubuntu distribution originates from another, much older Linux distribution known as Debian (so called because it was started by two people named Debra and Ian). Debian is still a widely respected operating system but came under criticism for infrequent updates and less than user friendly installation and maintenance (though these areas have shown improvement recently).* 
 
 > *A South African internet mogul (who made his fortune selling his company to VeriSign for around $500 million) decided it was time for a more user friendly Linux. He took the Debian distribution and worked to make it a more human friendly distribution which he called Ubuntu. He subsequently formed a company called Canonical Ltd to promote and provide support for Ubuntu.*
@@ -38,8 +36,6 @@ Here we just give the brief history of some stable and most popular distroes. It
 
 
 # Fedora/CentOS/Redhat
-
-## Breif History
 
 *Fedora*
 

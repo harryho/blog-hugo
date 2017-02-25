@@ -7,8 +7,9 @@ draft = false
 +++
 
 
-##Brief history
-> Brief history of JavaScript can be found on [Home Page](harryho.github.io/#Javascript)
+## Brief history
+
+* Brief history of JavaScript can be found on [Home Page](https://harryho.github.io/)
 
 ## Assumption 
 
@@ -705,6 +706,7 @@ VM95:2 {"id":0,"createdBy":"","modifiedBy":"","created":null,"modified":null,"na
 ```
 
 The sample above combine namespace and prototypal inheritance. Namespace allows you to add new module for enhancement, and it allows you to organize your API better.  On the other hand, through the globle namespace you can inject customized service, or you can replace it. The disadvantage of namespace, when the source code blows up, it will be a bit more complicated, especially you break different into different files. Mock test or unit test will needs a bit more work to do as well. There is no pattern that is a Silver Bullet, but rather you should assess where you are at and examine the pros and cons of each pattern to address your situation.
+
 
 
 

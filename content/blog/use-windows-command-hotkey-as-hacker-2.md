@@ -78,6 +78,7 @@ runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pau
 **sc query**
 
 * Basic usage 	
+
 ```bash
 sc \\yourpcname query
 sc query <servicename>

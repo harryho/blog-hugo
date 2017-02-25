@@ -6,15 +6,14 @@ title = "C Programming - Part 1"
 draft = true
 +++
 
-# C / C++
 
 ## Brief history
 * You can find it from [Brief history of Linux]
 
-# C
+## C
 g++ -std=c+=14 -O0 -g3 -Wall -o app.exe app.cpp
 
 
 
-# C++
+## C
 g++ -std=c+=14 -O0 -g3 -Wall -o app.exe app.cpp
