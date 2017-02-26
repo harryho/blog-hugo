@@ -96,11 +96,8 @@ Before you start typing any cmd, I want to share a common mistake for most begin
 ### start 
 * Start another `cmd` window prompt. 
 
-### cd / chdir 
-* Displays the name of or changes the current directory
-    * Type `cd` to display the name of directory 
-    * Type `cd c:\windows` to change to `c:\Windows>` 
-    * Type `cd /d D:` to change to d driver if you have d driver
+### pwd 
+* Type `pwd` to display current directory. All commands will use current directory as default path input if the path parameter is not specified. 
 
 ### dir 
 * Displays a list of files and subdirectories in a directory.
@@ -111,8 +108,14 @@ Before you start typing any cmd, I want to share a common mistake for most begin
     * Type `dir /o:s` to display items sorted by size (smallest first)
     * Type `dir /o:dn` to display items sorted by date/time  (oldest first) and name ( alphabetic)
 
+### cd / chdir 
+* Displays the name of or changes the current directory
+    * Type `cd` to display the name of directory 
+    * Type `cd c:\windows` to change to `c:\Windows>` 
+    * Type `cd /d D:` to change to d driver if you have d driver
+
 ### tree  
-* Type `tree /f` graphically displays the folder structure of a drive or path.
+* Use `tree /f/a <path>` to graphically display the folder structure of a drive or path. 
 
 ### ren / rename
 * Type `ren abc cba` to ren file name from "abc" to "cba" if there is file named abc under current directory. 

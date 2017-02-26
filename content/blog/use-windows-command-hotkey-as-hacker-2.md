@@ -66,7 +66,11 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 ### runas 
 
 ```bash
+REM start command prompt as administrator
 runas /user:yourpc\administrator "cmd"
+
+REM ##BE CAREFUL When you try the command below ##  
+REM it shows how to create, delete files as admin under C drive root.  
 runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pause & del c:\z.txt " 
 ```
 
@@ -80,7 +84,9 @@ runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pau
 * Basic usage 	
 
 ```bash
-sc \\yourpcname query
+REM query all service on the PC -- <yourpcname>
+sc \\<yourpcname> query
+REM query status of given service 
 sc query <servicename>
 sc query state= all | find "SERVICE_NAME" 
 ```
@@ -98,8 +104,10 @@ sc query state= all | find "SERVICE_NAME"
 ```dos
 REM query all services which are inactive and type are driver and kernel
 sc query state= inactive type= driver type= kernel
+
 REM get all services' name 
 for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s 
+
 REM get all services' name and state
 for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
     for /f "tokens=4" %t in ('sc query %s ^| find "STATE" ') do @echo %s -- %t
@@ -112,6 +120,7 @@ REM get all services' name and pid
 for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
     for /f "tokens=3" %t in ('sc queryex %s ^| find "PID" ') do @echo %s -- %t
     )
+
 REM get all services' name and pid
 for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
     for /f "tokens=3" %t in ('sc queryex %s ^| find "BINARY_PATH_NAME" ') do @echo %s -- %t
@@ -128,8 +137,10 @@ for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @( 
 ```bash
 REM start and stop service
 sc start  <servicename>
+
 REM query service state
 sc query <servicename>
+
 REM stop service
 sc stop  <servicename>
 ```
@@ -151,12 +162,16 @@ sc stop  <servicename>
 ```bash
 REM get the mysqld process info
 tasklist /v /fo list /fi "imagename eq mysqld.exe"
+
 REM get the mongod process info
 tasklist /v /fo list /fi "imagename eq mongod.exe"
+
 REM get list of running processes under given user  
 tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq running"
+
 REM get list of non-responding processes under given user   
 tasklist /fi "USERNAME ne NT AUTHORITY\SYSTEM" /fi "STATUS eq not responding" 
+
 REM get process by PID
 tasklist /fi "pid eq 4444"
 ```
@@ -194,12 +209,13 @@ taskkill [/S system [/U username [/P [password]]]]
 ```bash
 REM force to stop notepad application and any children processes
 taskkill /F /IM notepad.exe /
+
 REM stop process by PID and any children processes
 taskkill /PID 1230 /PID 1241 /PID 1253 /T
+
 REM force to stop applications which PID is equal or greater than 10000
 REM and windows' title of app is not equal to untitle*
 taskkill /F /FI "PID ge 1000" /FI "WINDOWTITLE ne untitle*"
-
 taskkill /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM notepad.exe
 ```
 
@@ -214,10 +230,13 @@ taskkill /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM notepad.exe
 ```bash
 REM get help info                                                                                                                                                                           
 SCHTASKS /Query /?    
+
 REM query tasks which are scheduled on given system                                                                                                                                                                         
 SCHTASKS /Query /S system /U user /P       
+
 REM get list of tasks in details
 SCHTASKS /Query /FO LIST /V     
+
 REM get table of running tasks in details and output to csv file                                                                                                                          
 SCHTASKS /Query /FO TABLE /NH /V | find "Running">running_tasks.csv
 ```
