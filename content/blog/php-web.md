@@ -3,7 +3,7 @@ tags =  ["php"]
 categories = ["blog"]
 date = "2016-08-11T11:59:31+11:00"
 title = "PHP web framework setup"
-draft = false
+draft = true
 +++
 
 > *Today we are going to explore some PHP web frameworks.*
@@ -37,9 +37,6 @@ php composer.phar install
 ```bash
 php -S 0.0.0.0:8080 -t public/ public/index.php
 ```
-
-
-
 
 ### Use apache server
 
