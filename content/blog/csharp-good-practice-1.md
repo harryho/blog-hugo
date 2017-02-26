@@ -1,7 +1,7 @@
 +++
 categories = ["blog"]
 date = "2014-04-10T14:59:31+11:00"
-title = "C# good practice & common mistakes -- Part 1"
+title = "C# good practice -- Part 1"
 draft = true
 +++
 

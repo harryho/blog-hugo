@@ -8,22 +8,22 @@ draft = true
 
 MySql/MariaDB
 
-!!! Start mysql server
+### Start mysql server
 ```
 mysqld
 ```
 
-!!! Start mysql client 
+### Start mysql client 
 ```
 mysql -p 3306
 ```
 
-!!! stop mysql server
+### stop mysql server
 ```
 mysqladmin -u root -p shutdown
 ```
 
-!!! Change mysql root user password
+### Change mysql root user password
 ```
 mysql --user=root --pass='' 
 mysql -e "update user set password=password('') \
@@ -56,10 +56,10 @@ e:\db\pgsql9\bin\pg_ctl.exe -D "e:\db\pgsql9\data" stop
 ```
 
 !!SQL Server
-!!! Collation precedence, also known as collation coercion rules
+### Collation precedence, also known as collation coercion rules
 ```
 SELECT * 
 FROM TestTab 
 WHERE GreekCol = LatinCol COLLATE greek_ci_as;
 ```
-!!! SQL Pagination
+### SQL Pagination
