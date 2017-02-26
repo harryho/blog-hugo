@@ -1,7 +1,7 @@
 +++
 categories = ["blog"]
 date = "2016-04-10T14:59:31+11:00"
-title = "Database / SQL skills used everyday"
+title = "Database / SQL skills, Part-1"
 draft = true
 +++
 

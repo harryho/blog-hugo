@@ -22,7 +22,7 @@ draft = false
 
 * How to setup your server 
 
-***UFW setup***
+### ***UFW setup***
 
 ```bash
 sudo ufw enable
@@ -32,7 +32,7 @@ sudo ufw allow 443/tcp
 sudo ufw allow 8000/tcp
 ```
 
-***SSH server setup***
+### ***SSH server setup***
 
 ```bash
 sudo apt-get install openssh-server 
@@ -48,13 +48,13 @@ sudo nano /etc/ssh/sshd_config
 ```
 
 
-***Time Zone setup***
+### ***Time Zone setup***
 
 ```bash
 sudo dpkg-reconfigure tzdata
 ```
 
-***install software-properties-common Package***
+### ***install software-properties-common Package***
 
 ```bash
 software-properties-common python-software-properties
@@ -72,7 +72,7 @@ byobu
 ```
 
 
-***install docker (Ubuntu 14.04 LTS)***
+### ***install docker (Ubuntu 14.04 LTS)***
 
 ```bash
 # add GBG Key
@@ -94,7 +94,7 @@ apt-cache policy docker-engine
 ```
 
 
-***build vim***
+### ***build vim***
 
 * I am not `vi` fans, but if you really want to use `vi`. I wiil suggest spend some time to dig into [`vimawesome`](http://vimawesome.com) and play around with those plugins. Some are pretty cool, e.g. `NERD Tree`, 'youcompleteme`, `syntastic`, etc. 
 
@@ -108,10 +108,11 @@ make VIMRUNTIMEDIR=/usr/share/vim/vim74
 sudo make install
 ```
 
-***Install JDK 8*** 
+### ***Install JDK 8*** 
 
 * If you are going to run Java Web Application on server, or you are going to setup Hadoop environment. 
-* Setup oracle jdk ppa and install oracle jdk from ppa
+* Setup oracle jdk ppa and install oracle jdk from ppa.
+
 ```bash
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
@@ -119,9 +120,10 @@ sudo apt-get install oracle-java8-installer
 sudo apt-get install oracle-java8-set-default     
 ```
 
-*Install OpenJdk 
+### ***Install OpenJdk*** 
 
 * Setup OpenJdk ppa and install it from ppa
+
 ```bash
 sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update 
@@ -142,7 +144,7 @@ java -version
    * Start on (net-device-up
 
 
-***Install nodejs***
+### ***Install nodejs***
 
 ```bash
 curl -sL https://deb.nodesource.com/setup | sudo bash -
@@ -168,14 +170,16 @@ which npm
 # /usr/bin/npm
 ```
 
-Open .profile add following to end of file
+* Open .profile add following to end of file
 
 ```bash
 export PATH="$HOME/.node_modules_global/bin:$PATH"
 ```
 
-***Install nvm***
-* Using `nvm` is no longer popular and best option. I will suggest you just use `npm` to manage eveything you need. 
+### ***Install nvm***
+
+* Using `nvm` is no longer popular and best option. I will suggest you just use `npm` to manage eveything you need.
+
 ```bash
 sudo apt-get update
 sudo apt-get install build-essential libssl-dev
@@ -188,7 +192,7 @@ nvm alias default 0.11.13
 nvm use default
 ```
 
-***PHP compser*** 
+### ***Install PHP & Compser*** 
 
 ```bash
 sudo apt-get install curl php5-cli git
@@ -196,7 +200,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 ```
 
 
-***Install Go***
+### ***Install Go***
 
 ```bash
 wget https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz
@@ -208,7 +212,7 @@ GOROOT="/usr/local/go"
 PATH=$GOROOT/bin:$PATH
 ```
 
-***Install R*** 
+### ***Install R*** 
 
 ```bash
 sudo apt-key adv –keyserver keyserver.ubuntu.com –recv-keys E084DAB9
@@ -218,12 +222,12 @@ sudo apt-get install r-base
 ```
 
 
-***Install Rust***
+### ***Install Rust***
 
 ```bash
 $ curl -sf -L https://static.rust-lang.org/rustup.sh | sh
 ```
-***Uninstall Rust***
+*Uninstall Rust*
 ```bash
 $ sudo /usr/local/lib/rustlib/uninstall.sh
 ```
