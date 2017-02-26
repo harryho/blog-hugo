@@ -7,7 +7,7 @@ draft = false
 +++
 
 
-## Prelude
+### Prelude
 
 > *Java is one of my favorite OOP language. I want to keep the Java good practice and pitfall as a series. Pitfall will cover most misunderstanding of Java and how to avoid them. As we know, there is no medicine as mighty purpose. So some good practice will be obsolete or replaced by some advanced solution, because new problem push the IT world keep looking for better solution to solve such problems. In my opinion, it is most challenged but excited part of IT.*  
 
@@ -17,7 +17,7 @@ Enum was a great improvement in Java 1.5. From that more and more developer aban
 
 Before Java 1.5 you will following coding in many Java program. 
 
-``` Java
+```java
     // Use interface or abstract class as constant variable container
     public interface Country {
          public static final String AU = "Australian";

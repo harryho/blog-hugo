@@ -1,5 +1,5 @@
 +++
-tags =  ["linux","ubuntu","centos"]
+tags =  ["linux","ubuntu"]
 categories = ["blog"]
 date = "2016-01-10T14:59:31+11:00"
 title = "Ubuntu 14 -- desktop setup including Windows dual boot "

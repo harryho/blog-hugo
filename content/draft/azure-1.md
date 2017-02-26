@@ -11,8 +11,8 @@ draft = true
 
 # Assumption
 
-* You have experience on developing .net web applications.
-* You have experience on .net web deployment.
+* You have experience with .net web applications.
+* You have experience with website or web app deployment.
 
 # Getting Started
 

@@ -157,7 +157,7 @@ You will see some files ( In the different environment, name of network would be
 /etc/sysconfig/network-scripts/ifcfg-eth0
 /etc/sysconfig/network-scripts/ifcfg-lo
 
-Now we need to update this file via vi. If you have no any experience on vi, I recommended an interactive online tutorial for you. Just 20 mins, you can master basic vi usage. 
+Now we need to update this file via vi. If you have no any experience of vi, I recommended an interactive online tutorial for you. Just 20 mins, you can master basic vi usage. 
 http://www.openvim.com/tutorial.html
 
 We use vi to open the config file.

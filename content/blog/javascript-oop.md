@@ -23,7 +23,7 @@ The JavaScript (ECMAScript) standard defines six data types. Five are primitives
 
 ## Object and prototype
 
-### How to define a object
+***How to define a object***
 
 There are a couple ways to create variable as object. 
 
@@ -115,7 +115,7 @@ car3.getInfo();
 ```
 * The last way to use prototype is kind of verbose. The second one is more concise and nice is most popular paradigm. 
 
-### Class and inheritance
+## Class and inheritance
 
 JavaScript has no built-in way of creating or implementing interfaces.
 It also lacks built-in methods for determining whether an object implements the same set of
@@ -223,7 +223,7 @@ Now we figure out the root cause. You will say it is easy to fix. We just need t
 If we still want to use inheritance, I will suggest not to jsut inherit the properties, instead of methods. In my opinion, there is very rare of scenario, we really need to inherit method. So we just need to find to proper way to solve the problem of properties inheritance.  
 
 
-* Object-based Inheritance
+### Object-based Inheritance
 
 ```javascript
 function Pet(name, master) {
@@ -339,7 +339,7 @@ dog2.getInfo();
 
 Now I rewrite above sample a few lines of code, then you will figour out why it is working, but maybe you still want to implement inheritance as other OOP lanuage C++, Java. Then let's take a look the classical inheritance, which is much more close to other OOP language. In classical inheritance it's impossible (or at least very difficult) to choose which properties you want to inherit. They use virtual base classes and interfaces to solve the diamond problem. It is much more complicated.
 
-* Classical inheritance
+### Classical inheritance
 
 
 ```javascript 
@@ -415,7 +415,7 @@ Most programmers who come from a classical background argue that classical inher
 
 Whether classical or prototypal, is used to reduce the redundancy in code. Since prototypal inheritance allows for multiple inheritance, code which requires multiple inheritance is less redundant if written using prototypal inheritance rather than in a language which has classical inheritance but no multiple inheritance. 
 
-* Prototypal inheritance 
+### Prototypal inheritance 
 
 ```javascript
 
@@ -495,11 +495,15 @@ This allows you to add new methods to a prototype which will be automatically ma
 
 
 
-### Module and namespace
+## Module and namespace
 
 There are quite a lot of benefits from module and namespace, especially when you are going to build some special common api shared within the whole application, even multiple systems across your whole entire enterprise. First thing first, we should not pollute the context, since it will potentially break existing functions or other third party frameworks which have been introduced in your applicatio, vice versa. 
 
-On the other hand, it is a good way to create reusable component, and it is easily for further enhancement, or maybe maintenance. JavaScript is very easy to create a module. One of the most widely used design patterns in JavaScript is the module pattern. The module pattern makes use of one of the nicer features of JavaScript – closures – in order to give you some control of the privacy of your methods so that third party applications cannot access private data or override it. 
+On the other hand, it is a good way to create reusable component, and it is easily for further enhancement, or maybe maintenance. JavaScript is very easy to create a module. One of the most widely used design patterns in JavaScript is the module pattern. 
+
+### Closure
+
+The module pattern makes use of one of the nicer features of JavaScript – closures – in order to give you some control of the privacy of your methods so that third party applications cannot access private data or override it. 
 
 * Simple closure   
   
@@ -542,6 +546,8 @@ public                // privateProperty can be updated by public method
 ```
 
 From above sample code, you can the JavaScript can easily implement the encapsulation as OOP language. Closure is the base the module pattern, and module is the base of namespace. Maybe you will wonder why we need module and namespace,just closure is good enough for us control the API. If we take a second thought we will realize if some application has the same object called closureObject, both will crash at run time. As a simple solution, we can make a very long, different and ridiculous name to avoid the conflict, but it is not a nice solution. Then module turns out as a better way to solve this problem. 
+
+### Module
 
 Module is not rock science. Actually it is quite easy to implement. 
 
@@ -592,6 +598,7 @@ var extendModule = (function( m){
 
 ```
 
+### Namespace
 
 Now we will go further to namespace, which is based on module technique. Namespace gives you the ability to have public and private properties and methods. 
 The code inside doesn’t use the Object Literal notation. Allows you to use $ inside your code without worrying about clashing with other libraries

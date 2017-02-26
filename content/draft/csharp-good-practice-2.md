@@ -6,3 +6,4 @@ title = "C# good practice - Part 2"
 draft = true
 +++
 
+## 
