@@ -3,7 +3,7 @@ tags =  ["php"]
 categories = ["blog"]
 date = "2016-08-11T11:59:31+11:00"
 title = "PHP web framework setup"
-draft = true
+draft = false
 +++
 
 > *Today we are going to explore some PHP web frameworks.*

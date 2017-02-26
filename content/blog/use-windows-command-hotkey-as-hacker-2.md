@@ -227,7 +227,7 @@ SCHTASKS /Query /FO TABLE /NH /V | find "Running">running_tasks.csv
 ### Basic hello world 
 * You can find it on the [home page](https://harryho.github.io)
 
-### Customized script to query temp folders and clean up log files within the folder
+***Customized script to query temp folders and clean up log files within the folder***
 
 * We assume you have multiple temp folders in different drives and You want to delete log files inside temp folder and its subdirectries from time to time. Before you delete them, you want to list all files first. You can confirm if you want to delete them or not. 
 * Create a file named clean-logs.bat 
