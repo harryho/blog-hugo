@@ -2,7 +2,7 @@
 tags = ["java"]
 categories = ["blog"]
 date = "2011-12-10T14:59:31+11:00"
-title = "Better practice and common pitfalls in Java - Part 1"
+title = "Better practice in Java, Part-1"
 draft = false
 +++
 
@@ -359,7 +359,7 @@ public class FileWatchService {
 }
 ```
 
-The sample above shows one kind of events. Actually if you check the API doc, there are another two kinds of event. One is  StandardWatchEventKinds.ENTRY_CREATE , the other is  StandardWatchEventKinds.ENTRY_DELETE. These events cover almostly all business requirements.   
+The sample above shows one kind of events. Actually if you check the API doc, there are another two kinds of event. One is  StandardWatchEventKinds.ENTRY\_CREATE , the other is  StandardWatchEventKinds.ENTRY\_DELETE. These events cover almostly all business requirements.   
 
 
 

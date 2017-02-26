@@ -2,12 +2,17 @@
 tags = ["cloud"]
 categories = ["blog"]
 date = "2016-04-10T14:59:31+11:00"
-title = "Azure"
+title = "Azure, part-1"
 draft = true
 +++
 
 
-> *Here we are going to explore how to*
+> *Here we are going to explore how to deploy web applications to Azure. From sep 2015, Microsoft launched new portal for Azure. To be honest, new portal is amazing, IMO, it is one of best changes from Microsoft.*
+
+# Assumption
+
+* You have experience on developing .net web applications.
+* You have experience on .net web deployment.
 
 # Getting Started
 

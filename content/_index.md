@@ -27,9 +27,9 @@ The different languages above say the same two words "Hello World" are just for 
 
 In my opinion, all languages in this article are useful and important for most software engineer or system analyst. Some languages which I don't choose, doesn't mean they are not important or useful. because usually they are not recognized as **programming** language.  e.g. SQL. It is not only the basic skill for DBA or software engineer but also data analyst and data scientist. 
 
-Some popular languages are not shown here, because they are not available for Windows or difficult to setup the playground to test. for instance, Swift, Objective-C. Some are designed for special purpose. R and Matlab are such typical samples. 
+Some popular languages are not shown here, because they are not available for Windows or difficult to setup the playground to test. for instance, `Swift`, `Objective-C`. Some are designed for special purpose. `R` and `Matlab` are such typical samples. 
 
-And some are kind of terrible, e.g. Assembly language and C#(Installation of Visual Studio will let beginner down). Are you serious? No, I'm kidding. As I mentioned before, this article is for beginner to code for fun, so I just pick some which I am familiar with and convenient for people to play. 
+And some are kind of terrible, e.g. Assembly language and C#(Installation of Visual Studio will let beginner down). Are you serious? No, I'm kidding. As I mentioned before, here is for beginner to code for fun instead of scaring them, so I just pick some which are useful, popular and convenient for people to play. 
 
 
 ## Assumptions
@@ -96,7 +96,32 @@ Today C is one of the most used programming languages. Since C was designed to r
     g++ hello.c -o hello
     ./hello
     ```
-   
+
+## C\# ##
+
+C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines. In January 1999, Anders Hejlsberg formed a team to build a new language at the time called Cool, which stood for "C-like Object Oriented Language". By the time the .NET project was publicly announced at the July 2000,Microsoft the language had been renamed C#. 
+
+* Download and install .net framework from Microsoft website
+* Create a program file helloworld.cs
+
+    ```cs
+    public class Hello
+    {
+        public static void Main()
+        {
+            System.Console.WriteLine("Hello, World!");
+        }
+    }
+    ```
+
+* Compile with .net framework command. 
+* Run helloworld.exe file 
+
+    ```bash
+    C:\Windows\Microsoft.NET\Framework\v3.5\csc.exe helloworld.cs
+    helloworld.exe
+    ```
+
 ## Go
 
 Go ,as known as golang, is a free and open source programming language created at Google. It is a compiled, statically typed language in the tradition of Algol and C, with garbage collection, expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its novel type system enables flexible and modular program construction. 
