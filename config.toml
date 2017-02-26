@@ -1,6 +1,6 @@
 languageCode = "en-us"
 baseurl = "https://harryho.github.io"
-title = "Welcome to Hello World"
+title = "Hello World"
 theme = "bootie-docs"
 uglyurls = false
 copyright = "Copyright (c) 2015, harryho; All rights reserved."
@@ -8,7 +8,7 @@ enableRobotsTXT = true
 disqusShortname = "harryhounique"
 
 [params]
-  description = "Blog site for simple & reusable techies"
+  description = "Collect simple & smart ideas. Refine practical & reusable solutions"
   withSitePosts = false
   searchDomain = "harryho.github.io"
   noCategoryLink = true
@@ -23,6 +23,6 @@ disqusShortname = "harryhounique"
   name = "Project"
   link = "project/"
 
-[[params.mainMenu]]
-  name = "Index"
-  link = "index/"
+#[[params.mainMenu]]
+#  name = "Index"
+#  link = "index/"
