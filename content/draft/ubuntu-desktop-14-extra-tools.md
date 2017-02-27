@@ -7,7 +7,7 @@ draft = true
 +++
 
 ## How to install Ubunt 14
-* Please find it from [Brief history of Linux](http://harryho.github.io/blog/ubuntu-desktop-14/)
+* Please find it from [Brief history of Linux](/blog/ubuntu-desktop-14/)
 
 ***Install chrome***
 

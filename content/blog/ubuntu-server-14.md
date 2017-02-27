@@ -7,10 +7,10 @@ draft = false
 +++
 
 ## Prelude
-> *This article is mainly to help experienced user install and setup Ubuntu server. If you are not familiar with Ubuntu system, please install Ubuntu desktop version at first, and you can follow [Ubuntu deskstop setup](https://harryho.github.io/blog/ubuntu-desktop-14/)*
+> *This article is mainly to help experienced user install and setup Ubuntu server. If you are not familiar with Ubuntu system, please install Ubuntu desktop version at first, and you can follow [Ubuntu deskstop setup](/blog/ubuntu-desktop-14/)*
 
 ## Brief history
-* Please find it from [Brief history of Linux](http://harryho.github.io/blog/linux-history/)
+* Please find it from [Brief history of Linux](/blog/linux-history/)
 
 ## Assumption
 

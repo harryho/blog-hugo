@@ -9,7 +9,7 @@ draft = false
 > *Today we are going to explore some PHP web frameworks.*
 
 ## Install PHP 
-* Please find the instruction from [home page](https://harryho.github.io/#php)
+* Please find the instruction from [home page](/#php)
 
 
 ## Composer 
@@ -22,13 +22,19 @@ draft = false
 ### Windows
 
 * Download the [composer](https://getcomposer.org/download/) and install php on your PC
-* Use `composer -v` to verify the composer is ready
+* Use `composer -v` to verify the composer is ready.
 
 
 ## Zendframework 2.x
 
-### Clone Zendframework skeleton project as new project. 
-### Install zendframework with composer
+
+
+### Create Zendframework 2 project from scratch
+
+#### * Clone Zendframework skeleton project as new project. 
+#### * Install zendframework with composer
+
+
 
 ```bash
 cd  /path/to/newproject
@@ -38,7 +44,7 @@ php composer.phar self-update
 php composer.phar install
 ```
 
-### Start app with php built-in server 
+#### * Start app with php built-in server 
 **Linux**
 ```bash
 php -S 0.0.0.0:8080 -t public/ public/index.php
@@ -48,7 +54,7 @@ php -S 0.0.0.0:8080 -t public/ public/index.php
 php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
-### Use apache server
+#### Use apache server
 
 ```apache
  <VirtualHost *:80>
@@ -63,18 +69,24 @@ php -S 0.0.0.0:8080 -t public public/index.php
  </VirtualHost>
 ```
 
+### Use Zf2-MVC-Starter project
+
+* Please take a look the [project](/project/zf2-mvc-starter/) instroduction. 
+
+
 ## Laravel 5.x
 
-### install laravel global `composer global laravel/installer`
-### enable the `mbs-string` pacakge inside `php.ini`
-### create new project
+### * install laravel global `composer global laravel/installer`
+### * enable the `mbs-string` pacakge inside `php.ini`
+### * create new project
 
-### migrate database and seed dummy data
+### * migrate database and seed dummy data
 
 ```bash
 php artisan migrate -VVV 
 php artisan db:seed
 ```
+### * Troubleshooting
 
 **Fix the error of Specified key was too long**
 

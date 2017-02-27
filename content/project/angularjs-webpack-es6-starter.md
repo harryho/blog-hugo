@@ -22,7 +22,7 @@ This starter was inspired by another similar angular webpack starter repository.
 
 ## Structure of starter
 
-```rust
+```bash
 \path\to\angularjs-webpack-es6-starter
 |   .babelrc                                    <-// default setting es2015.
 |   karma.conf.js                               <-// tests and report setup 
@@ -75,5 +75,7 @@ This starter was inspired by another similar angular webpack starter repository.
 ```
 
 
-## Browse [Repository](https://github.com/harryho/angularjs-webpack-es6-starter.git)Folder PATH listing for volume Windows8_OS
+### Browse [Repository](https://github.com/harryho/angularjs-webpack-es6-starter.git)
+
+
 

@@ -9,7 +9,7 @@ draft = true
 
 ## Brief history
 
-* Brief history of JavaScript can be found on [Home Page](https://harryho.github.io/)
+* Brief history of JavaScript can be found on [Home Page](/)
 
 ## Assumption 
 

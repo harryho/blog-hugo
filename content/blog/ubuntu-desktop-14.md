@@ -6,10 +6,10 @@ title = "Ubuntu 14 -- desktop setup including Windows dual boot "
 draft = false
 +++
 
-> *This article is mainly to help beginner install Ubuntu desktop at the first time. If you are looking for setup of Ubuntu server, please check out the blog -- [Ubuntu server setup](https://harryho.github.io/blog/ubuntu-server-14/)*
+> *This article is mainly to help beginner install Ubuntu desktop at the first time. If you are looking for setup of Ubuntu server, please check out the blog -- [Ubuntu server setup](/blog/ubuntu-server-14/)*
 
 ## Brief history
-* Please find it from [Brief history of Linux](http://harryho.github.io/blog/linux-history/)
+* Please find it from [Brief history of Linux](/blog/linux-history/)
 
 ## Where to install Linux?
 

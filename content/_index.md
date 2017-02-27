@@ -4,7 +4,7 @@ title = "_index"
 
 +++
 
->*This article had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I was tired to manage the WordPress. To manage a blog site is not a piece of work, but sharing these tricks and solutions online is quite helpful for myself and other techies to solve similar problems, which have been solved before. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github Pages, and I posted a blog - [Create a blog on GitHub Pages](https://harryho.github.io/blog/create-a-blog-on-github-pages) to show you how I did it on my Windows machine. If you have interests in creating your blog, please take a look the instruction and give a go on your own.* 
+>*This article had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I was tired to manage the WordPress. To manage a blog site is not a piece of work, but sharing these tricks and solutions online is quite helpful for myself and other techies to solve similar problems, which have been solved before. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github Pages, and I posted a blog - [Create a blog on GitHub Pages](/blog/create-a-blog-on-github-pages) to show you how I did it on my Windows machine. If you have interests in creating your blog, please take a look the instruction and give a go on your own.* 
 
 >*I leave the `Hello World` article on home page to make my blog not too boring. By the way, my blog is not wiki, so most posts here are just technical stuff, tricks, solutions. All those things are practical stuff instead of stories, so I want the home page a bit fun at least.*
 
@@ -200,7 +200,7 @@ PHP as it's known today is actually the successor to a product named PHP/FI. Cre
 * Download and install 
 
 **Linux**
-Please find the install command [here](https://harryho.github.io/blog/ubuntu-server-14/#install-php-compser)
+Please find the install command [here](/blog/ubuntu-server-14/#install-php-compser)
 
 **Windows**    
     *  Download the file [PHP 5.x here](http://php.net/downloads.php) 
