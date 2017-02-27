@@ -9,8 +9,7 @@ draft = false
 > *Today we are going to explore some PHP web frameworks.*
 
 ## Install PHP 
-* Follow the [instruction](https://getcomposer.org/download/) to download and install php on your PC.
-* If you use Windows, please make sure set PATH environment variable. Tye `php -v` in command prompt, you should retrieve your php version.
+* Please find the instruction from [home page](https://harryho.github.io/#php)
 
 
 ## Composer 
@@ -20,7 +19,6 @@ draft = false
 
 
 ## Zendframework 2.x
-
 
 ### Clone Zendframework skeleton project as new project. 
 ### Install zendframework with composer
@@ -51,10 +49,7 @@ php -S 0.0.0.0:8080 -t public/ public/index.php
          Require all granted
      </Directory>
  </VirtualHost>
- ```
-
-
-
+```
 
 ## Laravel 5.x
 
