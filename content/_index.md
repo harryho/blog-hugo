@@ -198,8 +198,10 @@ JavaScript is the programming language of the web. It's one of the most popular 
 PHP as it's known today is actually the successor to a product named PHP/FI. Created in 1994 by Rasmus Lerdorf, the very first incarnation of PHP was a simple set of Common Gateway Interface (CGI) binaries written in the C programming language. Originally used for tracking visits to his online resume, he named the suite of scripts "Personal Home Page Tools," more frequently referenced as "PHP Tools." Over time, more functionality was desired, and Rasmus rewrote PHP Tools, producing a much larger and richer implementation. 
 
 * Download and install 
+
 **Linux**
 Please find the install command [here](https://harryho.github.io/blog/ubuntu-server-14/#install-php-compser)
+
 **Windows**    
     *  Download the file [PHP 5.x here](http://php.net/downloads.php) 
     *  Pick the Thread safe zip file, download extra it to \path\to\php_folder. 

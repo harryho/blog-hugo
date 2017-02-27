@@ -14,8 +14,15 @@ draft = false
 
 ## Composer 
 
-### Use `curl -s https://getcomposer.org/installer | php --` to install composer on Linux 
-### Download the [composer](https://getcomposer.org/download/) and install php on your PC
+### Linux 
+
+* Use `curl -s https://getcomposer.org/installer | php --` to install composer on Linux 
+* use 'composer -v ' to verify.
+
+### Windows
+
+* Download the [composer](https://getcomposer.org/download/) and install php on your PC
+* Use `composer -v` to verify the composer is ready
 
 
 ## Zendframework 2.x
@@ -32,8 +39,13 @@ php composer.phar install
 ```
 
 ### Start app with php built-in server 
+**Linux**
 ```bash
 php -S 0.0.0.0:8080 -t public/ public/index.php
+```
+**Windows**
+```bash
+php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
 ### Use apache server
