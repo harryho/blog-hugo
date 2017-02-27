@@ -1,19 +1,22 @@
 +++
+tags = ["python", "web"]
 categories = ["blog"]
-date = "2016-04-10T14:59:31+11:00"
-title = "Python & Django"
+date = "2015-09-28T09:59:31+11:00"
+title = "Python Web framework"
 draft = true
 +++
 
 ## Getting started
 
-### Install Python
-
-### Install pip
+### Install Python & pip
 
 ### Install virtualenv
 
 ### Setup virtualenv
+
+
+### Install Django
+
 
 **Windows**
 

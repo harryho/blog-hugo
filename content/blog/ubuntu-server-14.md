@@ -199,6 +199,16 @@ sudo apt-get install curl php5-cli git
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
 
+### ***Install Python2, Python3***
+
+* Ubuntu has python instaleld by default
+
+```bash
+sudo apt-get python pip 
+sudo apt-get install python3 pip3
+```
+
+
 
 ### ***Install Go***
 

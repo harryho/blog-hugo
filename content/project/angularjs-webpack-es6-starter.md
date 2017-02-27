@@ -1,6 +1,6 @@
 +++
 categories = ["project"]
-date = "2017-02-15T16:56:21+11:00"
+date = "2016-11-15T16:56:21+11:00"
 title = "Angularjs Webpack ES6 Starter"
 tags = ["angularjs","webpack","javascript"]
 

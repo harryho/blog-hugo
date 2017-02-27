@@ -1,8 +1,8 @@
 +++
-tags =  ["php"]
+tags =  ["php", "web"]
 categories = ["blog"]
 date = "2016-08-11T11:59:31+11:00"
-title = "PHP web framework setup"
+title = "PHP web framework"
 draft = false
 +++
 
@@ -26,8 +26,6 @@ draft = false
 
 
 ## Zendframework 2.x
-
-
 
 ### Create Zendframework 2 project from scratch
 
@@ -70,17 +68,25 @@ php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
 ### Use Zf2-MVC-Starter project
-
-* Please take a look the [project](/project/zf2-mvc-starter/) instroduction. 
+* Please find the project introduction [here](/project/zf2-mvc-starter/). 
 
 
 ## Laravel 5.x
 
-### * install laravel global `composer global laravel/installer`
-### * enable the `mbs-string` pacakge inside `php.ini`
-### * create new project
 
-### * migrate database and seed dummy data
+
+### install laravel global `composer global laravel/installer`
+
+### Change `php.ini` config 
+#### * enable the `mbs-string` extension inside `php.ini`. Change the `;extension=php_mbstring.dll` as follow.
+```ini
+extension=php_mbstring.dll
+```
+
+### Create new project from scratch
+
+#### * create new project
+#### * migrate database and seed dummy data
 
 ```bash
 php artisan migrate -VVV 
@@ -120,6 +126,16 @@ class AppServiceProvider extends ServiceProvider
     }
 }
 ```
+
+
+### Use laravel-mvc-starter project 
+
+
+
+### Use laravel-rest-starter project
+
+
+
 
 
 
