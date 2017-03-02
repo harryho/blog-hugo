@@ -9,7 +9,7 @@ title = "Use Windows command & hotkey as a hacker - Part 1"
 *Do you want to make your friends amazed by your computer skill and praise you as genius? Or the hacker as watched in Sci-Fi movies? You don't need Mac, Linux or other operating systems, just Windows, you can show-off and look like hacker and master of Zeroes and Ones, even you have no any idea of it. Here are some tricks by which you can make your friends' jaw drop.*
 
 
-### Start Windows command prompt as hacker
+## Start Windows command prompt as hacker
 
 * Use use hotkeys to open `Run` feature in two keystrokes: `WinKey + R`
 * Type `cmd` and press `Enter`
@@ -27,16 +27,16 @@ C:\>User\<yourname>\cd \
 C:\>tree 
 ```
 
-### Use other command prompt 
+## Use other command prompt 
 
 * [cmder](http://cmder.net/) is an awesome product. I suggest you just choose mini version to download and install if you are not the heavy git user. There are so many built-in features you can play around.   
 * [console2](https://sourceforge.net/projects/console/) is a very good as well. I used it for many years. I'm planning to migrate to `cmder`, but it will take me some time to do it, because I have some customized scripts need to run in `console2`. 
 
-### Useful Windows hotkeys
+## Useful Windows hotkeys
 
 I believe the common hotkeys you should know. e.g. `Ctrl + C, Ctrl + V, Ctrl + A`. Here the hotkeys I list below are some rarely-used but very useful hotkys. 
 
-**General hotkeys**
+### General hotkeys
  
 * `Ctrl + Shift + Esc`  --  Open task manager
 * `WinKey + R`  --  run dialog
@@ -50,7 +50,7 @@ I believe the common hotkeys you should know. e.g. `Ctrl + C, Ctrl + V, Ctrl + A
 * `Ctrl and (+/-)`  --  zoom in or zoom out text on the editor tool
 * Middle click a tab  --  close tab
 
-**Hotkeys for Windows 7 or higher version**
+### Hotkeys for Windows 7 or higher version
 
 * `WinKey + W`  --  search setting iterms
 * `WinKey + Q`  --  search every iterms
@@ -60,13 +60,13 @@ I believe the common hotkeys you should know. e.g. `Ctrl + C, Ctrl + V, Ctrl + A
 * `Ctrl +  N` - new tab 
 * `Ctrl + Shift + N` - new Folder
 
-** Common short command lines for `Run` feature** 
+### Common short command lines for `Run` feature
 
 * `cmd` -- start a Windows command prompt
 * `calc` -- start the calculator application
 * `notepad` -- start the notepad application 
 
-** Advanced short command lines for `Run` feature** 
+### Advanced short command lines for `Run` feature
 
 * `mstsc` -- start the remote desktop application
 * `regedit` -- start registry editor application
@@ -78,7 +78,6 @@ I believe the common hotkeys you should know. e.g. `Ctrl + C, Ctrl + V, Ctrl + A
 * `appwiz.cpl` -- windows programs and features management on control panel
 
 
-
 ## Most common and useful commands
 
 This article won't list all commands and all usages of each command. Here I will just choose the commands and some usages of command which are useful for most people. Some advanced command will be explained in Part-2. 
@@ -86,6 +85,7 @@ This article won't list all commands and all usages of each command. Here I will
 Before you start typing any cmd, I want to share a common mistake for most beginners, including myself. We always forget to use help command before we Google a solution, when we hit some impediment or roadblock. Actually help command is the most common built-in feature within any software or tool. Learn how to use help command or find the help information is first important when we are going to learn anything new. 
 
 ### help
+
 * Start command prompt and type `help`. You will get a list of command which you can use, and short decription of each command.
 * Use help command to see and learn other commands
     ```
@@ -94,6 +94,7 @@ Before you start typing any cmd, I want to share a common mistake for most begin
     ```
 
 ### start 
+
 * Start another `cmd` window prompt. 
 
 ### pwd 

@@ -21,6 +21,7 @@ draft = true
 > With Cscript.exe, you can run scripts by typing the name of a script file at the command prompt. Like Microsoft Internet Explorer, Windows Script Host serves as a controller of Windows Script compliant scripting engines, but Windows Script Host has very low memory requirements. Windows Script Host is ideal for both interactive and non-interactive scripting needs, such as logon scripting and administrative scripting.
 
 
+### Sample of VBScript file 
 
 ```ps
 Set oFSO = CreateObject("Scripting.FileSystemObject"^)
@@ -33,6 +34,11 @@ oOutput.Close
 
 ```
 
+### Replace content script
+
+#### Create a file named `repltxt.bat` and open the file with `Notepad`
+#### Copy & paste the code into the file `repltxt.bat`, then script is ready to play
+
 
 ```powershell
 
@@ -44,7 +50,6 @@ oOutput.Close
 :::NEWREPL  Search  replace
 :::NEWREPL  /?
 :::NEWREPL  /V
-
 
 
 @echo off
@@ -101,3 +106,5 @@ try {
 WScript.Quit(rtn);
 
 ```
+
+#### 

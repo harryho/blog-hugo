@@ -6,7 +6,7 @@ tags = ["zendframework","php"]
 
 +++
 
-This starter is the starting point of zendframe 2 MVC project. This application is meant to be used as a starting place for those looking to get their feet wet with ZF2. 
+This starter is the starting point of zendframework 2 MVC project. This application is meant to be used as a starting place for those looking to get their feet wet with ZF2. 
 
 * This starter was built on the zendframework 2.x.
 * This starter uses mysql as database setting by default. 
@@ -19,7 +19,8 @@ This starter is the starting point of zendframe 2 MVC project. This application 
 ## Structure of starter
 
 ```bash
-C:.
+
+\path\to\zf2-mvc-starter
 +---config                            // Database, authorizaion, authentication setting
 +---data          
 +---module                            // Customized application sources

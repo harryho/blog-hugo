@@ -23,6 +23,7 @@ This starter was inspired by another similar angular webpack starter repository.
 ## Structure of starter
 
 ```bash
+
 \path\to\angularjs-webpack-es6-starter
 |   .babelrc                                    <-// default setting es2015.
 |   karma.conf.js                               <-// tests and report setup 
