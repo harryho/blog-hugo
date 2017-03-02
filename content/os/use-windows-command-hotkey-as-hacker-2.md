@@ -1,6 +1,6 @@
 +++
 tags =  ["windows","cmd"]
-categories = ["blog"]
+categories = ["os"]
 date = "2014-03-24T10:59:31+11:00"
 title = "Use Windows command & hotkey as a hacker - Part 2"
 

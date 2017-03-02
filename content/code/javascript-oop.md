@@ -28,19 +28,21 @@ The JavaScript (ECMAScript) standard defines six data types. Five are primitives
 There are a couple ways to create variable as object. 
 
 ```javascript
+
 var obj1 = {};
 var obj2 = new Object();
 var obj3 = Object.create(null);
 console.log( obj );
 console.log( obj2 );
 console.log( obj3 );
+
 /*
--- Copy above code and run it inside console from Chrome browser.
--- You will see follow result.
+output: 
 object {}
 object {}
 object {}
 */
+
 ``` 
 
 Object type gives developers so much power and flexibility to customize their own data type. All JavaScript objects inherit the properties and methods from their prototype. The Object.prototype is on the top of the prototype chain. All JavaScript objects (Date, Array, RegExp, Function, ....) inherit from the Object.prototype.
@@ -50,6 +52,7 @@ Object type gives developers so much power and flexibility to customize their ow
 * Create three cars with basic object usage. 
 
 ```javascript
+
 var car1 = { color: 'red', make:'Toyota', model:'Sedan', getInfo: function (){
         console.log( this );
 }};
@@ -74,6 +77,7 @@ Object {color: "white", make: "Subaru", model: "SUV"}
 * You will find the same method defined in every object. Can we make it better to just define the method once? The answer is Yes. Use an object constructor to create an object prototype. Any new object inherit the same propotype will have the same properties and methods. 
 
 ```javascript
+
 var Car = function(color, make, model, getInfo ) {
     this.color='';
     this.make='';
@@ -176,6 +180,7 @@ You can tell there is something wrong with the prototype and constructor at a gl
 Function is first-class citizen in JavaScript world, but it’s not really a class. We need to understand the constructor creates an empty object, then sets the prototype of empty object to the prototype property of the constructor, then set constructor function with `this` pointing to the newly-created object, and finally returns the object. You will get more confused after you see this definition. Let's us create a simple sample and take a close look why the constructor and prototype will cause this problem.
 
 ```javascript
+
 var MyClass = function(){
     this.name = 'MyClass';
     this.getInfo = function ( ){
@@ -226,6 +231,7 @@ If we still want to use inheritance, I will suggest not to just inherit the prop
 ### Object-based Inheritance
 
 ```javascript
+
 function Pet(name, master) {
     this.name = name || "";
     this.species = "";
@@ -281,7 +287,7 @@ has baby :   Lulu-Baby-Dog-2   Dog
 
 ```
 
-After you test, did you say: "what? how this works? It looks share the same prototype with `this`"? Actually the problem is the special object `this` in Javascript, which is one of the most misunderstood parts of JavaScript. Today it still confuses many other JS developers. If you have experience with other JavaScript framework. You will find many samples which use `that` , `self`, `vm` to replace the built-in `this`. e.g. `var that = {}`, `var self = {}`,etc. Let's see the new version of above sample code. 
+After you test, would you ask: "what? how this works? It looks share the same prototype with `this`"? Actually the problem is the special object `this` in Javascript, which is one of the most misunderstood parts of JavaScript. Today it still confuses many other JS developers. If you have experience with other JavaScript framework. You will find many samples which use `that` , `self`, `vm` to replace the built-in `this`. e.g. `var that = {}`, `var self = {}`,etc. Let's see the new version of above sample code. 
 
 
 ```javascript

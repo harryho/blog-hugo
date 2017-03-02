@@ -107,8 +107,9 @@ sda
   +----sda5                  swap   <Double size of your RAM size>   
   +----sda6        ext4      /      20000M         Ubuntu 14 desktop
   +----sda7        ext4      /      20000M         Fedora 20 desktop           
-  +----sda8        ext4      /      20000M         OpenSuse desktop
-  +----...
+  +----sda8        ext4      /      20000M         CentOS 6 desktop
+  +----sda9        ext4      /      20000M         OpenSuse desktop
+  + ...
 ```
 
 ### Troubleshooting: Windows always boots first
