@@ -1,6 +1,6 @@
 +++
 tags = ["python", "web"]
-categories = ["blog"]
+categories = ["dev"]
 date = "2015-09-28T09:59:31+11:00"
 title = "Python Web framework"
 draft = true
@@ -14,9 +14,7 @@ draft = true
 
 ### Setup virtualenv
 
-
 ### Install Django
-
 
 **Windows**
 
@@ -37,6 +35,7 @@ draft = true
 ```
 
 ### Create django project 
+
 * SET PATH in current command promp
 * Navigate to workspace folder
 * Create new django project

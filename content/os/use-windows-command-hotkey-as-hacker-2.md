@@ -188,12 +188,14 @@ netstat -ano | find ":80"
 
 * Type the application which is using given port.
 
-```bash
+```dos
+
 for /f "tokens=5" %p in ( 'netstat -ano ^| find ":80"') do @(     
     for /f "tokens=1" %s in ( 'tasklist /fi "pid eq %p" ^| find "%p"') do @(
         echo PID:%p -- APP: %s
     ) 
 )
+
 ```
 
 ### taskkill
@@ -214,20 +216,21 @@ REM stop process by PID and any children processes
 taskkill /PID 1230 /PID 1241 /PID 1253 /T
 
 REM force to stop applications which PID is equal or greater than 10000
-REM and windows' title of app is not equal to untitle*
+REM and windows title of app is not starts with untitle
 taskkill /F /FI "PID ge 1000" /FI "WINDOWTITLE ne untitle*"
 taskkill /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM notepad.exe
 ```
 
 ### schtasks
 
-* Syntax : schtasks /parameter [arguments]
-    * parameters include : Change, Create, Delete, End, Query, Run, ShowSid  
+* Syntax -- `schtasks /parameter [arguments]`
+    * parameters include -- Change, Create, Delete, End, Query, Run, ShowSid  
+
 * Type `schtasks` to list all scheduled tasks
 
 **schtasks /Query**
 
-```bash
+```dos
 REM get help info                                                                                                                                                                           
 SCHTASKS /Query /?    
 
@@ -241,9 +244,48 @@ REM get table of running tasks in details and output to csv file
 SCHTASKS /Query /FO TABLE /NH /V | find "Running">running_tasks.csv
 ```
 
+## Combination of multiple commands
+
+As we know, usually each command is designed to complete some specific actions, but sometimes we have to combine different commands together to achieve what we want. There are a few ways to put the commands together. 
+
+### Use `&` to simply connect to commands 
+
+* Delete a folder with non-empty subdirectries `test` we need to combine `del` and `rd` together. Actually we can two commands one by one, but we can put it together and just execute once.  
+
+```dos
+
+REM show the folder with non-empty subdirectries
+tree test
+
+\path\to\TEST
++---subdir1
+|       file1
+|       file2
+|       
+\---subdir2
+        file1
+        file2
+
+del /s/q test & rd /s/q
+```
+### Use pipeline `|` to setup a channel between commands pass the data through the commands. Actually you have seen many samples from above advanced commands. I just use a very simple one to show you how it works. 
+
+```dos
+REM write some content to a text file all.txt
+echo aaa>all.txt & echo mark aaa >>all.txt & echo mark bbb>>all.txt
+
+REM retrive lines start with mark and write them to mark.txt
+cat all.txt | find "mark">mark.txt
+cat mark.txt
+```
+
+### Use `for` loop to combine commands. Please check the samples above.  
+
+
 ## script
 
 ### Basic hello world 
+
 * You can find it on the [home page](https://harryho.github.io)
 
 ***Customized script to query temp folders and clean up log files within the folder***
@@ -253,7 +295,8 @@ SCHTASKS /Query /FO TABLE /NH /V | find "Running">running_tasks.csv
 * Copy the sample code and tailor anything you want. 
 * The sample shows you how to create interative command script and how to combine commands together with the condition statement and loop statement.   
 
-```bash
+```dos
+
 @echo off
 
 @echo."Assumption: You have multiple temp folders in different drives. You want to delete log files inside temp folder and its subdirectries. Before you delete them, you want to list all files first, file list should be sorted by time"

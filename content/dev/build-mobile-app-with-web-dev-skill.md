@@ -1,14 +1,13 @@
 +++
 tags=["mobile"]
-categories = ["blog"]
+categories = ["dev"]
 date = "2016-07-10T14:59:31+11:00"
 title = "Build mobile app with web dev skill"
 draft = true
 +++
 
-# Mobile App 
 
-## Breif history
+## What is mobile app
 
 > *A mobile application, basically, is a computer generated program designed and developed to run on iPhone, Android Smartphone, and many other mobile devices. In a nutshell, there are three types of apps*
 
@@ -18,21 +17,21 @@ draft = true
 
 > *__Hybrid apps__ make it possible to embed HTML5 apps inside a thin native container, combining the good parts of __Native app__ and __HTML5 app__ elements.*
 
-# Mobile app development
+## Mobile app development
 
 According above breif history we can image the mobile developer community has become asfragmented as the market. Mobile software developers work with different programming environments, different tools, and different programming languages.
 
 After a few years of improvement, we can see some __Hybrid app__ based framework becomes more and more popular and shining. `ionic`, `nativescript` and `react native` are most promising frameworks which we should really look into. 
 
-# Introduction of ionic developement
+## Introduction of ionic developement
 
-## Assumption
+### Assumption
 
 * Here we just introduce ionic 1.x. When I started investigating the `ionic`, the `ionic 2` just came out for a while. `ionic 2` study is on my todo list.
 * You are familiar with web technologies, such as, HTML5, CSS, JavaScript, and you should have experience of nodejs and relevant skills.
 
 
-## Getting started
+### Getting started
 
 * install ionic 1.x
 * setup ionic and create new project `demoApp`
@@ -45,7 +44,7 @@ ionic build android
 ionic emulate android 
 ```
 
-## Install packages  
+### Install packages  
 
 * Use `npm install` to install packages
 * Folllowing is the `package.json`. You can tailor it on your own.
@@ -79,7 +78,7 @@ ionic emulate android
 }
 
 ```
-## Debug
+### Debug
 *  Browser is the best option for ionic mobile development debug tools
 *  Use Telerik AppBuilder to debug
 
@@ -100,7 +99,7 @@ ionic emulate android
 
 
 
-## Notes
+### Notes
 =======
 
 *  Android emulator accelerator error due to version is too low to support the system image

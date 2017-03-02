@@ -1,6 +1,6 @@
 +++
 tags =  ["javascript", "oo"]
-categories = ["blog"]
+categories = ["code"]
 date = "2014-03-20T14:59:31+11:00"
 title = "JavaScript and Object Oriented Programming"
 draft = false

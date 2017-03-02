@@ -1,6 +1,6 @@
 +++
 tags =  ["linux","ubuntu","centos"]
-categories = ["blog"]
+categories = ["os"]
 date = "2014-01-10T14:59:31+11:00"
 title = "CentOS 6 -- desktop and server Setup"
 draft = true

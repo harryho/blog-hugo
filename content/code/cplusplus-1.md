@@ -1,6 +1,6 @@
 +++
-tags = ["c","c++"]
-categories = ["blog"]
+tags = ["c++"]
+categories = ["code"]
 date = "2016-04-10T14:59:31+11:00"
 title = "C++ Programming - Part 1"
 draft = true

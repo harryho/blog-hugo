@@ -1,6 +1,6 @@
 +++
 tags =  ["windows","cmd"]
-categories = ["blog"]
+categories = ["os"]
 date = "2014-03-09T10:59:31+11:00"
 title = "Use Windows command & hotkey as a hacker - Part 1"
 
@@ -145,9 +145,9 @@ Before you start typing any cmd, I want to share a common mistake for most begin
 * Type `rd /s a` to remove a directory `a` including all files and empty subdirectories within folder `a`.
 
 ### del 
-* __*IMPORTANT*__ : The item deleted by `del` can not be restored from `bin`. Please be careful before you use this command. 
+* __*IMPORTANT*__ : The item deleted by command `del` can not be restored from **Recyle Bin**. Please be careful before you use this command. 
 * Type `del` to delete files or `del *.txt` to delete all files with `txt` extension
-* Combine `rd` can remove folder with not-empty subdirectories `del /s/q <folder> & rd /s/q <folder>'
+
 
 
 ### cls
