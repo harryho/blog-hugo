@@ -13,7 +13,8 @@ draft = true
 
 * Solution 
  * Design 
- ```
+
+```ini
 +--------------+
 |  Filter      |
 +--------------+
@@ -23,26 +24,31 @@ draft = true
 +--------------+
 
 
- +----------------------+
- | ExpressionBuilder    |  
- |                      |
- +----------------------+
- |GetExpression( filer) | --------- Create expression by input filter 
- |                      |
- + ---------------------+
++----------------------+
+| ExpressionBuilder    |  
+|                      |
++----------------------+
+|GetExpression( filer) | --------- Create expression by input filter 
+|                      |
++ ---------------------+
 
  
- +-----------------------------+
- | PredicateBuilder            |
- +-------------------+      
- | And(exp1, exp2)   | --- exp1, exp2 are Expressions. Combine exp1, exp2 with AND
- | Or(exp1, exp2)   | --- exp1, exp2 are Expressions. Combine exp1, exp2 with AND                         
++------------------+
+| PredicateBuilder |
++------------------+      
+| And(exp1, exp2)  | --- Use AND to combine two expressions
+| Or(exp1, exp2)   | --- Use OR to combine two expressions                        
++------------------+
+
+ ```
 
 
- ````
- * Implementatoin
 
+* Implementatoin
 
+**Filter**
+
+The Op property should be 
 
 ```cs
 public class Filter
@@ -52,6 +58,11 @@ public class Filter
         public object Val { get; set; }
 }
 ```
+
+**Op**
+
+This class can be replaced by Enum if you want.  
+
 
 ```cs
 public static class Op
@@ -71,7 +82,7 @@ public static class Op
 ```cs 
 
 public static class PredicateBuilder
-    {
+{
         public static Expression<Func<T, bool>> True<T>() { return f => true; }
         public static Expression<Func<T, bool>> False<T>() { return f => false; }
 
@@ -109,7 +120,7 @@ public static class PredicateBuilder
             }
         }
 
-    }
+}
 ```
 
 

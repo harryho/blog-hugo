@@ -220,7 +220,7 @@ If we draw a diagram of above sample, you will see what is happening behind the 
 
 Now we figure out the root cause. You will say it is easy to fix. We just need to create new prototype for each object, and clone the properties and methods from supper class. Yes, you are right, but it is not I want to recommand to you. First, we need to see if we really inheritance, secondly, if it is better to maintain if use inheritance. 
 
-If we still want to use inheritance, I will suggest not to jsut inherit the properties, instead of methods. In my opinion, there is very rare of scenario, we really need to inherit method. So we just need to find to proper way to solve the problem of properties inheritance.  
+If we still want to use inheritance, I will suggest not to just inherit the properties, instead of methods. In my opinion, there is very rare of scenario, we really need to inherit method. So we just need to find to proper way to solve the problem of properties inheritance.  
 
 
 ### Object-based Inheritance

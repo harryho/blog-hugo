@@ -146,9 +146,9 @@ Go ,as known as golang, is a free and open source programming language created a
 Java is a general-purpose computer programming language that is concurrent, object-oriented, and specifically designed to have as few implementation dependencies as possible. It is intended to let application developers "write once, run anywhere", meaning that compiled Java code can run on all platforms with JVM without the need for recompilation.
 
 * Download and install [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-      * For any Ubuntu 12 or higher version I will suggest you follow this [instruction](http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html). It is pretty simple. 
-      * For CentOS 6 or higher version I will suggest you follow this [instruction](https://wiki.centos.org/HowTos/JavaRuntimeEnvironment)
-      * For Windows please make sure you click the [JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) button. I will suggest beginner to download the installer file end with `exe` instead of the zip file, because you don't need to setup **PATH** system environment by yourself.  
+      * For any Ubuntu 12 or higher version I recommand you follow this [instruction](http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html). It is pretty simple. 
+      * For CentOS 6 or higher version, please follow this [instruction](https://wiki.centos.org/HowTos/JavaRuntimeEnvironment)
+      * For Windows please make sure you click the [JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) button. The installer file end with `exe` is best option for beginner, instead of the zip file, because you don't need to setup **PATH** system environment by yourself.  
 
 * Create a program file HelloWorld.java
 

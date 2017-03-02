@@ -178,7 +178,7 @@ export PATH="$HOME/.node_modules_global/bin:$PATH"
 
 ### ***Install nvm***
 
-* Using `nvm` is no longer popular and best option. I will suggest you just use `npm` to manage eveything you need.
+* Using `nvm` is no longer popular and best option. I will recommand you just use `npm` to manage eveything you need.
 
 ```bash
 sudo apt-get update
