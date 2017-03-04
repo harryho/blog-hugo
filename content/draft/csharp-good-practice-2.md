@@ -12,7 +12,7 @@ draft = true
 > Entity framework is one of most important and popular components in all .net application. From .net 3.5 it has replaced traditional ADO.Net as only component, which communicate between business service and database. Every To create query Entity framework query 
 
 * Solution 
- * Design 
+ * Design
 
 ```ini
 +--------------+

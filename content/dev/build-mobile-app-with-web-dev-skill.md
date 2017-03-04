@@ -3,7 +3,7 @@ tags=["mobile"]
 categories = ["dev"]
 date = "2016-07-10T14:59:31+11:00"
 title = "Build mobile app with web dev skill"
-draft = true
+draft = false
 +++
 
 
@@ -99,13 +99,11 @@ ionic emulate android
 
 
 
-### Notes
-=======
+## Troubleshooting
 
 *  Android emulator accelerator error due to version is too low to support the system image
 *   uninstall old version intel HAXM 
 *   install new version manually from `<Android_SDK_Location>\extras\intel\Hardware_Accelerated_Execution_Manager`
-
 
 *  If app is not working on emulator, check cordova plugins or manually install cordova plugins
 

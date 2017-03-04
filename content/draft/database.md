@@ -32,8 +32,9 @@ where user='root'; flush privileges;"
 
 ###
 ```sql
+-- Drop database if it exsits
 DROP DATABASE   /*!32312 IF EXISTS*/ <your-database>;
-
+-- Create database with UTF-8 CHARSET 
 CREATE DATABASE <your-database> CHAR SET utf8 COLLATE 'utf8_unicode_ci';
 
 ```

@@ -57,10 +57,10 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 
 **net accounts**
 
-* Use`net accounts <user>` to show current user's password and login requirement.
-* Use`net accounts <user> /minpwlen:6` to set password minimum length requirement for user.
-* Use`net accounts <user> /maxpwage:30` to force user to reset password every 30 days, or use `unlimited` to replace the number `30`, then user's password will never expire.
-* User`net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
+* Use `net accounts <user>` to show current user's password and login requirement.
+* Use `net accounts <user> /minpwlen:6` to set password minimum length requirement for user.
+* Use `net accounts <user> /maxpwage:30` to force user to reset password every 30 days, or use `unlimited` to replace the number `30`, then user's password will never expire.
+* User `net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
 
 
 ### runas 
@@ -72,6 +72,7 @@ runas /user:yourpc\administrator "cmd"
 REM ##BE CAREFUL When you try the command below ##  
 REM it shows how to create, delete files as admin under C drive root.  
 runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pause & del c:\z.txt " 
+
 ```
 
 
@@ -86,6 +87,7 @@ runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pau
 ```bash
 REM query all service on the PC -- <yourpcname>
 sc \\<yourpcname> query
+
 REM query status of given service 
 sc query <servicename>
 sc query state= all | find "SERVICE_NAME" 
@@ -101,39 +103,48 @@ sc query state= all | find "SERVICE_NAME"
     * If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled.
     * Extra space within option is necessary. e.g. `state= all`
 
-```dos
+```bash
 REM query all services which are inactive and type are driver and kernel
 sc query state= inactive type= driver type= kernel
 
-REM get all services' name 
+REM get all services name
 for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s 
 
-REM get all services' name and state
+REM get all services name and state
 for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
-    for /f "tokens=4" %t in ('sc query %s ^| find "STATE" ') do @echo %s -- %t
-    )
+    for /f "tokens=4" %t in ('sc query %s ^| find "STATE" ') 
+        do @echo %s -- %t
+)
 ```
 
 **sc queryex**
-```
-REM get all services' name and pid
-for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
-    for /f "tokens=3" %t in ('sc queryex %s ^| find "PID" ') do @echo %s -- %t
-    )
 
-REM get all services' name and pid
+```bash
+REM get all services name and pid
 for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
-    for /f "tokens=3" %t in ('sc queryex %s ^| find "BINARY_PATH_NAME" ') do @echo %s -- %t
-    ) 
+    for /f "tokens=3" %t in ('sc queryex %s ^| find "PID" ') 
+        do @echo %s -- %t
+)
+
+REM get all services name and pid
+for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
+    for /f "tokens=3" %t in ('sc queryex %s ^| find "BINARY_PATH_NAME" ') 
+        do @echo %s -- %t
+) 
 ```
 
 **sc qc**
-```
-REM get all services' name and path
-for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(     for /f "tokens=3 delims==:" %t in ('sc qc %s ^| find "BINARY_PATH_NAME" ') do @echo %s -- C:%t     )   
+
+```bash
+REM get all services name and path
+for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(     
+    for /f "tokens=3 delims==:" %t in ('sc qc %s ^| find "BINARY_PATH_NAME" ') 
+    do @echo %s -- C:%t
+)   
 ```
 
 **sc start/stop**
+
 ```bash
 REM start and stop service
 sc start  <servicename>
@@ -147,6 +158,7 @@ sc stop  <servicename>
 
 
 ### ipconfig
+
 * Type `ipconfig /all` to display full configuration information.
 * Type `ipconfig /flushdns`    to purge the DNS Resolver cache.
 
@@ -179,7 +191,6 @@ tasklist /fi "pid eq 4444"
 ### netstat 
 
 * Type `netstat` to get all ports and IP addresses, which are connected or listening 
-
 * Type PID of process which is using some given port, such as 80, 443, 22, etc.
 
 ```bash
@@ -188,19 +199,18 @@ netstat -ano | find ":80"
 
 * Type the application which is using given port.
 
-```dos
-
+```bash
 for /f "tokens=5" %p in ( 'netstat -ano ^| find ":80"') do @(     
     for /f "tokens=1" %s in ( 'tasklist /fi "pid eq %p" ^| find "%p"') do @(
         echo PID:%p -- APP: %s
     ) 
 )
-
 ```
 
 ### taskkill
 
 **syntax**
+
 ```ini
 taskkill [/S system [/U username [/P [password]]]]
          { [/FI filter] [/PID processid | /IM imagename] } [/F] [/T]
@@ -230,17 +240,17 @@ taskkill /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM notepad.exe
 
 **schtasks /Query**
 
-```dos
-REM get help info                                                                                                                                                                           
-SCHTASKS /Query /?    
+```bash
+REM get help info                                                                 
+SCHTASKS /Query /?
 
-REM query tasks which are scheduled on given system                                                                                                                                                                         
-SCHTASKS /Query /S system /U user /P       
+REM query tasks which are scheduled on given system
+SCHTASKS /Query /S system /U user /P
 
 REM get list of tasks in details
 SCHTASKS /Query /FO LIST /V     
 
-REM get table of running tasks in details and output to csv file                                                                                                                          
+REM get table of running tasks in details and output to csv file 
 SCHTASKS /Query /FO TABLE /NH /V | find "Running">running_tasks.csv
 ```
 
@@ -252,8 +262,7 @@ As we know, usually each command is designed to complete some specific actions, 
 
 * Delete a folder with non-empty subdirectries `test` we need to combine `del` and `rd` together. Actually we can two commands one by one, but we can put it together and just execute once.  
 
-```dos
-
+```bash
 REM show the folder with non-empty subdirectries
 tree test
 
@@ -268,7 +277,10 @@ tree test
 
 del /s/q test & rd /s/q
 ```
-### Use pipeline `|` to setup a channel between commands pass the data through the commands. Actually you have seen many samples from above advanced commands. I just use a very simple one to show you how it works. 
+
+### Use pipeline `|` to setup a channel between commands pass the data through the commands. 
+
+Actually you have seen many samples from above advanced commands. I just use a very simple one to show you how it works. 
 
 ```dos
 REM write some content to a text file all.txt
@@ -284,18 +296,19 @@ cat mark.txt
 
 ## script
 
-### Basic hello world 
+### Basic hello world script
 
 * You can find it on the [home page](https://harryho.github.io)
 
-***Customized script to query temp folders and clean up log files within the folder***
+### Customized script 
 
+* This sample script is used to query temp folders and clean up log files within the folder. 
 * We assume you have multiple temp folders in different drives and You want to delete log files inside temp folder and its subdirectries from time to time. Before you delete them, you want to list all files first. You can confirm if you want to delete them or not. 
 * Create a file named clean-logs.bat 
 * Copy the sample code and tailor anything you want. 
 * The sample shows you how to create interative command script and how to combine commands together with the condition statement and loop statement.   
 
-```dos
+```bash
 
 @echo off
 

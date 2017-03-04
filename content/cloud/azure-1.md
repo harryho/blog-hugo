@@ -71,7 +71,7 @@ draft = true
   git status 
   git config user.name "harryho" 
   git config user.email "hho@hho.com" 
-  git commit -m "initial commit" `
+  git commit -m "initial commit"
   git remote add azure https://xxxxxxx.git 
   git remote -v
   git push azure master 

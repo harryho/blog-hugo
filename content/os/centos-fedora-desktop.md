@@ -3,7 +3,7 @@ tags =  ["linux","ubuntu","centos"]
 categories = ["os"]
 date = "2014-01-10T14:59:31+11:00"
 title = "CentOS 6/7 -- desktop Setup"
-draft = true
+draft = false
 +++
 
 ## Breif History
@@ -133,13 +133,14 @@ After you reboot and login CentOS, you can use ping to test if your system can a
 yum --disablerepo=\* install /path/to/dvd/Packages/NetworkManager-wifi* 
 ```
 
-## Multiple boot 
+## Multiple boot system ( Fedora, CentOS, Redhat )
 
+### Partition setup for multiple OS installation 
 
-### System installation 
-> Click on the Installation Destination icon to change this to custom partitioning
+> Fedora, CentOS and Redhat share the almost the same installation process. 
+> Click on the `Installation Destination` icon to change this to custom partitioning
 > Under the Other Storage Options, choose I will configure partitioning then click Done
-> Following sample is my personal setting
+> Following is sample of partition setup of multiple boot system.
 
 
 ```ini

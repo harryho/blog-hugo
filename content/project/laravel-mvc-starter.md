@@ -15,7 +15,7 @@ This starter is the starting point of laravel 5 MVC project. This application is
 
 ``` ini
 +-------+ 0...*     0...* +--------+ 1     0...* +---------+ 
-| tag   | --------------- |  blog  | ----- ----- | comment |
+| tag   | --------------- |  post  | ----- ----- | comment |
 +-------+                 +--------+             +---------+           
                                | 1...*
                                |
