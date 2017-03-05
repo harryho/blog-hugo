@@ -2,7 +2,7 @@
 tags =  ["linux","ubuntu"]
 categories = ["os"]
 date = "2016-01-10T14:59:31+11:00"
-title = "Ubuntu 14 -- desktop setup including Windows dual boot "
+title = "Ubuntu 14 -- desktop setup & dual boot "
 draft = false
 +++
 
@@ -89,6 +89,8 @@ __*Let's get our hands dirty*__
 
 
 ## Dual boot or multiple boot with Windows
+
+**This section is for  people who want to install multiple operating system on the actual PC, instead of virtual machine as above. Obviously, it is not for beginner user, but everyone must experience the first time to go to higher level. For safe side, I strongly suggest you should use a old PC or redundant one to test it.**
 
 * For dual or multiple boot, you need to make sure your disk is formatted as GPT. It will save you so much effort later to install other operating systems. 
 

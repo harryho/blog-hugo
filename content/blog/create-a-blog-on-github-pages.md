@@ -2,7 +2,7 @@
 tags =  ["hugo","git"]
 categories = ["blog"]
 date = "2017-02-15T14:59:31+11:00"
-title = "Create a blog site on GitHub Pages within Windows environment"
+title = "Create a blog site on GitHub Pages on Windows"
 
 +++
 

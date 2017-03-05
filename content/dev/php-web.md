@@ -170,7 +170,11 @@ class AppServiceProvider extends ServiceProvider
 
 ### Install Prestashop
 
-There is a instruction page inside the zip file. You can follow the instructions to complete the installation. There is no EasyPHP, Wamp, XAMPP, or any similar AMP (Apache+MySQL+PHP) package installed on my PC, but I have PHP, Apache, MySQL installed. Actually EasyPHP, Wamp are just the bundle of PHP development tools, which include PHP, Apache, MySQL. I don't install too many duplicate softwares and packages on my PC, so I prefer to install Prestashop with what I have on my PC. It is up to you which way you choose to install it.
+There is a instruction page inside the zip file. You can follow the instructions to complete the installation. There is no EasyPHP, Wamp, XAMPP, or any similar AMP (Apache+MySQL+PHP) package installed on my PC, but I have PHP, Apache, MySQL installed. Actually EasyPHP, Wamp are just the bundle of PHP development tools, which include PHP, Apache, MySQL. I don't want to install too many duplicate softwares and packages on my PC, so I prefer to install Prestashop with what I have on my PC. Which strategy is up to you.
+
+### Install Prestashop with AMP package
+
+* Follow the instruction page within zip file.
 
 ### Install Prestashop without AMP package
 

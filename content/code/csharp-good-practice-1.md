@@ -1,8 +1,8 @@
 +++
 categories = ["blog"]
-date = "2014-04-10T14:59:31+11:00"
+date = "2015-04-10T14:59:31+11:00"
 title = "C# good practice -- Part 1"
-draft = true
+draft = false
 +++
 
 ## Prelude
@@ -42,7 +42,7 @@ SELECT * FROM TABLE_A
         <FIELD_2> [=|<|>|>=|<=|LIKE] <VALUE_2>   ----- Expression
 ``` 
 
-The next step we can look into the Expression, actually the <FIELD_1> is the property of entity object, and <VALUE_1> is the filter value entered by client. How to use the filter to narrow down the query result is part of business logic, which is handled by developer. 
+The next step we can look into the Expression, actually the FIELD_1 is the property of entity object, and VALUE_1 is the filter value entered by client. How to use the filter to narrow down the query result is part of business logic, which is handled by developer. 
 
 ``` ini 
 <FIELD_1>           ==> Entity property
@@ -117,54 +117,10 @@ public static class Op
 }
 ```
 
-```cs 
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Collections.Generic;
 
-public static class PredicateBuilder
-{
-    public static Expression<Func<T, bool>> True<T>() { return f => true; }
-    public static Expression<Func<T, bool>> False<T>() { return f => false; }
+**ExpressionBuilder**
 
-    public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
-    {
-        var secondBody = expr2.Body.Replace(expr2.Parameters[0], expr1.Parameters[0]);
-        return Expression.Lambda<Func<T, bool>>
-                (Expression.OrElse(expr1.Body, secondBody), expr1.Parameters);
-    }
-
-    public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
-    {
-        var secondBody = expr2.Body.Replace(expr2.Parameters[0], expr1.Parameters[0]);
-        return Expression.Lambda<Func<T, bool>>
-                (Expression.AndAlso(expr1.Body, secondBody), expr1.Parameters);
-    }
-
-    public static Expression Replace(this Expression expression, Expression searchEx, Expression replaceEx)
-    {
-        return new ReplaceVisitor(searchEx, replaceEx).Visit(expression);
-    }
-
-    internal class ReplaceVisitor : ExpressionVisitor
-    {
-        private readonly Expression from, to;
-        public ReplaceVisitor(Expression from, Expression to)
-        {
-            this.from = from;
-            this.to = to;
-        }
-
-        public override Expression Visit(Expression node)
-        {
-            return node == from ? to : base.Visit(node);
-        }
-    }
-
-}
-```
-
+This class takes care of Expression with Filter object.
 
 ```cs
 using System;
@@ -285,6 +241,57 @@ public class ExpressionBuilder
     }
 }
 
+```
+
+**PredicateBuilder**
+
+This class manages all expressions to support dynamic statement query.
+
+```cs 
+using System;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Collections.Generic;
+
+public static class PredicateBuilder
+{
+    public static Expression<Func<T, bool>> True<T>() { return f => true; }
+    public static Expression<Func<T, bool>> False<T>() { return f => false; }
+
+    public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+    {
+        var secondBody = expr2.Body.Replace(expr2.Parameters[0], expr1.Parameters[0]);
+        return Expression.Lambda<Func<T, bool>>
+                (Expression.OrElse(expr1.Body, secondBody), expr1.Parameters);
+    }
+
+    public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+    {
+        var secondBody = expr2.Body.Replace(expr2.Parameters[0], expr1.Parameters[0]);
+        return Expression.Lambda<Func<T, bool>>
+                (Expression.AndAlso(expr1.Body, secondBody), expr1.Parameters);
+    }
+
+    public static Expression Replace(this Expression expression, Expression searchEx, Expression replaceEx)
+    {
+        return new ReplaceVisitor(searchEx, replaceEx).Visit(expression);
+    }
+
+    internal class ReplaceVisitor : ExpressionVisitor
+    {
+        private readonly Expression from, to;
+        public ReplaceVisitor(Expression from, Expression to)
+        {
+            this.from = from;
+            this.to = to;
+        }
+
+        public override Expression Visit(Expression node)
+        {
+            return node == from ? to : base.Visit(node);
+        }
+    }
+}
 ```
 
 

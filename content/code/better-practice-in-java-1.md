@@ -79,13 +79,9 @@ public class Util {
 
 Now you program will not be by any unintentional typo, since it will throw you compile error before you run the application. If you haven't refactor your static constants container, it is time to improve it now. 
 
-(Above were written in 2006. After Java 1.7, I found it can be improved with new feature of Java 1.7 )
+After Java Java 1.7, there are some new features. One of these new features is Switch statement. Now it supports String. It is a great for Java developer.With this new feature, the old Enum can be enhanced and the Util class can provide more handy methods (Overload method getLanguageCode) for development. 
 
-After Java Java 1.7, there are some new features. One of these new features is Switch statement. Now it supports String. It is a great for Java developer.
-
-With this new feature, the old Enum can be enhanced and the Util class can provide more handy methods (Overload method getLanguageCode) for development.
-
-New Enum class, which can support flexible requirement. In the early version of Enum, the toString method only will return exactly the specified constanct name. Now the Enum can be override with toString to return different constant name. 
+New Enum class can support flexible requirement. In the early version of Enum, the toString method only will return exactly the specified constanct name. Now it can be overrided with toString to return different constant name. 
 
 ```java
 // It can return customized name and simplify coding 
@@ -307,7 +303,6 @@ try ( FileInputStream exchangeCurrencyReader = new FileInputStream("AUDvsUSD.txt
 ```
 
 In the code above we have declare two file stream one is input file we are reading from one file and writing to another file. After the whole process both streams will be closed automatically either the code has been executed properly or not. Both exchangeCurrencyReader.close() and exchangeCurrencyWriter.close() methods will be called automatically which is the best part of ARM. We should not miss good part from Java 7. 
-
 
 
 #### New file change monitor service
