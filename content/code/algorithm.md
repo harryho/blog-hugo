@@ -102,7 +102,7 @@ Complexity:
 expected worst-case time complexity is O(log(N));
 expected worst-case space complexity is O(1).
 
-```
+```cs
 class Solution {
     public int solution(int N) {
         
@@ -153,7 +153,7 @@ Assume that:
 N and K are integers within the range [0..100];
 each element of array A is an integer within the range [-1,000..1,000].
 
-```
+```cs
 class Solution {
     public int[] solution(int[] A, int K) {
         // write your code in C# 6.0 with .NET 4.5 (Mono)
@@ -225,7 +225,7 @@ expected worst-case time complexity is O(N);
 expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
 Elements of input arrays can be modified.
 
-```
+```cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -295,7 +295,7 @@ Complexity:
 expected worst-case time complexity is O(1);
 expected worst-case space complexity is O(1).
 
-```
+```cs
 using System;
 class Solution {
     public int solution(int X, int Y, int D) {
@@ -355,20 +355,18 @@ expected worst-case space complexity is O(1), beyond input storage (not counting
 Elements of input arrays can be modified.
 
 
-```
+```cs
 using System;
 class Solution {
-    public int solution(int[] A) {
-        
-
-        
+    public int solution(int[] A)
+    {     
         int n = A.Length, i;  
         long r = n + 1;  
-    for (i = 0; i < n; ++i) {  
-        r += (i + 1) - A[i];  
-    }  
-    
-    return (int)r;  
+        for (i = 0; i < n; ++i) {  
+            r += (i + 1) - A[i];  
+        }  
+        
+        return (int)r;  
     }
 }
 
@@ -434,7 +432,7 @@ expected worst-case time complexity is O(N);
 expected worst-case space complexity is O(X), beyond input storage (not counting the storage required for input arguments).
 Elements of input arrays can be modified.
 
-```
+```cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
