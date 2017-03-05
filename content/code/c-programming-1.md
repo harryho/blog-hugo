@@ -8,9 +8,13 @@ draft = true
 
 
 ## Brief history
-* Please find it from [Brief history of Linux]
+* Please find it from [Home Page](/#C)
 
-## C
+## Overview
+
+> This series will cover a few basic things of C, but please don't take it as beginner guide book. There is no enough explanation for learning C by using samples and commands here. As other programming language, it is the place to collect the tricks and tips.
+
+## Compile, Debug, Tools
 g++ -std=c+=14 -O0 -g3 -Wall -o app.exe app.cpp
 
 

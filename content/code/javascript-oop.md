@@ -7,14 +7,20 @@ draft = false
 +++
 
 
-## Brief history
+## What is JavaScript?
 
-* Brief history of JavaScript can be found on [Home Page](/)
+* Please find the answer on [Home Page](/#JavaScript)
+
+## What is Object Oriented Programming?
+
+> Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects", which may contain data, in the form of fields, as known as attributes or properties; and actions, in the form of functions, as known as methods.
+
+> For example, Car is an object. The color and model of the car are attributes. Then accelerate to 60km/h, brake to 0km/h, and turn left or right of the car are the actions. From this sample, you can tell OOP makes the code more close to the real world. That is why it is most popular paradigm for developing buisness application.  
 
 ## Assumption 
 
 * You should have basic knowledge of Javascript. 
-* You should know how to test sample code on Chrome or Firefox. It is simple, just open your browser and enter `F12`, copy the code to console and then press `Enter`.   
+* You should know how to test sample code on Chrome or Firefox. It is simple, just open your browser and click `F12`, copy the code to console and then press `Enter`.   
 
 ## Data types
 

@@ -2,7 +2,7 @@
 tags=["mobile"]
 categories = ["dev"]
 date = "2016-07-10T14:59:31+11:00"
-title = "Build mobile app with web dev skill"
+title = "Build mobile app with web dev skills"
 draft = false
 +++
 
