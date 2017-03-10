@@ -241,5 +241,14 @@ php -S 0.0.0.0:1234 -t prestashop
 * Don't panic. It is easy to fix. Stop the php server by clicking `Ctrl+C`. and then start the server again. Open the folder with prestashop, you will find something interesting. The original folder `admin` under `prestashop` has been renamed to `adminXXXX`. X is a number. It is Prestashop special trick to secure your admin folder. Now you need to use this new name as path to acces back office. Your new back office link will be `http://localhost:1234/adminXXXX`. 
 * Open the new link in browser and type in your admin id and password. Now you can start managing your Prestashop site. Enjoy it.   
 
+### Forgot admin's password
+
+* Forgot admin's password or somehow you have to reset password and you cannot get admin's password from previous adminstrator. For such case, there is a simple way to update admin's password from database. 
+* Tailor the SQL below. Then you should be able to use new password to login. 
+
+```sql
+UPDATE ps_employee SET passwd = MD5('<_COOKIE_KEY_>password') 
+WHERE ps_employee.id_employee = <ID_EMPLOYEE>;
+```
 
 

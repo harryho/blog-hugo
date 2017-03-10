@@ -33,7 +33,7 @@ draft = false
       * Choose the location of CentOS. e.g. c:\vbox\centos\centos.vdi. Select the size of VDI file. At least 10G. I'd like to select 20 or more. Then a virtual machine of CentOS is created. 
       * Choose the location of CentOS. e.g. c:\vm\centos\centos.vmdk. Select the size of VMDK file. At least 10G. I'd like to select 20 or more. Then a virtual machine of CentOS is created. 
  
-* Config the CentOS hardware setting on VirtulBox or VMWare. 
+ * Config the CentOS hardware setting on VirtulBox or VMWare. 
 
     **VirtualBox**
 

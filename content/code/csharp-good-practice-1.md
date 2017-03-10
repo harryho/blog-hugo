@@ -1,7 +1,7 @@
 +++
 categories = ["blog"]
 date = "2015-04-10T14:59:31+11:00"
-title = "C# good practice -- Part 1"
+title = "C# Note -- Part 1"
 draft = false
 +++
 
@@ -11,7 +11,7 @@ draft = false
 
 
 
-## Generic Predicat and Expression
+## Generic predicate and Expression
 
 ### Assumption
 
@@ -21,7 +21,7 @@ draft = false
 
 ### Problem
 
-Database query is one of most common and important function in almost any .net application. ADO.Net was the most critical component which execute the database queries, but after .net 3.5, it has been replaced by entity framework, which provides ORM feature. Now entity framework is core component in all applications, which need to communicate with database. 
+Database query is one of most common and important function in almost any .net application. Once ADO.Net was the most critical component which execute all database oprations, but after .net 3.5, its top one position has been taken by entity framework, which provides convenient ORM feature. Now entity framework is core component in all applications, which need to communicate with database. 
 
 Business service get a lot of benefits form entity framework's ORM feature, and we can create a repository layer on the top of ORM to reduce some simple but tedious database operation, such as, delete, insert, query all data. However, when we need to do some complicated query to support business service, we still need to take so much effort to achieve the query result, because entity framework use LINQ as query language, comparing with SQL, native database language, it is a bit more complicated and cumbersome. Luckily, entity framework provide another generic feature to help us DRY. Predicate and expression can help us reduce many reduntant queries. 
 
