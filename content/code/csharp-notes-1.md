@@ -7,8 +7,7 @@ draft = false
 
 ## Prelude
 
-> *As the title says, this is first article of the series, which cover C# good practice and common mistakes made by many developers. As we known, .net framework and its most important player changes every year. So some good practice will be obsolete or replaced by some advanced solution, because real world keeps change. The most ridiculous thing is some good practice becomes common mistake in some special context. That is why we keep looking for new ways of good practice to support emerging chanlleges.*  
-
+> *C# notes is the place, which I store the good practice and solution from my projects and research.*  
 
 
 ## Generic predicate and Expression

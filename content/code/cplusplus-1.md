@@ -2,13 +2,13 @@
 tags = ["c++"]
 categories = ["code"]
 date = "2016-04-10T14:59:31+11:00"
-title = "C++ Programming - Part 1"
+title = "C++ Notes - Part 1"
 draft = true
 +++
 
 ## Prelude 
 
-> *This series is the collection of most diffcult, confused knowledge of C++ language. Good practice or pattern to special scenario is part of this series.*
+> *C++ notes is the place, which I store the good practice and solution from my projects and research.*
 
 ## Assumption
 
