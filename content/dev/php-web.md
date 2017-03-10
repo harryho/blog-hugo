@@ -220,30 +220,42 @@ php -S 0.0.0.0:1234 -t prestashop
 ```
 
 * Open the link `http://localhost:1234` with browser
+
 * Choose language and click `Next`, and then select the checkbox "I agree bah lah bah lah .... " and click `Next`
+
 * If there is an error `GD Library is not installed` prompt, you just need to enable the library on `php.ini`
   * DO NOT close your browser. 
   * Stop the php server by `Ctrl + C` in the command prompt.
   * Use notepad to open the file `php.ini` under the `\path\to\php`
   * Uncomment the config `;extension=php_gd2.dll` => `extension=php_gd2.dll`
   * Start the php server again
+  
 * Click the `Refresh this settings`, and click `Next` 
 * Fill the login user and password. If your MySQL port is not 3306, please attach your port to the server address input field. Click `Test your database connection`. 
+
 * If you got error `prestashop database not found`, you need to create a database on mysql server.
-    * I simply create a new database immediately with one command line 
-    ```bash
+    * I simply create a new database immediately with one command line
+
+    ```sql
     CREATE DATABASE prestashop CHAR SET utf8 COLLATE 'utf8_unicode_ci';
     ```
+   
     * Test the connection again. You will get the green light
+    
 *  Click `Next` and you can start to setup your store informaiton, such as, store name, admin account, etc. Then click `Next`
-* Setup your sample store. Click `Next`. Then the installer will help you finish the initialization. 
+
+* Setup your sample store. Click `Next`. Then the installer will help you finish the initialization.
+
 * After the store setup, you can access the website by clicking `Font site`, but you can not access back office, as known as admin panel. 
+
 * Don't panic. It is easy to fix. Stop the php server by clicking `Ctrl+C`. and then start the server again. Open the folder with prestashop, you will find something interesting. The original folder `admin` under `prestashop` has been renamed to `adminXXXX`. X is a number. It is Prestashop special trick to secure your admin folder. Now you need to use this new name as path to acces back office. Your new back office link will be `http://localhost:1234/adminXXXX`. 
+
 * Open the new link in browser and type in your admin id and password. Now you can start managing your Prestashop site. Enjoy it.   
 
 ### Forgot admin's password
 
 * Forgot admin's password or somehow you have to reset password and you cannot get admin's password from previous adminstrator. For such case, there is a simple way to update admin's password from database. 
+
 * Tailor the SQL below. Then you should be able to use new password to login. 
 
 ```sql
