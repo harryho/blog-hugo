@@ -13,11 +13,43 @@ tags = ["javascript"]
 
 ## Structure of Reetek Vue2Admin
 
+``` ini
+path\to\vue2admin
++---build              <-// webpack files
++---config             <-// configuration of dev or prod environment
++---screenshots
++---src                <-// vue components 
+|   +---components
+|   |   +---charts
+|   |   +---dashboard
+|   |   +---forms
+|   |   +---mailbox
+|   |   +---misc
+|   |   +---pages
+|   |   +---tables
+|   |   +---ui
+|   |   \---widget
+|   \---filters
++---static              <-// css, dump data, fonts, image files and plugins
+|   +---css
+|   +---data
+|   +---fonts
+|   +---img
+|   |   +---credit
+|   |   \---stock
+|   \---js
+|       \---plugins         <-// plugins for admin dashboard 
+|           +---AdminLTE
+|           +---bootstrap
+|           +---bootstrap-slider
+|           +---bootstrap-wysihtml5
+|           +---chartjs
+|           +---ckeditor
+|           + ...
+\---test
+    +---e2e
+    \---unit
 ```
-
-
-```
-
 
 
 ### Screenshots
@@ -27,5 +59,3 @@ tags = ["javascript"]
 > ![Screenshot2](/img/vue2admin_screenshot2_sm.png)
 
 ## Browse [Repository](https://github.com/harryho/vue2admin.git)
-
-
