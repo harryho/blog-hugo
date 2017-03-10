@@ -3,7 +3,7 @@ tags = ["python", "django"]
 categories = ["dev"]
 date = "2015-09-28T09:59:31+11:00"
 title = "Python Web framework"
-draft = true
+draft = false
 +++
 
 ## Getting started

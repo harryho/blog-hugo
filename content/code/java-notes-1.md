@@ -2,14 +2,14 @@
 tags = ["java"]
 categories = ["code"]
 date = "2011-12-10T14:59:31+11:00"
-title = "Better practice in Java, Part-1"
+title = "Java Notes, Part-1"
 draft = false
 +++
 
 
 ### Prelude
 
-> *Java is one of my favorite OOP language. I want to keep the Java good practice and pitfall as a series. Pitfall will cover most misunderstanding of Java and how to avoid them. As we know, there is no medicine as mighty purpose. So some good practice will be obsolete or replaced by some advanced solution, because new problem push the IT world keep looking for better solution to solve such problems. In my opinion, it is most challenged but excited part of IT.*  
+> *Java notes is the place, which I store the good practice and solution from my projects and research.*  
 
 ### Refactor constant variables with Enum
 
