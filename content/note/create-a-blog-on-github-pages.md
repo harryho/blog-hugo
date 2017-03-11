@@ -1,6 +1,6 @@
 +++
 tags =  ["hugo","git"]
-categories = ["blog"]
+categories = ["note"]
 date = "2017-02-15T14:59:31+11:00"
 title = "Create a blog site on GitHub Pages"
 

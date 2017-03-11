@@ -1,5 +1,5 @@
 +++
-categories = ["blog"]
+categories = ["note"]
 date = "2015-04-10T14:59:31+11:00"
 title = "Temp content"
 draft = true

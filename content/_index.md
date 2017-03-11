@@ -4,9 +4,11 @@ title = "_index"
 
 +++
 
->*This article had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I was tired to manage the WordPress. I am not passionate blogger. Blog to me is kind of knowledge base, which commes from work, research and project. To manage a blog site is not a piece of work, but putting these tricks and tips online is quite helpful for myself to solve similar problems, which have been solved and investiaged before. After I try hugo, it make me feel fun to blog again. So I created a blog site on Github Pages, and I posted a blog - [Create a blog on GitHub Pages](/blog/create-a-blog-on-github-pages) to show you how I did it on my Windows machine. If you have interests in creating your blog, please take a look the instruction and give a go on your own.* 
+>*It is not a blog site, but my tech note instead.*
 
->*I leave the `Hello World` article on home page to make my blog not too boring. By the way, my blog is not wiki, so most posts here are just technical stuff, tricks, solutions. All those things are practical stuff instead of stories, so I want the home page a bit fun at least.*
+>*The home page content had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I am not passionate blogger. Blog to me is kind of note for knowledge base, which commes from work, research and project. To manage a blog site is not a piece of cake, but putting these tricks and tips online is quite helpful for myself to solve similar problems, which have been solved and investiaged before. After I try hugo, it make me feel fun to continue writing notes again. So I created a blog(note) site on Github Pages, and I posted a blog(note) - [Create a blog on GitHub Pages](/blog/create-a-blog-on-github-pages) to show you how I did it on Windows machine. If you have interests in creating your blog site, please take a look the instruction and give a go on your own.* 
+
+>*I leave the `Hello World` article on home page to make my site not too boring. By the way, my note is not wiki, so most posts here are just technical stuff, tricks, solutions. All those things are practical stuff instead of stories, so I want the home page a bit fun at least.*
 
 ```bash
 Dutch : "Hello wereld",

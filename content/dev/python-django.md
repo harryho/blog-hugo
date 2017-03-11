@@ -8,11 +8,12 @@ draft = false
 
 ## Getting started
 
-### Install Python & pip
+### Install Python & pip & virtualenv
+* Windows: Please find in from [Home Page](/)
+* Ubuntu: Please find it from [Ubuntu setup](ubuntu-server-14)
+* Python 3.4 (released March 2014) and Python 2.7.9 (released December 2014) ship with Pip.
+* You can simply use pip or pip3 install any package you need.
 
-### Install virtualenv
-
-### Setup virtualenv
 
 ### Install Django
 
@@ -40,6 +41,7 @@ pip install django==1.x.x
 * Navigate to workspace folder
 * Create new django project
 * Start the app
+
 ```bash
 SET PATH=c:\apps\python3\virtualenvs\django18\Script;%PATH%
 which django-admin

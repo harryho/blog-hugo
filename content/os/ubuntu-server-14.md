@@ -206,6 +206,9 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 ```bash
 sudo apt-get python pip 
 sudo apt-get install python3 pip3
+### Install virtualenv 
+sudo pip install virtualenv
+sudo pip3 install virtualenv
 ```
 
 

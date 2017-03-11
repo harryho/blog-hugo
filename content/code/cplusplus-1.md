@@ -8,7 +8,7 @@ draft = true
 
 ## Prelude 
 
-> *C++ notes is the place, which I store the good practice and solution from my projects and research.*
+> *C++ notes is the place, which I keep the good practice and solution from my projects and research.*
 
 ## Assumption
 
