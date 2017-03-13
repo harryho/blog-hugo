@@ -10,19 +10,83 @@ draft = false
 > *C# notes is the place, which I keep the good practice and solution from my projects and research.*  
 
 
-## Generic predicate and Expression
+## Create simple .net project without Visual Studio
+
+### Assumption 
+
+* DotNet Frameowork path `c:\Windows\Microsfot.Net\Frameowork\v4.0.30319`
+
+### Simple C# project
+
+#### Create a proejct named `c#project` 
+
+```bash
+md c#project
+cd c#project 
+md bin src
+echo.>c#project.proj
+echo.>src\helloworld.cs
+```
+
+#### Open Project configuration `c#project.proj` with notepad
+
+```xml
+<Project DefaultTargets = "Compile"
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+    <!-- Set the application name as a property -->
+    <PropertyGroup>
+        <appname>c#app</appname>
+    </PropertyGroup>
+
+    <!-- Specify the inputs by type and file name -->
+    <ItemGroup>
+        <CSFile Include = "src\helloworld.cs"/>
+    </ItemGroup>
+
+    <Target Name = "Compile">
+        <!-- Run the Visual C# compilation using input files of type CSFile -->
+        <CSC
+            Sources = "@(CSFile)"
+            OutputAssembly = "bin\$(appname).exe">
+            <!-- Set the OutputAssembly attribute of the CSC task
+            to the name of the executable file that is created -->
+            <Output
+                TaskParameter = "OutputAssembly"
+                ItemName = "EXEFile" />
+        </CSC>
+        <!-- Log the file name of the output file -->
+        <Message Text="The output file is @(EXEFile)"/>
+    </Target>
+</Project>
+
+```
+
+### Copy the `HelloWorld.cs` from [Home Page](/#c)
+
+### Compile with MSBuild & Run 
+
+```bash
+c:\Windows\Microsfot.Net\Frameowork\v4.0.30319\MSBuild
+bin\c#app.exe
+```
+
+
+
+
+## Generic Predicate and Expression for query
 
 ### Assumption
 
-> You have experience of developing .net application, which includes entity framework or ADO.Net
+> *You have experience of developing .net application, which includes entity framework.*
 
-> You have experience of using SQL to query database 
+> *You have experience of using SQL to query database*
 
 ### Problem
 
-Database query is one of most common and important function in almost any .net application. Once ADO.Net was the most critical component which execute all database oprations, but after .net 3.5, its top one position has been taken by entity framework, which provides convenient ORM feature. Now entity framework is core component in all applications, which need to communicate with database. 
+Now entity framework is core component in all .net applications, which need to communicate with database. 
 
-Business service get a lot of benefits form entity framework's ORM feature, and we can create a repository layer on the top of ORM to reduce some simple but tedious database operation, such as, delete, insert, query all data. However, when we need to do some complicated query to support business service, we still need to take so much effort to achieve the query result, because entity framework use LINQ as query language, comparing with SQL, native database language, it is a bit more complicated and cumbersome. Luckily, entity framework provide another generic feature to help us DRY. Predicate and expression can help us reduce many reduntant queries. 
+Business service get a lot of benefits form entity framework's ORM feature, and we can create a repository layer on the top of ORM to reduce some simple but tedious database operation, such as, delete, insert, query all data. However, when we need to do some complicated query to support business service, we still need to take so much effort to achieve the query result, because entity framework use LINQ as query language, comparing with SQL, native database language, it is a bit more complicated and cumbersome. Luckily, entity framework provide another generic feature to help us DRY. Predicate and expression can help us create generic query and reduce many reduntant code. 
 
 
 ### Solution
@@ -43,7 +107,7 @@ SELECT * FROM TABLE_A
 
 The next step we can look into the Expression, actually the FIELD_1 is the property of entity object, and VALUE_1 is the filter value entered by client. How to use the filter to narrow down the query result is part of business logic, which is handled by developer. 
 
-``` ini 
+```ini 
 <FIELD_1>           ==> Entity property
 [=|<|>|>=|<=|LIKE]  ==> Operator
 <VALUE_1>           ==> Filter value
