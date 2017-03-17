@@ -2,7 +2,7 @@
 categories = ["project"]
 date = "2016-02-09T16:56:21+11:00"
 title = "Zendframework 2 MVC Starter"
-tags = ["zendframework","php"]
+tags = ["php"]
 
 +++
 

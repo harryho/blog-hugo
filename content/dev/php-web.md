@@ -1,5 +1,5 @@
 +++
-tags =  ["php", "laravel"]
+tags =  ["php"]
 categories = ["dev"]
 date = "2016-08-11T11:59:31+11:00"
 title = "PHP web framework"
@@ -219,7 +219,7 @@ cd /path/to/prestashop_workspace
 php -S 0.0.0.0:1234 -t prestashop
 ```
 
-* Open the link `http://localhost:1234` with browser
+* Open the link `http://localhost:1234/install/index.php` with browser, then you can start installation process.
 
 * Choose language and click `Next`, and then select the checkbox "I agree bah lah bah lah .... " and click `Next`
 
@@ -248,7 +248,7 @@ php -S 0.0.0.0:1234 -t prestashop
 
 * After the store setup, you can access the website by clicking `Font site`, but you can not access back office, as known as admin panel. 
 
-* Don't panic. It is easy to fix. Stop the php server by clicking `Ctrl+C`. and then start the server again. Open the folder with prestashop, you will find something interesting. The original folder `admin` under `prestashop` has been renamed to `adminXXXX`. X is a number. It is Prestashop special trick to secure your admin folder. Now you need to use this new name as path to acces back office. Your new back office link will be `http://localhost:1234/adminXXXX`. 
+* Don't panic. It is easy to fix. Stop the php server by clicking `Ctrl+C`, and delete the folder `install` under the root, and then start the server again. Open the folder with prestashop, you will find something interesting. The original folder `admin` under `prestashop` has been renamed to `adminXXXX`. X is a number. It is Prestashop special trick to secure your admin folder. Now you need to use this new name as path to acces back office. Your new back office link will be `http://localhost:1234/adminXXXX`. 
 
 * Open the new link in browser and type in your admin id and password. Now you can start managing your Prestashop site. Enjoy it.   
 
@@ -263,4 +263,38 @@ UPDATE ps_employee SET passwd = MD5('<_COOKIE_KEY_>password')
 WHERE ps_employee.id_employee = <ID_EMPLOYEE>;
 ```
 
+### Troubleshooting
+
+#### InnoDB error
+
+* Error : InnoDB is not supported by your MySQL server 
+
+> You got error because Prestashop 1.5 is not working properly with MySQL 5.4 and later. 
+
+* Update files `DbPDO.php` , `MySQL.php` and `DbMySQLi.php` as follow.
+
+```php
+    // $sql = 'SHOW VARIABLES WHERE Variable_name = \'have_innodb\'';
+    $sql = "SELECT SUPPORT FROM INFORMATION_SCHEMA.ENGINES WHERE ENGINE LIKE 'INNO%'";
+
+    ...
+    
+    // if (!$row || strtolower($row['Value']) != 'yes')
+    if (!$row || strtolower($row['Value']) === 'no') 
+``` 
+
+* Restart the server and the proble will be fixed.
+
+
+#### CORS 
+
+* Enable module header in `httpd.conf`
+
+* Add header settings
+
+```apache
+Header always set Access-Control-Max-Age "1000"
+Header always set Access-Control-Allow-Headers "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+```
 

@@ -1,6 +1,6 @@
 +++
 tags =  ["agile"]
-categories = ["note"]
+categories = ["info"]
 date = "2017-01-11T11:59:31+11:00"
 title = "JIRA Notes"
 draft = false

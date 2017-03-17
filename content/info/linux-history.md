@@ -1,6 +1,6 @@
 +++
 tags =  ["linux"]
-categories = ["note"]
+categories = ["info"]
 date = "2013-01-10T14:59:31+11:00"
 title = "Brief history of Linux"
 draft = false

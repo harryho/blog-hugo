@@ -71,7 +71,7 @@ draft = false
 *  The project must have main method the entry point
 
 ```cs
-namespace Scheduler
+namespace MyScheduler
 {
     using System.ServiceProcess;
 
@@ -98,7 +98,7 @@ namespace Scheduler
 
 ```cs
 
-namespace Scheduler
+namespace MyScheduler
 {
     using System;
     using System.IO;
@@ -184,7 +184,7 @@ namespace Scheduler
 * interface ITask has only one method 
 
 ```cs
-namespace Scheduler
+namespace MyScheduler
 {
     public interface ITask
     {
@@ -196,7 +196,7 @@ namespace Scheduler
 * BaseTask 
 
 ```cs
-namespace Scheduler
+namespace MyScheduler
 {
     using System;
 
@@ -235,7 +235,7 @@ namespace Scheduler
 **Task1**
 
 ```cs
-namespace Scheduler
+namespace MyScheduler
 {
     using System;
     using System.Linq;
@@ -256,7 +256,7 @@ namespace Scheduler
 **Task2**
 
 ```cs
-namespace Scheduler
+namespace MyScheduler
 {
     using System;
     using System.Linq;
@@ -289,7 +289,7 @@ namespace Scheduler
 * It inherits from System.Configuration.Install.Installer. This is the base class for all custom installers in the .NET Framework. Installers are components that help install applications on a computer.
 
 ```cs
-namespace Scheduler
+namespace MyScheduler
 {
     [RunInstaller(true)]
     public partial class ProjectInstaller : System.Configuration.Install.Installer
@@ -309,11 +309,11 @@ namespace Scheduler
 ### Install Window Service 
 
 ```bash
-C:\Windows\Microsoft.Net\Framework\v4.0.30319\InstallUtil.exe /i <app_path>\NBE.Scheduler.exe 
+C:\Windows\Microsoft.Net\Framework\v4.0.30319\InstallUtil.exe /i <app_path>\MyScheduler.exe 
 ```
 
 ### Uninstall Window Service 
 
 ```bash
-C:\Windows\Microsoft.Net\Framework\v4.0.30319\InstallUtil.exe /u <app_path>\NBE.Scheduler.exe 
+C:\Windows\Microsoft.Net\Framework\v4.0.30319\InstallUtil.exe /u <app_path>\MyScheduler.exe 
 ```

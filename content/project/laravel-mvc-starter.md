@@ -2,7 +2,7 @@
 categories = ["project"]
 date = "2016-12-07T16:56:21+11:00"
 title = "Laravel MVC Starter"
-tags = ["laravel","php"]
+tags = ["php"]
 
 +++
 
