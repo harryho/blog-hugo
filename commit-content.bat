@@ -4,6 +4,7 @@ echo  commit blog content to github
 
 REM Add changes under folder content to git.
 git add content/*
+git add static/img/*
 
 REM Commit changes.
 set msg="commit blog content %date%"

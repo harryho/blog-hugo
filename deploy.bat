@@ -9,6 +9,8 @@ REM Go To Public folder
 cd public
 
 REM Add changes to git.
+git config user.name "Harry Ho"
+git config user.email "harry.ho_long@yahoo.com"
 git add -A
 
 REM Commit changes.
