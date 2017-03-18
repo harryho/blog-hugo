@@ -24,10 +24,7 @@ draft = true
 ## Lambda Collection Map Demo
 
 ```java
-import java.util.Locale;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
+
 
 public class LambdaCollectionMapDemo {
 
