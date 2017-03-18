@@ -136,6 +136,10 @@ Before you start typing any cmd, I want to share a common mistake for most begin
 ### copy 
 * Use `touch test.txt & copy test.txt C:\User\<yourname>\` to create a test.txt file and copy the test.txt to C:\User\<yourname>\    
 
+### xcopy 
+* Use `touch test.txt & copy test.txt C:\User\<yourname>\` to create a test.txt file and copy the test.txt to C:\User\<yourname>\    
+
+
 ### move
 * Type `move a b` to move folder `a` into folder `b`.
 

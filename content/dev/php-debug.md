@@ -138,3 +138,64 @@ DocumentRoot "c:/php_workspace/phpsite"
 * Add a new path mapping. Enter `/` as `Path on Server`, Put `c:\php_workspace\phpsite` as `Path in File system`, then leave other setting as default.
 * Leave other default setting and click button `OK`
 * Now you can debug php site with Netbeans
+
+
+## Use Nginx to repalce Apache
+
+### Download `RunHiddenConsole` 
+* Download [RunHiddenConsole](http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip)
+* Extract the file `RunHiddenConsole.exe` to folder `c:\bin\`
+
+### Install Nginx 32 bit version. 
+* We assume the ngnix's path is `c:\nginx\`
+
+### Confirm `php-cgi.exe` is within the PHP folder `c:\php`.
+
+### Setup Nginx FastCGI with PHP
+
+* Back the original `nginx.conf` 
+* Create a script to launch `nginx` and `php` in sequence.
+
+```dos
+@ECHO OFF
+ECHO Start PHP FastCGI...
+SET PATH=c:\php;%PATH%
+c:\bin\RunHiddenConsole.exe c:\php\php-cgi.exe -b 127.0.0.1:9000
+ECHO Start Nginx ...
+c:\bin\RunHiddenConsole.exe c:\nginx\nginx.exe 
+```
+
+* Open the `nginx.conf` via notepad
+* Replace the `server` block with following setting
+
+```bash
+
+server {
+        listen       1234;
+        server_name  localhost;
+        root          c:/php_workspace/phpsite;
+        #charset koi8-r;
+
+        # Static
+        location / {
+            index  index.php;
+        #    try_files $uri $uri/ @missing;
+        }
+        location ~ /\.ht {
+            deny  all;
+        }
+        location ~ /\.rewrite {
+            deny  all;
+        }
+        
+        # PHP FastCGI
+        location ~ \.php$ {
+            root           c:/php_workspace/phpsite;
+            # root  html; 
+            fastcgi_pass   127.0.0.1:41234;
+           fastcgi_index  index.php;
+           fastcgi_param  SCRIPT_FILENAME  c:/php_workspace/phpsite/$fastcgi_script_name;
+           include        fastcgi_params;
+        }
+}
+``` 
