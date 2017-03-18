@@ -440,7 +440,7 @@ Producer and Consumer by separating Identification of work with Execution of Wor
 * It is everywhere in real life and depict coordination and collaboration. Like one person is preparing food (Producer) while other one is serving food (Consumer), both will use shared table for putting food plates and taking food plates. Producer which is the person preparing food will wait if table is full and Consumer (Person who is serving food) will wait if table is empty. table is a shared object here. On Java library Executor framework itself implement Producer Consumer design pattern be separating responsibility of addition and execution of task.
 
 ```java
-mport java.util.concurrent.BlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -541,6 +541,8 @@ class Consumer implements Runnable{
 * Demo of thread pool
 
 ```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ThreadPoolDemo {
 
@@ -568,11 +570,14 @@ final class Task implements Runnable{
 
 // Output:
 // Task ID : 0 performed by pool-1-thread-1
-// Task ID : 3 performed by pool-1-thread-4
-// Task ID : 2 performed by pool-1-thread-3
-// Task ID : 1 performed by pool-1-thread-2
-// Task ID : 5 performed by pool-1-thread-6
+// Task ID : 7 performed by pool-1-thread-8
+// Task ID : 8 performed by pool-1-thread-9
+// Task ID : 6 performed by pool-1-thread-7
 // Task ID : 4 performed by pool-1-thread-5
+// Task ID : 5 performed by pool-1-thread-6
+// Task ID : 3 performed by pool-1-thread-4
+// Task ID : 1 performed by pool-1-thread-2
+// ...
 ```
 
 ### Submit(Runnable)
@@ -594,10 +599,17 @@ final class Task implements Runnable{
 ### Demo of submit, InvokeAny
 
 ```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.ExecutionException;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SubmitInvokeDemo {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws InterruptedException, ExecutionException {
 
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -652,6 +664,12 @@ public class SubmitInvokeDemo {
 `ExecutorService` where you would have to block the current thread while waiting for a result. If we would only provide as many threads to the pool as we have CPUs available, the program would run out of resources and hang indefinitely.
 
 ```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.ExecutionException;
+import java.util.Random;
 
 public class FindMinTask implements Callable<Integer> {
     private int[] numbers;
@@ -705,6 +723,13 @@ public class FindMinTask implements Callable<Integer> {
 * Demo of JoinForkPool
 
 ```java
+import java.awt.*;
+import java.awt.image.*;
+import java.io.*;
+import java.util.concurrent.ForkJoinPool;
+import javax.imageio.*;
+import java.util.concurrent.RecursiveAction;
+
 public class GrayscaleImageAction extends RecursiveAction {
     private static final long serialVersionUID = 1L;
     private int row;

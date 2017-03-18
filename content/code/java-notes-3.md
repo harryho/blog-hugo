@@ -4,7 +4,7 @@ categories = ["code"]
 type   = "java"
 date = "2011-12-10T14:59:31+11:00"
 title = "Java Notes, Part-3"
-draft = true
+draft = false
 +++
 
 # Date-Time API
@@ -277,6 +277,9 @@ soon as it occurs.
 |Predicate<T>| T |boolean | test| A Boolean-valued function |and, or, negate, isEqual|
 |BiPredicate<T,T>| T,T |boolean | test| A Boolean-valued function with tow arguments|and, or, negate|
 
+
+
+
 ## Lambda Demo
 
 ```java
@@ -312,6 +315,13 @@ public class LambdaDemo {
         // Runnable
         repeat(5, () -> System.out.println("Hello")) ;
 
+        // UnaryOperator
+        UnaryOperator<String> upperCase = str -> str.toUpperCase();
+        // BiUnaryOperator
+        BinaryOperator<String> concat = (left,right) -> left + right;
+
+        System.out.println( " UnaryOperator upperCase "+upperCase.apply( "hello") );
+        System.out.println( "  BinaryOperator<String> concat "+ concat.apply("hello","world"));
         
 
     }
@@ -336,9 +346,5 @@ interface Calculator {
 
 
 
-# Stream API
-
-
-# JavaFX
 
 

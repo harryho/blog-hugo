@@ -107,4 +107,5 @@ WScript.Quit(rtn);
 
 ```
 
-#### 
+#### The sample above is a bit complicated, and it is combination of Batch script and JScript.
+#### The batch script part checks and validate the input arguments, if there is no issue, then it will trigger the JScript to complete the work.   

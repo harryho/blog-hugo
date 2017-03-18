@@ -29,7 +29,7 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
     
 **get sub-commands** -- type `net /? `
 
-```bash
+```dos
     [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |
      HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START | 
      STATISTICS | STOP | TIME | USE | USER | VIEW ]
@@ -65,8 +65,8 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 
 ### runas 
 
-```bash
-REM start command prompt as administrator
+```dos
+start command prompt as administrator
 runas /user:yourpc\administrator "cmd"
 
 REM ##BE CAREFUL When you try the command below ##  
@@ -84,7 +84,7 @@ runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pau
 
 * Basic usage 	
 
-```bash
+```dos
 REM query all service on the PC -- <yourpcname>
 sc \\<yourpcname> query
 
@@ -103,7 +103,7 @@ sc query state= all | find "SERVICE_NAME"
     * If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled.
     * Extra space within option is necessary. e.g. `state= all`
 
-```bash
+```dos
 REM query all services which are inactive and type are driver and kernel
 sc query state= inactive type= driver type= kernel
 
@@ -119,7 +119,7 @@ for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
 
 **sc queryex**
 
-```bash
+```dos
 REM get all services name and pid
 for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
     for /f "tokens=3" %t in ('sc queryex %s ^| find "PID" ') 
@@ -135,7 +135,7 @@ for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
 
 **sc qc**
 
-```bash
+```dos
 REM get all services name and path
 for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(     
     for /f "tokens=3 delims==:" %t in ('sc qc %s ^| find "BINARY_PATH_NAME" ') 
@@ -171,7 +171,7 @@ sc stop  <servicename>
 * FilterName: Status, Imagename,
 * Find process by pid
 
-```bash
+```dos
 REM get the mysqld process info
 tasklist /v /fo list /fi "imagename eq mysqld.exe"
 

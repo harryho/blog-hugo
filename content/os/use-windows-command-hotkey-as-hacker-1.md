@@ -137,8 +137,8 @@ Before you start typing any cmd, I want to share a common mistake for most begin
 * Use `touch test.txt & copy test.txt C:\User\<yourname>\` to create a test.txt file and copy the test.txt to C:\User\<yourname>\    
 
 ### xcopy 
-* Use `touch test.txt & copy test.txt C:\User\<yourname>\` to create a test.txt file and copy the test.txt to C:\User\<yourname>\    
-
+* Use `md a\b\c & touch a\test.txt & touch a\b\test.txt & xcopy /s /e /q a C:\User\<yourname>\a\` to folder a to `C:\User\<yourname>\`    
+* Use `tree /f /a C:\User\<yourname>\a` to verify the result
 
 ### move
 * Type `move a b` to move folder `a` into folder `b`.

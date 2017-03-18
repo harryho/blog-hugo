@@ -1,8 +1,8 @@
 +++
-categories = ["code"]
+
 date = "2016-04-10T14:59:31+11:00"
 title = "Algorithm"
-draft = true
+draft = false
 +++
 
 
@@ -14,14 +14,14 @@ Sum of zero elements is assumed to be equal to 0. This can happen if P = 0 or if
 
 For example, consider the following array A consisting of N = 8 elements:
 
-  A[0] = -1
-  A[1] =  3
-  A[2] = -4
-  A[3] =  5
-  A[4] =  1
-  A[5] = -6
-  A[6] =  2
-  A[7] =  1
+>  A[0] = -1    
+>  A[1] =  3     
+>  A[2] = -4  
+>  A[3] =  5  
+>  A[4] =  1     
+>  A[5] = -6  
+>  A[6] =  2    
+>  A[7] =  1
 
 P = 1 is an equilibrium index of this array, because:
 
@@ -196,9 +196,13 @@ A non-empty zero-indexed array A consisting of N integers is given. The array co
 
 For example, in array A such that:
 
->  A[0] = 9    A[1] = 3   A[2] = 9  A[3] = 3    
->  
->  A[4] = 9    A[5] = 7   A[6] = 9
+>  A[0] = 9    
+>  A[1] = 3   
+>  A[2] = 9  
+>  A[3] = 3    
+>  A[4] = 9    
+>  A[5] = 7   
+>  A[6] = 9
 
 the elements at indexes 0 and 2 have value 9,
 the elements at indexes 1 and 3 have value 3,
@@ -211,9 +215,13 @@ that, given an array A consisting of N integers fulfilling the above conditions,
 
 For example, given array A such that:
 
-> A[0] = 9  A[1] = 3  A[2] = 9  A[3] = 3
-  
-> A[4] = 9  A[5] = 7  A[6] = 9
+> A[0] = 9  
+> A[1] = 3  
+> A[2] = 9  
+> A[3] = 3   
+> A[4] = 9  
+> A[5] = 7  
+> A[6] = 9
 
 the function should return 7, as explained in the example above.
 
@@ -340,9 +348,10 @@ that, given a zero-indexed array A, returns the value of the missing element.
 
 For example, given array A such that:
 
->  A[0] = 2   A[1] = 3
-
->  A[2] = 1  A[3] = 5
+>  A[0] = 2   
+>  A[1] = 3  
+>  A[2] = 1  
+>  A[3] = 5
 
 the function should return 4, as it is the missing element.
 
@@ -387,11 +396,14 @@ The goal is to find the earliest time when the frog can jump to the other side o
 
 For example, you are given integer X = 5 and array A such that:
 
->  A[0] = 1  A[1] = 3  A[2] = 1
-  
->  A[3] = 4  A[4] = 2  A[5] = 3
-  
->  A[6] = 5  A[7] = 4
+>  A[0] = 1  
+>  A[1] = 3  
+>  A[2] = 1    
+>  A[3] = 4  
+>  A[4] = 2  
+>  A[5] = 3  
+>  A[6] = 5  
+>  A[7] = 4
 
 
 In second 6, a leaf falls into position 5. This is the earliest time when leaves appear in every position across the river.
@@ -405,11 +417,14 @@ If the frog is never able to jump to the other side of the river, the function s
 
 For example, given X = 5 and array A such that:
 
->  A[0] = 1  A[1] = 3  A[2] = 1
-
->  A[3] = 4  A[4] = 2  A[5] = 3
-
->  A[6] = 5  A[7] = 4
+>  A[0] = 1  
+>  A[1] = 3  
+>  A[2] = 1   
+>  A[3] = 4  
+>  A[4] = 2  
+>  A[5] = 3  
+>  A[6] = 5  
+>  A[7] = 4
 
 the function should return 6, as explained above.
 

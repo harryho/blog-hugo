@@ -140,7 +140,7 @@ DocumentRoot "c:/php_workspace/phpsite"
 * Now you can debug php site with Netbeans
 
 
-## Use Nginx to repalce Apache
+## Use Nginx instead of Apache
 
 ### Download `RunHiddenConsole` 
 * Download [RunHiddenConsole](http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip)
@@ -168,8 +168,7 @@ c:\bin\RunHiddenConsole.exe c:\nginx\nginx.exe
 * Open the `nginx.conf` via notepad
 * Replace the `server` block with following setting
 
-```bash
-
+```nginx
 server {
         listen       1234;
         server_name  localhost;
