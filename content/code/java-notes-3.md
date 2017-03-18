@@ -35,19 +35,22 @@ Through the java.time packages, Java 8 provides a comprehensive Date-Time API to
 
 ### Period 
 
-A period is an amount of time defined in terms of calendar fields years, months, and days. A duration is also an
-amount of time measured in terms of seconds and nanoseconds. Negative periods are supported.
-What is the difference between a period and a duration? A duration represents an exact number of nanoseconds,
-whereas a period represents an inexact amount of time. A period is for humans what a duration is for machines.
+A period is an amount of time defined in terms of calendar fields years, months, and days. A duration is also an amount of time measured in terms of seconds and nanoseconds. Negative periods are supported. What is the difference between a period and a duration? A duration represents an exact number of nanoseconds, whereas a period represents an inexact amount of time. A period is for humans what a duration is for machines.
 
 ### Partial 
 Partials
-A partial is a date, time, or datetime that does not fully specify an instant on a timeline, but still makes sense to
-humans. With some more information, a partial may match multiple instants on the timeline.
+A partial is a date, time, or datetime that does not fully specify an instant on a timeline, but still makes sense to humans. With some more information, a partial may match multiple instants on the timeline.
 
 ### Adjusting Dates
 
+Sometimes you want to adjust a date and time to have a particular characteristic, for example, the first Monday of the month, the next Tuesday, etc. You can perform adjustments to a date and time using an instance of the `TemporalAdjuster` interface. The interface has one method, adjustInto(), that takes a Temporal and returns a `Temporal`.
 
+### Formatting
+
+The most important point to keep in mind is that formatting and parsing are
+always performed by an object of the DateTimeFormatter class. 
+
+## DateTimeApiDemo
 
 ```java
 import java.time.Duration;
@@ -271,13 +274,23 @@ soon as it occurs.
 |Consumer<T>|T|void|accept|Consumes a  value of type T| chain  |
 |BiConsumer<T,U>|T,U|void|accept|Consumes a  value of type T and U| chain  |
 |Function<T, R>| T |R | apply| A function with argument oftype T|compose,andThen,identity|
-|BiFunction<T, U, R>| T,U |R | apply| A function with argument oftype T and U|andThen|
+|BiFunction<T, U, R>| T,U |R | apply| A function with argument of type T and U|andThen|
 |UnaryOperator<T>| T |T | apply| A unary operator on type T|compose,andThen,identity|
 |BiUnaryOperator<T,T>| T,T |T | apply| A binary operator on type T|andThen|
 |Predicate<T>| T |boolean | test| A Boolean-valued function |and, or, negate, isEqual|
 |BiPredicate<T,T>| T,T |boolean | test| A Boolean-valued function with tow arguments|and, or, negate|
 
+## Method Reference
 
+| Syntax | Description |
+|--------|-------------|
+| TypeName::staticMethod | A method reference to a static method of a class, an interface, or an enum |
+|objectRef::instanceMethod |A method reference to an instance method of the specified object|
+|ClassName::instanceMethod |A method reference to an instance method of an arbitrary object of the specified class|
+|TypeName.super::instanceMethod |A method reference to an instance method of the supertype of a particular object |
+|ClassName::new | A constructor reference to the constructor of the specified class |
+|ArrayTypeName::new | An array constructor reference to the constructor of the specified
+array type |
 
 
 ## Lambda Demo
@@ -287,6 +300,14 @@ import java.util.Locale;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.function.Supplier;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.BiFunction;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+import java.util.function.BinaryOperator;
+import java.util.function.IntFunction;
 
 public class LambdaDemo {
 
@@ -310,19 +331,81 @@ public class LambdaDemo {
         System.out.println("After sorting ... ");
         list.forEach(System.out::println);
 
-
         // Common Functional Interfaces
         // Runnable
-        repeat(5, () -> System.out.println("Hello")) ;
+        repeat(5, () -> System.out.println("Hello"));
 
-        // UnaryOperator
         UnaryOperator<String> upperCase = str -> str.toUpperCase();
-        // BiUnaryOperator
-        BinaryOperator<String> concat = (left,right) -> left + right;
+        BinaryOperator<String> concat = (left, right) -> left + right;
 
-        System.out.println( " UnaryOperator upperCase "+upperCase.apply( "hello") );
-        System.out.println( "  BinaryOperator<String> concat "+ concat.apply("hello","world"));
-        
+        System.out.println(" UnaryOperator upperCase " + upperCase.apply("hello"));
+        System.out.println("  BinaryOperator<String> concat " + concat.apply("hello", "world"));
+
+        // Function 
+        Function<Long, Long> square = x -> x * x;
+        Function<Long, Long> plusOne = x -> x + 1;
+        // Function with andThen, 
+        Function<Long, Long> squarePlusOne = square.andThen(plusOne);
+        Function<Long, Long> plusOneSquare = square.compose(plusOne);
+        System.out.println(" 5 squarePlusOne is " + squarePlusOne.apply(5L)); // 26 
+        System.out.println(" 5 plusOneSquare is  " + plusOneSquare.apply(5L)); // 36
+
+        // Predicate
+        Predicate<Integer> divisibleByThree = x -> x % 3 == 0;
+        Predicate<Integer> divisibleByFive = x -> x % 5 == 0;
+        Predicate<Integer> isNegative = x -> x < 0;
+        // Predicate with AND , OR , NOT
+        Predicate<Integer> divisibleByThreeAndFive = divisibleByThree.and(divisibleByFive);
+        Predicate<Integer> divisibleByThreeOrFive = divisibleByThree.or(divisibleByFive);
+        Predicate<Integer> isPositive = isNegative.negate();
+
+        System.out.println(" 15 is divisibleByThreeAndFive " + divisibleByThreeAndFive.test(15));
+        System.out.println(" 7 is divisibleByThreeAndFive " + divisibleByThreeOrFive.test(7));
+        System.out.println(" -1 is isPositive " + isPositive.test(7));
+
+        // static method reference 
+        Function<Integer, String> toBinary = x -> Integer.toBinaryString(x);
+        System.out.println(toBinary.apply(19));
+
+        // Using a method reference
+        Function<Integer, String> toBinary2 = Integer::toBinaryString;
+        System.out.println(toBinary2.apply(19));
+
+        // static method lambda expression
+        BiFunction<Integer, Integer, Integer> sum = (a, b) -> Integer.sum(a, b);
+        System.out.println(sum.apply(3, 4));
+
+        // Instance method
+        Supplier<Person> personSup = () -> new Person();
+        Function<String, Person> personFunc = (x) -> new Person(x);
+
+        BiFunction<String, String, Person> personBiFunc = (x, y) -> new Person(x, y);
+        // Consumer<String> personCon = (Person p) -> p.setTitle;
+
+        System.out.println(" personSup " + personSup.get());
+        System.out.println(" personFunc " + personFunc.apply("John Doe"));
+        System.out.println(" personBiFunc " + personBiFunc.apply("John", "Doe"));
+
+        // Recursive Lambda Expressions
+
+        IntFunction<Long> factorialCalc = new IntFunction<Long>() {
+            @Override
+            public Long apply(int n) {
+                if (n < 0) {
+                    String msg = "Number must not be negative.";
+                    throw new IllegalArgumentException(msg);
+                }
+                if (n == 0) {
+                    return 1L;
+                } else {
+                    return n * this.apply(n - 1);
+                }
+            }
+        };
+
+        int n = 5;
+        long fact = factorialCalc.apply(n);
+        System.out.println("Factorial of " + n + " is " + fact);
 
     }
 
@@ -341,6 +424,48 @@ public class LambdaDemo {
 interface Calculator {
     int calculate(int x, int y);
 }
+
+final class Person {
+    String firstName;
+    String lastName;
+    String fullName;
+    String title;
+
+    public Person() {
+        System.out.println(" Person() constructor called ");
+    }
+
+    public Person(String fullName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        System.out.println(" Person( fullName ) constructor called ");
+    }
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        System.out.println(" Person(firstName, lastName ) constructor called ");
+    }
+
+    public void setTitle(String t) {
+        this.title = t;
+        System.out.println(" Person setTitle ( t ) called ");
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getFullName() {
+        return fullName == null ? firstName != null ? firstName : "Unknown" : fullName;
+    }
+
+    @Override
+    public String toString() {
+        return "name = " + getFullName() + ", title = " + title != null ? title : "Unknown";
+    }
+}
+
 
 ```
 
