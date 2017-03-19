@@ -8,6 +8,7 @@ draft = true
 DEV
 
 * setting.inc.php
+
 ```php
 define('_DB_SERVER_', 'localhost');
 define('_DB_NAME_', 'mirenesse_dev');
@@ -39,7 +40,6 @@ define('_PS_MODE_DEV_', true);
 // line 710
 // if ($controller == 'index' ||   $this->request_uri==='/index.php') 
 if ($controller == 'index' || strpos($this->request_uri,'/index.php') == 0 )
-
 
 ```
 
