@@ -27,7 +27,15 @@ draft = true
 * Eclipse CDT
 
 
-## Compile, Debug, Tools
+## Compiler, Debug
+
+### Compiler 
+* GUN GCC for Linux/Unix
+* Clang LLVM for Mac
+* MingW/Cygwin for windows
+* Windows can use VC++ 
+
+### Debug 
 
 
 
