@@ -196,5 +196,9 @@ server {
            fastcgi_param  SCRIPT_FILENAME  c:/php_workspace/phpsite/$fastcgi_script_name;
            include        fastcgi_params;
         }
+
 }
 ``` 
+
+
+cat file | xclip -selection clipboard

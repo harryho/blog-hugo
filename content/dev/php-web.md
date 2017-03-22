@@ -35,7 +35,10 @@ draft = false
 ### Create Zendframework 2 project from scratch
 
 #### * Clone Zendframework skeleton project as new project. 
+
 #### * Install zendframework with composer
+
+
 
 ```bash
     cd  /path/to/newproject
@@ -46,6 +49,7 @@ draft = false
 ```
 
 #### * Start app with php built-in server 
+
 **Linux**
 
 ```bash

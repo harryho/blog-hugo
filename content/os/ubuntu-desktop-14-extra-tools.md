@@ -28,7 +28,9 @@ imagemagick hugin darktable skype avidemux
 ***Remove Games***
 
 ```bash
+
 sudo apt-get remove aisleriot gnome-mahjongg gnomine gnome-sudoku
+
 ```
 
 *** Geany themes***

@@ -1,255 +1,10 @@
 +++
 date = "2016-04-10T14:59:31+11:00"
-title = "Go programm language 1"
+title = "Go programm language"
 draft = false
 +++
 
 
-[Tutorial](#tutorial)
-
-* [Hello, World](#hello-world)
-
-* [Command-Line Arguments](#command-line-arguments)
-
-* [Finding Duplicate Lines](#finding-duplicate-lines) 
-
-* [Animated GIFs](#animated-gifts) 
-
-* [Fetching a URL](#fetching-a-url)
-
-* [Fetching URLs Concurrently](#fetching-urls-concurrently) 
-
-* [A Web Server](#a-web-sever)
-
-* [Loose Ends](#loose-ends)
-
-Program Structure
-
-* [Names](#names)
-
-* [Declarations](#declaratoins) 
-
-* [Variables](#variables)
-
-* [Assignments](#assignments) 
-
-* [Type Declarations](#type-declarations) 
-
-* [Packages and Files](#packages-and-files)
-
-* [Scope](#scopes)
-
-
-Basic Data Types 
-
-* [Integers](#integers) 
-
-* [Floating-Point Numbers](#floating-point-numbers)
-
-* [Complex Numbers](#complex-numbers)
-
-* [Booleans](#booleans) 
-
-* [Strings](#strings)
-
-* [Constants](#constants)
-
-
-Composite Types 
-
-* [Arrays 
-
-* [Slices 
-
-* [Maps 
-
-* [Structs 
-
-* [JSON 
-
-* [Text and HTML Templates 
-
-
-Functions 
-
-* [Function Declarations 
-
-* [Recursion 
-
-* [Multiple Return Values 
-
-* [Errors 
-
-* [Function Values 
-
-* [Anonymous Functions 
-
-* [Variadic Functions 
-
-* [Deferred Function Calls 
-
-* [Panic 
-
-* [Recover 
-
-
-Methods
-
-* [Method Declarations 
-
-* [Methods with a Pointer Receiver 
-
-* [Composing Types by Struct Embedding 
-
-* [Method Values and Expressions 
-
-* [Example: Bit Vector Type 
-
-* [Encapsulation 
-
-
-Interfaces 
-
-* [Interfaces as Contracts 
-
-* [Interface Types 
-
-* [Interface Satisfaction 
-
-* [Parsing Flags with flag.Value 
-
-* [Interface Values 
-
-* [Sorting with sort.Interface 
-
-* [The http.Handler Interface 
-
-* [The error Interface 
-
-* [Example: Expression Evaluator 
-
-* [Type Assertions 
-
-* [Discriminating Errors with Type Assertions 
-
-* [Querying Behaviors with Interface Type Assertions 
-
-* [Type Switches 
-
-* [Example: Token-Based XML Decoding 
-
-* [A Few Words of Advice 
-
-
-Goroutines and Channels 
-
-* [Goroutines 
-
-* [Example: Concurrent Clock Server 
-
-* [Example: Concurrent Echo Server 
-
-* [Channels 
-
-* [Looping in Parallel 
-
-* [Example: Concurrent Web Crawler 
-
-* [Multiplexing with select 
-
-* [Example: Concurrent Directory Traversal 
-
-* [Cancellation 
-
-* [Example: Chat Server 
-
-
-Concurrency with Shared Variables 
-
-* [Race Conditions 
-
-* [Mutual Exclusion: sync.Mutex 
-
-* [Read/Write Mutexes: sync.RWMutex 
-
-* [Memory Synchronization 
-
-* [Lazy Initialization: sync.Once 
-
-* [The Race Detector 
-
-* [Example: Concurrent Non-Blocking Cache 
-
-* [Goroutines and Threads 
-
-
-Packages and the Go Tool 
-
-* [Introduction 
-
-* [Import Paths 
-
-* [The Package Declaration 
-
-* [Import Declarations 
-
-* [Blank Imports 
-
-* [Packages and Naming 
-
-* [The Go Tool 
-
-
-Testing 
-
-* [The go test Tool]
-
-* [Test Functions]
-
-* [Coverage] 
-
-* [Benchmark Functions]
-
-* [Profiling]
-
-* [Example Functions] 
-
-
-Reflection 
-
-* [Why Reflection?] 
-
-* [reflect.Type and reflect.Value] 
-
-* [Display, a Recursive Value Printer] 
-
-* [Example: Encoding S-Expressions] 
-
-* [Setting Variables with reflect.Value] 
-
-* [Example: Decoding S-Expressions] 
-
-* [Accessing Struct Field Tags]
-
-* [Displaying the Methods of a Type] 
-
-* [A Word of Caution]
-
-
-Low-Level Programming 
-
-* [unsafe.Sizeof, Alignof, and Offsetof]
-
-* [unsafe.Pointer] 
-
-* [Example: Deep Equivalence] 
-
-* [Calling C Code with cgo] 
-
-* [Another Word of Caution] 
-
-
-Organization of the Book 
 
 
 We assume that you have programmed in one or more other languages, whether compiled like C, C++, and Java, or interpreted like Python, Ruby, and JavaScript, so we won’t spell out everything as if for a total beginner. Surface syntax will be familiar, as will variables and constants, expressions, control flow, and functions. 
@@ -279,6 +34,7 @@ Methods are covered in Chapter 6 and interfaces in Chapter 7.
 > Chapter 12 discusses reflection, the ability of a program to examine its own representation during execution. Reflection is a powerful tool, though one to be used carefully; this chapter explains finding the right balance by showing how it is used to implement some important Go libraries. 
 
 > Chapter 13 explains the gory details of low-level programming that uses the unsafe package to step around Go’s type system, and when that is appropriate. 
+
 
 Each chapter has a number of exercises that you can use to test your understanding of Go, and to explore extensions and alternatives to the examples from the book. 
 All but the most trivial code examples in the book are available for download from the public Git repository at gopl.io. Each example is identified by its package import path and may be conveniently fetched, built, and installed using the go getcommand. You’ll need to choose a directory to be your Go workspace and set the GOPATH environment variable to point to it. The go tool will create the directory if 
@@ -417,6 +173,7 @@ For most users, the usual way to download and build packages, run their tests, s
 
 
 ## Command-Line Arguments 
+
 Most programs process some input to produce some output; that’s pretty much the definition of computing. But how does a program get input data on which to operate? Some programs generate their own data, but more often, input comes from an external source: a file, a network connection, the output of another program, a user at a keyboard, command-line arguments, or the like. The next few examples will discuss some of these alternatives, starting with command-line arguments. 
 
 
@@ -525,6 +282,7 @@ fmt.Println(s)
 } 
 ```
 
+
 In each iteration of the loop, range produces a pair of values: the index and the value of the element at that index. In this example, we don’t need the index, but the syntax of a range loop requires that if we deal with the element, we must deal with the index too. One idea would be to assign the index to an obviously temporary variable like temp and ignore its value, but Go does not permit unused local variables, so this would result in a compilation error. 
 
 
@@ -569,6 +327,7 @@ benchmark tests for systematic performance evaluation.)
 
 
 ## Finding Duplicate Lines 
+
 Programs for file copying, printing, searching, sorting, counting, and the like all have a similar structure: a loop over the input, some computation on each element, and generation of output on the fly or at the end. We’ll show three variants of a program called dup; it is partly inspired by the Unix uniq command, which looks for adjacent duplicate lines. The structures and packages used are models that can be easily adapted. 
 
 
@@ -634,8 +393,8 @@ The scanner reads from the program’s standard input. Each call to input.Scan()
 
 The function fmt.Printf, like printf in C and other languages, produces formatted output from a list of expressions. Its first argument is a format string that specifies how subsequent arguments should be formatted. The format of each argument is determined by a conversion character, a letter following a percent sign. For example, %d formats an integer operand using decimal notation, and %s expands to the value of a string operand. 
 
-Printf has over a dozen such conversions, which Go programmers call verbs. This table is far from a complete specification but illustrates many of the features that are 
-available:  
+Printf has over a dozen such conversions, which Go programmers call verbs. This table is far from a complete specification but illustrates many of the features that are available:  
+
 View table image  
 %d  decimal integer  
 %x, %o,  %b  integer in hexadecimal, octal, binary  
@@ -659,7 +418,6 @@ import (
 "bufio" 
 "fmt" 
 "os" 
-
 ) 
 func main() {
 counts := make(map[string]int) 
@@ -745,7 +503,6 @@ ReadFile returns a byte slice that must be converted into a string so it can be 
 
 Under the covers, bufio.Scanner, ioutil.ReadFile, and ioutil.WriteFile use the Read and Write methods of *os.File, but it’s rare that most programmers need to access those lower-level routines directly. The higher-level functions like those from bufio and io/ioutil are easier to use. 
 
-
 Exercise 1.4: Modify dup2 to print the names of all files in which each duplicated line occurs. 
 
 
@@ -820,6 +577,7 @@ The type gif.GIF is a struct type (§4.4). A struct is a group of values called 
 
 
 The lissajous function has two nested loops. The outer loop runs for 64 iterations, each producing a single frame of the animation. It creates a new 201×201 image with a palette of two colors, white and black. All pixels are initially set to the palette’s zero value (the zeroth color in the palette), which we set to white. Each pass through the inner loop generates a new image by setting some pixels to black. The result is appended, using the built-in append function (§4.2.1), to a list of frames in anim, along with a specified delay of 80ms. 
+
 Finally the sequence of frames and delays is encoded into GIF format and written to the output stream out. The type of out is io.Writer, which lets us write to a wide range of possible destinations, as we’ll show soon. 
 
 
@@ -836,7 +594,6 @@ $ ./lissajous >out.gif
 
 Exercise 1.5: Change the Lissajous program’s color palette to green on black, for added authenticity. To create the web color #RRGGBB, use color.RGBA{0xRR,0xGG, 0x BB, 0xff} , where each pair of hexadecimal digits represents the intensity of the red, green, or blue component of the pixel. 
 
-
 Exercise 1.6: Modify the Lissajous program to produce images in multiple colors by adding more values to palette and then displaying them by changing the third argument of SetColorIndex in some interesting way. 
 
 
@@ -844,7 +601,6 @@ Exercise 1.6: Modify the Lissajous program to produce images in multiple colors 
 
 
 For many applications, access to information from the Internet is as important as access to the local file system. Go provides a collection of packages, grouped under net, that make it easy to send and receive information through the Internet, make low-level network connections, and set up servers, for which Go’s concurrency features (introduced in Chapter 8) are particularly useful. 
-
 
 To illustrate the minimum necessary to retrieve information over HTTP, here’s a simple program called fetch that fetches the content of each specified URL and prints it as uninterpreted text; it’s inspired by the invaluable utility curl. Obviously one would usually do more with such data, but this shows the basic idea. We will use this program frequently in the book.
 
@@ -901,7 +657,6 @@ bad.gopl.io: no such host
 In either error case, os.Exit(1) causes the process to exit with a status code of 1. 
 
 Exercise 1.7: The function call io.Copy(dst, src) reads from src and writes to dst. Use it instead of ioutil.ReadAll to copy the response body to os.Stdout without requiring a buffer large enough to hold the entire stream. Be sure to check the error result of io.Copy. 
-
 
 Exercise 1.8: Modify fetch to add the prefix http:// to each argument URL if it is missing. You might want to use strings.HasPrefix. 
 
@@ -1074,7 +829,9 @@ func counter(w http.ResponseWriter, r *http.Request) { mu.Lock()fmt.Fprintf(w, "
 
 
 
-The server has two handlers, and the request URL determines which one is called: a request for /count invokes counter and all others invoke handler. A handler pattern that ends with a slash matches any URL that has the pattern as a prefix. Behind the scenes, the server runs the handler for each incoming request in a separate goroutine so that it can serve multiple requests simultaneously. However, if two concurrent requests try to update count at the same time, it might not be incremented consistently; the program would have a serious bug called a race condition (§9.1). To avoid this problem, we must ensure that at most one goroutine accesses the variable at a time, which is the purpose of the mu.Lock() and mu.Unlock() calls that bracket each access of count. We’ll look more closely at concurrency with shared variables in Chapter 9. 
+The server has two handlers, and the request URL determines which one is called: a request for /count invokes counter and all others invoke handler. A handler pattern that ends with a slash matches any URL that has the pattern as a prefix. Behind the scenes, the server runs the handler for each incoming request in a separate goroutine so that it can serve multiple requests simultaneously. However, if two concurrent requests try to update count at the same time, it might not be incremented consistently; the program would have a serious bug called a race condition (§9.1). 
+
+To avoid this problem, we must ensure that at most one goroutine accesses the variable at a time, which is the purpose of the mu.Lock() and mu.Unlock() calls that bracket each access of count. We’ll look more closely at concurrency with shared variables in Chapter 9. 
 
 
 As a richer example, the handler function can report on the headers and form data that it receives, making the server useful for inspecting and debugging requests: 
@@ -1239,6 +996,7 @@ Comments: We have already mentioned documentation comments at the beginning of a
 For comments that span multiple lines or appear within an expression or statement, there is also the `/* ... */` notation familiar from other languages. Such comments are sometimes used at the beginning of a file for a large block of explanatory text to avoid a `//` on every line. Within a comment, `/`/ and `/*` have no special meaning, so comments do not nest. 
 
 2. Program Structure 
+
 In Go, as in any other programming language, one builds large programs from a small set of basic constructs. Variables store values. Simple expressions are combined into larger ones with operations like addition and subtraction. Basic types are collected into aggregates like arrays and structs. Expressions are used in statements whose execution order is determined by control-flow statements like if and for. Statements are grouped into functions for isolation and reuse. Functions are gathered into source files and packages. 
 
 
@@ -1254,6 +1012,7 @@ Go has 25 keywords like if and switch that may be used only where the syntax per
 
 ```go
 break default func interface select case defer go map struct chan else goto package switch const fallthrough if range typecontinue for import return var 
+
 In addition, there are about three dozen predeclared names like int and true for built-in constants, types, and functions: 
 Constants:  true  false  iota  nil  
 Types:  int  int8  int16  int32  int64  
@@ -1280,7 +1039,6 @@ Stylistically, Go programmers use “camel case” when forming names by combini
 
 A declaration names a program entity and specifies some or all of its properties. There are four major kinds of declarations: var, const, type, and func. We’ll talk about variables and types in this chapter, constants in Chapter 3, and functions in Chapter 5. 
 
-
 A Go program is stored in one or more files whose names end in .go. Each file begins with a package declaration that says what package the file is part of. The package declaration is followed by any import declarations, and then a sequence of package-level declarations of types, variables, constants, and functions, in any order. For example, this program declares a constant, a function, and a couple of variables: 
 
 ```go
@@ -1297,8 +1055,6 @@ func main() {
     // boiling point = 212°F or 100°C 
 } 
 ```
-
-
 
 The constant boilingF is a package-level declaration (as is main), whereas the variables f and c are local to the function main. The name of each package-level entity is visible not only throughout the source file that contains its declaration, but throughout all the files of the package. By contrast, local declarations are visible only within the function in which they are declared and perhaps only within a small part of it. 
 
@@ -1328,8 +1084,7 @@ func fToC(f float64) float64 {
 
 ## Variables 
 
-A var declaration creates a variable of a particular type, attaches a name to it, and sets its initial value. Each declaration has the general form 
-var name type = expression 
+A var declaration creates a variable of a particular type, attaches a name to it, and sets its initial value. Each declaration has the general form var name type = expression 
 
 Either the type or the = expression part may be omitted, but not both. If the type is omitted, it is determined by the initializer expression. If the expression is omitted, the initial value is the zero value for the type, which is 0 for numbers, false for booleans, "" for strings, and nil for interfaces and reference types (slice, pointer, map, channel, function). The zero value of an aggregate type like an array or a struct has the zero value of all of its elements or fields. 
 
@@ -1357,6 +1112,7 @@ var f, err = os.Open(name) // os.Open returns a file and an error
 
 
 ### Short Variable Declarations 
+
 Within a function, an alternate form called a short variable declaration may be used to declare and initialize local variables. It takes the form name := expression, and the type of name is determined by the type of expression. Here are three of the many short variable declarations in the lissajous function (§1.4): 
 
 ```go
@@ -1380,6 +1136,7 @@ var p Point
 As with var declarations, multiple variables may be declared and initialized in the same short variable declaration, 
 i, j := 0, 1 
 but declarations with multiple initializer expressions should be used only when they help readability, such as for short and natural groupings like the initialization part of a for loop. 
+
 Keep in mind that := is a declaration, whereas = is an assignment. A multi-variable declaration should not be confused with a tuple assignment (§2.4.1), in which each variable on the left-hand side is assigned the corresponding value from the right-hand side: 
 
 ```go
@@ -1393,6 +1150,7 @@ return err
 f.Close() 
 
 One subtle but important point: a short variable declaration does not necessarily declare all the variables on its left-hand side. If some of them were already declared in the same lexical block (§2.7), then the short variable declaration acts like an assignment to those variables. 
+
 In the code below, the first statement declares both in and err. The second declares out but only assigns a value to the existing err variable. 
 in, err := os.Open(infile) 
 // ... 
@@ -1535,6 +1293,7 @@ A variable created with new is no different from an ordinary local variable whos
 
 ```go
 func newInt() *int { func newInt() *int {return new(int) var dummy int } return &dummy } 
+
 Each call to new returns a distinct variable with a unique address: 
 p := new(int) 
 q := new(int)
@@ -1684,7 +1443,8 @@ medals[2] = "bronze"
 
 
 The elements of maps and channels, though not ordinary variables, are also subject to similar implicit assignments. 
-An assignment, explicit or implicit, is always legal if the left-hand side (the variable) and the right-hand side (the value) have the same type. More generally, the assignment is legal only if the value is assignable to the type of the variable. 
+
+Anassignment, explicit or implicit, is always legal if the left-hand side (the variable) and the right-hand side (the value) have the same type. More generally, the assignment is legal only if the value is assignable to the type of the variable. 
 
 
 The rule for assignability has cases for various types, so we’ll explain the relevant case as we introduce each new type. For the types we’ve discussed so far, the rules are simple: the types must exactly match, and nil may be assigned to any variable of interface or reference type. Constants (§3.6) have more flexible rules for assignability that avoid the need for most explicit conversions. 
@@ -1857,14 +1617,14 @@ Exercise 2.1: Add types, constants, and functions to tempconv for processing tem
 
 ### Imports 
 Within a Go program, every package is identified by a unique string called its import path. These are the strings that appear in an import declaration like "// gopl.io/ch2/tempconv". The language specification doesn’t define where these strings come from or what they mean; it’s up to the tools to interpret them. When using the go tool (Chapter 10), an import path denotes a directory containing one or more Go source files that together make up the package. 
+
 In addition to its import path, each package has a package name, which is the short (and not necessarily unique) name that appears in its package declaration. By convention, a package’s name matches the last segment of its import path, making it easy to predict that the package name of // gopl.io/ch2/tempconv is tempconv. 
 
 To use // gopl.io/ch2/tempconv, we must import it: 
 
 ```go
 // gopl.io/ch2/cf 
-// Cf converts its numeric argument to Celsius and 
-Fahrenheit. 
+// Cf converts its numeric argument to Celsius and Fahrenheit. 
 package main 
 
 import (
@@ -1886,6 +1646,7 @@ f, tempconv.FToC(f), c, tempconv.CToF(c)) }}
 The import declaration binds a short name to the imported package that may be used to refer to its contents throughout the file. The import above lets us refer to names within // gopl.io/ch2/tempconv by using a qualified identifier like tempconv.CToF. By default, the short name is the package name—tempconv in this case—but an import declaration may specify an alternative name to avoid a conflict (§10.3). 
 
 The cf program converts a single numeric command-line argument to its value in both Celsius and Fahrenheit: 
+```
 $ go build gopl.io/ch2/cf 
 $ ./cf 32 
 32°F = 0°C, 32°C = 89.6°F 
@@ -1894,7 +1655,7 @@ $ ./cf 212
 212°F = 100°C, 212°C = 413.6°F 
 $ ./cf -40 
 -40°F = -40°C, -40°C = -40°F 
-
+```
 It is an error to import a package and then not refer to it. This check helps eliminate dependencies that become unnecessary as the code evolves, although it can be a nuisance during debugging, since commenting out a line of code like log.Print("got here!") may remove the sole reference to the package name log, causing the compiler to emit an error. In this situation, you need to comment out or delete the unnecessary import. 
 
 Better still, use the golang.org/x/tools/cmd/goimports tool, which automatically inserts and removes packages from the import declaration as necessary; most editors can be configured to run goimports each time you save a file. Like the gofmt tool, it also pretty-prints Go source files in the canonical format. 
@@ -1904,6 +1665,7 @@ Exercise 2.2: Write a general-purpose unit-conversion program analogous to cf th
 
 
 ### Package Initialization 
+
 Package initialization begins by initializing package-level variables in the order in which they are declared, except that dependencies are resolved first: 
 
 ```go
@@ -1912,12 +1674,12 @@ var b = f() // b initialized second, to 2, by
 calling f 
 var c = 1 // c initialized first, to 1 
 func f() int { return c + 1 } 
+```
+
 
 If the package has multiple .go files, they are initialized in the order in which the files are given to the compiler; the go tool sorts .go files by name before invoking the compiler. 
 
-Each variable declared at package level starts life with the value of its initializer expression, if any, but for some variables, like tables of data, an initializer expression may not be the simplest way to set its initial value. In that case, the init function mechanism may be simpler. Any file may contain any number of functions whose declaration is just 
-func init() { /* ... */ } 
-```
+Each variable declared at package level starts life with the value of its initializer expression, if any, but for some variables, like tables of data, an initializer expression may not be the simplest way to set its initial value. In that case, the init function mechanism may be simpler. Any file may contain any number of functions whose declaration is just `func init() { /* ... */ }`
 
 
 Such init functions can’t be called or referenced, but otherwise they are normal functions. Within each file, init functions are automatically executed when the program starts, in the order in which they are declared. 
@@ -1956,7 +1718,7 @@ pc[byte(x>>(7*8))])
 
 
 Note that the range loop in init uses only the index; the value is unnecessary and thus need not be included. The loop could also have been written as 
-for i, _ := range pc { 
+`for i, _ := range pc { `
 
 We’ll see other uses of init functions in the next section and in Section 10.5. 
 
@@ -1970,11 +1732,16 @@ Exercise 2.5: The expression x&(x-1) clears the rightmost non-zero bit of x. Wri
 ## Scope 
 
 A declaration associates a name with a program entity, such as a function or a variable. The scope of a declaration is the part of the source code where a use of the declared name refers to that declaration. 
+
 Don’t confuse scope with lifetime. The scope of a declaration is a region of the program text; it is a compile-time property. The lifetime of a variable is the range of time during execution when the variable can be referred to by other parts of the program; it is a run-time property. 
 
-A syntactic block is a sequence of statements enclosed in braces like those that surround the body of a function or loop. A name declared inside a syntactic block is not visible outside that block. The block encloses its declarations and determines their scope. We can generalize this notion of blocks to include other groupings of declarations that are not explicitly surrounded by braces in the source code; we’ll call them all lexical blocks. There is a lexical block for the entire source code, called the universe block; for each package; for each file; for each for, if, and switch statement; for each case in a switch or select statement; and, of course, for each explicit syntactic block. 
+A syntactic block is a sequence of statements enclosed in braces like those that surround the body of a function or loop. A name declared inside a syntactic block is not visible outside that block. The block encloses its declarations and determines their scope. We can generalize this notion of blocks to include other groupings of declarations that are not explicitly surrounded by braces in the source code; we’ll call them all lexical blocks. 
 
-A declaration’s lexical block determines its scope, which may be large or small. The declarations of built-in types, functions, and constants like int, len, and true are in the universe block and can be referred to throughout the entire program. Declarations outside any function, that is, at package level, can be referred to from any file in the same package. Imported packages, such as fmt in the tempconv example, are declared at the file level, so they can be referred to from the same file, but not from another file in the same package without another import. Many declarations, like that of the variable c in the tempconv.CToF function, are local, so they can be referred to only from within the same function or perhaps just a part of it. 
+There is a lexical block for the entire source code, called the universe block; for each package; for each file; for each for, if, and switch statement; for each case in a switch or select statement; and, of course, for each explicit syntactic block. 
+
+A declaration’s lexical block determines its scope, which may be large or small. The declarations of built-in types, functions, and constants like int, len, and true are in the universe block and can be referred to throughout the entire program. 
+
+Declarations outside any function, that is, at package level, can be referred to from any file in the same package. Imported packages, such as fmt in the tempconv example, are declared at the file level, so they can be referred to from the same file, but not from another file in the same package without another import. Many declarations, like that of the variable c in the tempconv.CToF function, are local, so they can be referred to only from within the same function or perhaps just a part of it. 
 
 The scope of a control-flow label, as used by break, continue, and goto statements, is the entire enclosing function. 
 
@@ -1991,6 +1758,10 @@ fmt.Println(f) // "f"; local var f shadows
 package-level func f 
 fmt.Println(g) // "g"; package-level var 
 fmt.Println(h) // compile error: undefined: h } 
+
+```
+
+
 Within a function, lexical blocks may be nested to arbitrary depth, so one local declaration can shadow another. Most blocks are created by control-flow constructs like if statements and for loops. The program below has three different variables called x because each declaration appears in a different lexical block. (This example illustrates scope rules, not good style!) 
 
 ```go
@@ -2019,6 +1790,8 @@ x := "hello"
 for _, x := range x {
 
 x := x + 'A' -'a' fmt.Printf("%c", x) // "HELLO" (one letter per iteration)}} 
+```
+
 Like for loops, if statements and switch statements also create implicit blocks in addition to their body blocks. The code in the following if-else chain shows the scope of x and y: 
 
 ```go
@@ -2036,6 +1809,7 @@ fmt.Println(x, y) // compile error: x and y are not visible here
 
 The second if statement is nested within the first, so variables declared within the first statement’s initializer are visible within the second. Similar rules apply to each case of a switch statement: there is a block for the condition and a block for each case body. 
 At the package level, the order in which declarations appear has no effect on their scope, so a declaration may refer to itself or to another that follows it, letting us declare recursive or mutually recursive types and functions. The compiler will report an error if a constant or variable declaration refers to itself, however. 
+
 In this program: 
 
 ```go
@@ -2072,7 +1846,10 @@ Short variable declarations demand an awareness of scope. Consider the program b
 
 ```go
 var cwd string 
-func init() {cwd, err := os.Getwd() // compile error: unused: cwd if err != nil {log.Fatalf("os.Getwd failed: %v", err) }} 
+func init() {cwd, err := os.Getwd() // compile error: unused: cwd 
+if err != nil {log.Fatalf("os.Getwd failed: %v", err) 
+}
+} 
 ```
 
 
@@ -2119,7 +1896,8 @@ Finally, we’ll talk about interface types in Chapter 7.
 ## Integers 
 
 Go’s numeric data types include several sizes of integers, floating-point numbers, and complex numbers. Each numeric type determines the size and signedness of its values. Let’s begin with integers. 
-Go provides both signed and unsigned integer arithmetic. There are four distinct sizes of signed integers—8, 16, 32, and 64 bits—represented by the types int8, int16, int32, and int64, and corresponding unsigned versions uint8, uint16, uint32, and uint64. 
+
+Goprovides both signed and unsigned integer arithmetic. There are four distinct sizes of signed integers—8, 16, 32, and 64 bits—represented by the types int8, int16, int32, and int64, and corresponding unsigned versions uint8, uint16, uint32, and uint64. 
 
 
 There are also two types called just int and uint that are the natural or most efficient size for signed and unsigned integers on a particular platform; int is by far the most widely used numeric type. Both these types have the same size, either 32 or 64 bits, but one must not make assumptions about which; different compilers may make different choices even on identical hardware. 
@@ -2144,6 +1922,7 @@ Go’s binary operators for arithmetic, logic, and comparison are listed here in
 
 
 There are only five levels of precedence for binary operators. Operators at the same level associate to the left, so parentheses may be required for clarity, or to make the operators evaluate in the intended order in an expression like mask & (1 << 28) . 
+
 Each operator in the first two lines of the table above, for instance +, has a corresponding assignment operator like += that may be used to abbreviate an assignment statement. 
 
 The integer arithmetic operators +, -, *, and / may be applied to integer, floating-point, and complex numbers, but the remainder operator % applies only to integers. The behavior of % for negative numbers varies across programming languages. In Go, the sign of the remainder is always the same as the sign of the dividend, so -5%3 and -5%-3 are both -2. The behavior of / depends on whether its operands are integers, so 5.0/4.0 is 1.25, but 5/4 is 1 because integer division truncates the result toward zero. 
@@ -2178,7 +1957,8 @@ There are also unary addition and subtraction operators:
 
 
 For integers, +x is a shorthand for 0+x and -x is a shorthand for 0-x; for floating-point and complex numbers, +x is just x and -x is the negation of x. 
-Go also provides the following bitwise binary operators, the first four of which treat their operands as bit patterns with no concept of arithmetic carry or sign: 
+
+Goalso provides the following bitwise binary operators, the first four of which treat their operands as bit patterns with no concept of arithmetic carry or sign: 
 ```
 & bitwise AND 
 | bitwise OR 
@@ -2224,6 +2004,7 @@ fmt.Printf("%08b\n", x>>1) // "00010001", the set {0,
 ```
 
 (Section 6.5 shows an implementation of integer sets that can be much bigger than a byte.) 
+
 In the shift operations x<<n and x>>n, the n operand determines the number of bit positions to shift and must be unsigned; the x operand may be unsigned or signed. Arithmetically, a left shift x<<n is equivalent to multiplication by 2n and a right shift x>>n is equivalent to the floor of division by 2n . 
 
 Left shifts fill the vacated bits with zeros, as do right shifts of unsigned numbers, but right shifts of signed numbers fill the vacated bits with copies of the sign bit. For this reason, it is important to use unsigned arithmetic when you’re treating an integer as a bit pattern. 
@@ -2319,6 +2100,7 @@ fmt.Printf("%d %[1]q\n", newline) // "10 '\n'" 3.2 Floating-Point Numbers
 
 
 Go provides two sizes of floating-point numbers, float32 and float64. Their arithmetic properties are governed by the IEEE 754 standard implemented by all modern CPUs. 
+
 Values of these numeric types range from tiny to huge. The limits of floating-point values can be found in the math package. The constant math.MaxFloat32, the largest float32, is about 3.4e38, and math.MaxFloat64 is about 1.8e308. The smallest positive values are near 1.4e-45 and 4.9e-324, respectively. 
 
 A float32 provides approximately six decimal digits of precision, whereas a float64 provides about 15 digits; float64 should be preferred for most purposes because float32 computations accumulate error rapidly unless one is quite careful, and the smallest positive integer that cannot be exactly represented as a float32 is not large: 
@@ -2351,7 +2133,8 @@ math.Exp(float64(x)))
 ```
 
 
-The code above prints the powers of e with three decimal digits of precision, aligned in an eight-character field: 
+
+Thee code above prints the powers of e with three decimal digits of precision, aligned in an eight-character field: 
 ```
 x=0 ex= 1.000 
 x=1 ex= 2.718 
@@ -2648,11 +2431,12 @@ The + operator makes a new string by concatenating two strings:
 ```go
 fmt.Println("goodbye" + s[5:]) // "goodbye, world" 
 
-Strings may be compared with comparison operators like == and <; the comparison is done byte by byte, so the result is the natural lexicographic ordering. String values are immutable: the byte sequence contained in a string value can never 
-be changed, though of course we can assign a new value to a string variable. To append one string to another, for instance, we can write 
+Strings may be compared with comparison operators like == and <; the comparison is done byte by byte, so the result is the natural lexicographic ordering. String values are immutable: the byte sequence contained in a string value can never be changed, though of course we can assign a new value to a string variable. To append one string to another, for instance, we can write 
+
 s := "left foot" 
 t := s 
 s += ", right foot" 
+
 This does not modify the string that s originally held but causes s to hold the new string formed by the += statement; meanwhile, t still contains the old string. 
 
 ```go
@@ -2665,6 +2449,8 @@ Since strings are immutable, constructions that try to modify a string’s data 
 
 ```go
 s[0] = 'L' // compile error: cannot assign to s[0] 
+```
+
 Immutability means that it is safe for two copies of a string to share the same underlying memory, making it cheap to copy strings of any length. Similarly, a string s and a substring like s[7:] may safely share the same data, so the substring operation is also cheap. No new memory is allocated in either case. Figure 3.4 illustrates the arrangement of a string and two of its substrings sharing the same underlying byte array. 
 
 
@@ -2718,7 +2504,10 @@ We could represent a sequence of runes as a sequence of int32 values. In this re
 
 ### UTF-8 
 
-UTF-8 is a variable-length encoding of Unicode code points as bytes. UTF-8 was invented by Ken Thompson and Rob Pike, two of the creators of Go, and is now a Unicode standard. It uses between 1 and 4 bytes to represent each rune, but only 1 byte for ASCII characters, and only 2 or 3 bytes for most runes in common use. The high-order bits of the first byte of the encoding for a rune indicate how many bytes follow. A high-order 0 indicates 7-bit ASCII, where each rune takes only 1 byte, so it is identical to conventional ASCII. A high-order 110 indicates that the rune takes 2 bytes; the second byte begins with 10. Larger runes have analogous encodings. 
+UTF-8 is a variable-length encoding of Unicode code points as bytes. UTF-8 was invented by Ken Thompson and Rob Pike, two of the creators of Go, and is now a Unicode standard. It uses between 1 and 4 bytes to represent each rune, but only 1 byte for ASCII characters, and only 2 or 3 bytes for most runes in common use. 
+
+The high-order bits of the first byte of the encoding for a rune indicate how many bytes follow. A high-order 0 indicates 7-bit ASCII, where each rune takes only 1 byte, so it is identical to conventional ASCII. A high-order 110 indicates that the rune takes 2 bytes; the second byte begins with 10. Larger runes have analogous encodings. 
+
 View table image  
 0xxxxxx  runes 0–127  
 110xxxxx  10xxxxxx  128–2047  
@@ -2726,13 +2515,15 @@ View table image
 11110xxx  10xxxxxx  10xxxxxx 10xxxxxx  65536–0x10ffff  
 
 
-A variable-length encoding precludes direct indexing to access the n-th character of a 
-string, but UTF-8 has many desirable properties to compensate. The encoding is 
-compact, compatible with ASCII, and self-synchronizing: it’s possible to find the 
+A variable-length encoding precludes direct indexing to access the n-th character of a string, but UTF-8 has many desirable properties to compensate. The encoding is compact, compatible with ASCII, and self-synchronizing: it’s possible to find the beginning of a character by backing up no more than three bytes. 
 
-beginning of a character by backing up no more than three bytes. It’s also a prefix code, so it can be decoded from left to right without any ambiguity or lookahead. No rune’s encoding is a substring of any other, or even of a sequence of others, so you can search for a rune by just searching for its bytes, without worrying about the preceding context. The lexicographic byte order equals the Unicode code point order, so sorting UTF-8 works naturally. There are no embedded NUL (zero) bytes, which is convenient for programming languages that use NUL to terminate strings. 
-Go source files are always encoded in UTF-8, and UTF-8 is the preferred encoding for text strings manipulated by Go programs. The unicode package provides functions for working with individual runes (such as distinguishing letters from numbers, or converting an upper-case letter to a lower-case one), and the unicode/utf8 package provides functions for encoding and decoding runes as bytes using UTF-8. 
-Many Unicode characters are hard to type on a keyboard or to distinguish visually from similar-looking ones; some are even invisible. Unicode escapes in Go string literals allow us to specify them by their numeric code point value. There are two forms, \uhhhh for a 16-bit value and \Uhhhhhhhh for a 32-bit value, where each h is a hexadecimal digit; the need for the 32-bit form arises very infrequently. Each denotes the UTF-8 encoding of the specified code point. Thus, for example, the following string literals all represent the same six-byte string: 
+It’s also a prefix code, so it can be decoded from left to right without any ambiguity or lookahead. No rune’s encoding is a substring of any other, or even of a sequence of others, so you can search for a rune by just searching for its bytes, without worrying about the preceding context. The lexicographic byte order equals the Unicode code point order, so sorting UTF-8 works naturally. There are no embedded NUL (zero) bytes, which is convenient for programming languages that use NUL to terminate strings.
+
+Gosource files are always encoded in UTF-8, and UTF-8 is the preferred encoding for text strings manipulated by Go programs. The unicode package provides functions for working with individual runes (such as distinguishing letters from numbers, or converting an upper-case letter to a lower-case one), and the unicode/utf8 package provides functions for encoding and decoding runes as bytes using UTF-8. 
+
+Many Unicode characters are hard to type on a keyboard or to distinguish visually from similar-looking ones; some are even invisible. Unicode escapes in Go string literals allow us to specify them by their numeric code point value. There are two forms, \uhhhh for a 16-bit value and \Uhhhhhhhh for a 32-bit value, where each h is a hexadecimal digit; the need for the 32-bit form arises very infrequently. 
+
+Each denotes the UTF-8 encoding of the specified code point. Thus, for example, the following string literals all represent the same six-byte string: 
 "" 
 
 "\xe4\xb8\x96\xe7\x95\x8c" 
@@ -2746,10 +2537,14 @@ Unicode escapes may also be used in rune literals. These three literals are equi
 ' '\u4e16' '\U00004e16' 
 
 A rune whose value is less than 256 may be written with a single hexadecimal escape, such as '\x41' for 'A', but for higher values, a \u or \U escape must be used. Consequently, '\xe4\xb8\x96' is not a legal rune literal, even though those three bytes are a valid UTF-8 encoding of a single code point. 
-Thanks to the nice properties of UTF-8, many string operations don’t require decoding. We can test whether one string contains another as a prefix: ```go
+
+Thanks to the nice properties of UTF-8, many string operations don’t require decoding. We can test whether one string contains another as a prefix: 
+
+```go
 func HasPrefix(s, prefix string) bool {
 return len(s) >= len(prefix) && s[:len(prefix)] == prefix
 } 
+```
 or as a suffix: 
 
 ```go
@@ -2772,6 +2567,8 @@ return false
 ```
 
 using the same logic for UTF-8-encoded text as for raw bytes. This is not true for other encodings. (The functions above are drawn from the strings package, though its implementation of Contains uses a hashing technique to search more efficiently.) 
+
+
 On the other hand, if we really care about the individual Unicode characters, we have to use other mechanisms. Consider the string from our very first example, which includes two East Asian characters. Figure 3.5 illustrates its representation in memory. The string contains 13 bytes, but interpreted as UTF-8, it encodes only nine code points or runes: 
 
 
@@ -2794,6 +2591,7 @@ i += size
 
 } 
 ```
+
 
 Each call to DecodeRuneInString returns r, the rune itself, and size, the number of bytes occupied by the UTF-8 encoding of r. The size is used to update the byte index i of the next rune in the string. But this is clumsy, and we need loops of this kind all the time. Fortunately, Go’s range loop, when applied to a string, 
 performs UTF-8 decoding implicitly. The output of the loop below is also shown in Figure 3.5; notice how the index jumps by more than 1 for each non-ASCII rune. 
@@ -2822,8 +2620,10 @@ n++
 Or we can just call utf8.RuneCountInString(s). 
 
 We mentioned earlier that it is mostly a matter of convention in Go that text strings are interpreted as UTF-8-encoded sequences of Unicode code points, but for correct use of range loops on strings, it’s more than a convention, it’s a necessity. What happens if we range over a string containing arbitrary binary data or, for that matter, UTF-8 data containing errors? 
+
 Each time a UTF-8 decoder, whether explicit in a call to utf8.DecodeRuneInString or implicit in a range loop, consumes an unexpected input byte, it generates a special Unicode replacement character, '\uFFFD', which is usually printed as a white question mark inside a black hexagonal or diamond-like shape 
 . When a program encounters this rune value, it’s often a sign that some upstream part of the system that generated the string data has been careless in its treatment of text encodings. 
+
 UTF-8 is exceptionally convenient as an interchange format but within a program runes may be more convenient because they are of uniform size and are thus easily indexed in arrays and slices. 
 A []rune conversion applied to a UTF-8-encoded string returns the sequence of Unicode code points that the string encodes: 
 
@@ -2882,10 +2682,8 @@ The first version of basename does all the work without the help of libraries:
 
 ```go
 // gopl.io/ch3/basename1 
-// basename removes directory components and a 
-.suffix. 
-// e.g., a => a, a.go => a, a/b/c.go => c, a/b.c.go => 
-b.c 
+// basename removes directory components and a .suffix. 
+// e.g., a => a, a.go => a, a/b/c.go => c, a/b.c.go => b.c 
 func basename(s string) string { 
 // Discard last '/' and everything before. 
 for i := len(s) -1; i >= 0; i--{
@@ -3059,6 +2857,8 @@ y, err := strconv.ParseInt("123", 10, 64) // base 10, up to 64 bits
 
 
 The third argument of ParseInt gives the size of the integer type that the result must fit into; for example, 16 implies int16, and the special value of 0 implies int. In any case, the type of the result y is always int64, which you can then convert to a smaller type. 
+
+
 Sometimes fmt.Scanf is useful for parsing input that consists of orderly mixtures of strings and numbers all on a single line, but it can be inflexible, especially when handling incomplete or irregular input. 
 
 ## Constants 
@@ -3093,6 +2893,7 @@ const IPv4Len = 4
 func parseIPv4(s string) IP {
 var p [IPv4Len]byte 
 // ... } 
+```
 
 A constant declaration may specify a type as well as a value, but in the absence of an explicit type, the type is inferred from the expression on the right-hand side. In the following, time.Duration is a named type whose underlying type is int64, and time.Minute is a constant of that type. Both of the constants declared below thus have the type time.Duration as well, as revealed by %T: 
 
@@ -3102,6 +2903,7 @@ fmt.Printf("%T %[1]v\n", noDelay) "time.Duration 0"  //
 fmt.Printf("%T %[1]v\n", timeout) "time.Duration 5m0s"  //  
 
 fmt.Printf("%T %[1]v\n", time.Minute) // "time.Duration 1m0s" 
+```
 
 When a sequence of constants is declared as a group, the right-hand side expression may be omitted for all but the first of the group, implying that the previous expression and its type should be used again. For example: 
 
@@ -3117,6 +2919,9 @@ This is not very useful if the implicitly copied right-hand side expression alwa
 A const declaration may use the constant generator iota, which is used to create a sequence of related values without spelling out each one explicitly. In a const declaration, the value of iota begins at zero and increments by one for each item in the sequence. 
 
 Here’s an example from the time package, which defines named constants of type Weekday for the days of the week, starting with zero for Sunday. Types of this kind are often called enumerations, or enums for short. 
+
+
+```
 type Weekday int 
 const (Sunday Weekday = iota 
 Monday
@@ -3125,6 +2930,7 @@ Wednesday
 Thursday
 Friday
 Saturday ) 
+```
 This declares Sunday to be 0, Monday to be 1, and so on. 
 
 We can use iota in more complex expressions too, as in this example from the net package where each of the lowest 5 bits of an unsigned integer is given a distinct name and boolean interpretation: 
@@ -3180,13 +2986,16 @@ Exercise 3.13: Write const declarations for KB, MB, up through YB as compactly a
 ### Untyped Constants 
 
 Constants in Go are a bit unusual. Although a constant can have any of the basic data types like int or float64, including named basic types like time.Duration, many constants are not committed to a particular type. The compiler represents these uncommitted constants with much greater numeric precision than values of basic types, and arithmetic on them is more precise than machine arithmetic; you may assume at least 256 bits of precision. There are six flavors of these uncommitted constants, called untyped boolean, untyped integer, untyped rune, untyped floating-point, untyped complex, and untyped string. 
+
 By deferring this commitment, untyped constants not only retain their higher precision until later, but they can participate in many more expressions than committed constants without requiring conversions. For example, the values ZiB and YiB in the example above are too big to store in any integer variable, but they are legitimate constants that may be used in expressions like this one: 
-fmt.Println(YiB/ZiB) // "1024" 
+`fmt.Println(YiB/ZiB) // "1024" `
 
 As another example, the floating-point constant math.Pi may be used wherever any floating-point or complex value is needed: 
+```go
 var x float32 = math.Pi 
 var y float64 = math.Pi 
 var z complex128 = math.Pi 
+```
 
 If math.Pi had been committed to a specific type such as float64, the result would not be as precise, and type conversions would be required to use it when a float32 or complex128 value is wanted: 
 
@@ -3255,12 +3064,15 @@ f := 0.0 // untyped floating-point; implicit
 float64(0.0)
 c := 0i // untyped complex; implicit 
 complex128(0i) 
+```
 
 Note the asymmetry: untyped integers are converted to int, whose size is not guaranteed, but untyped floating-point and complex numbers are converted to the explicitly sized types float64 and complex128. The language has no unsized float and complex types analogous to unsized int, because it is very difficult to write correct numerical algorithms without knowing the size of one’s floating-point data types. 
 
 To give the variable a different type, we must explicitly convert the untyped constant to the desired type or state the desired type in the variable declaration, as in these examples: 
+```go
 var i = int8(0) 
 var i int8 = 0 
+```
 
 These defaults are particularly important when converting an untyped constant to an interface value (see Chapter 7) since they determine its dynamic type. 
 
@@ -3273,12 +3085,18 @@ fmt.Printf("%T\n", '\000') // "int32" (rune)
 
 
 We’ve now covered the basic data types of Go. The next step is to show how they can be combined into larger groupings like arrays and structs, and then into data structures for solving real programming problems; that is the topic of Chapter 4. 
+
+
 4. Composite Types 
+
 In Chapter 3 we discussed the basic types that serve as building blocks for data structures in a Go program; they are the atoms of our universe. In this chapter, we’ll take a look at composite types, the molecules created by combining the basic types in various ways. We’ll talk about four such types—arrays, slices, maps, and structs— and at the end of the chapter, we’ll show how structured data using these types can be encoded as and parsed from JSON data and used to generate HTML from templates. 
+
 Arrays and structs are aggregate types; their values are concatenations of other values in memory. Arrays are homogeneous—their elements all have the same type— whereas structs are heterogeneous. Both arrays and structs are fixed size. In contrast, slices and maps are dynamic data structures that grow as values are added. 
 
 ## Arrays 
-An array is a fixed-length sequence of zero or more elements of a particular type. Because of their fixed length, arrays are rarely used directly in Go. Slices, which can grow and shrink, are much more versatile, but to understand slices we must understand arrays first. 
+
+Anarray is a fixed-length sequence of zero or more elements of a particular type. Because of their fixed length, arrays are rarely used directly in Go. Slices, which can grow and shrink, are much more versatile, but to understand slices we must understand arrays first. 
+
 Individual array elements are accessed with the conventional subscript notation, where subscripts run from zero to one less than the array length. The built-in function len returns the number of elements in the array. 
 
 ```go
@@ -3356,10 +3174,7 @@ import "crypto/sha256"
 func main() {c1 := sha256.Sum256([]byte("x")) c2 := sha256.Sum256([]byte("X"))fmt.Printf("%x\n%x\n%t\n%T\n", c1, c2, c1 == c2, 
 c1) 
 // Output: 
-//
-
-2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db0225871 
-//4b68ab3847feda7d6c62c1fbcbeebfa35eab7351ed5e78f4ddadea5 
+// 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db0225871 //4b68ab3847feda7d6c62c1fbcbeebfa35eab7351ed5e78f4ddadea5 
 // false 
 // [32]uint8 
 } 
@@ -3369,15 +3184,18 @@ c1)
 The two inputs differ by only a single bit, but approximately half the bits are different in the digests. Notice the Printf verbs: %x to print all the elements of an array or slice of bytes in hexadecimal, %t to show a boolean, and %T to display the type of a value. 
 
 When a function is called, a copy of each argument value is assigned to the corresponding parameter variable, so the function receives a copy, not the original. Passing large arrays in this way can be inefficient, and any changes that the function makes to array elements affect only the copy, not the original. In this regard, Go treats arrays like any other type, but this behavior is different from languages that implicitly pass arrays by reference. 
+
 Of course, we can explicitly pass a pointer to an array so that any modifications the function makes to array elements will be visible to the caller. This function zeroes the contents of a [32]byte array: 
+```
 func zero(ptr *[32]byte) { 
 for i := range ptr {
 ptr[i] = 0 
 }
 } 
-
+```
 
 The array literal [32]byte{} yields an array of 32 bytes. Each element of the array has the zero value for byte, which is zero. We can use that fact to write a different version of zero: 
+```
 func zero(ptr *[32]byte) { 
 *ptr = [32]byte{} 
 } 
@@ -3734,6 +3552,7 @@ Exercise 4.7: Modify reverse to reverse the characters of a []byte slice that re
 ## Maps 
 
 The hash table is one of the most ingenious and versatile of all data structures. It is an unordered collection of key/value pairs in which all the keys are distinct, and the value associated with a given key can be retrieved, updated, or removed using a constant number of key comparisons on the average, no matter how large the hash table. 
+
 In Go, a map is a reference to a hash table, and a map type is written map[K]V, where K and V are the types of its keys and values. All of the keys in a given map are of the same type, and all of the values are of the same type, but the keys need not be of the same type as the values. The key type K must be comparable using ==, so that the map can test whether a given key is equal to one already within it. Though floating-point numbers are comparable, it’s a bad idea to compare floats for equality and, as we mentioned in Chapter 3, especially bad if NaN is a possible value. There are no restrictions on the value type V. 
 
 The built-in function make can be used to create a map: 
@@ -4066,7 +3885,8 @@ id := dilbert.ID EmployeeByID(id).Salary = 0 // fired for... no real reason
 ```
 
 
-The last statement updates the Employee struct that is pointed to by the result of the call to EmployeeByID. If the result type of EmployeeByID were changed to Employee instead of *Employee, the assignment statement would not compile since its left-hand side would not identify a variable. 
+The last statement updates the Employee struct that is pointed to by the result of the call to EmployeeByID. If the result type of EmployeeByID were changed to Employee instead of *Employee, the assignment statement would not compile since its left-hand side would not identify a variable.
+ 
 Fields are usually written one per line, with the field’s name preceding its type, but consecutive fields of the same type may be combined, as with Name and Address here: 
 type Employee struct {
 ID int 
@@ -4239,6 +4059,7 @@ hits := make(map[address]int) hits[address{"golang.org", 443}]++
 
 ### Struct Embedding and Anonymous Fields 
 
+
 In this section, we’ll see how Go’s unusual struct embedding mechanism lets us use one named struct type as an anonymous field of another struct type, providing a convenient syntactic shortcut so that a simple dot expression like x.f can stand for a chain of fields like x.d.e.f. 
 Consider a 2-D drawing program that provides a library of shapes, such as rectangles, ellipses, stars, and wheels. Here are two of the types it might define: 
 type Circle struct {
@@ -4362,7 +4183,8 @@ The answer has to do with methods. The shorthand notation used for selecting the
 ## JSON 
 
 JavaScript Object Notation (JSON) is a standard notation for sending and receiving structured information. JSON is not the only such notation. XML (§7.14), ASN.1, and Google’s Protocol Buffers serve similar purposes and each has its niche, but because of its simplicity, readability, and universal support, JSON is the most widely used. 
-Go has excellent support for encoding and decoding these formats, provided by the standard library packages encoding/json, encoding/xml, encoding/asn1, and so on, and these packages all have similar APIs. This section gives a brief overview of the most important parts of the encoding/json package. 
+
+Gohas excellent support for encoding and decoding these formats, provided by the standard library packages encoding/json, encoding/xml, encoding/asn1, and so on, and these packages all have similar APIs. This section gives a brief overview of the most important parts of the encoding/json package. 
 
 JSON is an encoding of JavaScript values—strings, numbers, booleans, arrays, and objects—as Unicode text. It’s an efficient yet readable representation for the basic data types of Chapter 3 and the composite types of this chapter—arrays, slices, structs, and maps. 
 
@@ -4970,6 +4792,7 @@ $ ./fetch https://golang.org | ./outline
 
 
 As you can see by experimenting with outline, most HTML documents can be processed with only a few levels of recursion, but it’s not hard to construct pathological web pages that require extremely deep recursion. 
+
 Many programming language implementations use a fixed-size function call stack; sizes from 64KB to 2MB are typical. Fixed-size stacks impose a limit on the depth of recursion, so one must be careful to avoid a stack overflow when traversing large data structures recursively; fixed-size stacks may even pose a security risk. In contrast, typical Go implementations use variable-size stacks that start small and grow as needed up to a limit on the order of a gigabyte. This lets us use recursion safely and without worrying about overflow. 
 
 Exercise 5.1: Change the findlinks program to traverse the n.FirstChild linked list using recursive calls to visit instead of a loop. 
@@ -5065,6 +4888,7 @@ func Size(rect image.Rectangle) (width, height int) func Split(path string) (dir
 ```
 
 but it’s not always necessary to name multiple results solely for documentation. For instance, convention dictates that a final bool result indicates success; an error result often needs no explanation. 
+
 In a function with named results, the operands of a return statement may be omitted. This is called a bare return. 
 
 ```go
@@ -5096,9 +4920,11 @@ Exercise 5.6: Modify the corner function in // gopl.io/ch3/surface (§3.2) to us
 
 ## Errors 
 Some functions always succeed at their task. For example, strings.Contains and strconv.FormatBool have well-defined results for all possible argument values and cannot fail—barring catastrophic and unpredictable scenarios like running out of memory, where the symptom is far from the cause and from which there’s little hope of recovery. 
+
 Other functions always succeed so long as their preconditions are met. For example, the time.Date function always constructs a time.Time from its components— year, month, and so on—unless the last argument (the time zone) is nil, in which case it panics. This panic is a sure sign of a bug in the calling code and should never happen in a well-written program. 
 
 For many other functions, even in a well-written program, success is not assured because it depends on factors beyond the programmer’s control. Any function that does I/O, for example, must confront the possibility of error, and only a naïve programmer believes a simple read or write cannot fail. Indeed, it’s when the most reliable operations fail unexpectedly that we most need to know why. 
+
 Errors are thus an important part of a package’s API or an application’s user interface, and failure is just one of several expected behaviors. This is the approach Go takes to error handling. 
 
 A function for which failure is an expected behavior returns an additional result, conventionally the last one. If the failure has only one possible cause, the result is a boolean, usually called ok, as in this example of a cache lookup that always succeeds unless there was no entry for that key: 
@@ -5112,7 +4938,9 @@ if !ok {
 More often, and especially for I/O, the failure may have a variety of causes for which the caller will need an explanation. In such cases, the type of the additional result is error. 
 
 The built-in type error is an interface type. We’ll see more of what this means and its implications for error handling in Chapter 7. For now it’s enough to know that an error may be nil or non-nil, that nil implies success and non-nil implies failure, and that a non-nil error has an error message string which we can obtain by calling its Error method or print by calling fmt.Println(err) or fmt.Printf("%v", err) . 
+
 Usually when a function returns a non-nil error, its other results are undefined and should be ignored. However, a few functions may return partial results in error cases. For example, if an error occurs while reading from a file, a call to Read returns the number of bytes it was able to read and an error value describing the problem. For correct behavior, some callers may need to process the incomplete data before handling the error, so it is important that such functions clearly document their results. 
+
 Go’s approach sets it apart from many other languages in which failures are reported using exceptions, not ordinary values. Although Go does have an exception mechanism of sorts, as we will see in Section 5.9, it is used only for reporting truly unexpected errors that indicate a bug, not the routine errors that a robust program should be built to expect. 
 
 The reason for this design is that exceptions tend to entangle the description of an error with the control flow required to handle it, often leading to an undesirable outcome: routine errors are reported to the end user in the form of an incomprehensible stack trace, full of information about the structure of the program but lacking intelligible context about what went wrong. 
@@ -5154,6 +4982,7 @@ Because error messages are frequently chained together, message strings should n
 When designing error messages, be deliberate, so that each one is a meaningful description of the problem with sufficient and relevant detail, and be consistent, so that errors returned by the same function or by a group of functions in the same package are similar in form and can be dealt with in the same way. 
 
 For example, the os package guarantees that every error returned by a file operation, such as os.Open or the Read, Write, or Close methods of an open file, describes not just the nature of the failure (permission denied, no such directory, and so on) but also the name of the file, so the caller needn’t include this information in the error message it constructs. 
+
 In general, the call f(x) is responsible for reporting the attempted operation f and the argument value x as they relate to the context of the error. The caller is responsible for adding further information that it has but the call f(x) does not, such as the URL in the call to html.Parse above. 
 Let’s move on to the second strategy for handling errors. For errors that represent transient or unpredictable problems, it may make sense to retry the failed operation, possibly with a delay between tries, and perhaps with a limit on the number of attempts or the time spent trying before giving up entirely. 
 
@@ -5240,9 +5069,11 @@ os.RemoveAll(dir) // ignore errors; $TMPDIR is cleaned periodically
 
 
 The call to os.RemoveAll may fail, but the program ignores it because the operating system periodically cleans out the temporary directory. In this case, discarding the error was intentional, but the program logic would be the same had we forgotten to deal with it. Get into the habit of considering errors after every function call, and when you deliberately ignore one, document your intention clearly. 
+
 Error handling in Go has a particular rhythm. After checking an error, failure is usually dealt with before success. If failure causes the function to return, the logic for success is not indented within an else block but follows at the outer level. Functions tend to exhibit a common structure, with a series of initial checks to reject errors, followed by the substance of the function at the end, minimally indented. 
 
 ### End of File (EOF) 
+
 Usually, the variety of errors that a function may return is interesting to the end user but not to the intervening program logic. On occasion, however, a program must take different actions depending on the kind of error that has occurred. Consider an attempt to read n bytes of data from a file. If n is chosen to be the length of the file, any error represents a failure. On the other hand, if the caller repeatedly tries to read fixed-size chunks until the file is exhausted, the caller must respond differently to an end-of-file condition than it does to all other errors. For this reason, the io package guarantees that any read failure caused by an end-of-file condition is always reported by a distinguished error, io.EOF, which is defined as follows: 
 
 
@@ -5577,6 +5408,7 @@ f(item)...)
 
 
 As we explained in passing in Chapter 3, the argument “f(item)...” causes all the items in the list returned by f to be appended to the worklist. 
+
 In our crawler, items are URLs. The crawl function we’ll supply to breadthFirst prints the URL, extracts its links, and returns them so that they too are visited. 
 
 ```go
@@ -5631,6 +5463,7 @@ Exercise 5.13: Modify crawl to make local copies of the pages it finds, creating
 Exercise 5.14: Use the breadthFirst function to explore a different structure. For example, you could use the course dependencies from the topoSort example (a directed graph), the file system hierarchy on your computer (a tree), or a list of bus or subway routes downloaded from your city government’s web site (an undirected graph). 
 
 ### Caveat: Capturing Iteration Variables 
+
 In this section, we’ll look at a pitfall of Go’s lexical scope rules that can cause surprising results. We urge you to understand the problem before proceeding, because the trap can ensnare even experienced programmers. 
 Consider a program that must create a set of directories and later remove them. We can use a slice of function values to hold the clean-up operations. (For brevity, we have omitted all error handling in this example.) 
 
@@ -6197,6 +6030,7 @@ Exercise 5.19: Use panic and recover to write a function that contains no return
 Since the early 1990s, object-oriented programming (OOP) has been the dominant programming paradigm in industry and education, and nearly all widely used languages developed since then have included support for it. Go is no exception. 
 
 Although there is no universally accepted definition of object-oriented programming, for our purposes, an object is simply a value or variable that has methods, and a method is a function associated with a particular type. An object-oriented program is one that uses methods to express the properties and operations of each data structure so that clients need not access the object’s representation directly. 
+
 In earlier chapters, we have made regular use of methods from the standard library, like the Seconds method of type time.Duration: 
 
 ```go
@@ -6237,7 +6071,10 @@ return math.Hypot(q.X-p.X, q.Y-p.Y)
 
 
 The extra parameter p is called the method’s receiver, a legacy from early object-oriented languages that described calling a method as “sending a message to an object.” 
+
+
 In Go, we don’t use a special name like this or self for the receiver; we choose receiver names just as we would for any other parameter. Since the receiver name will be frequently used, it’s a good idea to choose something short and to be consistent across methods. A common choice is the first letter of the type name, like p for Point. 
+
 In a method call, the receiver argument appears before the method name. This parallels the declaration, in which the receiver parameter appears before the method name. 
 
 
@@ -6310,6 +6147,7 @@ p.Y *= factor
 
 
 The name of this method is (*Point).ScaleBy. The parentheses are necessary; without them, the expression would be parsed as *(Point.ScaleBy). 
+
 In a realistic program, convention dictates that if any method of Point has a pointer receiver, then all methods of Point should have a pointer receiver, even ones that don’t strictly need it. We’ve broken this rule for Point so that we can show both kinds of method. 
 Named types (Point) and pointers to them (*Point) are the only types that may appear in a receiver declaration. Furthermore, to avoid ambiguities, method declarations are not permitted on named types that are themselves pointer types: 
 
@@ -6438,6 +6276,7 @@ fmt.Println(m.Get("item")) // ""
 m.Add("item", "3") // panic: assignment to 
 entry in nil map 
 ```
+
 In the final call to Get, the nil receiver behaves like an empty map. We could equivalently have written it as Values(nil).Get("item")), but nil.Get("item") will not compile because the type of nil has not been determined. By contrast, the final call to Add panics as it tries to update a nil map. 
 
 Because url.Values is a map type and a map refers to its key/value pairs indirectly, any updates and deletions that url.Values.Add makes to the map elements are visible to the caller. However, as with ordinary functions, any changes a method makes to the reference itself, like setting it to nil or making it refer to a different map data structure, will not be reflected in the caller. 
@@ -6580,6 +6419,7 @@ func Lookup(key string) string {
 The new variable gives more expressive names to the variables related to the cache, and because the sync.Mutex field is embedded within it, its Lock and Unlock methods are promoted to the unnamed struct type, allowing us to lock the cache with a self-explanatory syntax. 
 
 ## Method Values and Expressions 
+
 Usually we select and call a method in the same expression, as in p.Distance(), but it’s possible to separate these two operations. The selector p.Distance yields a method value, a function that binds a method (Point.Distance) to a specific receiver value p. This function can then be invoked without a receiver value; it needs only the non-receiver arguments. 
 
 ```go
@@ -6609,8 +6449,9 @@ time.AfterFunc(10 * time.Second, func() { r.Launch()
 }) 
 ```
 
-The method value syntax is shorter: ```go
-time.AfterFunc(10 * time.Second, r.Launch) 
+
+The method value syntax is shorter: ` time.AfterFunc(10 * time.Second, r.Launch) `
+
 Related to the method value is the method expression. When calling a method, as opposed to an ordinary function, we must supply the receiver in a special way using the selector syntax. A method expression, written T.f or (*T).f where T is a type, yields a function value with a regular first parameter taking the place of the receiver, so it can be called in the usual way. 
 
 ```go
@@ -6750,6 +6591,7 @@ A word of caution: we declared String and Has as methods of the pointer type *In
 fmt.Println(&x) // "{1 9 42 144}" 
 fmt.Println(x.String()) // "{1 9 42 144}" fmt.Println(x) // "{[4398046511618 0 65536]}" 
 ```
+
 In the first case, we print an *IntSet pointer, which does have a String method. In the second case, we call String() on an IntSet variable; the compiler inserts the implicit & operation, giving us a pointer, which has the String method. But in the third case, because the IntSet value does not have a String method, fmt.Println prints the representation of the struct instead. It’s important not to forget the & operator. Making String a method of IntSet, not *IntSet, might 
 set 
 be a good idea, but this is a case-by-case judgment.  
@@ -6776,7 +6618,8 @@ Exercise 6.5: The type of each word used by IntSet is uint64, but 64-bit arithme
 ## Encapsulation 
 
 A variable or method of an object is said to be encapsulated if it is inaccessible to clients of the object. Encapsulation, sometimes called information hiding, is a key aspect of object-oriented programming. 
-Go has only one mechanism to control the visibility of names: capitalized identifiers are exported from the package in which they are defined, and uncapitalized names are not. The same mechanism that limits access to members of a package also limits access to the fields of a struct or the methods of a type. As a consequence, to encapsulate an object, we must make it a struct. 
+
+Gohas only one mechanism to control the visibility of names: capitalized identifiers are exported from the package in which they are defined, and uncapitalized names are not. The same mechanism that limits access to members of a package also limits access to the fields of a struct or the methods of a type. As a consequence, to encapsulate an object, we must make it a struct. 
 That’s the reason the IntSet type from the previous section was declared as a struct type even though it has only a single field: 
 type IntSet struct {
 words []uint64 
@@ -6851,11 +6694,16 @@ fmt.Println(day.Seconds()) // "86400"
 As another example, contrast IntSet with the geometry.Path type from the beginning of this chapter. Path was defined as a slice type, allowing its clients to construct instances using the slice literal syntax, to iterate over its points using a range loop, and so on, whereas these operations are denied to clients of IntSet. 
 
 Here’s the crucial difference: geometry.Path is intrinsically a sequence of points, no more and no less, and we don’t foresee adding new fields to it, so it makes sense for the geometry package to reveal that Path is a slice. In contrast, an IntSet merely happens to be represented as a []uint64 slice. It could have been represented using []uint, or something completely different for sets that are sparse or very small, and it might perhaps benefit from additional features like an extra field to record the number of elements in the set. For these reasons, it makes sense for IntSet to be opaque. 
+
+
 In this chapter, we learned how to associate methods with named types, and how to call those methods. Although methods are crucial to object-oriented programming, they’re only half the picture. To complete it, we need interfaces, the subject of the next chapter. 
 
 7. Interfaces 
+
 Interface types express generalizations or abstractions about the behaviors of other types. By generalizing, interfaces let us write functions that are more flexible and adaptable because they are not tied to the details of one particular implementation. 
+
 Many object-oriented languages have some notion of interfaces, but what makes Go’s interfaces so distinctive is that they are satisfied implicitly. In other words, there’s no need to declare all the interfaces that a given concrete type satisfies; simply possessing the necessary methods is enough. This design lets you create new interfaces that are satisfied by existing concrete types without changing the existing types, which is particularly useful for types defined in packages that you don’t control. 
+
 In this chapter, we’ll start by looking at the basic mechanics of interface types and their values. Along the way, we’ll study several important interfaces from the standard library. Many Go programs make as much use of standard interfaces as they do of their own ones. 
 Finally, we’ll look at type assertions (§7.10) and type switches (§7.13) and see how they enable a different kind of generality. 
 
@@ -6958,7 +6806,8 @@ Exercise 7.3: Write a String method for the *tree type in // gopl.io/ch4/treesor
 
 ## Interface Types 
 
-An interface type specifies a set of methods that a concrete type must possess to be considered an instance of that interface. 
+
+Aninterface type specifies a set of methods that a concrete type must possess to be considered an instance of that interface. 
 
 The io.Writer type is one of the most widely used interfaces because it provides an abstraction of all the types to which bytes can be written, which includes files, memory buffers, network connections, HTTP clients, archivers, hashers, and so on. The io package defines many other useful interfaces. A Reader represents any type from which you can read bytes, and a Closer is any value that you can close, such as a file or a network connection. (By now you’ve probably noticed the naming convention for many of Go’s single-method interfaces.) 
 
@@ -7050,7 +6899,8 @@ w = rwc // OK: io.ReadWriteCloser has Write method rwc = w // compile error: io.
 
 Because ReadWriter and ReadWriteCloser include all the methods of Writer, any type that satisfies ReadWriter or ReadWriteCloser necessarily satisfies Writer. 
 Before we go further, we should explain one subtlety in what it means for a type to have a method. Recall from Section 6.2 that for each named concrete type T, some of its methods have a receiver of type T itself whereas others require a *T pointer. Recall also that it is legal to call a *T method on an argument of type T so long as the argument is a variable; the compiler implicitly takes its address. But this is mere syntactic sugar: a value of type T does not possess all the methods that a *T pointer does, and as a result it might satisfy fewer interfaces. 
-An example will make this clear. The String method of the IntSet type from Section 6.5 requires a pointer receiver, so we cannot call that method on a non-addressable IntSet value: 
+
+Anexample will make this clear. The String method of the IntSet type from Section 6.5 requires a pointer receiver, so we cannot call that method on a non-addressable IntSet value: 
 
 ```go
 type IntSet struct { /* ... */ } 
@@ -7095,7 +6945,8 @@ method
 w.Close() // compile error: io.Writer lacks Close method 
 ```
 
-An interface with more methods, such as io.ReadWriter, tells us more about the values it contains, and places greater demands on the types that implement it, than does an interface with fewer methods such as io.Reader. So what does the type interface{}, which has no methods at all, tell us about the concrete types that satisfy it? 
+
+Aninterface with more methods, such as io.ReadWriter, tells us more about the values it contains, and places greater demands on the types that implement it, than does an interface with fewer methods such as io.Reader. So what does the type interface{}, which has no methods at all, tell us about the concrete types that satisfy it? 
 That’s right: nothing. This may seem useless, but in fact the type interface{}, which is called the empty interface type, is indispensable. Because the empty interface type places no demands on the types that satisfy it, we can assign any value to the empty interface. 
 
 ```go
@@ -7109,6 +6960,7 @@ any = new(bytes.Buffer)
 
 
 Although it wasn’t obvious, we’ve been using the empty interface type since the very first example in this book, because it is what allows functions like fmt.Println, or errorf in Section 5.7, to accept arguments of any type. 
+
 Of course, having created an interface{} value containing a boolean, float, string, map, pointer, or any other type, we can do nothing directly to the value it holds 
 since the interface has no methods. We need a way to get the value back out again. We’ll see how to do that using a type assertion in Section 7.10. 
 
@@ -7176,10 +7028,12 @@ type Streamer interface {
 Stream() (io.ReadCloser, error) 
 RunningTime() time.Duration 
 Format() string } 
+
 Each grouping of concrete types based on their shared behaviors can be expressed as an interface type. Unlike class-based languages, in which the set of interfaces satisfied by a class is explicit, in Go we can define new abstractions or groupings of interest when we need them, without modifying the declaration of the concrete type. This is particularly useful when the concrete type comes from a package written by a different author. Of course, there do need to be underlying commonalities in the concrete types. 
 
 
 ## Parsing Flags with flag.Value 
+
 In this section, we’ll see how another standard interface, flag.Value, helps us define new notations for command-line flags. Consider the program below, which sleeps for a specified period of time. 
 
 
@@ -7326,6 +7180,7 @@ Exercise 7.7: Explain why the help message contains °C when the default value o
 Conceptually, a value of an interface type, or interface value, has two components, a concrete type and a value of that type. These are called the interface’s dynamic type and dynamic value. 
 
 For a statically typed language like Go, types are a compile-time concept, so a type is not a value. In our conceptual model, a set of values called type descriptors provide information about each type, such as its name and methods. In an interface value, the type component is represented by the appropriate type descriptor. 
+
 In the four statements below, the variable w takes on three different values. (The initial and final values are the same.) 
 var w io.Writer 
 w = os.Stdout 
@@ -7333,9 +7188,11 @@ w = new(bytes.Buffer)
 w = nil 
 Let’s take a closer look at the value and dynamic behavior of w after each statement. The first statement declares w: 
 var w io.Writer 
+
 In Go, variables are always initialized to a well-defined value, and interfaces are no exception. The zero value for an interface has both its type and value components set to nil (Figure 7.1). 
 
-An interface value is described as nil or non-nil based on its dynamic type, so this is a nil interface value. You can test whether an interface value is nil using w == nil or w != nil . Calling any method of a nil interface value causes a panic: 
+
+Aninterface value is described as nil or non-nil based on its dynamic type, so this is a nil interface value. You can test whether an interface value is nil using w == nil or w != nil . Calling any method of a nil interface value causes a panic: 
 
 ```go
 w.Write([]byte("hello")) // panic: nil pointer 
@@ -7344,12 +7201,14 @@ dereference
 
 The second statement assigns a value of type *os.File to w: 
 w = os.Stdout 
+
 This assignment involves an implicit conversion from a concrete type to an interface type, and is equivalent to the explicit conversion io.Writer(os.Stdout).A conversion of this kind, whether explicit or implicit, captures the type and the value of its operand. The interface value’s dynamic type is set to the type descriptor for the pointer type *os.File, and its dynamic value holds a copy of os.Stdout, which is a pointer to the os.File variable representing the standard output of the process (Figure 7.2). 
 
 Calling the Write method on an interface value containing an *os.File pointer causes the (*os.File).Write method to be called. The call prints "hello". 
 
 ```go
 w.Write([]byte("hello")) // "hello" 
+
 In general, we cannot know at compile time what the dynamic type of an interface value will be, so a call through an interface must use dynamic dispatch. Instead of a direct call, the compiler must generate code to obtain the address of the method named Write from the type descriptor, then make an indirect call to that address. The receiver argument for the call is a copy of the interface’s dynamic value, os.Stdout. The effect is as if we had made this call directly: 
 
 ```go
@@ -7366,6 +7225,7 @@ w.Write([]byte("hello")) // writes "hello" to the
 bytes.Buffer This time, the type descriptor is *bytes.Buffer, so the (*bytes.Buffer).Write method is called, with the address of the buffer as the value of the receiver parameter. The call appends "hello" to the buffer. 
 
 Finally, the fourth statement assigns nil to the interface value: w = nil 
+
 This resets both its components to nil, restoring w to the same state as when it was declared, which was shown in Figure 7.1. An interface value can hold arbitrarily large dynamic values. For example, the 
 time.Time type, which represents an instant in time, is a struct type with several unexported fields. If we create an interface value from it, 
 var x interface{} = time.Now() 
@@ -7382,6 +7242,7 @@ However, if two interface values are compared and have the same dynamic type, bu
 var x interface{} = []int{1, 2, 3} 
 fmt.Println(x == x) // panic: comparing uncomparable 
 type []int 
+
 In this respect, interface types are unusual. Other types are either safely comparable (like basic types and pointers) or not comparable at all (like slices, maps, and functions), but when comparing interface values or aggregate types that contain interface values, we must be aware of the potential for a panic. A similar risk exists when using interfaces as map keys or switch operands. Only compare interface values if you are certain that they contain dynamic values of comparable types. 
 
 When handling errors, or during debugging, it is often helpful to report the dynamic type of an interface value. For that, we use the fmt package’s %T verb: 
@@ -7395,6 +7256,7 @@ fmt.Printf("%T\n", w) // "*os.File"
 w = new(bytes.Buffer)
 fmt.Printf("%T\n", w) // "*bytes.Buffer" 
 ```
+
 
 Internally, fmt uses reflection to obtain the name of the interface’s dynamic type. We’ll look at reflection in Chapter 12. 
 
@@ -7461,7 +7323,8 @@ Now that we’ve covered the mechanics of interface values, let’s take a look 
 ## Sorting with sort.Interface 
 Like string formatting, sorting is a frequently used operation in many programs. Although a minimal Quicksort can be written in about 15 lines, a robust implementation is much longer, and it is not the kind of code we should wish to write anew or copy each time we need it. 
 Fortunately, the sort package provides in-place sorting of any sequence according to any ordering function. Its design is rather unusual. In many languages, the sorting algorithm is associated with the sequence data type, while the ordering function is associated with the type of the elements. By contrast, Go’s sort.Sort function assumes nothing about the representation of either the sequence or its elements. Instead, it uses an interface, sort.Interface, to specify the contract between the generic sort algorithm and each sequence type that may be sorted. An implementation of this interface determines both the concrete representation of the sequence, which is often a slice, and the desired ordering of its elements. 
-An in-place sort algorithm needs three things—the length of the sequence, a means of comparing two elements, and a way to swap two elements—so they are the three methods of sort.Interface: 
+
+Anin-place sort algorithm needs three things—the length of the sequence, a means of comparing two elements, and a way to swap two elements—so they are the three methods of sort.Interface: 
 
 ```go
 package sort 
@@ -7563,7 +7426,8 @@ After sorting the slice by artist, the output from printTracks is
 Title  Artist  Album  Year  
 Length----­ -----­ ----­ ---­ - 
 ----­ 
-Go  Ahead  Alicia  Keys  As  I  Am  2007  
+
+Go Ahead  Alicia  Keys  As  I  Am  2007  
 
 4m36s Go Delilah From the Roots Up 2012 3m38s Ready 2 Go Martin Solveig Smash 2011 4m24s Go Moby Moby 1992 3m37s 
 ```
@@ -7698,6 +7562,7 @@ Exercise 7.10: The sort.Interface type can be adapted to other uses. Write a fun
 j) && !s.Less(j, i) . 
 
 ## The http.Handler Interface 
+
 In Chapter 1, we saw a glimpse of how to use the net/http package to implement web clients (§1.5) and servers (§1.7). In this section, we’ll look more closely at the server API, whose foundation is the http.Handler interface: 
 
 ```go
@@ -7789,6 +7654,7 @@ no such page: /help
 Obviously we could keep adding cases to ServeHTTP, but in a realistic application, it’s convenient to define the logic for each case in a separate function or method. Furthermore, related URLs may need similar logic; several image files may have URLs of the form /images/*.png, for instance. For these reasons, net/http provides ServeMux,a request multiplexer, to simplify the association between URLs and handlers. A ServeMux aggregates a collection of http.Handlers into a single http.Handler. Again, we see that different types satisfying the same interface are substitutable: the web server can dispatch requests to any http.Handler, regardless of which concrete type is behind it. 
 
 For a more complex application, several ServeMuxes may be composed to handle more intricate dispatching requirements. Go doesn’t have a canonical web framework analogous to Ruby’s Rails or Python’s Django. This is not to say that such frameworks don’t exist, but the building blocks in Go’s standard library are flexible enough that frameworks are often unnecessary. Furthermore, although frameworks are convenient in the early phases of a project, their additional complexity can make longer-term maintenance harder. 
+
 In the program below, we create a ServeMux and use it to associate the URLs with the corresponding handlers for the /list and /price operations, which have been split into separate methods. We then use the ServeMux as the main handler in the call to ListenAndServe. 
 
 ```go
@@ -7930,6 +7796,7 @@ The value of err is shown graphically in Figure 7.6.
 Errno is an efficient representation of system call errors drawn from a finite set, and it satisfies the standard error interface. We’ll see other types that satisfy this interface in Section 7.11. 
 
 ## Example: Expression Evaluator 
+
 In this section, we’ll build an evaluator for simple arithmetic expressions. We’ll use an interface, Expr, to represent any expression in this language. For now, this interface needs no methods, but we’ll add some later. 
 
 ```go
@@ -8393,6 +8260,7 @@ If x satisfies either of the two interfaces, that determines the formatting of t
 Again, this makes the assumption that any type with a String method satisfies the behavioral contract of fmt.Stringer, which is to return a string suitable for printing. 
 
 7.13 Type Switches 
+
 Interfaces are used in two distinct styles. In the first style, exemplified by io.Reader, io.Writer, fmt.Stringer, sort.Interface, http.Handler, and error, an interface’s methods express the similarities of the concrete types that satisfy the interface but hide the representation details and intrinsic operations of those concrete types. The emphasis is on the methods, not on the concrete types. 
 
 
@@ -8427,6 +8295,7 @@ return sqlQuoteString(s) // (not shown)
 panic(fmt.Sprintf("unexpected type %T: %v", x, x)) }} 
 
 A switch statement simplifies an if-else chain that performs a series of value equality tests. An analogous type switch statement simplifies an if-else chain of type assertions. 
+
 In its simplest form, a type switch looks like an ordinary switch statement in which the operand is x.(type)—that’s literally the keyword type—and each case has one or more types. A type switch enables a multi-way branch based on the interface value’s dynamic type. The nil case matches if x == nil , and the default case matches if no other case does. A type switch for sqlQuote would have these cases: 
 switch x.(type) { 
 case nil: // ... 
@@ -8461,6 +8330,7 @@ if x {return "TRUE"
 } 
 return "FALSE" case string:return sqlQuoteString(x) // (not shown) default: 
 panic(fmt.Sprintf("unexpected type %T: %v", x, x)) }} 
+
 In this version, within the block of each single-type case, the variable x has the same type as the case. For instance, x has type bool within the bool case and string within the string case. In all other cases, x has the (interface) type of the switch operand, which is interface{} in this example. When the same action is required for multiple cases, like int and uint, the type switch makes it easy to combine them. 
 
 Although sqlQuote accepts an argument of any type, the function runs to completion only if the argument’s type matches one of the cases in the type switch; otherwise it panics with an “unexpected type” message. Although the type of x is interface{}, we consider it a discriminated union of int, uint, bool, string, and nil. 
@@ -8605,6 +8475,7 @@ Even though Go’s support for concurrency is one of its great strengths, reason
 
 
 ## Goroutines 
+
 In Go, each concurrently executing activity is called a goroutine. Consider a program that has two functions, one that does some computation and one that writes some output, and assume that neither function calls the other. A sequential program may call one function and then call the other, but in a concurrent program with two or more goroutines, calls to both functions can be active at the same time. We’ll see such a program in a moment. 
 
 
@@ -8617,6 +8488,7 @@ When a program starts, its only goroutine is the one that calls the main functio
 f() // call f(); wait for it to return 
 go f() // create a new goroutine that calls f(); don't 
 wait 
+
 In the example below, the main goroutine computes the 45th Fibonacci number. Since it uses the terribly inefficient recursive algorithm, it runs for an appreciable time, during which we’d like to provide the user with a visual indication that the program is still running, by displaying an animated textual “spinner.” 
 
 ```go
@@ -8862,6 +8734,7 @@ mustCopy(conn, os.Stdin)
 } 
 
 While the main goroutine reads the standard input and sends it to the server, a second goroutine reads and prints the server’s response. When the main goroutine encounters the end of the input, for example, after the user types Control-D (^D) at the terminal (or the equivalent Control-Z on Microsoft Windows), the program stops, even if the other goroutine still has work to do. (We’ll see how to make the program wait for both sides to finish once we’ve introduced channels in Section 8.4.1.) 
+
 In the session below, the client’s input is left-aligned and the server’s responses are indented. The client shouts at the echo server three times: 
 $ go build gopl.io/ch8/reverb1 
 $ ./reverb1 & 
@@ -9148,7 +9021,8 @@ printer(squares)
 
 } 
 ```
-The call counter(naturals) implicitly converts naturals, a value of type chan int , to the type of the parameter, chan<-int . The printer(squares) call does a similar implicit conversion to <-chan int . Conversions from bidirectional to unidirectional channel types are permitted in any assignment. There is no going back, however: once you have a value of a unidirectional type such as chan<-int , there is no way to obtain from it a value of type chan int that refers to the same channel data structure. 
+
+Thee call counter(naturals) implicitly converts naturals, a value of type chan int , to the type of the parameter, chan<-int . The printer(squares) call does a similar implicit conversion to <-chan int . Conversions from bidirectional to unidirectional channel types are permitted in any assignment. There is no going back, however: once you have a value of a unidirectional type such as chan<-int , there is no way to obtain from it a value of type chan int that refers to the same channel data structure. 
 
 
 ### Buffered Channels 
@@ -9187,6 +9061,7 @@ fmt.Println(len(ch)) // "2"
 After two more receive operations the channel is empty again, and a fourth would block: 
 fmt.Println(<-ch) // "B" 
 fmt.Println(<-ch) // "C" 
+
 In this example, the send and receive operations were all performed by the same goroutine, but in real programs they are usually executed by different goroutines. Novices are sometimes tempted to use buffered channels within a single goroutine as a queue, lured by their pleasingly simple syntax, but this is a mistake. Channels are deeply connected to goroutine scheduling, and without another goroutine receiving from the channel, a sender—and perhaps the whole program—risks becoming blocked forever. If all you need is a simple queue, make one using a slice. 
 
 
@@ -9928,7 +9803,9 @@ return nil // cancelled }defer func() { <-sema }() // release token
 } 
 ```
 
-Now, when cancellation occurs, all the background goroutines quickly stop and the main function returns. Of course, when main returns, a program exits, so it can be hard to tell a main function that cleans up after itself from one that does not. There’s a handy trick we can use during testing: if instead of returning from main in the event of cancellation, we execute a call to panic, then the runtime will dump the stack of every goroutine in the program. If the main goroutine is the only one left, then it has cleaned up after itself. But if other goroutines remain, they may not have been properly cancelled, or perhaps they have been cancelled but the cancellation takes time; a little investigation may be worthwhile. The panic dump often contains sufficient information to distinguish these cases. 
+Now, when cancellation occurs, all the background goroutines quickly stop and the main function returns. Of course, when main returns, a program exits, so it can be hard to tell a main function that cleans up after itself from one that does not. There’s a handy trick we can use during testing: if instead of returning from main in the event of cancellation, we execute a call to panic, then the runtime will dump the stack of every goroutine in the program. 
+
+If the main goroutine is the only one left, then it has cleaned up after itself. But if other goroutines remain, they may not have been properly cancelled, or perhaps they have been cancelled but the cancellation takes time; a little investigation may be worthwhile. The panic dump often contains sufficient information to distinguish these cases. 
 
 Exercise 8.10: HTTP requests may be cancelled by closing the optional Cancel channel in the http.Request struct. Modify the web crawler of Section 8.6 to support cancellation. 
 Hint: the http.Get convenience function does not give you an opportunity to customize a Request. Instead, create the request using http.NewRequest, set its Cancel field, then perform the request by calling http.DefaultClient.Do(req). 
@@ -10022,6 +9899,8 @@ conn.Close()
 
 
 func clientWriter(conn net.Conn, ch <-chan string) { for msg := range ch {fmt.Fprintln(conn, msg) // NOTE: ignoring network errors }} 
+
+
 In addition, handleConn creates a clientWriter goroutine for each client that receives messages broadcast to the client’s outgoing message channel and writes them to the client’s network connection. The client writer’s loop terminates when the broadcaster closes the channel after receiving a leaving notification. 
 
 The display below shows the server in action with two clients in separate windows on the same computer, using netcat to chat: 
@@ -10044,16 +9923,22 @@ Exercise 8.13: Make the chat server disconnect idle clients, such as those that 
 Exercise 8.14: Change the chat server’s network protocol so that each client provides its name on entering. Use that name instead of the network address when prefixing each message with its sender’s identity. 
 
 Exercise 8.15: Failure of any client program to read data in a timely manner ultimately causes all clients to get stuck. Modify the broadcaster to skip a message rather than wait if a client writer is not ready to accept it. Alternatively, add buffering to each client’s outgoing message channel so that most messages are not dropped; the broadcaster should use a non-blocking send to this channel. 
+
 9. Concurrency with Shared Variables 
+
 In the previous chapter, we presented several programs that use goroutines and channels to express concurrency in a direct and natural way. However, in doing so, we glossed over a number of important and subtle issues that programmers must bear in mind when writing concurrent code. 
+
 In this chapter, we’ll take a closer look at the mechanics of concurrency. In particular, we’ll point out some of the problems associated with sharing variables among multiple goroutines, the analytical techniques for recognizing those problems, and the patterns for solving them. 
 Finally, we’ll explain some of the technical differences between goroutines and operating system threads. 
 
 ## Race Conditions 
+
 In a sequential program, that is, a program with only one goroutine, the steps of the program happen in the familiar execution order determined by the program logic. For instance, in a sequence of statements, the first one happens before the second one, and so on. In a program with two or more goroutines, the steps within each goroutine happen in the familiar order, but in general we don’t know whether an event x in one goroutine happens before an event y in another goroutine, or happens after it, or is simultaneous with it. When we cannot confidently say that one event happens before the other, then the events x and y are concurrent. 
+
 Consider a function that works correctly in a sequential program. That function is concurrency-safe if it continues to work correctly even when called concurrently, that is, from two or more goroutines with no additional synchronization. We can generalize this notion to a set of collaborating functions, such as the methods and operations of a particular type. A type is concurrency-safe if all its accessible methods and operations are concurrency-safe. 
 
 We can make a program concurrency-safe without making every concrete type in that program concurrency-safe. Indeed, concurrency-safe types are the exception rather than the rule, so you should access a variable concurrently only if the documentation for its type says that this is safe. We avoid concurrent access to most variables either by confining them to a single goroutine or by maintaining a higher-level invariant of mutual exclusion. We’ll explain these terms in this chapter. 
+
 In contrast, exported package-level functions are generally expected to be concurrency-safe. Since package-level variables cannot be confined to a single goroutine, functions that modify them must enforce mutual exclusion. 
 
 There are many reasons a function might not work when called concurrently, including deadlock, livelock, and resource starvation. We don’t have space to discuss all of them, so we’ll focus on the most important one, the race condition. 
@@ -10094,6 +9979,7 @@ A1 200 B 100 A1 200 A2 "= 200" A1 300 B 300 B 300 A2 "= 300" A2 "= 300"
 ```
 
 In all cases the final balance is $300. The only variation is whether Alice’s balance slip includes Bob’s transaction or not, but the customers are satisfied either way. 
+
 But this intuition is wrong. There is a fourth possible outcome, in which Bob’s deposit occurs in the middle of Alice’s deposit, after the balance has been read (balance + amount) but before it has been updated (balance = ... ), causing Bob’s transaction to disappear. This is because Alice’s deposit operation A1 is really a sequence of two operations, a read and a write; call them A1r and A1w. Here’s the problematic interleaving: 
 
 ```go
@@ -10106,6 +9992,7 @@ A2 "= 200"
 ```
 
 After A1r, the expression balance + amount evaluates to 200, so this is the value written during A1w, despite the intervening deposit. The final balance is only $200. The bank is $100 richer at Bob’s expense. 
+
 This program contains a particular kind of race condition called a data race. A data race occurs whenever two goroutines access the same variable concurrently and at least one of the accesses is a write. 
 Things get even messier if the data race involves a variable of a type that is larger than a single machine word, such as an interface, a string, or a slice. This code updates x concurrently to two slices of different lengths: 
 
@@ -10156,8 +10043,7 @@ icons[name] }
 
 In the example above, the icons variable is assigned during package initialization, which happens before the program’s main function starts running. Once initialized, icons is never modified. Data structures that are never modified or are immutable are inherently concurrency-safe and need no synchronization. But obviously we can’t use this approach if updates are essential, as with a bank account. 
 
-The second way to avoid a data race is to avoid accessing the variable from multiple goroutines. This is the approach taken by many of the programs in the previous chapter. For example, the main goroutine in the concurrent web crawler (§8.6) is the sole goroutine that accesses the seen map, and the broadcaster goroutine in the 
-chat server (§8.10) is the only goroutine that accesses the clients map. These variables are confined to a single goroutine. 
+The second way to avoid a data race is to avoid accessing the variable from multiple goroutines. This is the approach taken by many of the programs in the previous chapter. For example, the main goroutine in the concurrent web crawler (§8.6) is the sole goroutine that accesses the seen map, and the broadcaster goroutine in the chat server (§8.10) is the only goroutine that accesses the clients map. These variables are confined to a single goroutine. 
 
 Since other goroutines cannot access the variable directly, they must use a channel to send the confining goroutine a request to query or update the variable. This is what is meant by the Go mantra “Do not communicate by sharing memory; instead, share memory by communicating.” A goroutine that brokers access to a confined variable using channel requests is called a monitor goroutine for that variable. For example, the broadcaster goroutine monitors access to the clients map. 
 
@@ -10191,7 +10077,10 @@ go teller() // start the monitor goroutine
 ```
 
 
-Even when a variable cannot be confined to a single goroutine for its entire lifetime, confinement may still be a solution to the problem of concurrent access. For example, it’s common to share a variable between goroutines in a pipeline by passing its address from one stage to the next over a channel. If each stage of the pipeline refrains from accessing the variable after sending it to the next stage, then all accesses to the variable are sequential. In effect, the variable is confined to one stage of the pipeline, then confined to the next, and so on. This discipline is sometimes called serial confinement. 
+Even when a variable cannot be confined to a single goroutine for its entire lifetime, confinement may still be a solution to the problem of concurrent access. For example, it’s common to share a variable between goroutines in a pipeline by passing its address from one stage to the next over a channel. 
+
+If each stage of the pipeline refrains from accessing the variable after sending it to the next stage, then all accesses to the variable are sequential. In effect, the variable is confined to one stage of the pipeline, then confined to the next, and so on. This discipline is sometimes called serial confinement. 
+
 In the example below, Cakes are serially confined, first to the baker goroutine, then to the icer goroutine: 
 
 ```go
@@ -10274,7 +10163,9 @@ Since the critical sections in the Deposit and Balance functions are so short—
 	} 
 
 In the example above, the Unlock executes after the return statement has read the value of balance, so the Balance function is concurrency-safe. As a bonus, we no longer need the local variable b. 
+
 Furthermore, a deferred Unlock will run even if the critical section panics, which may be important in programs that make use of recover (§5.10). A defer is marginally more expensive than an explicit call to Unlock, but not enough to justify less clear code. As always with concurrent programs, favor clarity and resist premature optimization. Where possible, use defer and let critical sections extend to the end of a function. 
+
 Consider the Withdraw function below. On success, it reduces the balance by the specified amount and returns true. But if the account holds insufficient funds for the transaction, Withdraw restores the balance and returns false. 
 
 ```go
@@ -10289,7 +10180,10 @@ return true
 ```
 
 
-This function eventually gives the correct result, but it has a nasty side effect. When an excessive withdrawal is attempted, the balance transiently dips below zero. This may cause a concurrent withdrawal for a modest sum to be spuriously rejected. So if Bob tries to buy a sports car, Alice can’t pay for her morning coffee. The problem is that Withdraw is not atomic: it consists of a sequence of three separate operations, each of which acquires and then releases the mutex lock, but nothing locks the whole sequence. 
+This function eventually gives the correct result, but it has a nasty side effect. When an excessive withdrawal is attempted, the balance transiently dips below zero. This may cause a concurrent withdrawal for a modest sum to be spuriously rejected. 
+
+So if Bob tries to buy a sports car, Alice can’t pay for her morning coffee. The problem is that Withdraw is not atomic: it consists of a sequence of three separate operations, each of which acquires and then releases the mutex lock, but nothing locks the whole sequence. 
+
 Ideally, Withdraw should acquire the mutex lock once around the whole operation. However, this attempt won’t work: 
 
 ```go
@@ -10307,7 +10201,11 @@ return true
 
 Deposit tries to acquire the mutex lock a second time by calling mu.Lock(), but because mutex locks are not re-entrant—it’s not possible to lock a mutex that’s already locked—this leads to a deadlock where nothing can proceed, and Withdraw blocks forever. 
 
-There is a good reason Go’s mutexes are not re-entrant. The purpose of a mutex is to ensure that certain invariants of the shared variables are maintained at critical points during program execution. One of the invariants is “no goroutine is accessing the shared variables,” but there may be additional invariants specific to the data structures that the mutex guards. When a goroutine acquires a mutex lock, it may assume that the invariants hold. While it holds the lock, it may update the shared variables so that the invariants are temporarily violated. However, when it releases the lock, it must guarantee that order has been restored and the invariants hold once again. Although a re-entrant mutex would ensure that no other goroutines are accessing the shared variables, it cannot protect the additional invariants of those variables. 
+There is a good reason Go’s mutexes are not re-entrant. The purpose of a mutex is to ensure that certain invariants of the shared variables are maintained at critical points during program execution. 
+
+One of the invariants is “no goroutine is accessing the shared variables,” but there may be additional invariants specific to the data structures that the mutex guards. When a goroutine acquires a mutex lock, it may assume that the invariants hold. 
+
+While it holds the lock, it may update the shared variables so that the invariants are temporarily violated. However, when it releases the lock, it must guarantee that order has been restored and the invariants hold once again. Although a re-entrant mutex would ensure that no other goroutines are accessing the shared variables, it cannot protect the additional invariants of those variables. 
 
 A common solution is to divide a function such as Deposit into two: an unexported function, deposit, that assumes the lock is already held and does the real work, and an exported function Deposit that acquires the lock before calling deposit. We can then express Withdraw in terms of deposit like this: 
 
@@ -10342,6 +10240,8 @@ func deposit(amount int) { balance += amount }
 ```
 
 Of course, the deposit function shown here is so trivial that a realistic Withdraw function wouldn’t bother calling it, but nonetheless it illustrates the principle. 
+
+
 Encapsulation (§6.6), by reducing unexpected interactions in a program, helps us maintain data structure invariants. For the same reason, encapsulation also helps us maintain concurrency invariants. When you use a mutex, make sure that both it and the variables it guards are not exported, whether they are package-level variables or the fields of a struct. 
 
 
@@ -10362,6 +10262,7 @@ return balance
 The Balance function now calls the RLock and RUnlock methods to acquire and release a readers or shared lock. The Deposit function, which is unchanged, calls the mu.Lock and mu.Unlock methods to acquire and release a writer or exclusive lock. 
 
 After this change, most of Bob’s Balance requests run in parallel with each other and finish more quickly. The lock is available for more of the time, and Deposit requests can proceed in a timely manner. 
+
 RLock can be used only if there are no writes to shared variables in the critical section. In general, we should not assume that logically read-only functions or methods don’t also update some variables. For example, a method that appears to be a simple accessor might also increment an internal usage counter, or update a cache so that repeat calls are faster. If in doubt, use an exclusive Lock. 
 
 
@@ -10370,9 +10271,15 @@ It’s only profitable to use an RWMutex when most of the goroutines that acquir
 
 ## Memory Synchronization 
 
-You may wonder why the Balance method needs mutual exclusion, either channel-based or mutex-based. After all, unlike Deposit, it consists only of a single operation, so there is no danger of another goroutine executing “in the middle” of it. There are two reasons we need a mutex. The first is that it’s equally important that Balance not execute in the middle of some other operation like Withdraw. The second (and more subtle) reason is that synchronization is about more than just the order of execution of multiple goroutines; synchronization also affects memory. 
+You may wonder why the Balance method needs mutual exclusion, either channel-based or mutex-based. After all, unlike Deposit, it consists only of a single operation, so there is no danger of another goroutine executing “in the middle” of it. 
 
-In a modern computer there may be dozens of processors, each with its own local cache of the main memory. For efficiency, writes to memory are buffered within each processor and flushed out to main memory only when necessary. They may even be committed to main memory in a different order than they were written by the writing goroutine. Synchronization primitives like channel communications and mutex operations cause the processor to flush out and commit all its accumulated writes so that the effects of goroutine execution up to that point are guaranteed to be visible to goroutines running on other processors. 
+There are two reasons we need a mutex. The first is that it’s equally important that Balance not execute in the middle of some other operation like Withdraw. The second (and more subtle) reason is that synchronization is about more than just the order of execution of multiple goroutines; synchronization also affects memory. 
+
+In a modern computer there may be dozens of processors, each with its own local cache of the main memory. 
+
+For efficiency, writes to memory are buffered within each processor and flushed out to main memory only when necessary. They may even be committed to main memory in a different order than they were written by the writing goroutine. 
+
+Synchronization primitives like channel communications and mutex operations cause the processor to flush out and commit all its accumulated writes so that the effects of goroutine execution up to that point are guaranteed to be visible to goroutines running on other processors. 
 Consider the possible outputs of the following snippet of code: 
 
 ```go
@@ -10395,9 +10302,12 @@ The fourth line could be explained by the sequence A1,B1,A2,B2 or by B1,A1,A2,B2
 x:0 y:0 
 y:0 x:0 
 but depending on the compiler, CPU, and many other factors, they can happen too. What possible interleaving of the four statements could explain them? 
+
+
 Within a single goroutine, the effects of each statement are guaranteed to occur in the order of execution; goroutines are sequentially consistent. But in the absence of explicit synchronization using a channel or mutex, there is no guarantee that events are seen in the same order by all goroutines. Although goroutine A must observe the effect of the write x=1 before it reads the value of y, it does not necessarily observe the write to y done by goroutine B, so A may print a stale value of y. 
 
 It is tempting to try to understand concurrency as if it corresponds to some interleaving of the statements of each goroutine, but as the example above shows, this is not how a modern compiler or CPU works. Because the assignment and the Print refer to different variables, a compiler may conclude that the order of the two statements cannot affect the result, and swap them. If the two goroutines execute on different CPUs, each with its own cache, writes by one goroutine are not visible to the other goroutine’s Print until the caches are synchronized with main memory. 
+
 All these concurrency problems can be avoided by the consistent use of simple, established patterns. Where possible, confine variables to a single goroutine; for all other variables, use mutual exclusion. 
 
 
@@ -10409,6 +10319,7 @@ It is good practice to defer an expensive initialization step until the moment i
 ```go
 var icons map[string]image.Image 
 ```
+
 This version of Icon uses lazy initialization: 
 
 ```go
@@ -10492,6 +10403,8 @@ var icons map[string]image.Image
 func Icon(name string) image.Image {
 loadIconsOnce.Do(loadIcons)
 return icons[name] } 
+```
+
 Each call to Do(loadIcons) locks the mutex and checks the boolean variable. In the first call, in which the variable is false, Do calls loadIcons and sets the variable to true. Subsequent calls do nothing, but the mutex synchronization ensures that the effects of loadIcons on memory (specifically, icons) become visible to all goroutines. Using sync.Once in this way, we can avoid sharing variables with other goroutines until they have been properly constructed. 
 
 Exercise 9.2: Rewrite the PopCount example from Section 2.6.2 so that it initializes the lookup table using sync.Once the first time it is needed. (Realistically, the cost of synchronization would be prohibitive for a small and highly optimized function like PopCount.) 
@@ -10504,6 +10417,7 @@ Just add the -race flag to your go build , go run , or go test command. This cau
 The race detector studies this stream of events, looking for cases in which one goroutine reads or writes a shared variable that was most recently written by a different goroutine without an intervening synchronization operation. This indicates a concurrent access to the shared variable, and thus a data race. The tool prints a report that includes the identity of the variable, and the stacks of active function calls in the reading goroutine and the writing goroutine. This is usually sufficient to pinpoint the problem. Section 9.7 contains an example of the race detector in action. 
 
 The race detector reports all data races that were actually executed. However, it can only detect race conditions that occur during a run; it cannot prove that none will ever occur. For best results, make sure that your tests exercise your packages using concurrency. 
+
 Due to extra bookkeeping, a program built with race detection needs more time and memory to run, but the overhead is tolerable even for many production jobs. For infrequently occurring race conditions, letting the race detector do its job can save hours or days of debugging. 
 
 ## Example: Concurrent Non-Blocking Cache 
@@ -10563,7 +10477,8 @@ return res.value, res.err
 
 
 A Memo instance holds the function f to memoize, of type Func, and the cache, which is a mapping from strings to results. Each result is simply the pair of results returned by a call to f—a value and an error. We’ll show several variations of Memo as the design progresses, but all will share these basic aspects. 
-An example of how to use Memo appears below. For each element in a stream of incoming URLs, we call Get, logging the latency of the call and the amount of data it returns: 
+
+Anexample of how to use Memo appears below. For each element in a stream of incoming URLs, we call Get, logging the latency of the call and the amount of data it returns: 
 
 ```go
 m := memo.New(httpGetBody) 
@@ -10597,6 +10512,7 @@ http://gopl.io, 326ns, 2856 bytes
 PASS 
 ok // gopl.io/ch9/memo1 1.257s 
 ```
+
 This test executes all calls to Get sequentially. 
 
 Since HTTP requests are a great opportunity for parallelism, let’s change the test so that it makes all requests concurrently. The test uses a sync.WaitGroup to wait until the last request is complete before returning. 
@@ -10706,6 +10622,7 @@ return res.value, res.err
 } 
 
 The performance improves again, but now we notice that some URLs are being fetched twice. This happens when two or more goroutines call Get for the same URL at about the same time. Both consult the cache, find no value there, and then call the slow function f. Then both of them update the map with the result they obtained. One of the results is overwritten by the other. 
+
 Ideally we’d like to avoid this redundant work. This feature is sometimes called duplicate suppression. In the version of Memo below, each map element is a pointer to an entry struct. Each entry contains the memoized result of a call to the function f, as before, but it additionally contains a channel called ready. Just after the entry’s result has been set, this channel will be closed, to broadcast (§8.9) to any other goroutines that it is now safe for them to read the result from the entry. 
 
 ```go
@@ -10741,7 +10658,9 @@ return e.res.value, e.res.err
 A call to Get now involves acquiring the mutex lock that guards the cache map, looking in the map for a pointer to an existing entry, allocating and inserting a new entry if none was found, then releasing the lock. If there was an existing entry, its value is not necessarily ready yet—another goroutine could still be calling the slow function f—so the calling goroutine must wait for the entry’s “ready” condition before it reads the entry’s result. It does this by reading a value from the ready channel, since this operation blocks until the channel is closed. 
 
 If there was no existing entry, then by inserting a new “not ready” entry into the map, the current goroutine becomes responsible for invoking the slow function, updating the entry, and broadcasting the readiness of the new entry to any other goroutines that might (by then) be waiting for it. 
+
 Notice that the variables e.res.value and e.res.err in the entry are shared among multiple goroutines. The goroutine that creates the entry sets their values, and other goroutines read their values once the “ready” condition has been broadcast. 
+
 Despite being accessed by multiple goroutines, no mutex lock is necessary. The closing of the ready channel happens before any other goroutine receives the broadcast event, so the write to those variables in the first goroutine happens before they are read by subsequent goroutines. There is no data race. 
 
 Our concurrent, duplicate-suppressing, non-blocking cache is complete. The implementation of Memo above uses a mutex to guard a map variable that is shared by each goroutine that calls Get. It’s interesting to contrast this design with an alternative one in which the map variable is confined to a monitor goroutine to which callers of Get must send a message. 
@@ -10807,6 +10726,7 @@ response <-e.res
 In a similar manner to the mutex-based version, the first request for a given key becomes responsible for calling the function f on that key, storing the result in the entry, and broadcasting the readiness of the entry by closing the ready channel. This is done by (*entry).call. 
 
 A subsequent request for the same key finds the existing entry in the map, waits for the result to become ready, and sends the result through the response channel to the client goroutine that called Get. This is done by (*entry).deliver. The call and deliver methods must be called in their own goroutines to ensure that the monitor goroutine does not stop processing new requests. 
+
 This example shows that it’s possible to build many concurrent structures using either of the two approaches—shared variables and locks, or communicating sequential processes—without excessive complexity. 
 
 It’s not always obvious which approach is preferable in a given situation, but it’s worth knowing how they correspond. Sometimes switching from one approach to the 
@@ -10821,22 +10741,34 @@ may provide an optional done channel through which they can cancel the operation
 In the previous chapter we said that the difference between goroutines and operating system (OS) threads could be ignored until later. Although the differences between them are essentially quantitative, a big enough quantitative difference becomes a qualitative one, and so it is with goroutines and threads. The time has now come to distinguish them. 
 
 ### Growable Stacks 
-Each OS thread has a fixed-size block of memory (often as large as 2MB) for its stack, the work area where it saves the local variables of function calls that are in progress or temporarily suspended while another function is called. This fixed-size stack is simultaneously too much and too little. A 2MB stack would be a huge waste of memory for a little goroutine, such as one that merely waits for a WaitGroupthen closes a channel. It’s not uncommon for a Go program to create hundreds of thousands of goroutines at one time, which would be impossible with stacks this large. Yet despite their size, fixed-size stacks are not always big enough for the most complex and deeply recursive of functions. Changing the fixed size can improve space efficiency and allow more threads to be created, or it can enable more deeply recursive functions, but it cannot do both. 
+
+Each OS thread has a fixed-size block of memory (often as large as 2MB) for its stack, the work area where it saves the local variables of function calls that are in progress or temporarily suspended while another function is called. This fixed-size stack is simultaneously too much and too little. A 2MB stack would be a huge waste of memory for a little goroutine, such as one that merely waits for a WaitGroupthen closes a channel. 
+
+It’s not uncommon for a Go program to create hundreds of thousands of goroutines at one time, which would be impossible with stacks this large. Yet despite their size, fixed-size stacks are not always big enough for the most complex and deeply recursive of functions. Changing the fixed size can improve space efficiency and allow more threads to be created, or it can enable more deeply recursive functions, but it cannot do both. 
+
 In contrast, a goroutine starts life with a small stack, typically 2KB. A goroutine’s stack, like the stack of an OS thread, holds the local variables of active and suspended function calls, but unlike an OS thread, a goroutine’s stack is not fixed; it grows and shrinks as needed. The size limit for a goroutine stack may be as much as 1GB, orders of magnitude larger than a typical fixed-size thread stack, though of course few goroutines use that much. 
 
 Exercise 9.4: Construct a pipeline that connects an arbitrary number of goroutines with channels. What is the maximum number of pipeline stages you can create without running out of memory? How long does a value take to transit the entire pipeline? 
 
 ### Goroutine Scheduling 
-OS threads are scheduled by the OS kernel. Every few milliseconds, a hardware timer interrupts the processor, which causes a kernel function called the scheduler to be invoked. This function suspends the currently executing thread and saves its registers in memory, looks over the list of threads and decides which one should run next, restores that thread’s registers from memory, then resumes the execution of that thread. Because OS threads are scheduled by the kernel, passing control from one thread to another requires a full context switch, that is, saving the state of one user thread to memory, restoring the state of another, and updating the scheduler’s data structures. This operation is slow, due to its poor locality and the number of memory accesses required, and has historically only gotten worse as the number of CPU cycles required to access memory has increased. 
+OS threads are scheduled by the OS kernel. Every few milliseconds, a hardware timer interrupts the processor, which causes a kernel function called the scheduler to be invoked. This function suspends the currently executing thread and saves its registers in memory, looks over the list of threads and decides which one should run next, restores that thread’s registers from memory, then resumes the execution of that thread. 
+
+Because OS threads are scheduled by the kernel, passing control from one thread to another requires a full context switch, that is, saving the state of one user thread to memory, restoring the state of another, and updating the scheduler’s data structures. This operation is slow, due to its poor locality and the number of memory accesses required, and has historically only gotten worse as the number of CPU cycles required to access memory has increased. 
 
 The Go runtime contains its own scheduler that uses a technique known as m:n scheduling, because it multiplexes (or schedules) m goroutines on n OS threads. The job of the Go scheduler is analogous to that of the kernel scheduler, but it is concerned only with the goroutines of a single Go program. 
+
+
 Unlike the operating system’s thread scheduler, the Go scheduler is not invoked periodically by a hardware timer, but implicitly by certain Go language constructs. For example, when a goroutine calls time.Sleep or blocks in a channel or mutex operation, the scheduler puts it to sleep and runs another goroutine until it is time to wake the first one up. Because it doesn’t need a switch to kernel context, rescheduling a goroutine is much cheaper than rescheduling a thread. 
 
 Exercise 9.5: Write a program with two goroutines that send messages back and forth over two unbuffered channels in ping-pong fashion. How many communications per second can the program sustain? 
 
 ### GOMAXPROCS 
 
-The Go scheduler uses a parameter called GOMAXPROCS to determine how many OS threads may be actively executing Go code simultaneously. Its default value is the number of CPUs on the machine, so on a machine with 8 CPUs, the scheduler will schedule Go code on up to 8 OS threads at once. (GOMAXPROCS is the n in m:n scheduling.) Goroutines that are sleeping or blocked in a communication do not need a thread at all. Goroutines that are blocked in I/O or other system calls or are calling non-Go functions, do need an OS thread, but GOMAXPROCS need not account for them. 
+The Go scheduler uses a parameter called GOMAXPROCS to determine how many OS threads may be actively executing Go code simultaneously. Its default value is the number of CPUs on the machine, so on a machine with 8 CPUs, the scheduler will schedule Go code on up to 8 OS threads at once. (GOMAXPROCS is the n in m:n scheduling.) 
+
+Goroutines that are sleeping or blocked in a communication do not need a thread at all. 
+
+Goroutines that are blocked in I/O or other system calls or are calling non-Go functions, do need an OS thread, but GOMAXPROCS need not account for them. 
 
 You can explicitly control this parameter using the GOMAXPROCS environment variable or the runtime.GOMAXPROCS function. We can see the effect of GOMAXPROCS on this little program, which prints an endless stream of zeros and ones: 
 
@@ -10848,32 +10780,46 @@ $ GOMAXPROCS=1 go run hacker-cliché.go
 111111111111111111110000000000000000000011111... 
 $ GOMAXPROCS=2 go run hacker-cliché.go
 010101010101010101011001100101011010010100110... 
-In the first run, at most one goroutine was executed at a time. Initially, it was the main goroutine, which prints ones. After a period of time, the Go scheduler put it to sleep and woke up the goroutine that prints zeros, giving it a turn to run on the OS thread. In the second run, there were two OS threads available, so both goroutines ran simultaneously, printing digits at about the same rate. We must stress that many factors are involved in goroutine scheduling, and the runtime is constantly evolving, so your results may differ from the ones above. 
+```
+
+In the first run, at most one goroutine was executed at a time. Initially, it was the main goroutine, which prints ones. After a period of time, the Go scheduler put it to sleep and woke up the goroutine that prints zeros, giving it a turn to run on the OS thread. 
+
+In the second run, there were two OS threads available, so both goroutines ran simultaneously, printing digits at about the same rate. We must stress that many factors are involved in goroutine scheduling, and the runtime is constantly evolving, so your results may differ from the ones above. 
 
 Exercise 9.6: Measure how the performance of a compute-bound parallel program (see Exercise 8.5) varies with GOMAXPROCS. What is the optimal value on your computer? How many CPUs does your computer have? 
 
 ### Goroutines Have No Identity 
 In most operating systems and programming languages that support multithreading, the current thread has a distinct identity that can be easily obtained as an ordinary value, typically an integer or pointer. This makes it easy to build an abstraction called thread-local storage, which is essentially a global map keyed by thread identity, so that each thread can store and retrieve values independent of other threads. 
-Goroutines have no notion of identity that is accessible to the programmer. This is by design, since thread-local storage tends to be abused. For example, in a web server implemented in a language with thread-local storage, it’s common for many functions to find information about the HTTP request on whose behalf they are currently working by looking in that storage. However, just as with programs that rely excessively on global variables, this can lead to an unhealthy “action at a distance” in which the behavior of a function is not determined by its arguments alone, but by the identity of the thread in which it runs. Consequently, if the identity of the thread should change—some worker threads are enlisted to help, say—the function misbehaves mysteriously. 
-Go encourages a simpler style of programming in which parameters that affect the behavior of a function are explicit. Not only does this make programs easier to read, but it lets us freely assign subtasks of a given function to many different goroutines without worrying about their identity. 
+
+Goroutines have no notion of identity that is accessible to the programmer. This is by design, since thread-local storage tends to be abused. For example, in a web server implemented in a language with thread-local storage, it’s common for many functions to find information about the HTTP request on whose behalf they are currently working by looking in that storage. 
+
+However, just as with programs that rely excessively on global variables, this can lead to an unhealthy “action at a distance” in which the behavior of a function is not determined by its arguments alone, but by the identity of the thread in which it runs. Consequently, if the identity of the thread should change—some worker threads are enlisted to help, say—the function misbehaves mysteriously. 
+
+Goencourages a simpler style of programming in which parameters that affect the behavior of a function are explicit. Not only does this make programs easier to read, but it lets us freely assign subtasks of a given function to many different goroutines without worrying about their identity. 
 
 You’ve now learned about all the language features you need for writing Go programs. In the next two chapters, we’ll step back to look at some of the practices and tools that support programming in the large: how to structure a project as a set of packages, and how to obtain, build, test, benchmark, profile, document, and share those packages. 
+
 10. Packages and the Go Tool 
 
 A modest-size program today might contain 10,000 functions. Yet its author need think about only a few of them and design even fewer, because the vast majority were written by others and made available for reuse through packages. 
-Go comes with over 100 standard packages that provide the foundations for most applications. The Go community, a thriving ecosystem of package design, sharing, reuse, and improvement, has published many more, and you can find a searchable index of them at http://godoc.org. In this chapter, we’ll show how to use existing packages and create new ones. 
-Go also comes with the go tool, a sophisticated but simple-to-use command for managing workspaces of Go packages. Since the beginning of the book, we’ve been showing how to use the go tool to download, build, and run example programs. In this chapter, we’ll look at the tool’s underlying concepts and tour more of its capabilities, which include printing documentation and querying metadata about the packages in the workspace. In the next chapter we’ll explore its testing features. 
+
+Gocomes with over 100 standard packages that provide the foundations for most applications. The Go community, a thriving ecosystem of package design, sharing, reuse, and improvement, has published many more, and you can find a searchable index of them at http://godoc.org. In this chapter, we’ll show how to use existing packages and create new ones. 
+
+Goalso comes with the go tool, a sophisticated but simple-to-use command for managing workspaces of Go packages. Since the beginning of the book, we’ve been showing how to use the go tool to download, build, and run example programs. In this chapter, we’ll look at the tool’s underlying concepts and tour more of its capabilities, which include printing documentation and querying metadata about the packages in the workspace. In the next chapter we’ll explore its testing features. 
 
 ## Introduction 
 
 The purpose of any package system is to make the design and maintenance of large programs practical by grouping related features together into units that can be easily understood and changed, independent of the other packages of the program. This modularity allows packages to be shared and reused by different projects, distributed within an organization, or made available to the wider world. 
+
 Each package defines a distinct name space that encloses its identifiers. Each name is associated with a particular package, letting us choose short, clear names for the types, functions, and so on that we use most often, without creating conflicts with other parts of the program. 
+
 Packages also provide encapsulation by controlling which names are visible or exported outside the package. Restricting the visibility of package members hides the helper functions and types behind the package’s API, allowing the package maintainer to change the implementation with confidence that no code outside the package will be affected. Restricting visibility also hides variables so that clients can access and update them only through exported functions that preserve internal invariants or enforce mutual exclusion in a concurrent program. 
 
 When we change a file, we must recompile the file’s package and potentially all the packages that depend on it. Go compilation is notably faster than most other compiled languages, even when building from scratch. There are three main reasons for the compiler’s speed. First, all imports must be explicitly listed at the beginning of each source file, so the compiler does not have to read and process an entire file to determine its dependencies. Second, the dependencies of a package form a directed acyclic graph, and because there are no cycles, packages can be compiled separately and perhaps in parallel. 
 Finally, the object file for a compiled Go package records export information not just for the package itself, but for its dependencies too. When compiling a package, the compiler must read one object file for each import but need not look beyond these files. 
 
 ## Import Paths 
+
 Each package is identified by a unique string called its import path. Import paths are the strings that appear in import declarations. 
 
 ```go
@@ -10915,13 +10861,16 @@ The third exception is that some tools for dependency management append version 
 ## Import Declarations 
 
 A Go source file may contain zero or more import declarations immediately after the package declaration and before the first non-import declaration. Each import declaration may specify the import path of a single package, or multiple packages in a parenthesized list. The two forms below are equivalent but the second form is more common. 
+
 import "fmt" 
 import "os" 
 import (
 "fmt" 
 "os" 
 ) 
-Imported packages may be grouped by introducing blank lines; such groupings usually indicate different domains. The order is not significant, but by convention the lines of each group are sorted alphabetically. (Both gofmt and goimports will group and sort for you.) 
+
+Imported packages may be grouped by introducing blank lines; such groupings usually indicate different domains. The order is not significant, but by convention the lines of each group are sorted alphabetically. (Both gofmt and goimports will group and sort for you.)
+
 import (
 "fmt" 
 "html/template"
@@ -10941,6 +10890,7 @@ import ("crypto/rand"mrand "math/rand" // alternative name mrand avoids conflict
 The alternative name affects only the importing file. Other files, even ones in the same package, may import the package using its default name, or a different name. 
 
 A renaming import may be useful even when there is no conflict. If the name of the imported package is unwieldy, as is sometimes the case for automatically generated code, an abbreviated name may be more convenient. The same short name should be used consistently to avoid confusion. Choosing an alternative name can help avoid conflicts with common local variable names. For example, in a file with many local variables named path, we might import the standard "path" package as pathpkg. 
+
 Each import declaration establishes a dependency from the current package to the imported package. The go build tool reports an error if these dependencies form a cycle. 
 
 ## Blank Imports 
@@ -10949,6 +10899,8 @@ It is an error to import a package into a file but not refer to the name it defi
 
 ```go
 import _ "image/png" // register PNG decoder 
+```
+
 This is known as a blank import. It is most often used to implement a compile-time mechanism whereby the main program can enable optional features by blank-importing additional packages. First we’ll see how to use it, then we’ll see how it works. 
 
 The standard library’s image package exports a Decode function that reads bytes from an io.Reader, figures out which image format was used to encode the data, invokes the appropriate decoder, then returns the resulting image.Image. Using image.Decode, it’s easy to build a simple image converter that reads an image in one format and writes it out in another: 
@@ -10994,14 +10946,14 @@ $ go build gopl.io/ch3/mandelbrot
 $ go build gopl.io/ch10/jpeg 
 $ ./mandelbrot | ./jpeg >mandelbrot.jpg 
 Input format = png 
-
+```
 Notice the blank import of image/png. Without that line, the program compiles and links as usual but can no longer recognize or decode input in PNG format: 
 
 ```go
 $ go build gopl.io/ch10/jpeg 
 $ ./mandelbrot | ./jpeg >mandelbrot.jpg 
 jpeg: image: unknown format 
-
+```
 
 Here’s how it works. The standard library provides decoders for GIF, PNG, and JPEG, and users may provide others, but to keep executables small, decoders are not included in an application unless explicitly requested. The image.Decode function consults a table of supported formats. Each entry in the table specifies four things: the name of the format; a string that is a prefix of all images encoded this way, used to detect the encoding; a function Decode that decodes an encoded image; and another function DecodeConfig that decodes only the image metadata, such as its size and color space. An entry is added to the table by calling image.RegisterFormat, typically from within the package initializer of the supporting package for each format, like this one in image/png: 
 
@@ -11014,7 +10966,7 @@ const pngHeader = "\x89PNG\r\n\x1a\n"
 image.RegisterFormat("png", pngHeader, Decode, 
 DecodeConfig)
 } 
-
+```
 The effect is that an application need only blank-import the package for the format it needs to make the image.Decode function able to decode it. 
 
 The database/sql package uses a similar mechanism to let users install just the database drivers they need. For example: 
@@ -11034,6 +10986,8 @@ error:
 unknown 
 
 driver "sqlite3" 
+```
+
 
 Exercise 10.1: Extend the jpeg program so that it converts any supported input format to any output format, using image.Decode to detect the input format and a flag to select the output format. 
 
@@ -11043,8 +10997,11 @@ Exercise 10.2: Define a generic archive file-reading function capable of reading
 In this section, we’ll offer some advice on how to follow Go’s distinctive conventions for naming packages and their members. 
 
 When creating a package, keep its name short, but not so short as to be cryptic. The most frequently used packages in the standard library are named bufio, bytes, flag, fmt, http, io, json, os, sort, sync, and time. 
+
 Be descriptive and unambiguous where possible. For example, don’t name a utility package util when a name such as imageutil or ioutil is specific yet still concise. Avoid choosing package names that are commonly used for related local variables, or you may compel the package’s clients to use renaming imports, as with the path package. 
+
 Package names usually take the singular form. The standard packages bytes, errors, and strings use the plural to avoid hiding the corresponding predeclared types and, in the case of go/types, to avoid conflict with a keyword. 
+
 Avoid package names that already have other connotations. For example, we originally used the name temp for the temperature conversion package in Section 2.5, but that didn’t last long. It was a terrible idea because “temp” is an almost universal synonym for “temporary.” We went through a brief period with the name temperature, but that was too long and didn’t say what the package did. In the end, it became tempconv, which is shorter and parallel with strconv. 
 
 Now let’s turn to the naming of package members. Since each reference to a member of another package uses a qualified identifier such as fmt.Println, the burden of describing the package member is borne equally by the package name and the member name. We need not mention the concept of formatting in Println because the package name fmt does that already. When designing a package, consider how the two parts of a qualified identifier work together, not the member name alone. Here are some characteristic examples: 
@@ -11098,6 +11055,7 @@ command.
 
 
 To keep the need for configuration to a minimum, the go tool relies heavily on conventions. For example, given the name of a Go source file, the tool can find its enclosing package, because each directory contains a single package and the import path of a package corresponds to the directory hierarchy in the workspace. Given the import path of a package, the tool can find the corresponding directory in which it stores object files. It can also find the URL of the server that hosts the source code repository. 
+
 ###Workspace Organization 
 
 The only configuration most users ever need is the GOPATH environment variable, which specifies the root of the workspace. When switching to a different workspace, users update the value of GOPATH. For instance, we set GOPATH to $HOME/gobook while working on this book: 
@@ -11133,6 +11091,7 @@ GOPATH has three subdirectories. The src subdirectory holds source code. Each pa
 A second environment variable, GOROOT, specifies the root directory of the Go distribution, which provides all the packages of the standard library. The directory structure beneath GOROOT resembles that of GOPATH, so, for example, the source files of the fmt package reside in the $GOROOT/src/fmt directory. Users never need to set GOROOT since, by default, the go tool will use the location where it was installed. 
 
 The go env command prints the effective values of the environment variables relevant to the toolchain, including the default values for the missing ones. GOOS specifies the target operating system (for example, android, linux, darwin, or windows) and GOARCH specifies the target processor architecture, such as amd64, 386, or arm. Although GOPATH is the only variable you must set, the others occasionally appear in our explanations. 
+
 $ go env 
 GOPATH="/home/gopher/gobook"
 GOROOT="/usr/local/go"
@@ -11145,6 +11104,7 @@ GOOS="darwin"
 When using the go tool, a package’s import path indicates not only where to find it in the local workspace, but where to find it on the Internet so that go get can retrieve and update it. 
 
 The go get command can download a single package or an entire subtree or repository using the ... notation, as in the previous section. The tool also computes and downloads all the dependencies of the initial packages, which is why the golang.org/x/net/html package appeared in the workspace in the previous example. 
+
 Once go get has downloaded the packages, it builds them and then installs the libraries and commands. We’ll look at the details in the next section, but an example will show how straightforward the process is. The first command below gets the golint tool, which checks for common style problems in Go source code. The second command runs golint on // gopl.io/ch2/popcount from Section 2.6.2. It helpfully reports that we have forgotten to write a doc comment for the package: 
 
 ```go
@@ -11195,6 +11155,7 @@ The go build command compiles each argument package. If the package is a library
 
 
 Since each directory contains one package, each executable program, or command in Unix terminology, requires its own directory. These directories are sometimes children of a directory named cmd, such as the golang.org/x/tools/cmd/godoc command which serves Go package documentation through a web interface (§10.7.4). 
+
 Packages may be specified by their import paths, as we saw above, or by a relative directory name, which must start with a . or .. segment even if this would not ordinarily be required. If no argument is provided, the current directory is assumed. Thus the following commands build the same package, though each writes the executable to the directory in which go build is run: 
 
 
@@ -11255,6 +11216,7 @@ $ go run quoteargs.go one "two three" four\ five
 
 
 The first argument that doesn’t end in .go is assumed to be the beginning of the list of arguments to the Go executable. 
+
 By default, the go build command builds the requested package and all its dependencies, then throws away all the compiled code except the final executable, if any. Both the dependency analysis and the compilation are surprisingly fast, but as projects grow to dozens of packages and hundreds of thousands of lines of code, the time to recompile dependencies can become noticeable, potentially several seconds, even when those dependencies haven’t changed at all. 
 
 
@@ -11282,8 +11244,11 @@ darwin amd64
 $ GOARCH=386 go build gopl.io/ch10/cross 
 $ ./cross
 darwin 386 
+
 Some packages may need to compile different versions of the code for certain platforms or processors, to deal with low-level portability issues or to provide optimized versions of important routines, for instance. If a file name includes an operating system or processor architecture name like net_linux.go or asm_amd64.s, then the go tool will compile the file only when building for that target. Special comments called build tags give more fine-grained control. For example, if a file contains this comment: 
+
 // +build linux darwin 
+
 before the package declaration (and its doc comment), go build will compile it only when building for Linux or Mac OS X, and this comment says never to compile the file: 
 // +build ignore 
 
@@ -11291,9 +11256,11 @@ For more details, see the Build Constraints section of the go/build package’s 
 $ go doc go/build 
 
 ###Documenting Packages 
+
 Go style strongly encourages good documentation of package APIs. Each declaration of an exported package member and the package declaration itself should be immediately preceded by a comment explaining its purpose and usage. 
 
-Go doc comments are always complete sentences, and the first sentence is usually a summary that starts with the name being declared. Function parameters and other identifiers are mentioned without quotation or markup. For example, here’s the doc comment for fmt.Fprintf: 
+
+Godoc comments are always complete sentences, and the first sentence is usually a summary that starts with the name being declared. Function parameters and other identifiers are mentioned without quotation or markup. For example, here’s the doc comment for fmt.Fprintf: 
 
 ```go
 // Fprintf formats according to a format specifier and 
@@ -11384,7 +11351,8 @@ The go list tool reports information about available packages. In its simplest f
 ```go
 $ go list github.com/go-sql-driver/mysql
 github.com/go-sql-driver/mysql 
-An argument to go list may contain the “...” wildcard, which matches any substring of a package’s import path. We can use it to enumerate all the packages within a Go workspace: 
+
+Anargument to go list may contain the “...” wildcard, which matches any substring of a package’s import path. We can use it to enumerate all the packages within a Go workspace: 
 $ go list ... 
 archive/tar 
 archive/zip
@@ -11462,6 +11430,7 @@ $ go list -f '{{.ImportPath}} -> {{join .Imports " "}}' compress/...compress/bzi
 
 
 The go list command is useful for both one-off interactive queries and for build and test automation scripts. We’ll use it again in Section 11.2.4. For more information, including the set of available fields and their meaning, see the output of go help list . 
+
 In this chapter, we’ve explained all the important subcommands of the go tool— except one. In the next chapter, we’ll see how the go test command is used for testing Go programs. 
 
 
@@ -11470,6 +11439,7 @@ Exercise 10.4: Construct a tool that reports the set of all packages in the work
 11. Testing 
 
 Maurice Wilkes, the developer of EDSAC, the first stored-program computer, had a startling insight while climbing the stairs of his laboratory in 1949. In Memoirs of a Computer Pioneer, he recalled, “The realization came over me with full force that a good part of the remainder of my life was going to be spent in finding errors in my own programs.” Surely every programmer of a stored-program computer since then can sympathize with Wilkes, though perhaps not without some bemusement at his naïveté about the difficulties of software construction. 
+
 Programs today are far larger and more complex than in Wilkes’s time, of course, and a great deal of effort has been spent on techniques to make this complexity manageable. Two techniques in particular stand out for their effectiveness. The first is routine peer review of programs before they are deployed. The second, the subject of this chapter, is testing. 
 
 Testing, by which we implicitly mean automated testing, is the practice of writing small programs that check that the code under test (the production code) behaves as expected for certain inputs, which are usually either carefully chosen to exercise certain features or randomized to ensure broad coverage. 
@@ -11484,11 +11454,13 @@ In practice, writing test code is not much different from writing the original p
 ## The go test Tool 
 
 The go test subcommand is a test driver for Go packages that are organized according to certain conventions. In a package directory, files whose names end with _test.go are not part of the package ordinarily built by go build but are a part of it when built by go test . 
+
 Within *_test.go files, three kinds of functions are treated specially: tests, benchmarks, and examples. A test function, which is a function whose name begins with Test, exercises some program logic for correct behavior; go test calls the test function and reports the result, which is either PASS or FAIL.A benchmark function has a name beginning with Benchmark and measures the performance of some operation; go test reports the mean execution time of the operation. And an example function, whose name starts with Example, provides machine-checked documentation. We will cover tests in detail in Section 11.2, benchmarks in Section 11.4, and examples in Section 11.6. 
 
 The go test tool scans the *_test.go files for these special functions, generates a temporary main package that calls them all in the proper way, builds and runs it, reports the results, and then cleans up. 
 
 ## Test Functions 
+
 Each test file must import the testing package. Test functions have the following signature: 
 func TestName(t *testing.T) { 
 // ... 
@@ -11547,6 +11519,7 @@ A go test (or go build ) command with no package arguments operates on the packa
 $ cd $GOPATH/src/// gopl.io/ch11/word1 
 $ go test 
 ok // gopl.io/ch11/word1 0.008s 
+```
 
 Satisfied, we ship the program, but no sooner have the launch party guests departed than the bug reports start to arrive. A French user named Noelle Eve Elleon complains that IsPalindrome doesn’t recognize “été.” Another, from Central America, is disappointed that it rejects “A man, a plan, a canal: Panama.” These specific and small bug reports naturally lend themselves to new test cases. 
 
@@ -11677,6 +11650,7 @@ Our new tests pass:
 ```go
 $ go test // gopl.io/ch11/word2 
 ok // gopl.io/ch11/word2 0.015s 
+```
 
 This style of table-driven testing is very common in Go. It is straightforward to add new table entries as needed, and since the assertion logic is not duplicated, we can invest more effort in producing a good error message. 
 
@@ -11686,15 +11660,20 @@ The output of a failing test does not include the entire stack trace at the mome
 
 When we really must stop a test function, perhaps because some initialization code failed or to prevent a failure already reported from causing a confusing cascade of others, we use t.Fatal or t.Fatalf. These must be called from the same goroutine as the Test function, not from another one created during the test. 
 
-Test failure messages are usually of the form "f(x) = y, want z" , where f(x) explains the attempted operation and its input, y is the actual result, and z the expected result. Where convenient, as in our palindrome example, actual Go syntax is used for the f(x) part. Displaying x is particularly important in a table-driven test, since a given assertion is executed many times with different values. Avoid boilerplate and redundant information. When testing a boolean function such as IsPalindrome, omit the want z part since it adds no information. If x, y, or z is lengthy, print a concise summary of the relevant parts instead. The author of a test should strive to help the programmer who must diagnose a test failure. 
+Test failure messages are usually of the form "f(x) = y, want z" , where f(x) explains the attempted operation and its input, y is the actual result, and z the expected result. Where convenient, as in our palindrome example, actual Go syntax is used for the f(x) part. Displaying x is particularly important in a table-driven test, since a given assertion is executed many times with different values. 
+
+Avoid boilerplate and redundant information. When testing a boolean function such as IsPalindrome, omit the want z part since it adds no information. If x, y, or z is lengthy, print a concise summary of the relevant parts instead. The author of a test should strive to help the programmer who must diagnose a test failure. 
 
 
 Exercise 11.1: Write tests for the charcount program in Section 4.3. 
 
 
 Exercise 11.2: Write a set of tests for IntSet (§6.5) that checks that its behavior after each operation is equivalent to a set based on built-in maps. Save your implementation for benchmarking in Exercise 11.7. 
-###Randomized Testing 
+
+### Randomized Testing 
+
 Table-driven tests are convenient for checking that a function works on inputs carefully selected to exercise interesting cases in the logic. Another approach, randomized testing, explores a broader range of inputs by constructing inputs at random. 
+
 How do we know what output to expect from our function, given a random input? There are two strategies. The first is to write an alternative implementation of the function that uses a less efficient but simpler and clearer algorithm, and check that both implementations give the same result. The second is to create input values according to a pattern so that we know what output to expect. 
 
 The example below uses the second approach: the randomPalindrome function generates words that are known to be palindromes by construction. 
@@ -11721,8 +11700,11 @@ p := randomPalindrome(rng)
 if !IsPalindrome(p) {
 
 t.Errorf("IsPalindrome(%q) = false", p) }}} 
+```
+
 
 Since randomized tests are nondeterministic, it is critical that the log of the failing test record sufficient information to reproduce the failure. In our example, the input p to IsPalindrome tells us all we need to know, but for functions that accept more complex inputs, it may be simpler to log the seed of the pseudo-random number generator (as we do above) than to dump the entire input data structure. Armed with that seed value, we can easily modify the test to replay the failure deterministically. 
+
 By using the current time as a source of randomness, the test will explore novel inputs each time it is run, over the entire course of its lifetime. This is especially valuable if your project uses an automated system to run all its tests periodically. 
 
 
@@ -11792,14 +11774,20 @@ want string
 "1:2:3"},
 } 
 
-for _, test := range tests {descr := fmt.Sprintf("echo(%v, %q, %q)", test.newline, test.sep, test.args) 
-out = new(bytes.Buffer) // captured output if err := echo(test.newline, test.sep, 
+for _, test := range tests {
+    descr := fmt.Sprintf("echo(%v, %q, %q)", test.newline, test.sep, test.args) 
+out = new(bytes.Buffer) // captured output 
+if err := echo(test.newline, test.sep, 
 test.args); 	err != nil {
 t.Errorf("%s failed: %v", descr, err) 
 continue 
 
-}got := out.(*bytes.Buffer).String() if got != test.want {
+}
+got := out.(*bytes.Buffer).String() 
+if got != test.want {
 t.Errorf("%s = %q, want %q", descr, got, test.want)}}} 
+```
+
 Notice that the test code is in the same package as the production code. Although the package name is main and it defines a main function, during testing this package acts as a library that exposes the function TestEcho to the test driver; its main function is ignored. 
 By organizing the test as a table, we can easily add new test cases. Let’s see what happens when the test fails, by adding this line to the table: 
 
@@ -11975,14 +11963,19 @@ For example, the implementation of the fmt package needs the functionality of un
 To ensure that the behaviors of fmt.isSpace and unicode.IsSpace do not drift apart, fmt prudently contains a test. It is an external test, and thus it cannot access isSpace directly, so fmt opens a back door to it by declaring an exported variable that holds the internal isSpace function. This is the entirety of the fmt package’s export_test.go file. 
 package fmt 
 var IsSpace = isSpace 
+
 This test file defines no tests; it just declares the exported symbol fmt.IsSpace for use by the external test. This trick can also be used whenever an external test needs to use some of the techniques of white-box testing. 
 
 
 ### Writing Effective Tests 
 
-Many newcomers to Go are surprised by the minimalism of Go’s testing framework. Other languages’ frameworks provide mechanisms for identifying test functions (often using reflection or metadata), hooks for performing “setup” and “teardown” operations before and after the tests run, and libraries of utility functions for asserting common predicates, comparing values, formatting error messages, and aborting a failed test (often using exceptions). Although these mechanisms can make tests very concise, the resulting tests often seem like they are written in a foreign language. Furthermore, although they may report PASS or FAIL correctly, their manner may be unfriendly to the unfortunate maintainer, with cryptic failure messages like "assert: 0 == 1" or page after page of stack traces. 
+Many newcomers to Go are surprised by the minimalism of Go’s testing framework. Other languages’ frameworks provide mechanisms for identifying test functions (often using reflection or metadata), hooks for performing “setup” and “teardown” operations before and after the tests run, and libraries of utility functions for asserting common predicates, comparing values, formatting error messages, and aborting a failed test (often using exceptions). 
 
-Go’s attitude to testing stands in stark contrast. It expects test authors to do most of this work themselves, defining functions to avoid repetition, just as they would for ordinary programs. The process of testing is not one of rote form filling; a test has a user interface too, albeit one whose only users are also its maintainers. A good test does not explode on failure but prints a clear and succinct description of the symptom of the problem, and perhaps other relevant facts about the context. Ideally, the maintainer should not need to read the source code to decipher a test failure. A good test should not give up after one failure but should try to report several errors in a single run, since the pattern of failures may itself be revealing. 
+Although these mechanisms can make tests very concise, the resulting tests often seem like they are written in a foreign language. Furthermore, although they may report PASS or FAIL correctly, their manner may be unfriendly to the unfortunate maintainer, with cryptic failure messages like "assert: 0 == 1" or page after page of stack traces. 
+
+Go’s attitude to testing stands in stark contrast. It expects test authors to do most of this work themselves, defining functions to avoid repetition, just as they would for ordinary programs. The process of testing is not one of rote form filling; a test has a user interface too, albeit one whose only users are also its maintainers. 
+
+A good test does not explode on failure but prints a clear and succinct description of the symptom of the problem, and perhaps other relevant facts about the context. Ideally, the maintainer should not need to read the source code to decipher a test failure. A good test should not give up after one failure but should try to report several errors in a single run, since the pattern of failures may itself be revealing. 
 
 The assertion function below compares two values, constructs a generic error message, and stops the program. It’s easy to use and it’s correct, but when it fails, the error message is almost useless. It does not solve the hard problem of providing a good user interface. 
 
@@ -12091,6 +12084,7 @@ PASS
 ok // gopl.io/ch7/eval 0.011s 
 ```
 
+
 This command displays the usage message of the coverage tool: 
 
 ```go
@@ -12103,6 +12097,7 @@ Given a coverage profile produced by 'go test':
 go test -coverprofile=c.out 
 
 Open a web browser displaying annotated source code: go tool cover -html=c.out ... 
+
 
 The go tool command runs one of the executables from the Go toolchain. These programs live in the directory $GOROOT/pkg/tool/${GOOS}_${GOARCH}. Thanks to go build , we rarely need to invoke them directly. 
 
@@ -12122,7 +12117,8 @@ This flag enables the collection of coverage data by instrumenting the productio
 If go test is run with the -covermode=count flag, the instrumentation for each block increments a counter instead of setting a boolean. The resulting log of execution counts of each block enables quantitative comparisons between “hotter” blocks, which are more frequently executed, and “colder” ones. 
 
 Having gathered the data, we run the cover tool, which processes the log, generates an HTML report, and opens it in a new browser window (Figure 11.3). 
-$ go tool cover -html=c.out 
+
+`$ go tool cover -html=c.out` 
 
 Each statement is colored green if it was covered or red if it was not covered. For clarity, we’ve shaded the background of the red text. We can see immediately that none of our inputs exercised the unary operator Eval method. If we add this new test case to the table and re-run the previous two commands, the unary expression code becomes green: 
 
@@ -12134,12 +12130,17 @@ Each statement is colored green if it was covered or red if it was not covered. 
 The two panic statements remain red, however. This should not be surprising, because these statements are supposed to be unreachable. 
 
 
-Achieving 100% statement coverage sounds like a noble goal, but it is not usually feasible in practice, nor is it likely to be a good use of effort. Just because a statement is executed does not mean it is bug-free; statements containing complex expressions must be executed many times with different inputs to cover the interesting cases. Some statements, like the panic statements above, can never be reached. Others, such as those that handle esoteric errors, are hard to exercise but rarely reached in practice. Testing is fundamentally a pragmatic endeavor, a trade-off between the cost of writing tests and the cost of failures that could have been prevented by tests. Coverage tools can help identify the weakest spots, but devising good test cases demands the same rigorous thinking as programming in general. 
+Achieving 100% statement coverage sounds like a noble goal, but it is not usually feasible in practice, nor is it likely to be a good use of effort. Just because a statement is executed does not mean it is bug-free; statements containing complex expressions must be executed many times with different inputs to cover the interesting cases. 
+
+Some statements, like the panic statements above, can never be reached. Others, such as those that handle esoteric errors, are hard to exercise but rarely reached in practice. Testing is fundamentally a pragmatic endeavor, a trade-off between the cost of writing tests and the cost of failures that could have been prevented by tests. Coverage tools can help identify the weakest spots, but devising good test cases demands the same rigorous thinking as programming in general. 
 
 
 
 ## Benchmark Functions 
-Benchmarking is the practice of measuring the performance of a program on a fixed workload. In Go, a benchmark function looks like a test function, but with the Benchmark prefix and a *testing.B parameter that provides most of the same methods as a *testing.T, plus a few extra related to performance measurement. It also exposes an integer field N, which specifies the number of times to perform the operation being measured. 
+
+Benchmarking is the practice of measuring the performance of a program on a fixed workload. 
+
+In Go, a benchmark function looks like a test function, but with the Benchmark prefix and a *testing.B parameter that provides most of the same methods as a *testing.T, plus a few extra related to performance measurement. It also exposes an integer field N, which specifies the number of times to perform the operation being measured. 
 
 Here’s a benchmark for IsPalindrome that calls it N times in a loop. 
 
@@ -12168,7 +12169,6 @@ The report tells us that each call to IsPalindrome took about 1.035 microseconds
 
 The reason the loop is implemented by the benchmark function, and not by the calling code in the test driver, is so that the benchmark function has the opportunity to execute any necessary one-time setup code outside the loop without this adding to the measured time of each iteration. If this setup code is still perturbing the results, the testing.B parameter provides methods to stop, resume, and reset the timer, but these are rarely needed. 
 
-
 Now that we have a benchmark and tests, it’s easy to try out ideas for making the program faster. Perhaps the most obvious optimization is to make IsPalindrome’s second loop stop checking at the midpoint, to avoid doing each comparison twice: 
 
 ```go
@@ -12178,6 +12178,10 @@ if letters[i] != letters[len(letters)-1-i] {
 return false 
 }}
 return true 
+
+```
+
+
 But as is often the case, an obvious optimization doesn’t always yield the expected benefit. This one delivered a mere 4% improvement in one experiment. 
 
 ```go
@@ -12213,11 +12217,14 @@ $ go PASS  test  -bench=.  -benchmem
 ```
 
 BenchmarkIsPalindrome B/op 1 allocs/op  2000000  807 ns/op  128  
-Consolidating the allocations in  a  single call  to  make  eliminated  75% of  the  
+Consolidating the allocations in  a  single call  to  make  eliminated  75% of  the allocations and halved the quantity of allocated memory.
 
-allocations and halved the quantity of allocated memory. 
 
-Benchmarks like this tell us the absolute time required for a given operation, but in many settings the interesting performance questions are about the relative timings of two different operations. For example, if a function takes 1ms to process 1,000 elements, how long will it take to process 10,000 or a million? Such comparisons reveal the asymptotic growth of the running time of the function. Another example: what is the best size for an I/O buffer? Benchmarks of application throughput over a range of sizes can help us choose the smallest buffer that delivers satisfactory performance. A third example: which algorithm performs best for a given job? Benchmarks that evaluate two different algorithms on the same input data can often show the strengths and weaknesses of each one on important or representative workloads. 
+Benchmarks like this tell us the absolute time required for a given operation, but in many settings the interesting performance questions are about the relative timings of two different operations. 
+
+For example, if a function takes 1ms to process 1,000 elements, how long will it take to process 10,000 or a million? Such comparisons reveal the asymptotic growth of the running time of the function. 
+
+Another example: what is the best size for an I/O buffer? Benchmarks of application throughput over a range of sizes can help us choose the smallest buffer that delivers satisfactory performance. A third example: which algorithm performs best for a given job? Benchmarks that evaluate two different algorithms on the same input data can often show the strengths and weaknesses of each one on important or representative workloads. 
 
 Comparative benchmarks are just regular code. They typically take the form of a single parameterized function, called from several Benchmark functions with different values, like this: 
 
@@ -12246,7 +12253,9 @@ Exercise 11.7: Write benchmarks for Add, UnionWith, and other methods of *IntSet
 Benchmarks are useful for measuring the performance of specific operations, but when we’re trying to make a slow program faster, we often have no idea where to begin. Every programmer knows Donald Knuth’s aphorism about premature optimization, which appeared in “Structured Programming with go to Statements” in 1974. Although often misinterpreted to mean performance doesn’t matter, in its original context we can discern a different meaning: 
 
 
-There is no doubt that the grail of efficiency leads to abuse. Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered. We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, he will be wise to look carefully at the critical code; but only after that code has been identified. It is often a mistake to make a priori judgments about what parts of a program are really critical, since the universal experience of programmers who have been using measurement tools has been that their intuitive guesses fail. 
+There is no doubt that the grail of efficiency leads to abuse. Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered. 
+
+We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, he will be wise to look carefully at the critical code; but only after that code has been identified. It is often a mistake to make a priori judgments about what parts of a program are really critical, since the universal experience of programmers who have been using measurement tools has been that their intuitive guesses fail. 
 
 
 When we wish to look carefully at the speed of our programs, the best technique for identifying the critical code is profiling. Profiling is an automated approach to performance measurement based on sampling a number of profile events during execution, then extrapolating from them during a post-processing step; the resulting statistical summary is called a profile. 
@@ -12270,6 +12279,7 @@ $ go test -memprofile=mem.out
 ```
 
 It’s easy to add profiling support to non-test programs too, though the details of how we do that vary between short-lived command-line tools and long-running server applications. Profiling is especially useful in long-running applications, so the Go runtime’s profiling features can be enabled under programmer control using the runtime API. 
+
 Once we’ve gathered a profile, we need to analyze it using the pprof tool. This is a standard part of the Go distribution, but since it’s not an everyday tool, it’s accessed indirectly using go tool pprof . It has dozens of features and options, but basic use requires only two arguments, the executable that produced the profile and the profile log. 
 
 To make profiling efficient and to save space, the log does not include function names; instead, functions are identified by their addresses. This means that pprof needs the executable in order to make sense of the log. Although go test usually discards the test executable once the test is complete, when profiling is enabled it saves the executable as foo.test, where foo is the name of the tested package. 
@@ -12311,6 +12321,7 @@ crypto/elliptic.p256Sum
 ```
 
 The -text flag specifies the output format, in this case, a textual table with one row per function, sorted so the “hottest” functions—those that consume the most CPU cycles—appear first. The -nodecount=10 flag limits the result to 10 rows. For gross performance problems, this textual format may be enough to pinpoint the cause. 
+
 This profile tells us that elliptic-curve cryptography is important to the performance of this particular HTTPS benchmark. By contrast, if a profile is dominated by memory allocation functions from the runtime package, reducing memory consumption may be a worthwhile optimization. 
 
 
@@ -12337,6 +12348,7 @@ fmt.Println(IsPalindrome("palindrome"))
 Figure 11.4. An interactive example of strings.Join in godoc. 
 
 Example functions serve three purposes. The primary one is documentation: a good example can be a more succinct or intuitive way to convey the behavior of a library function than its prose description, especially when used as a reminder or quick reference. An example can also demonstrate the interaction between several types and functions belonging to one API, whereas prose documentation must always be attached to one place, like a type or function declaration or the package as a whole. And unlike examples within comments, example functions are real Go code, subject to compile-time checking, so they don’t become stale as the code evolves. 
+
 Based on the suffix of the Example function, the web-based documentation server godoc associates example functions with the function or package they exemplify, so ExampleIsPalindrome would be shown with the documentation for the IsPalindrome function, and an example function called just Example would be associated with the word package as a whole. 
 
 
@@ -12350,6 +12362,7 @@ The final two chapters of the book examine the reflect and unsafe packages, whic
 12. Reflection 
 
 Go provides a mechanism to update variables and inspect their values at run time, to call their methods, and to apply the operations intrinsic to their representation, all without knowing their types at compile time. This mechanism is called reflection. Reflection also lets us treat types themselves as first-class values. 
+
 In this chapter, we’ll explore Go’s reflection features to see how they increase the expressiveness of the language, and in particular how they are crucial to the implementation of two important APIs: string formatting provided by fmt, and protocol encoding provided by packages like encoding/json and encoding/xml. Reflection is also essential to the template mechanism provided by the text/template and html/template packages we saw in Section 4.6. However, reflection is complex to reason about and not for casual use, so although these packages are implemented using reflection, they do not expose reflection in their own APIs. 
 
 
@@ -12471,8 +12484,7 @@ case reflect.Invalid:
 return "invalid" 
 
 case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64: return strconv.FormatInt(v.Int(), 10) 
-case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:return strconv.FormatUint(v.Uint(), 10) // ...floating-point and complex cases omitted for 
-brevity...
+case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:return strconv.FormatUint(v.Uint(), 10) // ...floating-point and complex cases omitted for brevity... 
 case reflect.Bool: return strconv.FormatBool(v.Bool()) 
 case reflect.String:return strconv.Quote(v.String()) 
 case reflect.Chan, reflect.Func, reflect.Ptr, reflect.Slice, reflect.Map: 
@@ -12562,6 +12574,7 @@ Slices and arrays: The logic is the same for both. The Len method returns the nu
 Although reflect.Value has many methods, only a few are safe to call on any given value. For example, the Index method may be called on values of kind Slice, Array, or String, but panics for any other kind. 
 
 Structs: The NumField method reports the number of fields in the struct, and Field(i) returns the value of the i-th field as a reflect.Value. The list of fields includes ones promoted from anonymous fields. To append the field selector notation ".f" to the path, we must obtain the reflect.Type of the struct and access the name of its i-th field. 
+
 Maps: The MapKeys method returns a slice of reflect.Values, one per map key. As usual when iterating over a map, the order is undefined. MapIndex(key) returns the value corresponding to key. We append the subscript notation "[key]"to the path. (We’re cutting a corner here. The type of a map key isn’t restricted to the types formatAtom handles best; arrays, structs, and interfaces can also be valid map keys. Extending this case to print the key in full is Exercise 12.1.) 
 
 Pointers: The Elem method returns the variable pointed to by a pointer, again as a reflect.Value. This operation would be safe even if the pointer value is nil, in which case the result would have kind Invalid, but we use IsNil to detect nil pointers explicitly so we can print a more appropriate message. We prefix the path with a "*" and parenthesize it to avoid ambiguity. 
@@ -13385,6 +13398,7 @@ For errors that cannot be detected statically, such as out-of-bounds array acces
 Many implementation details are inaccessible to Go programs. There is no way to discover the memory layout of an aggregate type like a struct, or the machine code for a function, or the identity of the operating system thread on which the current goroutine is running. Indeed, the Go scheduler freely moves goroutines from one thread to another. A pointer identifies a variable without revealing the variable’s numeric address. Addresses may change as the garbage collector moves variables; pointers are transparently updated. 
 
 Together, these features make Go programs, especially failing ones, more predictable and less mysterious than programs in C, the quintessential low-level language. By hiding the underlying details, they also make Go programs highly portable, since the language semantics are largely independent of any particular compiler, operating system, or CPU architecture. (Not entirely independent: some details leak through, such as the word size of the processor, the order of evaluation of certain expressions, and the set of implementation restrictions imposed by the compiler.) 
+
 Occasionally, we may choose to forfeit some of these helpful guarantees to achieve the highest possible performance, to interoperate with libraries written in other languages, or to implement a function that cannot be expressed in pure Go. 
 In this chapter, we’ll see how the unsafe package lets us step outside the usual rules, and how to use the cgo tool to create Go bindings for C libraries and operating system calls. 
 
@@ -13403,6 +13417,7 @@ fmt.Println(unsafe.Sizeof(float64(0))) // "8"
 ```
 
 Sizeof reports only the size of the fixed part of each data structure, like the pointer and length of a string, but not indirect parts like the contents of the string. Typical sizes for all non-aggregate Go types are shown below, though the exact sizes may vary by toolchain. For portability, we’ve given the sizes of reference types (or types containing references) in terms of words, where a word is 4 bytes on a 32-bit platform and 8 bytes on a 64-bit platform. 
+
 Computers load and store values from memory most efficiently when those values are properly aligned. For example, the address of a value of a two-byte type such as int16 should be an even number, the address of a four-byte value such as a rune should be a multiple of four, and the address of an eight-byte value such as a float64, uint64, or 64-bit pointer should be a multiple of eight. Alignment requirements of higher multiples are unusual, even for larger data types such as complex128. 
 
 For this reason, the size of a value of an aggregate type (a struct or array) is at least the sum of the sizes of its fields or elements but may be greater due to the presence of “holes.” Holes are unused spaces added by the compiler to ensure that the following field or element is properly aligned relative to the start of the struct or array. 
@@ -13443,8 +13458,18 @@ The table below shows the results of applying the three unsafe functions to x it
 
 
 ```go
-Typical 32-bit platform: Sizeof(x) = 16 Alignof(x) = 4 Sizeof(x.a) = 1 Alignof(x.a) = 1 Offsetof(x.a) = 0 Sizeof(x.b) = 2 Alignof(x.b) = 2 Offsetof(x.b) = 2 Sizeof(x.c) = 12 Alignof(x.c) = 4 Offsetof(x.c) = 4 
-Typical 64-bit platform: Sizeof(x) = 32 Alignof(x) = 8 Sizeof(x.a) = 1 Alignof(x.a) = 1 Offsetof(x.a) = 0 Sizeof(x.b) = 2 Alignof(x.b) = 2 Offsetof(x.b) = 2 Sizeof(x.c) = 24 Alignof(x.c) = 8 Offsetof(x.c) = 8 
+Typical 32-bit platform: 
+Sizeof(x) = 16 Alignof(x) = 4 
+Sizeof(x.a) = 1 Alignof(x.a) = 1 Offsetof(x.a) = 0 
+Sizeof(x.b) = 2 Alignof(x.b) = 2 Offsetof(x.b) = 2 
+Sizeof(x.c) = 12 Alignof(x.c) = 4 Offsetof(x.c) = 4 
+
+Typical 64-bit platform: 
+Sizeof(x) = 32 Alignof(x) = 8 
+Sizeof(x.a) = 1 Alignof(x.a) = 1 Offsetof(x.a) = 0 
+Sizeof(x.b) = 2 Alignof(x.b) = 2 Offsetof(x.b) = 2 
+Sizeof(x.c) = 24 Alignof(x.c) = 8 Offsetof(x.c) = 8 
+
 Despite their names, these functions are not in fact unsafe, and they may be helpful for understanding the layout of raw memory in a program when optimizing for space. 
 ```
 
@@ -13460,8 +13485,12 @@ func Float64bits(f float64) uint64 { return *(*uint64)
 (unsafe.Pointer(&f)) } 
 fmt.Printf("%#016x\n", Float64bits(1.0)) // 
 "0x3ff0000000000000" 
+```
+
 Through the resulting pointer, we can update the bit pattern too. This is harmless for a floating-point variable since any bit pattern is legal, but in general, unsafe.Pointer conversions let us write arbitrary values to memory and thus subvert the type system. 
+
 An unsafe.Pointer may also be converted to a uintptr that holds the pointer’s numeric value, letting us perform arithmetic on addresses. (Recall from Chapter 3 that a uintptr is an unsigned integer wide enough to represent an address.) This conversion too may be applied in reverse, but again, converting from a uintptr to an unsafe.Pointer may subvert the type system since not all numbers are valid addresses. 
+
 Many unsafe.Pointer values are thus intermediaries for converting ordinary pointers to raw numeric addresses and back again. The example below takes the address of variable x, adds the offset of its b field, converts the resulting address to *int16, and through that pointer updates x.b: 
 
 ```go
@@ -13490,14 +13519,20 @@ pb := (*int16)(unsafe.Pointer(tmp))
 ```
 
 
-The reason is very subtle. Some garbage collectors move variables around in memory to reduce fragmentation or bookkeeping. Garbage collectors of this kind are known as moving GCs. When a variable is moved, all pointers that hold the address of the old location must be updated to point to the new one. From the perspective of the garbage collector, an unsafe.Pointer is a pointer and thus its value must change as the variable moves, but a uintptr is just a number so its value must not change. The incorrect code above hides a pointer from the garbage collector in the non-pointer variable tmp. By the time the second statement executes, the variable x could have moved and the number in tmp would no longer be the address &x.b. The third statement clobbers an arbitrary memory location with the value 42. 
+The reason is very subtle. Some garbage collectors move variables around in memory to reduce fragmentation or bookkeeping. Garbage collectors of this kind are known as moving GCs. When a variable is moved, all pointers that hold the address of the old location must be updated to point to the new one. 
+
+From the perspective of the garbage collector, an unsafe.Pointer is a pointer and thus its value must change as the variable moves, but a uintptr is just a number so its value must not change. The incorrect code above hides a pointer from the garbage collector in the non-pointer variable tmp. By the time the second statement executes, the variable x could have moved and the number in tmp would no longer be the address &x.b. The third statement clobbers an arbitrary memory location with the value 42. 
 
 There are myriad pathological variations on this theme. After this statement has executed: 
 
 ```go
 pT := uintptr(unsafe.Pointer(new(T))) // NOTE: wrong! 
+```
+
 there are no pointers that refer to the variable created by new, so the garbage collector is entitled to recycle its storage when this statement completes, after which pT contains the address where the variable was but is no longer. 
+
 No current Go implementation uses a moving garbage collector (though future implementations might), but this is no reason for complacency: current versions of Go do move some variables around in memory. Recall from Section 5.2 that goroutine stacks grow as needed. When this happens, all variables on the old stack may be relocated to a new, larger stack, so we cannot rely on the numeric value of a variable’s address remaining unchanged throughout its lifetime. 
+
 At the time of writing, there is little clear guidance on what Go programmers may rely upon after an unsafe.Pointer to uintptr conversion (see Go issue 7192), so we strongly recommend that you assume the bare minimum. Treat all uintptr values as if they contain the former address of a variable, and minimize the number of operations between converting an unsafe.Pointer to a uintptr and using that uintptr. In our first example above, the three operations—conversion to a uintptr, addition of the field offset, conversion back—all appeared within a single expression. 
 
 When calling a library function that returns a uintptr, such as those below from the reflect package, the result should be immediately converted to an unsafe.Pointer to ensure that it continues to point to the same variable. 
@@ -13533,7 +13568,9 @@ var c, d map[string]int = nil, make(map[string]int)
 fmt.Println(reflect.DeepEqual(c, d)) // "false" 
 ```
 
-In this section we’ll define a function Equal that compares arbitrary values. Like DeepEqual, it compares slices and maps based on their elements, but unlike DeepEqual, it considers a nil slice (or map) equal to a non-nil empty one. The basic recursion over the arguments can be done with reflection, using a similar approach to the Display program we saw in Section 12.3. As usual, we define an unexported function, equal, for the recursion. Don’t worry about the seen parameter just yet. For each pair of values x and y to be compared, equal checks that both (or neither) are valid and checks that they have the same type. The result of the function is defined as a set of switch cases that compare two values of the same type. For reasons of space, we’ve omitted several cases since the pattern should be familiar by now. 
+In this section we’ll define a function Equal that compares arbitrary values. Like DeepEqual, it compares slices and maps based on their elements, but unlike DeepEqual, it considers a nil slice (or map) equal to a non-nil empty one. The basic recursion over the arguments can be done with reflection, using a similar approach to the Display program we saw in Section 12.3. As usual, we define an unexported function, equal, for the recursion. Don’t worry about the seen parameter just yet. 
+
+For each pair of values x and y to be compared, equal checks that both (or neither) are valid and checks that they have the same type. The result of the function is defined as a set of switch cases that compare two values of the same type. For reasons of space, we’ve omitted several cases since the pattern should be familiar by now. 
 
 ```go
 // gopl.io/ch13/equal 
@@ -13758,6 +13795,7 @@ C.bz2compress(w.stream, C.BZ_RUN,
 data = data[inlen:] if _, err := w.w.Write(w.outbuf[:outlen]); err != nil { return total, err }}
 return total, nil } 
 ```
+
 Each iteration of the loop passes bz2compress the address and length of the remaining portion of data, and the address and capacity of w.outbuf. The two length variables are passed by their addresses, not their values, so that the C function can update them to indicate how much uncompressed data was consumed and how much compressed data was produced. Each chunk of compressed data is then written to the underlying io.Writer. 
 
 The Close method has a similar structure to Write, using a loop to flush out any remaining compressed data from the stream’s output buffer. 
@@ -13815,6 +13853,7 @@ log.Fatalf("bzipper: close: %v\n", err)
 }
 } 
 ```
+
 
 In the session below, we use bzipper to compress /usr/share/dict/words, the system dictionary, from 938,848 bytes to 335,405 bytes—about a third of its original size—then uncompress it with the system bunzip2 command. The SHA256 hash is the same before and after, giving us confidence that the compressor is working correctly. (If you don’t have sha256sum on your system, use your solution to Exercise 4.2.) 
 
