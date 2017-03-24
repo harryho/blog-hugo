@@ -15,72 +15,72 @@ The haters helped make this book stronger and more solid through their inflexibi
 The helpers are Debra Williams Cauley, Vicki Rowland, Elizabeth Ryan,the whole teamatAddison-Wesley, and everyoneonline who sent in fixes and suggestions. Their work producing,fixing, editing, and improving this bookhas formed it into a more professionaland better piece of writing. 
 
 The painters, Brian, Arthur, Vesta, and Sarah,helped me finda new way to express myself and to distract mefrom deadlines that Deb and Vicki clearly set for mebut that I keptmissing. Without painting andthe gift ofart these artists gaveme,I would have a less meaningful and rich life. 
-Thankyou to all ofyoufor helping me write this book. It maynotbeperfect,because no bookisperfect, butit’s at least asgood asIcan possibly makeit. 
+Thankyou to all ofyoufor helping me write this book. It maynotbeperfect,because no bookisperfect, butit's at least asgood asIcan possibly makeit. 
 
 
 This Book Is Not Really about C 
 
-Please don’t feel cheated, but this book is not about teaching you C programming. You'll learnto write programs in C, but the most important lesson you’ll get fromthis bookis rigorous defensive programming. 
+Please don't feel cheated, but this book is not about teaching you C programming. You'll learnto write programs in C, but the most important lesson you'll get fromthis bookis rigorous defensive programming. 
 
-Today, too many programmerssimply assume thatwhat they write works, butone dayit will fail catastrophically. This is especially true ifyou’re the kind ofperson who has learned mostly modern languages that solvemany problems for you. By reading this bookand following my exercises, you’ll learn how to createsoftware that defends itself from malicious activity and defects. 
+Today, too many programmerssimply assume thatwhat they write works, butone dayit will fail catastrophically. This is especially true ifyou're the kind ofperson who has learned mostly modern languages that solvemany problems for you. By reading this bookand following my exercises, you'll learn how to createsoftware that defends itself from malicious activity and defects. 
 
-I'm using C for a very specific reason: C is broken. Itis fullof design choices thatmade sense inthe 1970s butmakezero sense now. Everything from its unrestricted, wild use of pointersto its severely broken NUL terminatedstrings are to blame for nearly allof the security defects that hit C. 
+I'm using C for a very specific reason: C is broken. Itis fullof design choices thatmade sense in the 1970s butmakezero sense now. Everything from its unrestricted, wild use of pointersto its severely broken NUL terminatedstrings are to blame for nearly allof the security defects that hit C. 
 
-It’s my belief that C is so broken that, while it’s in wide use, it’sthe most difficult languageto write securely. I wouldfathomthat Assembly is actually easierto write securely than C. To be honest, and you’ll find out thatI'm very honest,I don’t think that anybody should be writing new C code. 
+It's my belief that C is so broken that, while it's in wide use, it'sthe most difficult languageto write securely. I wouldfathomthat Assembly is actually easierto write securely than C. To be honest, and you'll find out thatI'm very honest,I don't think that anybody should be writing new C code. 
 
-If that’sthe case, then why am Iteaching you C? Because I want you to become a better,stronger programmer, and there are tworeasonswhy C is an excellent language to learn if you want to get better. First, C’s lackof nearly every modern safety feature means you have tobe more vigilant and moreaware of what’s going on. If you can write secure, solid C code, you can write secure, solid codein any programminglanguage. The techniquesyou learn will translate toeverylanguage you use fromnow on. 
+If that'sthe case, then why am Iteaching you C? Because I want you to become a better,stronger programmer, and there are tworeasonswhy C is an excellent language to learn if you want to get better. First, C's lackof nearly every modern safety feature means you have tobe more vigilant and moreaware of what's going on. If you can write secure, solid C code, you can write secure, solid codein any programminglanguage. The techniquesyou learn will translate toeverylanguage you use fromnow on. 
 
 Second, learning C gives you direct accessto amountain of legacycode, and teachesyou the base syntax of alarge number ofdescendant languages. Once youlearn C, you can more easilylearn C++, Java, Objective-C, and JavaScript, and evenother languages becomeeasier to learn. 
 
-I don’t want to scare you away by telling you this, because Iplan to makethis book incredibly fun,easy, and devious. I'll makeit fun to learn C bygiving you projects that you mightnot havedone In other programming languages. I'll makethis bookeasyby using myprovenpattern of exercisesthat has you doing C programming andbuilding your skills slowly. 
+I don't want to scare you away by telling you this, because Iplan to makethis book incredibly fun,easy, and devious. I'll makeit fun to learn C bygiving you projects that you mightnot havedone In other programming languages. I'll makethis bookeasyby using myprovenpattern of exercisesthat has you doing C programming andbuilding your skills slowly. 
 
-I'll make it devious by teaching you how to break and thensecure your codeso you understandwhy these issues matter. You'll learn how to cause stack overflows, illegal memory access, ando ther common flawsthat plague C programs so thatyou knowwhat you’re up against. 
+I'll make it devious by teaching you how to break and thensecure your codeso you understandwhy these issues matter. You'll learn how to cause stack overflows, illegal memory access, ando ther common flawsthat plague C programs so thatyou knowwhat you're up against. 
 
-Getting through this book will be challenging, likeall of mybooks, but when you’re done you willbea far better and moreconfident programmer. 
+Getting through this book will be challenging, likeall of mybooks, but when you're done you willbea far better and moreconfident programmer. 
 
 
 The Undefined Behaviorists 
 
-By the timeyou’re done with this book, you’ll beable to debug, read, andfixalmost any C program youruninto, and then write new,solid C codeshould youneed to. However, I'm notreally going to teach you official C. You'll learnthe language, and you’ll learn how touseit well, but official C isn’t very secure. 
+By the timeyou're done with this book, you'll beable to debug, read, andfixalmost any C program youruninto, and then write new,solid C codeshould youneed to. However, I'm notreally going to teach you official C. You'll learn the language, and you'll learn how touseit well, but official C isn't very secure. 
 
-The vast majorityof C programmers out there simplydon’t write solid code, and it’s becauseof something called Undefined Behavior (UB). UB is apartof the American NationalStandards Institute (ANSI)C standard that lists all of the ways that a C compiler can disregard what you’vewritten. 
+The vast majorityof C programmers out there simplydon't write solid code, and it's becauseof something called Undefined Behavior (UB). UB is apartof the American NationalStandards Institute (ANSI)C standard that lists all of the ways that a C compiler can disregard what you'vewritten. 
 
-There’s actually a part of the standard thatsays if you write code like this,thenallbets are off and the compiler doesn’thave to do anything consistently. UB occurs when a Cprogram reads offthe end of astring, which is an incredibly common programming error in C. 
+There's actually a part of the standard thatsays if you write code like this,thenallbets are off and the compiler doesn'thave to do anything consistently. UB occurs when a Cprogram reads offthe end of astring, which is an incredibly common programming error in C. 
 
-For a bitof background, C defines strings as blocks of memory that end inaNUL byte, or a0 byte(to simplify the definition). Since many strings come from outside the program, it’s common for a C programto receive astring without thisNULbyte. When it does, the Cprogram attempts to read past the end ofthis string and into the memory of the computer, causing your program to crash. Every other language developed after Cattempts to prevent this, butnot C. 
+For a bitof background, C defines strings as blocks of memory that end inaNUL byte, or a0 byte(to simplify the definition). Since many strings come from outside the program, it's common for a C programto receive astring without thisNULbyte. When it does, the Cprogram attempts to read past the end ofthis string and into the memory of the computer, causing your program to crash. Every other language developed after Cattempts to prevent this, butnot C. 
 
-C does so little toprevent UB thateveryCprogrammer seems to think it meansthey don’thave to deal with it. They write code full of potential NUL byte overruns, and when you point themout to theseprogrammers, they say, "Well that’s UB, andI don’thave to prevent it." This reliance onC’s largenumber ofUBsiswhy most C codeis so horriblyinsecure. 
+C does so little toprevent UB thateveryCprogrammer seems to think it meansthey don'thave to deal with it. They write code full of potential NUL byte overruns, and when you point themout to theseprogrammers, they say, "Well that's UB, andI don'thave to prevent it." This reliance onC's largenumber ofUBsiswhy most C codeis so horriblyinsecure. 
 
-I write C codeto try to avoid UB byeither writing code thatdoesn’t trigger it, or writing codethat attemptsto preventit. Thisturnsoutto be an impossible task because there is so much UB that it becomes aGordian knot of interconnected pitfallsin your C code. As you go through this book, I'llpoint out ways you can trigger UB, how to avoid it if you can, and how to trigger itin other people’s codeif possible. However, you should keepin mindthat avoiding thenearly random nature of UB is almost impossible, and you’ll just have to do yourbest. 
+I write C codeto try to avoid UB byeither writing code thatdoesn't trigger it, or writing codethat attemptsto preventit. Thisturnsoutto be an impossible task because there is so much UB that it becomes aGordian knot of interconnected pitfallsin your C code. As you go through this book, I'llpoint out ways you can trigger UB, how to avoid it if you can, and how to trigger itin other people's codeif possible. However, you should keepin mindthat avoiding thenearly random nature of UB is almost impossible, and you'll just have to do yourbest. 
 
 Warning! 
 
 
-You'll find that hardcore C fans frequently will try to beat you up about UB. There’s aclass of C programmers who don’t write very much C code but have memorized all of the UB just so they could beat up a beginner intellectually. If you run into one of these abusive programmers, please ignore them. 
+You'll find that hardcore C fans frequently will try to beat you up about UB. There's aclass of C programmers who don't write very much C code but have memorized all of the UB just so they could beat up a beginner intellectually. If you run into one of these abusive programmers, please ignore them. 
 
-Often, they aren’t practicing C programmers, they are arrogant, abusive, and will only endup asking you endlessquestions in anattempt to prove their superiority rather than helping you with yourcode. 
+Often, they aren't practicing C programmers, they are arrogant, abusive, and will only endup asking you endlessquestions in anattempt to prove their superiority rather than helping you with yourcode. 
 
 Should you ever need help with your C code,simply email me at help@learncodethehardway and I willgladly help you.
 
 C Is a Pretty and Ugly Language 
 
 
-The presence of UB though is one more reason why learning C is a good move if you want to be a better programmer. If you can write good, solid C code in the way I teach you, then you can survive any language. Onthe positive side, C is a really elegant language in many ways. Its syntax is actually incrediblysmall given the power it has. There’s a reason why so many other languages have copied its syntax over the last 45 or so years. 
+The presence of UB though is one more reason why learning C is a good move if you want to be a better programmer. If you can write good, solid C code in the way I teach you, then you can survive any language. On the positive side, C is a really elegant language in many ways. Its syntax is actually incrediblysmall given the power it has. There's a reason why so many other languages have copied its syntax over the last 45 or so years. 
 
-C also gives you quite a lot using very little technology. When you’re donelearningC, you’ll have anappreciation for asomething thatisvery elegant andbeautifulbutalso alittleugly at the same time. 
+C also gives you quite a lot using very little technology. When you're donelearningC, you'll have anappreciation for asomething thatisvery elegant andbeautifulbutalso alittleugly at the same time. 
 
-C is old, so likea beautiful monument,it willlook fantastic from about 20feet away, but when youstep up close, you’ll seeallthe cracks and flaws it has. Because ofthis, I'm going to teach you themostrecent versionof C thatI can make work with recent compilers. It’s apractical, straightforward, simple, yet completesubset of C that works well,works everywhere, andavoidsmany pitfalls. 
+C is old, so likea beautiful monument,it willlook fantastic from about 20feet away, but when youstep up close, you'll seeallthe cracks and flaws it has. Because ofthis, I'm going to teach you themostrecent versionof C thatI can make work with recent compilers. It's apractical, straightforward, simple, yet completesubset of C that works well,works everywhere, andavoidsmany pitfalls. 
 
 This is the C that I use to getreal workdone, and not the encyclopedic version of C that hardcore fans try and fail touse. I know the C that I useis solid because Ispent two decades writing clean,solid C  codethat powered large operations without much failureatall. 
 
-My C code has probably processed trillions of transactions because it powered the operations of companies like Twitter and airbnb. It rarely failed or had security attacks against it. In the many years that my code powered the Ruby on Rails Web world, it’s run beautifully and even prevented security attacks, while other Web servers fell repeatedly to the simplest of attacks. 
+My C code has probably processed trillions of transactions because it powered the operations of companies like Twitter and airbnb. It rarely failed or had security attacks against it. In the many years that my code powered the Ruby on Rails Web world, it's run beautifully and even prevented security attacks, while other Web servers fell repeatedly to the simplest of attacks. 
 
 My style of writingC code is solid, but moreimportantly, m ymind-set when writing C is one every programmer should have. I approach C, and any programming, with the ideaof preventing errors asbest I can andassuming thatnothing willwork right. Other programmers,even supposedly good C programmers, tend to write codeand assumeeverything will work, but rely on UB or the operating systemto save them,neither of which will work as asolution. 
 
-Just remember that ifpeopletry to tellyou that the code I teach in this book isn’t "real C." If theydon’t have the same track record as me, maybe you can use whatI teach you to show them why their code isn’t very secure. 
+Just remember that ifpeopletry to tellyou that the code I teach in this book isn't "real C." If theydon't have the same track record as me, maybe you can use whatI teach you to show them why their code isn't very secure. 
 Does that meanmycode is perfect? No,not at all. This is C code. Writing perfect C codeis impossible, andin fact, writing perfectcode in any language is impossible. 
 
-That’s half the funand frustration of programming. I could takesomeone else’s codeand tearitapart, and someone couldtake mycode and tear it apart. All code is flawed, but the difference is thatItry to assumemy code is always flawedand then prevent the flaws. My gift to you,should you completethis book, is to teachyou the 
+That's half the funand frustration of programming. I could takesomeone else's codeand tearitapart, and someone couldtake mycode and tear it apart. All code is flawed, but the difference is thatItry to assumemy code is always flawedand then prevent the flaws. My gift to you,should you completethis book, is to teachyou the 
 defensive programming mind-set that hasservedme wellfortwo decades, and has helped memake high-quality, robustsoftware. 
 
 
@@ -88,7 +88,7 @@ defensive programming mind-set that hasservedme wellfortwo decades, and has help
 What You Will Learn 
 
 
-The purpose of this book is to get you strongenough in C thatyou’llbeable to write your own software with it or modify someoneelse’s C code. Afterthis book, you should read Brian Kernighan and DennisRitchie’s The C Programming Language, SecondEdition (Prentice Hall, 1988), a bookby the creators of the C language, also called K&R C. WhatI'll teach you is 
+The purpose of this book is to get you strongenough in C thatyou'llbeable to write your own software with it or modify someoneelse's C code. Afterthis book, you should read Brian Kernighan and DennisRitchie's The C Programming Language, SecondEdition (Prentice Hall, 1988), a bookby the creators of the C language, also called K&R C. WhatI'll teach you is 
 
 • The basics of Csyntax and idioms 
 
@@ -108,17 +108,17 @@ By the final exercise, you will havemorethanenough ammunition totackle basic sys
 How to Read This Book 
 
 
-This book is intended for programmers who have learned at least one other programming language. I refer you to my book Learn Python the Hard Way (Addison-Wesley, 2013) if you haven’tlearned a programming language yet. It’s meant for beginners and works very well as a first book onprogramming. Once you’vecompleted Learn Python the Hard Way,then you can comeback andstart this book. 
+This book is intended for programmers who have learned at least one other programming language. I refer you to my book Learn Python the Hard Way (Addison-Wesley, 2013) if you haven'tlearned a programming language yet. It's meant for beginners and works very well as a first book onprogramming. Once you'vecompleted Learn Python the Hard Way,then you can comeback andstart this book. 
 
 
-For those who’ve already learned tocode, this book mayseem strange at first. It’s notlike otherbookswhere you read paragraph after paragraph of prose and then typein abitof codehere and there. Instead, there are videos oflecturesfor each exercise, you code right away, andthen Iexplain what you just did. This works better becauseit’s easierfor me toexplain something you’ve already done thanto speak inan abstract sense about something you aren’t familiar with at all. 
+For those who've already learned tocode, this book mayseem strange at first. It's notlike otherbookswhere you read paragraph after paragraph of prose and then typein abitof codehere and there. Instead, there are videos oflecturesfor each exercise, you code right away, andthen Iexplain what you just did. This works better becauseit's easierfor me toexplain something you've already done thanto speak inan abstract sense about something you aren't familiar with at all. 
 
 
 Because ofthis structure, there are a few rules that you must followin this book: 
 
 • Watch the lecturevideo first,unless the exercise says otherwise. 
 
-• Type in all of the code. Don’tcopy-paste! 
+• Type in all of the code. Don'tcopy-paste! 
 
 • Type in the code exactly asitappears, even the comments. 
 
@@ -126,51 +126,51 @@ Because ofthis structure, there are a few rules that you must followin this book
 
 • If there are bugs,fix them. 
 
-• Dothe Extra Credit, but it’sallright toskip anything you can’t figure out. 
+• Dothe Extra Credit, but it'sallright toskip anything you can't figure out. 
 
 • Always try tofigure it outfirstbefore trying to get help. 
 
 
-If youfollowtheserules, do everythingin the book, and stillcan’tcode C,then you at least tried. It’snotfor everyone, but just trying will make you a better programmer. 
+If youfollowtheserules, do everythingin the book, and stillcan'tcode C,then you at least tried. It'snotfor everyone, but just trying will make you a better programmer. 
 
 
 The Videos 
 
 
-Included in this course are videos for every exercise, and in many cases,more thanone video for an exercise. These videos should beconsidered essentialto get the full impact of the book’seducational method. The reason for this is that many of theproblems with writing C codeare interactive issues with failure, debugging, and commands. 
+Included in this course are videos for every exercise, and in many cases,more thanone video for an exercise. These videos should beconsidered essentialto get the full impact of the book'seducational method. The reason for this is that many of theproblems with writing C codeare interactive issues with failure, debugging, and commands. 
 
-C requires much more interaction toget the code running and to fix problems, unlike languages likePython and Rubywherecode just runs. It’s alsomuch easier to show you a videolectureon a topic,such aspointers or memory management, where I can demonstratehowthe machine is actually working. 
+C requires much more interaction toget the code running and to fix problems, unlike languages likePython and Rubywherecode just runs. It's alsomuch easier to show you a videolectureon a topic,such aspointers or memory management, where I can demonstratehowthe machine is actually working. 
 
 I recommend thatas you go through the course, you plan to watch thevideosfirst, and thendo the exercises unless directedto do otherwise. In some of the exercises, I use onevideoto present a problem andthenanother to demonstratethe solution. In most of the other exercises, I use avideo to present a lecture, and then you do the exerciseand complete it to learn the topic. 
 
 
 The Core Competencies 
 
-I'm going to guessthat you haveexperience using a lesser language. One of those usable languages that lets you get away with sloppy thinking and half-baked hackery like Python or Ruby. Or, maybe you use a languagelike LISPthat pretendsthe computer is somepurely functional fantasy land with padded walls forlittlebabies. Maybe you’velearned Prolog, and you think the entireworld should just be adatabase where you walkaround in it looking for clues. 
+I'm going to guessthat you haveexperience using a lesser language. One of those usable languages that lets you get away with sloppy thinking and half-baked hackery like Python or Ruby. Or, maybe you use a languagelike LISPthat pretendsthe computer is somepurely functional fantasy land with padded walls forlittlebabies. Maybe you'velearned Prolog, and you think the entireworld should just be adatabase where you walkaround in it looking for clues. 
 
-Even worse,I'm betting you’ve been using anintegrated development environment (IDE), so your brainis riddled with memory holes, and you can’t eventypean entire function’s name without hitting CTRL­SPACE after every three characters. 
+Even worse,I'm betting you've been using anintegrated development environment (IDE), so your brainis riddled with memory holes, and you can't eventypean entire function's name without hitting CTRL­SPACE after every three characters. 
 No matter what your background is,you could probably use some improvementin these areas: 
 
 Reading and Writing 
 
 
-This is especially true if you use an IDE, but generally I find programmers do too much skimmingand have problems reading for comprehension. They’ll just skim code that theyneed to understand indetailwithout taking the time to understand it. Other languagesprovide tools that let programmers avoid actually writingany code, so when facedwith a languagelike C,they break down. 
+This is especially true if you use an IDE, but generally I find programmers do too much skimmingand have problems reading for comprehension. They'll just skim code that theyneed to understand indetailwithout taking the time to understand it. Other languagesprovide tools that let programmers avoid actually writingany code, so when facedwith a languagelike C,they break down. 
 
-The simplest thing to do is just understand that everyone has this problem, and you can fix it by forcing yourself to slow down and be meticulous about your readingand writing. At first, it’ll feel painful and annoying, but take frequent breaks, and then eventually it’ll be easierto do. 
+The simplest thing to do is just understand that everyone has this problem, and you can fix it by forcing yourself to slow down and be meticulous about your readingand writing. At first, it'll feel painful and annoying, but take frequent breaks, and then eventually it'll be easierto do. 
 
 Attention to Detail 
 
-Everyoneis bad at this, and it’sthe biggest cause of bad software. Otherlanguages let you get awaywithnotpaying attention, but C demandsyour full attention becauseit’s rightin the machine, and the machine is very picky. With C,there is no "kind of similar" or "close enough," so you need topay attention. Doublecheck your work. Assume everything you write is wronguntil you prove it’s right. 
+Everyoneis bad at this, and it'sthe biggest cause of bad software. Otherlanguages let you get awaywithnotpaying attention, but C demandsyour full attention becauseit's rightin the machine, and the machine is very picky. With C,there is no "kind of similar" or "close enough," so you need topay attention. Doublecheck your work. Assume everything you write is wronguntil you prove it's right. 
 Spotting Differences 
 
 
-A keyproblem thatpeople who are used to other languages have isthat their brains havebeen trainedto spotdifferences in that language, not in C. When you comparecode you’ve written to my exercise code, your eyes will jump rightover characters you thinkdon’t matter or thataren’t familiar. I'll be giving you strategies thatforceyou to see your mistakes, butkeep in mind thatif your code is not exactly like the code in this book, it’swrong. 
+A keyproblem thatpeople who are used to other languages have isthat their brains havebeen trainedto spotdifferences in that language, not in C. When you comparecode you've written to my exercise code, your eyes will jump rightover characters you thinkdon't matter or thataren't familiar. I'll be giving you strategies thatforceyou to see your mistakes, butkeep in mind thatif your code is not exactly like the code in this book, it'swrong. 
 
 Planning and Debugging 
 
-I love other, easier languages because I can just hang out. I can type the ideas I have into their interpreter and see results immediately. They’re great for just hacking out ideas, buthave you noticed thatif you keep doing hack until it works, eventually nothing works?C is harderon you because itrequires you to first plan outwhat you want to create. Sure, you canhack for abit, but youhave toget serious much earlier in C than in other languages. 
+I love other, easier languages because I can just hang out. I can type the ideas I have into their interpreter and see results immediately. They're great for just hacking out ideas, buthave you noticed thatif you keep doing hack until it works, eventually nothing works?C is harderon you because itrequires you to first plan outwhat you want to create. Sure, you canhack for abit, but youhave toget serious much earlier in C than in other languages. 
 
-I'll be teaching you ways to plan out key parts of your program before you start coding, and this will likelymake you a better programmer at the same time. Even just a little planning can smooth things outdown the road. ^cise0, is where you set up your computer for therest ofthis book. In this exercise you’ll install packagesand softwaredepending on the typeof computeryouhave. 
+I'll be teaching you ways to plan out key parts of your program before you start coding, and this will likelymake you a better programmer at the same time. Even just a little planning can smooth things outdown the road. ^cise0, is where you set up your computer for therest ofthis book. In this exercise you'll install packagesand softwaredepending on the typeof computeryouhave. 
 
 
 If youhave problems following this exercise, then simplywatch the Exercise 
@@ -181,7 +181,7 @@ Linux ismostlikely the easiest system to configure for C development. For Debian
 
 `$ sudo apt-get install build -essential `
 
-Here’s how you would install 
+Here's how you would install 
 
 the samesetup onan RPM-based Linux like Fedora, RedHat,or CentOS7: 
 
@@ -189,14 +189,14 @@ the samesetup onan RPM-based Linux like Fedora, RedHat,or CentOS7:
 
 
 
-If youhave adifferent variant ofLinux, simplysearch for "c development tools" and your brand of Linux to find out what’s required. Once you have that installed, you should beable to type: `$ cc --version` to see whatcompiler was installed. You will most likely have the GNU C Compiler (GCC)installed but don’tworryif it’sa different onefrom what I use inthe book. You could also try installing the Clang C compiler using the Clang’s Getting Started instructions for yourversion ofLinux, or searching online if those don’twork. 
+If youhave adifferent variant ofLinux, simplysearch for "c development tools" and your brand of Linux to find out what's required. Once you have that installed, you should beable to type: `$ cc --version` to see whatcompiler was installed. You will most likely have the GNU C Compiler (GCC)installed but don'tworryif it'sa different onefrom what I use in the book. You could also try installing the Clang C compiler using the Clang's Getting Started instructions for yourversion ofLinux, or searching online if those don'twork. 
 
 Mac OS X 
 
-On MacOS X, the installis even easier. First,you’llneed to either download the latest XCode from Apple,or find your installDVD andinstall it from there. The download will be massive and could take forever, so I recommend installing from the DVD. 
+On MacOS X, the installis even easier. First,you'llneed to either download the latest XCode from Apple,or find your installDVD andinstall it from there. The download will be massive and could take forever, so I recommend installing from the DVD. 
 
 
-Also, search online for "installing xcode" for instructionson how to do it. You can also use theApp Storeto install it just as you wouldany other app, and if you do it that wayyou’ll receive updates automatically. 
+Also, search online for "installing xcode" for instructionson how to do it. You can also use theApp Storeto install it just as you wouldany other app, and if you do it that wayyou'll receive updates automatically. 
 
 To confirm that your C compiler is working, type this: 
 `$ cc --version`
@@ -205,17 +205,17 @@ To confirm that your C compiler is working, type this:
 You should see thatyou are using aversion of the Clang C Compiler, butif your XCode is older you mayhave GCC installed. Either is fine. 
 Windows 
 
-For Microsoft Windows, I recommend you usethe Cygwin system to acquire many of the standard UNIX software development tools. It should be easy to install and use, but watch the videos for this exercise tosee how I dout C support in their development tools,soyou may have problems using Microsoft’s compilers to build the codein this book.  it. An alternative to Cygwin is the MinGW system; it is more minimalist but should also work. I will warn you that Microsoft seems to be phasing.
+For Microsoft Windows, I recommend you usethe Cygwin system to acquire many of the standard UNIX software development tools. It should be easy to install and use, but watch the videos for this exercise tosee how I dout C support in their development tools,soyou may have problems using Microsoft's compilers to build the codein this book.  it. An alternative to Cygwin is the MinGW system; it is more minimalist but should also work. I will warn you that Microsoft seems to be phasing.
 
-A slightly more advanced optionis to use VirtualBoxto install aLinuxdistribution and run a complete Linux systemon yourWindows computer. This has the added advantagethat you can completely destroy this virtualmachine without worrying about destroying your Windows configuration. It’s also an opportunity to learn to use Linux, which is both fun andbeneficialto your development as a programmer. Linux is currently deployed as the main operating system for many distributed computer and cloudinfrastructure companies. Learning Linux will definitely improveyour knowledge of the future of computing. 
+A slightly more advanced optionis to use VirtualBoxto install aLinuxdistribution and run a complete Linux systemon yourWindows computer. This has the added advantagethat you can completely destroy this virtualmachine without worrying about destroying your Windows configuration. It's also an opportunity to learn to use Linux, which is both fun andbeneficialto your development as a programmer. Linux is currently deployed as the main operating system for many distributed computer and cloudinfrastructure companies. Learning Linux will definitely improveyour knowledge of the future of computing. 
 
 Text Editor 
 
-The choice of text editor for a programmer is a tough one. For beginners, I say just use Gedit since it’s simple andit works for code. However, it doesn’t work in certain international situations, and if you’ve been programming for a while, chances are you already have a favorite text editor. 
+The choice of text editor for a programmer is a tough one. For beginners, I say just use Gedit since it's simple andit works for code. However, it doesn't work in certain international situations, and if you've been programming for a while, chances are you already have a favorite text editor. 
 
-With this in mind, I want you to try out a few of the standard programmer text editors for your platformand then stick with the one that you like best. If you’ve been using GEdit and like it, then stick with it. If you want to try something different, then try it out real quick and pick one. 
+With this in mind, I want you to try out a few of the standard programmer text editors for your platformand then stick with the one that you like best. If you've been using GEdit and like it, then stick with it. If you want to try something different, then try it out real quick and pick one. 
 
-The mostimportant thing is do not get stuck trying to pick the perfect editor. Text editors alljust kind of suck in odd ways. Just pick one, stick with it, and if youfind something else you like, try it out. Don’t spend days onend configuringit and making it perfect. 
+The mostimportant thing is do not get stuck trying to pick the perfect editor. Text editors alljust kind of suck in odd ways. Just pick one, stick with it, and if youfind something else you like, try it out. Don't spend days onend configuringit and making it perfect. 
 
 Some text editors to try out: 
 
@@ -238,9 +238,9 @@ Do Not Use an IDE
 
 Warning! 
 
-Avoidusing an integrated development environment(IDE) while you are learning a language. They are helpful when you need to get things done, but their help tendsalso to prevent youfrom really learning the language. In my experience,the stronger programmers don’tuse an IDE and also have no problem producing codeat the same speed as IDE users. I alsofind that the code produced with an IDEis of lower quality. Ihave noidea why thatis the case, but if you want deep, solid skillsin a programming language, Ihighly recommend thatyou avoid IDEswhile you’re learning. 
+Avoidusing an integrated development environment(IDE) while you are learning a language. They are helpful when you need to get things done, but their help tendsalso to prevent youfrom really learning the language. In my experience,the stronger programmers don'tuse an IDE and also have no problem producing codeat the same speed as IDE users. I alsofind that the code produced with an IDEis of lower quality. Ihave noidea why thatis the case, but if you want deep, solid skillsin a programming language, Ihighly recommend thatyou avoid IDEswhile you're learning. 
 
-Knowing how touse a professional programmer’s text editor is alsoauseful skill in your professionallife. When you’re dependent onan IDE, you have to wait for a new IDE before you can learn the newer programming languages. This addsa costto your career: It preventsyoufrom getting ahead of shifts in language popularity. With a generic text editor, you can code in anylanguage, any time you like, without waiting for anyone to addit to an IDE. A generic text editor meansfreedom to explore on yourown andmanage your career as you see fit. 
+Knowing how touse a professional programmer's text editor is alsoauseful skill in your professionallife. When you're dependent onan IDE, you have to wait for a new IDE before you can learn the newer programming languages. This addsa costto your career: It preventsyoufrom getting ahead of shifts in language popularity. With a generic text editor, you can code in anylanguage, any time you like, without waiting for anyone to addit to an IDE. A generic text editor meansfreedom to explore on yourown andmanage your career as you see fit. 
 
 
 ## Exercise1. Dust Off That Compiler 
@@ -270,17 +270,17 @@ If youhave problems getting the code up and running, watchthe video for this exe
 
 Breaking It Down 
 
-There area few features of the C languagein thiscode thatyou might ormightnot have figured out while you were typing it. I'll break this down, line by line, quickly, and then we can do exercises to understand each partbetter. Don’tworryif you don’t understand everything in this breakdown. Iam simply giving you a quickdive into C and promise you will learn all of these concepts later in the book. 
+There area few features of the C languagein thiscode thatyou might ormightnot have figured out while you were typing it. I'll break this down, line by line, quickly, and then we can do exercises to understand each partbetter. Don'tworryif you don't understand everything in this breakdown. Iam simply giving you a quickdive into C and promise you will learn all of these concepts later in the book. 
 
 
-Here’s aline-by-line description of the code: 
+Here's aline-by-line description of the code: 
 
 ex1.c:1 An include, and itis the way to import thecontentsof one file into thissource file. C has a convention ofusing .h extensions for header files, which contain listsof functions to usein your program. 
 
 
 ex1.c:3 This is a multiline comment, and you could put as manylines oftext between the opening `/*` and closing `*/` characters asyou want. 
 
-ex1.c:4 A morecomplex version of the main function you’ve been using so far. How C programs workisthat the operating system loadsyour program, and then itruns the function named main. For the function to be totally complete it needs toreturn an int and take two parameters: an int for the argumentcountand an array of char * strings for the arguments. Didthat just flyoveryour head? Don’tworry, we’ll cover this soon. 
+ex1.c:4 A morecomplex version of the main function you've been using so far. How C programs workisthat the operating system loadsyour program, and then itruns the function named main. For the function to be totally complete it needs toreturn an int and take two parameters: an int for the argumentcountand an array of char * strings for the arguments. Didthat just flyoveryour head? Don'tworry, we'll cover this soon. 
 
 ex1.c:5 To start the body of any function, you write a `{` character that indicates thebeginning ofa block. In Python, you just did a `:` and indented. In other languages, you might have a begin or do word tostart. 
 
@@ -290,19 +290,19 @@ ex1.c:8 Another kind of comment. It works like in Python or Ruby, where the comm
 
 ex1.c:9 A callto your old friend printf.Likein many languages, function calls workwith the syntax name(arg1, arg2); and canhave no argumentsor any number of them. The printf function is actually kind of weird in that it can take multiple arguments. You'll see that later. 
 
-ex1.c:11 Areturnfrom the main function that gives the operating system (OS)your exitvalue. You maynot be familiar with how UNIX software uses returncodes, sowe’ll cover thatas well. 
+ex1.c:11 Areturnfrom the main function that gives the operating system (OS)your exitvalue. You maynot be familiar with how UNIX software uses returncodes, sowe'll cover thatas well. 
 
-ex1.c:12 Finally, we end the main functionwith aclosing brace }character, andthat’sthe end of the program. 
+ex1.c:12 Finally, we end the main functionwith aclosing brace }character, andthat'sthe end of the program. 
 
 
-There’salot ofinformation in this breakdown, so study it lineby lineand make sure you at least have a grasp of what’s going on. Youwon’t know everything, butyou can probably guessbefore we continue. 
+There'salot ofinformation in this breakdown, so study it lineby lineand make sure you at least have a grasp of what's going on. Youwon't know everything, butyou can probably guessbefore we continue. 
 
 
 
 What You Should See 
 
 
-You can put this into an ex1.c andthen run the commands shown here in this sample shelloutput. If you’re notsure how thisworks, watchthe video that goes with this exercise tosee me do it. 
+You can put this into an ex1.c andthen run the commands shown here in this sample shelloutput. If you're notsure how thisworks, watchthe video that goes with this exercise tosee me do it. 
 
 
 * Exercise 1 Session 
@@ -326,7 +326,7 @@ The first command make is a tool thatknows how to build C programs (and many oth
 How to Break It 
 
 
-In this book, I'm going to have a small section for each program teaching you how to break the program if it’s possible. I'll have you do odd things to the programs, run them in weird ways,or change code so that you can seecrashes and compiler errors. 
+In this book, I'm going to have a small section for each program teaching you how to break the program if it's possible. I'll have you do odd things to the programs, run them in weird ways,or change code so that you can seecrashes and compiler errors. 
 
 For this program, simplytry removing things at random and still getitto compile. Just make a guessatwhat you can remove, recompileit, and thensee what you get foran error.
 
@@ -338,23 +338,23 @@ Extra Credit
  
 • Run man 3 printf and read about this function andmany others. 
 
-• For each line, write out the symbols you don’t understand and see if you can guess what theymean. Write a little chart on paper with your guess so you can check itlater tosee if you gotitright.
+• For each line, write out the symbols you don't understand and see if you can guess what theymean. Write a little chart on paper with your guess so you can check itlater tosee if you gotitright.
 
 ## Exercise2. Using Makefiles to Build 
 
-We’re going to use aprogram called make to simplify building your exercise code. The make programhas been aroundfor averylongtime, and because ofthis it knows how to buildquitea few typesof software. In this exercise, I'llteach you just enough Makefile syntax to continuewith the course, and thenan exerciselater will teach you morecomplete Makefile usage. 
+We're going to use aprogram called make to simplify building your exercise code. The make programhas been aroundfor averylongtime, and because ofthis it knows how to buildquitea few typesof software. In this exercise, I'llteach you just enough Makefile syntax to continuewith the course, and thenan exerciselater will teach you morecomplete Makefile usage. 
 
 Using Make 
 
-How make works is you declare dependencies, and thendescribe how to build them orrely on the program’s internalknowledge ofhow to build most common software. Ithas decades ofknowledge about buildinga wide variety offiles from other files. In the last exercise,you did this already using commands: 
+How make works is you declare dependencies, and thendescribe how to build them orrely on the program's internalknowledge ofhow to build most common software. Ithas decades ofknowledge about buildinga wide variety offiles from other files. In the last exercise,you did this already using commands: 
 
 $ make ex1 # or this one too
 $ CFLAGS="-Wall" make ex1 
 
-In the first command, you’re telling make, "I want a file named ex1to be created." The programthen asks and does the following: 
+In the first command, you're telling make, "I want a file named ex1to be created." The programthen asks and does the following: 
 1. Doesthe file ex1 exist already? 
 
-2. No. Okay, is there anotherfile that starts with ex1. 3. Yes, it’scalled ex1.c. Do I know how to build .c files? 
+2. No. Okay, is there anotherfile that starts with ex1. 3. Yes, it'scalled ex1.c. Do I know how to build .c files? 
 
 4. Yes, I run this command cc ex1.c -o ex1 to build them. 
 
@@ -362,24 +362,24 @@ In the first command, you’re telling make, "I want a file named ex1to be creat
 
 
 
-The secondcommand in the listing above is a way topass modifiers to the make command. If you’renot familiar with how the UNIX shellworks, you can create these environment variables thatwillget picked up by programs you run. Sometimes you do this with acommand like export CFLAGS="­Wall" depending on the shellyou use. You can, however, alsojust put them beforethe command you want to run, and that environment variable willbe set only while that command runs.
+The secondcommand in the listing above is a way topass modifiers to the make command. If you'renot familiar with how the UNIX shellworks, you can create these environment variables thatwillget picked up by programs you run. Sometimes you do this with acommand like export CFLAGS="­Wall" depending on the shellyou use. You can, however, alsojust put them beforethe command you want to run, and that environment variable willbe set only while that command runs.
 
 In this example, I did CFLAGS="-Wall" make ex1 so that itwould addthe command line option -Wall to the cc commandthat make normallyruns. That command line optiontells the compiler cc to report all warnings (which, in a sick
-twis tof fate,isn’tactually all the warnings possible). You can actually getpretty farwithjust using make in thatway, butlet’s getinto makinga Makefile soyou can understand make a little better. Tostart off, createa filewithjust the followingin it.
+twis tof fate,isn'tactually all the warnings possible). You can actually getpretty farwithjust using make in thatway, butlet's getinto makinga Makefile soyou can understand make a little better. Tostart off, createa filewithjust the followingin it.
 
 ex2.1.mak 
 CFLAGS=-Wall -g 
 clean: 
 rm -f ex1 
 
-Save this file as Makefile in your current directory. The programautomatically assumes there’sa file called Makefile andwilljust run it. 
+Save this file as Makefile in your current directory. The programautomatically assumes there'sa file called Makefile andwilljust run it. 
 
 Warning! 
 
 Make sure you are only entering TAB characters, not mixtures of TAB and spaces. 
 
 This Makefile is showing you somenew stuff with make.First,weset CFLAGS in the file so weneverhave to set it again,as wellas adding the -g flag to getdebugging. Then, we have a section named clean that tells make how to cleanup our little project. 
-Make sure it’s in the same directory as your ex1.c file, and then run these commands: 
+Make sure it's in the same directory as your ex1.c file, and then run these commands: 
 
 $ make clean 
 $ make ex1 
@@ -410,25 +410,25 @@ of function 'puts'
 $ 
 ```
 
-Hereyou cansee that I'm running make clean, which tells make to run our clean target. Go look at the Makefile again andyou’ll see that underthis command, I indentand then putin the shellcommandsIwant make to run for me. You couldput asmanycommands as you wanted in there, so it’sa great automationtool. 
+Hereyou cansee that I'm running make clean, which tells make to run our clean target. Go look at the Makefile again andyou'll see that underthis command, I indentand then putin the shellcommandsIwant make to run for me. You couldput asmanycommands as you wanted in there, so it'sa great automationtool. 
 
 Warning! 
 
 
-If youfixed ex1.c to have `#include <stdio.h>`, then youroutput won’t have thewarning(which shouldreallybe an error) aboutputs. I have the errorhere becauseI didn’tfix it. 
+If youfixed ex1.c to have `#include <stdio.h>`, then youroutput won't have thewarning(which shouldreallybe an error) aboutputs. I have the errorhere becauseI didn'tfix it. 
 
-Notice thateven though we don’tmention ex1 in the Makefile, make still knows how to buildit and use our specialsettings.
+Notice thateven though we don'tmention ex1 in the Makefile, make still knows how to buildit and use our specialsettings.
 
 How to Break It 
 
-That should beenough toget you started, but firstlet’s break this Makefile in a particular waysoyou cansee whathappens. Takethe line rm -f ex1 and remove the indent (move it allthe way left) so you can see what happens. Rerun make clean, and you shouldget something like this: 
+That should beenough toget you started, but firstlet's break this Makefile in a particular waysoyou cansee whathappens. Takethe line rm -f ex1 and remove the indent (move it allthe way left) so you can see what happens. Rerun make clean, and you shouldget something like this: 
 
 ```c
 
 $ make clean Makefile:4: *** missingseparator. Stop. 
 ```
 
-Always rememberto indent, and if you get weird errors like this,double check that you’re consistently using tab characters becausesome make variants areverypicky. 
+Always rememberto indent, and if you get weird errors like this,double check that you're consistently using tab characters becausesome make variants areverypicky. 
 
 Extra Credit 
 
@@ -440,14 +440,14 @@ Extra Credit
 
 • Research Makefiles online and seeif you can improve this one. 
 
-• Finda Makefile in anotherCproject and try to understandwhat it’sdoing. 
+• Finda Makefile in anotherCproject and try to understandwhat it'sdoing. 
 
 
 ## Exercise3. Formatted Printing 
 
-Keep that Makefile around since it’llhelp you spot errors, andwe’ll be adding to it when we needto automate more things. 
+Keep that Makefile around since it'llhelp you spot errors, andwe'll be adding to it when we needto automate more things. 
 
-Manyprogramming languages use the Cway of formatting output, solet’s try it: 
+Manyprogramming languages use the Cway of formatting output, solet's try it: 
 
 ex3.c 
 
@@ -470,25 +470,25 @@ ex3.c
 
 
 
-Once you’ve finished that, do the usual make ex3 tobuild and run it. Make sure you fix all warnings. 
+Once you've finished that, do the usual make ex3 tobuild and run it. Make sure you fix all warnings. 
 
 This exercisehas awholelot 
 going on in a small amount of 
-code, so let’sbreak it down: 
+code, so let'sbreak it down: 
 
-• First we’reincluding another header file called stdio.h. This tells thecompiler that you’re going tousethe standard Input/Output functions. One of those is printf. 
+• First we'reincluding another header file called stdio.h. This tells thecompiler that you're going tousethe standard Input/Output functions. One of those is printf. 
 
-• Then we’re using a variablenamed age and settingit to 10. 
+• Then we're using a variablenamed age and settingit to 10. 
 
-• Next we’re using a variable height and setting it to72. • Then we’readding the printf function to print the age and height of the tallest10-year­oldon theplanet. 
+• Next we're using a variable height and setting it to72. • Then we'readding the printf function to print the age and height of the tallest10-year­oldon theplanet. 
 
-• In printf,you’ll notice we’re includinga format string, asseenin many other languages. 
+• In printf,you'll notice we're includinga format string, asseenin many other languages. 
 
-• After this format string, we’re putting in the variables that should be "replaced" into the format string by printf. 
+• After this format string, we're putting in the variables that should be "replaced" into the format string by printf. 
 
 
 
-The result isgiving printfsomevariables andit’s constructing anew string and thenprinting itto the terminal. 
+The result isgiving printfsomevariables andit's constructing anew string and thenprinting itto the terminal. 
 
 
 What You Should See 
@@ -498,7 +498,7 @@ When you do thewhole build, you should see something like this:
 
 * Exercise 3 Session 
 
-```c
+```bash
 
 $ make ex3 
 cc -Wall ­g ex3.c -o ex3 
@@ -508,10 +508,12 @@ I  am  72  inches  tall.
 $  
 ```
 
-PrettysoonI'm going tostop telling you torun make and what the build looks like, so please make sureyou’re getting this rightand that it’s working. 
+PrettysoonI'm going tostop telling you torun make and what the build looks like, so please make sureyou're getting this rightand that it's working. 
+
+
 External Research 
 
-In the Extra Credit sectionof each exercise,you may have you go find information on your own andfigurethings out. This is an important part of beinga self-sufficient programmer. If you’re constantly running toask someone a question before trying to figure things out yourself,then you’llnever learn how to solve problems independently. 
+In the Extra Credit sectionof each exercise,you may have you go find information on your own andfigurethings out. This is an important part of beinga self-sufficient programmer. If you're constantly running toask someone a question before trying to figure things out yourself,then you'llnever learn how to solve problems independently. 
 
 You'll never build confidencein your skillsand will alwaysneed someone else around to do your work. The way to break this habit is to force yourselfto try to answer your own question first, and then confirmthat your answer is right. 
 
@@ -529,7 +531,7 @@ Try a few of theseways to break this program,which mayor may not cause it to cra
 
 • Run this new program and it willeithercrash orprint out a really crazyage.
 
-• Put the printf back the wayit was, and then don’tset age toan initial value by changing that line to int age;, and then rebuild it andrunit again. 
+• Put the printf back the wayit was, and then don'tset age toan initial value by changing that line to int age;, and then rebuild it andrunit again. 
 
 
 * Exercise 3.bad Session 
@@ -550,7 +552,6 @@ cc -Wall ­g ex3.c -o ex3 ex3.c: In function 'main': ex3.c:8: warning: 'age' is 
 $ ./ex3 
 I am 0 years old. 
 I am 72 inches tall. 
-
 $ 
 ```
 
@@ -572,19 +573,20 @@ This is a video-focused exercisewhere I show you how to use thedebuggerthat come
 
 GDB Tricks 
 
-Here’s alist ofsimple tricks you can do with GNU Debugger (GDB): 
+Here's alist ofsimple tricks you can do with GNU Debugger (GDB): 
 
 * gdb --args Normally, gdb takes arguments you giveit and assumes they are for itself. 
     * Using --args passes them to the program. 
-* thread apply allbt Dump abacktrace for all threads. It’sveryuseful.
+* thread apply allbt Dump abacktrace for all threads. It'sveryuseful.
 * gdb --batch --exr --ex bt --ex q --args Run the programso that ifit bombs, you get a backtrace. 
-* 
+
+
 GDB Quick 
 
 Reference 
 
 
-The video is good for learning how to use a debugger, butyou’llneed to refer backto the commands asyou work. Here is aquick referenceto the `GDB` commands thatI used inthe video so you can use them laterin the book: 
+The video is good for learning how to use a debugger, butyou'llneed to refer backto the commands asyou work. Here is aquick referenceto the `GDB` commands thatI used in the video so you can use them laterin the book: 
 
 * run [args] -- Start your programwith[args]. 
 * break[file:]function Set abreakpoint at [file:]function. You can also use b. 
@@ -605,7 +607,7 @@ The video is good for learning how to use a debugger, butyou’llneed to refer b
 
 LLDB Quick Reference 
 
-In OS X, you no longer have `GDB` and instead must use a similarprogram calledLLDB Debugger (LLDB). The commands are almost the same, buthere’sa quick referenceforLLDB: 
+In OS X, you no longer have `GDB` and instead must use a similarprogram calledLLDB Debugger (LLDB). The commands are almost the same, buthere'sa quick referenceforLLDB: 
 
 * run [args] Start your programwith[args]. 
 * breakpoint set --name[file:]function Seta break point at [file:]function. You can also use b, which is way easier. 
@@ -628,76 +630,179 @@ You can also searchonline for quick reference cards and tutorials for both `GDB`
 
 ## Exercise5. Memorizing C Operators 
 
-When youlearned your first programming language,it most likely involved going through a book, typing in codeyou didn’t quite understand, andthen trying to figure outhow itworked. 
+When youlearned your first programming language,it most likely involved going through a book, typing in codeyou didn't quite understand, andthen trying to figure outhow itworked. 
 
-That’s how Iwrote mostof myother books, and that works very well for beginners. In thebeginning, there are complex topics you need to understand before you can grasp whatall the symbols and words mean, so it’saneasyway to learn. 
+That's how Iwrote mostof myother books, and that works very well for beginners. In thebeginning, there are complex topics you need to understand before you can grasp whatall the symbols and words mean, so it'saneasyway to learn. 
 
-However, once you already know oneprogramming language, thismethodof fumbling aroundlearning the syntax byosmosisisn’t the most efficientway to learna language. Itworks, but there is amuchfasterway to build both yourskills in a language and your confidence in using it. This methodof learning a programming language might seem like magic, but you’ll have to trust me that it works surprisingly well. 
+However, once you already know oneprogramming language, thismethodof fumbling aroundlearning the syntax byosmosisisn't the most efficientway to learna language. Itworks, but there is amuchfasterway to build both yourskills in a language and your confidence in using it. This methodof learning a programming language might seem like magic, but you'll have to trust me that it works surprisingly well. 
 
-How I want you to learn C is to first memorizeall the basic symbols and syntax, then apply them througha series ofexercises. This methodis very similarto howyou mightlearnhuman languages by memorizing words and grammar, andthen applying what youmemorize in conversations. With just a simple amount of memorization effort inthe beginning, you can gain foundational knowledgeand have aneasier time reading 
+How I want you to learn C is to first memorizeall the basic symbols and syntax, then apply them througha series ofexercises. This methodis very similarto howyou mightlearnhuman languages by memorizing words and grammar, andthen applying what youmemorize in conversations. With just a simple amount of memorization effort in the beginning, you can gain foundational knowledgeand have aneasier time reading 
 and writingC code. 
 
 Warning! 
 
-Some people are dead against memorization. Usually, they claimit makesyouuncreative andboring. I'm proof that memorizing things doesn’t make you uncreative and boring. I paint, play and build guitars, sing,code, write books, and I memorize lots of things. This belief is entirely unfounded and detrimental to efficient learning. Please ignore anyone telling you this. 
+Some people are dead against memorization. Usually, they claimit makesyouuncreative andboring. I'm proof that memorizing things doesn't make you uncreative and boring. I paint, play and build guitars, sing,code, write books, and I memorize lots of things. This belief is entirely unfounded and detrimental to efficient learning. Please ignore anyone telling you this. 
 
 How to Memorize 
 
 The best way to memorize something is a fairly simple process: 
 
-1. Create asetof flash cards that have a symbolon oneside and the descriptionon the other. Youcould also use aprogram called Anki to do this on your computer. I prefer creating my own because ithelps me memorize them asI makethem. 
+1. Create a setof flash cards that have a symbolon oneside and the descriptionon the other. Youcould also use aprogram called Anki to do this on your computer. I prefer creating my own because ithelps me memorize them asI makethem. 
 
 2. Randomize the flash cards and startgoing through them on one side. Try yourbest to remember theother side of the cardwithout looking.
 
-3. If you can’trecallthe other side of the card, thenlook atit and repeat the answer to yourself,then put that cardintoa separate pile. 
+3. If you can'trecallthe other side of the card, thenlook atit and repeat the answer to yourself,then put that cardintoa separate pile. 
 
-4. Once yougo through all thecards you’ll have twopiles:one pileof cards you recalled quickly, and another you failed to recall. 
+4. Once yougo through all thecards you'll have twopiles:one pileof cards you recalled quickly, and another you failed to recall. 
 Pick up the fail pile and drill yourself on only those cards. 
 
-5. At the very endof the session, which is usually 15–30 minutes, you’ll have a set of cards you just can’t recall. Take those cards with you wherever you go, and when you have free time, practice memorizing them. 
+5. At the very endof the session, which is usually 15–30 minutes, you'll have a set of cards you just can't recall. Take those cards with you wherever you go, and when you have free time, practice memorizing them. 
 
-There are many other tricks to memorizing things, but I’ve foundthat this is the best way to buildinstant recallon things you needto be ableto use immediately. The symbols, keywords, and syntax of C are things you need instantrecallon,sothis methodis the best onefor this task. 
+There are many other tricks to memorizing things, but I've foundthat this is the best way to buildinstant recallon things you needto be ableto use immediately. The symbols, keywords, and syntax of C are things you need instantrecallon,sothis methodis the best onefor this task. 
 
-Alsoremember thatyouneed to do both sides of the cards. You should be ableto read the description and know whatsymbolmatches it, as wellas knowing the description for a symbol. 
+Also remember that you need to do both sides of the cards. You should be ableto read the description and know whatsymbolmatches it, as wellas knowing the description for a symbol. 
 
-Finally, you don’t have to stop whileyou’rememorizing these operators. The best approachis to combine this with exercisesin this book so you can apply what you’ve memorized. Seethe next exercisefor more onthis. 
+Finally, you don't have to stop whileyou'rememorizing these operators. The best approachis to combine this with exercisesin this book so you can apply what you've memorized. Seethe next exercisefor more onthis. 
 
 The List of Operators 
 
-The first operators are the arithmetic operators, which are very similarto almost every other programming language. When you write the cards, thedescription side should say that it’san arithmetic operator, andwhat it does. 
+The first operators are the arithmetic operators, which are very similarto almost every other programming language. When you write the cards, thedescription side should say that it'san arithmetic operator, andwhat it does. 
 
-Relationaloperatorstest valuesforequality, andagain, they are very common in programming languages.
+|Operator|	Description	                                                     |          Example|
+|------- |     ------------------------------------------------- | -------------------------  |   
+|+	      |  Adds two operands.	                                             |       A + B = 30|
+|−	      |  Subtracts second operand from the first.                        |   	A − B = -10|
+|*	      |  Multiplies both operands.	                                      |     A * B = 200|
+|/	      |  Divides numerator by de-numerator.                             	|     B / A = 2|
+|%	      |  Modulus Operator and remainder of after an integer division.   	|     B % A = 0|
+|++	     |   Increment operator increases the integer value by one.         |    	   A++ = 11|
+|--	     |   Decrement operator decreases the integer value by one.         |    	    A-- = 9|
 
-Logicaloperators perform logic tests, and you should already knowwhat thesedo. 
 
-The only odd one is the logical ternary, which you’ll learn laterin this book. 
 
-Bitwise operators do something you likely won’t experienceoften in modern code. They alter thebits that makeup bytes and otherdata types in variousways. I won’t cover this in mybook, but they are very handy when working with certaintypes of lower-levelsystems. 
+Relational operators test valuesforequality, andagain, they are very common in programming languages.
 
-Assignment operators simply assignexpressions to variables, but Ccombines a large number ofother operators with assignment. So when I say and-equal,I meanthe bitwise operators, not the logical operators. 
+|Operator	|Description	                                                                                                                     |             Example|
+|------- |      -------------------------------------------------                                                                                 |       ---------   |   
+|==	      |  Checks if the values of two operands are equal or not. If yes, then the condition becomes true.                                 |	(A == B) is not true.|
+|!=	      |  |Checks if the values| of two operands are equal or not. If the values are not equal, then the condition becomes true.	              |   (A != B) is true.|
+|>	       | Checks if the value of left operand is greater than the value of right operand. If yes, then the condition becomes true.	          | (A > B) is not true.
+|<	       | Checks if the value of left operand is less than the value of right operand. If yes, then the condition becomes true.	              |    (A < B) is true.|
+|>=	      |  Checks if the value of left operand is greater than or equal to the value of right operand. If yes, then the condition becomes true|. (A >= B) is not true.|
+|<=	      |  Checks if the value of left operand is less than or equal to the value of right operand. If yes, then the condition becomes true.	 |     (A<= B) is true.|
+
+
+Logical operators perform logic tests, and you should already knowwhat thesedo. 
+
+|Operator	|Description	                                                                                                                     |             Example|
+|------- |      -------------------------------------------------                                                                                 |       ---------   |   
+|&&|	Called Logical AND operator. If both the operands are non-zero, then the condition becomes true.	                                               | (A && B) is false.|
+|\|\||	Called Logical OR Operator. If any of the two operands is non-zero, then the condition becomes true.	                                                 |  (A \|\| B) is true.|
+|!	| Called Logical NOT Operator. It is used to reverse the logical state of its operand. If a condition is true, then Logical NOT operator will make it false.|	!(A && B) is true.|
+
+The only odd one is the logical ternary, which you'll learn later in this book. 
+
+Bitwise operators do something you likely won't experienceoften in modern code. They alter thebits that makeup bytes and otherdata types in variousways. I won't cover this in mybook, but they are very handy when working with certaintypes of lower-levelsystems. 
+
+|p	|q	|p \& q	|p\|q	|p^q|
+|---|---|-----|----|------|
+|0	|0	|0	    |0	    |    0|
+|0	|1	|0	    |1	    |    1|
+|1	|1	|1	    |1	    |    0|
+|1	|0	|0	    |1	    |    1|
+
+
+Samples:
+
+Assume A = 60 and B = 13 in binary format, they will be as follows −
+
+A = 0011 1100
+
+B = 0000 1101
+
+-----------------
+
+A&B = 0000 1100
+
+A|B = 0011 1101
+
+A^B = 0011 0001
+
+~A = 1100 0011
+
+The following table lists the bitwise operators supported by C. Assume variable 'A' holds 60 and variable 'B' holds 13.
+
+|Operator	                                 |Description	                                                                                                                     |             Example|
+|-------                                     |      -------------------------------------------------                                                                                 |     ---------   | 
+|&	|Binary AND Operator copies a bit to the result if it exists in both operands.	                                                      |  (A & B) = 12, i.e., 0000 1100|
+|\|	|Binary OR Operator copies a bit if it exists in either operand.	                                                                  |  (A \| B) = 61, i.e., 0011 1101|
+|^	|Binary XOR Operator copies the bit if it is set in one operand but not both.	                                                      |  (A ^ B) = 49, i.e., 0011 0001|
+|~	|Binary Ones Complement Operator is unary and has the effect of 'flipping' bits.	                           |  (~A ) = -61, i.e,. 1100 0011 in 2's complement form.|
+|<<|	Binary Left Shift Operator. The left operands value is moved left by the number of bits specified by the right operand.          | 	 A << 2 = 240 i.e., 1111 0000|
+|>>|	Binary Right Shift Operator. The left operands value is moved right by the number of bits specified by the right operand.         | 	  A >> 2 = 15 i.e., 0000 1111|
+
+
+Assignment operators simply assignexpressions to variables, but Ccombines a large number ofother operators with assignment. So when I say and-equal,I mean the bitwise operators, not the logical operators. 
 
 I'm calling these data operators but theyreally deal with aspects of pointers, member access, andvarious elements ofdata structures in C. 
 
-Finally,there area few miscellaneous symbolsthat are either frequently usedfor differentroles (like ,), or don’tfit into any of the previous categories for variousreasons. 
+Finally,there area few miscellaneous symbolsthat are either frequently usedfor differentroles (like ,), or don'tfit into any of the previous categories for variousreasons. 
 
 Study your flash cards while you continuewith the book. If youspent 15–30 minutes a day before studying, and another15–30 minutes before bed, you could most likely memorize allof these in a fewweeks. 
 
 
 * Exercise 6. Memorizing C Syntax 
 
-After learning theoperators, it’stime to memorize the keywords andbasic syntax structures you’llbe using. Trustme when I tellyou that the small amount oftime spentmemorizing these things will payhuge dividends later as you go through thebook. 
+After learning theoperators, it'stime to memorize the keywords andbasic syntax structures you'llbe using. Trustme when I tellyou that the small amount oftime spentmemorizing these things will payhuge dividends later as you go through thebook. 
 
-As I mentionedin Exercise5, you don’thave to stop reading the book while you memorize these things. You can andshould doboth. Use your flash cardsas a warm up beforecoding thatday. Take them out and drillon them for 15–30minutes, thensitdown and do somemore exercises in thebook. Asyougo through thebook,try to use the code you’retypingas more of away to practice what you’rememorizing. One trick is to builda pile offlash cards containing operators and keywordsthat you don’t immediately recognizewhile you’re coding. Afteryou’re done for the day,practice thoseflash cards for another 15–30minutes. 
+As I mentionedin Exercise5, you don'thave to stop reading the book while you memorize these things. You can andshould doboth. Use your flash cardsas a warm up beforecoding thatday. Take them out and drillon them for 15–30minutes, thensitdown and do somemore exercises in thebook. Asyougo through thebook,try to use the code you'retypingas more of away to practice what you'rememorizing. One trick is to builda pile offlash cards containing operators and keywordsthat you don't immediately recognizewhile you're coding. Afteryou're done for the day,practice thoseflash cards for another 15–30minutes. 
 
-Keep this up and you’ll learn C much faster and more solidlythan you wouldif you just stumbled around typing codeuntilyoumemorized it secondhand. 
+Keep this up and you'll learn C much faster and more solidlythan you wouldif you just stumbled around typing codeuntilyoumemorized it secondhand. 
 
 The Keywords 
 
-The keywords of alanguage are words that augment the symbolssothat thelanguage reads well. There are some languages like APLthat don’t really havekeywords. There are otherlanguages likeForth and LISPthat are almost nothing but keywords. In the middleare languages like C, Python, Ruby, and many more that mix setsof keywords with symbolsto createthe basis of the language. 
+The keywords of alanguage are words that augment the symbolssothat thelanguage reads well. There are some languages like APLthat don't really havekeywords. There are otherlanguages likeForth and LISPthat are almost nothing but keywords. In the middleare languages like C, Python, Ruby, and many more that mix setsof keywords with symbolsto createthe basis of the language. 
 
 Warning! 
 
+
+
 The technical termfor processing the symbols andkeywordsof a programming language is lexical analysis.The wordforone of these symbolsor keywords is a lexeme. 
+
+| |   |  | |
+|----------|--------|--------|------------|
+|auto	|double|	int|	struct|
+|break	| else	| long	| switch |
+|case     | enum    | register  |  typedef|
+|const    |  extern |    return |    union|
+|char     | float   |  short    | unsigned|
+|continue |     for |    signed | volatile|
+|default  |    goto |    sizeof |     void|
+|do       |if        | statiic  |     while|
+
+
+Operators  Precedence in C
+
+Operator precedence determines the grouping of terms in an expression and decides how an expression is evaluated. Certain operators have higher precedence than others; for example, the multiplication operator has a higher precedence than the addition operator.
+
+|Category|  	Operator	               | Associativity |
+|---------|------------------              |---------      |
+|Postfix	| () [] -> . ++ - -	                  | Left to right |
+|Unary	|  + - ! ~ ++ - - (type)* & sizeof	          | Right to left|
+|Multiplicative	* / %	                      | Left to right |
+|Additive |	+ -	                              | Left to right |
+|Shift      |	<< >>	              | Left to right |
+|Relational	 |< <= > >=	     | Left to right |
+|Equality	 |== !=	     | Left to right |
+|Bitwise AND |	&	     | Left to right |
+|Bitwise XOR	 |^	     | Left to right |
+|Bitwise OR   	\|	     | Left to right |
+|Logical AND |	&&	     | Left to right |
+|Logical OR	 | \|\|	     | Left to right |
+|Conditional |	?:	     | Right to left|
+|Assignment	 |= += -= *= /= %=>>= <<= &= ^= \|=	     | Right to left|
+|Comma |	,	     | Left to right |
+
 
 Syntax Structures 
 
@@ -705,7 +810,7 @@ I suggest you memorize those keywords,as well as memorizing thesyntax structures
 
 You should find most of these familiar, since you already know one language. The only trouble is thenlearning how Cdoesit. 
 
-Here’s how youread these: 
+Here's how youread these: 
 
 1. Anything in ALLCAPS ismeant as a replacement spotor hole. 
 
@@ -802,7 +907,7 @@ TYPE NAME(ARG1, ARG2, ..)
 } 
 ```
 
-That may be hard to remember, so try this example tosee what’s meant by TYPE, NAME, ARG and VALUE: 
+That may be hard to remember, so try this example tosee what's meant by TYPE, NAME, ARG and VALUE: 
 ```
 int name(arg1, arg2)
 { 
@@ -815,7 +920,7 @@ A typedef defines a new type: `typedef DEFINITION IDENTIFIER;`
 
 A more concrete form of this is: `typedef unsigned char byte;`
 
-Don’t let the spaces fool you; the DEFINITION is unsigned char and the IDENTIFIER is byte in that example. 
+Don't let the spaces fool you; the DEFINITION is unsigned char and the IDENTIFIER is byte in that example. 
 
 A struct is apackagingof many base datatypes into a single concept,which are 
 used heavilyin C: 
@@ -837,33 +942,33 @@ Finally, union creates something like a struct, but the elements will overlap in
 
 A Word of Encouragement 
 
-Once you’ve created flash cards for each of these, drill on themin the usual way by starting with the nameside, and then reading the description and formon the other side. 
+Once you've created flash cards for each of these, drill on themin the usual way by starting with the nameside, and then reading the description and formon the other side. 
 
-In the video for this exercise, I show you how to use Ankito do this efficiently, but you can replicate the experiencewith simple index cards, too. I’ve noticedsome fear or discomfort in students who are askedto memorize something like this. I'mnot exactly surewhy, but I encourage you to do it anyway. 
+In the video for this exercise, I show you how to use Ankito do this efficiently, but you can replicate the experiencewith simple index cards, too. I've noticedsome fear or discomfort in students who are askedto memorize something like this. I'mnot exactly surewhy, but I encourage you to do it anyway. 
 Look at this asan opportunityto improve your memorization and learning skills. The moreyou do it,the better at it you get and the easier it gets. 
 
-It’s normal to feel discomfort and frustration. Don’t take it personally. You might spend 15 minutes and simply hate doing it and feel like a total failure. This is normal, and it doesn’t mean you actually are a failure. Perseverance will get you past the initial frustration, and this little exercisewillteach you two things: 
+It's normal to feel discomfort and frustration. Don't take it personally. You might spend 15 minutes and simply hate doing it and feel like a total failure. This is normal, and it doesn't mean you actually are a failure. Perseverance will get you past the initial frustration, and this little exercisewillteach you two things: 
 
 1. You can use memorization as a self­evaluation ofyour competence. Nothing tells you how well you really know a subject likea memory test of its concepts. 
 
-2. The way to conquer difficulty is a little piece at a time. Programming is a great way to learnthis because it’s so easy to 
+2. The way to conquer difficulty is a little piece at a time. Programming is a great way to learnthis because it's so easy to 
 
 
-break down into small partsand focus on what’s lacking. Take this as an opportunity to build yourconfidence in tackling large tasks in small pieces. 
+break down into small partsand focus on what's lacking. Take this as an opportunity to build yourconfidence in tackling large tasks in small pieces. 
 
 
 A Word of Warning 
 
 
-I'll adda finalword of warning about memorization. Memorizing alarge quantity offacts doesn’t automatically make you good at applying those facts. You can memorize the entire ANSI C standards documentand still be a terrible programmer. I’ve encountered many supposed C experts who know every square inch of standard C grammar but still write terrible,buggy, weird code, or don’t code at all. 
+I'll adda finalword of warning about memorization. Memorizing alarge quantity offacts doesn't automatically make you good at applying those facts. You can memorize the entire ANSI C standards documentand still be a terrible programmer. I've encountered many supposed C experts who know every square inch of standard C grammar but still write terrible,buggy, weird code, or don't code at all. 
 
-Never confuse an ability to regurgitatememorized facts with ability to actually do something well. Todo that you need toapply these facts in different situationsuntil you know how to use them. That’s what the rest of this book will help you do. 
+Never confuse an ability to regurgitatememorized facts with ability to actually do something well. Todo that you need toapply these facts in different situationsuntil you know how to use them. That's what the rest of this book will help you do. 
 
 
 
 * Exercise 7. Variablesand Types 
 
-You should be getting agrasp ofhow a simple C programis structured, so let’sdo thenext simplest thingand make somevariables ofdifferent types: 
+You should be getting agrasp ofhow a simple C programis structured, so let'sdo thenext simplest thingand make somevariables ofdifferent types: 
 
 ex7.c 
 
@@ -914,7 +1019,7 @@ ex7.c
 43 } 
 ```
 
-In this program, we’re declaring variables of differenttypes andthen printing themusingdifferent printf format strings. I can break it down as follows: 
+In this program, we're declaring variables of differenttypes andthen printing themusingdifferent printf format strings. I can break it down as follows: 
 
 
 ex7.c:1-4 The usualstart ofa C program. 
@@ -929,24 +1034,24 @@ ex7.c:12-13 Printout that number using %ld that adds a modifierto the usual %d. 
 
 ex7.c:15-17 This is just more math andprinting. 
 
-ex7.c:19-21 Craft a depiction ofyour bug rate compared to the bugs in the universe, which is a completely inaccurate calculation. It’s so small that we have touse %e to print it in scientific notation. 
+ex7.c:19-21 Craft a depiction ofyour bug rate compared to the bugs in the universe, which is a completely inaccurate calculation. It's so small that we have touse %e to print it in scientific notation. 
 
 ex7.c:24 Make a character, with aspecial syntax '\0' that creates a nul byte character. This is effectively thenumber 0. 
 
 ex7.c:25 Multiply bugsby this character,which produces0, as in how much you should care. This demonstrates an ugly hackyou might seesometimes. 
 
-ex7.c:26-27 Print that out, and noticewe’veused %% (two percent signs) so thatwecanprint a % (percent) character. 
+ex7.c:26-27 Print that out, and noticewe'veused %% (two percent signs) so thatwecanprint a % (percent) character. 
 
 ex7.c:28-30 The end of the main function. 
 
 
-This source filedemonstrates how somemathworks with differenttypes ofvariables. At the end of the program, it also demonstratessomething you seein Cbutnot inmany other languages. To C, a character isjust an integer. It’s a reallysmallinteger, but that’s all itis. This meansyou can domathon them, and a lotof software does just that —for good orbad. 
+This source filedemonstrates how somemathworks with differenttypes ofvariables. At the end of the program, it also demonstratessomething you seein Cbutnot inmany other languages. To C, a character isjust an integer. It's a reallysmallinteger, but that's all itis. This meansyou can domathon them, and a lotof software does just that —for good orbad. 
 
 This last bitisyour first glanceathow Cgives you direct accessto the machine. We'll be exploring thatmore in later exercises.
 
 What You Should See 
 
-As usual, here’s what you should see for the output:
+As usual, here's what you should see for the output:
 
 * Exercise 7 Session 
 
@@ -982,9 +1087,9 @@ Extra Credit
 
 ## Exercise8. If, Else-If, Else
 
-In C, there really isn’t a Boolean type. Instead,any integerthat’s0is false or otherwise it’s true. In the last exercise, the expression argc > 1 actuallyresulted in 1 or 0, not an explicit True or False like in Python. This isanother example of C being closerto how acomputer works, because toacomputer, truth values are just integers. 
+In C, there really isn't a Boolean type. Instead,any integerthat's0is false or otherwise it's true. In the last exercise, the expression argc > 1 actuallyresulted in 1 or 0, not an explicit True or False like in Python. This isanother example of C being closerto how acomputer works, because toacomputer, truth values are just integers. 
 
-However, C doeshave a typical if-statement that uses this numeric ideaof true and false to dobranching. It’s fairlysimilar towhat you woulddo in Pythonand Ruby,as you can see in this exercise: 
+However, C doeshave a typical if-statement that uses this numeric ideaof true and false to dobranching. It's fairlysimilar towhat you woulddo in Pythonand Ruby,as you can see in this exercise: 
 
 ex8.c 
 
@@ -1027,11 +1132,11 @@ This is like most other languages except for some specific C differences:
 
 • As mentionedbefore, the TEST parts are false if they evaluate to0, or otherwisetrue. 
 
-• You have to put parentheses around the TEST elements, while someother languages let you skipthat. 
+• You have to put paren theses around the TEST elements, while someother languages let you skipthat. 
 
-• You don’t need the {}braces to enclosethe code, but it is very bad formto notusethem. Thebraces make it clear whereone branch ofcode begins and ends. If you don’t include them then obnoxiouserrors come up. 
+• You don't need the {}braces to enclosethe code, but it is very bad formto notusethem. Thebraces make it clear whereone branch ofcode begins and ends. If you don't include them then obnoxiouserrors come up. 
 
-Other than that, the code works the way it doesin most other languages. You don’t need to have either else if or else parts. 
+Other than that, the code works the way it doesin most other languages. You don't need to have either else if or else parts. 
 
 
 What You Should See 
@@ -1064,8 +1169,8 @@ $
 
 How to Break It 
 
-This oneisn’teasyto break because it’s so simple, but try messing upthe tests in the if-statement: 
-• Removethe else at the end, and the programwon’t catch the edge case. 
+This oneisn'teasyto break because it's so simple, but try messing upthe tests in the if-statement: 
+• Removethe else at the end, and the programwon't catch the edge case. 
 
 • Change the && to a || so you get an or instead of anand test and see how thatworks. 
 
@@ -1075,13 +1180,13 @@ Extra Credit
 
 • Write a few more test cases forthis program to see what you can come up with.
 
-• Is the first test really saying the right thing? Toyou, the first argument isn’t the same first argument a user entered. Fix it. 
+• Is the first test really saying the right thing? Toyou, the first argument isn't the same first argument a user entered. Fix it. 
 
 
 ## Exercise9. While-Loop and Boolean Expressions 
 
 
-The first looping construct I'll show you is the while­loop, and it’sthe simplest, useful loop you could possiblyusein C. Here’s this exercise’s codefor discussion: 
+The first looping construct I'll show you is the while­loop, and it'sthe simplest, useful loop you could possiblyusein C. Here's this exercise's codefor discussion: 
 
 ex9.c 
 
@@ -1110,12 +1215,12 @@ CODE;
 } 
 ```
 
-Itsimply runs the CODE as long as TEST istrue (1). So to replicatehowthe for-loop works, we needto do our own initializingand incrementing of i. Remember that i++ increments i with the post-incrementoperator. Refer back to your lis tof tokens if you didn’t recognizethat. 
+Itsimply runs the CODE as long as TEST istrue (1). So to replicatehowthe for-loop works, we needto do our own initializingand incrementing of i. Remember that i++ increments i with the post-incrementoperator. Refer back to your lis tof tokens if you didn't recognizethat. 
 
 
 What You Should See 
 
-The outputis basically the same, so I just did ita little differently so thatyou cansee it run another way. 
+The outputis basically the same, so I just did ita little differently so thatyou can see it run another way. 
 
 
 * Exercise 9 Session 
@@ -1147,13 +1252,13 @@ $
 How to Break It 
 
 
-There areseveralwaysto get a while-loop wrong,soI don’trecommend you use it unlessyou must. Hereare a feweasyways to break it: 
+There areseveralwaysto get a while-loop wrong,soI don'trecommend you use it unlessyou must. Hereare a feweasyways to break it: 
 
 • Forget toinitialize the first int i;. Depending onwhat i starts with, theloop mightnot run at all, or run for an extremely long time. 
 
-• Forget toinitialize the secondloop’s i so that it retains thevalue from the endof the first loop. Now your second loop mightor might notrun. 
+• Forget toinitialize the secondloop's i so that it retains thevalue from the endof the first loop. Now your second loop mightor might notrun. 
 
-• Forget todo a i++ increment at the end of the loop and you’ll get a forever loop, one of the dreaded problems common in the first decadeor two of programming. 
+• Forget todo a i++ increment at the end of the loop and you'll get a forever loop, one of the dreaded problems common in the first decadeor two of programming. 
 
 
 
@@ -1167,9 +1272,9 @@ Extra Credit
 
 ## Exercise10. Switch Statements 
 
-In other languages, likeRuby, you have a switch-statement that can take any expression. Some languages, likePython,don’t have a switch-statement because an if­statement with Boolean expressionsisabout the same thing. For these languages, switch-statements are more like alternatives to if-statements and work the same internally. 
+In other languages, likeRuby, you have a switch-statement that can take any expression. Some languages, likePython,don't have a switch-statement because an if­statement with Boolean expressionsisabout the same thing. For these languages, switch-statements are more like alternatives to if-statements and work the same internally. 
 
-In C, the switch-statement is actually quite differentand is really a jump table.Instead of random Boolean expressions,you can only put expressionsthat result in integers. These integers areused to calculate jumps from the top of the switch to the part that matches thatvalue. Here’s somecode to help you understand this concept of jump tables: 
+In C, the switch-statement is actually quite differentand is really a jump table.Instead of random Boolean expressions,you can only put expressionsthat result in integers. These integers areused to calculate jumps from the top of the switch to the part that matches thatvalue. Here's somecode to help you understand this concept of jump tables: 
 
 ex10.c 
 
@@ -1205,25 +1310,25 @@ ex10.c
 ```
 
 
-In this program, we take a single command line argument and print out all vowels in an incredibly tedious way to demonstratea switch-statement. Here’s how the switch-statement works: 
+In this program, we take a single command line argument and print out all vowels in an incredibly tedious way to demonstratea switch-statement. Here's how the switch-statement works: 
 
-• The compiler marks the place inthe program where the switch-statement starts. Let’s call this location Y. 
+• The compiler marks the place in the program where the switch-statement starts. Let's call this location Y. 
 
 • It then evaluates the expressionin switch(letter) to come up with a number. In this case, thenumber willbe the raw ASCII code of the letter in argv[1].
 
-• The compiler also translates each of the case blocks like case 'A': into alocation in the program that’s that faraway. Sothe code under case 'A' is at Y +Ain theprogram. 
+• The compiler also translates each of the case blocks like case 'A': into alocation in the program that's that faraway. Sothe code under case 'A' is at Y +Ain theprogram. 
 
-• It then does the math to figure outwhereY+ letter islocated in the switch- statement, and if it’s toofar, then it adjusts it to Y + default.
+• It then does the math to figure outwhereY+ letter islocated in the switch- statement, and if it's toofar, then it adjusts it to Y + default.
 
 • Onceit knows the location, theprogram jumps to that spotin the code, andthen continuesrunning. This iswhy youhave break on some of the case blocks butnoton others.
 
-• If 'a' isentered,then it jumps to case 'a'. There’sno break, so it "fallsthrough" to the one right under it, case 'A', which has code and a break.
+• If 'a' isentered,then it jumps to case 'a'. There'sno break, so it "fallsthrough" to the one right under it, case 'A', which has code and a break.
 
 • Finally, it runs this code, hitsthe break, and thenexits out of the switch-statement entirely. This is adeep dive into how the switch-statement works, butin practice you just have to remembera few simple rules:
 
 • Always includea default: branchso thatyou catch any missing inputs. 
 
-• Don’t allow fall through unless you really want it. It’salso a good idea to add a //fall through comment so people know it’s on purpose. 
+• Don't allow fall through unless you really want it. It'salso a good idea to add a //fall through comment so people know it's on purpose. 
 
 • Always writethe case and the break before you write the code that goes init. 
 
@@ -1232,7 +1337,7 @@ In this program, we take a single command line argument and print out all vowels
 
 What You Should See 
 
-Here’s an exampleof me playing with this, and also demonstrating various ways to pass inthe argument: 
+Here's an exampleof me playing with this, and also demonstrating various ways to pass in the argument: 
 
 
 * Exercise 10 Session 
@@ -1266,15 +1371,15 @@ $
 ```
 
 
-Remember that there’s an if-statement at the top thatexits with a return 1; when you don’tprovide enougharguments. Areturn that’s not0 indicates to the OSthat theprogram hadan error. You can testforany valuethat’sgreater than 0 in scripts and otherprograms to figure outwhat happened. 
+Remember that there's an if-statement at the top thatexits with a return 1; when you don'tprovide enougharguments. Areturn that's not0 indicates to the OSthat theprogram hadan error. You can testforany valuethat'sgreater than 0 in scripts and otherprograms to figure outwhat happened. 
 
 How to Break It 
 
-It’s incredibly easy to break a switch-statement.Here are just a few ways you can mess oneof theseup: 
+It's incredibly easy to break a switch-statement.Here are just a few ways you can mess oneof theseup: 
 
-• Forget a break, and it’ll run two ormore blocks ofcode you don’twant itto run.
+• Forget a break, and it'll run two ormore blocks ofcode you don'twant itto run.
 
-• Forget a default, and it’ll silentlyignore valuesyou forgot. 
+• Forget a default, and it'll silentlyignore valuesyou forgot. 
 
 • Accidentallyput a variableinto the switch thatevaluates to something unexpected,like an int,whichbecomes weird values. 
 
@@ -1293,11 +1398,11 @@ Extra Credit
 
 • Convert this switch-statement toan if-statement. Which do you like better? 
 
-• In the case for 'Y' I have the break outside of the if-statement. What’s the impactof this, and whathappens if you move it inside of the if-statement. Proveto yourself that you’re right. 
+• In the case for 'Y' I have the break outside of the if-statement. What's the impactof this, and whathappens if you move it inside of the if-statement. Proveto yourself that you're right. 
 
 ## Exercise11. Arrays and Strings 
 
-This exerciseshows you that C stores itsstrings simply as an array of bytes, terminated with the '\0' (nul) byte. You probably clued in to this in thelast exercisesince we didit manually. Here’show we do itin another way to makeit even clearerby comparingit to an arrayof numbers: 
+This exerciseshows you that C stores itsstrings simply as an array of bytes, terminated with the '\0' (nul) byte. You probably clued in to this in thelast exercisesince we didit manually. Here'show we do itin another way to makeit even clearerby comparingit to an arrayof numbers: 
 
 ex11.c 
 
@@ -1316,9 +1421,7 @@ print them out raw
 10 numbe numbers[1], numbers[2], numbers[3]); 
 11 
 12 printf("name each: %c %c %c %c\n", 
-13 name[
-name[1], name[2], 
-name[3]); 
+13 name[0], name[1], name[2], name[3]); 
 14 
 15 printf("name: %s\n",
 16  name);  
@@ -1355,7 +1458,7 @@ name[3]);
 47 return 0;
 48 } 
 
-In this code, we set upsome arrays the tediousway, by assigninga value to each element. In numbers, weare setting upnumbers; butin name,we’re actually building a string manually. 
+In this code, we set upsome arrays the tediousway, by assigninga value to each element. In numbers, weare setting upnumbers; butin name,we're actually building a string manually. 
 
 
 What You Should See 
@@ -1370,41 +1473,48 @@ When yourunthis code, you should firstsee the errays printed with their contents
 
 $ make ex1. cc -Wall ­g ex11.c -o ex1.
 $ ./ex11
-numbers: 0 0 0 0 name each: a name: a numbers: 1 2 3 4 name each: Z e d name: Zed another: Zed another each: Z e d 
+numbers: 0 0 0 0 
+name each: a 
+name: a 
+numbers: 1 2 3 4 
+name each: Z e d 
+name: Zed 
+another: Zed 
+another each: Z e d 
 $ 
 ```
 
 You'll notice some interesting thingsabout this program: 
 
-• I didn’t have to give all four elementsof the arrays to initialize them. This isashortcut in C. If youset just one element, it’ll fill inthe rest with 0. 
+• I didn't have to give all four elementsof the arrays to initialize them. This isashortcut in C. If youset just one element, it'll fill in the rest with 0. 
 
 • When each element of numbers is printed, theyall comeout as 0.
 
-• When each element of name isprinted, only the firstelement 'a' showsup becausethe '\0' character is specialand won’t display. 
+• When each element of name isprinted, only the firstelement 'a' showsup becausethe '\0' character is specialand won't display. 
 
-• Thenthe first time we print name, it only prints thelettera. This isbecause the erraywill be filled with 0afterthe first 'a' in the initializer, sothe string iscorrectly terminated by a '\0' character. 
+• Then the first time we print name, it only prints thelettera. This isbecause the erraywill be filled with 0afterthe first 'a' in the initializer, sothe string iscorrectly terminated by a '\0' character. 
 
 • We then set up the arrays with atedious, manual assignment to each thing and print them out again. Look at how theychanged. Now the numbers areset, but do you see how the name string printsmy namecorrectly? 
 
 • there are also two syntaxes for doinga string: char name[4] = {'a'}on line 6 versus char *another = "name" online 44. Thefirst one is less common andthe second iswhat you should use for string literalslike this. 
 
-Notice thatI'm using the same syntax andstyle of code to interactwithboth an array ofintegers andan array of characters, but printf thinks that the name is just a string. Again, this is because the C languagedoesn’t differentiate between a string and an array of characters. 
+Notice thatI'm using the same syntax andstyle of code to interactwithboth an array ofintegers andan array of characters, but printf thinks that the name is just a string. Again, this is because the C languagedoesn't differentiate between a string and an array of characters. 
 
-Finally,when you make string literalsyou should typically use the char *another = "Literal" syntax. Thisworks outto be the samething, butit’s more idiomatic andeasier to write. 
+Finally,when you make string literalsyou should typically use the char *another = "Literal" syntax. Thisworks outto be the samething, butit's more idiomatic andeasier to write. 
 
 How to Break It 
 
-The sourceof almostallbugs in C come fromforgetting to haveenough space, or forgetting to put a '\0' at the end of a string. In fact, it’s so common andhardto get right that themajority ofgood C code just doesn’t use C­stylestrings. In later exercises, we’llactually learn how to avoid C strings completely. 
+The sourceof almostallbugs in C come fromforgetting to haveenough space, or forgetting to put a '\0' at the end of a string. In fact, it's so common andhardto get right that themajority ofgood C code just doesn't use C­stylestrings. In later exercises, we'llactually learn how to avoid C strings completely. 
 
 In this program, thekey to breaking it is to forget toput the '\0' characterat the end of the strings. There area few ways todo this: 
 
 • Get rid of the initializers thatsetup name. 
 
-• Accidentallyset name[3] = 'A'; so that there’s no terminator. 
+• Accidentallyset name[3] = 'A'; so that there's no terminator. 
 
 • Set the initializer to {'a','a','a','a'} so that there are too many 'a' characters and no space for the '\0' terminator.
 
-Try to come up with some other waysto break this, and run all of these underthe debugger so you can see exactly what’s going on and what the errorsare called. Sometimes you’ll make these mistakes andeven adebugger can’t find them. Try moving where you declare the variables to see if yo uget an error. This is part of the voodoo of C:Sometimes just where the variable is located changes the bug. 
+Try to come up with some other waysto break this, and run all of these underthe debugger so you can see exactly what's going on and what the errorsare called. Sometimes you'll make these mistakes andeven adebugger can't find them. Try moving where you declare the variables to see if yo uget an error. This is part of the voodoo of C:Sometimes just where the variable is located changes the bug. 
 
 Extra Credit 
 
@@ -1415,7 +1525,7 @@ Extra Credit
 
 • In howmany other ways can you print this out? 
 
-• If an array of characters is4 byteslong, and an integer is 4 bytes long, thencan you treat the whole name array like it’sjust an integer? How mightyou accomplish this crazy hack? 
+• If an array of characters is4 byteslong, and an integer is 4 bytes long, thencan you treat the whole name array like it'sjust an integer? How mightyou accomplish this crazy hack? 
 
 • Take out apiece of paper and draw each of these arrays as arowof boxes. Thendo the operations you just did on paper tosee if you get them right. 
 
@@ -1425,7 +1535,7 @@ Extra Credit
 
 ## Exercise12. Sizes andArrays 
 
-In the last exercise,you did math butwith, a '\0' (nul) character. This may seem odd if you’re coming from other languages, since they try to treat strings and byte arrays asdifferent beasts. C treats strings as just arrays of bytes, and it’s only thedifferent printing functionsthat recognizea difference. Before I canreallyexplain the significance of this, I have to introducea couplemore concepts: sizeof and arrays. Here’sthe codewe’ll be talkingabout:
+In the last exercise,you did math butwith, a '\0' (nul) character. This may seem odd if you're coming from other languages, since they try to treat strings and byte arrays asdifferent beasts. C treats strings as just arrays of bytes, and it's only thedifferent printing functionsthat recognizea difference. Before I canreallyexplain the significance of this, I have to introducea couplemore concepts: sizeof and arrays. Here'sthe codewe'll be talkingabout:
 
 ex12.c 
 
@@ -1465,24 +1575,24 @@ ex12.c
 
 ```
 
-In this code, we create a few arrays with differentdata types in them. Because arrays ofdata are so central tohow C works, there are ahuge number of ways to create them. For now,just use the syntax type name[] = {initializer}; and we’ll exploremore later. What this syntax means is, "I wantan array oftype that is initialized to {..}." When C sees this,it knows to: 
+In this code, we create a few arrays with differentdata types in them. Because arrays ofdata are so central tohow C works, there are ahuge number of ways to create them. For now,just use the syntax type name[] = {initializer}; and we'll exploremore later. What this syntax means is, "I wantan array oftype that is initialized to {..}." When C sees this,it knows to: 
 
-• Look at the type, and in this firstcase, it’s int.
+• Look at the type, and in this firstcase, it's int.
 
-• Look at the [] and see that there’s no length given. 
+• Look at the [] and see that there's no length given. 
 
 • Look at the initializer {10, 12, 13, 14, 20} and figure out that you want those five integers in your array.
 
-• Create apiece of memory inthe computer that can hold 5 integers one after another. 
+• Create apiece of memory in the computer that can hold 5 integers one after another. 
 
 • Take thename you want, areas, and assign it this location. 
 
-In the case of areas, it’s creatingan array of five integers that contain those numbers. Whenit gets to char name[] = "Zed"; it’sdoing thesamething, exceptit’s creating an array ofthreecharactersand assigning that to name. The final array we make is full_name, butwe use the annoying syntax of spellingit outone characterata time. 
+In the case of areas, it's creatingan array of five integers that contain those numbers. Whenit gets to char name[] = "Zed"; it'sdoing thesamething, exceptit's creating an array ofthreecharactersand assigning that to name. The final array we make is full_name, butwe use the annoying syntax of spellingit outone characterata time. 
 
 To C, name and full_name areidentical methodsof creating achar array. 
 
-In the rest of the file,we’re using akeyword called sizeof to ask C how big things arein bytes. C is all about thesize and locationof pieces of memory, and what you do with them. To help you keep this straight, it gives you sizeof so thatyou can ask how bigsomething is 
-before you workwith it. This is where stuff gets tricky, so let’s run this code first andthen explainit later. 
+In the rest of the file,we're using akeyword called sizeof to ask C how big things arein bytes. C is all about thesize and locationof pieces of memory, and what you do with them. To help you keep this straight, it gives you sizeof so thatyou can ask how bigsomething is 
+before you workwith it. This is where stuff gets tricky, so let's run this code first andthen explainit later. 
 
 
 What You Should See 
@@ -1516,11 +1626,11 @@ $
 Now yousee the outputof these different printf calls and start to get aglimpse of what C is doing. Your output could actually betotally differentfrom mine, since your computer might have differentsize integers. I'll go
 through my output: 
 
-5 My computer thinksan int is4bytes insize. Your computer might use adifferent size if it’sa 32-bit versus 64­bit CPU. 
+5 My computer thinksan int is4bytes insize. Your computer might use adifferent size if it'sa 32-bit versus 64­bit CPU. 
 6 The areas arrayhas five integers init, so it makessensethat my computer requires 20 bytesto storeit. 
 7 If we divide the size of areas by the sizeof an int,then weget fiveelements. Looking at the code, this matches whatweputin the initializer. 
 8 Wethen did an array access to get areas[0] and areas[1], which means C is zero indexed likePythonand Ruby. 
-9-11 We repeat this for the name array, but do you notice something odd about the size of the array? It saysit’s 4 byteslong, but we only typed "Zed" for three characters. Where’s the fourth onecoming from? 
+9-11 We repeat this for the name array, but do you notice something odd about the size of the array? It saysit's 4 byteslong, but we only typed "Zed" for three characters. Where's the fourth onecoming from? 
 12-13 We do the same thing with full_name, and now notice it gets this correct. 
 13 Finally, we just print out the name and full_name toprove that they actuallyare "strings" according to printf. 
 
@@ -1557,7 +1667,7 @@ Extra Credit
 
 You can make an array of varioustypes with theidea thata stringand an array of bytesare the samething. The nextstep is to doanarray that has strings init. We'llalso introduce yourfirst looping construct, the for-loop, to helpprint out this new data structure. 
 
-The fun partof this isthat there’s beenan array of strings hiding in your programs for a while now:the char *argv[] in the main function arguments. Here’s codethat will printout any commandline arguments you passit: 
+The fun partof this isthat there's beenan array of strings hiding in your programs for a while now:the char *argv[] in the main function arguments. Here's codethat will printout any commandline arguments you passit: 
 
 ex13.c 
 
@@ -1631,11 +1741,11 @@ for(INITIALIZER;TEST; INCREMENTER) {
 } 
 ```
 
-Here’s how the for-loop works: 
+Here's how the for-loop works: 
 
-• The INITIALIZER is code that’s run to setup the loop, which in this caseis i=0. 
+• The INITIALIZER is code that's run to setup the loop, which in this caseis i=0. 
 
-• Next,the TEST Boolean expression is checked. If it’s false (0),then CODE is skipped, doing nothing. 
+• Next,the TEST Boolean expression is checked. If it's false (0),then CODE is skipped, doing nothing. 
 
 • The CODE runs and does whatever it does. 
 
@@ -1646,13 +1756,13 @@ Here’s how the for-loop works:
 
 This for-loop is going through thecommand line arguments using argc and argv like this: 
 
-• The OS passeseach command lineargument asa stringin the argv array. Theprogram’s name(./ex10)is at 0, with the restcoming after it. 
+• The OS passeseach command lineargument asa stringin the argv array. Theprogram's name(./ex10)is at 0, with the restcoming after it. 
 
-• The OS also sets argc to thenumberof arguments inthe argv array,soyou can processthem without going past the end. Remember thatif you giveone argument, the program’s nameis the first,so argc is2.
+• The OS also sets argc to thenumberof arguments in the argv array,soyou can processthem without going past the end. Remember thatif you giveone argument, the program's nameis the first,so argc is2.
 
 • The for-loop sets up with i=1 in the initializer. 
 
-• It then tests that i is lessthan argc with the test i < argc. Since $1 < 2$, it’ll pass. 
+• It then tests that i is lessthan argc with the test i < argc. Since $1 < 2$, it'll pass. 
 
 • It then runs the code thatjust prints out the i and uses i to indexinto argv. 
 
@@ -1665,7 +1775,7 @@ What You Should See
 
 To playwith this program, then, you have to run it two ways. The first wayis topass in some command line arguments so that argc and argv get set. 
 
-Thesecondis to run itwithno arguments so you can see that the first for-loop doesn’t run if i < argc is false. 
+Thesecondis to run itwithno arguments so you can see that the first for-loop doesn't run if i < argc is false. 
 
 
 * Exercise 13 Session 
@@ -1696,7 +1806,7 @@ $
 
 Understanding Arrays of Strings 
 
-In C you make an array of strings by combining the char *str = "blah" syntax with the char str[] = {'b','l','a','h'} syntax to construct a two­dimensionalarray. The syntax char *states[] = {...} online 14isthis two-dimensional combination,each string being oneelement, and each character inthe stringbeing another. Confusing?The conceptof multiple dimensions is something most people never think about, so what you should do isbuild thisarray ofstrings on paper:
+In C you make an array of strings by combining the char *str = "blah" syntax with the char str[] = {'b','l','a','h'} syntax to construct a two­dimensionalarray. The syntax char *states[] = {...} online 14isthis two-dimensional combination,each string being oneelement, and each character in the stringbeing another. Confusing?The conceptof multiple dimensions is something most people never think about, so what you should do isbuild thisarray ofstrings on paper:
 
 • Makea gridwith the index ofeach string on the left. 
 
@@ -1714,22 +1824,22 @@ How to Break It
 
 • Initialize i to 0 and see what that does. Do you have toadjust argc as well, or does itjust work? Why does0­based indexing work here? 
 
-• Set num_states wrongsothat it’s a highervalue and see whatit does. 
+• Set num_states wrongsothat it's a highervalue and see whatit does. 
 
 Extra Credit 
 
 • Figure out whatkind of code you can put into the parts ofa for-loop. 
 
-• Look up how tousethe comma character(,) to separatemultiple statements inthe parts of the for-loop, but between thesemicolon characters (;). 
+• Look up how tousethe comma character(,) to separatemultiple statements in the parts of the for-loop, but between thesemicolon characters (;). 
 
-• Readaboutwhata NULL isand try to use it in one of the elements fromthe states array to see whatit’ll print. 
+• Readaboutwhata NULL isand try to use it in one of the elements fromthe states array to see whatit'll print. 
 
 • Seeif you can assignan element from the states array to the argv array before printing both. Try the inverse. 
 
 
 
 ## Exercise14. Writing and Using Functions 
-Up untilnow, we’ve just used functions that are part of the stdio.h header file. In this exercise, you’ll writesome functions andusesome other functions. 
+Up untilnow, we've just used functions that are part of the stdio.h header file. In this exercise, you'll writesome functions andusesome other functions. 
 
 ex14.c 
 
@@ -1785,11 +1895,11 @@ argc, char *argv[])
 ```
 
 
-In this examplewe’re creating functionsto printout the charactersand ASCII codes forany thatare alpha or blanks. Here’s the breakdown: 
+In this examplewe're creating functionsto printout the charactersand ASCII codes forany thatare alpha or blanks. Here's the breakdown: 
 
 ex14.c:2 Include a new header file, so wecan gainaccess to isalpha and isblank. 
 
-ex14.c:5-6 Tell C that you’ll be using some functions later in your programwithout actually having to define them. This is aforward declaration and itsolves the chicken-and-egg problem of needing to use afunction before you’vedefined it. 
+ex14.c:5-6 Tell C that you'll be using some functions later in your programwithout actually having to define them. This is aforward declaration and itsolves the chicken-and-egg problem of needing to use afunction before you'vedefined it. 
 
 ex14.c:8-15 Define the print_arguments function, which knows how to print the same array ofstrings that main typically gets. 
 
@@ -1797,11 +1907,11 @@ ex14.c:17-30 Definethe nextfunction, print_letters, which is calledby print_argu
 
 ex14.c:32-35 Define can_print_it, which simplyreturns the truth value(0 or1) of isalpha(ch) ||isblank(ch) back to its caller, print_letters. 
 
-ex14.c:38-42 Finally, main simply calls print_arguments to make the whole chainof functionsgo. I shouldn’thave todescribe what’s in each function, because they’re allthings you’verunintobefore. What you should be ableto see, though,is that I’ve simply definedfunctions the same way you’ve beendefining main.Theonlydifference is you have tohelp C out by tellingitahead of timeif you’re going tousefunctions it hasn’t encountered yet in the file. That’s what the forward declarationsdo.
+ex14.c:38-42 Finally, main simply calls print_arguments to make the whole chainof functionsgo. I shouldn'thave todescribe what's in each function, because they're allthings you'verunintobefore. What you should be ableto see, though,is that I've simply definedfunctions the same way you've beendefining main.Theonlydifference is you have tohelp C out by tellingitahead of timeif you're going tousefunctions it hasn't encountered yet in the file. That's what the forward declarationsdo.
 
 What You Should See 
 
-To playwith this program, you just feed it different command line arguments, which getpassedthrough your functions. Here’s me playing with it to demonstrate: 
+To playwith this program, you just feed it different command line arguments, which getpassedthrough your functions. Here's me playing with it to demonstrate: 
 
 
 * Exercise 14 Session 
@@ -1819,7 +1929,7 @@ $ ./ex14 "I go 3 spaces"
 $ 
 ```
 
-The isalpha and isblank doall the workof figuringoutif the given character is a letter ora blank. When I do the last run,it prints everything but the 3 character sincethat’sa digit. 
+The isalpha and isblank doall the workof figuringoutif the given character is a letter ora blank. When I do the last run,it prints everything but the 3 character sincethat'sa digit. 
 
 
 How to Break It 
@@ -1847,69 +1957,75 @@ Extra Credit
 
 
 print_arguments
-figure outhow long each argumentstringis by using the strlen function, and then pass that length to print_letters. Then, rewrite print_letters soit only processesthis fixed lengthand doesn’t relyon the '\0' terminator. You'llneed the #include <string.h> forthis. 
+figure outhow long each argumentstringis by using the strlen function, and then pass that length to print_letters. Then, rewrite print_letters soit only processesthis fixed lengthand doesn't relyon the '\0' terminator. You'llneed the #include <string.h> forthis. 
 • Use man tolookup informationon isalpha and isblank. Use other 
 
 similar functionsto printout only digits or other characters. 
 
-• Goread abouthow other people like to format their functions. Never use the K&R syntax (it’s antiquated and confusing) but understand what it’s doing in case you run into someone who likes it. 
+• Goread abouthow other people like to format their functions. Never use the K&R syntax (it's antiquated and confusing) but understand what it's doing in case you run into someone who likes it. 
 
 
 
 ## Exercise15. Pointers, Dreaded Pointers 
-Pointers are famous mystical creatures in C. I'llattempt to demystify them by teaching you the vocabularyto deal with them. They actually aren’t that complex, but they’refrequentlyabused in weird waysthat make them hard to use. If you avoidthe stupid waysto use pointers, thenthey’refairly easy. 
+Pointers are famous mystical creatures in C. I'llattempt to demystify them by teaching you the vocabularyto deal with them. They actually aren't that complex, but they'refrequentlyabused in weird waysthat make them hard to use. If you avoidthe stupid waysto use pointers, then they'refairly easy. 
 
-To demonstrate pointers in a way that we can talk about them,I’ve writtena frivolous programthat printsa group of people’sagesin three differentways. 
+To demonstrate pointers in a way that we can talk about them,I've writtena frivolous programthat printsa group of people's agesin three differentways. 
 
-ex15.c 
+ex15.c
 
 
 ```c
 
-1 #include 
-<stdio.h> 
-
-2 3 int main(int 
-argc, char *argv[]) 4 {5 // create 
-two arrays we care about 
+1 #include <stdio.h> 
+2 
+3 int main(int argc, char *argv[]) 
+4 {
+5 // create two arrays we care about 
 6 int ages[] = { 23, 43, 12, 89, 2 }; 
 7 char *names[] = {8 "Alan","Frank",
-9 "Mary","John", "Lisa" 10 }; 11 12 // safely get the size of ages 
+9 "Mary","John", "Lisa" 
+10 }; 
+11 
+12 // safely get the size of ages 
 13 int count = 
 sizeof(ages)/
 sizeof(int); 
 14 int i = 0;
-1. 16 // first way 
-using indexing 
-
-17 for (i = 0;i < count; i++) { 18 printf("% has %d yearsalive.\n", names[i], ages[i]); 
-19 20  }  
-21 \n"); 22  printf("--­ 
-23  // set up  
-
-the pointers to the start of the arrays 
+1. 16 // first way using indexing 
+17 for (i = 0;i < count; i++) { 
+18 printf("% has %d yearsalive.\n", names[i], ages[i]); 
+19 
+20  }  
+21 \n"); 
+22  printf("--­ 
+23  // set up the pointers to the start of the arrays 
 24 int *cur_age = ages; 
-25 char **cur_name = names;26 27 // second way using pointers 
-28 for (i = 0;i < count; i++) { 29 printf("% is %d years old.\n",30 * (cur_name + i), * (cur_age + i)); 
+25 char **cur_name = names;
+26 
+27 // second way using pointers 
+28 for (i = 0;i < count; i++) { 
+29 printf("% is %d years old.\n",
+30 * (cur_name + i), * (cur_age + i)); 
 31 }
 32 
 33 printf("--­\n"); 
-
 34 
-
 35 // third way, pointers are just arrays 
-36 for (i = 0;i < count; i++) { 37 printf("% is %d years old again.\n", cur_name[i], cur_age[i]); 
-38 }39 40 printf("--­\n"); 41 
+36 for (i = 0;i < count; i++) { 
+37 printf("% is %d years old again.\n", cur_name[i], cur_age[i]); 
+38 }39 40 printf("--­\n"); 
+41 
 42 // fourth way with pointers in a stupid complex way 
-43 for (cur_name = names, cur_age = ages;44 (cur_ -ages)< count; cur_name++, cur_age++) { 45 printf("% lived %d years so far.\n",*cur_name,*cur_age); 
-46 }47 
+43 for (cur_name = names, cur_age = ages;
+44 (cur_ -ages)< count; cur_name++, cur_age++) { 
+45 printf("% lived %d years so far.\n",*cur_name,*cur_age); 
+46 }
+47 
 48 return 0;
-49 } 
-
-```
+49 }
 
 
-Before explaining how pointers work, let’sbreak this programdown line by lineso you get an ideaof what’s going on. Asyougo through this detaileddescription, try to answer thequestions for yourself ona pieceof paper, thensee if what you guessed matches mydescription of pointerslater. 
+Before explaining how pointers work, let'sbreak this programdown line by lineso you get an ideaof what's going on. Asyougo through this detaileddescription, try to answer thequestions for yourself ona pieceof paper, thensee if what you guessed matches mydescription of pointerslater. 
 
 ex15.c:6-10 Createtwo arrays: ages storing some int data, and names storingan array ofstrings. 
 
@@ -1918,9 +2034,9 @@ ex15.c:12-13 These are somevariables for our for-loops later.
 ex15.c:16-19 This is just looping throughthe two arrays and printing how old each person is. This isusing i to index into 
 the array. 
 
-ex15.c:24 Createa pointer thatpoints at ages. Notice the use of int * to createa pointer to integer type of pointer. That’s similar to char *, whichis a pointer to char, andastring isan array ofchars. Seeing the similarityyet?
+ex15.c:24 Createa pointer thatpoints at ages. Notice the use of int * to createa pointer to integer type of pointer. That's similar to char *, whichis a pointer to char, andastring isan array ofchars. Seeing the similarityyet?
 
-ex15.c:25 Createa pointer thatpoints at names.A char * is already a pointer to char,sothat’s just a string. However, you need two levels since names is two-dimensional, which thenmeans you need char ** for a pointer to (apointer tochar) type. Study thatand try to explainit to yourself, too. 
+ex15.c:25 Createa pointer thatpoints at names.A char * is already a pointer to char,sothat's just a string. However, you need two levels since names is two-dimensional, which thenmeans you need char ** for a pointer to (apointer tochar) type. Study thatand try to explainit to yourself, too. 
 
 ex15.c:28-31 Loop through ages and names butusethe pointers plus an offset of i instead. Writing * (cur_name+i) is the same aswriting name[i], and you readitas "thevalueof (pointer cur_name plusi)."
 
@@ -1941,12 +2057,12 @@ for-loop then increments both cur_name and cur_age so that they point at the nex
 ex15.c:48-49 The pointers cur_name and cur_age are nowpointing at one element of the arrays that they workon, and we can print themoutusing just *cur_name and *cur_age,which means "thevalueof wherever cur_name is pointing." 
 
 This seemingly simple programhas a large amount ofinformation, andmy goal is to getyou toattempt to figurepointersout for 
-yourself beforeIexplain them. Don’t continue until you’ve written down what you think a pointer does. 
+yourself beforeIexplain them. Don't continue until you've written down what you think a pointer does. 
 
 
 What You Should See 
 
-After you run this program, try to traceback each line printed outto the line in the codethat produced it. If you have to,alter the printf calls to make sureyou’vegot the right linenumber. 
+After you run this program, try to traceback each line printed outto the line in the codethat produced it. If you have to,alter the printf calls to make sureyou'vegot the right linenumber. 
 
 
 * Exercise 15 Session 
@@ -2001,29 +2117,29 @@ $
 
 Explaining Pointers 
 
-When you typesomething like ages[i],you’re indexing into the array ages, and you’re using thenumber that’s heldin i to do it. If i is set to zero thenit’s thesame astyping ages[0]. We’ve been calling this number i an index since it’sa location inside ages thatwewant. It could also becalled an address, whichis a wayof saying "I want the integer in ages that’s at address i." 
+When you typesomething like ages[i],you're indexing into the array ages, and you're using thenumber that's heldin i to do it. If i is set to zero thenit's thesame astyping ages[0]. We've been calling this number i an index since it'sa location inside ages thatwewant. It could also becalled an address, whichis a wayof saying "I want the integer in ages that's at address i." 
 
 
-If i is an index, then what’s ages? To C, ages is a locationin the computer’s memory where allof these integers start. It’s also an address, and the C compiler will replace ages anywhere you typeit with the address of the very first integerin ages. Anotherway to think of ages is that it’s the "address of the first integerin ages." Buthere’s the trick: ages is an address insidethe entire computer. It’s notlike i that’s just anaddress inside ages.The ages arrayname is actually an address in the computer. 
-That leads toa certain realization: C thinks your whole computer is one massive array of bytes. Obviously, this isn’tvery useful, but then what C does is layeron top ofthis massive array of bytes theconcept of types and sizes of thosetypes. You already saw how this workedin previous exercises, butnow you start to get an idea of how C isdoing the following with your arrays: 
+If i is an index, then what's ages? To C, ages is a locationin the computer's memory where allof these integers start. It's also an address, and the C compiler will replace ages anywhere you typeit with the address of the very first integerin ages. Anotherway to think of ages is that it's the "address of the first integerin ages." Buthere's the trick: ages is an address insidethe entire computer. It's notlike i that's just anaddress inside ages.The ages arrayname is actually an address in the computer. 
+That leads toa certain realization: C thinks your whole computer is one massive array of bytes. Obviously, this isn'tvery useful, but then what C does is layeron top ofthis massive array of bytes theconcept of types and sizes of thosetypes. You already saw how this workedin previous exercises, butnow you start to get an idea of how C isdoing the following with your arrays: 
 • Creating ablock of memory inside your computer 
 
 • Pointing the name ages at the beginning ofthat block 
 
-• Indexing into theblock by taking the base addressof ages and getting the element that’s i away from there 
+• Indexing into theblock by taking the base addressof ages and getting the element that's i away from there 
 
 • Converting thataddress at ages+i into avalid int of the right size, such that the index works toreturn what you want: the int at index i 
 
 
 
 
-If you cantake abase address, like ages, and add to itwith another address like i to produce anew address, thencan youjust make something that points rightat this location all the time? Yes, and that thing is calleda pointer. This is what the pointers cur_age and cur_name aredoing: They are variablespointing at the location where ages and names livein your computer’smemory. The example program is then moving them around or doing math on them to get values outof the memory. 
+If you cantake abase address, like ages, and add to itwith another address like i to produce anew address, thencan youjust make something that points rightat this location all the time? Yes, and that thing is calleda pointer. This is what the pointers cur_age and cur_name aredoing: They are variablespointing at the location where ages and names livein your computer'smemory. The example program is then moving them around or doing math on them to get values outof the memory. 
 
 In one instance,they just add i to cur_age, which is the same aswhat theprogram does with array[i]. In the last for-loop, though,these two pointers ar ebeing moved on theirown, without i to helpout. Inthat loop, the pointersare treated likea combination ofarray and integeroffsetrolled into one. 
 
-A pointer is simply an addresspointing somewhere inside the computer’s memory with a typespecifier so thatyou get the rightsize ofdata with it. It’skind of likea combination of ages and i rolledintoone data type. C knows where pointers are pointing, knowsthe data typethey point at,the sizeof thosetypes, and how toget the datafor you. Justlike with i, you can increment, decrement,subtract,or add to them. But, just like ages, you can also getvalues out, putnew values in, and use all of the array operations. 
+A pointer is simply an addresspointing somewhere inside the computer's memory with a typespecifier so thatyou get the rightsize ofdata with it. It'skind of likea combination of ages and i rolledintoone data type. C knows where pointers are pointing, knowsthe data typethey point at,the sizeof thosetypes, and how toget the datafor you. Justlike with i, you can increment, decrement,subtract,or add to them. But, just like ages, you can also getvalues out, putnew values in, and use all of the array operations. 
 
-The purpose of a pointeris to let you manually index data into blocks ormemory when an array won’t do itright. In almost all othercases, you actually want to use an array. But, there are times when you have to work with a raw block of memory andthat’s where apointercomes in. A pointer gives you raw,direct access to ablockof memory so you can work with it.
+The purpose of a pointeris to let you manually index data into blocks ormemory when an array won't do itright. In almost all othercases, you actually want to use an array. But, there are times when you have to work with a raw block of memory andthat's where apointercomes in. A pointer gives you raw,direct access to ablockof memory so you can work with it.
 
 The final thing tograspat this stage is thatyou canuse either syntax for most array orpointeroperations. You can takea pointer to something, butusethe array syntax to access it. You can take an arrayand dopointer arithmetic with it. 
 
@@ -2033,9 +2149,9 @@ Practical Pointer Usage
 
 There areprimarilyfour useful things you can do with pointersin C code: 
 
-• Askthe OSfor a chunk of memory and use a pointer to workwith it. This includes strings and something you haven’tseenyet, structs.
+• Askthe OSfor a chunk of memory and use a pointer to workwith it. This includes strings and something you haven'tseenyet, structs.
 
-• Pass large blocks of memory (like large structs) tofunctions with apointer, so you don’thave to pass the whole thing to them. 
+• Pass large blocks of memory (like large structs) tofunctions with apointer, so you don'thave to pass the whole thing to them. 
 
 • Take the eddress of a function, so you can use it asa dynamic callback.
 
@@ -2043,12 +2159,12 @@ There areprimarilyfour useful things you can do with pointersin C code:
 
 
 
-For nearlyeverything else, you mightsee people use pointerswhen they should be using arrays. In the earlydays of Cprogramming, people used pointers tospeed up their programs, becausethe compilers werereally bad at optimizing array usage. These days, the syntax to access an array versus apointerare translatedinto the same machine code and optimized in thesame way, so it’snotas necessary. Instead, you should go with arrays whenever you can, and then only use pointers asa 
+For nearlyeverything else, you mightsee people use pointerswhen they should be using arrays. In the earlydays of Cprogramming, people used pointers tospeed up their programs, becausethe compilers werereally bad at optimizing array usage. These days, the syntax to access an array versus apointerare translatedinto the same machine code and optimized in thesame way, so it'snotas necessary. Instead, you should go with arrays whenever you can, and then only use pointers asa 
 performance optimization if you absolutely have to. 
 
 The Pointer Lexicon 
 
-I'm now going to give you a little lexicon tousefor readingand writing pointers. Whenever yourunintoa complexpointerstatement, just referto thisand break it down bit by bit (or just don’t use it since it’s probablynot good code.) 
+I'm now going to give you a little lexicon tousefor readingand writing pointers. Whenever yourunintoa complexpointerstatement, just referto thisand break it down bit by bit (or just don't use it since it's probablynot good code.) 
 
 
 type *ptr Apointerof typenamed ptr 
@@ -2062,9 +2178,9 @@ ptr++ Incrementwhere
 
 ptrpoints We'll be using thissimple lexicon to breakdown all of the pointers we use from now on in the book. 
 
-Pointers Aren’t Arrays 
+Pointers Aren't Arrays 
 
-No matter what, you should never think that pointers and arrays are thesame thing. They aren’t the same thing, even though C lets you work with them in many of the same ways. Forexample,if you do sizeof(cur_age)in the code above, you would get the size of the pointer,not the size of whatitpoints at. If you want the size of the full array, youhave tousethe array’sname, age,as I did on line 12. To do:Expandon thissome more with what doesn’twork the sameon pointers and arrays.
+No matter what, you should never think that pointers and arrays are thesame thing. They aren't the same thing, even though C lets you work with them in many of the same ways. Forexample,if you do sizeof(cur_age)in the code above, you would get the size of the pointer,not the size of whatitpoints at. If you want the size of the full array, youhave tousethe array'sname, age,as I did on line 12. To do:Expandon thissome more with what doesn'twork the sameon pointers and arrays.
 
 How to Break It 
 
@@ -2102,7 +2218,7 @@ pointers, similar to how you did names in this one.
 
 • Add another for-loop at the endthat prints out the addresses that these pointersare using. You'llneed the %p format for printf. 
 
-• Rewritethis programto use afunction for each of the ways you’re printing out things. Try to pass pointers to these functions so that they work on the data. Remember you can declare afunction to accept a pointer, but justuse itlike an array. 
+• Rewritethis programto use afunction for each of the ways you're printing out things. Try to pass pointers to these functions so that they work on the data. Remember you can declare afunction to accept a pointer, but justuse itlike an array. 
 
 • Change the for-loops to while­
 
@@ -2114,9 +2230,9 @@ kind ofpointerusage.
 
 ## Exercise16. Structs And Pointersto Them 
 
-In this exercise,you’lllearn how to make a struct, point a pointer at it, and use it to make sense ofinternal memory structures. We'll also apply theknowledge of pointersfromthe last exercise, and thenget you constructing these structures fromraw memoryusing malloc. 
+In this exercise,you'lllearn how to make a struct, point a pointer at it, and use it to make sense ofinternal memory structures. We'll also apply theknowledge of pointersfromthe last exercise, and thenget you constructing these structures fromraw memoryusing malloc. 
 
-As usual, here’s theprogram we’ll talkabout,sotype itin and make itwork. 
+As usual, here's theprogram we'll talkabout,sotype itin and make itwork. 
 
 ex16.c 
 
@@ -2201,13 +2317,13 @@ To describe this program,I'm going to use adifferent approachthanbefore. I'm not
 
 What does each give you? struct Person This is where I'm creating a structure that has four elements to describea person. Thefinal result isanew compoundtype that letsme reference these elements allas one or each pieceby name. 
 
-It’s similar to a row ofa database table ora class in an object-oriented programming (OOP) language. function Person_create I need a way to create these structures,soI’ve madea functionto do that. Here are the important things:
+It's similar to a row ofa database table ora class in an object-oriented programming (OOP) language. function Person_create I need a way to create these structures,soI've madea functionto do that. Here are the important things:
 
 • I use malloc for memory allocateto ask theOStogive me a piece of raw memory. 
 
 • I pass to malloc the sizeof(structPerson), which calculates the total size of the structure, given allof the fields inside it. 
 
-• I use assert to make surethat I have a valid pieceof memoryback from malloc. There’s a special constant called NULL that you use to mean "unsetor invalid pointer." This assert is basically checking that malloc didn’treturn a NULL invalid pointer. 
+• I use assert to make surethat I have a valid pieceof memoryback from malloc. There's a special constant called NULL that you use to mean "unsetor invalid pointer." This assert is basically checking that malloc didn'treturn a NULL invalid pointer. 
 
 • Iinitialize each field of struct Person using the x->ysyntax, to say what part of the structure I want to set.
 
@@ -2216,7 +2332,7 @@ It’s similar to a row ofa database table ora class in an object-oriented progr
 function Person_destroy 
 
 
-If I have a create function, thenI always need a destroyfunction, and this is whatdestroys Person structures. Iagain use assert to make sure I'm not gettingbad input. Then I usethe function free toreturn the memoryI gotwith malloc and strdup. If you don’t do this, you get a memory leak. 
+If I have a create function, thenI always need a destroyfunction, and this is whatdestroys Person structures. Iagain use assert to make sure I'm not gettingbad input. Then I usethe function free toreturn the memoryI gotwith malloc and strdup. If you don't do this, you get a memory leak. 
 
 function Person_print I thenneed a way toprint outpeople,whichisall this functiondoes. It uses the same x->ysyntax to get the field fromthe structure to printit. 
 function main In the main function, I use all of the previous functions andthe struct Person to do the following: 
@@ -2235,13 +2351,13 @@ function main In the main function, I use all of the previous functions andthe s
 
 Go through this description carefully, and do the following:
 
-• Look up every function and header file you don’tknow. Remember thatyou canusually do man 2 function or man 3 function, and it’lltell you about it. You can also search online for the information. 
+• Look up every function and header file you don'tknow. Remember thatyou canusually do man 2 function or man 3 function, and it'lltell you about it. You can also search online for the information. 
 
 • Write a comment above each andeverysingle linethat says what the   linedoes in English. 
 
 • Trace througheach function calland variableso you know where it comes fromin the program. 
 
-• Look up any symbols you don’tunderstand. 
+• Look up any symbols you don'tunderstand. 
 
 
 What You Should See 
@@ -2283,7 +2399,7 @@ Explaining structures
 
 
 
-If you’vedone thework, then structures should be making sense, but letme explain them explicitly just to make sureyou’ve understood it. 
+If you'vedone thework, then structures should be making sense, but letme explain them explicitly just to make sureyou've understood it. 
 
 A structure in C is a collection ofotherdata types (variables) that are stored in oneblockof memorywhere you can access eachvariable independently byname. They are similarto a record in a databasetable, ora very simplistic classin an OOP language. We can breakone down thi way: 
 
@@ -2297,12 +2413,12 @@ A structure in C is a collection ofotherdata types (variables) that are stored i
 
 • This lets you pass the whole cohesive grouping to other functions, as you did with Person_print.
 
-• You can then accessthe individualparts of a struct by theirnames using x->y if you’re dealing with a pointer. 
+• You can then accessthe individualparts of a struct by theirnames using x->y if you're dealing with a pointer. 
 
-• There’s also a way to make a struct that doesn’tneed apointer, and you use the x.y (period)syntaxto work with it. We'll do this in the Extra Credit section.
+• There's also a way to make a struct that doesn'tneed apointer, and you use the x.y (period)syntaxto work with it. We'll do this in the Extra Credit section.
 
 
-If you didn’thave struct, you’dneed tofigure out the size,packing, and location of pieces of memory with contents like this. Infact, in most earlyAssemblercode (and even some now), this is what you would do. In C, you can let ithandlethe memory structuring of these compounddata typesand thenfocuson what you do with them. 
+If you didn'thave struct, you'dneed tofigure out the size,packing, and location of pieces of memory with contents like this. Infact, in most earlyAssemblercode (and even some now), this is what you would do. In C, you can let ithandlethe memory structuring of these compounddata typesand thenfocuson what you do with them. 
 
 
 How to Break It 
@@ -2310,7 +2426,7 @@ How to Break It
 
 The ways inwhichto break this program involve howyou use the pointers andthe malloc system: 
 
-• Trypassing NULL to Person_destroy  see what itdoes. If it doesn’tabort, then you must nothave the -g optionin your Makefile's CFLAGS. 
+• Trypassing NULL to Person_destroy  see what itdoes. If it doesn'tabort, then you must nothave the -g optionin your Makefile's CFLAGS. 
 • Forget tocall Person_destroy at the end, and thenrunit under thedebugger to seeitreport that you forgot to free the memory. Figure out the optionsyou need to pass to thedebuggerto get itto print how you leakedthis memory. 
 
 • Forget tofree who­>name in Person_destroy and compare the output. Again,usethe right optionsto seehow the debugger tellsyou exactly where you messed up. 
@@ -2321,9 +2437,9 @@ The ways inwhichto break this program involve howyou use the pointers andthe mal
 Extra Credit 
 
 
-In this part of the exercise, I wantyou to attempt something difficult for the extra credit: Convert this programto not usepointers and malloc. This will be hard,soyou’llwant to research the following: 
+In this part of the exercise, I wantyou to attempt something difficult for the extra credit: Convert this programto not usepointers and malloc. This will be hard,soyou'llwant to research the following: 
 
-• How tocreate a struct on the stack, just like you’re making any othervariable. 
+• How tocreate a struct on the stack, just like you're making any othervariable. 
 
 • How toinitialize it using the x.y (period) character instead of the x->y syntax. 
 
@@ -2333,9 +2449,9 @@ In this part of the exercise, I wantyou to attempt something difficult for the e
 
 ## Exercise17. Heap andStack Memory Allocation 
 
-In this exercise,you’regoing to make a bigleap in difficulty and create an entire smallprogram tomanage a database. This database isn’t very efficient and doesn’t storeverymuch, but itdoes demonstratemost of what you’velearned so far. It also introduces memoryallocation more formally, and gets you started working with files. We use somefileI/O functions, but I won’tbe explaining them too well so thatyou cantry to figure them outfirst. 
+In this exercise,you'regoing to make a bigleap in difficulty and create an entire smallprogram tomanage a database. This database isn't very efficient and doesn't storeverymuch, but itdoes demonstratemost of what you'velearned so far. It also introduces memoryallocation more formally, and gets you started working with files. We use somefileI/O functions, but I won'tbe explaining them too well so thatyou cantry to figure them outfirst. 
 
-As usual, type this whole programin and getit working, then we’ll discuss it. 
+As usual, type this whole programin and getit working, then we'll discuss it. 
 
 ex17.c 
 
@@ -2569,26 +2685,26 @@ name, MAX_DATA); 121 // demonstrate the strncpy bug
 ```
 
 
-In this program, we’re using a set of structures, orstructs, to createa simple database for an address book. There are somethings you’venever seen,soyoushould go through itline byline, explain what each line does, and lookup anyfunctions thatyou don’t recognize. There area few key things thatyou should pay attention to, as well:
+In this program, we're using a set of structures, orstructs, to createa simple database for an address book. There are somethings you'venever seen,soyoushould go through itline byline, explain what each line does, and lookup anyfunctions thatyou don't recognize. There area few key things thatyou should pay attention to, as well:
 
-* #define for constants We use another partof the Cpreprocessor (CPP)to create constant settings of MAX_DATA and MAX_ROWS. I'll cover more of wha t the CPP does later, but this is a way to create a constant that will work reliably. There are other ways, but they don’t apply in certain situations.
+* #define for constants We use another partof the Cpreprocessor (CPP)to create constant settings of MAX_DATA and MAX_ROWS. I'll cover more of wha t the CPP does later, but this is a way to create a constant that will work reliably. There are other ways, but they don't apply in certain situations.
 
-* Fixed sized structs The Address struct then uses these constants to create a pieceof data thatis fixedin size, makingit lessefficient buteasier to store and read. The Database struct is thenalso a fixed size becauseit’s a fixed lengtharrayof Address structs. That lets you write the whole thing todisk inone move later. 
+* Fixed sized structs The Address struct then uses these constants to create a pieceof data thatis fixedin size, makingit lessefficient buteasier to store and read. The Database struct is thenalso a fixed size becauseit's a fixed lengtharrayof Address structs. That lets you write the whole thing todisk inone move later. 
 
-* die function to abort with an error In a smallprogram like this, you can make a single function that killsthe programwith anerror if there’s anything wrong. I call this die, and it’s used toexit theprogram with an errorafterany failed function callsor bad inputs. 
+* die function to abort with an error In a smallprogram like this, you can make a single function that killsthe programwith anerror if there's anything wrong. I call this die, and it's used toexit theprogram with an errorafterany failed function callsor bad inputs. 
 
 * errno and perror() for error reporting When you have an error return from a function, it will usually set an external variablecalled errno to say exactly what happened. These are just numbers, so you can use perror to print the error message. 
 
-* FILE functions I'm using all newfunctions like fopen, fread, fclose, and rewind to workwithfiles. Each of thesefunctions works ona FILE struct that’s just like your other structs, butit’s definedby the C standard library. 
+* FILE functions I'm using all newfunctions like fopen, fread, fclose, and rewind to workwithfiles. Each of thesefunctions works ona FILE struct that's just like your other structs, butit's definedby the C standard library. 
 
-* nestedstruct pointers There’sa use fornested structuresand getting the address ofarray elements thatyou should study. 
+* nestedstruct pointers There'sa use fornested structuresand getting the address ofarray elements thatyou should study. 
 Specifically, code like &conn->db­>rows[i] that reads "get the i element of rows,whichisin db, which is in conn, then get the eddress of (&) it." 
 
 * copyingstruct prototypes Best shown in Database_delete, you can seeI'm using a temporary local Address, initializing its id and set fields, and then simply 
 
-*  copying it into the rows array by assigningitto the element I want. This trick makessure that all fields except set and id are initialized to zeros and it’sactually easier towrite. Incidentally, you shouldn’tbeusing memcpy to do these kinds ofstructcopying operations. ModernC allows you to simply assign one struct to another and it’ll handle the copying for you. 
+*  copying it into the rows array by assigningitto the element I want. This trick makessure that all fields except set and id are initialized to zeros and it'sactually easier towrite. Incidentally, you shouldn'tbeusing memcpy to do these kinds ofstructcopying operations. ModernC allows you to simply assign one struct to another and it'll handle the copying for you. 
 
-* processing complex arguments I'm doing somemore complex argument parsing, but this isn’treally the best way todo it. We'll get into abetteroptionfor parsing later inthe book. 
+* processing complex arguments I'm doing somemore complex argument parsing, but this isn'treally the best way todo it. We'll get into abetteroptionfor parsing later in the book. 
 
 * converting strings to ints I use the atoi function to takethe string forthe id on the command line and convert it the ee int id variable. Read up on this and similar 
 functions. 
@@ -2604,7 +2720,7 @@ You could be explicitand say `if(ptr == NULL)die("fail!")`, as well. In some rar
 What You Should See 
 
 
-You should spend asmuch time as you can testing that it works, and running it with a debugger toconfirm that you’vegotallof thememory usage right. Here’sa session ofme testing it normally, and thenusing the debugger to check the operations: 
+You should spend asmuch time as you can testing that it works, and running it with a debugger toconfirm that you'vegotallof thememory usage right. Here'sa session ofme testing it normally, and thenusing the debugger to check the operations: 
 
 
 * Exercise 17 Session 
@@ -2638,20 +2754,20 @@ $ ./ex17 db.dat g 2
 Heap versus Stack Allocation 
 
 
-You kids have it great these days. You playwithyour Ruby orPythonand just makeobjectsand variables without anycarefor where theylive. You don’tcare if it’son the stack, and what about on the heap? Fuggedaboutit. You don’t even know, and you know what, chances are your languageof choice doesn’t even put thevariables on stack at all. It’s all heap, and you don’teven know if it is. 
+You kids have it great these days. You playwithyour Ruby orPythonand just makeobjectsand variables without anycarefor where theylive. You don'tcare if it'son the stack, and what about on the heap? Fuggedaboutit. You don't even know, and you know what, chances are your languageof choice doesn't even put thevariables on stack at all. It's all heap, and you don'teven know if it is. 
 
-C is different becauseit’s using the real CPU’s actual machinery to do its work, and thatinvolves a chunk of RAM called the stack and another called the heap. What’s thedifference? It all depends on where you get the storage. 
+C is different becauseit's using the real CPU's actual machinery to do its work, and thatinvolves a chunk of RAM called the stack and another called the heap. What's thedifference? It all depends on where you get the storage. 
 
 
-The heap is easierto explain since it’s just allthe remaining memory in your computer, andyou access it with the function malloc to get more. Each time you call malloc, the OS uses internalfunctions to register thatpiece of memory to you, and then returns apointerto it. When you’redonewith it, you use free to return it to the OS so that it can be used by otherprograms. 
+The heap is easierto explain since it's just allthe remaining memory in your computer, andyou access it with the function malloc to get more. Each time you call malloc, the OS uses internalfunctions to register thatpiece of memory to you, and then returns apointerto it. When you'redonewith it, you use free to return it to the OS so that it can be used by otherprograms. 
 
 Failing to do this will cause your programto leak memory, but Valgrind will help you track these leaks down. The stack is aspecial region of memory thatstores temporary variables, which each function creates as locals to thatfunction. 
 
-How it works is thateach argument to a function is pushed onto the stackand then used inside the function. It’s really a stack data structure, so the last thing in is the first thing out. 
+How it works is thateach argument to a function is pushed onto the stackand then used inside the function. It's really a stack data structure, so the last thing in is the first thing out. 
 
 This also happens with all local variables like char action and int id in main.The advantage of using astack for this is simplythat when the function exits, the C compilerpops these variables off of the stack toclean up. This is simple andprevents memory leaks it the variableis on the stack. 
 
-The easiest way tokeep this straightis with this mantra: If you didn’tget it from malloc, or a function that gotit from malloc,then it’s on the stack. 
+The easiest way tokeep this straightis with this mantra: If you didn'tget it from malloc, or a function that gotit from malloc,then it's on the stack. 
 
 
 There are threeprimary problems with stacks and heaps towatchout for: 
@@ -2663,7 +2779,7 @@ There are threeprimary problems with stacks and heaps towatchout for:
 • If you take a pointer to something on the stack, and then pass orreturn it from your function,   then the function receiving it will  segmentation fault  (segfault), because the actual data will get poppedoffand disappear. You'll be pointing at dead space. 
 
 
-This is why I created a Database_open that allocatesmemory ordies, and thena Database_close thatfrees everything. If you createa createfunction that makesthe whole thingor nothing, and then a destroy function that safelycleans up everything, then it’seasier to keep itall straight. 
+This is why I created a Database_open that allocatesmemory ordies, and thena Database_close thatfrees everything. If you createa createfunction that makesthe whole thingor nothing, and then a destroy function that safelycleans up everything, then it'seasier to keep itall straight. 
 
 Finally, when a program exits, theOS will cleanup all of the resources for you, but sometimesnotimmediately. A common idiom (and one I use in this exercise) is to just abort andlet the OS clean up on error. 
 
@@ -2678,9 +2794,9 @@ check on line160 that prevents you from passing in anyrecord number.
 
 • You can alsotry corrupting the data file. Open it in any editor and change random bytes, andthenclose it. 
 
-• You could alsofind ways topassbad arguments the ee programwhen it’s run. For example, getting the file andaction backwardwill make it create a file named after the action, andthen do an action based on the first character. 
+• You could alsofind ways topassbad arguments the ee programwhen it's run. For example, getting the file andaction backwardwill make it create a file named after the action, andthen do an action based on the first character. 
 
-• There’s abugin this programbecause strncpy is poorly designed. Goread about strncpy andtry to find out whathappens when the name or address you giveis greater than 512 bytes. Fix this by simply forcing thelast character to '\0' so that it’s always setno matter what (whichis what strncpy should do). 
+• There's abugin this programbecause strncpy is poorly designed. Goread about strncpy andtry to find out whathappens when the name or address you giveis greater than 512 bytes. Fix this by simply forcing thelast character to '\0' so that it's always setno matter what (whichis what strncpy should do). 
 
 • In the Extra Credit section,Ihave you augment the programto create arbitrary size databases. Try to see what the biggest database is before you cause the program to die dueto lackof memory from malloc. 
 
@@ -2695,7 +2811,7 @@ Extra Credit
 • Add more operations you can do with the database, like find. 
 
 
-• Read about how C does it’sstructpacking, and thentry to see why your fileis the sizeit is. See if you can calculate a new size after adding more fields. 
+• Read about how C does it'sstructpacking, and thentry to see why your fileis the sizeit is. See if you can calculate a new size after adding more fields. 
 
 • Add some more fields   to Address and make them searchable. 
 
@@ -2709,7 +2825,7 @@ Extra Credit
 
 ## Exercise18. Pointersto Functions 
 
-Functions in C areactually just pointers toa spot in the programwheresome code exists. Just like you've been creating pointers tostructs, strings, and arrays, you can point a pointer at afunction, too. The main use for this is to pass callbacks toother functions, orto simulate classesand objects. In this exercise, we’lldo some callbacks, and in the next exercise, we’llmake a simple object system. 
+Functions in C areactually just pointers toa spot in the programwheresome code exists. Just like you've been creating pointers tostructs, strings, and arrays, you can point a pointer at afunction, too. The main use for this is to pass callbacks toother functions, orto simulate classesand objects. In this exercise, we'lldo some callbacks, and in the next exercise, we'llmake a simple object system. 
 
 
 The format ofa function pointer looks like this: 
@@ -2728,7 +2844,7 @@ A way to remember how to write oneis to do this:
 
 • Change thenameto the pointer name: `int (*compare_cb) (int a, int b)`
 
-The key thing to rememberis thatwhen you’re done with this, the variable nameforthe pointer iscalled compare_cb and you use itjust likeit’s a function. This is similar to how pointersto arrays can be used just likethe arrays they point to. Pointers to functions can be usedlike the functions theypoint to but with a differentname. 
+The key thing to rememberis thatwhen you're done with this, the variable nameforthe pointer iscalled compare_cb and you use itjust likeit's a function. This is similar to how pointersto arrays can be used just likethe arrays they point to. Pointers to functions can be usedlike the functions theypoint to but with a differentname. 
 
 ```c
 
@@ -2748,10 +2864,10 @@ This will work evenif the function pointer returns a pointer to something:
 
 
 
-The next problem to solve with using function pointers is that it’s hard to give them asparametersto afunction, such as when you want to pass the functioncallbackto anotherfunction. The solution is to use typedef, which is a Ckeywordfor making new names for other, more complex types. 
+The next problem to solve with using function pointers is that it's hard to give them asparametersto afunction, such as when you want to pass the functioncallbackto anotherfunction. The solution is to use typedef, which is a Ckeywordfor making new names for other, more complex types. 
 
 
-The only thing you needto do is put typedef before the same functionpointersyntax, and then after that you can use the name likeit’s a type. I demonstratethis in the following exercise code:
+The only thing you needto do is put typedef before the same functionpointersyntax, and then after that you can use the name likeit's a type. I demonstratethis in the following exercise code:
 
 
 ex18.c 
@@ -2870,14 +2986,14 @@ ex18.c
 ```
 
 
-In this program, you’re creatinga dynamic sorting algorithm that cansort an array ofintegers using a comparison callback. Here’s the breakdown ofthis program, so you can clearly understand it:
+In this program, you're creatinga dynamic sorting algorithm that cansort an array ofintegers using a comparison callback. Here's the breakdown ofthis program, so you can clearly understand it:
 
 
 ex18.c:1-6 The usual includes that are needed for all of the functions thatwecall. 
 
-ex18.c:7-17 This is the die function from the previous exercisethat I'll use todo error checking. ex18.c:21 This is where the typedef is used, and later I use compare_cb like it’s atype similar to int or char in bubble_sort and test_sorting.
+ex18.c:7-17 This is the die function from the previous exercisethat I'll use todo error checking. ex18.c:21 This is where the typedef is used, and later I use compare_cb like it's atype similar to int or char in bubble_sort and test_sorting.
 
-ex18.c:27-49 A bubble sortimplementation, which is avery inefficientway to sort someintegers. Here’sa breakdown:
+ex18.c:27-49 A bubble sortimplementation, which is avery inefficientway to sort someintegers. Here'sa breakdown:
 
 ex18.c:27 I use the typedef for compare_cb asthe last parameter cmp. This is now a function thatwill return a comparison between two integers for sorting. 
 
@@ -2887,21 +3003,21 @@ ex18.c:38 Theouter loop of the bubble sort.
 
 ex18.c:39 Theinner loop of the bubble sort. 
 
-ex18.c:40 NowI call the cmp callback just like it’s anormal unction, butinstead of being the nameof something thatwe defined, it’sjust a pointerto it. This lets the caller passin anything it wantsas long as itmatchesthe signatureof the compare_cb typedef.
+ex18.c:40 NowI call the cmp callback just like it's anormal unction, butinstead of being the nameof something thatwe defined, it'sjust a pointerto it. This lets the caller passin anything it wantsas long as itmatchesthe signatureof the compare_cb typedef.
 
 
 ex18.c:41-43 The actual swappingoperation whereabubble sort needs to do whatit does.
 
 ex18.c:48 Finally, this returns thenewly createdand sorted resultarray target. 
 
-ex18.c:51-68 Three differentversions of the compare_cb function type, whichneeds to have the same definitionas the typedef thatwe created. The C compiler willcomplain to you if you get thiswrong and say the types don’t match.
+ex18.c:51-68 Three differentversions of the compare_cb function type, whichneeds to have the same definitionas the typedef thatwe created. The C compiler willcomplain to you if you get thiswrong and say the types don't match.
 
 ex18.c:74-87 This is a testerforthe bubble_sort function. You can see now howI'm also using compare_cb topass to bubble_sort, demonstrating how these can be passed aroundlike any other pointers. 
 
 ex18.c:90-103 A simple main function that sets up anarraybased on integers topasson the command line, and then it calls the test_sorting
 function. 
 
-ex18.c:105-107 Finally, you get tosee how the compare_cb function pointer typedef is used. I simplycall test_sorting but giveit the name of sorted_order, reverse_order, and strange_order as the functionto use. The Ccompiler thenfinds the address ofthose functions, and makes it apointerfor test_sorting to use. If you look at test_sorting, you’ll see that it then passeseach of theseto bubble_sort, but it actually has noidea what they do. The compiler only knows that they match the compare_cb prototypeand should work. 
+ex18.c:105-107 Finally, you get tosee how the compare_cb function pointer typedef is used. I simplycall test_sorting but giveit the name of sorted_order, reverse_order, and strange_order as the functionto use. The Ccompiler thenfinds the address ofthose functions, and makes it apointerfor test_sorting to use. If you look at test_sorting, you'll see that it then passeseach of theseto bubble_sort, but it actually has noidea what they do. The compiler only knows that they match the compare_cb prototypeand should work. 
 
 ex18.c:109 Last thing we do is free up the array ofnumbers that we made. 
 
@@ -2925,7 +3041,7 @@ $
 
 How to Break It 
 
-I'm going to have you do something kind of weird to break this. These function pointersare likeeveryother pointer,sothey pointat blocks of memory. Chas this abilityto take onepointerand convertit to another so you can process the datain differentways. It’s usually notnecessary, but to show you how to hackyour computer, I want you to add this at the end of test_sorting: 
+I'm going to have you do something kind of weird to break this. These function pointersare likeeveryother pointer,sothey pointat blocks of memory. Chas this abilityto take onepointerand convertit to another so you can process the datain differentways. It's usually notnecessary, but to show you how to hackyour computer, I want you to add this at the end of test_sorting: 
 
 ```c
 
@@ -2936,12 +3052,12 @@ i++) {printf("%02x:",data[i]);
 printf("\n"); 
 ```
 
-This loop is sortof like converting your function toa string, andthen printing out its contents. This won’tbreak your program unless the CPU and OS you’re onhas a problem with you doing this. What you’llsee after itprints the sorted arrayis a stringof hexadecimal numbers,like this: 
+This loop is sortof like converting your function toa string, andthen printing out its contents. This won'tbreak your program unless the CPU and OS you're onhas a problem with you doing this. What you'llsee after itprints the sorted arrayis a stringof hexadecimal numbers,like this: 
 
 ```bash
 55:48:89:e5:89:7d:fc:8 
 ```
-That should bethe raw assembler byte codeof the function itself, and you should see that they start the same but thenhave different endings. It’s also possible that this loopisn’tgetting allof the function, or it’sgetting toomuch and stomping on anotherpiece of the program. Without more analysis you won’tknow. 
+That should bethe raw assembler byte codeof the function itself, and you should see that they start the same but thenhave different endings. It's also possible that this loopisn'tgetting allof the function, or it'sgetting toomuch and stomping on anotherpiece of the program. Without more analysis you won'tknow. 
 
 Extra Credit 
 
@@ -2949,24 +3065,24 @@ Extra Credit
 
 • Findo ther random things in your hex editor and change them. Rerun yourprogram and see what happens. Strings you find are the easiest things tochange.
 
- • Pass inthe wrong function for the compare_cb and see what the C compiler complains about.
+ • Pass in the wrong function for the compare_cb and see what the C compiler complains about.
 
 • Pass inNULLand watchyour program seriouslybite it. Then, run the debuggerand see what that reports. 
 
-• Write another sorting algorithm, then change test_sorting so that ittakes both an arbitrary sort function and thesortfunction’s callback comparison. Use it to testbothof your algorithms.
+• Write another sorting algorithm, then change test_sorting so that ittakes both an arbitrary sort function and thesortfunction's callback comparison. Use it to testbothof your algorithms.
 
-## Exercise19. Zed’s Awesome Debug Macros 
+## Exercise19. Zed's Awesome Debug Macros 
 
 
-There’sareoccurring problem in C that we’ve been dancingaround, but I'm going to solveitin this exerciseusing aset of macros I developed. You can thank me later when you realize how insanely awesome these macros are. 
+There'sareoccurring problem in C that we've been dancingaround, but I'm going to solveitin this exerciseusing aset of macros I developed. You can thank me later when you realize how insanely awesome these macros are. 
 
-Right now, you don’t know how awesome they are,soyou’lljust have to use them, and then you can walkup tome one day and say, "Zed, those debug macros werethe bomb. Iowe you myfirstborn child because you savedme a decadeof heartache and prevented me from killing myself morethan once. Thankyou, good sir,here’sa million dollarsand the original Snakehead Telecaster prototypesignedby Leo Fender." Yes,they are that awesome.
+Right now, you don't know how awesome they are,soyou'lljust have to use them, and then you can walkup tome one day and say, "Zed, those debug macros werethe bomb. Iowe you myfirstborn child because you savedme a decadeof heartache and prevented me from killing myself morethan once. Thankyou, good sir,here'sa million dollarsand the original Snakehead Telecaster prototypesignedby Leo Fender." Yes,they are that awesome.
 
 
 The C Error-Handling Problem 
 
-Handling errors is adifficult activityin almost every programming language. There areentireprogramming languages that try ashardas theycan to avoid even the concept of an error. Other languages invent complex control structureslike exceptionsto pass error conditions around. The problem existsmostly because programmers assume errors don’t happen, andthis optimisminfects the types of languages they use and create. 
-C tackles theproblem by returningerror codes and setting a global errno value thatyou check. Thismakes for complex code that simply exists tocheck ifsomething you didhad an error. Asyou write more and more C code, you’ll write codewith this pattern: 
+Handling errors is adifficult activityin almost every programming language. There areentireprogramming languages that try ashardas theycan to avoid even the concept of an error. Other languages invent complex control structureslike exceptionsto pass error conditions around. The problem existsmostly because programmers assume errors don't happen, andthis optimisminfects the types of languages they use and create. 
+C tackles theproblem by returningerror codes and setting a global errno value thatyou check. Thismakes for complex code that simply exists tocheck ifsomething you didhad an error. Asyou write more and more C code, you'll write codewith this pattern: 
 • Calla function. 
 
 • Check if thereturn value is anerror (and it must look thatup each time,too). 
@@ -2977,10 +3093,10 @@ C tackles theproblem by returningerror codes and setting a global errno value th
 
 
 
-This meansforeveryfunction call (and yes, every function), you are potentiallywriting three or four more linesjust to make sureit worked. That doesn’tinclude the problem ofcleaning upallof thejunk you’vebuilt to that point. If you have tendifferent structures,three files, and a databaseconnection,you’d have14 more lineswhen you get an error. 
+This meansforeveryfunction call (and yes, every function), you are potentiallywriting three or four more linesjust to make sureit worked. That doesn'tinclude the problem ofcleaning upallof thejunk you'vebuilt to that point. If you have tendifferent structures,three files, and a databaseconnection,you'd have14 more lineswhen you get an error. 
 
 
-In the past, this wasn’ta problem because Cprograms did what you’ve been doing when therewasan error:die. No point in bothering with cleanup when the OS will do it for you. Today, though, many C programs need to run for weeks, months,or years, and handleerrors from many differentsources gracefully. You can’tjust have your Web server die at theslightest touch, and you definitely can’t have a library that you’vewrittennukethe programit’s usedin. That’s just rude. 
+In the past, this wasn'ta problem because Cprograms did what you've been doing when therewasan error:die. No point in bothering with cleanup when the OS will do it for you. Today, though, many C programs need to run for weeks, months,or years, and handleerrors from many differentsources gracefully. You can'tjust have your Web server die at theslightest touch, and you definitely can't have a library that you'vewrittennukethe programit's usedin. That's just rude. 
 
 Other languagessolve this problem with exceptions, but thosehave problems in C (and in otherlanguages,too). In C, you only haveone returnvalue, but exceptions makeup an entirestack-based returnsystemwith arbitrary values. Trying to marshal exceptionsup thestack in C is difficult, andno other librarieswillunderstand it. 
 
@@ -2988,13 +3104,13 @@ Other languagessolve this problem with exceptions, but thosehave problems in C (
 The Debug Macros 
 
 
-The solutionI’ve been using for yearsis a small setof debug macros that implements a basic debuggingand error-handling systemfor C. This system is easy to understand, works with every library, and makes C code moresolid and clearer. 
+The solutionI've been using for yearsis a small setof debug macros that implements a basic debuggingand error-handling systemfor C. This system is easy to understand, works with every library, and makes C code moresolid and clearer. 
 
 
-Itdoes this by adopting the conventionthat whenever there’s an error,your function will jump toan error: part of the function that knows how to cleanup everything and return an error code. You can use amacro called check to check returncodes, print an error message, and thenjump to the cleanup section. You cancombine thatwith a set oflogging functions for printing out useful debug messages. 
+Itdoes this by adopting the conventionthat whenever there's an error,your function will jump toan error: part of the function that knows how to cleanup everything and return an error code. You can use amacro called check to check returncodes, print an error message, and thenjump to the cleanup section. You cancombine thatwith a set oflogging functions for printing out useful debug messages. 
 
 
-I'll now show you the entire contents of the most awesome set of brillianceyou’ve ever seen . 
+I'll now show you the entire contents of the most awesome set of brillianceyou've ever seen . 
 
 dbg.h
 
@@ -3031,7 +3147,7 @@ error; }
 #endif 
 ```
 
-Yes,that’sit, and here’s a 
+Yes,that'sit, and here's a 
 breakdownof every line: 
 
 dbg.h:1-2 Theusual defense against accidentally including the file twice, which you saw in thelast exercise. 
@@ -3047,27 +3163,27 @@ You can seein this case the #define debug() is just replaced with nothing (theri
 dbg.h:10 The matching #else for the ebove #ifdef. 
 
 dbg.h:11 The alternative #define debug that translates anyuseof debug("format", 
-arg1, arg2) into an fprintf call to stderr.ManyC programmersdon’t know this, but you can create macrosthat actually worklike printf andtake variablearguments. Some C compilers (actuallyCPP) don’t support this, but the ones that matter do. The magic hereis theuseof ##__VA_ARGS__ that says "putwhatever they had forextra arguments (...)here." Also notice the use of __FILE__ and __LINE__ to get the current file:line for the debug message. Very helpful. 
+arg1, arg2) into an fprintf call to stderr.ManyC programmersdon't know this, but you can create macrosthat actually worklike printf andtake variablearguments. Some C compilers (actuallyCPP) don't support this, but the ones that matter do. The magic hereis theuseof ##__VA_ARGS__ that says "putwhatever they had forextra arguments (...)here." Also notice the use of __FILE__ and __LINE__ to get the current file:line for the debug message. Very helpful. 
 
 dbg.h:12 The endof the #ifdef. 
 
-dbg.h:14 The clean_errno macro that’s used inthe others to get a safe, readable version of errno. That strange syntax inthe middleis a ternary operator andyou’ll learn whatitdoes later. 
+dbg.h:14 The clean_errno macro that's used in the others to get a safe, readable version of errno. That strange syntax in the middleis a ternary operator andyou'll learn whatitdoes later. 
 
 
-dbg.h:16-20 The log_err, log_warn, and log_info, macros for logging messages that are meant for the end user. They work like debug but can’t be compiled out. 
+dbg.h:16-20 The log_err, log_warn, and log_info, macros for logging messages that are meant for the end user. They work like debug but can't be compiled out. 
 
 
-dbg.h:22 The best macro ever, check, will make sure thecondition A is true, and if not, it logs the error M (with variableargumentsfor log_err), and then jumps to the function’s error: for cleanup. 
+dbg.h:22 The best macro ever, check, will make sure thecondition A is true, and if not, it logs the error M (with variableargumentsfor log_err), and then jumps to the function's error: for cleanup. 
 
-dbg.h:24 The second best macro ever, sentinel, isplaced in anypartof a function thatshouldn’t run, and if itdoes,it prints an errormessage andthen jumps to the error: label. You put this in if-statements and switch-statements tocatch conditions that shouldn’thappen,like the default:. 
+dbg.h:24 The second best macro ever, sentinel, isplaced in anypartof a function thatshouldn't run, and if itdoes,it prints an errormessage andthen jumps to the error: label. You put this in if-statements and switch-statements tocatch conditions that shouldn'thappen,like the default:. 
 
-dbg.h:26 A shorthand macro called check_mem that makessure a pointeris valid, and ifit isn’t,it reportsit as anerror with "Outof memory." 
+dbg.h:26 A shorthand macro called check_mem that makessure a pointeris valid, and ifit isn't,it reportsit as anerror with "Outof memory." 
 
-dbg.h:28 Analternative macro, check_debug, which stillchecks and handles an error, but it the error iscommon,then it doesn’tbother reporting it. In this one, it will use debug instead of log_err to report the message. So when you define NDEBUG, the check still happens, and the error jump goesoff, but the messageisn’t printed. 
+dbg.h:28 Analternative macro, check_debug, which stillchecks and handles an error, but it the error iscommon,then it doesn'tbother reporting it. In this one, it will use debug instead of log_err to report the message. So when you define NDEBUG, the check still happens, and the error jump goesoff, but the messageisn't printed. 
 
 Using dbg.h 
 
-Here’s an exampleof using all of dbg.h in a small program. This doesn’t actually doanything but demonstratehow touseeach macro. However, we’llbe using these macros inall of the programswe write from now on, so be sureto understand how tousethem. 
+Here's an exampleof using all of dbg.h in a small program. This doesn't actually doanything but demonstratehow touseeach macro. However, we'llbe using these macros inall of the programswe write from now on, so be sureto understand how tousethem. 
 
 ex19.c 
 
@@ -3195,7 +3311,7 @@ ex19.c
 
 ```
 
-Pay attention to how check is used, and when it’s false,it jumps to the error: labelto doa cleanup. The way to read thoselines is, "check that A is true, and ifnot, say M and jump out." 
+Pay attention to how check is used, and when it's false,it jumps to the error: labelto doa cleanup. The way to read thoselines is, "check that A is true, and ifnot, say M and jump out." 
 
 
 What You Should See 
@@ -3223,13 +3339,13 @@ Well I did something mundane.
 ```
 
 
-See how itreports the exact linenumberwherethe check failed? That’sgoing to save you hours of debugginglater. Also, see how it prints the error messagefor you when errno is set?Again,that will save youhours of debugging. 
+See how itreports the exact linenumberwherethe check failed? That'sgoing to save you hours of debugginglater. Also, see how it prints the error messagefor you when errno is set?Again,that will save youhours of debugging. 
 How the CPP Expands Macros 
 
-It’s nowtimefor you to get a short introductionto the CPP so thatyou know howthese macros actually work. To do this, I'm going to break down the most complex macro from dbg.h, and have yourun cpp so you can see what it’s actually doing. 
+It's nowtimefor you to get a short introductionto the CPP so thatyou know howthese macros actually work. To do this, I'm going to break down the most complex macro from dbg.h, and have yourun cpp so you can see what it's actually doing. 
 Imagine thatIhave a function 
 
-called dosomething()thatreturns the typical 0 for successand -1 for an error. EverytimeI call dosomething, I have to check forthis errorcode, so I’d write codelike this: 
+called dosomething()thatreturns the typical 0 for successand -1 for an error. EverytimeI call dosomething, I have to check forthis errorcode, so I'd write codelike this: 
 
 ```c
 
@@ -3239,7 +3355,7 @@ if(rc != 0) {fprintf(stderr,"There was an error:
 %s\n", strerror());goto error; } 
 ```
 
-What I want to use the CPP for is to encapsulatethis if-statement into a more readable andmemorable line ofcode. I wantwhat you’ve been doing in dbg.h with the check macro: 
+What I want to use the CPP for is to encapsulatethis if-statement into a more readable andmemorable line ofcode. I wantwhat you've been doing in dbg.h with the check macro: 
 
 ```c
 
@@ -3249,7 +3365,7 @@ dosomething();
 check(rc == 0, "There was an error."); 
 ```
 
-This is much clearerand explains exactly what’s going on:Check that the function worked, and if not, reportan error. To do this, we need somespecial CPP tricks that makethe CPP usefulas a codegeneration tool. Take a look at the check and log_err macros again: 
+This is much clearerand explains exactly what's going on:Check that the function worked, and if not, reportan error. To do this, we need somespecial CPP tricks that makethe CPP usefulas a codegeneration tool. Take a look at the check and log_err macros again: 
 
 ```c
 
@@ -3286,7 +3402,7 @@ fprintf(stderr, " [ERROR] (%s:%d:errno: %s) Age %d: name %d\n",
 __FILE__,__LINE__,clean_errno(), age, name); 
 ```
 
-See the age, name at the end? That's how `...` and `##__VA_ARGS__` work together,whichwillwork in macros that call other variable argument macros. Look at the check macro now and see that it calls `log_err`, but check is also using the `...` and `##__VA_ARGS__` todo the call. That’s howyou can pass full printf style format strings to check, which goto log_err, and thenmakebothwork like printf. 
+See the age, name at the end? That's how `...` and `##__VA_ARGS__` work together,whichwillwork in macros that call other variable argument macros. Look at the check macro now and see that it calls `log_err`, but check is also using the `...` and `##__VA_ARGS__` todo the call. That's howyou can pass full printf style format strings to check, which goto log_err, and thenmakebothwork like printf. 
 
 The next thing to study is how check crafts the if-statement for the error checking. If we strip out the log_err usage, we see this: 
 
@@ -3310,11 +3426,11 @@ if(!(rc == 0)) {
 
 What you should be getting from this trip throughthese twomacros isthat the CPP replacesmacros with the expandedversion of their definition, and it will do this recursively, expanding allof the macros in macros. The CPP, then, is just a recursive templating system, asI mentioned before. Its power comesfromits ability to generate whole blocks of parameterizedcode, thus becoming a handy code generation tool. 
 
-That leaves one question: Why notjust use a function like die?The reason is that you want file:line numbers and the gotooperation for anerror handling exit. If you did this inside afunction,you wouldn’tget aline number where the error actually happened, and the goto would be much morecomplicated. 
+That leaves one question: Why notjust use a function like die?The reason is that you want file:line numbers and the gotooperation for anerror handling exit. If you did this inside afunction,you wouldn'tget aline number where the error actually happened, and the goto would be much morecomplicated. 
 
-Another reason isthatyou still have to writethe raw if-statement, which looks likeall of the other if-statements in your code, so it’snot as clear that this oneis an error check. By wrapping the if-statement in a macro called check, you make it clearthat this is just error checking, andnotpart of the main flow. 
+Another reason isthatyou still have to writethe raw if-statement, which looks likeall of the other if-statements in your code, so it'snot as clear that this oneis an error check. By wrapping the if-statement in a macro called check, you make it clearthat this is just error checking, andnotpart of the main flow. 
 
-Finally,CPP hasthe abilityto conditionally compile portions ofcode, so you can havecode that’s only present when youbuild a developer ordebug version of the program. You can see this already inthe dbg.h file where the debug macroonly has abody if thecompiler asks for it. Without this ability, you’d needa wasted if-statement that checks for debug mode, andthen wastes CPU capacity doing that check for novalue. 
+Finally,CPP hasthe abilityto conditionally compile portions ofcode, so you can havecode that's only present when youbuild a developer ordebug version of the program. You can see this already in the dbg.h file where the debug macroonly has abody if thecompiler asks for it. Without this ability, you'd needa wasted if-statement that checks for debug mode, andthen wastes CPU capacity doing that check for novalue. 
 
 Extra Credit 
 
@@ -3328,81 +3444,88 @@ Extra Credit
 
 ## Exercise20. Advanced Debugging Techniques 
 
-I’ve already taught you about myawesomedebug macros, and you’ve beenusing them. When I debug code I use the debug() macro almost exclusively to analyze what’s going on and track downthe problem. 
+I've already taught you about myawesomedebug macros, and you've beenusing them. When I debug code I use the debug() macro almost exclusively to analyze what's going on and track down the problem. 
 
-In this exercise,I'm going to teach you thebasics ofusing`GDB` toinspecta simple programthat runs and doesn’texit. You'lllearn how to use `GDB` to attach to a running process, stopit, and see what’shappening. After that, I'llgive you some little tips and tricks thatyou can use with `GDB`. 
+In this exercise,I'm going to teach you thebasics ofusing`GDB` toinspecta simple programthat runs and doesn'texit. You'lllearn how to use `GDB` to attach to a running process, stopit, and see what'shappening. After that, I'llgive you some little tips and tricks thatyou can use with `GDB`. 
 
 This is anothervideo-focused exercisewhere I show you advanced debugging tricks with mytechnique. The discussion belowreinforces the video, so watch the video first. Debugging willbemuch easier to learnby watching me do it first. 
 
 Debug Printing versus `GDB` 
 
-I approach debugging primarily with a "scientific method" style:I come up with possible causes and then rule them outor provet hat they causethe defect. The problem many programmers have with this approach is that they feel likeit willslow them down. They panic and rush to solve the bug, butin their rush theyfailto notice that they’re reallyjust flailing aroundand gathering no useful information. Ifind that logging (debug printing) forces me tosolve a bug scientifically, andit’s also just easier to gather informationin most situations. 
+I approach debugging primarily with a "scientific method" style:I come up with possible causes and then rule them outor provet hat they causethe defect. The problem many programmers have with this approach is that they feel likeit willslow them down. They panic and rush to solve the bug, butin their rush theyfailto notice that they're reallyjust flailing aroundand gathering no useful information. Ifind that logging (debug printing) forces me tosolve a bug scientifically, andit's also just easier to gather informationin most situations. 
 
 In addition, Ihave these reasonsfor using debug printingas my primary debugging tool: 
-• You seean entire tracing of aprogram’s executionwithdebug 
+• You seean entire tracing of aprogram's executionwithdebug 
 
-printing of variables, which lets you track how things are going wrong. With `GDB`,you have toplace watch and debug statements all over theplace for everything you want, and it’s difficult to get a solid trace of the execution. 
+printing of variables, which lets you track how things are going wrong. With `GDB`,you have toplace watch and debug statements all over theplace for everything you want, and it's difficult to get a solid trace of the execution. 
 
-• The debug prints can stay inthe code, and when youneed them, you can recompile and theycomeback. With `GDB`, you have to configurethe same informationuniquely for every defect you have tohunt down.
+• The debug prints can stay in the code, and when youneed them, you can recompile and theycomeback. With `GDB`, you have to configurethe same informationuniquely for every defect you have tohunt down.
 
-• It’s easierto turn on debug logging on a server that’s not working right, and then inspect the logs while it runs to see what’s going on. System administrators know how to handle logging, but they don’t know how to use `GDB`.
+• It's easierto turn on debug logging on a server that's not working right, and then inspect the logs while it runs to see what's going on. System administrators know how to handle logging, but they don't know how to use `GDB`.
 
-• Printing things is just easier. Debuggers are alwaysobtuse and weird with their own quirky interfacesand inconsistencies. There’s nothing complicated about debug("Yo, dis right? %d", my_stuff);. 
+• Printing things is just easier. Debuggers are alwaysobtuse and weird with their own quirky interfacesand inconsistencies. There's nothing complicated about debug("Yo, dis right? %d", my_stuff);. 
 
-• When you write debug prints to find adefect, you’re forced to actually analyze the code and use the scientificmethod. You can think of debug usage as, "I hypothesize that the code is broken here." Thenwhen you run it, you get your hypothesis tested, andif it’snot broken,then you can move to anotherpartwhereit could be. This may seem like it takes longer, but it’sactually faster because you go through a process of differential diagnosis and rule out possible causes until you find the realone.
+• When you write debug prints to find adefect, you're forced to actually analyze the code and use the scientificmethod. You can think of debug usage as, "I hypothesize that the code is broken here." Thenwhen you run it, you get your hypothesis tested, andif it'snot broken,then you can move to anotherpartwhereit could be. This may seem like it takes longer, but it'sactually faster because you go through a process of differential diagnosis and rule out possible causes until you find the realone.
 
-• Debugprinting works better with unit testing. You can actually just compilethe debugs while you work, and when aunittest explodes, just go look at the logs at any time. With `GDB`, you’d have to rerunthe unit test under `GDB` and then trace through it to see what’s going on. Despite all of these reasons thatIrelyon debug over `GDB`,Istilluse `GDB` in a few situations, and I think you should have any toolthat helpsyou get your work done. Sometimes,youjust have to connect to a broken programand poke around. Or, maybe you’ve got a server that’s crashingand you can only get atcore files to see why. In these anda few other cases, `GDB` is the way to go, and it’salways goodto have as many tools as possible tohelp solve problems.
+• Debugprinting works better with unit testing. You can actually just compilethe debugs while you work, and when aunittest explodes, just go look at the logs at any time. With `GDB`, you'd have to rerun the unit test under `GDB` and then trace through it to see what's going on. Despite all of these reasons thatIrelyon debug over `GDB`,Istilluse `GDB` in a few situations, and I think you should have any toolthat helpsyou get your work done. Sometimes,youjust have to connect to a broken programand poke around. Or, maybe you've got a server that's crashingand you can only get atcore files to see why. In these anda few other cases, `GDB` is the way to go, and it'salways goodto have as many tools as possible tohelp solve problems.
 
-Here’s abreakdown of when I use `GDB` versusValgrind versusdebug printing: 
+Here's abreakdown of when I use `GDB` versusValgrind versusdebug printing: 
 
 • I useValgrindto catch all memory errors. I use `GDB`if Valgrind is having problemsor if using Valgrind would slowthe programdown toomuch.
 
 • I useprint with debug to diagnoseand fix defectsrelated to logic orusage. Thisamounts to about90% of the defectsafteryoustart using Valgrind. 
 
-• I use`GDB` for the remaining mysteriously weird stuff or emergency situationsto gather information. If Valgrind isn’t turning anything up, and I can’t even print out the informationthat Ineed, thenI bustout `GDB` and start poking around. My use of `GDB`in this caseis entirely togather information. Once I have anidea of what’s going on,I'll go back to writing a unit test to cause the defect, and thendo printstatements to find out why.
+• I use`GDB` for the remaining mysteriously weird stuff or emergency situationsto gather information. If Valgrind isn't turning anything up, and I can't even print out the informationthat Ineed, thenI bustout `GDB` and start poking around. My use of `GDB`in this caseis entirely togather information. Once I have anidea of what's going on,I'll go back to writing a unit test to cause the defect, and thendo printstatements to find out why.
 
 A Debugging Strategy 
 
-This processwillactually work with any debugging technique you’re using. I'm going to describe it interms ofusing `GDB` sinceit seems people skipthis process the most whenusing debuggers. Use this foreverybug until you only neediton thevery difficultones. 
+This processwillactually work with any debugging technique you're using. I'm going to describe it interms ofusing `GDB` sinceit seems people skipthis process the most whenusing debuggers. Use this foreverybug until you only neediton thevery difficultones. 
 
 • Starta little text file called notes.txt and use it asa kindof lab notesforideas,bugs, problems, and so on. 
 
-• Beforeyou use `GDB`, write out the bug you’re going to fixand what could be causing it. 
+• Beforeyou use `GDB`, write out the bug you're going to fixand what could be causing it. 
 
-• For each cause, write out the filesand functions where you think thecauseis coming from, or just write thatyou don’t know.
+• For each cause, write out the filesand functions where you think thecauseis coming from, or just write thatyou don't know.
 
 • Now start `GDB` and pick the firstpossiblecause with good file and function variablesand setbreakpoints there. 
 
 • Use `GDB` to then run the programand confirm whetherthat is the cause. Thebestway is to see if you can use the set command to either fix the programeasily orcausethe error immediately.
 
-• If this isn’t the cause, thenmark in the notes.txt that it wasn’t, and why. Move on to the next possible cause that’s easiest to debug, and keep adding information. 
+• If this isn't the cause, thenmark in the notes.txt that it wasn't, and why. Move on to the next possible cause that's easiest to debug, and keep adding information. 
 
 
 
-In case you haven’tnoticed, this is basically the scientific method. You writedownaset ofhypotheses, thenyouuse debugging to proveor disprove them. This gives you insight into more possible causes and eventually you find it. This process helpsyou avoid goingoverthe same possible causes repeatedly after you’vefoundthat they aren’t possible. 
+In case you haven'tnoticed, this is basically the scientific method. You writedownaset ofhypotheses, thenyouuse debugging to proveor disprove them. This gives you insight into more possible causes and eventually you find it. This process helpsyou avoid goingoverthe same possible causes repeatedly after you'vefoundthat they aren't possible. 
 
 You can also do this with debug printing,the only difference is thatyou actually write out your hypotheses in the source codeinsteadof in the notes.txt. In away, debug printing forces you to tacklebugs scientifically because you have to write out hypothesesas print statements. 
 
 Extra Credit 
 
-• Finda graphical debugger and compare using it toraw `GDB`. Theseare useful when the program you’re looking at is local, but they are pointless if you have todebug a programon aserver. 
+• Finda graphical debugger and compare using it toraw `GDB`. Theseare useful when the program you're looking at is local, but they are pointless if you have todebug a programon aserver. 
 
-• You can enable core dumps on your OS, and when aprogram crashes, you’ll get a corefile. This corefile islike a postmortem of the program thatyou can load up tosee what happenedright at the crash and whatcaused it. Change ex18.c so that itcrashes after a fewiterations, then try to get a core dumpand analyzeit.
+• You can enable core dumps on your OS, and when aprogram crashes, you'll get a corefile. This corefile islike a postmortem of the program thatyou can load up tosee what happenedright at the crash and whatcaused it. Change ex18.c so that itcrashes after a fewiterations, then try to get a core dumpand analyzeit.
 
 ## Exercise21. Advanced Data Types and Flow Control 
 
-This exercisewillbea completecompendium of the available C datatypes and flow control structures you can use. It will workas a referenceto completeyour knowledge, andwon’t have any code for you to enter. I'll have you memorizesome of the information bycreating flashcards so you can get the important concepts solidin your mind. 
+This exercisewillbea completecompendium of the available C datatypes and flow control structures you can use. It will workas a referenceto completeyour knowledge, andwon't have any code for you to enter. I'll have you memorizesome of the information bycreating flashcards so you can get the important concepts solidin your mind. 
 
-For this exerciseto be useful, you should spend at least a week hammering in the contentand filling out all of the elementsthat are missing here. You'll be writing out whateach one means, and thenwriting aprogram to confirmwhat you’ve researched. 
+For this exerciseto be useful, you should spend at least a week hammering in the contentand filling out all of the elementsthat are missing here. You'll be writing out whateach one means, and thenwriting aprogram to confirmwhat you've researched. 
 Available Data Types 
 
 Type Modifiers 
 
+// TO DO
+
 Type Qualifiers 
+
+// TO DO 
 
 Type Conversion 
 
-C usesa sort ofstepped type promotion mechanism, where it looks at two operandson either side of an expression, and promotesthe smaller side to match thelarger side beforedoing the operation. If onesideof an expression is on this list, thenthe other side is converted to that type beforethe operation is done. Itgoes in thisorder: 
+// TO DO
+
+
+C usesa sort ofstepped type promotion mechanism, where it looks at two operandson either side of an expression, and promotesthe smaller side to match thelarger side beforedoing the operation. If onesideof an expression is on this list, then the other side is converted to that type beforethe operation is done. Itgoes in thisorder: 
 1. long double 
 
 2. double 
@@ -3417,7 +3540,7 @@ and short int);
 
 
 
-If youfind yourself trying to figure outhow your conversions are working in an expression,then don’t leave it to thecompiler. Useexplicit casting operations to make it exactly what you want. For example, ifyou have 
+If youfind yourself trying to figure outhow your conversions are working in an expression,then don't leave it to thecompiler. Useexplicit casting operations to make it exactly what you want. For example, ifyou have 
 
 ```c
 
@@ -3429,19 +3552,19 @@ Rather than trying to figure out if it will be converted to double correctly, ju
 ```c
 (double)long ­(double)char ­(double)int * double 
 ```
-Putting the type you want in parentheses before the variablename is how you force it into the type you really need. The important thing, though,is always promote up, not down. Don’t cast long into char unless you know what you’re doing. 
+Putting the type you want in paren theses before the variablename is how you force it into the type you really need. The important thing, though,is always promote up, not down. Don't cast long into char unless you know what you're doing. 
 Type Sizes 
 
-The stdint.h defines both asetof typdefs forexact­sized integertypes, as well as asetof macros for thesizes ofallthe types. This is easier to workwith than the older limits.h sinceitis consistent. Hereare the types defined: The pattern here is in the form(u)int(BITS)_twherea u is putin frontto indicate "unsigned," and BITS is a number for thenumberof bits. This patternis then repeated for macrosthat returnthe maximum values of these types: 
+The stdint.h defines both asetof typdefs forexact­sized integertypes, as well as asetof macros for thesizes ofallthe types. This is easier to workwith than the older limits.h sinceitis consistent. Hereare the types defined: The pattern here is in the form(u)int(BITS)_twherea u is putin frontto indicate "unsigned," and BITS is a number for thenumberof bits. This patternis then repeated for macrosthat return the maximum values of these types: 
 
 > INT(N)_MAX Maximum positivenumberof the signed integerof bits (N), such as INT16_MAX. 
 > INT(N)_MIN Minimum negative number of signed integerof bits (N). 
-> UINT(N)_MAXMaximum positive number ofunsigned integer of bits (N). Since it’sunsigned, the minimum is0 and it can’t have a negative value. 
+> UINT(N)_MAXMaximum positive number ofunsigned integer of bits (N). Since it'sunsigned, the minimum is0 and it can't have a negative value. 
 
 Warning! 
-Pay attention! Don’t go looking for a literal 
+Pay attention! Don't go looking for a literal 
 INT(N)_MAX 
-definition in any header file. I'm using the (N) as a placeholderforany number of bits your platform currently supports. This (N)could be any number— 8, 16, 32, 64, maybe even128. I use this notation in this exercise so thatIdon’t have to literally write out every possible combination. 
+definition in any header file. I'm using the (N) as a placeholderforany number of bits your platform currently supports. This (N)could be any number— 8, 16, 32, 64, maybe even128. I use this notation in this exercise so thatIdon't have to literally write out every possible combination. 
 
 
 There are also macros in stdint.h for sizes of the size_t type,integers large enoughto hold pointers, and other handysize defining macros. Compilers have to at least have these, and then theycan allow other, larger types. 
@@ -3454,7 +3577,7 @@ be in stdint.h:
 Available Operators 
 
 
-This is acomprehensivelist ofallthe operators inthe C language. In this list, I'm indicating the following: 
+This is acomprehensivelist ofallthe operators in the C language. In this list, I'm indicating the following: 
 
 Math Operators 
 
@@ -3479,7 +3602,7 @@ Theseare more advancedand are for shifting and modifying the raw bits in integer
 Boolean Operators 
 
 
-Theseare used intruth testing. Study the ternary operator carefully. It’svery handy. 
+Theseare used intruth testing. Study the ternary operator carefully. It'svery handy. 
 
 Assignment 
 Operators 
@@ -3490,12 +3613,12 @@ Hereare compound assignment operators that assigna value, and/or performanoperat
 Available Control Structures 
 
 
-There area few control structures thatyou haven’t encountered yet. 
+There area few control structures thatyou haven't encountered yet. 
 do-while do { ... }while(X); Firstdoes the code in theblock, thenteststhe X expressionbefore exiting. 
 break Puts a break in a loop,ending itearly. 
 
 continue Stops thebody ofa loop and jumps to the testso itcan continue. 
-goto Jumps to aspot in the code where you’ve placeda label:, and you've been using this in the dbg.h macros to go to the error: label. 
+goto Jumps to aspot in the code where you've placeda label:, and you've been using this in the dbg.h macros to go to the error: label. 
 
 Extra Credit 
 
@@ -3512,17 +3635,17 @@ Extra Credit
 ## Exercise22. The Stack, Scope, and Globals 
 
 
-The concept ofscope seems to confusequitea few people when theyfirststart programming. Itoriginally came from theuseof the systemstack (whichwe lightly covered earlier), and how it was used to store temporary variables. In this exercise, we’lllearnabout scope by learning howa stack data structure works, andthen feeding that conceptback in to how modern C does scoping. 
+The concept ofscope seems to confusequitea few people when theyfirststart programming. Itoriginally came from theuseof the systemstack (whichwe lightly covered earlier), and how it was used to store temporary variables. In this exercise, we'lllearnabout scope by learning howa stack data structure works, andthen feeding that conceptback in to how modern C does scoping. 
 
-The real purpose ofthis exercise, though, is to learn where the hell things live in C. When someone doesn’t grasp the conceptof scope,
+The real purpose ofthis exercise, though, is to learn where the hell things live in C. When someone doesn't grasp the conceptof scope,
 
-it’salmostalways a failurein understanding where variables arecreated, exist, and die. Once you know where things are, theconcept ofscope becomes easier. 
+it'salmostalways a failurein understanding where variables arecreated, exist, and die. Once you know where things are, theconcept ofscope becomes easier. 
 
 This exercisewillrequire three files: 
 
 ex22.h A headerfile that setsup some external variables and some functions. 
 
-ex22.c This isn’tyour 
+ex22.c This isn'tyour 
 
 main likenormal, but instead asourcefile that willbecome the object file ex22.o,which will have some functions andvariables in itdefined from ex22.h. 
 
@@ -3594,18 +3717,18 @@ ex22.c
 
 ```
 
-Thesetwofiles introduce somenew kinds ofstorage for variables: 
+These two files introduce some new kinds of storage for variables: 
 
-extern This keywordis a way totell thecompiler "the variable exists, but it’sin another ‘external’ location." Typicallythis meansthat one .c file is going to use avariable that’s been defined in another .c file. In this case, we’re saying ex22.c has avariable THE_SIZE that willbe accessed from ex22_main.c. 
+extern This keyword is a way to tell the compiler "the variable exists, but it'sin another ‘external' location." Typicallythis meansthat one .c file is going to use avariable that's been defined in another .c file. In this case, we're saying ex22.c has avariable THE_SIZE that willbe accessed from ex22_main.c. 
 static (file) This keyword iskind of the inverse of extern, and says that the variable isonly used in this .c file and should notbeavailable to other partsof theprogram. Keep inmind that static at the file level(aswith THE_AGE here) is different than In other places. 
-static (function) If you declare avariable in a function static, then thatvariable acts likea static definedin the file, but it’sonly accessible from that function. It’s away of creating constantstate for afunction, butin reality it’s rarely used in modern C programming because they are hard to use with threads. 
+static (function) If you declare avariable in a function static, then thatvariable acts likea static definedin the file, but it'sonly accessible from that function. It's away of creating constantstate for afunction, butin reality it's rarely used in modern C programming because they are hard to use with threads. 
 
 In these twofiles, you should 
 
 understand the following 
 variables and functions: 
-THE_SIZE This is the variableyou declared extern thatyou’ll playwithfrom ex22_main.c. 
-get_age and set_age Theseare taking the static variable THE_AGE, but exposingit to other partsof theprogram through functions. You can’t access THE_AGE directly, but these 
+THE_SIZE This is the variableyou declared extern thatyou'll playwithfrom ex22_main.c. 
+get_age and set_age Theseare taking the static variable THE_AGE, but exposingit to other partsof theprogram through functions. You can't access THE_AGE directly, but these 
 functions can. 
 update_ratio Thistakes a new ratio value, and returnsthe oldone. It uses afunction level static variable ratio to keeptrackof what the ratio currently is. 
 print_size This prints out what ex22.c thinks THE_SIZE is currently. 
@@ -3687,17 +3810,17 @@ ex22_main.c:6 A simple function that demonstrates more scope issues in a functio
 
 ex22_main.c:8 This prints out the value of count asitisat the top of the function.
 
-ex22_main.c:10 An if-statement that starts anew scope block, and thenhas another count variablein it. This version of count isactually awhole new variable. It’s kind of likethe if-statement started a new minifunction. 
+ex22_main.c:10 An if-statement that starts anew scope block, and thenhas another count variablein it. This version of count isactually awhole new variable. It's kind of likethe if-statement started a new minifunction. 
 
-ex22_main.c:11 The count thatis local to this blockis actually differentfrom theone in the function’s parameter list. 
+ex22_main.c:11 The count thatis local to this blockis actually differentfrom theone in the function's parameter list. 
 
-ex22_main.c:13 This prints itout so you can seeit’s actually 100 here, not whatwas passed to scope_demo. 
+ex22_main.c:13 This prints itout so you can seeit's actually 100 here, not whatwas passed to scope_demo. 
 
-ex22_main.c:16 Nowfor the freaky part. You have count in two places:the parameters to thisfunction, and in the if-statement. The if-statement created anew block, so the count on line1. does not impact the parameter with the same name. This line prints itout, and you’ll see that it printsthe valueof theparameter, not100.
+ex22_main.c:16 Nowfor the freaky part. You have count in two places:the parameters to thisfunction, and in the if-statement. The if-statement created anew block, so the count on line1. does not impact the parameter with the same name. This line prints itout, and you'll see that it printsthe valueof theparameter, not100.
 
-ex22_main.c:18-20 Then, I set the parameter count to 3000and print that out,which willdemonstrate that you can change function parameters and theydon’t impact the caller’s versionof the variable. 
+ex22_main.c:18-20 Then, I set the parameter count to 3000and print that out,which willdemonstrate that you can change function parameters and theydon't impact the caller's versionof the variable. 
 
-Make sure thatyou trace through this function, but don’t think thatyou understand scopequiteyet. Just startto realize thatif you make a variable inside a block (as in if-statements or while-loops), then thosevariables are new variables thatexist only in that block. This is crucial to understand, and is also a source of many bugs. We'll address why you shouldn’tmake a variable 
+Make sure thatyou trace through this function, but don't think thatyou understand scopequiteyet. Just startto realize thatif you make a variable inside a block (as in if-statements or while-loops), then thosevariables are new variables thatexist only in that block. This is crucial to understand, and is also a source of many bugs. We'll address why you shouldn'tmake a variable 
 inside ablockshortly. The rest of the ex22_main.c then demonstrates allof these by manipulating and printing them out: 
 
 ex22_main.c:26 This prints out the current valuesof MY_NAME, and gets THE_AGE from ex22.c by using the accessorfunction 
@@ -3705,21 +3828,21 @@ get_age.
 
 ex22_main.c:27-30 This uses set_age in ex22.c to change THE_AGE andthen printitout. 
 
-ex22_main.c:33-39 Then I do the same thing to THE_SIZE from ex22.c, but this time I'm accessing it directly. I'm also demonstrating that it’s 
+ex22_main.c:33-39 Then I do the same thing to THE_SIZE from ex22.c, but this time I'm accessing it directly. I'm also demonstrating that it's 
 actually changing in thatfile byprinting it hereand with print_size. 
 
 ex22_main.c:42-44 Here, I show how the static variable ratio inside update_ratio is maintained between function calls. 
 
 ex22_main.c:46-51 
 
-Finally,I'm running scope_demo a few times soyou cansee the scope inaction. The big thing to noticeisthat the local count variableremains unchanged. You must understand that passing in a variablelike this won’tlet youchangeit in the function. Todo that, you needourold friendthe pointer. If you were topassa pointer to this count, thenthe calledfunction would have the address ofitand could change it.
+Finally,I'm running scope_demo a few times soyou cansee the scope inaction. The big thing to noticeisthat the local count variableremains unchanged. You must understand that passing in a variablelike this won'tlet youchangeit in the function. Todo that, you needourold friendthe pointer. If you were topassa pointer to this count, then the calledfunction would have the address ofitand could change it.
 
-That explains what’sgoing on, but youshould trace through thesefiles and make sureyou knowwhere everythingisas you study it. 
+That explains what'sgoing on, but youshould trace through thesefiles and make sureyou knowwhere everythingisas you study it. 
 
 
 What You Should See 
 
-This time,instead of using your Makefile, Iwant you to buildthese twofiles manually so you can seehow the compileractually puts them together. Here’swhat you should doand see for output: 
+This time,instead of using your Makefile, Iwant you to buildthese twofiles manually so you can seehow the compileractually puts them together. Here'swhat you should doand see for output: 
 
 
 * Exercise 22 Session 
@@ -3750,34 +3873,34 @@ $ ./ex22_main
 ```
 
 
-Make sure you trace how each variableis changing and match it to the linethat gets output. I'm using log_info fromthe dbg.h macros so you can get the exact line number where each variable is printed, and find itinthe filesfortracing. 
+Make sure you trace how each variableis changing and match it to the linethat gets output. I'm using log_info fromthe dbg.h macros so you can get the exact line number where each variable is printed, and find itin the filesfortracing. 
 Scope, Stack, and Bugs 
 
 
-If you’vedone this right, you should now see many of the differentways you can place variables in your C code. You can use extern or access functions like get_age to createglobals. You canmake new variables inside any blocks, and they’ll retain their own valuesuntilthatblock exits, leaving the outer variables alone. Youalso can pass avalue toa function, and change the parameter but without changing the caller’s versionof it. 
+If you'vedone this right, you should now see many of the differentways you can place variables in your C code. You can use extern or access functions like get_age to createglobals. You canmake new variables inside any blocks, and they'll retain their own valuesuntilthatblock exits, leaving the outer variables alone. Youalso can pass avalue toa function, and change the parameter but without changing the caller's versionof it. 
 
-The mostimportant thing to realizeisthat allof this causes bugs. C’sability to place thingsin many places in your machine, and thenlet you access itin thoseplaces, meansthat you can geteasily confusedabout where something lives. If you don’t know where itlives,then there’s a chanceyou won’t manage it properly.
+The mostimportant thing to realizeisthat allof this causes bugs. C'sability to place thingsin many places in your machine, and thenlet you access itin thoseplaces, meansthat you can geteasily confusedabout where something lives. If you don't know where itlives,then there's a chanceyou won't manage it properly.
 
 With thatin mind, hereare somerules tofollowwhen writing C codeso you can avoid bugs related to the stack: 
-• Donotshadowa variablelike I’ve done herewith count in scope_demo. It leaves you open to subtle and hidden bugs where you think you’re changing avalue but 
+• Donotshadowa variablelike I've done herewith count in scope_demo. It leaves you open to subtle and hidden bugs where you think you're changing avalue but 
 
-you’re actually not. 
+you're actually not. 
 
-• Avoid using toomany globals, especially if across multiplefiles. If you have tousethem, then use accessor functions likeI’ve done with get_age. This doesn’tapplyto constants, since those are read-only. I'm talkingaboutvariables like THE_SIZE.If you wantpeople to modify orset this variable, then make accessor functions.
+• Avoid using toomany globals, especially if across multiplefiles. If you have tousethem, then use accessor functions likeI've done with get_age. This doesn'tapplyto constants, since those are read-only. I'm talkingaboutvariables like THE_SIZE.If you wantpeople to modify orset this variable, then make accessor functions.
 
-• When indoubt,putit on the heap. Don’trely on thesemantics of the stack orspecialized locations. Just create things with malloc. 
+• When indoubt,putit on the heap. Don'trely on thesemantics of the stack orspecialized locations. Just create things with malloc. 
 
-• Don’t use function static variableslike I didin update_ratio. They’re rarelyuseful and end up beinga huge painwhen you need to make your code concurrentin threads. They’re also hard as hellto find compared to awell-done global variable.
+• Don't use function static variableslike I didin update_ratio. They're rarelyuseful and end up beinga huge painwhen you need to make your code concurrentin threads. They're also hard as hellto find compared to awell-done global variable.
 
-• Avoid re using function parameters. It’s confusing as to whether you’re just re using it or if you thinkyou’re changing the caller’s version of it.
+• Avoid re using function parameters. It's confusing as to whether you're just re using it or if you thinkyou're changing the caller's version of it.
 
-As with all things, theserules can be broken when it’s practical. Infact, I guarantee you’ll run into code that breaks all of these rulesand is perfectly fine. Theconstraints ofdifferent platformseven makeit necessarysometimes. 
+As with all things, theserules can be broken when it's practical. Infact, I guarantee you'll run into code that breaks all of these rulesand is perfectly fine. Theconstraints ofdifferent platformseven makeit necessarysometimes. 
 
 How to Break It 
 
-For this exercise, try to access orchangesome things you can’t to break theprogram. 
+For this exercise, try to access orchangesome things you can't to break theprogram. 
 
-• Try to directlyaccess variables in ex22.c from ex22_main.c thatyou think you can’t access. For example, can you get at ratio inside update_ratio? Whatif you had a pointer to it? 
+• Try to directlyaccess variables in ex22.c from ex22_main.c thatyou think you can't access. For example, can you get at ratio inside update_ratio? Whatif you had a pointer to it? 
 
 • Ditch the extern declaration in ex22.h to see whaterrors or warnings you get. 
 
@@ -3789,31 +3912,30 @@ Extra Credit
 
 • Research the conceptof pass by value versus pass by reference. Write an exampleof both. 
 
-• Use pointers to gain access to things you shouldn’thave access to. 
+• Use pointers to gain access to things you shouldn'thave access to. 
 
 • Use yourdebugger to see what this kind of access looks like when you do itwrong. 
 
-• Write a recursive function that causesa stack overflow. Don’t know what arecursive function is? Try calling scope_demo at the bottom of scope_demo itself so that itloops. 
+• Write a recursive function that causesa stack overflow. Don't know what arecursive function is? Try calling scope_demo at the bottom of scope_demo itself so that itloops. 
 
 • Rewritethe Makefile so that itcan build this.
 
 
-## Exercise23. Meet Duff’s Device 
+## Exercise23. Meet Duff's Device 
 
-This exercise is abrainteaser where I introduceyou toone of the most famous hacksin C called Duff’s device, named after TomDuff, its inventor. This little slice of awesome (evil?)hasnearly everything you've been learning wrappedin onetiny, little package. Figuringout how it works is also a good, fun puzzle. 
+This exercise is abrainteaser where I introduceyou toone of the most famous hacksin C called Duff's device, named after TomDuff, its inventor. This little slice of awesome (evil?)hasnearly everything you've been learning wrappedin onetiny, little package. Figuringout how it works is also a good, fun puzzle. 
 
 Warning! 
 
-Part of the fun of C is thatyou cancome up with crazyhacks like this, but this is also what makes C annoying to use. It’s good to learnabout these tricks because it gives you a deeper understandingof the languageand your computer. Butyou shouldneverusethis. Always strive for easy-to-read code. 
+Part of the fun of C is thatyou cancome up with crazyhacks like this, but this is also what makes C annoying to use. It's good to learnabout these tricks because it gives you a deeper understandingof the languageand your computer. Butyou shouldneverusethis. Always strive for easy-to-read code. 
 
-Discovered by Tom Duff, Duff’s deviceis atrick with the C compiler that actually shouldn’twork. I won’ttell you whatit does yetsince this is meant to be a puzzle for you to ponder andtry to solve. You'll get this code running and thentry to figure outwhatitdoes, and why it does it this way. 
+Discovered by Tom Duff, Duff's deviceis atrick with the C compiler that actually shouldn'twork. I won'ttell you whatit does yetsince this is meant to be a puzzle for you to ponder andtry to solve. You'll get this code running and thentry to figure outwhatitdoes, and why it does it this way. 
 
 ex23.c 
 
 ```c
 
-1 #include 
-<stdio.h> 
+1 #include <stdio.h> 
 2 #include <string.h> 
 3 #include "dbg.h" 
 4 
@@ -3974,24 +4096,24 @@ copy.");
 
 In this code, Ihave three versions of acopyfunction: 
 normal_copy This is just aplain for-loop that copiescharacters from one arrayto another. 
-duffs_device This is calledDuff’s device, named after TomDuff, the personto blame for this delicious evil. 
+duffs_device This is calledDuff's device, named after TomDuff, the personto blame for this delicious evil. 
 zeds_device A versionof 
-Duff’s devicethat just 
+Duff's devicethat just 
 
-uses a goto soyou can clue into what’s happening with the weird do-while placementin duffs_device. 
-Study these three functions beforecontinuing. Try to explain what’sgoing onto yourself. 
+uses a goto soyou can clue into what's happening with the weird do-while placementin duffs_device. 
+Study these three functions beforecontinuing. Try to explain what'sgoing onto yourself. 
 
 
 What You Should See 
 
 
-There’sno output from this program, itjust runs and exits. Run it under your debugger tosee ifyou can catch any more errors. Try causing some of yourown, as I showed you in Exercise 
+There'sno output from this program, itjust runs and exits. Run it under your debugger tosee ifyou can catch any more errors. Try causing some of yourown, as I showed you in Exercise 
 4. 
 Solving the Puzzle 
 
 The first thing tounderstand 
 
-is that C is ratherloose regardingsome of its syntax. This is why you canputhalf ofa do-while in one part ofa switch-statement, thenthe other half somewhere else, and the code will stillwork. If you look at myversion with the goto again,it’s actuallymore clearwhat’sgoing on, but makesure you understand how thatpart works. 
+is that C is ratherloose regardingsome of its syntax. This is why you canputhalf ofa do-while in one part ofa switch-statement, then the other half somewhere else, and the code will stillwork. If you look at myversion with the goto again,it's actuallymore clearwhat'sgoing on, but makesure you understand how thatpart works. 
 
 The secondthing is howthe defaultfallthrough semantics of switch-statements let you jump to aparticular case, andthenit willjust keep running untilthe endof the switch. 
 
@@ -4009,24 +4131,24 @@ Now,to solvehow these functions work, do the following:
 
 • When you getto the while part ormy goto alternative,check your variables, and then follow the logic either back to the top of the do-while or to where the again label is located. 
 
-• Follow throughthis manual tracing, updating thevariables, until you’re sureyou seehow this flows.
+• Follow throughthis manual tracing, updating thevariables, until you're sureyou seehow this flows.
 
 Why Bother? 
 
-When you’vefigured outhow it actually works, the final questionis:Why would you ever want todo this? The purpose of this trick is to manually do loop unrolling. Large, long loops can be slow, so oneway to speed them up is to find somefixed chunk of the loop, and then just duplicate the code in the loop thatmany times sequentially. For example, if you know a loop runs a minimum of 20 times, then you can put the contents of the loop 20 timesin the source code. 
+When you'vefigured outhow it actually works, the final questionis:Why would you ever want todo this? The purpose of this trick is to manually do loop unrolling. Large, long loops can be slow, so oneway to speed them up is to find somefixed chunk of the loop, and then just duplicate the code in the loop thatmany times sequentially. For example, if you know a loop runs a minimum of 20 times, then you can put the contents of the loop 20 timesin the source code. 
 
-Duff’s device is basically doing this automatically by chunking upthe loop into eight iteration chunks. 
+Duff's device is basically doing this automatically by chunking upthe loop into eight iteration chunks. 
 
-It’s clever and actually works, but these days a good compiler will do this for you. You shouldn’t need this except in the rare casewhere you have proven it would improve your speed.
+It's clever and actually works, but these days a good compiler will do this for you. You shouldn't need this except in the rare casewhere you have proven it would improve your speed.
 
 Extra Credit 
 
 • Never use thisagain. 
 
 
-• Go look at the Wikipedia entry for Duff’s deviceand seeif you can spot the error. Read the erticle, compareit to the version Ihave here, and try to understandwhy the Wikipedia code won’twork for you but workedfor Tom Duff.
+• Go look at the Wikipedia entry for Duff's deviceand seeif you can spot the error. Read the erticle, compareit to the version Ihave here, and try to understandwhy the Wikipedia code won'twork for you but workedfor Tom Duff.
 
-• Create asetof macros that letsyoucreate any length of devicelike this. For example,what if you wanted to have 32 case statements and didn’t want to write out all of them?Can you do amacro that laysdown eight at atime?
+• Create asetof macros that letsyoucreate any length of devicelike this. For example,what if you wanted to have 32 case statements and didn't want to write out all of them?Can you do amacro that laysdown eight at atime?
 
 • Change the main to conductsome speed tests to see which oneis really the fastest. 
 
@@ -4037,16 +4159,15 @@ Extra Credit
 
 ## Exercise24. Input, Output, Files 
 
-You’ve been using printfto print things, and that’s great and all, but you need more. In this exercise,you’ll be using the functions fscanf and fgets to build informationabout aperson in astructure. 
+You've been using printfto print things, and that's great and all, but you need more. In this exercise,you'll be using the functions fscanf and fgets to build informationabout aperson in astructure. 
 
-After this simple introduction about reading input, you’ll get a full lis tof the functionsthat C has for I/O. Some of these you’ve already seen andused, so this will be another memorization exercise. 
+After this simple introduction about reading input, you'll get a full lis tof the functionsthat C has for I/O. Some of these you've already seen andused, so this will be another memorization exercise. 
 
 ex24.c 
 
 ```c
 
-1 #include 
-<stdio.h> 
+1 #include <stdio.h> 
 2 #include "dbg.h" 
 3 
 4 #define MAX_DATA 100 
@@ -4059,7 +4180,8 @@ ex24.c
 11 const char *EYE_COLOR_NAMES[] = {
 12 "Blue","Green", "Brown","Black", "Other" 
 13 }; 
-1. 15 typedef struct Person {
+1. 
+15 typedef struct Person {
 16 int age;
 17 char first_name[MAX_DATA]; 
 18 char last_name[MAX_DATA]; 
@@ -4067,19 +4189,14 @@ ex24.c
 20 float income;
 21 } Person;
 2. 
-23 int main(int 
-
-argc, char *argv[]) 
+23 int main(int argc, char *argv[]) 
 24 {
 25 Person you = {.age = 0 }; 
 26 int i = 0;
 27 char *in = NULL;
 2. 
-29 printf("What 
-your First Name? "); 
-30 in = 
-
-fgets(you.first_name,MAX_DATA -1, stdin); 
+29 printf("What your First Name? "); 
+30 in = fgets(you.first_name,MAX_DATA -1, stdin); 
 31 check(in != NULL, "Failed to read first name."); 
 32 
 33 printf("What your Last Name? "); 
@@ -4093,8 +4210,8 @@ fgets(you.first_name,MAX_DATA -1, stdin);
 41 printf("What color are your eyes:\n"); 
 42 for (i = 0;i <= OTHER_EYES; i++){
 43 printf(" %s\n", i + 1,EYE_COLOR_NAMES[i]); 
-44 }45 printf("> 
-");
+44 }
+45 printf("> ");
 46 
 47 int eyes = -1;
 48 rc = fscanf(stdin, "%d",&eyes); 
@@ -4125,18 +4242,18 @@ fgets(you.first_name,MAX_DATA -1, stdin);
 This programis deceptively simple, and introducesa function called fscanf, which is the file scanf. The scanf family of functions are theinverseof the printf versions. Where printf printed outdata based on aformat, scanf reads (orscans) inputbased on a format. 
 
 
-There’s nothing original in the beginning of the file, so here’s what the main is doingin the program: 
+There's nothing original in the beginning of the file, so here's what the main is doingin the program: 
 
 ex24.c:24-28 Sets up 
 
-somevariables we’ll 
+somevariables we'll 
 need. 
 
 ex24.c:30-32 Getsyour 
 
 first name using the 
 
-fgets function, which reads a string from the input (in thiscase stdin), but makes sure itdoesn’t overflow the given buffer. 
+fgets function, which reads a string from the input (in thiscase stdin), but makes sure itdoesn't overflow the given buffer. 
 
 ex24.c:34-36 Same thing for you.last_name, againusing fgets. 
 
@@ -4186,13 +4303,13 @@ How to Break It
 This is all fine and good, but 
 the really important part of 
 
-this exercise is how scanf actually sucks. It’s fine for a simple conversion of numbers, but fails for strings because it’s difficult to tell scanf how biga buffer is before you read it. There’s also a problem with the function gets (not fgets, the non-f version), which we avoided. That functionhasno idea how big the inputbuffer is atall andwill just trash your program. To demonstrate theproblems with fscanf andstrings, change the linesthatuse fgets so they are fscanf(stdin,"%50s",you.first_name), and thentry to use it again. Notice it seems to read too much and theneatyour enter key?This doesn’tdo what you think it does, andrather thandeal with weird scanf issues, 
+this exercise is how scanf actually sucks. It's fine for a simple conversion of numbers, but fails for strings because it's difficult to tell scanf how biga buffer is before you read it. There's also a problem with the function gets (not fgets, the non-f version), which we avoided. That functionhasno idea how big the inputbuffer is atall andwill just trash your program. To demonstrate theproblems with fscanf andstrings, change the linesthatuse fgets so they are fscanf(stdin,"%50s",you.first_name), and thentry to use it again. Notice it seems to read too much and theneatyour enter key?This doesn'tdo what you think it does, andrather thandeal with weird scanf issues, 
 you should justuse fgets. Next, change the fgets to use gets,then run your debugger on ex24. Do this inside: 
 "run << /dev/urandom" 
 
-This feeds randomgarbage into your program. This is calledfuzzing yourprogram, and it’s agood way to find input bugs. In this case, you’re feedinggarbage from the /dev/urandom file (device), and thenwatchingit crash. Insome platforms,you mayhave todo this a few times, or evenadjust the MAX_DATA definesoit’s smallenough. 
+This feeds randomgarbage into your program. This is calledfuzzing yourprogram, and it's agood way to find input bugs. In this case, you're feedinggarbage from the /dev/urandom file (device), and thenwatchingit crash. Insome platforms,you mayhave todo this a few times, or evenadjust the MAX_DATA definesoit's smallenough. 
 
-The gets function is so bad thatsome platforms actually warn you when the program runs thatyou’re using gets. You should never use this function, ever. Finally,take the inputfor you.eyes andremove the check that thenumberis withinthe rightrange. Then, feedit bad numbers like -1 or 1000. Do this under the debugger so you can see what happens there,too. 
+The gets function is so bad thatsome platforms actually warn you when the program runs thatyou're using gets. You should never use this function, ever. Finally,take the inputfor you.eyes andremove the check that thenumberis within the rightrange. Then, feedit bad numbers like -1 or 1000. Do this under the debugger so you can see what happens there,too. 
 
 The I/O Functions 
 
@@ -4204,7 +4321,7 @@ This is ashortlist ofvarious I/O functions thatyoushould look up. Create flashca
 Go through these and 
 memorize thedifferent 
 
-variants and what they do. For example, forthe card fscanf, you’ll have scanf, sscanf, vscanf, etc., and thenwhat each of thosedoes on the back. 
+variants and what they do. For example, forthe card fscanf, you'll have scanf, sscanf, vscanf, etc., and thenwhat each of thosedoes on the back. 
 
 Finally,use man to read the helpfor each variantto get the information you need for the flash cards. Forexample, the page for fscanf comes from man fscanf. 
 
@@ -4216,7 +4333,7 @@ Extra Credit
 
 • Fix itso that their input namesget strippedof the trailing newline characters andany white space. 
 
-• Use scanf towrite a function that reads one character at a time and fillsin thenames but doesn’tgo past the end. Make this function generic so itcantake a sizefor the string, but just make sureyouend 
+• Use scanf towrite a function that reads one character at a time and fillsin thenames but doesn'tgo past the end. Make this function generic so itcantake a sizefor the string, but just make sureyouend 
 
 
 the string with '\0' no matter what. 
@@ -4226,7 +4343,7 @@ the string with '\0' no matter what.
 In C, you can createyour own versions of functions like printf and scanf by creatinga variable argument function, orvararg function. 
 
 Thesefunctions use the header stdarg.h, and with them,you cancreate nicer interfacesto your library. They arehandyfor certain typesof builder functions, formatting functions, and anything thattakes variable arguments. 
-Understanding vararg functions is not essentialto creatingC programs. Ithink I’ve used itmaybe 20 times in my codein all of the years I’ve beenprogramming. However, knowing howa varargfunction works will helpyou debug the programs you use and gives you a better understandingof the computer. 
+Understanding vararg functions is not essentialto creatingC programs. Ithink I've used itmaybe 20 times in my codein all of the years I've beenprogramming. However, knowing howa varargfunction works will helpyou debug the programs you use and gives you a better understandingof the computer. 
 
 ex25.c 
 
@@ -4372,11 +4489,11 @@ This programis similar to the previous exercise, except I havewritten my own sca
 The varargs functionis called 
 read_scan, anditdoes the 
 
-same thing that scanf is doing using the va_list data structure andsupporting macros andfunctions. Here’s how: 
+same thing that scanf is doing using the va_list data structure andsupporting macros andfunctions. Here's how: 
 • Iset as the last parameter of the function thekeyword ... to indicateto C that this function will take any number of arguments after the fmt argument. I could put 
 
 many other arguments 
-beforethis, but Ican’t 
+beforethis, but Ican't 
 putany more after this. 
 
 
@@ -4386,18 +4503,18 @@ putany more after this.
 
 • When I hit aformat, I use the switch-statement tofigure outwhattodo. 
 
-• Now, to get a variable fromthe va_list argp,I use the macro va_arg(argp,TYPE) where TYPE is the exacttype of what I willassign this function parameter to. The downsideto thisdesign isthatyou’re flying blind, so ifyou don’t have enough parameters,then oh well, you’ll most likely crash. 
+• Now, to get a variable fromthe va_list argp,I use the macro va_arg(argp,TYPE) where TYPE is the exacttype of what I willassign this function parameter to. The downsideto thisdesign isthatyou're flying blind, so ifyou don't have enough parameters,then oh well, you'll most likely crash. 
 
 • The interesting difference from scanf isI'm assuming that people want read_scan tocreate the stringsit reads when it hitsan 's' format sequence. When you givethis sequence,the function takestwo parameters off the va_list argp stack:the maxfunction sizeto read, and the outputcharacter string pointer. Using that information, itjust runs read_string todo the realwork. 
 
 • This makes read_scan more consistent than scanf, since you always give an address-of & on variables tohave them setappropriately. 
 
-• Finally, if the function encounters acharacter that’s notin the correct format,it just reads one charto skipit. It doesn’tcarewhat that charis, just that it should skip it. 
+• Finally, if the function encounters acharacter that's notin the correct format,it just reads one charto skipit. It doesn'tcarewhat that charis, just that it should skip it. 
 
 
 What You Should See 
 
-When yourunthis one, it’s similarto the last one. 
+When yourunthis one, it's similarto the last one. 
 
 
 * Exercise 25 Session 
@@ -4413,11 +4530,11 @@ What's your first name? Zed What's your initial? A What's your last name? Shaw H
 
 How to Break It 
 
-This programshould be more robustagainstbuffer overflows, but it doesn’t handle the formatted inputas wellas scanf. To try to break this, change the code so thatyou forget topass in the initial size for ‘%s’ formats. Try giving it moredata than MAX_DATA, and then see how omitting calloc in read_string changes how it works. Finally,there’s a problem where fgets eats the newlines, so try tofix that using fgetc, butleave out the \0 that ends thestring. 
+This programshould be more robustagainstbuffer overflows, but it doesn't handle the formatted inputas wellas scanf. To try to break this, change the code so thatyou forget topass in the initial size for ‘%s' formats. Try giving it moredata than MAX_DATA, and then see how omitting calloc in read_string changes how it works. Finally,there's a problem where fgets eats the newlines, so try tofix that using fgetc, butleave out the \0 that ends thestring. 
 
 Extra Credit 
 
-• Makedouble andtriple sure that you know whateach of the out_ variables is doing. Most importantly, you should know what out_string is and how it’s a pointer to a pointer,sothat you understand when you’re setting thepointer versusthe contents is important. 
+• Makedouble andtriple sure that you know whateach of the out_ variables is doing. Most importantly, you should know what out_string is and how it's a pointer to a pointer,sothat you understand when you're setting thepointer versusthe contents is important. 
 
 • Write a similarfunction to printf that uses the varargssystem, and rewrite main to use it. 
 • As usual,read theman page on all ofthis so thatyou knowwhatit does on your platform. Some platforms willuse macros,others will use functions, and some will have thesedo nothing. It alldepends on thecompiler and the platformyouuse. 
@@ -4427,7 +4544,7 @@ Extra Credit
 
 logfind 
 
-This is asmall project for you to attempt on yourown. To be effective at C, you’ll need to learn toapplywhat you know toproblems. In this exercise, Idescribe atoolI wantyou to implement, andI describe it in a vague way on purpose. This is done so that you willtry to implement whateveryou can, however you can. When you’redone, you can thenwatcha video for the exercise that shows you how I didit, and then you can get the code and compare it to yours.
+This is asmall project for you to attempt on yourown. To be effective at C, you'll need to learn toapplywhat you know toproblems. In this exercise, Idescribe atoolI wantyou to implement, andI describe it in a vague way on purpose. This is done so that you willtry to implement whateveryou can, however you can. When you'redone, you can thenwatcha video for the exercise that shows you how I didit, and then you can get the code and compare it to yours.
 
 Think ofthis projectas a real­worldpuzzle that you might have to solve. 
 
@@ -4453,7 +4570,7 @@ have thesebasic features:
 5. You shouldoutput the matching linesas you scan, and try to match them asfast aspossible. 
 
 
-That’s the entire description. 
+That's the entire description. 
 
 Remember that this may be 
 very hard, so takeit atinybit 
@@ -4463,83 +4580,83 @@ at atime. Write some code, test it, write more, test that, and so on in little c
 
 ## Exercise27. Creative and Defensive Programming 
 
-You have now learnedmost of the basics of C programming andare ready to start becoming a serious programmer. This is where you go from beginner to expert, both with C and hopefullywithcore computer science concepts. I will be teaching you a few of the coredata structures and algorithmsthat every programmershould know, and then a fewvery interesting onesI’ve used in realsoftware for years. 
+You have now learnedmost of the basics of C programming andare ready to start becoming a serious programmer. This is where you go from beginner to expert, both with C and hopefullywithcore computer science concepts. I will be teaching you a few of the coredata structures and algorithmsthat every programmershould know, and then a fewvery interesting onesI've used in realsoftware for years. 
 
 Before I cando that, Ihave to teach you some basic skills and ideasthat will help you makebetter software. Exercises 2. through 31
-will teach you advancedconcepts, featuring moretalking than coding. Afterthat, you’ll apply what you’velearned to make a core library ofuseful data structures. 
+will teach you advancedconcepts, featuring moretalking than coding. Afterthat, you'll apply what you'velearned to make a core library ofuseful data structures. 
 
 The first step in getting better at writing C code(and really any language)is to learn a new mind-set called defensive programming. Defensive programming assumes that you are going to make many mistakes, and then attempts to prevent thematevery possible step. In this exercise, I'm going to teachyouhow to thinkabout programming defensively. 
 
 The Creative Programmer Mind-Set 
 
-It’s notpossibleto show you how to be creativein ashort exerciselike this, but Iwill tellyou that creativity involvestaking risksand being open-minded. Fear will quicklykillcreativity, so the mind-set I adopt, andmany programmerscopy, is that accidents are designedto make youunafraid of taking chances and looking like an idiot. Here’s mymind-set: 
-• I can’t make a mistake. 
+It's notpossibleto show you how to be creativein ashort exerciselike this, but Iwill tellyou that creativity involvestaking risksand being open-minded. Fear will quicklykillcreativity, so the mind-set I adopt, andmany programmerscopy, is that accidents are designedto make youunafraid of taking chances and looking like an idiot. Here's mymind-set: 
+• I can't make a mistake. 
 
-• It doesn’t matter what people think. 
+• It doesn't matter what people think. 
 
 • Whatever mybrain comesup with is going to be a great idea. 
 
 
 I only adopt this mind-set temporarily, andeven have little tricks to turnit on. By doing this,I can come up with ideas, find creative solutions,open my thoughts to odd connections, andjust generally invent weirdness without fear. In thismind-set, I'll typically write a horrible first versionof something just to get the idea out. 
 
-However, when I’vefinished mycreative prototype, Iwill throwit out and getserious about making it solid. Where other people make a mistake is carrying the creativemind­set into their implementation phase. This then leads to a very different, destructive mind-set: thedarkside of the creative mind-set: 
-• It’s possible towrite perfect software. 
+However, when I'vefinished mycreative prototype, Iwill throwit out and getserious about making it solid. Where other people make a mistake is carrying the creativemind­set into their implementation phase. This then leads to a very different, destructive mind-set: thedarkside of the creative mind-set: 
+• It's possible towrite perfect software. 
 
-• Mybrain tells methe truth, andit can’tfind any errors: I have therefore written perfect software. 
+• Mybrain tells methe truth, andit can'tfind any errors: I have therefore written perfect software. 
 
 • Mycode is who I am and peoplewho criticize its perfection are criticizing me. 
 
 
-Theseare lies. Youwill frequently run into programmers who feel intense pride about what they’vecreated, which is natural, but this pridegets in the way of theirability to objectively improvetheir craft. Because of this pride and attachmenttowhat they’vewritten, they can continueto believe that what theywrite isperfect. As long asthey ignore other people’s criticismof theircode,they can protect theirfragile egos and neverimprove. 
+Theseare lies. Youwill frequently run into programmers who feel intense pride about what they'vecreated, which is natural, but this pridegets in the way of theirability to objectively improvetheir craft. Because of this pride and attachmenttowhat they'vewritten, they can continueto believe that what theywrite isperfect. As long asthey ignore other people's criticismof theircode,they can protect theirfragile egos and neverimprove. 
 
 The trick to being creative and makingsolidsoftware is the ability to adopt a defensiveprogramming mind-set. 
 
 The Defensive Programmer Mind-Set 
 
-After you have aworking, creative prototype and you’re feelinggoodabout the idea, it’stime to switchto being a defensiveprogrammer. The defensiveprogrammer basically hates your code and believes these things: 
+After you have aworking, creative prototype and you're feelinggoodabout the idea, it'stime to switchto being a defensiveprogrammer. The defensiveprogrammer basically hates your code and believes these things: 
 • Softwarehaserrors. 
 
-• You aren’tyour software, yetyou’re responsible for the errors. 
+• You aren'tyour software, yetyou're responsible for the errors. 
 
 • You can never remove the errors,onlyreduce their probability. 
 
 
 
-This mind-set lets you be honest about yourwork and critically analyzeit for improvements. Notice that it doesn’tsay you are full of errors?It says your code is full oferrors. This is asignificant thing to understand becauseit gives you the powerof objectivity for the next implementation. 
+This mind-set lets you be honest about yourwork and critically analyzeit for improvements. Notice that it doesn'tsay you are full of errors?It says your code is full oferrors. This is asignificant thing to understand becauseit gives you the powerof objectivity for the next implementation. 
 
 Just likethe creative mind-set,the defensive programming mind-set has a dark side, as well. Defensive programmersare paranoid, and this fearprevents them fromever possibly being wrongor making mistakes. 
 
-That’s greatwhen you’re trying to be ruthlessly consistentand correct, butit’s murder oncreative energy and concentration. 
+That's greatwhen you're trying to be ruthlessly consistentand correct, butit's murder oncreative energy and concentration. 
 
 The Eight Defensive Programmer Strategies 
 
-Once you’ve adopted this mind-set,you canthen rewriteyour prototypeand follow asetof eight strategies to make yourcode assolidas possible. While I workon the realversion,I ruthlessly follow these strategies and try to remove as many errors as I can, thinking like someone who wantsto break the software. 
+Once you've adopted this mind-set,you can then rewriteyour prototypeand follow asetof eight strategies to make yourcode assolidas possible. While I workon the realversion,I ruthlessly follow these strategies and try to remove as many errors as I can, thinking like someone who wantsto break the software. 
 
-* Never Trust Input -- Never trust the datayou’re given andalways validate it.
+* Never Trust Input -- Never trust the datayou're given andalways validate it.
 Prevent Errors If an erroris possible, no matter how probable, try to prevent it. 
 
 * FailEarly and Openly -- Failearly, cleanly, and openly, stating what happened, where, and how to fix it.
 
 * Document Assumptions -- Clearly state the pre­conditions, post­conditions, and invariants.
 
-* Prevention over Documentation. -- Don’t do with documentation that whichcan be done with code or avoided completely. 
+* Prevention over Documentation. -- Don't do with documentation that whichcan be done with code or avoided completely. 
 
 *  AutomateEverything -- Automate everything, especially testing. 
 
 *  Simplify and Clarify -- Always simplify the code to the smallest, cleanestform that works without sacrificing safety.
 
-* Question Authority --  Don’t blindly follow or reject rules.
+* Question Authority --  Don't blindly follow or reject rules.
 
-Thesearen’t the only strategies, but they’re the core things Ifeel programmers have to focus on when trying to make good, solid code. Notice that I don’treallysay exactly how to do these. I'll go into each of thesein more detail, and some of the exerciseswillactually cover them extensively.
+Thesearen't the only strategies, but they're the core things Ifeel programmers have to focus on when trying to make good, solid code. Notice that I don'treallysay exactly how to do these. I'll go into each of thesein more detail, and some of the exerciseswillactually cover them extensively.
 
 
 Applying the Eight Strategies 
 
-These ideas are all as great pop-psychology platitudes, buthow do you actually apply them to working code? I'm now going to give you a set of thingsto alwaysdo in this book’s codethat demonstrates each one with a concrete example. The ideas aren’t limited tojust these examples, so you should use these as aguideto making your own codemore solid. 
+These ideas are all as great pop-psychology platitudes, buthow do you actually apply them to working code? I'm now going to give you a set of thingsto alwaysdo in this book's codethat demonstrates each one with a concrete example. The ideas aren't limited tojust these examples, so you should use these as aguideto making your own codemore solid. 
 
 Never Trust Input 
 
-Let’s look at an exampleof bad designand better design. I won’t say good design because this could be done even better. Take a look at these two functions that both copy astring and a simple main to testout thebetter one. 
+Let's look at an exampleof bad designand better design. I won't say good design because this could be done even better. Take a look at these two functions that both copy astring and a simple main to testout thebetter one. 
 
 ex27_1.c 
 
@@ -4627,59 +4744,59 @@ safercopy(from_len,from, 0, to);
 ```
 
 
-The copy function is typical C code and it’s the sourceof ahugenumberof buffer overflows. It’s flawed because itassumes that it will alwaysreceive a valid, terminated C string(with '\0'), andjust uses a while-loop to processit. Problem is, to ensure that is incredibly difficult, and if it’s not handled right, itcauses the while-loop to loop infinitely. A cornerstone of writing solid code is never writing loops that can possibly loop forever. 
+The copy function is typical C code and it's the sourceof ahugenumberof buffer overflows. It's flawed because itassumes that it will alwaysreceive a valid, terminated C string(with '\0'), andjust uses a while-loop to processit. Problem is, to ensure that is incredibly difficult, and if it's not handled right, itcauses the while-loop to loop infinitely. A cornerstone of writing solid code is never writing loops that can possibly loop forever. 
 
 
-The safercopy function triesto solvethis byrequiring the caller to give thelengths of the twostrings it must deal with. By doing this,it can makecertain checks about these stringsthat the copy function can’t. It can check that the lengths areright, and that the to string has enough space, and it will always terminate. It’simpossiblefor this functionto run onforever likethe copy function. 
+The safercopy function triesto solvethis byrequiring the caller to give thelengths of the twostrings it must deal with. By doing this,it can makecertain checks about these stringsthat the copy function can't. It can check that the lengths areright, and that the to string has enough space, and it will always terminate. It'simpossiblefor this functionto run onforever likethe copy function. 
 
 
-This is the ideabehind never trusting the inputsyou receive. If you assumethat your functionisgoing to get a string that’s not terminated (whichis common), thenyou can design yourfunction so that it doesn’t rely onit to work properly. If you need the argumentsto never be NULL,then you shouldcheck for that, too. Ifthe sizes should bewithin sane levels, thencheck that. You simply assumethat whoever is calling you got it wrong, and thentry to makeit difficult for them to give you another bad state. 
+This is the ideabehind never trusting the inputsyou receive. If you assumethat your functionisgoing to get a string that's not terminated (whichis common), thenyou can design yourfunction so that it doesn't rely onit to work properly. If you need the argumentsto never be NULL,then you shouldcheck for that, too. Ifthe sizes should bewithin sane levels, thencheck that. You simply assumethat whoever is calling you got it wrong, and thentry to makeit difficult for them to give you another bad state. 
 
-This extends to software you write thatgets input from the externaluniverse. The famouslastwords of the programmerare, "Nobody’s going to do that." I’ve seen them say thatand then the next day someone does exactly that, crashing or hacking theirapplication. If you say nobody isgoing todo that, just throw inthe codeto makesure they simplycan’t hack your application. You'll be glad you did. 
+This extends to software you write thatgets input from the externaluniverse. The famouslastwords of the programmerare, "Nobody's going to do that." I've seen them say thatand then the next day someone does exactly that, crashing or hacking theirapplication. If you say nobody isgoing todo that, just throw in the codeto makesure they simplycan't hack your application. You'll be glad you did. 
 
 
-There is a diminishing return on this, buthere’s a lis tof things Itry todo inallof the functions I writein C: 
+There is a diminishing return on this, buthere's a lis tof things Itry todo inallof the functions I writein C: 
 
 • For eachparameter, identify what its preconditions are, and whetherthe precondition should cause afailure or return an error. If you are writing a library,favor errors over failures. 
 
-• Add assert calls at the beginning that check for each failure precondition using assert(test && "message");. This little hack does the test, and when itfails, the OSwilltypically print the assert line for you thatincludesthat message. This is very helpful when you’re trying to figure outwhy that assert is there.
+• Add assert calls at the beginning that check for each failure precondition using assert(test && "message");. This little hack does the test, and when itfails, the OSwilltypically print the assert line for you thatincludesthat message. This is very helpful when you're trying to figure outwhy that assert is there.
 
-• Forthe other preconditions, return the error code or use my check macro togive an errormessage. I didn’t use check in this example since it would confusethe comparison. 
+• Forthe other preconditions, return the error code or use my check macro togive an errormessage. I didn't use check in this example since it would confusethe comparison. 
 
-• Document why these preconditions existso thatwhen a programmerhits the error, he or she can figure outif they’re really necessary ornot. 
+• Document why these preconditions existso thatwhen a programmerhits the error, he or she can figure outif they're really necessary ornot. 
 
-• If you’re modifying the inputs, makesure that they are correctly formed when the function exits, or abort if they aren’t. 
+• If you're modifying the inputs, makesure that they are correctly formed when the function exits, or abort if they aren't. 
 
 • Always check the error codes of functions you use. For example, people frequently forget to check the return codes from fopen or fread,which causes them to use the resources thereturn codes give despite the error. This causes your programto crash or open an avenue for an attack. 
 
-• You also need to be returning consistent errorcodes so thatyou can do this for all of your functions. Once you get in this habit, you’ll thenunderstand why my check macros work the way they do.
+• You also need to be returning consistent errorcodes so thatyou can do this for all of your functions. Once you get in this habit, you'll thenunderstand why my check macros work the way they do.
 
 Just doing these simple things will improve yourresource handling andprevent quite a fewerrors. 
 Prevent Errors 
 
-Inresponseto theprevious example, you mighthe er people say, "Well, it’snot very likely someonewilluse copy wrong." Despite the mountain of attacksmade against this very kindof function, Some people still believe that the probability of this error is very low. Probability is a funnything because peopleare incredibly bad atguessing the probability of any event. People are, however, much better at determining if something is possible. They mightsay the errorin copy is not probable, but they can’t denythat it’s possible. 
+Inresponseto theprevious example, you mighthe er people say, "Well, it'snot very likely someonewilluse copy wrong." Despite the mountain of attacksmade against this very kindof function, Some people still believe that the probability of this error is very low. Probability is a funnything because peopleare incredibly bad atguessing the probability of any event. People are, however, much better at determining if something is possible. They mightsay the errorin copy is not probable, but they can't denythat it's possible. 
 
-The key reason is thatfor something tobeprobable,it first has to be possible. Determining thepossibility is easy,since we can all imaginesomething happening. What’s not so easy is determining its probability after that. Isthe chancethat someonemight use copy wrong20%, 10%, or1%?Who knows?You’d need to gather evidence, look at rates of failurein many softwarepackages, and probably surveyreal programmersabouthowthey use the function. 
+The key reason is thatfor something tobeprobable,it first has to be possible. Determining thepossibility is easy,since we can all imaginesomething happening. What's not so easy is determining its probability after that. Isthe chancethat someonemight use copy wrong20%, 10%, or1%?Who knows?You'd need to gather evidence, look at rates of failurein many softwarepackages, and probably surveyreal programmersabouthowthey use the function. 
 
-This means, if you’regoing to prevent errors, you still need to try to preventwhat’s possible but first focus your energies on what’s most probable. 
+This means, if you'regoing to prevent errors, you still need to try to preventwhat's possible but first focus your energies on what's most probable. 
 
-It may notbe feasible to handleallof the possible ways your software can be broken, butyou have to attempt it. But at thesame time,if you don’tconstrain your efforts to the most probable events, then you’ll be wasting time onirrelevant attacks. Here’s aprocessfor determining what to prevent in yoursoftware:
+It may notbe feasible to handleallof the possible ways your software can be broken, butyou have to attempt it. But at thesame time,if you don'tconstrain your efforts to the most probable events, then you'll be wasting time onirrelevant attacks. Here's aprocessfor determining what to prevent in yoursoftware:
 
 • List all the possible errors that can happen, no matter how probable (within reason,of course). Nopoint listing "aliens sucking your memories outto steal your passwords." 
 
-• Give each possible errora probabilitythat’s apercentage of the operations that can be vulnerable. If you are handling requests from the Internet, thenit’s the percentage of requests that cancause the error. If they are function calls, then it’s whatpercentage of function calls can cause the error. 
+• Give each possible errora probabilitythat's apercentage of the operations that can be vulnerable. If you are handling requests from the Internet, thenit's the percentage of requests that cancause the error. If they are function calls, then it's whatpercentage of function calls can cause the error. 
 
 • Calculate the effortin number ofhours or amount of code to preventit. You could also just give aneasyor hard metric, orany metric that preventsyou fromworking on the impossible when there are easierthings to fix stillon the list. 
 
 • Rank them by effort (lowest tohighest), and probability (highest to lowest). This is now your tasklist.
 
-• Prevent allof the errors you can in this list, aiming forremoving the possibility, then reducing the probability if you can’t make it impossible. 
+• Prevent allof the errors you can in this list, aiming forremoving the possibility, then reducing the probability if you can't make it impossible. 
 
-• If there are errorsyou can’t fix, then document them so someone else can fix them. 
+• If there are errorsyou can't fix, then document them so someone else can fix them. 
 
 This little processwillgive you anice list of things todo, butmore importantly, keep you fromworking onuseless things when there are other more important things to work on. You canalso be more or lessformalwith this process. 
 
-If you’re doinga full security audit, thiswillbe better done with awhole team and a nicespreadsheet. If you’re just writinga function, thensimply reviewthe code and scratch theseout into somecomments. What’s important isthat you stop assuming that errorsdon’t happen, and you workon removing them when you can without wasting effort.
+If you're doinga full security audit, thiswillbe better done with awhole team and a nicespreadsheet. If you're just writinga function, thensimply reviewthe code and scratch theseout into somecomments. What's important isthat you stop assuming that errorsdon't happen, and you workon removing them when you can without wasting effort.
 
 Fail Early and Openly 
 
@@ -4689,22 +4806,22 @@ If youencounteranerror in C you have two choices:
 
 • Abort the process. 
 
-This is just how itis, so what you need todo is make sure the failures happen quickly, are clearly documented,give an errormessage, and are easy for theprogrammer to avoid. This iswhy the check macros I’ve given you work the way they do. For every error youfind,it prints a message, the file and linenumberwhereit happened, and forces are turn code. If youjust use my macros, you’llend updoing the right thing anyway.
+This is just how itis, so what you need todo is make sure the failures happen quickly, are clearly documented,give an errormessage, and are easy for theprogrammer to avoid. This iswhy the check macros I've given you work the way they do. For every error youfind,it prints a message, the file and linenumberwhereit happened, and forces are turn code. If youjust use my macros, you'llend updoing the right thing anyway.
 
-I tend to prefer returningan errorcode to aborting the program. If it’scatastrophic, thenI will, but very few errors are truly catastrophic. A good exampleof when I'll abort a programis if I'm given an invalid pointer,as I didin safercopy. Instead ofhaving theprogrammer experiencea segmentation fault explosion somewhere, I catch itright awayand abort. However, if it’scommonto pass in a NULL,then I'll probably change that to a check instead so that the callercan adaptand keep running.
+I tend to prefer returningan errorcode to aborting the program. If it'scatastrophic, thenI will, but very few errors are truly catastrophic. A good exampleof when I'll abort a programis if I'm given an invalid pointer,as I didin safercopy. Instead ofhaving theprogrammer experiencea segmentation fault explosion somewhere, I catch itright awayand abort. However, if it'scommonto pass in a NULL,then I'll probably change that to a check instead so that the callercan adaptand keep running.
 
 In libraries, however,I try my hardest to never abort. The software using my library can decideif itshould abort, and I'll typically abortonlyif the library is very badly used. 
 
-Finally,a big part of being open about errors is not using the samemessage orerror codeformore thanone possible error. You typically see this with errorsin external resources. A library will receive an erroron a socket, and then simplyreport "bad socket." What they should do is returnthe erroron the socketsothat itcanbe properlydebuggedand fixed. When designing your error reporting, make sureyougive adifferent error message for the different possible errors. 
+Finally,a big part of being open about errors is not using the samemessage orerror codeformore thanone possible error. You typically see this with errorsin external resources. A library will receive an erroron a socket, and then simplyreport "bad socket." What they should do is return the erroron the socketsothat itcanbe properlydebuggedand fixed. When designing your error reporting, make sureyougive adifferent error message for the different possible errors. 
 
 Document Assumptions 
 
 
-If you’refollowingalongand using this advice, thenwhat you’re doing is buildinga contractof how your functions expect the world to be. You’vecreated preconditions for each argument, you’vehandled possible errors, and you’re failingelegantly. The next step is to complete the contractand add invariants and post conditions. 
+If you'refollowingalongand using this advice, thenwhat you're doing is buildinga contractof how your functions expect the world to be. You'vecreated preconditions for each argument, you'vehandled possible errors, and you're failingelegantly. The next step is to complete the contractand add invariants and post conditions. 
 
-An invariantis a condition thatmustbeheld true insome state while the function runs. This isn’t very common in simple functions, butwhen you’re dealing with complex structures,itbecomesmore necessary. Agood example of an invariant is a condition where astructureis always initialized properlywhileit’s being used. Another example wouldbethat a sorted data structure is always sorted during processing.
+An invariantis a condition thatmustbeheld true insome state while the function runs. This isn't very common in simple functions, butwhen you're dealing with complex structures,itbecomesmore necessary. Agood example of an invariant is a condition where astructureis always initialized properlywhileit's being used. Another example wouldbethat a sorted data structure is always sorted during processing.
 
-A postcondition is a guaranteeon the exit value or result ofa functionrunning. This can blend together with invariants, but this is something as simple as "function always returns0or -1on error." Usually these are documented, but ifyour function returns an allocated resource, you can adda postcondition that checks to makesure it’s returning something, andnot NULL. Or, you can use NULL to indicate an error,sothat your postcondition checksthat the resource is deallocated on any errors. 
+A postcondition is a guaranteeon the exit value or result ofa functionrunning. This can blend together with invariants, but this is something as simple as "function always returns0or -1on error." Usually these are documented, but ifyour function returns an allocated resource, you can adda postcondition that checks to makesure it's returning something, andnot NULL. Or, you can use NULL to indicate an error,sothat your postcondition checksthat the resource is deallocated on any errors. 
 
 In Cprogramming, invariants and postconditionsare usually usedmore in documentationthan actual codeor assertions. The best way to handle them is to add assert calls for theones you can,then document the rest. If you do that, when people hitan errorthey can see what assumptions you madewhenwriting the function. 
 
@@ -4712,17 +4829,17 @@ Prevention over Documentation
 
 A common problem when programmers write code is that they will document a common bug rather than simply fix it. My favorite is when the Ruby on Rails system simply assumed that all months had 30 days. Calendars are hard, so rather than fix it, programmers threw a tiny little comment somewhere thatsaid this was on purpose, and then they refused tofix it for years. 
 
-Everytimesomeone would complain,theywould bluster and yell, "But it’s documented!" 
+Everytimesomeone would complain,theywould bluster and yell, "But it's documented!" 
 
-Documentation doesn’t matter if you can actually fix the problem, and if the function has a fatalflaw, then just don’t includeituntil you can fix it. In the case of Ruby on Rails, not havingdate functions wouldhave been better than including 
+Documentation doesn't matter if you can actually fix the problem, and if the function has a fatalflaw, then just don't includeituntil you can fix it. In the case of Ruby on Rails, not havingdate functions wouldhave been better than including 
 purposefully broken onesthat nobody could use. 
 
-As you go through your defensive programming cleanups,try to fix everything you can. If you findyourself documenting moreand more problems you can’t fix,then considerredesigning the feature or simplyremoving it. If you really have to keep this horriblybrokenfeature,then I suggest you write it, document it, andthen finda new job before you are blamed forit.
+As you go through your defensive programming cleanups,try to fix everything you can. If you findyourself documenting moreand more problems you can't fix,then considerredesigning the feature or simplyremoving it. If you really have to keep this horriblybrokenfeature,then I suggest you write it, document it, andthen finda new job before you are blamed forit.
 
 Automate Everything 
 
 
-You are a programmer, and that means your job is putting other people out ofjobs with automation. The pinnacleof this is putting yourself out of ajob with your own automation. Obviously,you won’tcompletely eliminate what you do, butif you’re spending your whole day rerunning manual tests in your terminal, then your job isn’t programming. You are doing QA, and you should automateyourselfoutof this QA job that you probably don’t really want any way. 
+You are a programmer, and that means your job is putting other people out ofjobs with automation. The pinnacleof this is putting yourself out of ajob with your own automation. Obviously,you won'tcompletely eliminate what you do, butif you're spending your whole day rerunning manual tests in your terminal, then your job isn't programming. You are doing QA, and you should automateyourselfoutof this QA job that you probably don't really want any way. 
 
 The easiest way todo this is to writeautomatedtests, or unit tests. In this book I'm going to get into how to do this easily, but I'llavoid most of the dogmaaboutwhen you should writetests. I'llfocus on how towrite them,what to test, and how tobeefficientat the testing. 
 
@@ -4739,37 +4856,37 @@ Hereare common things programmersfail toautomate when theyshould:
 
 • Errorreporting 
 
-Try todevote some of your time to automating this and you’ll have more time to work on the fun stuff. Or, if this is fun to you, then maybe you should workon software 
+Try todevote some of your time to automating this and you'll have more time to work on the fun stuff. Or, if this is fun to you, then maybe you should workon software 
 thatmakes automating these things easier. 
 
 
 Simplify and Clarify 
 
 
-The concept ofsimplicity is a slipperyone tomanypeople, especially smart people. They generally confuse comprehension with simplicity. Ifthey understand it, clearly it’ssimple. The actualtestof simplicityis comparingsomething with something else that could be simpler. But you’llsee people who write codego running to the most complex,obtuse structures possible because theythink thesimpler version of the same thingis dirty. A love affair with complexity is aprogramming sickness.
+The concept ofsimplicity is a slipperyone tomanypeople, especially smart people. They generally confuse comprehension with simplicity. Ifthey understand it, clearly it'ssimple. The actualtestof simplicityis comparingsomething with something else that could be simpler. But you'llsee people who write codego running to the most complex,obtuse structures possible because theythink thesimpler version of the same thingis dirty. A love affair with complexity is aprogramming sickness.
 
 You can fight this disease by first telling yourself, "Simple and clear is notdirty,no matter what everyone else is doing." If everyoneelseis writing insane visitorpatterns involving 19 classes over 12 interfaces, andyou cando it with twostring operations, thenyou win. They are wrong, no matter how elegant theythink their complex monstrosity is. 
 
-Here’s the simplesttest of which function is better:
+Here's the simplesttest of which function is better:
 
-• Make sure both functions haveno errors. Itdoesn’t matter how fast orsimple a function is ifit has errors. 
+• Make sure both functions haveno errors. Itdoesn't matter how fast orsimple a function is ifit has errors. 
 
-• If you can’tfixone, thenpick the other.
+• If you can'tfixone, thenpick the other.
 
 • Dotheyproduce the same result? If not, then pickthe onethat has the result you need. 
 
 • If theyproducethe same result, thenpick the onethateitherhas fewer features, fewer branches, oryou just think is simpler. 
 
-• Make sure you’re not just picking theone that ismostimpressive. 
+• Make sure you're not just picking theone that ismostimpressive. 
 
 
 Simple and dirty beats complexand cleanany day.
 
-You'll notice thatImostly giveup at the end andtell you to use yourjudgment. Simplicity is ironically a very complex thing, so using your taste asa guideis thebest way to go. Just make sure that you adjustyour view of what’s "good" as you grow and gain moreexperience. 
+You'll notice thatImostly giveup at the end andtell you to use yourjudgment. Simplicity is ironically a very complex thing, so using your taste asa guideis thebest way to go. Just make sure that you adjustyour view of what's "good" as you grow and gain moreexperience. 
 
 Question Authority 
 
-The final strategy is themost important because itbreaks you outof thedefensive programming mind-set and lets you transition into the creative mind-set. Defensive programming is authoritarian and canbecruel. The job of this mind-setis to make you follow rules, becausewithout them you’ll miss something orget distracted. 
+The final strategy is themost important because itbreaks you outof thedefensive programming mind-set and lets you transition into the creative mind-set. Defensive programming is authoritarian and canbecruel. The job of this mind-setis to make you follow rules, becausewithout them you'll miss something orget distracted. 
 
 This authoritarian attitude has the disadvantageof disabling independentcreativethought. Rules arenecessary for getting things done, but being aslave to them will kill your creativity. 
 
@@ -4777,28 +4894,28 @@ This final strategymeans you should periodically question the rules you follow a
 
 Order Is Not Important 
 
-The final thing I'llsayon this philosophy isthat I'mnot telling you todo thisin a strict order of "CREATE! DEFEND!CREATE! DEFEND!" At first you mightwant todo that, but I’d actually doeither in varying amountsdepending onwhat I wanted to do, and I might even meldthem together with no defined boundary. 
+The final thing I'llsayon this philosophy isthat I'mnot telling you todo thisin a strict order of "CREATE! DEFEND!CREATE! DEFEND!" At first you mightwant todo that, but I'd actually doeither in varying amountsdepending onwhat I wanted to do, and I might even meldthem together with no defined boundary. 
 
-I also don’t think one mind­set isbetter thananother, or that there’s astrictseparation between them. Youneed both creativity andstrictnessto do programming well,sowork on bothif you want to improve. 
+I also don't think one mind­set isbetter thananother, or that there's astrictseparation between them. Youneed both creativity andstrictnessto do programming well,sowork on bothif you want to improve. 
 
 Extra Credit 
 
 
-• The codein the bookup to this point (and for the rest of it)potentially violates these rules. Go back and apply what you’velearned to one exerciseto seeif you can improve itor find bugs. 
+• The codein the bookup to this point (and for the rest of it)potentially violates these rules. Go back and apply what you'velearned to one exerciseto seeif you can improve itor find bugs. 
 
 • Findanopensource projectand givesome of the filesa similar code review. Submita patchthat fixes abug.
 
 
 ## Exercise28. Intermediate Makefiles 
 
-In the next threeexercises you’ll create a skeleton projectdirectory to use in building your Cprograms later. This skeletondirectory will be used for the rest of the book. In this exercise,I'll 
+In the next threeexercises you'll create a skeleton projectdirectory to use in building your Cprograms later. This skeletondirectory will be used for the rest of the book. In this exercise,I'll 
 cover just the Makefile so 
 
 you can understand it. The purpose of thisstructure is to make it easy tobuild medium-sized programs without having to resort to configuretools. If doneright, you can get very far with just GNU make and somesmall shell scripts. 
 
 The Basic Project Structure 
 
-The first thing todo is make a c-skeleton directory, and thenputa set of basic files and directoriesin it that many projects have. Here’smy starter: 
+The first thing todo is make a c-skeleton directory, and thenputa set of basic files and directoriesin it that many projects have. Here'smy starter: 
 
 
 * Exercise 28 Session 
@@ -4827,15 +4944,15 @@ $
 
 At the end you see me doa ls -l so thatyou cansee the finalresults. 
 
-Here’s abreakdown: LICENSE If you release the source of your projects, you’ll want to include a license. If you don’t, though, the code iscopyrightby you and nobody else has rights 
+Here's abreakdown: LICENSE If you release the source of your projects, you'll want to include a license. If you don't, though, the code iscopyrightby you and nobody else has rights 
 to it by default. 
 
 README.md Basic instructionsfor using your project go here. It ends in .md sothat it willbe interpretedas markdown. 
 
 Makefile The main build fileforthe project.
 
-bin/ Where programs that users can run go. This is usually empty, and the Makefile will create it ifit’s not there. 
-build/ Wherelibraries and other buildartifacts go. Alsoempty, and the Makefile will create it ifit’s not there. 
+bin/ Where programs that users can run go. This is usually empty, and the Makefile will create it ifit's not there. 
+build/ Wherelibraries and other buildartifacts go. Alsoempty, and the Makefile will create it ifit's not there. 
 src/ Where the source code goes,usually .c and .h files. 
 tests/ Where automated tests go. 
 src/dbg.h I copied the dbg.h from * Exercise 1. into src/
@@ -4847,7 +4964,7 @@ Makefile
 
 The first thing I'llcoveris the Makefile, because from thatyou canunderstand how everythingelseworks. 
 
-The Makefile in this exercise is much more detailedthan ones you’veused so far,soI'll break it down afteryou type it in: 
+The Makefile in this exercise is much more detailedthan ones you'veused so far,soI'll break it down afteryou type it in: 
 
 Makefile 
 
@@ -4906,7 +5023,7 @@ Makefile
 53 cpy|a?sn? printf|byte_)'$(SOURCES) || true
 ```
 
-Remember thatyouneed to consistently indent the Makefile with tab characters. Your text editor should knowthat and do the right thing. If itdoesn’t,get a differenttext editor. No programmershould use an editorthat failsatsomething so simple. 
+Remember thatyouneed to consistently indent the Makefile with tab characters. Your text editor should knowthat and do the right thing. If itdoesn't,get a differenttext editor. No programmershould use an editorthat failsatsomething so simple. 
 
 The Header 
 
@@ -4916,17 +5033,17 @@ Makefile:1 These are the usual CFLAGS that you setin all of your projects, along
 
 Makefile:2 These options are usedwhen linkinga library. Someone else can then augment the linking optionsusing the OPTLIBS variable.
 
-Makefile:3 This codesets an optional variable called PREFIX that willonly have this valueif theperson running theMakefile didn’t already give a PREFIX setting. That’s what the ?= does. 
+Makefile:3 This codesets an optional variable called PREFIX that willonly have this valueif theperson running theMakefile didn't already give a PREFIX setting. That's what the ?= does. 
 
 Makefile:5 This fancy lineof awesomeness dynamically creates the SOURCES variableby doing a wildcard search forall *.c files in the src/ directory. You have togive both src/**/*.c and src/*.c so that GNU make willinclude the filesin src and the filesbelowit.
 
 Makefile:6 Once you have the list ofsource files, you can then use the patsubst to take the SOURCES list of *.c files and make a new lis tof all theobject files. You do this by telling patsubst to change all %.c extensionsto %.o, and thenthose extensions are assigned to OBJECTS. 
 
-Makefile:8 We’re using the wildcard again to find allof the test source files forthe unit tests. These areseparate fromthe library’s source files.
+Makefile:8 We're using the wildcard again to find allof the test source files forthe unit tests. These areseparate fromthe library's source files.
 
-Makefile:9 Then, we’re using the same patsubst trick to dynamically get all the TEST targets. In this case, I'mstripping away the .c extension so thata full program willbe madewith the same name. Previously, I hadreplaced the .c with {.o}soan object fileiscreated. 
+Makefile:9 Then, we're using the same patsubst trick to dynamically get all the TEST targets. In this case, I'mstripping away the .c extension so thata full program willbe madewith the same name. Previously, I hadreplaced the .c with {.o}soan object fileiscreated. 
 
-Makefile:11 Finally, we say the ultimate target is build/libYOUR_LIB which you will change to be whatever library you’re actually trying to build. This completesthe top of the Makefile, but I should explain what I mean by "lets people augment the build." When yourun Make, you can do this:
+Makefile:11 Finally, we say the ultimate target is build/libYOUR_LIB which you will change to be whatever library you're actually trying to build. This completesthe top of the Makefile, but I should explain what I mean by "lets people augment the build." When yourun Make, you can do this:
 
 ```bash
 
@@ -4943,11 +5060,11 @@ The first variablealters the PREFIX so that it installs into /tmp instead. The s
 
 The Target Build Continuing with the breakdownof the Makefile, I'mactually building theobject files and targets:
 
-Makefile:14 Remember that the first target is what make runsby defaultwhen no target isgiven. In this, it’s called all: and it gives $(TARGET)tests asthe targets to build. Lookup at the TARGET variableand you see that’s the library,so all: will first build the library. 
+Makefile:14 Remember that the first target is what make runsby defaultwhen no target isgiven. In this, it's called all: and it gives $(TARGET)tests asthe targets to build. Lookup at the TARGET variableand you see that's the library,so all: will first build the library. 
 
 The tests target is further downin the Makefile andbuilds the unit tests. 
 
-Makefile:16 Here’s anothertargetfor making "developer builds" that introduces a techniquefor changing optionsfor just one target. IfIdo a "dev build," I want the CFLAGS to include optionslike -Wextra thatareuseful for finding bugs. If you place them on the target lineas options like this, thengive another line thatsays the original target (in this case all), then it will change the options you set. I usethis for setting differentflags on differentplatforms that need it. 
+Makefile:16 Here's anothertargetfor making "developer builds" that introduces a techniquefor changing optionsfor just one target. IfIdo a "dev build," I want the CFLAGS to include optionslike -Wextra thatareuseful for finding bugs. If you place them on the target lineas options like this, thengive another line thatsays the original target (in this case all), then it will change the options you set. I usethis for setting differentflags on differentplatforms that need it. 
 
 Makefile:19 This builds the TARGET library, whatever that is. It also uses the same trick fromline 15,giving a target with just options and ways to alter them for thisrun. In this case, I'm adding -fPIC just for the library build, using the += syntax to add it on. 
 
@@ -4958,25 +5075,25 @@ Makefile:21 Thisrunsthe ar command that actually makes the TARGET.Thesyntax $@ $
 
 It seemslike a lotto keep track of in this indirection, and it can be, butonce you get it working, you just change TARGET at the topand builda whole new library.
 
-Makefile:22 Finally, to makethe library,you run ranlib on the TARGET andit’s built. 
+Makefile:22 Finally, to makethe library,you run ranlib on the TARGET andit's built. 
 
-Makefile:23-24 This just makesthe build/ or bin/ directories it they don’texist. This is then referenced fromline 19 when it gives the build target to make sure the build/ directory is made. You nowhave allof thestuff you need tobuild the software, so we’llcreate a way to build andrununit tests to do automated testing.
+Makefile:23-24 This just makesthe build/ or bin/ directories it they don'texist. This is then referenced fromline 19 when it gives the build target to make sure the build/ directory is made. You nowhave allof thestuff you need tobuild the software, so we'llcreate a way to build andrununit tests to do automated testing.
 
 The Unit Tests 
 
-C is different from other languages because it’s easier to create one tiny little programfor each thing you’re testing. Some testing frameworks try to emulatethe moduleconcept other languages have and do dynamic loading, but this doesn’twork wellin C. It’s also unnecessary,because you can just make a single programthat’srunfor each test instead. 
+C is different from other languages because it's easier to create one tiny little programfor each thing you're testing. Some testing frameworks try to emulatethe moduleconcept other languages have and do dynamic loading, but this doesn'twork wellin C. It's also unnecessary,because you can just make a single programthat'srunfor each test instead. 
 
-I'll cover this partof the Makefile, and thenlater you’ll see the contents of the tests/ directorythat make it actually work. 
+I'll cover this partof the Makefile, and thenlater you'll see the contents of the tests/ directorythat make it actually work. 
 
-Makefile:29 If you have a target that’s not real, but thereis a directory orfile with that name, thenyouneed to tagthe target with .PHONY: so make willignore the fileand always run. Makefile:30 I use the same trick for modifying the CFLAGS
+Makefile:29 If you have a target that's not real, but thereis a directory orfile with that name, thenyouneed to tagthe target with .PHONY: so make willignore the fileand always run. Makefile:30 I use the same trick for modifying the CFLAGS
 variableto add the TARGET to thebuild so thateach of the test programs will be linked with the TARGET library. In thiscase, it willadd build/libYOUR_LIB to thelinking.
 
 Makefile:31 Then I have the actual tests: target,which depends on allof theprograms 
 listedin the TESTS variablethat we created in theheader. This one lineactually says, "Make, use what you know about building programs and the current CFLAGS settings to build each programin TESTS." 
 
-Makefile:32 Finally, when all of the TESTS are built, there’s a simple shell scriptI'll create later that knows how to run them alland report their output. This lineactually runsit so you can see the test results. 
+Makefile:32 Finally, when all of the TESTS are built, there's a simple shell scriptI'll create later that knows how to run them alland report their output. This lineactually runsit so you can see the test results. 
 
-For the unit testing to work, you’ll need tocreate a little shell script that knows how to run the programs. Go ahead and create this tests/runtests.sh script: runtests.sh
+For the unit testing to work, you'll need tocreate a little shell script that knows how to run the programs. Go ahead and create this tests/runtests.sh script: runtests.sh
 
 
 
@@ -5012,18 +5129,18 @@ I now havefully working unit tests,sonextup ismaking things cleanwhen Ineed to r
 
 Makefile:38 The clean: target startsthings off when we need to clean up theproject. 
 
-Makefile:39-42 This cleans out most of the junk thatvarious compilers andtools leave behind. It also gets rid of the build/directory and usesa trick at the end to cleanly erase theweird *.dSYM directories thatApple’s XCode leaves behindfor debugging purposes. 
+Makefile:39-42 This cleans out most of the junk thatvarious compilers andtools leave behind. It also gets rid of the build/directory and usesa trick at the end to cleanly erase theweird *.dSYM directories thatApple's XCode leaves behindfor debugging purposes. 
 
 
 If yourunintojunkthat you need to clean out,simply augment the lis tof things being deleted in this target. 
 
 The Install 
 
-After that,I'll need a way to install the project, and for a Makefile that’s buildinga library,I just need to put something inthe common PREFIX directory, usually /usr/local/lib. 
+After that,I'll need a way to install the project, and for a Makefile that's buildinga library,I just need to put something in the common PREFIX directory, usually /usr/local/lib. 
 
 Makefile:45 Thismakes install: dependon the all: target, so that when yourun make install, it will be sure tobuild everything. 
 
-Makefile:46 I then usethe program install to create the target lib directory if it doesn’t exist. In this case,I'm trying to make the install asflexible as possible byusing two variables that are conventions for installers. DESTDIR is handed to make by installers, which do their builds insecure or odd locations, to build packages. PREFIX is used when people want the project to be installed insomeplace other than /usr/local. 
+Makefile:46 I then usethe program install to create the target lib directory if it doesn't exist. In this case,I'm trying to make the install asflexible as possible byusing two variables that are conventions for installers. DESTDIR is handed to make by installers, which do their builds insecure or odd locations, to build packages. PREFIX is used when people want the project to be installed insomeplace other than /usr/local. 
 
 Makefile:47 After that, I'm justusing install to actually install the library where it needsto go.
 
@@ -5033,20 +5150,20 @@ The Checker
 
 The very last part of this Makefile is a bonus thatI include In my C projectsto helpme dig out any attempts to use thebad functions in C. Theseare namely thestring functions ando ther unprotectedbufferfunctions. 
 
-Makefile:50 Thissets a variablethat’s a big regex looking for bad functions like strcpy. 
+Makefile:50 Thissets a variablethat's a big regex looking for bad functions like strcpy. 
 
 Makefile:51 The check: target allows you to run acheck whenever you need to. 
 
 Makefile:52 This is just a way toprint a message, butdoing @echo tells make to not print the command, just its output. 
 
-Makefile:53 Run the egrep command on the source files to look for anybad patterns. The || true at the end is a way to prevent make fromthinking that egrep failedif it doesn’tfinderrors. 
+Makefile:53 Run the egrep command on the source files to look for anybad patterns. The || true at the end is a way to prevent make fromthinking that egrep failedif it doesn'tfinderrors. 
 
-When yourunthis, it will have the oddeffectof returningan errorwhen there’s nothing bad going on. 
+When yourunthis, it will have the oddeffectof returningan errorwhen there's nothing bad going on. 
 
 
 What You Should See 
 
-I have two moreexercises to go before I'm done building the project skeleton directory, buthere’sme testing out the features of the Makefile. 
+I have two moreexercises to go before I'm done building the project skeleton directory, buthere'sme testing out the features of the Makefile. 
 
 
 * Exercise 28 Session 
@@ -5061,25 +5178,25 @@ $ make
 ```
 
 
-When I run the clean: target, it works, butbecause I don’thave anysourcefiles in the src/ directory, none of the othercommandsreally work. I'll finishthat up in the nextexercises. 
+When I run the clean: target, it works, butbecause I don'thave anysourcefiles in the src/ directory, none of the othercommandsreally work. I'll finishthat up in the nextexercises. 
 
 Extra Credit 
 
-• Try to get the Makefile toactually work by putting a source and header file in src/ andmaking the library. You shouldn’tneed a main function inthe source file. 
+• Try to get the Makefile toactually work by putting a source and header file in src/ andmaking the library. You shouldn'tneed a main function in the source file. 
 
-• Research what functions the check: target is looking for in the BADFUNCS regular expressionthat it’s using.
+• Research what functions the check: target is looking for in the BADFUNCS regular expressionthat it's using.
 
-• If you don’tdo automated unit testing, thengo read about it so you’re preparedlater. 
+• If you don'tdo automated unit testing, thengo read about it so you're preparedlater. 
 
 
 
 ## Exercise29. Libraries and Linking 
 
-A central part of any C programis the ebility tolink it tolibraries that your OS provides. Linking is how you get additionalfeatures for your program thatsomeone else createdand packagedon the system. You’vebeen using somestandard libraries thatare automatically included, but I'm going to explain thedifferent types of librariesand what they do. 
+A central part of any C programis the ebility tolink it tolibraries that your OS provides. Linking is how you get additionalfeatures for your program thatsomeone else createdand packagedon the system. You'vebeen using somestandard libraries thatare automatically included, but I'm going to explain thedifferent types of librariesand what they do. 
 
 First off, libraries are poorly designed inevery programming language. I haveno idea why, butit seems languagedesigners think of linking assomething theyjust slap on later. 
 
-Libraries areusually confusing, hard to dealwith, can’t do versioning right, and end up being linked differently everywhere. 
+Libraries areusually confusing, hard to dealwith, can't do versioning right, and end up being linked differently everywhere. 
 
 C is no different, but the way linking andlibraries aredone in C is an artifactof how the UNIX operating system and executable formats were designed years ago. Learning how Clinksthings helpsyou understand how yourOS works andhowit runsyour programs. 
 
@@ -5092,9 +5209,9 @@ These files are built and then placed in acommon location. When you run your pro
 
 I tend to like static libraries for small-tomedium-sized projects, becausethey are easier todeal with andwork on moreoperating systems. I also like to put all of the code I can into a static library so thatIcan thenlinkit to unit tests and to the file programs asneeded. 
 
-Dynamiclibrariesare good for largersystems, when space is tight, or if youhave a large number ofprograms thatusecommon functionality. In this case, you don’twant tostatically link all of the codeforthe common features to every program, so you put it in a dynamic library so that itis loaded only oncefor all of them. 
+Dynamiclibrariesare good for largersystems, when space is tight, or if youhave a large number ofprograms thatusecommon functionality. In this case, you don'twant tostatically link all of the codeforthe common features to every program, so you put it in a dynamic library so that itis loaded only oncefor all of them. 
 
-In the previous exercise, I laidout how to make a static library (a .a file), andthat’s whatI'll use in therest of the book. In this exercise,I'm going to show youhow to make a simple .so library, and how to dynamically loadit with the UNIX dlopen system. I'll have you do this manually so thatyou understand everything that’s actually happening, then for extra credit you’ll use the c-skeleton skeletonto create it. 
+In the previous exercise, I laidout how to make a static library (a .a file), andthat's whatI'll use in therest of the book. In this exercise,I'm going to show youhow to make a simple .so library, and how to dynamically loadit with the UNIX dlopen system. I'll have you do this manually so thatyou understand everything that's actually happening, then for extra credit you'll use the c-skeleton skeletonto create it. 
 
 Dynamically Loading a Shared Library 
 
@@ -5140,7 +5257,7 @@ libex29.c
 ```
 
 
-There’s nothing fancy in there,althoughthere are some bugsI'm leavingin on purposeto seeif you’ve been payingattention. You'll fix thoselater. 
+There's nothing fancy in there,althoughthere are some bugsI'm leavingin on purposeto seeif you've been payingattention. You'll fix thoselater. 
 
 Whatwe want to do is use the functions dlopen, dlsym, and dlclose to work with the above functions. 
 
@@ -5186,25 +5303,25 @@ func(data);  ==
 ```
 
 
-I'll now break thisdown so you can see what’sgoing on in this smallbit of useful code: 
+I'll now break thisdown so you can see what'sgoing on in this smallbit of useful code: 
 
 ex29.c:5 I'll use this 
 
-function pointer definitionlaterto call functions in the library. This is nothing new, but makesure you understand what it’s doing. 
+function pointer definitionlaterto call functions in the library. This is nothing new, but makesure you understand what it's doing. 
 
-ex29.c:17 After theusual setupfor a small program, I use the dlopen function to loadup thelibrary that’s indicatedby lib_file. This function returns a handle thatwe use later, which works a lotlike opening afile. 
+ex29.c:17 After theusual setupfor a small program, I use the dlopen function to loadup thelibrary that's indicatedby lib_file. This function returns a handle thatwe use later, which works a lotlike opening afile. 
 
-ex29.c:18 Ifthere’s an error, I do the usual check and exit, but notice at thenend that I'm using dlerror to find out what the library-related error was. 
+ex29.c:18 Ifthere's an error, I do the usual check and exit, but notice at thenend that I'm using dlerror to find out what the library-related error was. 
 
 ex29.c:20 I use dlsym to get a function out of the lib by its string name in func_to_run. This is the powerful part, sinceI'm dynamically getting a pointer to a function based on astring I got fromthe command line argv. 
 
 ex29.c:23 I then call the func function that was returned, and check its returnvalue.
 
-ex29.c:26 Finally,I close the library up just like I would a file. Usually, you keep theseopen the whole time the program isrunning, so closing it at the endisn’tas useful, but I'm demonstrating ithere. 
+ex29.c:26 Finally,I close the library up just like I would a file. Usually, you keep theseopen the whole time the program isrunning, so closing it at the endisn'tas useful, but I'm demonstrating ithere. 
 
 What You Should See 
 
-Now thatyou knowwhat this filedoes,here’s ashell session of me building the libex29.so, ex29 and thenworking with it. Follow along so you learn howthese things are manuallybuilt. 
+Now thatyou knowwhat this filedoes,here's ashell session of me building the libex29.so, ex29 and thenworking with it. Follow along so you learn howthese things are manuallybuilt. 
 
 * Exercise 29 Session 
 
@@ -5245,38 +5362,38 @@ dlopen(libex.so, 2): image not found
 $ 
 ```
 
-Onething thatyou may run into is thatevery OS, every versionof every OS, and every compiler onevery versionof every OS,seemsto want to change the way you build a shared library every time somenew programmer thinks it’s wrong. If the line I use to make the libex29.so file is wrong, thenlet me knowand I'll add somecommentsforother platforms. 
+Onething thatyou may run into is thatevery OS, every versionof every OS, and every compiler onevery versionof every OS,seemsto want to change the way you build a shared library every time somenew programmer thinks it's wrong. If the line I use to make the libex29.so file is wrong, thenlet me knowand I'll add somecommentsforother platforms. 
 
 Warning! 
 
-Sometimes you’lldo what you think is normal, and run this command cc -Wall -g -DNDEBUG ­ldl ex29.c -o ex29 thinking everything willwork, but nope. You see,on someplatforms the orderof where libraries gomakes them work ornot, andforno real reason. 
+Sometimes you'lldo what you think is normal, and run this command cc -Wall -g -DNDEBUG ­ldl ex29.c -o ex29 thinking everything willwork, but nope. You see,on someplatforms the orderof where libraries gomakes them work ornot, andforno real reason. 
 
-In Debianor Ubuntu,youhave todo cc -Wall -g ­DNDEBUG ex29.c -ldl -o ex29 for noreasonatall. It’s just the wayitis. So since this works onOS X I'm doing it here, but in the future, ifyou link against adynamic library andit can’tfind a function, try shuffling things around.
+In Debianor Ubuntu,youhave todo cc -Wall -g ­DNDEBUG ex29.c -ldl -o ex29 for noreasonatall. It's just the wayitis. So since this works onOS X I'm doing it here, but in the future, ifyou link against adynamic library andit can'tfind a function, try shuffling things around.
 
-The irritationhere is there’s an actual platform difference on nothing morethan the orderof command line arguments. Onno rational planet should putting wan -ldl at one position be different from another. It’s an option, and having to know thesethings is incrediblyannoying. 
+The irritationhere is there's an actual platform difference on nothing morethan the orderof command line arguments. Onno rational planet should putting wan -ldl at one position be different from another. It's an option, and having to know thesethings is incrediblyannoying. 
 
 How to Break It 
 
-Open libex29.so and edit it with an editor that can handle binary files. Change a couple of bytes, then close itlibex29.so. Try to see if you can get the dlopenfunction toload iteven though you’vecorrupted it. 
+Open libex29.so and edit it with an editor that can handle binary files. Change a couple of bytes, then close itlibex29.so. Try to see if you can get the dlopenfunction toload iteven though you'vecorrupted it. 
 
 Extra Credit 
 
-• Were you paying attention to thebad code Ihave inthe libex29.c functions? Do yousee how,even though I use a for-loop theystill check for '\0' endings? Fix this so that the functions always take a length forthe string towork with inside the function.
+• Were you paying attention to thebad code Ihave in the libex29.c functions? Do yousee how,even though I use a for-loop theystill check for '\0' endings? Fix this so that the functions always take a length forthe string towork with inside the function.
 
 • Take the c ­skeleton skeleton, and create anew project for this exercise. Put the libex29.c file in the src/ directory. Change the Makefile so that itbuilds this as build/libex29.so. 
 
 • Take the ex29.c file and put it in   tests/ex29_tests. so that itrunsas a unit
 test. Make this all work, 
 
-which meansthat you’ll have tochangeit so that it loadsthe build/libex29.so file and runs tests similar to whatI didmanually above. 
+which meansthat you'll have tochangeit so that it loadsthe build/libex29.so file and runs tests similar to whatI didmanually above. 
 • Readthe man dlopen documentation and read about all of the related functions. Try some of the other options to
 dlopen beside RTLD_NOW. 
 
 ## Exercise30. Automated Testing 
 
-Automated testingis used frequently in other languages likePythonand Ruby, but rarely usedin C. Partof the reason comesfrom the difficulty ofautomatically loadingand testing piecesof C code. In this chapter, we’ll createa very small testing framework andget your skeleton directoryto build an example testcase. 
+Automated testingis used frequently in other languages likePythonand Ruby, but rarely usedin C. Partof the reason comesfrom the difficulty ofautomatically loadingand testing piecesof C code. In this chapter, we'll createa very small testing framework andget your skeleton directoryto build an example testcase. 
 
-The framework I'm going to use, and you’ll includein your c-skeleton skeleton, is called minunit which started with atinysnippet of codeby Jera Design. I evolveditfurther,to be this: 
+The framework I'm going to use, and you'll includein your c-skeleton skeleton, is called minunit which started with atinysnippet of codeby Jera Design. I evolveditfurther,to be this: 
 minunit.h 
 
 
@@ -5315,8 +5432,8 @@ minunit.h
 ```
 
 
-There’spractically nothing leftof theoriginal,since now I'm using the dbg.h macros and a large macro that I created at the endfor the boilerplate testrunner. Even with this tiny amount of code, we’ll createa fully functioning unit testsystem thatyou canusein your C 
-codeonce it’scombined with ashell script torunthe tests.
+There'spractically nothing leftof theoriginal,since now I'm using the dbg.h macros and a large macro that I created at the endfor the boilerplate testrunner. Even with this tiny amount of code, we'll createa fully functioning unit testsystem thatyou canusein your C 
+codeonce it'scombined with ashell script torun the tests.
 
 Wiring Up the Test Framework 
 
@@ -5382,7 +5499,7 @@ ex30.c
 
 This codeis demonstrating the RUN_TESTS macro in tests/minunit.h and how to use theother test runner macros. I have the actualtestfunctions stubbed outsothat you can see how to structure aunittest. I'llbreak this file down first: 
 libex29_tests.c:1 This includes the minunit.h framework.
-libex29_tests.c:3-7 A first test. Tests arestructured so that they takeno arguments andreturn a char * that’s NULL on success. This is importantbecause the other macros will be used toreturn anerror messageto the test runner. 
+libex29_tests.c:3-7 A first test. Tests arestructured so that they takeno arguments andreturn a char * that's NULL on success. This is importantbecause the other macros will be used toreturn anerror messageto the test runner. 
 libex29_tests.c:9-2. Theseare more tests
 thatare the same as the first.
 libex29_tests.c:27 The runner function thatwill control all of the other tests. It has thesame formas anyother test case, but it gets configured with some additional gear. 
@@ -5393,7 +5510,7 @@ libex29_tests.c:35 After you say whatteststo run,you then return NULL just like 
 libex29_tests.c:38 Finally,you just use the big RUN_TESTS macro
 
 to wire upthe main methodwith all of the goodies, andtell it to run the all_tests starter. 
-That’s allthereis to running a test, and now you should try getting just this to run within the project skeleton. Here’s whatit looks likewhen Ido it: 
+That's allthereis to running a test, and now you should try getting just this to run within the project skeleton. Here's whatit looks likewhen Ido it: 
 
 
 * Exercise 30 Session 
@@ -5402,7 +5519,7 @@ not printable
 I first did a make clean and then I ran the build, which remade the template libYOUR_LIBRARY. a
 and 
 libYOUR_LIBRARY.so 
-files. Remember that you did this in the Extra Credit for Exercise29, butjust in case you didn’tget it, here’s the diff for the Makefile I'm using now: 
+files. Remember that you did this in the Extra Credit for Exercise29, butjust in case you didn'tget it, here's the diff for the Makefile I'm using now: 
 
 ex30.Makefile.diff 
 
@@ -5431,7 +5548,7 @@ build:
 @mkdir -p bin 
 ```
 
-With thosechanges you should now be building everythingand finally be able to fill inthe remaining unit test functions: 
+With thosechanges you should now be building everythingand finally be able to fill in the remaining unit test functions: 
 libex29_tests.c 
 
 ```c
@@ -5523,12 +5640,12 @@ close lib.");
 
 ```
 
-Hopefullyby now you can figure out what’sgoing on, since there’s nothing new in this except for the 
+Hopefullyby now you can figure out what'sgoing on, since there's nothing new in this except for the 
 check_function function. This is acommon patternwhereI use a chunk ofcode repeatedly, and then simplyautomate it by either creatinga functionor a macro for it. In this case, I'm going to run functionsin the .so thatIload, so I just madea little function todo it. 
 
 Extra Credit 
 
-• This worksbut it’s probably a bitmessy. Clean the c-skeleton directory up so that it has allof these files, but remove 
+• This worksbut it's probably a bitmessy. Clean the c-skeleton directory up so that it has allof these files, but remove 
 
 any of the code related to Exercise 
 29. You should beable to copy this directory over and kick-start newprojects without much editing. 
@@ -5539,7 +5656,7 @@ any of the code related to Exercise
 ## Exercise31. Common Undefined Behavior 
 
 
-At this point inthe book, it’s time to introduceyou to the most common kinds of UB that you will encounter. C has 191 behaviors that the standards committee has decided aren’t defined by the standard, and therefore anything goes. Some of these behaviors are legitimately not the compiler’s job, but the vast majority are simply lazy capitulations by the standards committee that cause annoyances, or worse, defects. An example of laziness: 
+At this point in the book, it's time to introduceyou to the most common kinds of UB that you will encounter. C has 191 behaviors that the standards committee has decided aren't defined by the standard, and therefore anything goes. Some of these behaviors are legitimately not the compiler's job, but the vast majority are simply lazy capitulations by the standards committee that cause annoyances, or worse, defects. An example of laziness: 
 
 An unmatched "or" character is encountered on a logical source line during tokenization. 
 
@@ -5547,16 +5664,16 @@ An unmatched "or" character is encountered on a logical source line during token
 In this instance,the C99 standard actually allows a compiler writer to fail at a parsing task that a junior in college could get right. Why is this? Who knows, but most likely someoneon the standards committeewas working on a Ccompilerwith this defect and managed to get this in thestandard rather thanfix theircompiler. Or, as I said, simple laziness. 
 
 
-The crux of the issue with UB is the differencebetweenthe C abstract machine, defined in thestandard andreal computers. The C standard describes the C language according to a strictlydefined abstract machine. This is a perfectly valid way to design alanguage, exceptwherethe C standard goeswrong: It doesn’trequire compilers to implement this abstract machine and enforceits specification. 
+The crux of the issue with UB is the differencebetween the C abstract machine, defined in thestandard andreal computers. The C standard describes the C language according to a strictlydefined abstract machine. This is a perfectly valid way to design alanguage, exceptwherethe C standard goeswrong: It doesn'trequire compilers to implement this abstract machine and enforceits specification. 
 
-Instead, a compiler writer can completely ignore the abstract machine in191instances of the standard. It should really be calledan "abstract machine, but",as in, "It’s a strictlydefined abstract machine, but..." This allows the standards committee and compiler implementers to have their cake andeatit, too. They can have a standardthat is full of omissions, lax specification, and errors, but when you encounter oneof these, they can pointat the abstract machine and simply say in their best robot voice, "THE ABSTRACT MACHINEIS ALLTHATMATTERS. YOU DO NOT CONFORM!" Yet,in 191 instancesthat compiler writers don’t have to conform, you do. You are a secondclasscitizen, even though the language isreally writtenfor you to use. 
+Instead, a compiler writer can completely ignore the abstract machine in191instances of the standard. It should really be calledan "abstract machine, but",as in, "It's a strictlydefined abstract machine, but..." This allows the standards committee and compiler implementers to have their cake andeatit, too. They can have a standardthat is full of omissions, lax specification, and errors, but when you encounter oneof these, they can pointat the abstract machine and simply say in their best robot voice, "THE ABSTRACT MACHINEIS ALLTHATMATTERS. YOU DO NOT CONFORM!" Yet,in 191 instancesthat compiler writers don't have to conform, you do. You are a secondclasscitizen, even though the language isreally writtenfor you to use. 
 
 
-This meansthat you, not the compiler writer,areleftto enforcethe rulesof an abstract computational machine, andwhen you inevitably fail,it’s yourfault. The compiler doesn’thave to flag the UB, doanything reasonable, andit’s yourfault for not memorizing all 191 rulesthat should be avoided. You are just stupid for not memorizing 191 complex potholeson the road to C. 
+This meansthat you, not the compiler writer,areleftto enforcethe rulesof an abstract computational machine, andwhen you inevitably fail,it's yourfault. The compiler doesn'thave to flag the UB, doanything reasonable, andit's yourfault for not memorizing all 191 rulesthat should be avoided. You are just stupid for not memorizing 191 complex potholeson the road to C. 
 
-This is a wonderful situation for the classic know-it-all type who can memorize these 191 finer points of annoyance with which to beat beginners to intellectual death. There’s an additional hypocrisy with UB that is doubly infuriating. If you show a C fanatic code that properlyu ses C strings but can overwrite the string terminator,they will say, "That’s UB. It’s not the C language’s fault!" However, if you show them UB that has while(x) x <<= 1 in it, they will say, "That’s UB idiot!Fix your damn code!" This lets the C fanatic simultaneously use UB to defend the purity of C’s design, and also beat you up for being an idiot who writes bad code. Some UB is meant as, "you can ignore the security of this since it’s not C’s fault", and other UB is meant as, "you are an idiot for writing this code," and the distinction betweenthe two is not specified inthe standard. 
+This is a wonderful situation for the classic know-it-all type who can memorize these 191 finer points of annoyance with which to beat beginners to intellectual death. There's an additional hypocrisy with UB that is doubly infuriating. If you show a C fanatic code that properlyu ses C strings but can overwrite the string terminator,they will say, "That's UB. It's not the C language's fault!" However, if you show them UB that has while(x) x <<= 1 in it, they will say, "That's UB idiot!Fix your damn code!" This lets the C fanatic simultaneously use UB to defend the purity of C's design, and also beat you up for being an idiot who writes bad code. Some UB is meant as, "you can ignore the security of this since it's not C's fault", and other UB is meant as, "you are an idiot for writing this code," and the distinction between the two is not specified in the standard. 
 
-As you can see, Iam not a fan of the huge list of UB. I had to memorize all of these before the C99 standard, and just didn’t bother to memorize the changes. I’d simply moved onto away and found a way to avoid as much UB as I possibly could, trying to stay within the abstract machine specification while also working with real machines. This turns out to be almost impossible, so I just don’twritenew codein C anymore because of its glaringly obvious problems. 
+As you can see, Iam not a fan of the huge list of UB. I had to memorize all of these before the C99 standard, and just didn't bother to memorize the changes. I'd simply moved onto away and found a way to avoid as much UB as I possibly could, trying to stay within the abstract machine specification while also working with real machines. This turns out to be almost impossible, so I just don'twritenew codein C anymore because of its glaringly obvious problems. 
 
 Warning! 
 
@@ -5567,15 +5684,15 @@ lexical,semantic, and executionbased.
 
 2. The lexical and semantic behaviors can be detected by the compiler. 
 
-3. The execution-based behaviors fallinto Turing’sdefinitionof the halting problem, and are therefore NP-complete.
+3. The execution-based behaviors fallinto Turing'sdefinitionof the halting problem, and are therefore NP-complete.
 
 4. This means that to avoid CUB, it requires solving one of the oldest proven unsolvable problems in computer science, making UB effectively impossible for a computer to avoid.
 
-To put it more succinctly: "If the only way to knowthat you’veviolated the abstract machine with UBis to run your C program, then you will never be able to completely avoid UB." 
+To put it more succinctly: "If the only way to knowthat you'veviolated the abstract machine with UBis to run your C program, then you will never be able to completely avoid UB." 
 
 UB 2. Because ofthis, I'm going to list the top 20 undefined behaviors in C, and tell you how to avoid them as best I can. 
 
-In general, the way to avoid UB is towriteclean code, but some of these behaviors are impossible to avoid. For example, writing past the end ofa C stringis an undefinedbehavior, yet it’seasily done by accident and externallyaccessible to an attacker. This list will also include relatedUB thatall fallinto the same category butwithdiffering contexts. 
+In general, the way to avoid UB is towriteclean code, but some of these behaviors are impossible to avoid. For example, writing past the end ofa C stringis an undefinedbehavior, yet it'seasily done by accident and externallyaccessible to an attacker. This list will also include relatedUB thatall fallinto the same category butwithdiffering contexts. 
 
 Common UBs 
 
@@ -5679,17 +5796,17 @@ Common UBs
 
 
 
-There are manymore, but these seemto be the onesthat I run into themostoftenor that come up the most often in C code. Theyare also the most difficult to avoid,so if you at least remember these, you’ll be able to avoid the majorones. 
+There are manymore, but these seemto be the onesthat I run into themostoftenor that come up the most often in C code. Theyare also the most difficult to avoid,so if you at least remember these, you'll be able to avoid the majorones. 
 
 ## Exercise32. Double Linked Lists 
 
-The purpose of this book is to teach you how yourcomputer really works, andincluded in thatis how various data structures and algorithms function. Computers by themselves don’t doa lot of useful processing. Tomake them do usefulthings,you need to structurethe dataand thenorganize theprocessing of these structures. 
+The purpose of this book is to teach you how yourcomputer really works, andincluded in thatis how various data structures and algorithms function. Computers by themselves don't doa lot of useful processing. Tomake them do usefulthings,you need to structurethe dataand thenorganize theprocessing of these structures. 
 
 Other programming languages either includelibraries that implementallof these structures,or they have direct syntax for them. Cmakes you implementallof the data structures thatyou need yourself,which makesit the perfect language to learn how theyactually work.
 
 My goal is to help you do three things: 
 
-• Understandwhat’s really going on in Python, Ruby,or JavaScript codelike this: data = {"name": "Zed"} 
+• Understandwhat's really going on in Python, Ruby,or JavaScript codelike this: data = {"name": "Zed"} 
 
 • Geteven better at C code by using data structuresto apply what you know to a set of 
 
@@ -5702,7 +5819,7 @@ solved problems.
 
 What Are Data Structures 
 
-The name data structure is self-explanatory. It’s an organization ofdata thatfits a certain model. Maybe the model is designedto allow processing the datain anew way. Maybe it’sjust organized to store it on disk efficiently. In this book, I'll follow asimplepattern for makingdata structures that work reliably: 
+The name data structure is self-explanatory. It's an organization ofdata thatfits a certain model. Maybe the model is designedto allow processing the datain anew way. Maybe it'sjust organized to store it on disk efficiently. In this book, I'll follow asimplepattern for makingdata structures that work reliably: 
 
 • Definea structure for the main outer structure. 
 
@@ -5718,7 +5835,7 @@ There areother styles of data structures in C, but this patternworks welland is 
 Making the Library 
 
 
-For therest ofthis book, you’ll be creatinga library thatyou canusewhen you’re done. Thislibrarywill have the following elements: 
+For therest ofthis book, you'll be creatinga library thatyou canusewhen you're done. Thislibrarywill have the following elements: 
 
 • Header (.h) filesfor each data structure.
 
@@ -5726,7 +5843,7 @@ For therest ofthis book, you’ll be creatinga library thatyou canusewhen you’
 
 • Unit tests that test all of them to make surethey keep working.
 
-• Documentation that we’ll auto-generate fromthe header files. 
+• Documentation that we'll auto-generate fromthe header files. 
 
 
 
@@ -5760,7 +5877,7 @@ In this sessionIdo the following:
 
 • Edit the Makefile to change libYOUR_LIBRARY.a to liblcthw.a as the new TARGET.
 
-• Makethe src/lcthwdirectory, where we’ll putourcode. 
+• Makethe src/lcthwdirectory, where we'll putourcode. 
 
 • Move the src/dbg.h into this new directory.
 
@@ -5768,27 +5885,27 @@ In this sessionIdo the following:
 
 #include <lcthw/dbg.h> as the include. 
 
-• Get rid of thesource and testfiles thatwe don’tneed for libex29.*. 
+• Get rid of thesource and testfiles thatwe don'tneed for libex29.*. 
 
-• Cleanup everything that’s leftover. Now thatyou’re ready tostart building thelibrary,the first data structure that I'll buildis the doubly linkedlist.
+• Cleanup everything that's leftover. Now thatyou're ready tostart building thelibrary,the first data structure that I'll buildis the doubly linkedlist.
 
 Doubly Linked Lists 
 
 
-The first data structure that we’ll add to liblcthw is a doubly linked list. This is the simplest data structureyou can make, and it has useful properties for certain operations. A linked list works bynodeshaving pointersto their next or previous element. A doubly linked listcontains pointers to both, while asingly linked list only pointsat the next element. 
+The first data structure that we'll add to liblcthw is a doubly linked list. This is the simplest data structureyou can make, and it has useful properties for certain operations. A linked list works bynodeshaving pointersto their next or previous element. A doubly linked listcontains pointers to both, while asingly linked list only pointsat the next element. 
 
-Because each node has pointersto thenext and previous elements, and because you keeptrackof the first andlastelements of the list, you can dosome operations very quickly with doubly linked lists. Anything thatinvolves inserting or deletinganelement will be very fast. They’re alsoeasyto implementby most programmers. 
+Because each node has pointersto thenext and previous elements, and because you keeptrackof the first andlastelements of the list, you can dosome operations very quickly with doubly linked lists. Anything thatinvolves inserting or deletinganelement will be very fast. They're alsoeasyto implementby most programmers. 
 
 The main disadvantage ofa linked lististhat traversingit involvesprocessingevery single pointer along the way. This meansthat searching, most sorting, and iterating over the elementswillbe slow. 
 
-It also means that you can’t really jump torandom partsof thelist. If you had an array ofelements,you could justindexright into the middleof thelist, buta linked list uses a stream of pointers. 
+It also means that you can't really jump torandom partsof thelist. If you had an array ofelements,you could justindexright into the middleof thelist, buta linked list uses a stream of pointers. 
 
 
 That meansif you want the tenth element, you have togo through the first nine elements. 
 
 Definition 
 
-As I said inthe introduction to this exercise, firstwritea header filewith the right C structure statements init. 
+As I said in the introduction to this exercise, firstwritea header filewith the right C structure statements init. 
 list.h 
 
 ```c
@@ -5812,7 +5929,7 @@ void *List_remove(List * list, ListNode * node);
 ```
 
 
-The first thing Ido is create twostructuresforthe ListNode andthe List thatwillcontain thosenodes. This creates the data structure,whichI'll use in the functions andmacros thatI define after that. If you read these functions, you’ll see that they’re rathersimple. I'll be explaining them when I cover the implementation, but hopefullyyou canguess what theydo. 
+The first thing Ido is create twostructuresforthe ListNode andthe List thatwillcontain thosenodes. This creates the data structure,whichI'll use in the functions andmacros thatI define after that. If you read these functions, you'll see that they're rathersimple. I'll be explaining them when I cover the implementation, but hopefullyyou canguess what theydo. 
 Each ListNode has three components within the data structure: 
 
 • A value, which is a pointer to anything, and storesthe thing wewant to put in thelist. 
@@ -5826,13 +5943,13 @@ Complex, right? Calling the previous thing "previous." I could have used "anteri
 It keeps track of the count, first, and last elements of the list. Finally,take a look at src/lcthw/list.h:37
 where I definethe LIST_FOREACH macro. 
 
-This is acommon programming idiom where you make a macrothat generates iteration codeso people can’t mess it up.
+This is acommon programming idiom where you make a macrothat generates iteration codeso people can't mess it up.
 
 Getting this kind of processing right can be difficultwithdata structures, so writing macros helps people out. You'llsee how I use this when I talk about the implementation. 
 
 Implementation
 
-You should mostly understand how a doubly linked listworks. It’s nothing more than nodeswithtwo pointersto thenext and previous elements of the list. You can thenwrite the 
+You should mostly understand how a doubly linked listworks. It's nothing more than nodeswithtwo pointersto thenext and previous elements of the list. You can thenwrite the 
 
 src/lcthw /list.c
 codeto see how each operation is implemented. 
@@ -5939,7 +6056,7 @@ list, somehow got a next that is NULL."); 109 list­>last->next = NULL;
 
 ```
 
-I then implementallof the operations ona doubly linked list that can’t be done with simple macros. Rather than cover every tiny,littleline of this file, I'm going to give a high-leveloverviewof every operation inboththe list.h and list.c files, and then leaveyou to read the code. list.h:List_count Returns the number of elements in thelist,which is maintained as elements are added andremoved. list.h:List_first Returns the firstelement of the list, butdoesn’t remove it. list.h:List_last Returns the lastelement of the list, butdoesn’t remove it.
+I then implementallof the operations ona doubly linked list that can't be done with simple macros. Rather than cover every tiny,littleline of this file, I'm going to give a high-leveloverviewof every operation inboththe list.h and list.c files, and then leaveyou to read the code. list.h:List_count Returns the number of elements in thelist,which is maintained as elements are added andremoved. list.h:List_first Returns the firstelement of the list, butdoesn't remove it. list.h:List_last Returns the lastelement of the list, butdoesn't remove it.
 
 list.h:LIST_FOREACH 
 
@@ -5952,9 +6069,9 @@ list.c:List_destroy Destroys a List and any elementsit might have.
 
 list.c:List_clear A convenient function for freeing the values in each node,not the nodes. 
 
-list.c:List_clear_destroy Clears and destroys a list. It’s notvery efficient since it loops through them twice. 
+list.c:List_clear_destroy Clears and destroys a list. It's notvery efficient since it loops through them twice. 
 
-list.c:List_push The first operation that demonstrates the advantageof a linked list. It adds anew element to the end of the list, and because that’s just a couple of pointer assignments, it does itveryfast. 
+list.c:List_push The first operation that demonstrates the advantageof a linked list. It adds anew element to the end of the list, and because that's just a couple of pointer assignments, it does itveryfast. 
 
 list.c:List_pop The inverse of List_push, this takes the lastelement off and returnsit. 
 
@@ -5972,7 +6089,7 @@ Mostof these functionsare nothing special, and you should beable to easilydigest
 Tests 
 
 
-After you have those compiling, it’s time to create the test that makessure they operate correctly. 
+After you have those compiling, it's time to create the test that makessure they operate correctly. 
 
 list_tests.c 
 
@@ -6117,7 +6234,7 @@ RUN_TESTS(all_te
  ``` 
  
 
-Make sure six tests ran, it builds without warnings or errors, andit’s making the build /liblcthw.a and build/liblcthw.so files.
+Make sure six tests ran, it builds without warnings or errors, andit's making the build /liblcthw.a and build/liblcthw.so files.
 
 
 How to Improve It 
@@ -6126,9 +6243,9 @@ Instead of breaking this, I'm going to tell you how to improve the code:
 
 • You can make List_clear_destro more efficient byusing LIST_FOREACH and doing both free calls inside one loop.
 
-• You can addasserts for preconditions so that the program isn’t given a NULL value forthe List *list parameters. 
+• You can addasserts for preconditions so that the program isn't given a NULL value forthe List *list parameters. 
 
-• You can addinvariants that check that the list’s contents are always correct, such as count isnever <0, and if count > 0, then first isn’t NULL. 
+• You can addinvariants that check that the list's contents are always correct, such as count isnever <0, and if count > 0, then first isn't NULL. 
 
 • You can add documentation to the header filein the form ofcomments before each struct,function, and macrothat describes whatit does. 
 
@@ -6147,15 +6264,15 @@ Extra Credit
 
 ## Exercise33. LinkedList Algorithms
 
-Im going tocovertwo algorithmsfor alinked list thatinvolve sorting. I'm going to warn youfirst thatif you need tosort the data, then don’tuse a linkedlist. These are horribleforsorting things, and there are muchbetter data structures you can use if that’s arequirement. I'm covering these two algorithms because they are slightly difficult to pull off with a linked list, and to getyou thinking abouthow to efficientlymanipulate them. 
+Im going tocovertwo algorithmsfor alinked list thatinvolve sorting. I'm going to warn youfirst thatif you need tosort the data, then don'tuse a linkedlist. These are horribleforsorting things, and there are muchbetter data structures you can use if that's arequirement. I'm covering these two algorithms because they are slightly difficult to pull off with a linked list, and to getyou thinking abouthow to efficientlymanipulate them. 
 
-In the interest of writing this book, I'm going to put the algorithmsin twodifferent files list_algos.h and list_algos.c then write atestin list_algos_test.c.For now,just follow mystructure, since itkeeps things clean, butif you everwork onother libraries, remember that this isn’t acommon structure. 
+In the interest of writing this book, I'm going to put the algorithmsin twodifferent files list_algos.h and list_algos.c then write atestin list_algos_test.c.For now,just follow mystructure, since itkeeps things clean, butif you everwork onother libraries, remember that this isn't acommon structure. 
 
 In this exercise,I'm also going to give you anextra challenge and I want you to try not to cheat. I'm going to give you the unit test first, and Iwantyou totype itin. Then, I want you to try and implement the twoalgorithms based on their descriptions in Wikipedia beforeseeing if your code looks likemy code. 
 
 Bubble and Merge Sorts 
 
-You know what’s awesome about theInternet?Ican just refer you to the "bubble sort" and "mergesort" pages on Wikipedia andtell you to readthose. Man, thatsaves me a boatload oftyping. Now I can tellyouhow to actually implementeach of these using the pseudo-code they have there. Here’s how you can tacklean algorithmlike this:
+You know what's awesome about theInternet?Ican just refer you to the "bubble sort" and "mergesort" pages on Wikipedia andtell you to readthose. Man, thatsaves me a boatload oftyping. Now I can tellyouhow to actually implementeach of these using the pseudo-code they have there. Here's how you can tacklean algorithmlike this:
 
 • Readthe description and look atany visualizations it has. 
 
@@ -6165,17 +6282,17 @@ You know what’s awesome about theInternet?Ican just refer you to the "bubble s
 
 • Write your first failing test andget everything to compile. 
 
-• Go back to the Wikipedia pageand copy-paste the pseudo-code (not the C code!) into the guts of the first function that you’re making.
+• Go back to the Wikipedia pageand copy-paste the pseudo-code (not the C code!) into the guts of the first function that you're making.
 
 
-• Translate this pseudo­code into good C  code the wayI’ve taught you, using your unit testto makesure it’s working. 
+• Translate this pseudo­code into good C  code the wayI've taught you, using your unit testto makesure it's working. 
 
 • Fill out somemore tests for edgecases like empty lists, already sorted lists, andthe like. 
 
 • Repeat this for thenext algorithm and test it.
 
 
-I just gave you the secret to figuringoutmostof the algorithmsout there—until you get tosome of the more insaneones,that is. In this case, you’re just doing the bubbleand merge sorts from Wikipedia, but those will be good starters. 
+I just gave you the secret to figuringoutmostof the algorithmsout there—until you get tosome of the more insaneones,that is. In this case, you're just doing the bubbleand merge sorts from Wikipedia, but those will be good starters. 
 
 The Unit Test 
 
@@ -6280,11 +6397,11 @@ NULL;90  }
  
 I suggest thatyoustart with 
 
-the bubble sortand get that working, andthen moveon to the mergesort. What I would do is layout the function prototypesand skeletons that get allthree files compiling, butnotpassing the test. Then, I’d just fillin the implementation until it starts working. 
+the bubble sortand get that working, andthen moveon to the mergesort. What I would do is layout the function prototypesand skeletons that get allthree files compiling, butnotpassing the test. Then, I'd just fillin the implementation until it starts working. 
 
 The Implementation 
 
-Areyou cheating? Infuture exercises, I'lljust give you a unit test andtell you to implementit, so it’s good practice for you to not look at this code until you getyour own working. Here’s the code for the list_algos.c and list_algos.h: 
+Areyou cheating? Infuture exercises, I'lljust give you a unit test andtell you to implementit, so it's good practice for you to not look at this code until you getyour own working. Here's the code for the list_algos.c and list_algos.h: 
 list_algos.h 
 
 ```c
@@ -6398,10 +6515,10 @@ list_algos.c
 ```
 
 
-The bubble sort isn’t too hard to figure out,althoughit’s really slow. The mergesort is much more complicated, and honestly, Icouldprobably spendabit more time optimizing this code if I wanted to sacrificeclarity. 
+The bubble sort isn't too hard to figure out,althoughit's really slow. The mergesort is much more complicated, and honestly, Icouldprobably spendabit more time optimizing this code if I wanted to sacrificeclarity. 
 
 
-There is another way to implementa mergesort using abottom-up method, but it’s alittleharder tounderstand, so I didn’t do it. As I’ve already said, sorting algorithmson linkedlists are entirelypointless. You could spendall day trying to make this faster and it will stillbe slower than almost anyother sortable data structure. Simply don’t use linked lists if you need to sort things. 
+There is another way to implementa mergesort using abottom-up method, but it's alittleharder tounderstand, so I didn't do it. As I've already said, sorting algorithmson linkedlists are entirelypointless. You could spendall day trying to make this faster and it will stillbe slower than almost anyother sortable data structure. Simply don't use linked lists if you need to sort things. 
 
 
 What You Should See 
@@ -6431,7 +6548,7 @@ $
 ```
 
 
-After this exercise, I'mnot going to show you this output unlessit’s necessary to show you howit works. From now on, you should knowthat I ranthe tests and that they all passed andeverything compiled. 
+After this exercise, I'mnot going to show you this output unlessit's necessary to show you howit works. From now on, you should knowthat I ran the tests and that they all passed andeverything compiled. 
 How to Improve It 
 Goingback to thedescription of the algorithms, there are severalways toimprove these implementations. Here are a few obvious ones: 
 
@@ -6447,21 +6564,21 @@ Extra Credit
 
 • Create aunittest that comparesthe performance of the two algorithms. You'll want to look at man 3 time for abasic timer function, and run enoughiterationsto at least have a few secondsof samples. 
 
-• Play with the emount of data inthe lists that need tobe sorted and seeif that changes your timing.
+• Play with the emount of data in the lists that need tobe sorted and seeif that changes your timing.
 
 • Finda way to simulate filling differentsized random lists, measuring how long theytake. Then, graph theresult to see howit compares to thedescription of the algorithm. 
 
 • Try to explain why sortinglinked lists is a really badidea.
 
-• Implement a List_insert_sorte that will take a given value, and using the List_compare, insert the elementat the rightposition so that the list is always sorted. How does using this methodcompare to sortinga list after you’vebuilt it?
+• Implement a List_insert_sorte that will take a given value, and using the List_compare, insert the elementat the rightposition so that the list is always sorted. How does using this methodcompare to sortinga list after you'vebuilt it?
 
-• Try implementing the bottom-up mergesort describedon the Wikipedia page. The code there is already C, so it should beeasyto recreate, but try to understand how it’s working compared to the slower one I have here. 
+• Try implementing the bottom-up mergesort describedon the Wikipedia page. The code there is already C, so it should beeasyto recreate, but try to understand how it's working compared to the slower one I have here. 
 
 ## Exercise34. Dynamic Array 
 
-This is an array thatgrows on its own and has most of the same featuresas a linked list. it will usuallytake up less space,runfaster, andhas other beneficial properties. This exercisewillcovera few of the disadvantages,like very slowremovalfrom the front, with a solution to just do itat the end. A dynamic array is simply an array of void ** pointers that’s pre-allocatedin one shotand thatpoint at the data.
+This is an array thatgrows on its own and has most of the same featuresas a linked list. it will usuallytake up less space,runfaster, andhas other beneficial properties. This exercisewillcovera few of the disadvantages,like very slowremovalfrom the front, with a solution to just do itat the end. A dynamic array is simply an array of void ** pointers that's pre-allocatedin one shotand thatpoint at the data.
 
-In the linked list, you hada full structure thatstored the void *value pointer, but in a dynamic array,there’s just a single array with allof them. Thismeans you don’t need any other pointers for nextand previous records since you can justindex into the dynamic array directly.
+In the linked list, you hada full structure thatstored the void *value pointer, but in a dynamic array,there's just a single array with allof them. Thismeans you don't need any other pointers for nextand previous records since you can justindex into the dynamic array directly.
 
 To start, I'llgive you the header fileyoushould type in for the implementation: 
 darray.h 
@@ -6538,9 +6655,9 @@ return NULL;
 ```
 
 
-This header fileisshowing you anew technique where I put static inline functions rightin the header. Thesefunction definitions will work similarly to the #define macros that you've been making, but they’recleanerand easierto write. If you need to createa block ofcode for a macro and you don’tneed code generation, then use a static inline function. 
+This header fileisshowing you anew technique where I put static inline functions rightin the header. Thesefunction definitions will work similarly to the #define macros that you've been making, but they'recleanerand easierto write. If you need to createa block ofcode for a macro and you don'tneed code generation, then use a static inline function. 
 
-Compare this technique to the LIST_FOREACH that generates aproper for-loop for alist. This would be impossible todo with a static inline function because itactually has to generate theinner block of codeforthe loop. Theonly way to do that iswith a callback function, but that’s notas fastand it’s harder to use. 
+Compare this technique to the LIST_FOREACH that generates aproper for-loop for alist. This would be impossible todo with a static inline function because itactually has to generate theinner block of codeforthe loop. Theonly way to do that iswith a callback function, but that's notas fastand it's harder to use. 
 
 I'll then change things upand have you create the unit test for `DArray`: 
 darray_tests.c 
@@ -6839,24 +6956,24 @@ Advantages and Disadvantages
 
 A `DArray` is better when you need tooptimizethese operations: 
 
-• Iteration: You can just use abasic for-loop and `DArray_count` with `DArray_get`, and you’re done. No specialmacrosneeded, and 
-it’s faster because you aren’t walking through pointers.
+• Iteration: You can just use abasic for-loop and `DArray_count` with `DArray_get`, and you're done. No specialmacrosneeded, and 
+it's faster because you aren't walking through pointers.
 
 
 • Indexing: You can use `DArray_get` and `DArray_set` to access any element at random, butwith a List you have togo through N elementsto get toN+1. • Destroying: You can just free thestructand the contents in two operations. A List requiresa seriesof free calls andwalking every element.
 
-• Cloning:You can also cloneit in just two operations (plus whateverit’s storing) by copying thestruct and contents. Again, alist requireswalking through thewhole thing and copying every ListNode plus its value.
+• Cloning:You can also cloneit in just two operations (plus whateverit's storing) by copying thestruct and contents. Again, alist requireswalking through thewhole thing and copying every ListNode plus its value.
 
 
 • Sorting: As you saw, List ishorrible ifyou need tokeep the data sorted. A `DArray`opensup a whole class ofgreatsorting algorithms, because now you can access elements randomly. 
 
-• LargeData: If you need to keeparounda lot of data, thena `DArray`winssince its base, contents, takes up lessmemory thanthe same number of ListNode structs.
+• LargeData: If you need to keeparounda lot of data, thena `DArray`winssince its base, contents, takes up lessmemory than the same number of ListNode structs.
 
 However, the List wins on these operations:
 
 • Insertand removeon the front (what Icalled shift):A `DArray` needs specialtreatmentto be able todo this efficiently, andusually it has to do some copying.
 
-• Splitting orjoining: A List can just copy somepointers and it’s done, but with a `DArray`,youhave copy all of the arrays involved. 
+• Splitting orjoining: A List can just copy somepointers and it's done, but with a `DArray`,youhave copy all of the arrays involved. 
 
 • SmallData:If you only need tostorea few elements, thentypically the storagewill be smaller in a List than ageneric `DArray`.This isbecause the `DArray`needs toexpand the backing store to accommodate future inserts,while a List only makes what it needs.
 
@@ -6871,21 +6988,21 @@ Extra Credit
 
 • Improve the unit tests to cover moreof the operations, and test them using a for-loop to ensure that theywork. 
 
-• Research whatit would take toimplement bubble sort andmerge sortfor`DArray`, but don’tdo it yet. I'llbe implementing`DArray` algorithmsnext, so you’ll do this then.
+• Research whatit would take toimplement bubble sort andmerge sortfor`DArray`, but don'tdo it yet. I'llbe implementing`DArray` algorithmsnext, so you'll do this then.
 
 • Write some performance tests for common operations and compare them to the same operations in List.Youdid some of this already, but this time,writea unit test thatrepeatedlydoes the operation inquestion and then, in themain runner,do the timing.
 
 
-• Look at howthe `DArray`_expand is implemented using a constant increase (size +300). Typically, dynamicarraysare implemented with a multiplicative increase (size × 2), but I’ve foundthis tocost needless memory for no realperformancegain. 
+• Look at howthe `DArray`_expand is implemented using a constant increase (size +300). Typically, dynamicarraysare implemented with a multiplicative increase (size × 2), but I've foundthis tocost needless memory for no realperformancegain. 
 
 
-Test my assertionand see when you’d want a multiplicative increase instead of a constant increase. 
+Test my assertionand see when you'd want a multiplicative increase instead of a constant increase. 
 
 ## Exercise35. Sorting and Searching 
 
-In this exercise,I'm going to cover foursorting algorithms and one searchalgorithm. The sortingalgorithms are going to be quick sort,heap sort, mergesort, andradix sort. I'mthengoing to show you how do a to binary search after you’vedonea radixsort. 
+In this exercise,I'm going to cover foursorting algorithms and one searchalgorithm. The sortingalgorithms are going to be quick sort,heap sort, mergesort, andradix sort. I'mthengoing to show you how do a to binary search after you'vedonea radixsort. 
 
-However, I'm alazy guy, and in most standard C libraries you have existing implementationsof the heapsort, quicksort, and merge sort algorithms. Here’s how youusethem: 
+However, I'm alazy guy, and in most standard C libraries you have existing implementationsof the heapsort, quicksort, and merge sort algorithms. Here's how youusethem: 
 
 darray_algos.c 
 
@@ -6915,7 +7032,7 @@ array­>contents,DArray_count(array),
 20 } 
 ```
 
-That’s the whole implementation of the darray_algos.c file, and it shouldwork onmost modern UNIX systems. What each of these does is sort the contents store ofvoid pointersusing the 
+That's the whole implementation of the darray_algos.c file, and it shouldwork onmost modern UNIX systems. What each of these does is sort the contents store ofvoid pointersusing the 
 `DArray_compare` that you giveit. I'll show you the header filefor this, too: 
 darray_algos.h 
 
@@ -6931,7 +7048,7 @@ int DArray_mergesort(DArra * array,DArray_compare cmp);
 #endif 
 ```
 
-It’s about the samesizeand should bewhat you expect. Next, you can see how these functions are used in theunit test for thesethree: 
+It's about the samesizeand should bewhat you expect. Next, you can see how these functions are used in theunit test for thesethree: 
 darray_algos_tests.c 
 
 
@@ -7023,17 +7140,17 @@ run_sort_test(DArray_h "heapsort");
 
 The thing to notice, and actually what tripped me up for awhole day, is the definition of testcmp on line4. You have to use a char ** and not a char * because qsort gives you a pointer to the pointers in the contents array. 
 
-The function qsort and friends are scanning the array, and handing pointers to each element inthe array to your comparisonfunction. Since whatI havein the contents array are pointers, that meansyou get a pointer to a pointer. 
+The function qsort and friends are scanning the array, and handing pointers to each element in the array to your comparisonfunction. Since whatI havein the contents array are pointers, that meansyou get a pointer to a pointer. 
 
 With thatout of the way,you havejust implemented three difficultsorting algorithms in about 20lines ofcode. You could stopthere, but part of this bookislearning how these algorithms work, so the Extra Credit section isgoing to involve implementingeach of these.
 
 Radix Sort and Binary Search
 
 
-Since you’re going to implementquicksort, heapsort, andmerge sorton your own, I'm going to show you afunky algorithm called radix sort. It has a slightly narrow usefulness insorting arrays ofintegers, butseems to worklike magic. In this case, I'm going tocreate a specialdata structure called a RadixMap that’s usedto mapone integerto another. 
+Since you're going to implementquicksort, heapsort, andmerge sorton your own, I'm going to show you afunky algorithm called radix sort. It has a slightly narrow usefulness insorting arrays ofintegers, butseems to worklike magic. In this case, I'm going tocreate a specialdata structure called a RadixMap that's usedto mapone integerto another. 
 
 
-Here’s the header file for the new algorithm, which is both algorithm and data structure in one: 
+Here's the header file for the new algorithm, which is both algorithm and data structure in one: 
 radixmap.h 
 
 
@@ -7075,7 +7192,7 @@ concept calledthe union here.
 
 C Unions 
 
-A unionis a way to refer to the samepiece of memory in anumberof different ways. You define it like a struct, excepteveryelement is sharing the same space with all of the others. You can think of aunion as apicture of the memory, and the elements inthe union as differentcolored lenses to viewthe picture. 
+A unionis a way to refer to the samepiece of memory in anumberof different ways. You define it like a struct, excepteveryelement is sharing the same space with all of the others. You can think of aunion as apicture of the memory, and the elements in the union as differentcolored lenses to viewthe picture. 
 
 What they areused for is to either save memory or convertchunks of memory between formats. Thefirst usage is typically done with varianttypes, where you createa structure that hastag for the type, and then a union inside it for each type. When used forconverting between formats of memory,you can simplydefine the two structures, and thenaccess the rightone. 
 
@@ -7147,11 +7264,11 @@ TYPE: %d", var­>type);
 ```
 
 
-You find thisin many implementationsof dynamic languages. The languagewill define some base varianttype with tags for allthe base typesof thelanguage, and thenusually there’s a generic object tag forthe types you can create.
+You find thisin many implementationsof dynamic languages. The languagewill define some base varianttype with tags for allthe base typesof thelanguage, and thenusually there's a generic object tag forthe types you can create.
 
  The advantageof doing this is that the Variant only takesup as much space asthe VariantType type tag and the largest member of the union. This is because C is layering each element of the Variant.data union together,sothey overlap. To do that,C sizes theunion big enoughto hold the largest element. 
  
- In the radixmap.h file, I have the RMElement union, which demonstratesusing a unionto convertblocksof memory between types. In this case,I want to store a uint64_t-sized integer for sorting purposes, but I want two uint32_t integers for the datato representa key and value pair. By using a union, I'mable to cleanly access the same block of memory inthe twodifferent ways Ineed. 
+ In the radixmap.h file, I have the RMElement union, which demonstratesusing a unionto convertblocksof memory between types. In this case,I want to store a uint64_t-sized integer for sorting purposes, but I want two uint32_t integers for the datato representa key and value pair. By using a union, I'mable to cleanly access the same block of memory in the twodifferent ways Ineed. 
 
 The Implementation 
 
@@ -7308,7 +7425,7 @@ radixmap.c
 
 
 
-As usual, enter thisin andget it working, along with the unit test, and then I'll explain what’s happening. Take special care with the radix_sort functionsince it’sveryparticular in how it’s implemented. 
+As usual, enter thisin andget it working, along with the unit test, and then I'll explain what's happening. Take special care with the radix_sort functionsince it'sveryparticular in how it's implemented. 
 radixmap_tests.c 
 
 ```c
@@ -7414,73 +7531,73 @@ delete.");
 110 RUN_TESTS(all_te 
  ``` 
  
-I shouldn’thave toexplain toomuch about the test. It’s simplysimulating placing random integers into the RadixMap, and then making sureitcan get them out reliably. Not too interesting. 
+I shouldn'thave toexplain toomuch about the test. It's simplysimulating placing random integers into the RadixMap, and then making sureitcan get them out reliably. Not too interesting. 
 
-In the radixmap.c file, most of the operations are easy to understandif you read the code. Here’sa description 
+In the radixmap.c file, most of the operations are easy to understandif you read the code. Here'sa description 
 of what thebasic functions are doingand how they work: 
 
 RadixMap_create As usual, I'm allocatingall of the memory needed for the structures definedin radixmap.h. I'll be using the temp and contents later when I talkabout radix_sort. 
 
 RadixMap_destroy Again,I'm just destroying what was created.
 
-radix_sort Here’sthe meatof the data structure, but I'll explain what it’sdoing in thenextsection. 
+radix_sort Here'sthe meatof the data structure, but I'll explain what it'sdoing in thenextsection. 
 
 RadixMap_sort This uses the radix_sort function toactually sort the contents. Itdoes this by sortingbetween the contents and temp until finally contents is sorted. You'll seehow this works when I describe radix_sort later. 
 
 RadixMap_find This is using abinary search algorithmto find a key you giveit. I'llexplain how this worksshortly. 
 
-RadixMap_add Using the RadixMap_sort function, this will add the keyand value you request at the end,then simply sort itagain so thateverything is in the rightplace. Once everythingis sorted, the RadixMap_find will work properly because it’sa binary search.
+RadixMap_add Using the RadixMap_sort function, this will add the keyand value you request at the end,then simply sort itagain so thateverything is in the rightplace. Once everythingis sorted, the RadixMap_find will work properly because it'sa binary search.
 
-RadixMap_delete This works thesame as RadixMap_add, exceptit deletes elements of the structure by setting their valuesto the max for a unsigned32-bitinteger, UINT32_MAX. This meansthat you can’t use thatvalue as an key value, but it makes deletingelements easy. 
+RadixMap_delete This works thesame as RadixMap_add, exceptit deletes elements of the structure by setting their valuesto the max for a unsigned32-bitinteger, UINT32_MAX. This meansthat you can't use thatvalue as an key value, but it makes deletingelements easy. 
 
-Simply set it to that and thensort, andit’ll get moved to the end. Now it’sdeleted.
+Simply set it to that and thensort, andit'll get moved to the end. Now it'sdeleted.
 
 Study the codeforthe functions I described. That just leaves RadixMap_sort, radix_sort, and RadixMap_find to understand. 
 
 RadixMap_find and Binary Search
 
-I'll start with howthe binary searchis implemented. Binary search is asimple algorithm thatmost people can understand intuitively. In fact, you could takea deckof playing cards anddo this manually. Here’showthis function works, andhowa binarysearch is done,step by step: 
+I'll start with howthe binary searchis implemented. Binary search is asimple algorithm thatmost people can understand intuitively. In fact, you could takea deckof playing cards anddo this manually. Here'showthis function works, andhowa binarysearch is done,step by step: 
 
 • Set ahighand low mark basedon the size of the array. 
 
 • Get the middleelement between thelow and high marks. 
 
-• If the key isless-than, thenthe keymustbe below the middle. Set high to one lessthan middle. 
+• If the key isless-than, then the keymustbe below the middle. Set high to one lessthan middle. 
 
 • If the key isgreater­than, then thekey must 
 
 be above the middle. Set the lowmark one greater than themiddle. 
 
-• If it’sequal, you found it. Stop. 
+• If it'sequal, you found it. Stop. 
 
-• Keeplooping until low and highpass each other. Youwon’tfind it if you exit the loop. 
+• Keeplooping until low and highpass each other. Youwon'tfind it if you exit the loop. 
 
 
 
-What you’reeffectively doing is guessing where thekey mightbeby picking the middleand comparing it to the high and lowmarks. Since the dataissorted, you know that the thekey has to be above orbelowyour guess. Ifit’s below, then you just divided thesearch space in half. Youkeep going until you either find itor you overlapthe boundaries and exhaust the search space. 
+What you'reeffectively doing is guessing where thekey mightbeby picking the middleand comparing it to the high and lowmarks. Since the dataissorted, you know that the thekey has to be above orbelowyour guess. Ifit's below, then you just divided thesearch space in half. Youkeep going until you either find itor you overlapthe boundaries and exhaust the search space. 
 
 RadixMap_sort and radix_sort
 
 
 A radix sort is easy to understand ifyou try to do it manually first. What this algorithm does is exploit the fact that numbers are stored with asequenceof digits that go from least significantto most significant. It then takes the numbers andbuckets them by the digit, and when it has processed allof the digits, the numbers come out sorted. 
 
-At firstitseems like magic, and honestly, looking at the codesure seems likeit is,so try doing itmanuallyonce. To do this algorithm, write out a bunchof three-digit numbers in a random order. Let’s say we do223, 912, 275,100, 633,120, and380.
+At firstitseems like magic, and honestly, looking at the codesure seems likeit is,so try doing itmanuallyonce. To do this algorithm, write out a bunchof three-digit numbers in a random order. Let's say we do223, 912, 275,100, 633,120, and380.
 
 • Place the number in buckets by the ones digit: [380, 100, 120], [912], [633, 223], [275]. 
 
 • I now have to go through each of these buckets in order, and thensortit by the tens digit: [100],[912], [120, 223], [633],[275], [380]. 
 
-• Now each bucket contains numbers that are sorted by the ones digit andthen the tens digit. I needto thengo through thesein order and fillinthe final hundreds digit: [100, 120], [223, 275], [380],[633], [912].
+• Now each bucket contains numbers that are sorted by the ones digit andthen the tens digit. I needto thengo through thesein order and fillin the final hundreds digit: [100, 120], [223, 275], [380],[633], [912].
 
-• At this pointeach bucket is sorted by hundreds,tens and ones, andif I takeeach bucket in order,I get the finalsortedlist: 100, 120, 223, 275, 380, 633, 912. Make sure you do this a few times soyou understand how it works. Itreallyis aslick little algorithm. Most importantly, it will workon numbers ofarbitrary size,so you can sortreally huge numbers because you’re just doing them1byte at a time.
+• At this pointeach bucket is sorted by hundreds,tens and ones, andif I takeeach bucket in order,I get the finalsortedlist: 100, 120, 223, 275, 380, 633, 912. Make sure you do this a few times soyou understand how it works. Itreallyis aslick little algorithm. Most importantly, it will workon numbers ofarbitrary size,so you can sortreally huge numbers because you're just doing them1byte at a time.
 
-In my situation, the digits (alsocalled placevalues) are individual8-bit bytes,soI need 256 buckets tostorethe distribution of the numbers by theirdigits. Ialso need a way to store them such thatI don’tusetoo muchspace. If you look at radix_sort, you’ll see that the first thing I do is builda count his togramso I know how many occurrences ofeach digit there are for the given offset. 
+In my situation, the digits (alsocalled placevalues) are individual8-bit bytes,soI need 256 buckets tostorethe distribution of the numbers by theirdigits. Ialso need a way to store them such thatI don'tusetoo muchspace. If you look at radix_sort, you'll see that the first thing I do is builda count his togramso I know how many occurrences ofeach digit there are for the given offset. 
 
 Once I know the counts for each digit (all 256 of them), I can then use them as distribution pointsintoa target array. For example, if I have10 bytesthat are0x00, thenI know I canplace them in the first ten slotsof the target array. This givesme an index for where they goin the target array, which is the second for-loop in radix_sort. 
 
-Finally,once I knowwhere theycan go inthe target array I simplygo throughall of the digits in the source array for this offset, and place the numbers intheirslots in order. Using the ByteOfmacro helps keep the code clean, since there’sa bit of pointer hackery to make it work. 
+Finally,once I knowwhere theycan go in the target array I simplygo throughall of the digits in the source array for this offset, and place the numbers in theirslots in order. Using the ByteOfmacro helps keep the code clean, since there'sa bit of pointer hackery to make it work. 
 
-However,the end result is thatallof the integers will be placed inthe bucket for their digitwhen the final for-loop isdone. Whatbecomes interesting is how I use thisin RadixMap_sort to sort these 64-bit integersby just the first32 bits. 
+However,the end result is thatallof the integers will be placed in the bucket for their digitwhen the final for-loop isdone. Whatbecomes interesting is how I use thisin RadixMap_sort to sort these 64-bit integersby just the first32 bits. 
 
 Remember how I have the key and value in a unionforthe RMElement type? That meansthat tosort this array by the key, I only need to sort the first4bytes (32 bits/8 bits per byte) of every integer. 
 
@@ -7489,14 +7606,14 @@ If youlook at the RadixMap_sort, you see thatIgrab aquickpointerto the contents 
 How to Improve It
 
 
-There is a bigdisadvantage to this implementation because it has to process the entire array fourtimes on every insertion. It doesdo it fast, butit’d be better ifyou could limit the emount of sorting by the size of what needs to be sorted. 
+There is a bigdisadvantage to this implementation because it has to process the entire array fourtimes on every insertion. It doesdo it fast, butit'd be better ifyou could limit the emount of sorting by the size of what needs to be sorted. 
 
 
 There are two ways you can improve thisimplementation:
 
 • Use a binarysearch to find theminimum position for the new element, thenonly sort fromthereto the end. You find the minimum, put the newelement on the end, and thenjust sortfromthe minimum on. This will cut your sortspacedown considerablymostof the time.
 
-• Keeptrackof the biggest keycurrently being used, andthen only sort enoughdigits to handle that key. You can also keep trackof the smallest number, and then only sort the digits necessary for the range. Todo this, you’ll have tostartcaring about CPU integer ordering (endianness). Try theseoptimizations, but only after you augment the unit test with sometiming informationsoyou cansee if you’re actually improving the speed of the implementation.
+• Keeptrackof the biggest keycurrently being used, andthen only sort enoughdigits to handle that key. You can also keep trackof the smallest number, and then only sort the digits necessary for the range. Todo this, you'll have tostartcaring about CPU integer ordering (endianness). Try theseoptimizations, but only after you augment the unit test with sometiming informationsoyou cansee if you're actually improving the speed of the implementation.
 
 Extra Credit 
 
@@ -7511,24 +7628,24 @@ Extra Credit
 ## Exercise36. Safer Strings
 
 
-This exercise isdesigned to get you using bstring from now on, explain why C’s strings areanincredibly bad idea, andthen have you change the liblcthw code to use bstring. 
+This exercise isdesigned to get you using bstring from now on, explain why C's strings areanincredibly bad idea, andthen have you change the liblcthw code to use bstring. 
 
 Why C Strings Were a Horrible Idea 
 
-When people talkabout problems with C,they say its concept ofastring isone of the top flaws. You’ve been using these extensively, and I’ve talked about thekindsof flawstheyhave, but there isn’t much thatexplains exactly why C strings are flawed andalways will be. I'll try to explain thatright now, and after decades of using C’s strings, there’s enoughevidence for me to say that they arejust abad idea. 
+When people talkabout problems with C,they say its concept ofastring isone of the top flaws. You've been using these extensively, and I've talked about thekindsof flawstheyhave, but there isn't much thatexplains exactly why C strings are flawed andalways will be. I'll try to explain thatright now, and after decades of using C's strings, there's enoughevidence for me to say that they arejust abad idea. 
 
-It’s impossible to confirm thatany given C stringis valid: 
+It's impossible to confirm thatany given C stringis valid: 
 
-• A C stringis invalid if it doesn’tend in '\0'. 
+• A C stringis invalid if it doesn'tend in '\0'. 
 
 • Any loop that processes an invalid C  string will loop infinitely(or just create a buffer overflow).
 
-• C strings don’t have a knownlength,sothe only way to check if they’reterminated correctly is to loop through them. 
+• C strings don't have a knownlength,sothe only way to check if they'reterminated correctly is to loop through them. 
 
-• Therefore,it isn’t possible to validate a C string withoutpossibly looping infinitely. 
+• Therefore,it isn't possible to validate a C string withoutpossibly looping infinitely. 
 
 
-This is simple logic. You can’t write a loop that checks if a C string is valid because invalid C  stringscause loops to never terminate. That’sit, and the only solution is to include the size. 
+This is simple logic. You can't write a loop that checks if a C string is valid because invalid C  stringscause loops to never terminate. That'sit, and the only solution is to include the size. 
 
 Once you know thesize, you can avoid the infinite loopproblem. If you look at the two functions I showed you from * Exercise 27, you see this:
 
@@ -7570,22 +7687,22 @@ ex36.c
 ```
 
 
-Imagine thatyou want toadd acheck to the copy function to confirmthat the from string is valid. How would you do that? You’dwrite a loop that checkedthat the string ended in '\0'. Oh wait. If the stringdoesn’t end in '\0', then how does the checkingloopend? Itdoesn’t. Checkmate. 
+Imagine thatyou want toadd acheck to the copy function to confirmthat the from string is valid. How would you do that? You'dwrite a loop that checkedthat the string ended in '\0'. Oh wait. If the stringdoesn't end in '\0', then how does the checkingloopend? Itdoesn't. Checkmate. 
 
-No matter what you do,you can’t check that a C string is valid without knowing the length of the underlying storage, and in this case,the safer copy includes those lengths. This function doesn’t have the same problemsince its loops will always terminate, and evenif you lie to itabout the size,youstill have to giveit afinite size.
+No matter what you do,you can't check that a C string is valid without knowing the length of the underlying storage, and in this case,the safer copy includes those lengths. This function doesn't have the same problemsince its loops will always terminate, and evenif you lie to itabout the size,youstill have to giveit afinite size.
 
-What the Better String Librarydoes iscreate a structure thatalways includes the lengthof thestring’s storage. Because the length is alwaysavailable to a bstring, thenall ofits operations can be safer. The loops will terminate,the contents can bevalidated, and it won’t have this major flaw. The library also comes with a tonof operationsyou need with strings, like splitting, formatting, and searching, and they’re most likely done rightand are safer. 
+What the Better String Librarydoes iscreate a structure thatalways includes the lengthof thestring's storage. Because the length is alwaysavailable to a bstring, thenall ofits operations can be safer. The loops will terminate,the contents can bevalidated, and it won't have this major flaw. The library also comes with a tonof operationsyou need with strings, like splitting, formatting, and searching, and they're most likely done rightand are safer. 
 
 
-There couldbeflaws in bstring, but it’s been around a long time,sothose are probably minimal. Theystill find flaws in glibc, so what’s a programmerto do, right? 
+There couldbeflaws in bstring, but it's been around a long time,sothose are probably minimal. Theystill find flaws in glibc, so what's a programmerto do, right? 
 
 
 Using bstrlib 
 
 
-There arequitea few improvedstring libraries, but I like bstrlib because it fitsin one file for thebasics, and has most of the stuffyou need to deal with strings. In this exercise you’ll needto get two files, bstrlib.c and bstrlib.h,from the Better String Library. 
+There arequitea few improvedstring libraries, but I like bstrlib because it fitsin one file for thebasics, and has most of the stuffyou need to deal with strings. In this exercise you'll needto get two files, bstrlib.c and bstrlib.h,from the Better String Library. 
 
-Here’s me doing this inthe liblcthw project directory:
+Here's me doing this in the liblcthw project directory:
 
 
 * Exercise 36 Session 
@@ -7606,7 +7723,7 @@ $ vim src/lcthw/bstrlib.c$ make clean all
 $ 
 
 
-On line 14, you see me edit the bstrlib.c file tomove it toa newlocation and fixa bug on OS X. Here’s the diff file: 
+On line 14, you see me edit the bstrlib.c file tomove it toa newlocation and fixa bug on OS X. Here's the diff file: 
 
 ex36.diff 
 
@@ -7625,7 +7742,7 @@ HereI changethe include to be <lcthw/bstrlib.h>, and then fix oneof the ifdef at
 Learning the Library 
 
 
-This exercise is short, and it’s meant to simply get you ready for there maining exercises that use the Better String Library. In the next two exercises, I'll use bstrlib.c tocreate a hashmap data structure. 
+This exercise is short, and it's meant to simply get you ready for there maining exercises that use the Better String Library. In the next two exercises, I'll use bstrlib.c tocreate a hashmap data structure. 
 
 You should now getfamiliar with this libraryby reading the header file andthe implementations, and then write a tests/bstr_tests.c thattestsout the following functions: 
 bfromcstr 
@@ -7637,7 +7754,7 @@ bstrcpy Copy a
 bstring. bassign Setone bstring to another. 
 bassigncstr
 
-Seta bstring to a C string’s contents. 
+Seta bstring to a C string's contents. 
 bassignblk
 Seta bstring to a C string but give the length. 
 bdestroy 
@@ -7667,9 +7784,9 @@ these operations, anda few more that youfind interesting fromthe header file.
 
 ## Exercise37. Hashmaps 
 
-Hash maps (hashmaps, hashes, orsometimes dictionaries) are used frequently in dynamic programming for storing key/value data. A hashmap works byperforming a hashing calculation on the keys toproduceaninteger, then usesthat integerto find a bucket to get or set thevalue. It’s averyfast,practical data structure because itworks on nearly anydata andis easy to implement. 
+Hash maps (hashmaps, hashes, orsometimes dictionaries) are used frequently in dynamic programming for storing key/value data. A hashmap works byperforming a hashing calculation on the keys toproduceaninteger, then usesthat integerto find a bucket to get or set thevalue. It's averyfast,practical data structure because itworks on nearly anydata andis easy to implement. 
 
-Here’s an exampleof using a hashmap (aka,dictionary) in Python: 
+Here's an exampleof using a hashmap (aka,dictionary) in Python: 
 
 ex37.py 
 
@@ -7706,7 +7823,7 @@ void *Hashmap_delete(Hashma * map, void *key);
 #endif 
 ```
 
-The structureconsists of a `Hashmap` that contains any number of HashmapNode structs. Looking at `Hashmap`, you can see that it’sstructured like this: 
+The structureconsists of a `Hashmap` that contains any number of HashmapNode structs. Looking at `Hashmap`, you can see that it'sstructured like this: 
 
 DArray *buckets A dynamicarray thatwill be set to a fixed size of 100 buckets. Each bucket will in turn contain a DArray that willhold HashmapNode pairs. 
 
@@ -7714,13 +7831,13 @@ Hashmap_compare compare This is a comparisonfunction that the `Hashmap` uses to 
 
 Hashmap_hash hash 
 
-This is the hashing function, and it’s responsible for takinga key, processing its contents, and producing asingle uint32_t index number. You'll see the defaultone soon. 
+This is the hashing function, and it's responsible for takinga key, processing its contents, and producing asingle uint32_t index number. You'll see the defaultone soon. 
 
-This almost tellsyou how the data is stored, but the buckets `DArray` hasn’t been created yet. Just remember that it’skind of a two-level mapping:
+This almost tellsyou how the data is stored, but the buckets `DArray` hasn't been created yet. Just remember that it'skind of a two-level mapping:
 
 • there are 100buckets thatmake up the first level, andthings are in these buckets basedon their hash. 
 
-• Each bucket is a `DArray` that contains HashmapNode structs thataresimply appendedto the end as they’readded. 
+• Each bucket is a `DArray` that contains HashmapNode structs thataresimply appendedto the end as they'readded. 
 
 
 
@@ -7728,8 +7845,8 @@ The HashmapNode is then composed of thesethree elements:
 
 void *key Thekey for this key=value pair. 
 void *value The value. 
-uint32_thash The calculated hash, which makesfinding this node quicker. We canjust check the hash andskip any that don’tmatch, only checking the keyif 
-it’sequal. The rest of the header file is nothing new, so now I can show you the implementation hashmap.c file: 
+uint32_thash The calculated hash, which makesfinding this node quicker. We canjust check the hash andskip any that don'tmatch, only checking the keyif 
+it'sequal. The rest of the header file is nothing new, so now I can show you the implementation hashmap.c file: 
 hashmap.c 
 
 ```c
@@ -7953,7 +8070,7 @@ DEFAULT_NUMBER_OF_BUCK
 
 
 
-There’s nothing very complicated inthe implementation, but the default_hash and Hashmap_find_bucket functions will needsome explanation. When you use Hashmap_create, you can pass in anycompare and hash functions you want, but ifyou don’t, ituses the default_compare and default_hash functions. 
+There's nothing very complicated in the implementation, but the default_hash and Hashmap_find_bucket functions will needsome explanation. When you use Hashmap_create, you can pass in anycompare and hash functions you want, but ifyou don't, ituses the default_compare and default_hash functions. 
 
 The first thing tolook at is how default_hash does its thing. This is asimple hash functioncalled a Jenkins hash after Bob Jenkins. I got the algorithm from the "Jenkins hash" page on Wikipedia. It simplygoes through each byte of the key to hash(a bstring), and then it works thebits so that the end result is asingle uint32_t. Itdoes this with some adding and exclusive or (XOR) operations. 
 
@@ -7968,7 +8085,7 @@ one, you needa way to use it to findthe rightbuckets. The Hashmap_find_bucket do
 
 so every hash will alwaysfind some bucket nomatter how bigit is. 
 
-• It then getsthe bucket, which is also a `DArray`, and ifit’s not there,it willcreate the bucket. However, that depends onif the create variablesays to doso. 
+• It then getsthe bucket, which is also a `DArray`, and ifit's not there,it willcreate the bucket. However, that depends onif the create variablesays to doso. 
 
 • Onceit has foundthe `DArray` bucket for the righthash,itreturns it, and the hash_out variableis usedto give the caller the hash that was found. 
 
@@ -8119,33 +8236,33 @@ NULL;
 
 
 
-The only thing to learnabout this unittestis that at the top I use a feature of bstring to create static stringsto work withinthe tests. I use the tagbstring and bsStatic tocreate them on lines 7–13. 
+The only thing to learnabout this unittestis that at the top I use a feature of bstring to create static stringsto work within the tests. I use the tagbstring and bsStatic tocreate them on lines 7–13. 
 
 How to Improve It 
 
-This is averysimple implementation of `Hashmap`, asare mostof theother data structures in this book. My goalisn’tto give youinsanely great,hyper-speed, well-tuned data structures. Usually thoseare much too complicated todiscuss and only distractyou from the real, basic data structureat work. My goal is to give you an understandable starting point to then improveupon or better understand the implementation. 
+This is averysimple implementation of `Hashmap`, asare mostof theother data structures in this book. My goalisn'tto give youinsanely great,hyper-speed, well-tuned data structures. Usually thoseare much too complicated todiscuss and only distractyou from the real, basic data structureat work. My goal is to give you an understandable starting point to then improveupon or better understand the implementation. 
 
 In this case, there aresome things you can dowith this implementation: 
-• You can use a sort on each bucket so that they’realways sorted. This increasesyour insert time but decreases yourfind
-time,because you can then use a binary search to find eachnode. Right now,it’s looping through allof thenodes in a bucket just to find one. 
+• You can use a sort on each bucket so that they'realways sorted. This increasesyour insert time but decreases yourfind
+time,because you can then use a binary search to find eachnode. Right now,it's looping through allof thenodes in a bucket just to find one. 
 
 • You can dynamically sizethe number of buckets,or let the caller specify thenumberfor each `Hashmap` created. 
 
 • You can use a better default_hash. There are tons of them.
 
 • This (and nearlyevery `Hashmap`)is vulnerable to someone picking keys thatwill fill only onebucket, and thentricking your program into processing them. This then makes your program run slower becauseit changesfrom
-processinga Hashmapto effectively processingasingle `DArray`.If you sort the nodesin the bucket, this helps, but you can also use better hashing functions, and for the really paranoid programmer, add a random salt so thatkeys can’t be predicted. 
+processinga Hashmapto effectively processingasingle `DArray`.If you sort the nodesin the bucket, this helps, but you can also use better hashing functions, and for the really paranoid programmer, add a random salt so thatkeys can't be predicted. 
 
 • You could have it deletebucketsthat are empty of nodesto save space,or put empty buckets into acache so you can save on time lostcreating and destroying them.
 
-• Rightnow, it just adds elements evenif they already exist. Writean alternative set method thatonlyadds an element ifit isn’t set already. As usual, you shouldgo through each function and makeit bullet proof. The `Hashmap` could alsouse a debug setting fordoing an invariant check.
+• Rightnow, it just adds elements evenif they already exist. Writean alternative set method thatonlyadds an element ifit isn't set already. As usual, you shouldgo through each function and makeit bullet proof. The `Hashmap` could alsouse a debug setting fordoing an invariant check.
 
 Extra Credit 
 
 
 • Research the Hashmapimplementation in your favorite programming languageto see what features it has. 
 
-• Findoutwhat themajor disadvantages ofa `Hashmap` are and how to avoid them. For example, it doesn’t preserve order without specialchanges, nor does itwork when you need to find things based on partsof keys.
+• Findoutwhat themajor disadvantages ofa `Hashmap` are and how to avoid them. For example, it doesn't preserve order without specialchanges, nor does itwork when you need to find things based on partsof keys.
 
 • Write a unit test that demonstrates thedefect offillinga Hashmapwith keys that landin the samebucket, then test how this impacts performance. A good way todo this is to just reduce the number of buckets to something stupid, likefive.
 
@@ -8153,14 +8270,14 @@ Extra Credit
 ## Exercise38. Hashmap Algorithms 
 
 
-There are threehash functions that you’ll implementin this exercise: 
+There are threehash functions that you'll implementin this exercise: 
 FNV-1a Named after the creators Glenn Fowler, Phong Vo, andLandon Curt Noll,this hash producesgood numbers and is reasonably fast.
 
-Adler-32 Namedafter Mark Adler, this is a horrible hashalgorithm, butit’s been arounda long time and it’s good for studying. 
+Adler-32 Namedafter Mark Adler, this is a horrible hashalgorithm, butit's been arounda long time and it's good for studying. 
 
-DJBHash This hash algorithmis attributed to DanJ. Bernstein (DJB), butit’s difficult to findhisdiscussion of the algorithm. It’s shown to befast, but possiblynot great numbers.
+DJBHash This hash algorithmis attributed to DanJ. Bernstein (DJB), butit's difficult to findhisdiscussion of the algorithm. It's shown to befast, but possiblynot great numbers.
 
-You’ve already seen the Jenkins hash as the default hash forthe `Hashmap` data structure,sothis exercise will be looking at thesethree new hash functions. The codefor them is usually small, and it’s notoptimized at all. As usual, I'm going for understanding and not blindingspeed. The header fileis very simple, so I'll startwith that:
+You've already seen the Jenkins hash as the default hash forthe `Hashmap` data structure,sothis exercise will be looking at thesethree new hash functions. The codefor them is usually small, and it's notoptimized at all. As usual, I'm going for understanding and not blindingspeed. The header fileis very simple, so I'll startwith that:
 
 hashmap_algos.h 
 
@@ -8236,7 +8353,7 @@ hash * 33 + c */
 
 ```
 
-This file, then, has the three hash algorithms. Youshould notice thatI'm justusing a bstring for thekey, but I'm using the bchare function toget acharacter fromthe bstring, but returning0 if that character is outside thestring’s length. 
+This file, then, has the three hash algorithms. Youshould notice thatI'm justusing a bstring for thekey, but I'm using the bchare function toget acharacter fromthe bstring, but returning0 if that character is outside thestring's length. 
 
 Each of thesealgorithms are foundonline, so go search for them and read about them. 
 
@@ -8393,7 +8510,7 @@ NULL;
  
 
 
-I have the number of BUCKETS in this codeset fairlyhigh, sinceI have a fast enough computer, butif it runs slow, just lower it and NUM_KEYS. What this test lets me do isrunthe test and thenlook at the distribution ofkeys for each hashfunction using abit of analysis with a languagecalled R. 
+I have the number of BUCKETS in this codeset fairlyhigh, sinceI have a fast enough computer, butif it runs slow, just lower it and NUM_KEYS. What this test lets me do isrun the test and thenlook at the distribution ofkeys for each hashfunction using abit of analysis with a languagecalled R. 
 
 I do this bycraftinga big list ofkeys using the gen_keys function. Thesekeys are takenoutof the /dev/urandom device and are random byte keys. I then use these keysto have the fill_distribution function fill upthe stats array with where those keys wouldhash in a theoretical set of buckets. All this function doesisgo through all of the keys, do the hash, thendo what the Hashmapwoulddo to find its bucket.
 
@@ -8430,20 +8547,20 @@ Qu.:102. Max. :1072 Max.
 > 
 ```
 
-First, I just runthe test, which on your screen will print the table. Then, Ijust copy-paste it out ofmy terminal and use vim hash.txt to save the data. If youlook at the data, it has the header FNV A32 DJB for each of the three algorithms. 
+First, I just run the test, which on your screen will print the table. Then, Ijust copy-paste it out ofmy terminal and use vim hash.txt to save the data. If youlook at the data, it has the header FNV A32 DJB for each of the three algorithms. 
 
 Secondly, I run R and load the datausing the read.table command. This is asmartfunction that works with thiskind oftab­delimited data, andI only have to tell it header=T for it toknow that the data has a header. 
 
-Finally,Ihave the data loaded and canuse summaryto print outitssummary statisticsfor each column. Hereyou cansee that each function actuallydoes alright with this randomdata. Here’s whateach of theserows means:
+Finally,Ihave the data loaded and canuse summaryto print outitssummary statisticsfor each column. Hereyou cansee that each function actuallydoes alright with this randomdata. Here's whateach of theserows means:
 
 
 Min. This is the minimum valuefound forthe data in that column. FNV-la seems to win onthis run since it has the largest number, meaningit has atighter range at the low end.
 
 1stQu. This is thepoint where the firstquarter of the data ends. 
 
-Median This is the number that’s in the middleif you sorted them. Medianismost useful when compared to mean. 
+Median This is the number that's in the middleif you sorted them. Medianismost useful when compared to mean. 
 
-Mean Meanis the average most people think of, and it’s the sum divided by thecount of the data. If youlook, allof them are 1,000, which is great. If you compare this to the median, you see that allthree have really close mediansto the mean. What this meansis the data isn’t skewedin one direction, so you can trust the mean.
+Mean Meanis the average most people think of, and it's the sum divided by thecount of the data. If youlook, allof them are 1,000, which is great. If you compare this to the median, you see that allthree have really close mediansto the mean. What this meansis the data isn't skewedin one direction, so you can trust the mean.
 
 3rd Qu. This is the point where the lastquarter of the datastarts and representsthe tail end of the numbers.
 
@@ -8451,14 +8568,14 @@ Max. This is the maximumnumberof the data, and presents the upperbound on all of
 
 Looking at this data, you see thatall of thesehashes seem to do wellon random keys, and the means matchthe NUM_KEYS setting that I made. What I'mlooking for is this:If Imake 1,000 keys perbucket(BUCKETS × 1000), then onaverageeach bucket shouldhave 1,000 keys init. 
 
-If thehash function isn’t working, then you’llsee these summary statistics show amean that’s not 1,000, and really high ranges at the first and third quarters. A good hash functionshould have a dead-on1,000mean, andas tight a range aspossible. You should alsoknow that you’ll get different numbers from mine, and even between differentruns of thisunittest.
+If thehash function isn't working, then you'llsee these summary statistics show amean that's not 1,000, and really high ranges at the first and third quarters. A good hash functionshould have a dead-on1,000mean, andas tight a range aspossible. You should alsoknow that you'll get different numbers from mine, and even between differentruns of thisunittest.
 
 How to Break It 
 
 
-I'm finally going to have you do some breaking in this exercise. Iwantyou towrite the worsthash function you can, and then use the datato prove that it’sreallybad. You can use R to do the statistics, just like I did, butmaybeyou have another tool thatyou can use to give you the same summary statistics. 
+I'm finally going to have you do some breaking in this exercise. Iwantyou towrite the worsthash function you can, and then use the datato prove that it'sreallybad. You can use R to do the statistics, just like I did, butmaybeyou have another tool thatyou can use to give you the same summary statistics. 
 
-The goalis to make a hash function that seems normal to an untrained eye, but when actually run, it has a bad meanand is all over the place. That means you can’t just have it return 1. You have to give a stream of numbers thatseem alrightbut aren’t, andthey’re loading up somebucketstoo much. 
+The goalis to make a hash function that seems normal to an untrained eye, but when actually run, it has a bad meanand is all over the place. That means you can't just have it return 1. You have to give a stream of numbers thatseem alrightbut aren't, andthey're loading up somebucketstoo much. 
 
 Extrapoints if you can make aminimal changeto oneof the four hash algorithms thatI gaveyou todo this. 
 
@@ -8476,11 +8593,11 @@ Extra Credit
 
 In this exercise,I'm going to show you a supposedly faster string search algorithm, called binstr, and compare it to the one that exists in bstrlib.c. The documentationfor binstr says that itusesa simple "brute force" string search to find the firstinstance. 
 
-The onethat I'll implement will use the Boyer-Moore-Horspool (BMH) algorithm, which is supposed tobe faster if you analyze the theoretical time. Assuming my implementation isn’t flawed, you’ll see that thepractical time for BMHis muchworse thanthe simple bruteforceof binstr. 
+The onethat I'll implement will use the Boyer-Moore-Horspool (BMH) algorithm, which is supposed tobe faster if you analyze the theoretical time. Assuming my implementation isn't flawed, you'll see that thepractical time for BMHis muchworse than the simple bruteforceof binstr. 
 
-The point of this exercise isn’t really to explain the algorithm,because it’ssimple enoughfor you to read the "Boyer-Moore-Horspool algorithm" page on Wikipedia. 
+The point of this exercise isn't really to explain the algorithm,because it'ssimple enoughfor you to read the "Boyer-Moore-Horspool algorithm" page on Wikipedia. 
 
-The gist of this algorithm is that itcalculates a skip characters list asafirst operation, thenit uses this list to quickly scan throughthe string. It’s supposed tobe faster thanbrute force,so let’sget the code into the rightfiles and see. First, I have the header:
+The gist of this algorithm is that itcalculates a skip characters list asafirst operation, thenit uses this list to quickly scan throughthe string. It's supposed tobe faster thanbrute force,so let'sget the code into the rightfiles and see. First, I have the header:
 
 string_algos.h 
 
@@ -8514,7 +8631,7 @@ StringScanner_scan This uses a StringScanner state structure to separatethe skip
 This will let me see what impact that has on performance. This model alsogives me the edvantage of incrementally scanning for onestring in another and quickly findingall instances.
 
 
-Once you have that, here’s the implementation: 
+Once you have that, here's the implementation: 
 string_algos.c 
 
 
@@ -8671,7 +8788,7 @@ The entire algorithm isin two static inline functions called
 String_setup_skip_cha and String_base_search. Theseare then used in the other functions toactually implement the searching styles Iwant. Study these first twofunctions and compare them to theWikipedia
 description so that you know 
 
-what’s going on. The String_find then just uses these two functions to do afind and return theposition found. It’s very simple, and I'll use ittosee how this build skip_chars phase impacts real, practical performance. Keep inmind thatyou couldmaybemake this faster, but I'm teaching you how to confirm 
+what's going on. The String_find then just uses these two functions to do afind and return theposition found. It's very simple, and I'll use ittosee how this build skip_chars phase impacts real, practical performance. Keep inmind thatyou couldmaybemake this faster, but I'm teaching you how to confirm 
 theoretical speed after you implementanalgorithm. The 
 
 StringScanner_scan function then follows the common patternI use of create, scan, and destroy, and is used toincrementallyscan astring for another string. You'll seehow this isused when I show you the unit test thatwilltest this out.
@@ -8822,10 +8939,10 @@ NULL;
 132 RUN_TESTS(all_te 
  ``` 
  
-I haveit writtenhere with #if 0,which is away to use the CPPto comment out a section ofcode. Type it in like this, and then removeit and the #endif so thatyou can see these performance tests run. Asyoucontinue with the book, simply comment these out so that the test doesn’twaste development time. 
+I haveit writtenhere with #if 0,which is away to use the CPPto comment out a section ofcode. Type it in like this, and then removeit and the #endif so thatyou can see these performance tests run. Asyoucontinue with the book, simply comment these out so that the test doesn'twaste development time. 
 
 
-There’s nothing amazing in this unittest; it just runs each of the differentfunctionsin loops that lastlong enoughto get a few seconds of sampling. Thefirsttest (test_find_and_scan) just confirmsthatwhat I’ve writtenworks,because there’s nopoint in testing the speed of something that doesn’twork. Then,the next three functions run alarge number ofsearches,using each of the three functions. 
+There's nothing amazing in this unittest; it just runs each of the differentfunctionsin loops that lastlong enoughto get a few seconds of sampling. Thefirsttest (test_find_and_scan) just confirmsthatwhat I've writtenworks,because there's nopoint in testing the speed of something that doesn'twork. Then,the next three functions run alarge number ofsearches,using each of the three functions. 
 
 The trick to notice is that I grab the starting time in start, and then I loop until at least TEST_TIME seconds havepassed. This makes sure thatIget enough samplesto work with while comparing the three. I'll then run this test with different TEST_TIME settings andanalyze the results. 
 
@@ -8854,7 +8971,7 @@ Tests run: 4
 $ 
 ```
 
-I look at this and Iwant todo more than 2 secondsfor each run. I want to run this many times, and then useRto check it out like I did before. Here’s whatI get for ten samplesfor about 10 seconds each: 
+I look at this and Iwant todo more than 2 secondsfor each run. I want to run this many times, and then useRto check it out like I did before. Here's whatI get for ten samplesfor about 10 seconds each: 
 
 scan find binstr 71195200 6353700 37110200 75098000 37420800 74910000 37263600 74859600 37133200 73345600 37549700 74754400 37162400 75343600 37075000 73804800 36858700 74995200 36811700 74781200 6358400 6351300 6586100 6365200 6358000 6630400 6439900 6384300 6449500 37383000
 
@@ -8896,30 +9013,30 @@ Max.  :75343600  Ma
 
 To understand why I'm getting the summary statistics, I have to explain somestatistics for you. What I'm looking forin these numbers issimply this: "Are these three functions (scan, find, bsinter) actually different?" I know thateach time I run my tester function, I getslightly different numbers, and thosenumbers can cover a certain range. You seehere that the first and third quarters do that for each sample.
 
-What I look at first is the mean, and I want to see if each sample’s mean is differentfrom theothers. I can see that, and clearly the scan beats binstr, which also beats find. However,I have a problem. If I use just the mean, there’s a chance that the ranges ofeach sample mightoverlap.
+What I look at first is the mean, and I want to see if each sample's mean is differentfrom theothers. I can see that, and clearly the scan beats binstr, which also beats find. However,I have a problem. If I use just the mean, there's a chance that the ranges ofeach sample mightoverlap.
 
-What if I have meansthat are different, but the firstand third quarters overlap? In that case, Icouldsaythat ifI ran the samples again there’s a chancethat themeans might notbe different. The more overlapI have inthe ranges, the higher probability that my two samples(andmy two functions)are not actually different. Any difference that I'm seeing in the two (in this casethree) is just random chance. 
+What if I have meansthat are different, but the firstand third quarters overlap? In that case, Icouldsaythat ifI ran the samples again there's a chancethat themeans might notbe different. The more overlapI have in the ranges, the higher probability that my two samples(andmy two functions)are not actually different. Any difference that I'm seeing in the two (in this casethree) is just random chance. 
 
 
-There are manytoolsthat you can use to solve this problem, butin our case, Icanjust look at the firstand third quarters and the meanforall three samples. If themeans are different, andthe quartersare way offwithno possibility of overlapping,thenit’s alright to say that they are different.
+There are manytoolsthat you can use to solve this problem, butin our case, Icanjust look at the firstand third quarters and the meanforall three samples. If themeans are different, andthe quartersare way offwithno possibility of overlapping,thenit's alright to say that they are different.
 
-In my three samples,I can say that scan, find, and binstr are different,don’t overlapin range, and I can trust the sample (for the most 
+In my three samples,I can say that scan, find, and binstr are different,don't overlapin range, and I can trust the sample (for the most 
 part). 
 
 Analyzing the Results 
 
-Looking at the results,I can see that String_find is much slower than the other two. In fact, it’s so slow that I’d think there’ssomething wrong withhowI implemented it. However, when I compareit to StringScanner_scan,I can see that it’s most likely the part that builds theskip list that’s costing the time. Notonly is find slower,it’s also doing less than scan because it’s just finding the first string while scan finds all of them. 
-I can alsosee that scan beats binstr, as well, and by quite alargemargin. Again, notonly does scan do more thanboth of these, but it’s also much faster. 
+Looking at the results,I can see that String_find is much slower than the other two. In fact, it's so slow that I'd think there'ssomething wrong withhowI implemented it. However, when I compareit to StringScanner_scan,I can see that it's most likely the part that builds theskip list that's costing the time. Notonly is find slower,it's also doing less than scan because it's just finding the first string while scan finds all of them. 
+I can alsosee that scan beats binstr, as well, and by quite alargemargin. Again, notonly does scan do more thanboth of these, but it's also much faster. 
 
 
 There area few caveats with this analysis: 
 • Imay havemessed up this implementation or the test. At this point I would go research all of the possibleways to do aBMH algorithm and try to improveit. I would alsoconfirm that I'm doing the test right. 
 
-• If you alterthe time the test runs,you’llget 
+• If you alterthe time the test runs,you'llget 
 
 differentresults. There is awarm-up period thatI'm not investigating. 
 
-• The test_scan_perform unit test isn’t quite the same asthe others, but it’sdoing more than the other tests, so it’s probably alright.
+• The test_scan_perform unit test isn't quite the same asthe others, but it'sdoing more than the other tests, so it's probably alright.
 • I'monlydoing the test by searching for one string inanother. I could randomize the strings to find their position and lengthas a confounding factor.
 
 • Maybe binstr is implemented better than simple brute force. 
@@ -8928,7 +9045,7 @@ differentresults. There is awarm-up period thatI'm not investigating.
 
 
 
-Onething to gatherfrom this is thatyou need to confirm realperformanceeven ifyou implementanalgorithm correctly. In this case, the claim isthat theBMH algorithm should havebeaten the binstr algorithm, buta simple test proved it didn’t. Had Inotdone this,Iwould havebeen using an inferior algorithm implementation without knowing it. With these metrics, I canstart to tunemy implementation, or simplyscrap it andfind anotherone. 
+Onething to gatherfrom this is thatyou need to confirm realperformanceeven ifyou implementanalgorithm correctly. In this case, the claim isthat theBMH algorithm should havebeaten the binstr algorithm, buta simple test proved it didn't. Had Inotdone this,Iwould havebeen using an inferior algorithm implementation without knowing it. With these metrics, I canstart to tunemy implementation, or simplyscrap it andfind anotherone. 
 
 Extra Credit 
 
@@ -8949,10 +9066,10 @@ Does that change the dependenceon the length of time the test runs? Does itchang
 
 ## Exercise40. Binary Search Trees 
 
-The binarytree is the simplest tree-baseddata structure, and even though it’s been replaced byhash maps in many languages, it’s still useful for many applications. Variants on the binary tree existforveryusefulthings likedatabase indexes, search algorithm structures, and even graphics. 
+The binarytree is the simplest tree-baseddata structure, and even though it's been replaced byhash maps in many languages, it's still useful for many applications. Variants on the binary tree existforveryusefulthings likedatabase indexes, search algorithm structures, and even graphics. 
 
-I'm calling my binary treea `BSTree` for binary search tree, andthe best way to describe it is that it’s another way to do a `Hashmap` style key/value store. The difference is thatinsteadof hashing thekey to find a location, the `BSTree` comparesthe key tonodesin atree, and then walksthrough the tree to find thebest place to store it, based on howit comparesto other nodes. 
-Before I reallyexplain how this works, letme show you the bstree.h headerfile so thatyou cansee the data structures, and thenI can use thatto explain how it’s built. 
+I'm calling my binary treea `BSTree` for binary search tree, andthe best way to describe it is that it's another way to do a `Hashmap` style key/value store. The difference is thatinsteadof hashing thekey to find a location, the `BSTree` comparesthe key tonodesin atree, and then walksthrough the tree to find thebest place to store it, based on howit comparesto other nodes. 
+Before I reallyexplain how this works, letme show you the bstree.h headerfile so thatyou cansee the data structures, and thenI can use thatto explain how it's built. 
 
 bstree.h 
 
@@ -8984,27 +9101,27 @@ void *BSTree_delete(BSTree * map, void *key);
 ```
 
 
-This followsthe same pattern thatI’vebeen using this whole time where I have a base container named `BSTree`, which has nodes named `BSTreeNode` that makeup the ectual contents. Bored yet?Good, there’sno reason to be clever with this kind ofstructure. 
+This followsthe same pattern thatI'vebeen using this whole time where I have a base container named `BSTree`, which has nodes named `BSTreeNode` that makeup the ectual contents. Bored yet?Good, there'sno reason to be clever with this kind ofstructure. 
 
-The important thing is how the `BSTreeNode` is configured, and how it gets used todo each operation: set, get, and delete.I'll cover get first since it’s the easiest operation, andI'll pretendI'm doingitmanually against the data structure: 
+The important thing is how the `BSTreeNode` is configured, and how it gets used todo each operation: set, get, and delete.I'll cover get first since it's the easiest operation, andI'll pretendI'm doingitmanually against the data structure: 
 
-• I take the keyyou’re looking for andI startat the root. First thing I do iscompare your key with thatnode’s key. 
+• I take the keyyou're looking for andI startat the root. First thing I do iscompare your key with thatnode's key. 
 
-• If your key isless than the node.key, then I traverse downthe tree using the left pointer. 
+• If your key isless than the node.key, then I traverse down the tree using the left pointer. 
 
 • If your key isgreater 
 
 
-thanthe node.key, thenI go downwith right. 
+than the node.key, thenI go downwith right. 
 
 • Irepeat steps2and 3 until I eitherfinda matching node.key or get toa node that has no leftand right. In the first case, Ireturn the node.data. In the second, Ireturn NULL. 
 
 
-That’s allthereis to get, so 
-now on to set. It’s nearly the 
+That's allthereis to get, so 
+now on to set. It's nearly the 
 
-same thing, except you’re looking for where toputa new node: 
-• If there is no `BSTree`.root, then I just make itand we’re done. That’s the first node. 
+same thing, except you're looking for where toputa new node: 
+• If there is no `BSTree`.root, then I just make itand we're done. That's the first node. 
 
 • Afterthat, I compare your key to node.key, startingat the root. 
 
@@ -9012,9 +9129,9 @@ same thing, except you’re looking for where toputa new node:
 
 orequal to the node.key, thenI want to goleft. If your key is greaterthan and notequalto the node.key, thenI want to goright. 
 
-• Ikeep repeating step 3 until I reach anode where leftor right doesn’texist, but that’s the direction Ineed to go. 
+• Ikeep repeating step 3 until I reach anode where leftor right doesn'texist, but that's the direction Ineed to go. 
 
-• Oncethere, Iset that direction (left or right) to a newnode forthe key and data Iwant, and then set thisnew node’s parentto the previous nodeI came from. I'llusethe parent node when I do delete. 
+• Oncethere, Iset that direction (left or right) to a newnode forthe key and data Iwant, and then set thisnew node's parentto the previous nodeI came from. I'llusethe parent node when I do delete. 
 
 
 
@@ -9022,7 +9139,7 @@ This also makes sense given how get works. If findinga node involvesgoing left o
 rightdepending on how the key compares,thensettinga node involvesthe same thing until I canset theleftor right for anew node. 
 
 
-Take sometime todrawout a fewtrees on paperand go through settingand getting nodessoyou understand how this works. After that, you’re ready to look at the implementation, and I can explain delete. Deleting in trees is a major pain, and so it’sbest explainedby doinga line-by-line code breakdown.
+Take sometime todrawout a fewtrees on paperand go through settingand getting nodessoyou understand how this works. After that, you're ready to look at the implementation, and I can explain delete. Deleting in trees is a major pain, and so it'sbest explainedby doinga line-by-line code breakdown.
 
 bstree.c 
 
@@ -9248,16 +9365,16 @@ traverse_cb(node);
 
 Before getting into how BSTree_delete works,I want to explain a patternfor doing recursive functioncalls in a sane way. You'll find thatmanytree-based data structures are easy to writeif you use recursion, but formulatea single recursive function. Part of the problem is thatyou need to set up someinitial data forthe first operation, then recurseinto the data structure, whichis hard to do with one function. The solutionis to use two functions:One function sets up the data structure and initial recursion conditionsso thata second function cando the real work. Take a look at BSTree_get firstto see whatI mean.
 
-• Ihave an initial condition:If map­>root is NULL,then return NULL and don’t recurse.
+• Ihave an initial condition:If map­>root is NULL,then return NULL and don't recurse.
 
-• Ithen set upa callto the realrecursion, which is in BSTree_getnode.I create the initial condition of the root node to start with the key and thenthe map. 
+• Ithen set upa callto the realrecursion, which is in BSTree_getnode.I create the initial condition of the root node to start with the key and then the map. 
 
 • In the BSTree_getnode,I thendo the ectual recursivelogic. I compare the keys with map­>compare(node­>key, key) and go
  left, right,or equal to depending on the results.
 
-• Since thisfunction is self-similarand doesn’t have tohandle any initial conditions (because BSTree_getdid), thenI can structure it very simply. When it’s done, it returnsto the caller, and thatreturn then comes back to BSTree_getfor the result.
+• Since thisfunction is self-similarand doesn't have tohandle any initial conditions (because BSTree_getdid), thenI can structure it very simply. When it's done, it returnsto the caller, and thatreturn then comes back to BSTree_getfor the result.
 
-• At the end, the BSTree_get handles getting the node.data element butonly if theresult isn’t NULL. 
+• At the end, the BSTree_get handles getting the node.data element butonly if theresult isn't NULL. 
 
 
 
@@ -9265,7 +9382,7 @@ This way of structuring a recursive algorithmmatches the way I structure my recu
 
 Compare thatwith how I have a base structure in BStree combined with recursive BSTreeNode structures,whichall reference each other in a tree. Using this pattern makesit easy to deal with recursion and keep it straight. 
 
-Next, go look at BSTree_set and BSTree_setnode to see the exactsame pattern. I use BSTree_set toconfigure the initialconditions andedge cases. A common edge case is that there’sno rootnode, so I have to make one toget 
+Next, go look at BSTree_set and BSTree_setnode to see the exactsame pattern. I use BSTree_set toconfigure the initialconditions andedge cases. A common edge case is that there'sno rootnode, so I have to make one toget 
 things started. 
 
 This patternwillworkwith nearly anyrecursive algorithm youhave tofigure out. The wayI do itisby following this pattern: 
@@ -9276,30 +9393,30 @@ This patternwillworkwith nearly anyrecursive algorithm youhave tofigure out. The
 
 • Write a setupfunction to set initialstarting conditions for the algorithm and handle edge cases,then have it call therecursive function. 
 
-• Finally, the setup function returns the final result, and possiblyalters it if the recursivefunction can’t
+• Finally, the setup function returns the final result, and possiblyalters it if the recursivefunction can't
 handle final edgecases. 
 
-This finallyleads me to BSTree_delete and `BSTree_node_delete`. First, you can just look at BSTree_delete and see that it’s thesetup function. Whatit’s doing isgrabbing the resulting node dataand freeing the node that’s found. 
+This finallyleads me to BSTree_delete and `BSTree_node_delete`. First, you can just look at BSTree_delete and see that it's thesetup function. Whatit's doing isgrabbing the resulting node dataand freeing the node that's found. 
 
-Things get more complex in `BSTree_node_delete`, because todelete a node at any point in the tree,I have to rotate thatnode’schildrenup to theparent. Here’sa breakdownof thisfunction and the functions it uses: 
+Things get more complex in `BSTree_node_delete`, because todelete a node at any point in the tree,I have to rotate thatnode'schildrenup to theparent. Here'sa breakdownof thisfunction and the functions it uses: 
 
-bstree.c:190 Irunthe comparefunction to figure outwhich direction I'm going. 
+bstree.c:190 Irun the comparefunction to figure outwhich direction I'm going. 
 
-bstree.c:192-198 This is the usual less-than branch tousewhen I want to goleft. I'm handling thecase that leftdoesn’t exist here, and returning NULL to say "notfound." This covers deleting something that isn’t in the `BSTree`.
-bstree.c:199-205 This is the samething, butfor the right branch of the tree. Just keeprecursing down into the tree just likein the other functions, and return NULL if itdoesn’t exist. 
+bstree.c:192-198 This is the usual less-than branch tousewhen I want to goleft. I'm handling thecase that leftdoesn't exist here, and returning NULL to say "notfound." This covers deleting something that isn't in the `BSTree`.
+bstree.c:199-205 This is the samething, butfor the right branch of the tree. Just keeprecursing down into the tree just likein the other functions, and return NULL if itdoesn't exist. 
 
 bstree.c:206 This is where I havefound the node,sincethe keyis equal(compare return 0). 
 
-bstree.c:207 This node has both a left and right branch, so it’s deeply embedded in the tree. 
+bstree.c:207 This node has both a left and right branch, so it's deeply embedded in the tree. 
 
-bstree.c:209 To remove this node, I first need to find thesmallestnode that’s greater than this node,whichmeans I call BSTree_find_min on theright child.
+bstree.c:209 To remove this node, I first need to find thesmallestnode that's greater than this node,whichmeans I call BSTree_find_min on theright child.
 
-bstree.c:210 Once I have this node, I'll swapits key and data with the currentnode’s values.
-This will effectively take this nodethat was down at thebottomof the treeand put its contents here,sothat I don’thave to try and shufflethe node outby its pointers. 
+bstree.c:210 Once I have this node, I'll swapits key and data with the currentnode's values.
+This will effectively take this nodethat was down at thebottomof the treeand put its contents here,sothat I don'thave to try and shufflethe node outby its pointers. 
 
-bstree.c:214 The successor is now this dead branch that has the current node’s values. Itcould just be removed, but there’sa chancethat it has a right node value. This means I needto do a single rotate so that the successor’s rightnode gets movedup to completely detach it. 
+bstree.c:214 The successor is now this dead branch that has the current node's values. Itcould just be removed, but there'sa chancethat it has a right node value. This means I needto do a single rotate so that the successor's rightnode gets movedup to completely detach it. 
 
-bstree.c:217 At this point, the successor is removed fromthe tree, its values are replaced the current node’s values, andany children it hadare moved up into the parent. Icanreturn the successor as ifit werethe node. 
+bstree.c:217 At this point, the successor is removed fromthe tree, its values are replaced the current node's values, andany children it hadare moved up into the parent. Icanreturn the successor as ifit werethe node. 
 
 bstree.c:218 At this branch, I knowthat the node has aleft but no right, so I want to replace this node with its leftchild. 
 
@@ -9309,11 +9426,11 @@ bstree.c:220 This branch of the if-statement meansIhave a right child butno left
 
 bstree.c:221 Again, I use the functionto do the rotate, but this time, rotate the right node. 
 
-bstree.c:222 Finally, the only thing that’s left is the condition where I’ve found the node, and it hasno children (no leftor right). In this case, I simply replace this node with NULL by using the same function I did with all of the others. 
+bstree.c:222 Finally, the only thing that's left is the condition where I've found the node, and it hasno children (no leftor right). In this case, I simply replace this node with NULL by using the same function I did with all of the others. 
 
 bstree.c:210 Afterall that, I have the current node rotated out of the tree and replacedwithsome child element that will fitin the tree. Ijust returnthis to the caller so it can be freed and managed.
 
-This operation is very complex, and to be honest, I just don’t botherdoing deletesin sometree data structures, and I treat them likeconstant data In my software. If I needto do heavy inserting and deleting, I use a `Hashmap` instead. 
+This operation is very complex, and to be honest, I just don't botherdoing deletesin sometree data structures, and I treat them likeconstant data In my software. If I needto do heavy inserting and deleting, I use a `Hashmap` instead. 
 
 Finally,you canlook at the unit test to see how I'm testing it: 
 bstree_tests.c 
@@ -9504,20 +9621,20 @@ I'll pointyou to the test_fuzzing function, which is an interesting technique fo
 
 A betterway is to createa fuzz function thatdoes all of the operations, butdoes them in a horrible and randomway. In this case, I'm inserting a set ofrandom string keys, and thenI'm deleting them and trying to get therest after each delete. 
 
-Doing this preventsyou from testing only what you know to work, and thenmiss things you don’tknow. Bythrowing random junk at yourdata structures,you’llhit things you didn’texpectand be able to workout any bugsyou have. 
+Doing this preventsyou from testing only what you know to work, and thenmiss things you don'tknow. Bythrowing random junk at yourdata structures,you'llhit things you didn'texpectand be able to workout any bugsyou have. 
 
 How to Improve It 
-Do not doany of these yet. In the next exercise I'll be using this unittestto teach you somemore performance­tuning tricks, and you’ll come back and do theseafteryou complete Exercise 41. 
+Do not doany of these yet. In the next exercise I'll be using this unittestto teach you somemore performance­tuning tricks, and you'll come back and do theseafteryou complete Exercise 41. 
 
-• As usual,you should go through allof the defensiveprogramming checks and add assert``s for conditions that shouldn’thappen. For example, you shouldn’t be getting ``NULL valuesforthe recursion functions, so assert that.
+• As usual,you should go through allof the defensiveprogramming checks and add assert``s for conditions that shouldn'thappen. For example, you shouldn't be getting ``NULL valuesforthe recursion functions, so assert that.
 
 • The traverse function walks through the treein orderby traversing left,then right, andthen the currentnode. You can create traverse functions for thereverse order, as well.
 
-• Itdoes a full string compare onevery node, but Icoulduse the `Hashmap` hashing functions to speed this up. I could hash the keys, andthen keepthe hash inthe `BSTreeNode`. Then, in each of the setup functions, I can hashthe key ahead oftime and pass it down to the recursivefunction. Using this hash,Ican thencompare eachnode much quickerin a way that’s similarto whatI do in `Hashmap`.
+• Itdoes a full string compare onevery node, but Icoulduse the `Hashmap` hashing functions to speed this up. I could hash the keys, andthen keepthe hash in the `BSTreeNode`. Then, in each of the setup functions, I can hashthe key ahead oftime and pass it down to the recursivefunction. Using this hash,Ican thencompare eachnode much quickerin a way that's similarto whatI do in `Hashmap`.
 
 Extra Credit 
 
-• There’s an alternative way todo thisdata structure without using recursion. The Wikipedia pageshows alternatives thatdon’t use recursion butdo the same thing. Why would this bebetteror worse? 
+• There's an alternative way todo thisdata structure without using recursion. The Wikipedia pageshows alternatives thatdon't use recursion butdo the same thing. Why would this bebetteror worse? 
 
 • Readup onallof the differentbut similar trees you can find.
 
@@ -9527,16 +9644,16 @@ There areAVL trees (namedafterGeorgy Adelson-Velsky and E.M. Landis),red-black t
 ## Exercise41. Project devpkg 
 
 
-You are now ready to tackle a new project called devpkg. In this projectyou’regoing to recreate apiece ofsoftware thatIwrote specifically for this bookcalled devpkg. You'll thenextend it in a few key ways and improvethe code, most importantlyby writing someunittests for it. This exercise has a companion video to it, and also a projecton GitHub (https://github.com)that you can referenceif you getstuck. 
+You are now ready to tackle a new project called devpkg. In this projectyou'regoing to recreate apiece ofsoftware thatIwrote specifically for this bookcalled devpkg. You'll thenextend it in a few key ways and improvethe code, most importantlyby writing someunittests for it. This exercise has a companion video to it, and also a projecton GitHub (https://github.com)that you can referenceif you getstuck. 
 
-You should attempt to do this exerciseusing the description below, since that’s how you’ll need to learnto codefrom books in the future. Most computer sciencetextbooks don’tinclude videos for their exercises, so this projectis more abouttrying tofigure it outfromthis description. 
+You should attempt to do this exerciseusing the description below, since that's how you'll need to learnto codefrom books in the future. Most computer sciencetextbooks don'tinclude videos for their exercises, so this projectis more abouttrying tofigure it outfromthis description. 
 
 
-If you get stuck, andyou can’t figureit out, then go watchthe video andlook at the GitHub projectto seehow your code differsfrom mine. 
+If you get stuck, andyou can't figureit out, then go watchthe video andlook at the GitHub projectto seehow your code differsfrom mine. 
 
 What Is devpkg? 
 
-Devpkg is asimple C programthat installs other software. Imade it specifically for this book as a way to teach you how a real softwareproject is structured, and alsohow to reuseother people’slibraries. It uses a portability library calledthe Apache Portable Runtime (APR),whichhasmany handy C functions that work on tons ofplatforms, including Windows. Other thanthat, it just grabscode fromthe Internet (or local files) anddoes the usual ./configure, make, and make install that every programdoes.
+Devpkg is asimple C programthat installs other software. Imade it specifically for this book as a way to teach you how a real softwareproject is structured, and alsohow to reuseother people'slibraries. It uses a portability library calledthe Apache Portable Runtime (APR),whichhasmany handy C functions that work on tons ofplatforms, including Windows. Other thanthat, it just grabscode fromthe Internet (or local files) anddoes the usual ./configure, make, and make install that every programdoes.
 
 Your goal in this exercise is to build devpkg fromthe source,finish each challenge I give, and use thesource to understand what devpkg does and why. 
 
@@ -9545,11 +9662,11 @@ What We Want to Make
 We want atoolthat has these commands: 
 devpkg -S Sets up a new installation ona computer. 
 devpkg -I Installs apiece ofsoftware from a URL. 
-devpkg -L Listsall of the software that’sbeen installed. 
+devpkg -L Listsall of the software that'sbeen installed. 
 devpkg -F Fetches some source code formanual building. 
-devpkg -B Builds the source code and installs it, even if it’s already installed. 
+devpkg -B Builds the source code and installs it, even if it's already installed. 
 
-We want devpkg to be able to takealmost any URL, figure outwhat kind of projectitis, download it, install it, and register that it downloadedthat software. We’d also like it to process a simple dependency listsothat it can install allof the software that a projectmight need, as well.
+We want devpkg to be able to takealmost any URL, figure outwhat kind of projectitis, download it, install it, and register that it downloadedthat software. We'd also like it to process a simple dependency listsothat it can install allof the software that a projectmight need, as well.
 
 The Design 
 
@@ -9559,25 +9676,25 @@ Use External Commands
 
 You'll do most of the work throughexternal commands like curl, git, and tar.This reduces the amount of code devpkg needs to get thingsdone.
 
-SimpleFileDatabase You could easilymake it more complex, but you’ll startby making just make a single simple file database at /usr/local/.devpk to keeptrackof what’s installed.
+SimpleFileDatabase You could easilymake it more complex, but you'll startby making just make a single simple file database at /usr/local/.devpk to keeptrackof what's installed.
 
-/usr/local Always Again, you could makethis more advanced, but for now just assume it’s always /usr/local, which is astandard install pathfor most softwareon UNIX.
+/usr/local Always Again, you could makethis more advanced, but for now just assume it's always /usr/local, which is astandard install pathfor most softwareon UNIX.
 
-configure, make,make install It’s assumed that most software can be installed with just a configure, make, and make install —and maybe configure is optional. If the software at a minimum can’tdo that, there are some optionsto modify the commands, but otherwise, devpkg won’t bother. 
+configure, make,make install It's assumed that most software can be installed with just a configure, make, and make install —and maybe configure is optional. If the software at a minimum can'tdo that, there are some optionsto modify the commands, but otherwise, devpkg won't bother. 
  
 The User Can Be Root 
 
-We'll assumethat the user canbecomeroot using sudo, but doesn’t want to be come root until the end. 
+We'll assumethat the user canbecomeroot using sudo, but doesn't want to be come root until the end. 
 
-This will keep our program smallatfirst and workwell enoughfor usto getit going, at which pointyou’llbeable to modifyit further for this exercise. 
+This will keep our program smallatfirst and workwell enoughfor usto getit going, at which pointyou'llbeable to modifyit further for this exercise. 
 
 The Apache Portable Runtime
 
-One more thing you’ll do is leverage the APR Libraries to get a good set of portable routines for doing this kind of work. APR isn’t necessary, and you couldprobably write this program without it, but it’d takemorecode than necessary. I'm also forcing you to use APR now so you get usedto linking andusing other libraries. Finally, APR also workson Windows,so your skills with it are transferable tomany other platforms. 
+One more thing you'll do is leverage the APR Libraries to get a good set of portable routines for doing this kind of work. APR isn't necessary, and you couldprobably write this program without it, but it'd takemorecode than necessary. I'm also forcing you to use APR now so you get usedto linking andusing other libraries. Finally, APR also workson Windows,so your skills with it are transferable tomany other platforms. 
 
 You should goget both the apr-1.5.2 and the apr­util-1.5.4 libraries, as wellas browsethrough the documentationavailable at the main APR site at http://apr.apache.org. 
 
-Here’s ashell script that will install all thestuff youneed.
+Here's ashell script that will install all thestuff youneed.
 
 You should write this into a fileby hand, and then run it until itcaninstallAPR without anyerrors. 
 
@@ -9612,14 +9729,14 @@ cd /tmp rm -rf apr-util­1.5.4* apr-1.5.2.
 
 ```
 
-I'm having you write this script outbecause it’s basically what we want devpkg to do, butwith extra optionsand checks. In fact, you could just do it all in shell with less code, but then that wouldn’t be a very good program for a C book would it? 
+I'm having you write this script outbecause it's basically what we want devpkg to do, butwith extra optionsand checks. In fact, you could just do it all in shell with less code, but then that wouldn't be a very good program for a C book would it? 
 
-Simply run this script and fix it until it works,then you’ll have the libraries you need to completethe rest of this project. 
+Simply run this script and fix it until it works,then you'll have the libraries you need to completethe rest of this project. 
 
 
 Project Layout 
 
-You need tosetup some simple projectfiles toget started. Here’showI usually craft anew project: 
+You need tosetup some simple projectfiles toget started. Here'showI usually craft anew project: 
 
 
 * Exercise 41.2 Session 
@@ -9640,7 +9757,7 @@ You should have already installed apr-1.5.2 andapr­util-1.5.4,so now you need a
 • bstrlib.h and bstrlib.c from http://bstring.sourceforge Download the .zipfile, extract it, and copy just
 thosetwo files. 
 
-• Type make bstrlib.o, and if it doesn’twork,read the instructions for fixing bstring below. 
+• Type make bstrlib.o, and if it doesn'twork,read the instructions for fixing bstring below. 
 
 Warning! 
 
@@ -9653,7 +9770,7 @@ bstrlib.c:2762: error: expecteddeclaration\ specifiers or '...' before numeric c
 ```
 
 
-This is from abad define that the authorsadded, which doesn’talways work. You just need to change line2759 that reads #ifdef __GNUC__ to read: 
+This is from abad define that the authorsadded, which doesn'talways work. You just need to change line2759 that reads #ifdef __GNUC__ to read: 
 
 ```c
 
@@ -9664,11 +9781,11 @@ This is from abad define that the authorsadded, which doesn’talways work. You 
 andthen it should work on OSX. 
 
 
-When that’s all done,you should have a Makefile, README, dbg.h, bstrlib.h, and bstrlib.c ready togo. 
+When that's all done,you should have a Makefile, README, dbg.h, bstrlib.h, and bstrlib.c ready togo. 
 
 The Makefile 
 
-A good place to start is the Makefile sincethis lays outhowthings are builtand whatsourcefiles you’ll be creating. 
+A good place to start is the Makefile sincethis lays outhowthings are builtand whatsourcefiles you'll be creating. 
 
 Makefile 
 
@@ -9696,12 +9813,12 @@ rm -f devpkg
 rm -rf *.dSYM 
 ```
 
-There’s nothing in this that you haven’tseenbefore, exceptmaybe the strange ?= syntax,which says "set PREFIXequalto this unless PREFIXis already set." 
+There's nothing in this that you haven'tseenbefore, exceptmaybe the strange ?= syntax,which says "set PREFIXequalto this unless PREFIXis already set." 
 
 Warning! 
 
 
-If you’reon more recent versions of Ubuntu, and you get errorsabout apr_off_t or off64_t, then add ­D_LARGEFILE64_SOUR to CFLAGS. Another thingis that you need to add 
+If you'reon more recent versions of Ubuntu, and you get errorsabout apr_off_t or off64_t, then add ­D_LARGEFILE64_SOUR to CFLAGS. Another thingis that you need to add 
 /usr/local/apr/lib
 
 to a file in 
@@ -9719,13 +9836,13 @@ contain code for our little database routines.
 
 shell.o This is from shell.c andheader shell.h, as well asa couple offunctions that makerunning other commands like curl easier. 
 commands.o This isfrom command.c and header command.h, and containsall of the commands that devpkg needs to be useful. 
-devpkg It’s not explicitly mentioned, but it’s the target (on the left)in this part of the Makefile. It comes from devpkg.c, which contains the main function for the whole program. 
+devpkg It's not explicitly mentioned, but it's the target (on the left)in this part of the Makefile. It comes from devpkg.c, which contains the main function for the whole program. 
 
 Your job is to now create each of these files, type in their code, and get them correct. 
 
 Warning! 
 
-You mayread this descriptionand think, "Man! How isit that Zed is so smart thathe just satdownand typed thesefiles out like this!?I could never do that." I didn’t magically craft devpkg in this form with my awesome coding powers. Instead, whatI didis this: 
+You mayread this descriptionand think, "Man! How isit that Zed is so smart thathe just satdownand typed thesefiles out like this!?I could never do that." I didn't magically craft devpkg in this form with my awesome coding powers. Instead, whatI didis this: 
 • Iwroteaquicklittle README to get an idea ofhow Iwanted it to work. 
 
 • Icreated a simple bash script (like the one you didearlier) to figure out all of the pieces that wereneeded.
@@ -9734,16 +9851,16 @@ You mayread this descriptionand think, "Man! How isit that Zed is so smart thath
 
 • Igot itmostly working and debugged, then I started breaking upthe one big file into these four files. 
 
-• Aftergetting thesefiles laiddown,Irenamed and refined the functions anddata structuressothat they’d be more logicaland pretty.
+• Aftergetting thesefiles laiddown,Irenamed and refined the functions anddata structuressothat they'd be more logicaland pretty.
 
 • Finally, after I hadit working the exact same butwith the new structure,Iaddeda few features like the -F and -B options. 
 
 
 
-You’re reading this in theorder I want to teachitto you, but don’t think this ishow I always build software. Sometimes I already knowthe subject andI usemore planning. SometimesI just hack upanidea and see how wellit’d work. SometimesI write one, then throw it awayand plan out a better one. It all depends on whatmy experience tells meis bestor where my inspiration takes me. 
+You're reading this in theorder I want to teachitto you, but don't think this ishow I always build software. Sometimes I already knowthe subject andI usemore planning. SometimesI just hack upanidea and see how wellit'd work. SometimesI write one, then throw it awayand plan out a better one. It all depends on whatmy experience tells meis bestor where my inspiration takes me. 
 
 
-If yourunintoa supposedexpert who triesto tellyou that there’s onlyone way to solve aprogramming problem, they’re lying to you. Either they actually use multiple tactics, or they’renot 
+If yourunintoa supposedexpert who triesto tellyou that there's onlyone way to solve aprogramming problem, they're lying to you. Either they actually use multiple tactics, or they'renot 
 very good. 
 
 
@@ -9754,7 +9871,7 @@ There must be a way to recordURLs that havebeen installed, list theseURLs, and c
 
 First, create the db.h header 
 
-filesoyouknow what you’ll be implementing. 
+filesoyouknow what you'll be implementing. 
 db.h 
 
 ```c
@@ -9912,11 +10029,11 @@ bdata(data));
 
 Challenge1: Code Review 
 
-Before continuing, read every line of thesefiles carefully and confirm thatyou have them entered in exactly as they appear here. Read them backward line by line to practice that. Also, trace each function calland make sure you’re using check to validate thereturn codes. Finally,lookup every function that you don’t recognize—either in theAPR Web sitedocumentation orin the bstrlib.h and bstrlib.c source. 
+Before continuing, read every line of thesefiles carefully and confirm thatyou have them entered in exactly as they appear here. Read them backward line by line to practice that. Also, trace each function calland make sure you're using check to validate thereturn codes. Finally,lookup every function that you don't recognize—either in theAPR Web sitedocumentation orin the bstrlib.h and bstrlib.c source. 
 
 The Shell Functions 
 
-A keydesigndecision for devpkg is to have external tools like curl, tar, and git do most of the work. We could find libraries todo all ofthis internally, but it’s pointless if we just need the base features of these programs. Thereis no shame in runninganother command in UNIX. 
+A keydesigndecision for devpkg is to have external tools like curl, tar, and git do most of the work. We could find libraries todo all ofthis internally, but it's pointless if we just need the base features of these programs. Thereis no shame in runninganother command in UNIX. 
 
 To do this,I'm going touse the apr_thread_proc.hfunctions torunprograms, but I also want to make a simple kind of template system. I'lluse a struct Shell thatholdsall of the informationneededto run a program, but has holesin the arguments list that I can replace with values.
 
@@ -9953,7 +10070,7 @@ extern Shell INSTALL_SH;
 #endif 
 ```
 
-Make sure you’vecreated shell.h exactly as it appears here, andthat you’ve got the same names and number of extern Shell variables. Those areused by the Shell_run and Shell_exec functionsto run commands. I define these twofunctions, and createthe realvariables in shell.c. 
+Make sure you'vecreated shell.h exactly as it appears here, andthat you've got the same names and number of extern Shell variables. Those areused by the Shell_run and Shell_exec functionsto run commands. I define these twofunctions, and createthe realvariables in shell.c. 
 shell.c 
 
 ```c
@@ -10080,11 +10197,11 @@ apr_procattr_dir_set(a cmd->dir);
 122 }; 
 ```
 
-Read the shell.c fromthe bottom to the top (which is a common C source layout) and you seehow I’vecreated the actual Shell variables that you indicatedwere extern in shell.h. Theylive here, butare available to the rest of the program. This is how you makeglobal variablesthat livein one .o file butare used everywhere. You shouldn’tmake many of these, but they arehandy for things like this. 
+Read the shell.c fromthe bottom to the top (which is a common C source layout) and you seehow I'vecreated the actual Shell variables that you indicatedwere extern in shell.h. Theylive here, butare available to the rest of the program. This is how you makeglobal variablesthat livein one .o file butare used everywhere. You shouldn'tmake many of these, but they arehandy for things like this. 
 
-Continuing up the fileweget to the Shell_run function, which is abasefunction that just runs a command according to what’sin a Shell struct. It uses many of the functions defined in apr_thread_proc.h,so go lookup each oneto see how the base functionworks. This seems likealot of work compared to just using the system function call, but it also gives youmore control over the otherprogram’s execution. 
+Continuing up the fileweget to the Shell_run function, which is abasefunction that just runs a command according to what'sin a Shell struct. It uses many of the functions defined in apr_thread_proc.h,so go lookup each oneto see how the base functionworks. This seems likealot of work compared to just using the system function call, but it also gives youmore control over the otherprogram's execution. 
 
-For example, in our Shell struct,we have a .dir attribute thatforcesthe programto be in a specific directory before running. Finally,Ihave the Shell_exec function, which is avariable argument function. You’veseen this before, but makesure you grasp the stdarg.hfunctions. In the challenge for this section, you’re going to analyzethis function.
+For example, in our Shell struct,we have a .dir attribute thatforcesthe programto be in a specific directory before running. Finally,Ihave the Shell_exec function, which is avariable argument function. You'veseen this before, but makesure you grasp the stdarg.hfunctions. In the challenge for this section, you're going to analyzethis function.
 
 
 Challenge2: Analyze
@@ -10128,7 +10245,7 @@ const char
 #endif 
 ```
 
-There’snotmuchin commands.h that you haven’tseenalready. You should see that there aresome defines for strings that are used everywhere. The really interesting code isin commands.c. 
+There'snotmuchin commands.h that you haven'tseenalready. You should see that there aresome defines for strings that are used everywhere. The really interesting code isin commands.c. 
 commands.c 
 
 ```c
@@ -10323,21 +10440,21 @@ DB_find(url);
 
 
 
-After you have this enteredin and compiling, you can analyzeit. If you’ve done the challenges thus far, you should see how the shell.c functions are being used to run shells, andhow the arguments are being replaced. Ifnot, then go back and make sureyou truly understand how Shell_exec actually works.
+After you have this enteredin and compiling, you can analyzeit. If you've done the challenges thus far, you should see how the shell.c functions are being used to run shells, andhow the arguments are being replaced. Ifnot, then go back and make sureyou truly understand how Shell_exec actually works.
 
 Challenge3: Critique My Design 
 
-As before, do a complete review of this code and make sureit’s exactly the same. Then go through each function andmakesure you know how they work and what they’redoing. You should alsotrace how each function calls theother functions you’ve writtenin this file ando ther files. 
+As before, do a complete review of this code and make sureit's exactly the same. Then go through each function andmakesure you know how they work and what they'redoing. You should alsotrace how each function calls theother functions you've writtenin this file ando ther files. 
 
-Finally,confirm thatyou understand allof the functions that you’recalling fromAPRhere. 
+Finally,confirm thatyou understand allof the functions that you'recalling fromAPRhere. 
 
 
-Once you have the file correct and analyzed, go back through and assumethat I'm an idiot. Then, criticize the design I have to seehowyou can improve itif you can. Don’t actually change the code, just create a little notes.txt file andwrite down some thoughts about what you might change. 
+Once you have the file correct and analyzed, go back through and assumethat I'm an idiot. Then, criticize the design I have to seehowyou can improve itif you can. Don't actually change the code, just create a little notes.txt file andwrite down some thoughts about what you might change. 
 
 The devpkg Main Function 
 
-The last and most important file, but probably the simplest, is devpkg.c, which is where the main function lives. There’s no .h 
-filefor this, since itincludes all of the others. Instead, this just creates the executable devpkg when combined with the other .o files from our Makefile. Enterin the codeforthis file, and make sureit’s correct. 
+The last and most important file, but probably the simplest, is devpkg.c, which is where the main function lives. There's no .h 
+filefor this, since itincludes all of the others. Instead, this just creates the executable devpkg when combined with the other .o files from our Makefile. Enterin the codeforthis file, and make sureit's correct. 
 
 
 devpkg.c 
@@ -10426,17 +10543,17 @@ Challenge4: The README and TestFiles
 
 The challenge for this fileis to understandhowthe arguments are being processed, what the arguments are, andthen createthe README filewith instructionson how to use them. Asyou writethe README, also write a simple test.sh that runs ./devpkg tocheck that each command is actually working against real,live code. Use the set -e at the top of yourscriptsothat it aborts on the first error. 
 
-Finally,runthe program under yourdebugger and makesure it’s working before moving onto the final challenge. 
+Finally,run the program under yourdebugger and makesure it's working before moving onto the final challenge. 
 
 The Final Challenge 
 
 
 Your finalchallenge is amini examand itinvolves three things: 
-• Compare yourcode to mycode that’s available online. Starting at 100%, subtract 1% for each lineyougot wrong. 
+• Compare yourcode to mycode that's available online. Starting at 100%, subtract 1% for each lineyougot wrong. 
 
 • Take the notes.txt filethat you previously created and implement your improvements to the the code and functionality of devpkg. 
 
-• Write analternative version of devpkgusing your other favorite languageor the one you thinkcan do this thebest. Compare the two,thenimprove your C versionof devpkg based on what you’velearned. 
+• Write analternative version of devpkgusing your other favorite languageor the one you thinkcan do this thebest. Compare the two,thenimprove your C versionof devpkg based on what you'velearned. 
 
 
 
@@ -10449,21 +10566,21 @@ diff -r devpkg
 devpkgzed 
 
 
-This will clonemy version of devpkg into a directory called devpkgzed so you can then use the tool diff to comparewhat you’ve done to whatI did. The files you’re working with in this book comedirectlyfrom this project, so ifyou get different lines, that’s an error. 
+This will clonemy version of devpkg into a directory called devpkgzed so you can then use the tool diff to comparewhat you've done to whatI did. The files you're working with in this book comedirectlyfrom this project, so ifyou get different lines, that's an error. 
 
-Keep in mind that there’s no realpass or failon this exercise. It’s just away for you to challengeyourselfto be asexact andmeticulousas possible. 
+Keep in mind that there's no realpass or failon this exercise. It's just away for you to challengeyourselfto be asexact andmeticulousas possible. 
 
 ## Exercise42. Stacks and Queues 
 
-At this point inthe book, you should knowmostof the data structures thatareused to build allof theother data structures. If you havesome kind of List, `DArray`, `Hashmap`, and Tree, then you can build almost anything else out there. 
+At this point in the book, you should knowmostof the data structures thatareused to build allof theother data structures. If you havesome kind of List, `DArray`, `Hashmap`, and Tree, then you can build almost anything else out there. 
 
-Everything else you run into either uses these or some variantof these. If it doesn’t, thenit’s most likelyanexotic data structure that you probably won’t need. 
+Everything else you run into either uses these or some variantof these. If it doesn't, thenit's most likelyanexotic data structure that you probably won't need. 
 
 Stacks and Queues are very simple data structures thatare really variants of the List data structure. Allthey do is use a List with a discipline or convention that says you always place elements onone endof the List.For a Stack, you alwayspush and pop. Fora Queue,you always shift to the front, butpop from the end. 
 
 I can implement both data structures using nothing but the CPPand twoheaderfiles. My header files are 21lines long anddo all of the Stack and Queue operations 
 
-without anyfancy defines. To see if you've been paying attention,I'm going to show you the unit tests, and then have you implement the header filesneededto make them work. To pass this exercise, you can’t createany stack.c or queue.cimplementation files. Use only the stack.h and queue.h files to make the tests run. 
+without anyfancy defines. To see if you've been paying attention,I'm going to show you the unit tests, and then have you implement the header filesneededto make them work. To pass this exercise, you can't createany stack.c or queue.cimplementation files. Use only the stack.h and queue.h files to make the tests run. 
 stack_tests.c 
 
 ```c
@@ -10602,7 +10719,7 @@ NULL;59  }
  
 What You Should See 
 
-Your unit testshould run without your having to change the tests, and itshould pass the debugger with no memory errors. Here’swhat it looks likeif I run stack_tests directly: 
+Your unit testshould run without your having to change the tests, and itshould pass the debugger with no memory errors. Here'swhat it looks likeif I run stack_tests directly: 
 
 
 * Exercise 42.1 Session 
@@ -10618,25 +10735,25 @@ VAL: test3 data DEBUG tests/stack_tests.c:37 VAL: test2 data DEBUG tests/stack_t
 $ 
 ```
 
-The queue_test is basically thesamekind of output, so Ishouldn’t have to showit to you at thisstage.
+The queue_test is basically thesamekind of output, so Ishouldn't have to showit to you at thisstage.
 
 How to Improve It 
 
 The only realimprovement you could maketo this is switching from a List toa `DArray`. The Queue data structure ismore difficult to do with a `DArray` becauseit works at both endsof thelist ofnodes. 
 
-Onedisadvantageof doing this entirely in a header file is thatyou can’t easily performance tune it. Mostly, what you’redoing with this technique isestablishinga protocol for how touse a List in a certain style. When performance tuning, if you make List fast,then these two should improve as well. 
+Onedisadvantageof doing this entirely in a header file is thatyou can't easily performance tune it. Mostly, what you'redoing with this technique isestablishinga protocol for how touse a List in a certain style. When performance tuning, if you make List fast,then these two should improve as well. 
 
 Extra Credit 
 
-• Implement Stack using `DArray` instead of List, but without changing the unit test. That meansyou’ll have to createyour own STACK_FOREACH. 
+• Implement Stack using `DArray` instead of List, but without changing the unit test. That meansyou'll have to createyour own STACK_FOREACH. 
 
 ## Exercise43. A SimpleStatistics Engine 
 
-This is asimplealgorithm thatI usefor collecting summary statistics online, or without storing all of the samples. I usethis inany software that needsto keep somestatistics, such as mean, standarddeviation, and sum, butcan’tstore allthe samples needed. Instead, Icanjust storethe rolling results of the calculations,whichis only five numbers. 
+This is asimplealgorithm thatI usefor collecting summary statistics online, or without storing all of the samples. I usethis inany software that needsto keep somestatistics, such as mean, standarddeviation, and sum, butcan'tstore allthe samples needed. Instead, Icanjust storethe rolling results of the calculations,whichis only five numbers. 
 
 Rolling Standard Deviation and Mean 
 
-The first thing you needis asequenceof samples. This can be anything from the time it takes to completea task to the number of times someone accesses something to star ratings on aWeb site. It doesn’treallymatter what it is,just so long asyouhave a stream ofnumbersand you want to know the following summary statistics about them: 
+The first thing you needis asequenceof samples. This can be anything from the time it takes to completea task to the number of times someone accesses something to star ratings on aWeb site. It doesn'treallymatter what it is,just so long asyouhave a stream ofnumbersand you want to know the following summary statistics about them: 
 
 sum This is the total of all the numbers added together. 
 
@@ -10644,13 +10761,13 @@ sum squared (sumsq)
 
 This is the sumof the square of eachnumber. 
 
-count (n) This is the number samples that you’vetaken. 
+count (n) This is the number samples that you'vetaken. 
 
-min This is the smallest sample you’veseen. 
+min This is the smallest sample you'veseen. 
 
-max This is thelargest sample you’veseen. 
+max This is thelargest sample you'veseen. 
 
-mean This is the most likely middle number. It’snotactually the middle, sincethat’sthe median, butit’s an acceptedapproximation for it. 
+mean This is the most likely middle number. It'snotactually the middle, sincethat'sthe median, butit's an acceptedapproximation for it. 
 
 stddev This iscalculated using $sqrt(sumsq – (sum ×mean))/(n – 1) ))$ where sqrt is the square root function in the math.h header. 
 
@@ -10688,11 +10805,11 @@ Median Mean 3rd Qu. Max.
 ```
 
 
-You don’tneed to knowR. Just follow along while I explain how I'mBreaking this down tocheck my math: 
+You don'tneed to knowR. Just follow along while I explain how I'mBreaking this down tocheck my math: 
 
-Lines1-4 I use the function runif toget arandomuniform distribution of numbers, thenprint them out. I'll use these inthe unit test later. 
+Lines1-4 I use the function runif toget arandomuniform distribution of numbers, thenprint them out. I'll use these in the unit test later. 
 
-Lines5-7 Here’s the summary, so you can see the valuesthat R calculatesfor these. 
+Lines5-7 Here's the summary, so you can see the valuesthat R calculatesfor these. 
 
 Lines8-9 This is the stddev using the sd function. 
 
@@ -10712,7 +10829,7 @@ Lines20-21 Finally, I sqrt thatand I get 3.547868,which matches the number R gav
 
 Implementation 
 
-That’s how you calculate the stddev, so nowI can make somesimplecode to implement this calculation. 
+That's how you calculate the stddev, so nowI can make somesimplecode to implement this calculation. 
 stats.h 
 
 ```c
@@ -10736,7 +10853,7 @@ void Stats_dump(Stats * st);
 
 ```
 
-Hereyou cansee that I’ve put the calculations I need to storein a struct, and then I havefunctionsfor sampling and getting thenumbers. Implementing this is then just an exercise in converting the math: 
+Hereyou cansee that I've put the calculations I need to storein a struct, and then I havefunctionsfor sampling and getting thenumbers. Implementing this is then just an exercise in converting the math: 
 
 stats.c 
 
@@ -10806,9 +10923,9 @@ Stats_sample(Stats * st, double s) 41 {
 
 ```
 
-Here’s abreakdown of each function in stats.c: 
+Here's abreakdown of each function in stats.c: 
 
-Stats_recreate I'llwant to load these numbers fromsome kind of database, and this function let’s me recreate a Stats 
+Stats_recreate I'llwant to load these numbers fromsome kind of database, and this function let's me recreate a Stats 
 struct.
 
 Stats_create This simply called Stats_recreate with all 0 (zero) values.
@@ -10818,7 +10935,7 @@ Stats_mean Using the sum and n, it gives the mean.
 Stats_stddev This implements the formula I worked out; the only difference is thatI calculate the mean with st->sum / st->n
 in thisformula instead ofcalling Stats_mean. 
 
-Stats_sample This does the workof maintaining the numbers inthe Stats struct. When you giveit the first value, itsees that n is 0 and sets min and max accordingly. Every call after thatkeeps increasing sum, sumsq, and n.It then figuresout if this new sample is anew min or max. 
+Stats_sample This does the workof maintaining the numbers in the Stats struct. When you giveit the first value, itsees that n is 0 and sets min and max accordingly. Every call after thatkeeps increasing sum, sumsq, and n.It then figuresout if this new sample is anew min or max. 
 
 Stats_dump This is a simple debug function thatdumps the statistics so you can viewthem. 
 
@@ -10901,9 +11018,9 @@ NULL;73 74  }
 
 
 
-There’s nothing new in this unit test,exceptmaybethe EQ macro. 
+There's nothing new in this unit test,exceptmaybethe EQ macro. 
 
-I felt lazy and didn’t want to look upthe standardway to tell if two double values are close, so I made this macro. The problem with double is that equalityassumes totallyequal results, but I'musing two differentsystems with slightlydifferent rounding errors. The solution is to say thatIwant the numbers to be "equalto X decimalplaces."
+I felt lazy and didn't want to look upthe standardway to tell if two double values are close, so I made this macro. The problem with double is that equalityassumes totallyequal results, but I'musing two differentsystems with slightlydifferent rounding errors. The solution is to say thatIwant the numbers to be "equalto X decimalplaces."
 
 I do this with EQ byraising the number toa power of10, thenusing the round function toget an integer. This is asimpleway toround to N decimalplaces and compare the results asan integer. I'msure there are a billion other waysto do the same thing, but thisworks for now.
 
@@ -10913,37 +11030,37 @@ How to Use It
 
 You can use the standard deviation andmean to determine ifa new sampleis interesting, oryou canuse this to collectstatistics on statistics. The first one iseasy for people tounderstand,so I'll explainthat quickly using an exampleforlogin times. 
 
-Imagine you’re tracking how long users spend onaserver, and you’re using statistics to analyzeit. Every time someone logs in, you keep track of how long they are there,then you call Stats_sample. I'm looking for people who areon toolong and alsopeoplewho seem tobeon too quickly.
+Imagine you're tracking how long users spend onaserver, and you're using statistics to analyzeit. Every time someone logs in, you keep track of how long they are there,then you call Stats_sample. I'm looking for people who areon toolong and alsopeoplewho seem tobeon too quickly.
 
-Instead ofsetting specific levels, what I’d dois compare how long someone is onwith 
+Instead ofsetting specific levels, what I'd dois compare how long someone is onwith 
 the mean (plus or minus) 2 
 
 * stddev range. I get the mean and 2 
 * stddev, and consider login times to beinteresting if they are outside thesetwo ranges. SinceI'm keeping these statistics using arolling algorithm,this is averyfast calculation, and I can then have the softwareflag the users who areoutsideof this range. 
 
-This doesn’tnecessarily point outpeople whoare behaving badly, butinstead itflags potential problems thatyou can review tosee what’s going on. It’salso doing it based on the behavior of all of the users, which avoids the problem of pickingsome arbitrarynumberthat’snot based on what’s really happening. 
+This doesn'tnecessarily point outpeople whoare behaving badly, butinstead itflags potential problems thatyou can review tosee what's going on. It'salso doing it based on the behavior of all of the users, which avoids the problem of pickingsome arbitrarynumberthat'snot based on what's really happening. 
 
 The general rule you can get fromthis is that the mean (plus or minus) 2 * stddev is an estimate of where 90% of the values are expected tofall, and anything outside that range is interesting.
 
 The secondway tousethese statisticsis to go meta and calculate them for other Stats calculations. You basically do your Stats_sample like normal, but then you run Stats_sample on the min, max, n, mean, and stddev onthat sample. This givesa two-level measurement, andletsyou comparesamples of samples. 
 
-Confusing, right? I'll continuemyexample above, butlet’s say you have100 servers thateach holda differentapplication. You’re already tracking users’ login timesfor each application server, butyou want to compare all 100 applications and flag any users that are logging intoo much on all of them. Theeasiestway to do thatis tocalculatethe new login stats each time someone logsin, and then add that Stats structs element to a second Stat. 
+Confusing, right? I'll continuemyexample above, butlet's say you have100 servers thateach holda differentapplication. You're already tracking users' login timesfor each application server, butyou want to compare all 100 applications and flag any users that are logging intoo much on all of them. Theeasiestway to do thatis tocalculatethe new login stats each time someone logsin, and then add that Stats structs element to a second Stat. 
 
-What youend upwithis a series of statisticsthat can be named like this: meanof means This is a full Stats struct thatgives you mean and stddev of the meansof alltheservers. Any server or user who is outside ofthis is worthlookingaton a global level. meanof stddevs Another Stats struct that producesstatistics on how all of the servers range. You canthen analyzeeach server and seeif anyof them have unusually wide-ranging numbers by comparing their stddev to this mean of stddevs statistic.
+What youend upwithis a series of statisticsthat can be named like this: meanof means This is a full Stats struct thatgives you mean and stddev of the meansof alltheservers. Any server or user who is outside ofthis is worthlookingaton a global level. meanof stddevs Another Stats struct that producesstatistics on how all of the servers range. You can then analyzeeach server and seeif anyof them have unusually wide-ranging numbers by comparing their stddev to this mean of stddevs statistic.
 
-You could do themall, but these are the mostuseful. If you thenwantedto monitor servers for erratic logintimes, you’ddo this:
+You could do themall, but these are the mostuseful. If you thenwantedto monitor servers for erratic logintimes, you'ddo this:
 
-• UserJohn logs into and out of server A. Grab server A’s statistics and update them. 
+• UserJohn logs into and out of server A. Grab server A's statistics and update them. 
 
-• Grab the mean of means statistics, and thentake A’smean and add itas a sample. I'll call this m_of_m. 
+• Grab the mean of means statistics, and thentake A'smean and add itas a sample. I'll call this m_of_m. 
 
-• Grab the mean of stddevs statistics, and add A’s stddev to it asa sample. I'll call this m_of_s.
+• Grab the mean of stddevs statistics, and add A's stddev to it asa sample. I'll call this m_of_s.
 
-• If A’s mean is outside of m_of_m.mean + 2* m_of_m.stddev, thenflagitas possibly having a problem. 
+• If A's mean is outside of m_of_m.mean + 2* m_of_m.stddev, thenflagitas possibly having a problem. 
 
-• If A’s stddev is outside of m_of_s.mean + 2 * m_of_s.stddev, thenflagitas possibly behaving tooerratically.
+• If A's stddev is outside of m_of_s.mean + 2 * m_of_s.stddev, thenflagitas possibly behaving tooerratically.
 
-• Finally, if John’slogin time is outside ofA’s range,or A’s m_of_m range,then flag itas interesting. 
+• Finally, if John'slogin time is outside ofA's range,or A's m_of_m range,then flag itas interesting. 
 
 Using thismean of meansand meanof stddevs calculation, you can efficientlytrack many metrics with a minimal amount of processing and storage. 
 
@@ -10951,7 +11068,7 @@ Extra Credit
 
 • Convert the Stats_stddev and Stats_mean to static inline functions in the stats.h file instead ofin the stats.c file.
 
-• Use thiscode towritea performance test of the string_algos_test Make itoptional, and have itrunthe base test asa seriesof samples, and then report the results.
+• Use thiscode towritea performance test of the string_algos_test Make itoptional, and have itrun the base test asa seriesof samples, and then report the results.
 
 • Write a versionof this in another programming languageyou know. Confirmthat this version is correctbased on what I have here. 
 
@@ -11030,9 +11147,9 @@ A) (\
 61 #endif 
 ```
 
-Looking at the data structure, you seeIhave a buffer, start, and end.A RingBuffer does nothing more than move the start and end around thebufferso that it loops wheneverit reachesthe buffer’s end. Doing this gives the illusion of aninfiniteread device in a smallspace. Ithen have a bunch of macros thatdo variouscalculations basedon this.
+Looking at the data structure, you seeIhave a buffer, start, and end.A RingBuffer does nothing more than move the start and end around thebufferso that it loops wheneverit reachesthe buffer's end. Doing this gives the illusion of aninfiniteread device in a smallspace. Ithen have a bunch of macros thatdo variouscalculations basedon this.
 
-Here’s the implementation, which is amuch better explanation of how this works. 
+Here's the implementation, which is amuch better explanation of how this works. 
 ringbuffer.c 
 
 
@@ -11117,18 +11234,18 @@ int length)
 ```
 
 
-This is all there is to a basic RingBuffer implementation. You can readand write blocks of data to it. You can ask how much is in it and howmuch space it has. There are some fancier ring buffers thatusetrickson the OS to create an imaginary infinite store, but those aren’t portable.
+This is all there is to a basic RingBuffer implementation. You can readand write blocks of data to it. You can ask how much is in it and howmuch space it has. There are some fancier ring buffers thatusetrickson the OS to create an imaginary infinite store, but those aren't portable.
 
-Since my RingBufferdeals with reading and writing blocks of memory, I'm making surethat anytime end == start, I reset them to 0 (zero) so that they go to the beginningof the buffer. In theWikipedia versionitisn’twriting blocks ofdata,soit only has to move end and start around in a circle. To better handle blocks,youhave to drop to the beginning of the internal buffer whenever the datais empty. 
+Since my RingBufferdeals with reading and writing blocks of memory, I'm making surethat anytime end == start, I reset them to 0 (zero) so that they go to the beginningof the buffer. In theWikipedia versionitisn'twriting blocks ofdata,soit only has to move end and start around in a circle. To better handle blocks,youhave to drop to the beginning of the internal buffer whenever the datais empty. 
 
 The Unit Test 
 
-For yourunittest, you’ll want to testas many possible conditions as you can. The easiest way to do that is to preconstructdifferent RingBuffer structs, and thenmanually check that the functions andmathwork right. For example,you could makeone where end is right at the end of thebuffer and start is rightbefore the buffer, and then seehow it fails. 
+For yourunittest, you'll want to testas many possible conditions as you can. The easiest way to do that is to preconstructdifferent RingBuffer structs, and thenmanually check that the functions andmathwork right. For example,you could makeone where end is right at the end of thebuffer and start is rightbefore the buffer, and then seehow it fails. 
 
 
 What You Should See 
 
-Here’s my ringbuffer_tests run: 
+Here's my ringbuffer_tests run: 
 
 
 * Exercise 44.1 Session 
@@ -11147,13 +11264,13 @@ ALL TESTS PASSED Tests run: 3
 $ 
 ```
 
-You should have atleast three tests that confirm all of the basic operations, andthen see how much more you can test beyondwhatI’vedone. 
+You should have atleast three tests that confirm all of the basic operations, andthen see how much more you can test beyondwhatI'vedone. 
 
 How to Improve It 
 
-As usual, you shouldgo back and add defensive programming checksto this exercise. Hopefully you’ve been doing this, becausethe base codein mostof liblcthw doesn’t have the common defensive programming checksthat I'm teaching you. I leavethis to you so thatyou can get used to improving code with these extra checks. 
+As usual, you shouldgo back and add defensive programming checksto this exercise. Hopefully you've been doing this, becausethe base codein mostof liblcthw doesn't have the common defensive programming checksthat I'm teaching you. I leavethis to you so thatyou can get used to improving code with these extra checks. 
 
-For example, in this ring buffer,there’s nota lot of checking that an access will actually be inside thebuffer. If youread the "Circular buffer" pageon Wikipedia, you’ll see the "Optimized POSIX implementation" that uses Portable Operating SystemInterface(POSIX)­specific calls tocreate an infinite space. Studythat and I'll have you try itin the Extra Credit section.
+For example, in this ring buffer,there's nota lot of checking that an access will actually be inside thebuffer. If youread the "Circular buffer" pageon Wikipedia, you'll see the "Optimized POSIX implementation" that uses Portable Operating SystemInterface(POSIX)­specific calls tocreate an infinite space. Studythat and I'll have you try itin the Extra Credit section.
 
 Extra Credit 
 
@@ -11163,7 +11280,7 @@ Extra Credit
 
 ## Exercise45. A SimpleTCP/IP Client 
 
-Im going tousethe RingBuffer tocreate a very simplistic network testing tool thatI call netclient. To do this,I have to add some stuff to the Makefile tohandlelittle programs inthe bin/ directory. Augment the Makefile First, add a variablefor the programs just likethe unit test’s TESTS and TEST_SRC variables:
+Im going tousethe RingBuffer tocreate a very simplistic network testing tool thatI call netclient. To do this,I have to add some stuff to the Makefile tohandlelittle programs in the bin/ directory. Augment the Makefile First, add a variablefor the programs just likethe unit test's TESTS and TEST_SRC variables:
 
 ```bash
 
@@ -11178,7 +11295,7 @@ Then, you want to add the PROGRAMS to the all target:
 all: $(TARGET)$(SO_TARGET) tests $(PROGRAMS) 
 ```
 
-Then, add PROGRAMS to the rm line inthe clean target:
+Then, add PROGRAMS to the rm line in the clean target:
 
 
 ```bash
@@ -11350,10 +11467,10 @@ data = RingBuffer_get_all(buf
 ```
 
 
-This codeuses select to handle events fromboth stdin (file descriptor0) and socket, which it uses to talk to a server. Thecode uses RingBuffers tostore the data and copyit around. You can considerthe functions read_some and write_some early prototypesforsimilar functions inthe RingBuffer library. 
+This codeuses select to handle events fromboth stdin (file descriptor0) and socket, which it uses to talk to a server. Thecode uses RingBuffers tostore the data and copyit around. You can considerthe functions read_some and write_some early prototypesforsimilar functions in the RingBuffer library. 
 
 
-This little bitof codecontains quite a few networking functions that youmay not know. As you comeacross a function that you don’tknow, look it up in theman pages and make sureyou understand it. This onelittle filemight inspireyou to then research all of the APIs required towritea little server in C. 
+This little bitof codecontains quite a few networking functions that youmay not know. As you comeacross a function that you don'tknow, look it up in theman pages and make sureyou understand it. This onelittle filemight inspireyou to then research all of the APIs required towritea little server in C. 
 
 
 What You Should See 
@@ -11387,11 +11504,11 @@ $
 ```
 
 
-WhatI do here is typein the syntax needed to make the HTTP requestforthe file /ex45.txt, thenthe Host: header line, and then I pressENTER to get an empty line. I thenget the response, with headers and the content. After that, I just hit CTRL-C to exit.
+WhatI do here is typein the syntax needed to make the HTTP requestforthe file /ex45.txt, then the Host: header line, and then I pressENTER to get an empty line. I thenget the response, with headers and the content. After that, I just hit CTRL-C to exit.
 
 How to Break It 
 
-This codecoulddefinitely havebugs, and currently in the draftof this book,I'm going to have tokeep working on it. In the meantime,try analyzing the codeIhave here and thrashing itagainst other servers. There’s a tool called netcat that’s great for setting upthese kinds of servers. Anotherthing to do is use alanguage like Python or Ruby to createa simple junk server that spews outjunk and bad data, randomlycloses connections, and does other nastythings.
+This codecoulddefinitely havebugs, and currently in the draftof this book,I'm going to have tokeep working on it. In the meantime,try analyzing the codeIhave here and thrashing itagainst other servers. There's a tool called netcat that's great for setting upthese kinds of servers. Anotherthing to do is use alanguage like Python or Ruby to createa simple junk server that spews outjunk and bad data, randomlycloses connections, and does other nastythings.
 
 
 If youfind bugs, report them in thecomments, and I'll fix them up. 
@@ -11405,15 +11522,15 @@ Extra Credit
 
 • Go back throughand add various defensive   programmfor(INITIALIZER;TEST; INCREMENTER) {CODE; } ing checksto the functions to improve them. 
 
-• Use the getoptfunction toallowthe user theoption not to translate \n to \r\n. This is only needed on protocols thatrequireit for lineendings, like HTTP. Sometimes you don’twant the translation, so give the user theoption. 
+• Use the getoptfunction toallowthe user theoption not to translate \n to \r\n. This is only needed on protocols thatrequireit for lineendings, like HTTP. Sometimes you don'twant the translation, so give the user theoption. 
 
 
 ## Exercise46. Ternary Search Tree
 
 
-The final data structure that I'll show you iscalled the TSTree, which is similarto the `BSTree`, except it has three branches: low, equal, and high. It’s primarily used just like `BSTree` and `Hashmap` tostore key/value data, butit works off of the individualcharacters in the keys. This gives the TSTree someabilities thatneither `BSTree` nor `Hashmap` has. 
+The final data structure that I'll show you iscalled the TSTree, which is similarto the `BSTree`, except it has three branches: low, equal, and high. It's primarily used just like `BSTree` and `Hashmap` tostore key/value data, butit works off of the individualcharacters in the keys. This gives the TSTree someabilities thatneither `BSTree` nor `Hashmap` has. 
 
-In a TSTree, every keyis a string, andit’s insertedby walking through andbuilding atree basedon the equality of the charactersin the string. It starts at the root,looks at the character forthat node, and if it’slower,equal to, or higher thanthat, then it goes inthat direction. You can see this in the header file: 
+In a TSTree, every keyis a string, andit's insertedby walking through andbuilding atree basedon the equality of the charactersin the string. It starts at the root,looks at the character forthat node, and if it'slower,equal to, or higher thanthat, then it goes inthat direction. You can see this in the header file: 
 tstree.h 
 
 ```c
@@ -11443,11 +11560,11 @@ The TSTree has the following elements:
 
 * splitchar The characterat this point in the tree. 
 
-* low Thebranch that’s lower than splitchar. 
+* low Thebranch that's lower than splitchar. 
 
-* equal Thebranch that’s equalto splitchar. 
+* equal Thebranch that's equalto splitchar. 
 
-* high Thebranch that’s higherthan splitchar. 
+* high Thebranch that's higherthan splitchar. 
 
 * value The value set for a string at that point with splitchar. 
 
@@ -11455,13 +11572,13 @@ You can see that this implementation has the following operations:
 
 search A typical operation to finda value for this key. 
 
-search_prefix This operation finds the first valuethat has this as a prefixof its key. This is the an operationthat you can’teasily doin a `BSTree` or `Hashmap`. 
+search_prefix This operation finds the first valuethat has this as a prefixof its key. This is the an operationthat you can'teasily doin a `BSTree` or `Hashmap`. 
 
 insert This breaks the key down byeach character and inserts them into the tree.
 
 traverse This walks through the tree, allowing you to collect oranalyze allthe keys and values it contains. 
 
-The only thing missing is aTSTree_delete, and that’s because it’s ahorribly expensive operation, even more expensivethan BSTree_delete. When I use TSTree structures,I treat themas constantdata thatIplanon traversing many times, and notremoving anything from them. They are very fast for this, butaren’t good ifyouneed to insertand deletethings quickly. For that, I use `Hashmap`, since it beats both `BSTree` and TSTree.
+The only thing missing is aTSTree_delete, and that's because it's ahorribly expensive operation, even more expensivethan BSTree_delete. When I use TSTree structures,I treat themas constantdata thatIplanon traversing many times, and notremoving anything from them. They are very fast for this, butaren't good ifyouneed to insertand deletethings quickly. For that, I use `Hashmap`, since it beats both `BSTree` and TSTree.
 
 The implementationfor the TSTree is actually simple, butit mightbehardto follow at first. I'll break it down
 after you enterit in: 
@@ -11579,7 +11696,7 @@ tstree.c
 ```
 
 
-For TSTree_insert,I'm using the same pattern for recursive structures whereI have a small function that calls the real recursive function. I'm not doingany additional checkshere, but you should addthe usual defensiveprogramming checks toit. One thing to keep in mind is that it’s using aslightly different design that doesn’thave aseparate TSTree_create function. However, if you passit a NULL for the node, then it will create itand return the final value. 
+For TSTree_insert,I'm using the same pattern for recursive structures whereI have a small function that calls the real recursive function. I'm not doingany additional checkshere, but you should addthe usual defensiveprogramming checks toit. One thing to keep in mind is that it's using aslightly different design that doesn'thave aseparate TSTree_create function. However, if you passit a NULL for the node, then it will create itand return the final value. 
 
 That meansI need to break down TSTree_insert_base so thatyou understand the insert operation: 
 
@@ -11587,36 +11704,36 @@ tstree.c:10-18 As I mentioned, ifgivena NULL,then Ineed to makethis node and ass
 
 tstree.c:20-21 If the *key islessthan this, thenrecurse, but goto the low branch. 
 
-tstree.c:22 This splitchar is equal, so I want to goand deal with equality. This will happen ifwe just create this node, so we’ll be building the tree at this point. 
+tstree.c:22 This splitchar is equal, so I want to goand deal with equality. This will happen ifwe just create this node, so we'll be building the tree at this point. 
 
 tstree.c:23-24 there are stillcharacters to handle,sorecurse down the equal branch, but go to the next *key character. 
 
-tstree.c:26-27 This is the last character, so I set the value andthat’sit. I have an assert here in case ofa duplicate. 
+tstree.c:26-27 This is the last character, so I set the value andthat'sit. I have an assert here in case ofa duplicate. 
 
-tstree.c:29-30 The last condition is that this *key isgreater than splitchar, so I need to recurse downthe high branch. The key to this data structure is the fact that I'monly incrementing thecharacter when a splitchar isequal. For theother twoconditions, I just walk through the tree until I hit an equal character to recurse into next. What this does is make it very fast not to finda key. Ican get a bad key, andsimply walk through a few high and low nodes until I hit adead endbefore I know that this key doesn’t exist. I don’t needto process every character of the key or every node of the tree. Once you understandthat, thenmove on toanalyzing how TSTree_search works. 
+tstree.c:29-30 The last condition is that this *key isgreater than splitchar, so I need to recurse down the high branch. The key to this data structure is the fact that I'monly incrementing thecharacter when a splitchar isequal. For theother twoconditions, I just walk through the tree until I hit an equal character to recurse into next. What this does is make it very fast not to finda key. Ican get a bad key, andsimply walk through a few high and low nodes until I hit adead endbefore I know that this key doesn't exist. I don't needto process every character of the key or every node of the tree. Once you understandthat, thenmove on toanalyzing how TSTree_search works. 
 
-tstree.c:46 I don’tneed to processthe tree recursively inthe TSTree.I can justuse a while-loop anda node for where I currently am. 
+tstree.c:46 I don'tneed to processthe tree recursively in the TSTree.I can justuse a while-loop anda node for where I currently am. 
 
-tstree.c:47-48 If the currentcharacter is less thanthe node splitchar, thengo low. 
+tstree.c:47-48 If the currentcharacter is less than the node splitchar, thengo low. 
 
-tstree.c:49-51 If it’s equal, then increment i and go equalas long as it’snot thelast character. That’swhy the if(i < len) is there,so that I don’t go toofar past the final value. tstree.c:52-53 Otherwise, I go high, sincethe character is greater.
+tstree.c:49-51 If it's equal, then increment i and go equalas long as it'snot thelast character. That'swhy the if(i < len) is there,so that I don't go toofar past the final value. tstree.c:52-53 Otherwise, I go high, sincethe character is greater.
 
-tstree.c:57-61 If I have a node after the loop, then returnits value, otherwisereturn NULL. This isn’t toodifficult to understand, andyou cansee that it’s almost exactly the same algorithm for the TSTree_search_prefix function. 
+tstree.c:57-61 If I have a node after the loop, then returnits value, otherwisereturn NULL. This isn't toodifficult to understand, andyou cansee that it's almost exactly the same algorithm for the TSTree_search_prefix function. 
 
 The only difference is thatI'm nottrying to find an exactmatch, but find the longest prefix I can. To do that, Ikeep track of the last node thatwas equal, and then after the search loop,walk through that node until I find a value. 
 
 Looking at TSTree_search_prefix, you can startto see the secondadvantage a TSTree has over the `BSTree` and `Hashmap` for findingstrings. Given anykey of X length, you can find anykey in X moves. You canalso find the first prefix in X moves, plus N more depending on how big the matching key is.
 
-If the biggest keyin the tree is ten characters long, then you can find anyprefixin thatkey in ten moves. More importantly, you can do allof thisby comparingeach character of the key once. Incomparis on, to do the same with a `BSTree`,you would have to check theprefixes of each characterin every possible matching node in the `BSTree` against the characters inthe prefix. 
+If the biggest keyin the tree is ten characters long, then you can find anyprefixin thatkey in ten moves. More importantly, you can do allof thisby comparingeach character of the key once. Incomparis on, to do the same with a `BSTree`,you would have to check theprefixes of each characterin every possible matching node in the `BSTree` against the characters in the prefix. 
 
-It’s the same forfinding keys or seeingif a key doesn’t exist. You have tocompare each character against most of the
-characters inthe `BSTree` to find or notfind amatch. 
-
-
-A `Hashmap` is evenworse for finding prefixes,because you can’thash just the prefix. Basically,you can’t do this efficientlyin a Hashmapunlessthe data is something you can parse, like aURL. Even then,that usually requires whole trees of Hashmaps. 
+It's the same forfinding keys or seeingif a key doesn't exist. You have tocompare each character against most of the
+characters in the `BSTree` to find or notfind amatch. 
 
 
-The last twofunctions should be easy for you to analyze since they’re the typical traversing and destroying operations that you’ve already seen In other data structures. Finally,Ihave a simple unit test for thewholething to makesure itworksright: 
+A `Hashmap` is evenworse for finding prefixes,because you can'thash just the prefix. Basically,you can't do this efficientlyin a Hashmapunlessthe data is something you can parse, like aURL. Even then,that usually requires whole trees of Hashmaps. 
+
+
+The last twofunctions should be easy for you to analyze since they're the typical traversing and destroying operations that you've already seen In other data structures. Finally,Ihave a simple unit test for thewholething to makesure itworksright: 
 
 tstree_tests.c 
 
@@ -11746,17 +11863,17 @@ There areother interesting, practicalthingsyou cando with a TSTree:
 
 • You can do approximate matching, by gatheringall of the nodesthat have mostof the samecharacters as the key, or using other algorithmsto find a close match. 
 
-• You can findallof the keys that have a part in the middle. I’ve already talked about some of the things TSTrees can do, but they aren’t the best data structureallthe time. Here are the disadvantages of the TSTree:
+• You can findallof the keys that have a part in the middle. I've already talked about some of the things TSTrees can do, but they aren't the best data structureallthe time. Here are the disadvantages of the TSTree:
 
 • As I mentioned, deleting from them is murder. They are better used for data thatneeds to be looked up fastand rarely removed. If you need todelete, then simply disable the value and then periodicallyrebuildthe tree when it getstoo big.
 
-• It usesa ton of memory compared to `BSTree` and Hashmaps for the same keyspace. Think about it. It’s using a full node for each character in every key. It might work betterforsmaller keys, butif you put alot in a TSTree, it will get huge.
+• It usesa ton of memory compared to `BSTree` and Hashmaps for the same keyspace. Think about it. It's using a full node for each character in every key. It might work betterforsmaller keys, butif you put alot in a TSTree, it will get huge.
 
-• Theyalsodon’twork wellwithlarge keys, butlargeis subjective. As usual, test itfirst. If you’re trying to store 10,000-character keys, then use a `Hashmap`.
+• Theyalsodon'twork wellwithlarge keys, butlargeis subjective. As usual, test itfirst. If you're trying to store 10,000-character keys, then use a `Hashmap`.
 
 How to Improve It 
 
-As usual, got hrough and improve thisby adding the defensiveprogramming preconditions, asserts, and checks toeach function. There aresome otherpossible improvements, but you don’t necessarily have to implementallof these: 
+As usual, got hrough and improve thisby adding the defensiveprogramming preconditions, asserts, and checks toeach function. There aresome otherpossible improvements, but you don't necessarily have to implementallof these: 
 
 • You could allow duplicatesby using a `DArray` instead of the value.
 
@@ -11779,7 +11896,7 @@ Extra Credit
 
 ## Exercise47. A Fast URL Router 
 
-Im nowgoing toshow you how I use the TSTree to do fast URL routingin Web servers thatI’vewritten. This works for simpleURL routing that youmightuse at the edge of anapplication, butit doesn’treallywork for the morecomplex (and sometimesunnecessary) routing found in manyWeb application frameworks. 
+Im nowgoing toshow you how I use the TSTree to do fast URL routingin Web servers thatI'vewritten. This works for simpleURL routing that youmightuse at the edge of anapplication, butit doesn'treallywork for the morecomplex (and sometimesunnecessary) routing found in manyWeb application frameworks. 
 
 To playwithrouting,I'm going to make a little command line tool thatI'm calling urlor, which readsa simple file ofroutes, and then prompts theuser to enter in URLs. 
 
@@ -11938,43 +12055,43 @@ MATCH: /asdfasdfasf == MainApp URL>
 $ 
 ```
 
-You can see that the routing systemfirst triesanexact match, and ifit can’tfind one, it will give aprefix match. This ismostly done to try out the difference between the two. Depending on the semantics ofyour URLs,you maywant to alwaysmatch exactly,always toprefixes, or 
+You can see that the routing systemfirst triesanexact match, and ifit can'tfind one, it will give aprefix match. This ismostly done to try out the difference between the two. Depending on the semantics ofyour URLs,you maywant to alwaysmatch exactly,always toprefixes, or 
 do bothand pick the bestone. 
 
 How to Improve It 
 
-URLs are weird because people want them to magically handle all of the insanethings their Web applications do, even if that’s notverylogical. In this simple demonstrationof how to use the TSTree to do routing, there are someflaws thatpeoplewouldn’tbeable to articulate. For example, the TSTree will match /al to Album,which generally isn’t what they want. They want /album/* tomatch Album, and /al tobe a404 error. 
+URLs are weird because people want them to magically handle all of the insanethings their Web applications do, even if that's notverylogical. In this simple demonstrationof how to use the TSTree to do routing, there are someflaws thatpeoplewouldn'tbeable to articulate. For example, the TSTree will match /al to Album,which generally isn't what they want. They want /album/* tomatch Album, and /al tobe a404 error. 
 
-This isn’t difficult to implement, though, since you could change the prefix algorithm to match anyway you want. If you change the matching algorithm to find all matching prefixes, and then pickthe best one,you’llbe able todo iteasily. In this case, /al could match MainApp or Album.Take thoseresults, andthen do a little logic to determinewhich is better. 
+This isn't difficult to implement, though, since you could change the prefix algorithm to match anyway you want. If you change the matching algorithm to find all matching prefixes, and then pickthe best one,you'llbe able todo iteasily. In this case, /al could match MainApp or Album.Take thoseresults, andthen do a little logic to determinewhich is better. 
 
-Another thing you can do in a realrouting system is use the TSTree to findall possible matches, but thesematches are a smallsetof patternsto check. In many Web applications, there’s a list of regularexpressions(regex) that has to be matched against URLs on eachrequest. Running all of the regex can be time consuming, so you can use a TSTree to findall of the possible matches by their prefixes. Thatway you narrow down thepatterns to try to a fewveryquickly. 
+Another thing you can do in a realrouting system is use the TSTree to findall possible matches, but thesematches are a smallsetof patternsto check. In many Web applications, there's a list of regularexpressions(regex) that has to be matched against URLs on eachrequest. Running all of the regex can be time consuming, so you can use a TSTree to findall of the possible matches by their prefixes. Thatway you narrow down thepatterns to try to a fewveryquickly. 
 
-Using thismethod, your URLs willmatchexactly since you’re actually running realregex patterns, and they’llmatchmuch faster since you’re finding them by possible prefixes.
+Using thismethod, your URLs willmatchexactly since you're actually running realregex patterns, and they'llmatchmuch faster since you're finding them by possible prefixes.
 
 This kind ofalgorithmalso works for anythingelse that needs tohave flexible user-visible routing mechanisms: domainnames, IP addresses, registriesand directories, files, or URLs. 
 
 Extra Credit 
 
 
-• Instead of just storing the string for the handler, create an actual engine thatusesa Handler struct to storethe application. The structurewould storethe URL to which it’sattached, thename, and anythingelseyou’d need to make an actual routing system. 
+• Instead of just storing the string for the handler, create an actual engine thatusesa Handler struct to storethe application. The structurewould storethe URL to which it'sattached, thename, and anythingelseyou'd need to make an actual routing system. 
 
 • Instead of mapping URLs to arbitrary names, map them to .so files and use the dlopen system to load handlers on the fly and call callbacks they contain. Put these callbacks in your Handler struct, and thenyouhave yourself a fully dynamic callback handlersystem in C. 
 
 
 ## Exercise48. A Simple Network Server 
 
-We now start the part of the book where you doa long-running, more involved projectin aseries of exercises. The last five exerciseswillpresent the problem of creating a simple network server in a similar fashionas you didwith the logfind project. I'll describe each phaseof the project, you’ll attemptit, and thenyou’llcompare your implementation to mine beforecontinuing. 
+We now start the part of the book where you doa long-running, more involved projectin aseries of exercises. The last five exerciseswillpresent the problem of creating a simple network server in a similar fashionas you didwith the logfind project. I'll describe each phaseof the project, you'll attemptit, and thenyou'llcompare your implementation to mine beforecontinuing. 
 
 These descriptions are purposefully vague so that you have the freedom to attemptto solvethe problems on your own, but I'mstill going to helpyou. Included with each of these exercises are two videos. 
 
-The first video shows youhowthe projectforthe exercise should work, so you can see it in action and try to emulate it. The second videoshows you how I solved theproblem, so you can compare your attemptto mine. Finally, you’ll have access to allof the code in theGitHub project, so you can see real 
+The first video shows youhowthe projectforthe exercise should work, so you can see it in action and try to emulate it. The second videoshows you how I solved theproblem, so you can compare your attemptto mine. Finally, you'll have access to allof the code in theGitHub project, so you can see real 
 codeby me. 
 
-You should attempt the problem first, then after you get itworking (or ifyou get totallystuck), go watchthe second video and take a look at mycode. When you’re done,you caneitherkeep using your code,or justuse mine for thenext exercise. 
+You should attempt the problem first, then after you get itworking (or ifyou get totallystuck), go watchthe second video and take a look at mycode. When you're done,you caneitherkeep using your code,or justuse mine for thenext exercise. 
 
 The Specification 
 
-In this first small program you’ll lay the firstfoundation for the remaining projects. You'll call this program statserve, eventhough this specification doesn’t mention statisticsor anything. That will comelater. 
+In this first small program you'll lay the firstfoundation for the remaining projects. You'll call this program statserve, eventhough this specification doesn't mention statisticsor anything. That will comelater. 
 
 The specification for this projectis very simple: 
 1. Create asimple network server that accepts a connection on port 7899 from netclient or the nc command, and that echoes back anything you type.
@@ -11983,9 +12100,9 @@ The specification for this projectis very simple:
 
 3. The more important partof this projectis laying out the project directory from the c-skeleton, and makingsure you can build everything andget it working.
 
-4. Don’t worry about things like daemons or anything else. Your server just has to run fromthe command line and keep running.
+4. Don't worry about things like daemons or anything else. Your server just has to run fromthe command line and keep running.
 
-The importantchallenge for this project is figuringout how to createa socket server, buteverything you’ve learned so farmakes this possible. Watchthe first lecture video where I teachyou about this if you findthat it’s toohardto figure outon your own. 
+The importantchallenge for this project is figuringout how to createa socket server, buteverything you've learned so farmakes this possible. Watchthe first lecture video where I teachyou about this if you findthat it's toohardto figure outon your own. 
 
 
 ## Exercise49. A Statistics Server
@@ -12006,7 +12123,7 @@ sample Add anew sample to a statistic.
 
 dump Get all of the elements ofa statistic (sum,sumsq, n, min, and max). 
 
-This will makethe beginning ofyour protocol, butyou’ll need to do some more things:
+This will makethe beginning ofyour protocol, butyou'll need to do some more things:
 
 1. You'll needto allow people to name these statistics, which means using oneof the map style data structuresto mapnames to Stats structs.
 
@@ -12015,36 +12132,36 @@ This will makethe beginning ofyour protocol, butyou’ll need to do some more th
 3. You may also needto have a list command for listing out allof the available statistics in the server.
 
 
-Given thatyour statserve should handlea protocolthat allows the above operations, let’screate statistics,update their sample,delete them, dumpthem, get the mean, and finally, list them. Do your best to designa simple (and I mean simple) protocol for this using plain text, and see what you come up with. Dothis onpaper first,thenwatch thelecture video for this exerciseto find outhow to design aprotocol and get more information about the exercise.
+Given thatyour statserve should handlea protocolthat allows the above operations, let'screate statistics,update their sample,delete them, dumpthem, get the mean, and finally, list them. Do your best to designa simple (and I mean simple) protocol for this using plain text, and see what you come up with. Dothis onpaper first,thenwatch thelecture video for this exerciseto find outhow to design aprotocol and get more information about the exercise.
 
 I also recommend using unit tests to test that the protocol is parsing separately fromthe server. Create separate .c and .h files for just processing strings with protocolin them, and then test those until you get them right. Thiswill makethings much easier when you add thisfeature to your server.
 
 ## Exercise50. Routing the Statistics 
 
 
-Once you’ve solved the problem of the protocoland putting statisticsintoa data structure,you’llwant to make this muchricher. This exercisemayrequire that you redesignand refactor some of your code. That’s onpurpose, asthis is an absolute requirement when writing software. You must frequently throw out old code to make roomfor new code. Never get too attached to something you’ve written. 
+Once you've solved the problem of the protocoland putting statisticsintoa data structure,you'llwant to make this muchricher. This exercisemayrequire that you redesignand refactor some of your code. That's onpurpose, asthis is an absolute requirement when writing software. You must frequently throw out old code to make roomfor new code. Never get too attached to something you've written. 
 
-In this exercise,you’regoing to use theURLrouting from Exercise47 to augment your protocol, allowing statistics to be stored at arbitrary URL
-paths. This is all the help you get. It’s asimplerequirement that you have toattempt onyour own,modifying your protocol, updating yourdata 
+In this exercise,you'regoing to use theURLrouting from Exercise47 to augment your protocol, allowing statistics to be stored at arbitrary URL
+paths. This is all the help you get. It's asimplerequirement that you have toattempt onyour own,modifying your protocol, updating yourdata 
 structures, and changing your codeto makeit work. 
 
 Watchthe lecture video tosee whatI want, and then try your best before watching the second video to see howI implemented it.
 
 ## Exercise51. Storing the Statistics 
 
-The next problem to solve is how to store the statistics. There is an advantage to having the statisticsin memory, because it’s much faster thanstoring them. In fact, there are large data storage systems thatdo this very thing, but in our case, we want asmaller server that can store some of the data to ahard drive. 
+The next problem to solve is how to store the statistics. There is an advantage to having the statisticsin memory, because it's much faster thanstoring them. In fact, there are large data storage systems thatdo this very thing, but in our case, we want asmaller server that can store some of the data to ahard drive. 
 
 The Specification 
 
-For this exercise, you’ll add twocommands for storing to and loading statistics from a hard drive: 
-store If there’sa URL, storeit to a hard drive. 
-load If there are two URLs,load thestatistic fromthe hard drive based on the first URL, and then put it into the secondURLthat’sin memory. 
+For this exercise, you'll add twocommands for storing to and loading statistics from a hard drive: 
+store If there'sa URL, storeit to a hard drive. 
+load If there are two URLs,load thestatistic fromthe hard drive based on the first URL, and then put it into the secondURLthat'sin memory. 
 
-This mayseem simple, but you’ll have a few battles when implementing this feature: 
+This mayseem simple, but you'll have a few battles when implementing this feature: 
 
-1. If URLs have /characters inthem, then that conflicts with the filesystem’s use of slashes. HowHwill you solvethis?
+1. If URLs have /characters in them, then that conflicts with the filesystem's use of slashes. HowHwill you solvethis?
 
-2. If URLs have /characters inthem, then someone canuseyour server to overwritefiles on a hard drive by giving paths to them. How will yousolve this?
+2. If URLs have /characters in them, then someone canuseyour server to overwritefiles on a hard drive by giving paths to them. How will yousolve this?
 
 3. If you chooseto use deeply nested directories, then traversing directories to find files willbevery slow. What will you do here?
 
@@ -12060,14 +12177,14 @@ Research all of your options and watch the lecture video, and then pick the simp
 
 ## Exercise52. Hacking and Improving Your Server 
 
-The final exerciseconsists of three videos. Thefirstvideo is alectureon how to hack your server and attemptto destroyit. In the video, I show you a great many tools and tricks forbreaking protocols, using my own implementation to demonstrateflaws inthe design. 
+The final exerciseconsists of three videos. Thefirstvideo is alectureon how to hack your server and attemptto destroyit. In the video, I show you a great many tools and tricks forbreaking protocols, using my own implementation to demonstrateflaws in the design. 
 
-This video isfun, and if you’ve beenfollowing along with yourown code, you can compete with me to see who made themore robustserver. 
+This video isfun, and if you've beenfollowing along with yourown code, you can compete with me to see who made themore robustserver. 
 
-The second videothen demonstrates how I’d add improvements to the server. You should attempt your own improvements first, before watching this video, andthen seeif your improvements are similarto mine. 
+The second videothen demonstrates how I'd add improvements to the server. You should attempt your own improvements first, before watching this video, andthen seeif your improvements are similarto mine. 
 
-The third and final video teaches you how to make further improvementsand design decisions inthe project. Itcoverseverything I’d think aboutto complete the project and refineit. 
-Typically, to complete a project, I’d do the following: 
+The third and final video teaches you how to make further improvementsand design decisions in the project. Itcoverseverything I'd think aboutto complete the project and refineit. 
+Typically, to complete a project, I'd do the following: 
 
 1. Getit online and accessible to people. 
  
@@ -12082,7 +12199,7 @@ NextSteps
 
 This book is most likely a monumental undertaking for abeginnerprogrammer, or even a programmer with no experiencewithmany of the topics covered inside. You havesuccessfully learned an introductory amount of knowledge of C, testing, securecoding,algorithms, data structures, unit testing, and generalapplied problem solving. Congratulations. You should bea much better programmernow.
 
-I recommend thatyou now go reado ther books on the C programming language. You can’t go wrong with The C Programming Language (Prentice Hall 1988)by Brian W. Kernighan andDennis M. Ritchie,the creators of the C language. Mybook teaches you an initial, practical version of C that gets the job done, mostly as a means of teaching you other topics. Their book will teach you deeper C as defined by the creators and the C standard. 
+I recommend thatyou now go reado ther books on the C programming language. You can't go wrong with The C Programming Language (Prentice Hall 1988)by Brian W. Kernighan andDennis M. Ritchie,the creators of the C language. Mybook teaches you an initial, practical version of C that gets the job done, mostly as a means of teaching you other topics. Their book will teach you deeper C as defined by the creators and the C standard. 
 
 
 If you want tocontinue improving as aprogrammer, I recommendthat you learn at least fourprogramming languages. If you already knew one language, and now you know C,then I recommendyou try learning any of these programming languages as your next ones: 
@@ -12097,4 +12214,4 @@ If you want tocontinue improving as aprogrammer, I recommendthat you learn at le
 
 • JavaScript, although I'm not sure which book is best for this language 
 
-There are manyprogramming languages available, so choosewhichever language interests you andlearn it. I recommendthis becausethe easiest way to become adept at programming andbuild confidence is to strengthen your ability to learn multiple languages. Fourlanguages seems to bethe breaking point where a beginner transitions tobeinga capable programmer. It’s alsojust a lotof fun. 
+There are manyprogramming languages available, so choosewhichever language interests you andlearn it. I recommendthis becausethe easiest way to become adept at programming andbuild confidence is to strengthen your ability to learn multiple languages. Fourlanguages seems to bethe breaking point where a beginner transitions tobeinga capable programmer. It's alsojust a lotof fun. 

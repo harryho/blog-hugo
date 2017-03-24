@@ -6,11 +6,33 @@ title = "Linux notes"
 draft = false
 +++
 
-### bash
 
-#### Run in background
+
+## Run in background
+
 ```bash
 command &>/dev/null &
+``
+
+## Linux info
+
+```bash
+
+# Linux kernel and distribution
+
+uname -a 
+
+# Show distribution detail 
+
+cat /etc/*-release
+
+```
+
+## dpkg
+
+```bash
+sudo lsof /var/lib/dpkg/lock
+
 ``
 
 ## User / group
@@ -57,6 +79,8 @@ sudo gpasswd -a demo sudo
 ```bash
 ps auxww | grep mysql
 ps auxww | egrep httpd
+ps -eo pri,pid,user,nice,pcpu,time,comm | grep dpkg
+
 ```
 
 ### VMware
@@ -65,7 +89,11 @@ ps auxww | egrep httpd
 dmidecode | grep -i vmware
 ```
 
+### kill
 
+```bash
+
+```
 
 
 ### ssh
