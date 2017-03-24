@@ -6548,7 +6548,7 @@ Extra Credit
 
 
 
-## Exercise 48
+## Exercise 48a
 
 A Simple Network Server:
 
@@ -6618,7 +6618,7 @@ This will be *HARD*!  Try it your best, and take it piece by piece.  You can do 
 
 
 
-## Exercise 48
+## Exercise 48b
 
 A Simple Network Server:
 
@@ -7247,7 +7247,7 @@ The Final Code
 
 
 
-## Exercise 49
+## Exercise 49a
 
 A Statistics Server
 
@@ -7327,7 +7327,7 @@ Encouragement
 
 
 
-## Exercise 49
+## Exercise 49b
 
 A Statistics Server:
 
@@ -8178,7 +8178,7 @@ The last thing I would do is add better tests and round out the protocol with CR
 
 
 
-## Exercise 50
+## Exercise 50a
 
 Routing The Statistics
 
@@ -8240,7 +8240,7 @@ This is hard, as I've said all along, however it is all doable. It's simply a ma
 
 
 
-## Exercise 50
+## Exercise 50b
 
 Routing the Statistics
 
@@ -9235,7 +9235,7 @@ Final Review
 
 
 
-## Exercise 51
+## Exercise 51a
 
 Storing the Statistics
 
@@ -9295,7 +9295,7 @@ There are no clues.  You can do this.
 
 
 
-## Exercise 51
+## Exercise 51b
 
 Storing the Statistics
 
