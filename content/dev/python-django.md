@@ -84,7 +84,24 @@ python manage.py shell
 
 **Linux**
 
-* activate virtual environment need to use source instead of executing sh file
 ```bash
-    source path\to\virtualenv\bin\activate
+pip install virtualenv
+pip3 install virtualenv
+cd ~
+mkdir .envs
+
+# create python2 env
+virtualenv -p /usr/bin/python2.7 py2env
+virtualenv -p /usr/bin/python3.4 py3env
+
+cd py2env 
+source bin/activate
+# Check python path 
+which python
+# Exit
+deactivate
+
 ```
+
+* Activate virtual environment need to use source instead of executing sh file
+
