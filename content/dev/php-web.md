@@ -302,3 +302,17 @@ Header always set Access-Control-Allow-Headers "X-Requested-With, Content-Type, 
 Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
 ```
 
+#### Too big header file 
+
+* Add this to your `http {}` of the nginx.conf file normally located at `/etc/nginx/nginx.conf`:
+
+    proxy_buffer_size   128k;
+    proxy_buffers   4 256k;
+    proxy_busy_buffers_size   256k;
+
+
+* Then add this to your php location block, this will be located in your vhost file look for the block that begins with `location ~ .php$ {`
+
+    fastcgi_buffer_size 128k;
+    fastcgi_buffers 4 256k;
+    fastcgi_busy_buffers_size 256k;

@@ -27,7 +27,7 @@ draft = true
 * Eclipse CDT
 
 
-## Compiler, Debug
+## Compiler & Debug
 
 ### Compiler 
 * GUN GCC for Linux/Unix
@@ -35,9 +35,12 @@ draft = true
 * MingW/Cygwin for windows
 * Windows can use VC++ 
 
+For Windows, I recommend Cygwin as compile and debug tool, and use cmder instead of Windows command prompt. Once you start to use it, you will find it improves your productivity dramatically. I am serious. 
+
 ### Debug 
 
-
+* GDB
+* Valgrind  
 
 
 ## Pointer & Function
@@ -45,5 +48,7 @@ draft = true
 
 
 ## Structs & Union
+
+
 
 ## 
