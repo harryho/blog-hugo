@@ -39,51 +39,44 @@ draft = true
  Output 
 ```bash
 
-$ gcc  matrix_invertible.c 
--o
- matrix_invertible
-
-$ ./matrix_invertible
-Enter the 
-9
- elements of matrix: 
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-1
- 
-2
- 
-3
- 
-4
-
-The matrix is
-1
-	
-2
-	
-3
-4
-	
-5
-	
-1
-2
-	
-3
-	
-4
-The given matrix has an inverse
-!!!
+$ gcc  matrix_invertible.c
+$ a     
+Enter the 9 elements of matrix: 3    
+4                                    
+6                                    
+23                                   
+22                                   
+1                                    
+44                                   
+45                                   
+2                                    
+                                     
+The matrix is                        
+                                     
+3       4       6                    
+23      22      1                    
+44      45      2                    
+The given matrix has an inverse!!!   
+         
+$ a                                  
+Enter the 9 elements of matrix: 1    
+2                                    
+3                                    
+3                                    
+6                                    
+9                                    
+5                                    
+10                                   
+15                                   
+                                     
+The matrix is                        
+                                     
+1       2       3                    
+3       6       9                    
+5       10      15                   
+Matrix is NOT invertible
 ```
+
 ### Check if a Matrix is a Sparse Matrix		
 
  Code Sample 
@@ -127,41 +120,27 @@ void main ()
 ```bash
 
 $ gcc  sparse_matrix.c 
--o
- sparse_matrix
-
-$ ./sparse_matrix
-
-Enter the order of the matix 
-3
- 
+$ a 
+Enter the order of the matix
+3 
 3
 
 Enter the elements of the matix 
-
-1
- 
-2
- 
+1 
+2 
 3
-4
- 
-0
- 
+4 
 0
 0
- 
-0
- 
+0 
+0 
 0
 
-The given matrix is Sparse Matrix  
-!!!
+The given matrix is Sparse Matrix !!!
 
-There are 
-5
- number of Zeros.
+There are 5 number of Zeros.
 ```
+
 ### Compute Determinant of a Matrix		
 
  Code Sample 
@@ -198,52 +177,25 @@ int main(){
 ```bash
 
 $ gcc  determinant.c 
--o
- determinant
-
-$ ./determinant
-
-Enter the 
+$ a
+Enter the 9 elements of matrix: 2
+3
+4
+4
+6
+8
+6
 9
- elements of matrix: 
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-1
- 
-2
- 
-3
- 
-4
+12
 
 The matrix is
-1
-	
-2
-	
-3
-4
-	
-5
-	
-1
-2
-	
-3
-	
-4
-	
-Determinant of 3X3 matrix: 
--5
+
+2       3       4
+4       6       8
+6       9       12
+Determinant of 3X3 matrix: 0
 ```
+
 ### Display Lower Triangular Matrix		
 
  Code Sample 
@@ -286,45 +238,18 @@ void main()
 Output:
 
 $ cc sample_code.c 
-$ a.out
-Enter the value of Matrix : 
-1
- 
-2
- 
-0
-1
- 
-0
- 
-0
-0
- 
-0
- 
-0
+$ a
+ Enter the value of Matrix : 1  
+0                                       
+0                                       
+1                                       
+2                                       
+0                                       
+4                                       
+8                                       
+9                                       
+ Matrix is a Lower triangular matrix    
 
-Matrix is not a lower triangular matrix
-
-$ a.out
-Enter the value of Matrix : 
-1
- 
-0
- 
-0
-1
- 
-1
- 
-0
-1
- 
-1
- 
-1
-
-Matrix is a Lower triangular matrix
 ```
 ### Display Upper Triangular Matrix		
 
@@ -399,40 +324,32 @@ Output:
 $ cc sample_code.c 
 $ a.out
 Enter the r and c value:
-3
- 
-3
-
-array [ 1 ]  [ 1 ]  = 1
- 
-1
- 
-1
-
-array [ 1 ]  [ 2 ]  = array [ 1 ]  [ 3 ]  = array [ 2 ]  [ 1 ]  = 1
- 
-1
- 
-0
-
-array [ 2 ]  [ 2 ]  = array [ 2 ]  [ 3 ]  = array [ 3 ]  [ 1 ]  = 2
- 
-0
- 
-0
-
-array [ 3 ]  [ 2 ]  = array [ 3 ]  [ 3 ]  = matrix is
-
-111
-110
-200
-1
-11
-200
-111
-10
-0
+3   
+3                           
+array[1][1] = 3             
+array[1][2] = 4             
+array[1][3] = 4             
+array[2][1] = 2             
+array[2][2] = 1             
+array[2][3] = 0             
+array[3][1] = 9             
+array[3][2] = 0             
+array[3][3] = 0             
+matrix is
+344                
+210                         
+900                         
+                            
+3                           
+21                          
+900                         
+                            
+344                         
+10                          
+0                           
 ```
+
+
 ### Find Basis and Dimension of a Matrix		
 
  Code Sample 
@@ -472,7 +389,7 @@ int main() {
  Output 
 ```
 $ gcc BasisDimension.cpp
-$ ./a.out
+$ a
 
 Enter the number of vectors:
 3
@@ -482,15 +399,17 @@ Enter the vectors one by one:
 3 4 5
 The vectors doesn't form the basis of R3 as the determinant is zero
 ```
+
+
 ### Find Inverse of a Matrix		
 
  Code Sample 
 ```c
-#include<stdio.h>
-#include<math.h>
-float determinant(float [][25], float);
-void cofactor(float [][25], float);
-void transpose(float [][25], float [][25], float);
+#include <stdio.h>
+#include <math.h>
+float determinant(float[][25], float);
+void cofactor(float[][25], float);
+void transpose(float[][25], float[][25], float);
 int main()
 {
   float a[25][25], k, d;
@@ -498,18 +417,18 @@ int main()
   printf("Enter the order of the Matrix : ");
   scanf("%f", &k);
   printf("Enter the elements of %.0fX%.0f Matrix : \n", k, k);
-  for (i = 0;i < k; i++)
+  for (i = 0; i < k; i++)
+  {
+    for (j = 0; j < k; j++)
     {
-     for (j = 0;j < k; j++)
-       {
-        scanf("%f", &a[i][j]);
-        }
+      scanf("%f", &a[i][j]);
     }
+  }
   d = determinant(a, k);
   if (d == 0)
-   printf("\nInverse of Entered Matrix is not possible\n");
+    printf("\nInverse of Entered Matrix is not possible\n");
   else
-   cofactor(a, k);
+    cofactor(a, k);
 }
 
 /*For calculating Determinant of the Matrix */
@@ -518,67 +437,67 @@ float determinant(float a[25][25], float k)
   float s = 1, det = 0, b[25][25];
   int i, j, m, n, c;
   if (k == 1)
-    {
-     return (a[0][0]);
-    }
+  {
+    return (a[0][0]);
+  }
   else
+  {
+    det = 0;
+    for (c = 0; c < k; c++)
     {
-     det = 0;
-     for (c = 0; c < k; c++)
-       {
-        m = 0;
-        n = 0;
-        for (i = 0;i < k; i++)
+      m = 0;
+      n = 0;
+      for (i = 0; i < k; i++)
+      {
+        for (j = 0; j < k; j++)
+        {
+          b[i][j] = 0;
+          if (i != 0 && j != c)
           {
-            for (j = 0 ;j < k; j++)
-              {
-                b[i][j] = 0;
-                if (i != 0 && j != c)
-                 {
-                   b[m][n] = a[i][j];
-                   if (n < (k - 2))
-                    n++;
-                   else
-                    {
-                     n = 0;
-                     m++;
-                     }
-                   }
-               }
-             }
-          det = det + s * (a[0][c] * determinant(b, k - 1));
-          s = -1 * s;
+            b[m][n] = a[i][j];
+            if (n < (k - 2))
+              n++;
+            else
+            {
+              n = 0;
+              m++;
+            }
           }
+        }
+      }
+      det = det + s * (a[0][c] * determinant(b, k - 1));
+      s = -1 * s;
     }
+  }
 
-    return (det);
+  return (det);
 }
 
 void cofactor(float num[25][25], float f)
 {
- float b[25][25], fac[25][25];
- int p, q, m, n, i, j;
- for (q = 0;q < f; q++)
- {
-   for (p = 0;p < f; p++)
+  float b[25][25], fac[25][25];
+  int p, q, m, n, i, j;
+  for (q = 0; q < f; q++)
+  {
+    for (p = 0; p < f; p++)
     {
-     m = 0;
-     n = 0;
-     for (i = 0;i < f; i++)
-     {
-       for (j = 0;j < f; j++)
+      m = 0;
+      n = 0;
+      for (i = 0; i < f; i++)
+      {
+        for (j = 0; j < f; j++)
         {
           if (i != q && j != p)
           {
             b[m][n] = num[i][j];
             if (n < (f - 2))
-             n++;
+              n++;
             else
-             {
-               n = 0;
-               m++;
-               }
+            {
+              n = 0;
+              m++;
             }
+          }
         }
       }
       fac[q][p] = pow(-1, q + p) * determinant(b, f - 1);
@@ -586,37 +505,37 @@ void cofactor(float num[25][25], float f)
   }
   transpose(num, fac, f);
 }
-/*Finding transpose of matrix*/ 
+/*Finding transpose of matrix*/
 void transpose(float num[25][25], float fac[25][25], float r)
 {
   int i, j;
   float b[25][25], inverse[25][25], d;
 
-  for (i = 0;i < r; i++)
+  for (i = 0; i < r; i++)
+  {
+    for (j = 0; j < r; j++)
     {
-     for (j = 0;j < r; j++)
-       {
-         b[i][j] = fac[j][i];
-        }
+      b[i][j] = fac[j][i];
     }
+  }
   d = determinant(num, r);
-  for (i = 0;i < r; i++)
+  for (i = 0; i < r; i++)
+  {
+    for (j = 0; j < r; j++)
     {
-     for (j = 0;j < r; j++)
-       {
-        inverse[i][j] = b[i][j] / d;
-        }
+      inverse[i][j] = b[i][j] / d;
     }
-   printf("\n\n\nThe inverse of matrix is : \n");
+  }
+  printf("\n\n\nThe inverse of matrix is : \n");
 
-   for (i = 0;i < r; i++)
+  for (i = 0; i < r; i++)
+  {
+    for (j = 0; j < r; j++)
     {
-     for (j = 0;j < r; j++)
-       {
-         printf("\t%f", inverse[i][j]);
-        }
+      printf("\t%f", inverse[i][j]);
+    }
     printf("\n");
-     }
+  }
 }
 ```
 
@@ -624,51 +543,27 @@ void transpose(float num[25][25], float fac[25][25], float r)
 ```bash
 
 $ gcc  inverse_matrix.c 
--o
- inverse_matrix
-
-$ ./inverse_matrix
-
-Enter the order of the Square Matrix : 
+$ a
+Enter the order of the Matrix : 3
+Enter the elements of 3X3 Matrix :
 3
-Enter the elements of 3X3 Matrix : 
-3
- 
+4
 5
- 
-2
- 
+12
+45
 1
- 
-5
-  
-8
- 
-3
- 
-9
- 
+34
+-2
 2
-The inverse of matrix is : 
-        
-0.704545
-       -
-0.090909
-    -
-0.340909
 
-       -
-0.250000
-       -
-0.000000
-     
-0.250000
-0.068180
-        
-0.136364
-    -
-0.113636
+
+
+The inverse of matrix is :
+        -0.012342       0.002415        0.029649
+        -0.001342       0.022002        -0.007647
+        0.208479        -0.019050       -0.011672
 ```
+
 ### Find the Sum of each Row & each Column of a MxN Matrix		
 
  Code Sample 
@@ -722,36 +617,22 @@ void main ()
 $ cc sample_code.c 
 $ a.out
 Enter the order of the matrix
-
-2
- 
+2 
 2
 
 Enter the co-efficients of the matrix
-
-23
- 
+23 
 45
-80
- 
+80 
 97
 
-Sum of the 
-0
- row is = 68
+Sum of the 0 row is = 68 
+Sum of the 1 row is = 177
+Sum of the 0 column is = 103 
+Sum of the 1 column is = 142
 
-Sum of the 
-1
- row is = 177
-
-Sum of the 
-0
- column is = 103
-
-Sum of the 
-1
- column is = 142
 ```
+
 ### Find the Frequency of Odd & Even Numbers in the given Matrix		
 
  Code Sample 
@@ -802,28 +683,19 @@ void main()
 
 $ cc sample_code.c 
 $ a.out
-Enter the order ofthe matrix
-
-3
- 
+Enter the order ofthe matrix 
+3 
 3
 
-Enter the coefficients of matrix
-
-34
- 
-36
- 
+Enter the coefficients of matrix 
+34 
+36 
 39
-23
- 
-57
- 
+23 
+57 
 98
-12
- 
-39
- 
+12 
+39 
 49
 
 The given matrix is

@@ -44,7 +44,7 @@ necessary.
 For example:  
 
 
-```go 
+```bash
 $ export GOPATH=$HOME/gobook workspace directory $ go get // gopl.io/ch1/helloworld build, install $ $GOPATH/bin/helloworld Hello,  # # #  choose fetch, run  
 
 To run the examples, you will need at least version 1.5 of Go.  
@@ -164,7 +164,7 @@ Go takes a strong stance on code formatting. The gofmt tool rewrites code into t
 
 Many text editors can be configured to run gofmt each time you save a file, so that your source code is always properly formatted. A related tool, goimports, additionally manages the insertion and removal of import declarations as needed. It is not part of the standard distribution but you can obtain it with this command: 
 
-```go
+```bash
 $ go get golang.org/x/tools/cmd/goimports 
 ```
 
@@ -586,7 +586,7 @@ The inner loop runs the two oscillators. The x oscillator is just the sine funct
 
 The main function calls the lissajous function, directing it to write to the standard output, so this command produces an animated GIF with frames like those in Figure 1.1: 
 
-```go
+```bash
 $ go build gopl.io/ch1/lissajous 
 $ ./lissajous >out.gif 
 ```
@@ -648,7 +648,7 @@ $ ./fetch http://gopl.io
 
 If the HTTP request fails, fetch reports the failure instead: 
 
-```go
+```bash
 $ ./fetch http://bad.gopl.io 
 fetch: Get http://bad.gopl.io: dial tcp: lookup 
 bad.gopl.io: no such host 
@@ -712,7 +712,7 @@ url)
 Here’s an example: 
 
 
-```go
+```bash
 $ go build gopl.io/ch1/fetchall 
 $ ./fetchall https://golang.org http://gopl.io 
 https://godoc.org
@@ -772,14 +772,14 @@ The program is only a handful of lines long because library functions do most of
 Let’s start the server in the background. On Mac OS X or Linux, add an ampersand (&) to the command; on Microsoft Windows, you will need to run the command without the ampersand in a separate command window. 
 
 
-```go
+```bash
 $ go run src/// gopl.io/ch1/server1/main.go & 
 ```
 
 
 We can then make client requests from the command line: 
 
-```go
+```bash
 $ go build gopl.io/ch1/fetch 
 $ ./fetch http://localhost:8000 
 URL.Path = "/" 
@@ -860,7 +860,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 This uses the fields of the http.Request struct to produce output like this: 
 
-```go
+```bash
 GET /?q=query HTTP/1.1
 Header["Accept-Encoding"] = ["gzip, deflate, sdch"] 
 Header["Accept-Language"] = ["en-US,en;q=0.8"] 
@@ -978,7 +978,7 @@ Packages: Go comes with an extensive standard library of useful packages, and th
 
 Before you embark on any new program, it’s a good idea to see if packages already exist that might help you get your job done more easily. You can find an index of the standard library packages at https://golang.org/pkg and the packages contributed by the community at https://godoc.org. The go doc tool makes these documents easily accessible from the command line: 
 
-```go
+```bash
 $ go doc http.ListenAndServe 
 package http // import "net/http" 
 func ListenAndServe(addr string, handler Handler) 
@@ -1010,7 +1010,7 @@ The names of Go functions, variables, constants, types, statement labels, and pa
 
 Go has 25 keywords like if and switch that may be used only where the syntax permits; they can’t be used as names. 
 
-```go
+```bash
 break default func interface select case defer go map struct chan else goto package switch const fallthrough if range typecontinue for import return var 
 
 In addition, there are about three dozen predeclared names like int and true for built-in constants, types, and functions: 
@@ -1148,6 +1148,7 @@ return err
 }
 // ...use f... 
 f.Close() 
+```
 
 One subtle but important point: a short variable declaration does not necessarily declare all the variables on its left-hand side. If some of them were already declared in the same lexical block (§2.7), then the short variable declaration acts like an assignment to those variables. 
 
@@ -1196,10 +1197,11 @@ The zero value for a pointer of any type is nil. The test p != nil is true if pp
 
 ```go
 var x, y int 
-fmt.Println(&x == &x, &x == &y, &x == nil) // "true 
-false false" 
-
+fmt.Println(&x == &x, &x == &y, &x == nil) // "true false false" 
+```
 It is perfectly safe for a function to return the address of a local variable. For instance, in the code below, the local variable v created by this particular call to f will remain in existence even after the call has returned, and the pointer p will still refer to it: 
+
+```go
 var p = f() 
 func f() *int {
 v := 1 
@@ -1209,8 +1211,8 @@ return &v
 
 Each call of f returns a distinct value: 
 
-```go
-fmt.Println(f() == f()) // "false" 
+
+    fmt.Println(f() == f()) // "false" 
 
 Because a pointer contains the address of a variable, passing a pointer argument to a function makes it possible for the function to update the variable that was indirectly passed. For example, this function increments the variable that its argument points to and returns the new value of the variable so it may be used in an expression: 
 
@@ -1261,7 +1263,7 @@ When the program is run, it must call flag.Parse before the flags are used, to u
 
 Let’s run some test cases on echo: 
 
-```go
+```bash
 $ go build gopl.io/ch2/echo4 
 $ ./echo4 a bc def 
 a bc def 
@@ -6393,6 +6395,7 @@ mu.Unlock()
 return v 
 
 } 
+```
 
 The version below is functionally equivalent but groups together the two related variables in a single package-level variable, cache: 
 
@@ -6460,8 +6463,7 @@ q := Point{4, 6}
 
 distance := Point.Distance // method expression 
 fmt.Println(distance(p, q)) // "5" 
-fmt.Printf("%T\n", distance) // "func(Point, Point) 
-float64" 
+fmt.Printf("%T\n", distance) // "func(Point, Point) float64" 
 
 scale := (*Point).ScaleBy 
 scale(&p, 2)
@@ -6501,8 +6503,10 @@ A bit vector uses a slice of unsigned integer values or “words,” each bit of
 
 ```go
 // gopl.io/ch6/intset 
-// An IntSet is a set of small non-negative integers. // Its zero value represents the empty set. type IntSet struct {
-words []uint64 
+// An IntSet is a set of small non-negative integers. 
+// Its zero value represents the empty set. 
+type IntSet struct {
+    words []uint64 
 } 
 
 // Has reports whether the set contains the non­negative value x. 
@@ -6525,13 +6529,13 @@ s.words[word] |= 1 << bit
 } 
 // UnionWith sets s to the union of s and t. 
 func (s *IntSet) UnionWith(t *IntSet) { 
-for i, tword := range t.words {
-if i < len(s.words) {
-s.words[i] |= tword 
-} else {
-s.words = append(s.words, tword) 
-}
-}
+    for i, tword := range t.words {
+        if i < len(s.words) {
+            s.words[i] |= tword 
+        } else {
+            s.words = append(s.words, tword) 
+        }
+    }
 } 
 ```
 
@@ -6540,8 +6544,7 @@ This implementation lacks many desirable features, some of which are posed as ex
 
 
 ```go
-// String returns the set as a string of the form "{1 
-2 3}".
+// String returns the set as a string of the form "{1 2 3}".
 func (s *IntSet) String() string { 
 
 var buf bytes.Buffer

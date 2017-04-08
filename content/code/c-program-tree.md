@@ -103,19 +103,13 @@ int main()
 ```bash
 
 $ cc  tree20.c
-$ a.out
+$ a
 
-40
- ->20
- ->10
- ->40
- ->20
- ->30
- ->40
- ->60
- ->80
- ->90
- ->```
+40 ->20 ->10 ->40 ->20 ->30 ->40 ->60 ->80 ->90 ->
+
+```
+
+
 ### Construct a Balanced Binary Search Tree which has same data members as the given Doubly Linked List		
 
  Code Sample 
@@ -273,62 +267,35 @@ void delete(struct node **root)
  Output 
 ```bash
 
-$ gcc  doublytotree.c
-
-$ ./a.out 
+$ gcc  doublytotree.c 
+$ ./a 
 Enter a number: 
 1
 
-Do you wish to 
-continue [ 1
-/
-0 ]  ?: 
-1
+Do you wish to continue [ 1 / 0 ]  ?: 1
 
 Enter a number: 
 2
 
-Do you wish to 
-continue [ 1
-/
-0 ]  ?: 
-1
-
+Do you wish to continue [ 1 / 0 ]  ?: 1
 Enter a number: 
 3
 
-Do you wish to 
-continue [ 1
-/
-0 ]  ?: 
-1
+Do you wish to continue [ 1 / 0 ]  ?: 1
 
 Enter a number: 
 4
 
-Do you wish to 
-continue [ 1
-/
-0 ]  ?: 
-1
+Do you wish to continue [ 1 / 0 ]  ?: 1
 
 Enter a number: 
 5
 
-Do you wish to 
-continue [ 1
-/
-0 ]  ?: 
-1
-
+Do you wish to continue [ 1 / 0 ]  ?: 1
 Enter a number: 
 6
 
-Do you wish to 
-continue [ 1
-/
-0 ]  ?: 
-0
+Do you wish to continue [ 1 / 0 ]  ?: 0
 
 Displaying the doubly linked list:
 
@@ -344,10 +311,7 @@ Displaying the doubly linked list:
   
 6
   
-Displaying the tree: 
-(
-Inorder
-)
+Displaying the tree: ( Inorder )
 1
   
 2
@@ -414,7 +378,7 @@ void inorder( struct node *root ) {
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 In-order Traversal:
 D    B    H    E    A    F    C    G
 ```
@@ -548,7 +512,7 @@ int main(void)
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 PREORDER
 g d b a c f e i h j
 INORDER
@@ -732,106 +696,44 @@ void postorder(N *t)
 ```bash
 
 $ cc  trees.c
-$ a.out
-1
-- Inorder
-
-2
- - postorder
+$ a
+1 - Inorder 
+2 - postorder
 Enter choice : 
 1
 
-Given inorder traversal 
-as
- input
+Given inorder traversal as input
 
-10
-->20
-->30
-->40
-->60
-->80
-->90
+10 ->20 ->30 ->40 ->60 ->80 ->90
 
-preorder traversal of 
-tree
-40
-->10
-->20
-->30
-->60
-->80
-->90
+preorder traversal of tree
+40 ->10 ->20 ->30 ->60 ->80 ->90 
+inorder traversal of tree
+10 ->20 ->30 ->40 ->60 ->80 ->90
 
-inorder traversal of 
-tree
-10
-->20
-->30
-->40
-->60
-->80
-->90
+postorder traversal of tree
+10 ->20 ->30 ->60 ->80 ->90 ->40 
+$ a
 
-postorder traversal of 
-tree
-10
-->20
-->30
-->60
-->80
-->90
-->40
-$ a.out
-
-1
- - Inorder
-
-2
- - postorder
+1 - Inorder 
+2 - postorder
 Enter choice : 
 2
 
 Given post order traversal array
 
-10
-->30
-->20
-->90
-->80
-->60
-->40
+10 ->30 ->20 ->90 ->80 ->60 ->40
 
-preorder traversal of 
-tree
-40
-->10
-->20
-->30
-->60
-->80
-->90
+preorder traversal of tree
+40 ->10 ->20 ->30 ->60 ->80 ->90
 
-Inorder traversal of 
-tree
-10
-->20
-->30
-->40
-->60
-->80
-->90
+Inorder traversal of tree
+10 ->20 ->30 ->40 ->60 ->80 ->90
 
-postorder traversal of 
-tree
-10
-->20
-->30
-->60
-->80
-->90
-->40
+postorder traversal of tree
+10 ->20 ->30 ->60 ->80 ->90 ->40
 ```
+
 ### Check whether a Tree is a Binary Search Tree		
 
  Code Sample 
@@ -929,13 +831,9 @@ int main()
 ```bash
 
 $ cc  tree8.c
-$ a.out
-TREE 
-1
- Is BST
-TREE 
-2
- Not a BST
+$ a
+TREE 1 Is BST 
+TREE 2 Not a BST
 ```
 ### Construct a Balanced Binary Tree using Sorted Array		
 
@@ -1023,35 +921,17 @@ void display(N *temp)
 ```bash
 
 $ cc  tree21.c
-$ a.out
+$ a
 Given sorted array is
 
-10
-      
-20
-      
-30
-      
-40
-      
-60
-      
-80
-      
-90
+10 20 30 40 60 80 90
 
-The preorder traversal of binary search 
-tree is as
- follows
+The preorder traversal of binary search tree is as follows
 
-40
-->20
-->10
-->30
-->80
-->60
-->90
+40 ->20 ->10 ->30 ->80 ->60 ->90 
 ```
+
+
 ### Construct a Binary Search Tree and perform deletion and inorder traversal		
 
  Code Sample 
@@ -1350,94 +1230,49 @@ int largest(struct btnode *t)
 ```bash
 
 $ cc  tree43.c
-$ a.out
-OPERATIONS 
----
-1
- - Insert an element into 
-tree
-2
- - Delete an element from the 
-tree
-3
- - Inorder Traversal
-
-4
- - Preorder Traversal
-
-5
- - Postorder Traversal
-
-6
- - Exit
-
-Enter your choice : 
-1
-
-Enter data of node to be inserted : 
-40
-Enter your choice : 
-1
-
-Enter data of node to be inserted : 
-20
-Enter your choice : 
-1
-
-Enter data of node to be inserted : 
-10
-Enter your choice : 
-1
-
-Enter data of node to be inserted : 
-30
-Enter your choice : 
-1
-
-Enter data of node to be inserted : 
-60
-Enter your choice : 
-1
-
-Enter data of node to be inserted : 
-80
-Enter your choice : 
-1
-
-Enter data of node to be inserted : 
-90
-Enter your choice : 
-3
-10
- ->20
- ->30
- ->40
- ->60
- ->80
- ->90
- ->40
-/
-\
-           
-/
-  \
-         
-20
-    
-60
-/
- \    \
-       
-10
-  
-30
-   
-80
-
+$ a
+OPERATIONS ---
+1 - Insert an element into tree
+2 - Delete an element from the tree
+3 - Inorder Traversal
+4 - Preorder Traversal
+5 - Postorder Traversal
+6 - Exit
+ 
+Enter your choice : 1
+Enter data of node to be inserted : 40
+ 
+Enter your choice : 1
+Enter data of node to be inserted : 20
+ 
+Enter your choice : 1
+Enter data of node to be inserted : 10
+ 
+Enter your choice : 1
+Enter data of node to be inserted : 30
+ 
+Enter your choice : 1
+Enter data of node to be inserted : 60
+ 
+Enter your choice : 1
+Enter data of node to be inserted : 80
+ 
+Enter your choice : 1
+Enter data of node to be inserted : 90
+ 
+Enter your choice : 3
+10 -> 20 -> 30 -> 40 -> 60 -> 80 -> 90 ->
+ 
+            40
+            /\
+           /  \
+         20    60
+         / \    \
+       10  30   80
                   \
-                  
-90
+                  90
 ```
+
 ### Construct a Tree & Perform Insertion, Deletion, Display		
 
  Code Sample 
@@ -1500,22 +1335,17 @@ void printout (struct btnode *tree)
 ```bash
 
 $ gcc  tree1.c
-$ a.out
+$ a
 
 tree
  elements are
 
 DISPLAYED IN INORDER
 
-10
-->70
-->40
-->20
-->80
-->60
-->50
-->30
+10 ->70 ->40 ->20 ->80 ->60 ->50 ->30
 ```
+
+
 ### Convert Binary Tree to Binary Search Tree		
 
  Code Sample 
@@ -1536,6 +1366,9 @@ struct btnode
     struct btnode *r;
 };
 
+typedef struct btnode node;
+node *root = NULL,*ptr;
+
 void createbinary();
 void inorder(node *);
 int count(node*);
@@ -1549,9 +1382,6 @@ void display_bst(node *);
 void print();
 void print_level(node*,int,int);
 int height(node*);
-
-typedef struct btnode node;
-node *root = NULL,*ptr;
 
 int data[10];
 int i = 0;
@@ -1751,92 +1581,26 @@ void binary_to_bst(node *root)
 
  Output 
 ```bash
-
-
-/*
-*
- Binary 
-tree
-*
-     
-50
-*
-     
-/
- \
- 
-*
-    
-20
- 
-30
-*
-   
-/
- \ 
- 
-*
-  
-70
- 
-80
-*
- 
-/
- \     \
- 
-*
-10
- 
-40
-      
-60
-*/
 $ gcc  test38.c
-$ a.out
-
+$ a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The inorder of binary search 
-tree
-10
-->20
-->30
-->40
-->50
-->60
-->70
-->80
-->~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ = The nodes of a binary search 
-tree
- 
-(
-LEVEL WISE
-) = LEVEL 
-0
-  :     
-70
-LEVEL 
-1
-  :     
-40
-     
-80
-LEVEL 
-2
-  :     
-20
-     
-50
-LEVEL 
-3
-  :     
-10
-     
-30
-     
-60
+The inorder of binary search tree
+10->20->30->40->50->60->70->80->
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+================================================
+The nodes of a binary search tree (LEVEL WISE)
+=================================================
+LEVEL 0  :     70
+
+LEVEL 1  :     40     80
+
+LEVEL 2  :     20     50
+
+LEVEL 3  :     10     30     60
 ```
+
 ### Find the Largest value in a Tree using Inorder Traversal		
 
  Code Sample 
@@ -1945,13 +1709,8 @@ void largest(node *root)
 ```bash
 
 $ cc  tree4.c
-$ a.out
-Enter the elements of the 
-tree
-(
-enter 
-0 to exit
-)
+$ a
+Enter the elements of the tree ( enter 0 to exit )
 40
 20
 60
@@ -1961,20 +1720,13 @@ enter
 90
 0
 
-elements  in  a 
-tree in  inorder are
+elements  in  a tree in  inorder are
 
-10
- ->20
- ->30
- ->40
- ->60
- ->80
- ->90
+10 ->20 ->30 ->40 ->60 ->80 ->90
 
-largest value is 
-90
+largest value is 90
 ```
+
 ### Find Nth Node in the Inorder Traversal of a Tree		
 
  Code Sample 
@@ -2069,7 +1821,10 @@ add(int value)
 ```bash
 
 $ cc sample_code.c 
-$ a.out [ 1416572 ] ```
+$ a [ 1416572 ] 
+
+```
+
 ### Find the Nearest Common Ancestor in the Given set of Nodes		
 
  Code Sample 
@@ -2091,12 +1846,14 @@ struct btnode
     struct btnode *r;
 };
 
+typedef struct btnode node;
+node *root = NULL, *ptr;
+
 void createbinary();
 node* add(int val);
 int height(node *);
 int nearest_common_ancestor(node*,  int,  int);
-typedef struct btnode node;
-node *root = NULL, *ptr;
+
 
 int  main()
 {
@@ -2228,47 +1985,9 @@ int nearestcommonancestor(node *temp, int n1, int n2)
 
  Output 
 ```bash
-/*
-*
- Binary 
-tree
-*
-     
-50
-*
-     
-/
- \
- 
-*
-    
-20
- 
-30
-*
-   
-/
- \ 
- 
-*
-  
-70
- 
-80
-*
- 
-/
- \     \
- 
-*
-10
- 
-40
-      
-60
-*/
+
 $ gcc  test14.c
-$ a.out
+$ a
 Enter nodes having common ancestor 
 60
  
@@ -2276,7 +1995,7 @@ Enter nodes having common ancestor
 
 The common ancestor is 
 50
-$ a.out
+$ a
 Enter nodes having common ancestor 
 10
  
@@ -2284,7 +2003,7 @@ Enter nodes having common ancestor
 
 The common ancestor is 
 70
-$ a.out
+$ a
 Enter nodes having common ancestor 
 10
  
@@ -2292,7 +2011,7 @@ Enter nodes having common ancestor
 
 The common ancestor is 
 20
-$ a.out
+$ a
 Enter nodes having common ancestor 
 20
  
@@ -2300,6 +2019,7 @@ Enter nodes having common ancestor
 
 No common ancestor
 ```
+
 ### that takes an Ordered Binary tree & Rearranges the Internal Pointers to make a Circular Doubly Linked List out of the Tree Nodes		
 
  Code Sample 
@@ -2483,70 +2203,41 @@ void release(struct node **root)
 
 $ gcc  treetocircular.c 
 
-$ ./a.out
+$ ./a
 Creating binary tree:
 Enter a number  in the tree: 
 5
 
-Do you want to add 
-more
- numbers? [ 1
-/
-0 ] 1
+Do you want to add more numbers? [ 1 / 0 ] 1
 
 Enter a number  in the tree: 
 3
 
-Do you want to add 
-more
- numbers? [ 1
-/
-0 ] 1
+Do you want to add more numbers? [ 1 / 0 ] 1
 
 Enter a number  in the tree: 
 4
 
-Do you want to add 
-more
- numbers? [ 1
-/
-0 ] 1
+Do you want to add more numbers? [ 1 / 0 ] 1
 
 Enter a number  in the tree: 
 2
 
-Do you want to add 
-more
- numbers? [ 1
-/
-0 ] 1
+Do you want to add more numbers? [ 1 / 0 ] 1
 
 Enter a number  in the tree: 
 7
 
-Do you want to add 
-more
- numbers? [ 1
-/
-0 ] 1
+Do you want to add more numbers? [ 1 / 0 ] 1
 
 Enter a number  in the tree: 
 6
 
-Do you want to add 
-more
- numbers? [ 1
-/
-0 ] 1
-
+Do you want to add more numbers? [ 1 / 0 ] 1
 Enter a number  in the tree: 
 8
 
-Do you want to add 
-more
- numbers? [ 1
-/
-0 ] 0
+Do you want to add more numbers? [ 1 / 0 ] 0
 
 Displaying binary tree:
 
@@ -2730,17 +2421,13 @@ void print_right_recursive(bt* ptr)
   
 60
 $ cc  tree30.c
-$ a.out
+$ a
 
 printing the border elements anticlockwise direction:
-->50
-->20
-->70
-->10
-->40
-->60
-->30
+->50 ->20 ->70 ->10 ->40 ->60 ->30
+
 ```
+
 ### Print Height and Depth of given Binary Tree		
 
  Code Sample 
@@ -2846,7 +2533,7 @@ void main()
 ```bash
 
 $ cc  tree18.c
-$ a.out
+$ a
 height of the 
 tree is 3
 
@@ -2938,12 +2625,13 @@ int main()
 ```bash
 
 $ cc  tree32.c
-$ a.out
+$ a
 
-20
-->10
-->30
-->```
+20 ->10 ->30 ->
+
+```
+
+
 ### Search for an Element in a Binary Search Tree		
 
  Code Sample 
@@ -3123,10 +2811,7 @@ int main()
 ```bash
 
 $ gcc  bst.c 
--o
- bst
-
-$ ./bst
+$ ./a
 
 Enter an element: 
 32
@@ -3141,40 +2826,21 @@ Enter an element:
 
 Press y or n to insert another element, y or n: y
 
-1
- Insert an element 
-
-2
- Delete an element
-
-3
- Search 
-for
- an element 
-
-4
- Exit 
+1 Insert an element 
+2 Delete an element
+3 Search for an element 
+4 Exit 
 Enter your choice: 
 3
 
 Enter element to be searched:  
 32
-32
- Found  in  Binary Search Tree 
-!!
-1
- Insert an element 
+32 Found  in  Binary Search Tree !!
 
-2
- Delete an element
-
-3
- Search 
-for
- an element 
-
-4
- Exit 
+1 Insert an element 
+2 Delete an element
+3 Search for an element 
+4 Exit 
 Enter your choice: 
 4
 
@@ -3324,50 +2990,38 @@ void delete(struct node **head)
 
 
 $ cc sample_code.c 
-$ a.out
+$ a
 
-Enter your choice:
-
-1.  Insert
-
-2.  Search
-
+Enter your choice: 
+1.  Insert 
+2.  Search 
 3.  Exit
 Choice: 
 1
 
 Enter element to insert: 
 1
-Enter your choice:
-
-1.  Insert
-
-2.  Search
-
+Enter your choice: 
+1.  Insert 
+2.  Search 
 3.  Exit
 Choice: 
 1
 
 Enter element to insert: 
 2
-Enter your choice:
-
-1.  Insert
-
-2.  Search
-
+Enter your choice: 
+1.  Insert 
+2.  Search 
 3.  Exit
 Choice: 
 1
 
 Enter element to insert: 
 3
-Enter your choice:
-
-1.  Insert
-
-2.  Search
-
+Enter your choice: 
+1.  Insert 
+2.  Search 
 3.  Exit
 Choice: 
 1
@@ -3375,24 +3029,18 @@ Choice:
 Enter element to insert: 
 
 4
-Enter your choice:
-
-1.  Insert
-
-2.  Search
-
+Enter your choice: 
+1.  Insert 
+2.  Search 
 3.  Exit
 Choice: 
 4
 
 Not a valid input, try again
 
-Enter your choice:
-
-1.  Insert
-
-2.  Search
-
+Enter your choice: 
+1.  Insert 
+2.  Search 
 3.  Exit
 Choice: 
 2
@@ -3401,12 +3049,9 @@ Enter key to search:
 3
 
 Key found  in tree
-Enter your choice:
-
-1.  Insert
-
-2.  Search
-
+Enter your choice: 
+1.  Insert 
+2.  Search 
 3.  Exit
 Choice: 
 2
@@ -3416,12 +3061,9 @@ Enter key to search:
 
 Key not found
 
-Enter your choice:
-
-1.  Insert
-
-2.  Search
-
+Enter your choice: 
+1.  Insert 
+2.  Search 
 3.  Exit
 Choice: 
 3
@@ -3531,7 +3173,7 @@ void in_order_search(struct btnode *p, int val)
 ```bash
 
 $ cc  tree3.c
-$ a.out
+$ a
 The elements of Binary 
 tree
  are:
@@ -3548,7 +3190,7 @@ Enter the value to be searched:
 60
 
 Element present  in the binary tree.
-$ ./a.out
+$ ./a
 The elements of Binary 
 tree
  are:
@@ -3657,7 +3299,7 @@ void in_order_sum(struct btnode *p)
 ```bash
 
 $ cc  tree15.c
-$ a.out 
+$ a 
 The elements of Binary 
 tree
  are:
@@ -3783,7 +3425,7 @@ void printout(struct btnode *tree)
 ```bash
 
 $ gcc  tree37.c
-$ a.out
+$ a
 
 10
 70
@@ -3916,7 +3558,7 @@ void mirror(node *root)
 ```bash
 
 $ cc  tree16.c
-$ a.out
+$ a
 Enter the elements of the 
 tree
 (
@@ -4048,13 +3690,8 @@ void bfs_traverse(node *root)
 ```bash
 
 $ cc  tree28.c
-$ a.out
-Enter the elements of the 
-tree
-(
-enter 
-0 to exit
-)
+$ a
+Enter the elements of the tree ( enter 0 to exit )
 40
 20
 10
@@ -4064,8 +3701,7 @@ enter
 80
 0
 
-elements  in  a 
-tree in  inorder are
+elements  in  a tree in  inorder are
 
 40
  ->20
@@ -4095,13 +3731,15 @@ struct btnode
     struct btnode *r;
 };
 
+
+typedef struct btnode node;
+node *ptr, *root = NULL;
+
 void createbinary();
 void preorder(node *);
 int count(node*);
 node* add(int);
 
-typedef struct btnode node;
-node *ptr, *root = NULL;
 
 int  main()
 {
@@ -4113,15 +3751,15 @@ int  main()
     printf("\nNumber of nodes in binary tree are:%d\n", c);
 }
 /*
-* constructing the following binary tree
-*     50
-*     / \
-*    20 30
-*   / \ 
-*  70 80
-* / \     \
-*10 40      60
-*/    
+ * constructing the following binary tree
+ *     50
+ *     / \
+ *    20 30
+ *   / \ 
+ *  70 80
+ * / \     \
+ *10 40      60
+ */    
 void createbinary()
 {
     root = add(50);
@@ -4184,62 +3822,13 @@ void preorder(node *t)
 
  Output 
 ```bash
-/*
-*
- Binary 
-tree
-*
-     
-50
-*
-     
-/
- \
- 
-*
-    
-20
- 
-30
-*
-   
-/
- \ 
- 
-*
-  
-70
- 
-80
-*
- 
-/
- \     \
- 
-*
-10
- 
-40
-      
-60
-*/
 $ gcc  test2.c
-$ a.out
+$ a
 
-50
-->20
-->70
-->10
-->40
-->80
-->60
-->30
-
-Number of nodes  in  binary 
-tree
- are:
-8
+50->20->70->10->40->80->60->30->
+Number of nodes in binary tree are:8
 ```
+
 ### Traverse the Tree Recursively		
 
  Code Sample 
@@ -4386,18 +3975,13 @@ void delete(struct node **head)
  Output 
 ```bash
 $ sample_code.c 
-$ a.out
+$ a
 
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 1
@@ -4405,15 +3989,10 @@ Choice:
 Enter element to insert: 
 5
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 1
@@ -4421,15 +4000,10 @@ Choice:
 Enter element to insert: 
 3
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 1
@@ -4437,15 +4011,10 @@ Choice:
 Enter element to insert: 
 4
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 1
@@ -4453,15 +4022,10 @@ Choice:
 Enter element to insert: 
 6
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 1
@@ -4469,15 +4033,10 @@ Choice:
 Enter element to insert: 
 2
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 2
@@ -4492,15 +4051,10 @@ Choice:
 6
    
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 3
@@ -4515,15 +4069,10 @@ Choice:
 6
    
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 4
@@ -4538,15 +4087,10 @@ Choice:
 5
    
 Enter your choice:
-
 1.  Insert
-
-2.  Traverse via infix
-
-3.  Traverse via prefix
-
-4.  Traverse via postfix
-
+2.  Traverse via infix 
+3.  Traverse via prefix 
+4.  Traverse via postfix 
 5.  Exit
 Choice: 
 5
@@ -4693,77 +4237,60 @@ void delete(struct node **head)
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 
-Enter your choice:
-
+Enter your choice: 
 1.  Insert
-
 2.  Search
-
 3.  Exit
-Choice: 
+Choice:
 1
 
 Enter element to insert: 
 1
-Enter your choice:
-
+Enter your choice: 
 1.  Insert
-
 2.  Search
-
 3.  Exit
-Choice: 
+Choice:
 1
 
 Enter element to insert: 
 2
-Enter your choice:
-
+Enter your choice: 
 1.  Insert
-
 2.  Search
-
 3.  Exit
 Choice: 
 1
 
 Enter element to insert: 
 3
-Enter your choice:
-
+Enter your choice: 
 1.  Insert
-
 2.  Search
-
 3.  Exit
-Choice: 
+Choice:
 1
 
 Enter element to insert: 
 
 4
-Enter your choice:
-
+Enter your choice: 
 1.  Insert
-
 2.  Search
-
 3.  Exit
-Choice: 
+Choice:
 2
 
 Enter key to search: 
 1
 
-Key found  in tree
-Enter your choice:
+Key found  in tree 
 
+Enter your choice: 
 1.  Insert
-
 2.  Search
-
 3.  Exit
 Choice: 
 2
@@ -4773,14 +4300,11 @@ Enter key to search:
 
 Key not found
 
-Enter your choice:
-
+Enter your choice: 
 1.  Insert
-
 2.  Search
-
 3.  Exit
-Choice: 
+Choice:
 3
 
 Memory Cleared
@@ -4985,54 +4509,22 @@ void deleteList(struct list **head)
 
 $ gcc  treetolistbfs.c 
 
-$ ./a.out
-Enter a number 
-for
- a node: 
-4
+$ ./a
+Enter a number for a node: 4
 
-Do you want to 
-continue
-? [ 1
-/
-0 ] : 
-1
+Do you want to continue ? [ 1 / 0 ] : 1
 
-Enter a number 
-for
- a node: 
-2
+Enter a number for a node: 2
 
-Do you want to 
-continue
-? [ 1
-/
-0 ] : 
-1
+Do you want to continue ? [ 1 / 0 ] : 1
 
-Enter a number 
-for
- a node: 
-3
+Enter a number for a node: 3
 
-Do you want to 
-continue
-? [ 1
-/
-0 ] : 
-1
+Do you want to continue ? [ 1 / 0 ] : 1
 
-Enter a number 
-for
- a node: 
-1
+Enter a number for a node: 1
 
-Do you want to 
-continue
-? [ 1
-/
-0 ] : 
-1
+Do you want to continue ? [ 1 / 0 ] : 1
 
 Enter a number 
 for
@@ -5051,48 +4543,19 @@ for
  a node: 
 5
 
-Do you want to 
-continue
-? [ 1
-/
-0 ] : 
-1
+Do you want to continue ? [ 1 / 0 ] : 1
 
-Enter a number 
-for
- a node: 
-8
+Enter a number for a node: 8
 
-Do you want to 
-continue
-? [ 1
-/
-0 ] : 
-1
+Do you want to continue ? [ 1 / 0 ] : 1
 
-Enter a number 
-for
- a node: 
-7
+Enter a number for a node: 7
 
-Do you want to 
-continue
-? [ 1
-/
-0 ] : 
-1
+Do you want to continue ? [ 1 / 0 ] : 1
 
-Enter a number 
-for
- a node: 
-9
+Enter a number for a node: 9
 
-Do you want to 
-continue
-? [ 1
-/
-0 ] : 
-0
+Do you want to continue ? [ 1 / 0 ] : 0
 
 Displaying the list generated at node by node level of the tree: 
 4
@@ -5307,7 +4770,7 @@ Mirror
 )
 $ cc  tree7.c
 
-$ ./a.out
+$ ./a
 ->10
 ->70
 ->40
@@ -5350,7 +4813,7 @@ Given Tree
 (
 Mirror
 )
-$ ./a.out
+$ ./a
 ->50
 ->50
 ->50

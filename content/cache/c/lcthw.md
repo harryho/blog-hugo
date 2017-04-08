@@ -476,24 +476,24 @@ This exercisehas awholelot
 going on in a small amount of 
 code, so let'sbreak it down: 
 
-• First we'reincluding another header file called stdio.h. This tells thecompiler that you're going tousethe standard Input/Output functions. One of those is printf. 
+• First we'reincluding another header file called stdio.h. This tells thecompiler that you're going to use the standard Input/Output functions. One of those is printf. 
 
-• Then we're using a variablenamed age and settingit to 10. 
+• Then we're using a variable named age and setting it to 10. 
 
-• Next we're using a variable height and setting it to72. • Then we'readding the printf function to print the age and height of the tallest10-year­oldon theplanet. 
+• Next we're using a variable height and setting it to72. • Then we're adding the printf function to print the age and height of the tallest 10-year­ old on the planet. 
 
-• In printf,you'll notice we're includinga format string, asseenin many other languages. 
+• In printf,you'll notice we're including a format string, as seen in many other languages. 
 
 • After this format string, we're putting in the variables that should be "replaced" into the format string by printf. 
 
 
 
-The result isgiving printfsomevariables andit's constructing anew string and thenprinting itto the terminal. 
+The result is giving printf some variables and it's constructing a new string and then printing it to the terminal. 
 
 
 What You Should See 
 
-When you do thewhole build, you should see something like this: 
+When you do the whole build, you should see something like this: 
 
 
 * Exercise 3 Session 
@@ -508,16 +508,16 @@ I  am  72  inches  tall.
 $  
 ```
 
-PrettysoonI'm going tostop telling you torun make and what the build looks like, so please make sureyou're getting this rightand that it's working. 
+Pretty soon I'm going to stop telling you to run make and what the build looks like, so please make sure you're getting this rightand that it's working. 
 
 
 External Research 
 
-In the Extra Credit sectionof each exercise,you may have you go find information on your own andfigurethings out. This is an important part of beinga self-sufficient programmer. If you're constantly running toask someone a question before trying to figure things out yourself,then you'llnever learn how to solve problems independently. 
+In the Extra Credit section of each exercise,you may have you go find information on your own and figure things out. This is an important part of beinga self-sufficient programmer. If you're constantly running toask someone a question before trying to figure things out yourself,then you'll never learn how to solve problems independently. 
 
-You'll never build confidencein your skillsand will alwaysneed someone else around to do your work. The way to break this habit is to force yourselfto try to answer your own question first, and then confirmthat your answer is right. 
+You'll never build confidence in your skills and will always need someone else around to do your work. The way to break this habit is to force yourself to try to answer your own question first, and then confirm that your answer is right. 
 
-You do this by trying to break things, experimenting withyour answer, and doing your own research. For this exercise, I want you to go online andfind out all of the printf escape codes and format sequences. Escape codes are \n or \t that let you print a newlineor tab, respectively. Format sequencesare the %s or %d that let you print a string or integer.
+You do this by trying to break things, experimenting with your answer, and doing your own research. For this exercise, I want you to go online and find out all of the printf escape codes and format sequences. Escape codes are \n or \t that let you print a newline or tab, respectively. Format sequences are the %s or %d that let you print a string or integer.
 
 Find them all,learn how to modify them, and see whatkind of "precisions" and widths you can do.
 
@@ -525,13 +525,13 @@ From now on, these kinds of tasks will be in the Extra Credit sections, and you 
 
 How to Break It 
 
-Try a few of theseways to break this program,which mayor may not cause it to crash on your computer: 
+Try a few of theseways to break this program,which may or may not cause it to crash on your computer: 
 
-• Take the age variable outof the first printf call, then recompile. You should get a couple of warnings. 
+• Take the age variable out of the first printf call, then recompile. You should get a couple of warnings. 
 
-• Run this new program and it willeithercrash orprint out a really crazyage.
+• Run this new program and it will either crash or print out a really crazy age.
 
-• Put the printf back the wayit was, and then don'tset age toan initial value by changing that line to int age;, and then rebuild it andrunit again. 
+• Put the printf back the wayit was, and then don't set age to an initial value by changing that line to int age;, and then rebuild it and run it again. 
 
 
 * Exercise 3.bad Session 
@@ -3196,72 +3196,72 @@ ex19.c
 4 
 5 void test_debug() 
 6 {
-7 // notice you don't need the \n 
-8 debug("I have Brown Hair."); 
+7 	// notice you don't need the \n 
+8 	debug("I have Brown Hair."); 
 9 
-10 // passing in arguments like printf 
-11 debug("I am %d years old.", 37); 
+10 	// passing in arguments like printf 
+11 	debug("I am %d years old.", 37); 
 12 }
-1. 
+13 
 14 void test_log_err() 
 15 {
-16 log_err("I believe everything is broken."); 
-17 log_err("The are %d problems in %s.", 0, "space"); 
+16 		log_err("I believe everything is broken."); 
+17 		log_err("The are %d problems in %s.", 0, "space"); 
 18 }
 1. 
 20 void test_log_warn() 
 21 {
-22 log_warn("Yo can safely ignore this."); 
-23 log_warn("Ma consider looking at: %s.", "/etc/passwd"); 
+22 		log_warn("Yo can safely ignore this."); 
+23 		log_warn("Ma consider looking at: %s.", "/etc/passwd"); 
 24 }
 2. 
 26 void test_log_info() 
 27 {
-28 log_info("We I did something mundane."); 
-29 log_info("It happened %f times today.", 1.3f); 
+28 		log_info("We I did something mundane."); 
+29 		log_info("It happened %f times today.", 1.3f); 
 30 }
 31 
 32 int test_check(char *file_name)
 33 {
-34 FILE *input = NULL;
-35 char *block = NULL;
-36 
-37 block = malloc(100); 
-38 check_mem(bl should work 
-39 
-40 input = fopen(file_name,"r");
-41 check(input,"Failed to open %s.",file_name); 
-42 
-43 free(block);
-44 fclose(input 
-45 return 0;
-46 
-47 error: 
-48 if (block)free(block); 
-49 if (input)fclose(input); 
-50 return -1;
+34 		FILE *input = NULL;
+35 		char *block = NULL;
+36 		
+37 		block = malloc(100); 
+38 		check_mem(bl should work 
+39 		
+40 		input = fopen(file_name,"r");
+41 		check(input,"Failed to open %s.",file_name); 
+42 		
+43 		free(block);
+44 		fclose(input 
+45 		return 0;
+46 		
+47 	error: 
+48 		if (block)free(block); 
+49 		if (input)fclose(input); 
+50 		return -1;
 51 }
 52 
 53 int test_sentinel(int code)
 54 {
-55 char *temp = malloc(100); 
-56 check_mem(te 
-57 
-58 switch (code){ 
-59 case 1: 
-60 log_ worked."); 
-61 brea 
-62 default: 
-63 sent shouldn't run."); 
-64 }
+55 		char *temp = malloc(100); 
+56 		check_mem(te 
+57 		
+58 		switch (code){ 
+59 			case 1: 
+60 				log_ worked."); 
+61 				brea 
+62 			default: 
+63 				sent shouldn't run."); 
+64 		}
 65 
-66 free(temp); 
-67 return 0;
-68 
-69 error: 
-70 if (temp)
-71 free(tem 
-72 return -1; 
+66 		free(temp); 
+67 		return 0;
+68 		
+69 		error: 
+70 		if (temp)
+71 		free(tem 
+72 		return -1; 
 73 }
 74 
 75 int test_check_mem() 
@@ -3321,22 +3321,18 @@ When yourunthis, giveit somebogusfirst parameter to see this:
 
 * Exercise 19 Session 
 
+	$ make ex1. cc -Wall -g ­DNDEBUG ex19.c ­o ex1. 
+	$ ./ex19 test 
+	[ERROR] (ex19.c:16: errno: None) I believe everything is broken. 
+	[ERROR] (ex19.c:17: errno: None) There are 0 problems in space. 
+	[WARN] (ex19.c:22: errno: None) You can safely ignore this. 
+	[WARN] (ex19.c:23: errno: None) Maybe consider looking at: /etc/passwd. 
+	[INFO] (ex19.c:28) Well I did something mundane. 
+	[INFO] (ex19.c:29) It happened 1.300000 times today.
+	[ERROR] (ex19.c:38: errno: No such file or directory) Failed to open test. 
+	[INFO] (ex19.c:57) It worked. [ERROR] (ex19.c:60: errno: None) I shouldn't run. 
+	[ERROR] (ex19.c:74: errno: None) Out of memory. 
 
-```c
-
-$ make ex1. cc -Wall -g ­DNDEBUG ex19.c ­o ex1. 
-$ ./ex19 test 
-[ERROR] (ex19.c:16: errno: None) I believe everything is broken. 
-[ERROR] (ex19.c:17: errno: None) There are 0 problems in space. 
-[WARN] (ex19.c:22: errno: None) You can safely ignore this. 
-[WARN] (ex19.c:23: errno: None) Maybe consider looking at: /etc/passwd. 
-[INFO] (ex19.c:28) 
-Well I did something mundane. 
-[INFO] (ex19.c:29) It happened 1.300000 times today.
-[ERROR] (ex19.c:38: errno: No such file or directory) Failed to open test. 
-[INFO] (ex19.c:57) It worked. [ERROR] (ex19.c:60: errno: None) I shouldn't run. 
-[ERROR] (ex19.c:74: errno: None) Out of memory. 
-```
 
 
 See how itreports the exact linenumberwherethe check failed? That'sgoing to save you hours of debugginglater. Also, see how it prints the error messagefor you when errno is set?Again,that will save youhours of debugging. 
@@ -3348,39 +3344,27 @@ Imagine thatIhave a function
 called dosomething()thatreturns the typical 0 for successand -1 for an error. EverytimeI call dosomething, I have to check forthis errorcode, so I'd write codelike this: 
 
 ```c
-
-int rc = 
-dosomething(); 
-if(rc != 0) {fprintf(stderr,"There was an error: 
-%s\n", strerror());goto error; } 
+int rc = dosomething();
+if(rc != 0) 
+{
+	fprintf(stderr,"There was an error: %s\n", strerror());goto error; 
+}
 ```
 
 What I want to use the CPP for is to encapsulatethis if-statement into a more readable andmemorable line ofcode. I wantwhat you've been doing in dbg.h with the check macro: 
 
 ```c
-
-int rc = 
-dosomething(); 
-
+ int rc = dosomething();
 check(rc == 0, "There was an error."); 
 ```
 
-This is much clearerand explains exactly what's going on:Check that the function worked, and if not, reportan error. To do this, we need somespecial CPP tricks that makethe CPP usefulas a codegeneration tool. Take a look at the check and log_err macros again: 
+This is much clearer and explains exactly what's going on:Check that the function worked, and if not, reportan error. To do this, we need somespecial CPP tricks that makethe CPP usefulas a codegeneration tool. Take a look at the check and log_err macros again: 
 
 ```c
-
 #define log_err(M, ...) fprintf(stderr,\
-"[ERROR] (%s:%d:
-errno: %s) " M "\n", 
-__FILE__, __LINE__,\
-clean_errno(),
-##__VA_ARGS__)
-#define check(A, M, 
-...) if(!(A)) {\
-log_err(M,
-##__VA_ARGS__);
-errno=0; goto error; 
-} 
+"[ERROR] (%s:%d:errno: %s) " M "\n", __FILE__, __LINE__,\
+clean_errno(),##__VA_ARGS__)#define check(A, M, ...) if(!(A)) {\
+log_err(M,##__VA_ARGS__);errno=0; goto error; } 
 ```
 
 The first macro, log_err, is simpler. It simply replaces itself with acall to fprintf to stderr. The only tricky part of this macro is the use of ... in the definition log_err(M, ...). What this does islet you pass variableargumentsto the macro, so you can pass in the arguments that should goto fprintf. Howdo they get injected into the fprintf call? Look at the endfor the 

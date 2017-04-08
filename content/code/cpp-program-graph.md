@@ -108,7 +108,7 @@ int main()
  Output 
 ```
 $ g++ TopologicalSort.cpp
-$ a.out
+$ a
 
 Following is a Topological Sort of the given graph 
 5 4 2 3 1 0 
@@ -307,7 +307,7 @@ int main()
  Output 
 ```
 $ g++ KruskalsMST.cpp
-$ a.out
+$ a
 
 Following are the edges in the constructed MST
 2 -- 3 == 4
@@ -419,7 +419,7 @@ int main()
  Output 
 ```
 $ g++ PrimsMST.cpp
-$ a.out
+$ a
 
 Edge   Weight
 0 - 1    2 
@@ -562,7 +562,7 @@ int main()
  Output 
 ```
 $ g++ ConnectivityUsingBFSDiredctedGraph.cpp
-$ a.out
+$ a
 
 The Graph 1 is not Connected
 The Graph 2 is Connected
@@ -697,7 +697,7 @@ int main()
 ```bash
 
 $ g++  check_cycle.cpp
-$ a.out
+$ a
 Enter number of nodes: 
 5
 ---------------------------------
@@ -705,180 +705,104 @@ Enter number of nodes:
 Check Cycle Using Graph Traversal
 
 ---------------------------------
-1. Add edges to connect the graph
-
-2. Check 
-if
- cycle exists
-
+1. Add edges to connect the graph 
+2. Check if cycle exists 
 3. Exit
 Enter your Choice: 
 1
 
-Enter node of from egde
-(
-0
- - 
-4) : 
+Enter node of from egde ( 0 - 4) : 
 0
   
-Enter node of to egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) : 
 1
 ---------------------------------
 
 Check Cycle Using Graph Traversal
 
 ---------------------------------
-1. Add edges to connect the graph
-
-2. Check 
-if
- cycle exists
-
+1. Add edges to connect the graph 
+2. Check if cycle exists 
 3. Exit
-Enter your Choice: 
+Enter your Choice:  
 1
 
-Enter node of from egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) : 
 0
  
-Enter node of to egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) : 
 2
 ---------------------------------
 
 Check Cycle Using Graph Traversal
 
 ---------------------------------
-1. Add edges to connect the graph
-
-2. Check 
-if
- cycle exists
-
+1. Add edges to connect the graph 
+2. Check if cycle exists 
 3. Exit
 Enter your Choice: 
 1
 
-Enter node of from egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) :  
 1
 
-Enter node of to egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) : 
 2
 ---------------------------------
 
 Check Cycle Using Graph Traversal
 
 ---------------------------------
-1. Add edges to connect the graph
-
-2. Check 
-if
- cycle exists
-
+1. Add edges to connect the graph 
+2. Check if cycle exists 
 3. Exit
 Enter your Choice: 
 1
 
-Enter node of from egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) :  
 3
 
-Enter node of to egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) : 
 1
 ---------------------------------
 
 Check Cycle Using Graph Traversal
 
 ---------------------------------
-1. Add edges to connect the graph
-
-2. Check 
-if
- cycle exists
-
+1. Add edges to connect the graph 
+2. Check if cycle exists 
 3. Exit
 Enter your Choice: 
 1
 
-Enter node of from egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) :  
 4
 
-Enter node of to egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) :  
 3
 ---------------------------------
 
 Check Cycle Using Graph Traversal
 
 ---------------------------------
-1. Add edges to connect the graph
-
-2. Check 
-if
- cycle exists
-
+1. Add edges to connect the graph 
+2. Check if cycle exists 
 3. Exit
 Enter your Choice: 
 1
 
-Enter node of from egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) :  
 2
 
-Enter node of to egde
-(
-0
- - 
-4) : 
+Enter node of to egde ( 0 - 4) : 
 0
 ---------------------------------
 
 Check Cycle Using Graph Traversal
 
 ---------------------------------
-1. Add edges to connect the graph
-
-2. Check 
-if
- cycle exists
-
+1. Add edges to connect the graph 
+2. Check if cycle exists 
 3. Exit
 Enter your Choice: 
 2
@@ -890,12 +814,8 @@ Graph contains cycle
 Check Cycle Using Graph Traversal
 
 ---------------------------------
-1. Add edges to connect the graph
-
-2. Check 
-if
- cycle exists
-
+1. Add edges to connect the graph 
+2. Check if cycle exists 
 3. Exit
 Enter your Choice: 
 3
@@ -1027,34 +947,35 @@ int main()
 ```bash
 
 $ g++  directed_connected_bfs.cpp
-$ a.out
+$ a
 The Graph is Not Connected
 The Graph is Connected
 ------------------
 (program exited with code: 0)
 Press return to continue
 $ g++  directed_connected_dfs.cpp
-$ a.out
+$ a
 The Graph is Connected
 The Graph is Not Connected
 ------------------
 (program exited with code: 0)
 Press return to continue
 $ g++  directed_connected_bfs.cpp
-$ a.out
+$ a
 The Graph is Not Connected
 The Graph is Connected
 ------------------
 (program exited with code: 0)
 Press return to continue
 $ g++  directed_connected_dfs.cpp
-$ a.out
+$ a
 The Graph is Connected
 The Graph is Not Connected
 ------------------
 (program exited with code: 0)
 Press return to continue
 ```
+
 ### Check whether Directed Graph is Connected using DFS		
 
  Code Sample 
@@ -1179,7 +1100,7 @@ int main()
 ```bash
 
 $ g++  directed_connected_dfs.cpp
-$ a.out
+$ a
 The Graph is Connected
 The Graph is Not Connected
 ------------------
@@ -1287,7 +1208,7 @@ int main()
  Output 
 ```
 $ g++ DirectedTree.cpp
-$ a.out
+$ a
 
 Directed Graph isn't a tree
 
@@ -1398,7 +1319,7 @@ int main()
  Output 
 ```
 $ g++ UndirectedTree.cpp
-$ a.out
+$ a
 
 Undirected Graph isn't a tree
 Undirected Graph is a tree
@@ -1542,7 +1463,7 @@ int main()
 ```bash
 
 $ g++  undirected_connected_bfs.cpp
-$ a.out
+$ a
 The Graph is Connected
 The Graph is Connected
 ------------------
@@ -1676,7 +1597,7 @@ int main()
 ```bash
 
 $ g++  undirected_connected_dfs.cpp
-$ a.out
+$ a
 The Graph is Connected
 The Graph is Connected
 ------------------
@@ -1862,7 +1783,7 @@ int main()
  Output 
 ```
 $ g++ EulerianCycleDirected.cpp
-$ a.out
+$ a
 
 Result for Graph 1: Graph is not Eulerian
 Result for Graph 2: Graph is not Eulerian
@@ -2053,7 +1974,7 @@ int main()
  Output 
 ```
 $ g++ EulerianPathDirected.cpp
-$ a.out
+$ a
 
 Result for Graph 1: Graph is not Eulerian
 Result for Graph 2: Graph is not Eulerian
@@ -2201,7 +2122,7 @@ int main()
  Output 
 ```
 $ g++ CheckDAG.cpp
-$ a.out
+$ a
 
 Number of vertices: 6
 Adjacency List of 0: 1 
@@ -2362,7 +2283,7 @@ int main()
  Output 
 ```
 $ g++ CheckStronglyConnected.cpp
-$ a.out
+$ a
 
 Following are strongly connected components in given graph 
 0 1 2 
@@ -2554,7 +2475,7 @@ int main()
  Output 
 ```
 $ g++ EulerianCycleUndirected.cpp
-$ a.out
+$ a
 
 Result for Graph 1: Graph has a Euler path
 Result for Graph 2: Graph has a Euler cycle
@@ -2746,7 +2667,7 @@ int main()
  Output 
 ```
 $ g++ EulerianPathUndirected.cpp
-$ a.out
+$ a
 
 Result for Graph 1: Graph has a Euler path
 Result for Graph 2: Graph has a Euler cycle
@@ -2911,7 +2832,7 @@ int main()
  Output 
 ```
 $ g++ StronglyWeaklyConnectedGraph.cpp
-$ a.out
+$ a
 
 Following are strongly connected components in given graph 
 0 1 2 
@@ -3677,7 +3598,7 @@ int main()
  Output 
 ```
 $ g++ CheckStronglyConnected.cpp
-$ a.out
+$ a
 
 Following are strongly connected components in given graph 
 0 1 2 
@@ -3826,7 +3747,7 @@ int main()
  Output 
 ```
 $ g++ EdgeConnectivity.cpp
-$ a.out
+$ a
 
 Bridges in first graph 
 3 4
@@ -4002,7 +3923,7 @@ int main()
  Output 
 ```
 $ g++ FeedbackArcSet.cpp
-$ a.out
+$ a
 
 Number of vertices: 6
 Adjacency List of 0: 1 
@@ -4271,7 +4192,7 @@ int cover_size(vector<int> cover)
  Output 
 ```
 $ g++ LargestIndependentSetGraphColoring.cpp
-$ a.out
+$ a
 
 graph.txt:
 4
@@ -4542,7 +4463,7 @@ int cover_size(vector<int> cover)
  Output 
 ```
 $ g++ LargestClique.cpp
-$ a.out
+$ a
 
 graph.txt:
 4
@@ -4813,7 +4734,7 @@ int cover_size(vector<int> cover)
  Output 
 ```
 $ g++ MaxClique.cpp
-$ a.out
+$ a
 
 graph.txt:
 4
@@ -5035,7 +4956,7 @@ int main()
 ```bash
 
 $ g++  cycles_graph.cpp
-$ a.out
+$ a
 
 Enter number of vertices: 
 5
@@ -5043,57 +4964,49 @@ Enter number of vertices:
 Enter number of edges: 
 8
 
-Enter source
- vertex of an edge: 
+Enter source vertex of an edge: 
 1
 
 Enter destination vertex of an edge: 
 2
 
-Enter source
- vertex of an edge: 
+Enter source vertex of an edge: 
 1
 
 Enter destination vertex of an edge: 
 5
 
-Enter source
- vertex of an edge: 
+Enter source vertex of an edge: 
 2
 
 Enter destination vertex of an edge: 
 4
 
-Enter source
- vertex of an edge: 
+Enter source vertex of an edge: 
 2
 
 Enter destination vertex of an edge: 
 3
 
-Enter source
- vertex of an edge: 
+Enter source vertex of an edge: 
 3
 
 Enter destination vertex of an edge: 
 1
 
-Enter source
- vertex of an edge: 
+Enter source vertex of an edge: 
 4
 
 Enter destination vertex of an edge: 
 3
 
-Enter source
- vertex of an edge: 
+Enter source vertex of an edge: 
 5
 
 Enter destination vertex of an edge: 
 2
 
-Enter source
- vertex of an edge: 
+Enter source vertex of an edge: 
 5
 
 Enter destination vertex of an edge: 
@@ -5221,7 +5134,7 @@ int main()
  Output 
 ```
 $ g++ PathBetweenNodes.cpp
-$ a.out
+$ a
 
 Enter the source and destination vertices: (0-3)
 1 3
@@ -5323,7 +5236,7 @@ int main()
  Output 
 ```
 $ g++ TransitiveClosure.cpp
-$ a.out
+$ a
 
 Maximum number of nodes in the graph :5
 
@@ -5608,7 +5521,7 @@ int main()
  Output 
 ```
 $ g++ VertexConnectivity.cpp
-$ a.out
+$ a
 Articulation points in first graph 
 0 3 
 Articulation points in second graph 
@@ -6564,7 +6477,7 @@ int main()
 ```bash
 
 $ g++  biconnected.cpp
-$ a.out
+$ a
 The Graph is BiConnected
 The Graph is BiConnected
 The Graph is not BiConnected
@@ -6637,7 +6550,7 @@ int main()
 ```bash
 
 $ g++  bipartite_bfs.cpp
-$ a.out
+$ a
 The Graph is Bipartite
 ------------------
 (program exited with code: 1)
@@ -6773,7 +6686,7 @@ int main()
 ```bash
 
 $ g++  bipartite_dfs.cpp
-$ a.out
+$ a
 The graph is Bipartite
 ------------------
 (program exited with code: 1)
@@ -7402,83 +7315,50 @@ int main()
 ```bash
 
 $ g++  graph_structured_stack.cpp
-$ a.out
+$ a
 
 Enter number of nodes: 
 6
 
 Enter the graph matrix:
 
+0 
+0 
+0 
+0 
+0 
 0
- 
+1 
+0 
 0
- 
+0 
+0 
 0
- 
+1 
+0 
+0 
+0 
+0 
 0
- 
+0 
+1 
+1 
+0 
+0 
 0
- 
+0 
+0 
+0 
+1 
+0 
 0
-1
- 
-0
- 
-0
- 
-0
- 
-0
- 
-0
-1
- 
-0
- 
-0
- 
-0
- 
-0
- 
-0
-0
- 
-1
- 
-1
- 
-0
- 
-0
- 
-0
-0
- 
-0
- 
-0
- 
-1
- 
-0
- 
-0
-0
- 
-0
- 
-0
- 
-0
- 
-1
- 
-0
-
-Enter the 
-source
- node: 
+0 
+0 
+0 
+0 
+1 
+0 
+Enter the source node: 
 6
 
 Enter the bottom node: 
@@ -7486,24 +7366,8 @@ Enter the bottom node:
 
 The stacks are:
 
-6
-       
-5
-       
-4
-       
-2
-       
-1
-6
-       
-5
-       
-4
-       
-3
-       
-1
+6 5 4 2 1 
+6 5 4 3 1
 ------------------
 (program exited with code: 1)
 Press return to continue
@@ -7549,7 +7413,7 @@ int main ()
 ```bash
 
 $ g++  LexicoGraphical_Compare.cpp
-$ a.out
+$ a
 Comparing foo and bar lexicographically 
 (
 foo 
@@ -7745,7 +7609,7 @@ int findMin()
  Output 
 ```
 $ g++ TranspositionTechnique.cpp
-$ a.out
+$ a
 
 Enter the key
 hello
@@ -7930,7 +7794,7 @@ int main()
  Output 
 ```
 $ g++ MakeDAG.cpp
-$ a.out
+$ a
 
 Number of vertices: 6
 Adjacency List of 0: 1 
@@ -8082,7 +7946,7 @@ int main()
  Output 
 ```
 $ g++ WeaklyConnectedDFS.cpp
-$ a.out
+$ a
 
 The graph is weakly connected? No
 The graph is weakly connected? Yes
@@ -8773,7 +8637,7 @@ int main()
  Output 
 ```
 $ g++ BellmanFord.cpp
-$ a.out
+$ a
 
 Vertex   Distance from Source
 0 		 0

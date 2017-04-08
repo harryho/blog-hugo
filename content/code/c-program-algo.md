@@ -37,24 +37,16 @@ int main(void)
  Output 
 ```bash
 
-$ gcc  gcd.c 
--o
- gcd
-
+$ gcc  gcd.c -o gcd 
 $ ./gcd
 
-Enter two numbers to 
-find
- GCD using Euclidean algorithm: 
-20
- 
+Enter two numbers to find GCD using Euclidean algorithm: 
+20 
 12
 
-The GCD of 
-20
- and 
-12 is 4
+The GCD of 20 and 12 is 4
 ```
+
 ### Sort an Array based on Heap Sort Algorithm		
 
  Code Sample 
@@ -123,180 +115,45 @@ void main()
 ```bash
 
 $ cc  heap.c
-$ a.out
-Average 
-case
+$ a
+/* Average case */
  
 Enter no of elements :
 7
 Enter the nos : 
-6
-5
-3
-1
-8
-7
-2
+6 5 3 1 8 7 2
 
-Heap array : 
-8
-   
-6
-       
-7
-       
-1
-       
-5
-       
-3
-       
-2
+Heap array : 8 6 7 1 5 3 2 
+The sorted array is : 1 2 3 5 6 7 8 
+Complexity : Best case = Avg case = Worst case = O ( n logn )
+$ a
 
-The sorted array is :      
-1
-     
-2
-     
-3
-     
-5
-     
-6
-     
-7
-     
-8
-
-Complexity : 
-Best 
-case
- = Avg 
-case
- = Worst 
-case
- = O
-(
-n logn
-)
-$ a.out
-
-/*
- Best 
-case
+/* Best case */
  
 Enter no of elements :
 7
 Enter the nos : 
-12
-10
-8
-9
-7
-4
-2
+12 10 8 9 7 4 2
 
-Heap array : 
-12
-  
-10
-      
-8
-       
-9
-       
-7
-       
-4
-       
-2
+Heap array : 12 10 8 9 7 4 2
+The sorted array is : 2 4 7 8 9 10 12 
+Complexity : Best case = Avg case = Worst case = O ( n logn )
+$ a
 
-The sorted array is :      
-2
-     
-4
-     
-7
-     
-8
-     
-9
-     
-10
-     
-12
-
-Complexity : 
-Best 
-case
- = Avg 
-case
- = Worst 
-case
- = O
-(
-n logn
-)
-$ a.out
-
-/*
- Worst 
-case
- 
+/* Worst case */
 Enter no of elements :
 7
 Enter the nos : 
-5
-7
-12
-6
-9
-10
-14
+5 7 12 6 9 10 14
 
-Heap array : 
-14
-  
-9
-    
-12
-      
-5
-       
-6
-       
-7
-       
-10
+Heap array : 14 9 12 5 6 7 10 
+The sorted array is : 5 6 7 9 10 12 14 
+Complexity : Best case = Avg case = Worst case = O ( n logn ) 
 
-The sorted array is :  
-5
-     
-6
-     
-7
-     
-9
-     
-10
-     
-12
-     
-14
-
-Complexity : 
-Best 
-case
- = Avg 
-case
- = Worst 
-case
- = O
-(
-n logn
-)
-*/
 ```
+
+
+
 ### the Alexander Bogomolny’s UnOrdered Permutation Algorithm for Elements From 1 to N		
 
  Code Sample 
@@ -345,173 +202,33 @@ int main()
 ```bash
 
 $ gcc  permute.c 
--o
- permute
-
-$ ./permute
-Permutation using Alexander Bogomolyns algorithm:
-   
-1   
-2   
-3   
-4
-
-1   
-2   
-4   
-3
-
-1   
-3   
-2   
-4
-
-1   
-4   
-2   
-3
-
-1
-   
-3
-   
-4
-   
-2
-1
-   
-4
-   
-3
-   
-2
-2
-   
-1
-   
-3
-   
-4
-2
-   
-1
-   
-4
-   
-3
-3
-   
-1
-   
-2
-   
-4
-4
-   
-1
-   
-2
-   
-3
-3
-   
-1
-   
-4
-   
-2
-4
-   
-1
-   
-3
-   
-2
-2
-   
-3
-   
-1
-   
-4
-2
-   
-4
-   
-1
-   
-3
-3
-   
-2
-   
-1
-   
-4
-4
-   
-2
-   
-1
-   
-3
-3
-   
-4
-   
-1
-   
-2
-4
-   
-3
-   
-1
-   
-2
-2
-   
-3
-   
-4
-   
-1
-2
-   
-4
-   
-3
-   
-1
-3
-   
-2
-   
-4
-   
-1
-4
-   
-2
-   
-3
-   
-1
-3
-   
-4
-   
-2
-   
-1
-4
-   
-3
-   
-2
-   
-1
+$ ./a
+Permutation using Alexander Bogomolyn's algorithm:    1   2   3   4
+   1   2   4   3
+   1   3   2   4
+   1   4   2   3
+   1   3   4   2
+   1   4   3   2
+   2   1   3   4
+   2   1   4   3
+   3   1   2   4
+   4   1   2   3
+   3   1   4   2
+   4   1   3   2
+   2   3   1   4
+   2   4   1   3
+   3   2   1   4
+   4   2   1   3
+   3   4   1   2
+   4   3   1   2
+   2   3   4   1
+   2   4   3   1
+   3   2   4   1
+   4   2   3   1
+   3   4   2   1
+   4   3   2   1
 ```
+
 ### the Bin Packing Algorithm		
 
  Code Sample 
@@ -554,13 +271,15 @@ int main(int argc, char **argv) {
  Output 
 ```
 $ gcc BinPacking.c
-$ ./a.out
+$ ./a
 
 Enter the number of items in Set: 5
 Enter 5 items:12 23 34 45 56
 Enter the bin size: 70
 Number of bins required: 3
 ```
+
+
 ### Booth’s Multiplication Algorithm for Multiplication of 2 signed Numbers		
 
  Code Sample 
@@ -741,10 +460,7 @@ void main(){
 ```bash
 
 $ gcc  booth.c 
--o
- booth
-
-$ ./booth
+$ a
 
 BOOTHS MULTIPLICATION ALGORITHM
 Enter two numbers to multiply: 
@@ -752,10 +468,7 @@ Enter two numbers to multiply:
  
 12
 
-Both must be 
-less
- than 
-16
+Both must be less than 16
 
 Enter A: Enter B: 
 Expected product = 144
@@ -783,6 +496,8 @@ AR-SHIFT: 00100:
 
 Product is = 0010010000
 ```
+
+
 ### Coppersmith Freivald’s Algorithm		
 
  Code Sample 
@@ -874,7 +589,7 @@ int main(int argc, char **argv) {
  Output 
 ```
 $ gcc CoppersmithFreivalds.c
-$ ./a.out
+$ ./a
 
 Enter the dimension of the matrices: 2
 Enter the 1st matrix: 
@@ -1452,7 +1167,7 @@ int main(int argc, char **argv) {
  Output 
 ```
 $ gcc Schonhage-Strassen.c
-$ ./a.out
+$ ./a
 
 Enter the numbers:
 456
@@ -1540,9 +1255,7 @@ Enter the
  
 4
 
-Enter the 
-4
- elements of second matrix: 
+Enter the 4 elements of second matrix: 
 
 5
  
@@ -1552,27 +1265,19 @@ Enter the
 8
 
 The first matrix is
-1
-	
-2
-3
-	
-4
+1 2 
+3 4
 	
 The second matrix is
-5
+5 6 
+7 8
 	
-6
-7
-	
-8
-	
-After multiplication using Strassen
-'s algorithm
+After multiplication using Strassen 's algorithm
 
 19	22	
 43	50
 ```
+
 ### Sort an Integer Array using LSDRadix Sort Algorithm		
 
  Code Sample 
@@ -1631,7 +1336,7 @@ void main()
 ```bash
 
 $ cc  lsdradix.c
-$ a.out
+$ a
 
 /*
  Average Case 
@@ -1650,26 +1355,9 @@ Enter elements into array :
 24
 2
 
-Sorted Array 
-(
-ladradix 
-sort
-)
- : 
-2
- 
-24
- 
-45
- 
-75
- 
-90
- 
-170
- 
-802
-$ a.out
+Sorted Array ( ladradix sort ) : 
+2 24 45 75 90 170 802
+$ a
 
 /*
 Best 
@@ -1690,39 +1378,16 @@ Enter elements into array :
 206
 348
 
-Sorted Array 
-(
-ladradix 
-sort
-)
- : 
-22
- 
-64
- 
-78
- 
-159
- 
-121
- 
-206
- 
-348
-$ a.out
+Sorted Array ( ladradix sort ) : 
+22 64 78 159 121 206 348
+$ a
 
-/*
- Worst 
-case
- 
-*/
+/* Worst case */
 
-Enter size
- of array :
-7
+Enter size of array : 7
 
 Enter elements into array :
-985
+985 
 27
 64
 129
@@ -1730,26 +1395,11 @@ Enter elements into array :
 325
 
 091
-Sorted Array 
-(
-ladradix 
-sort
-)
- : 
-27
- 
-64
- 
-91
- 
-129
- 
-325
- 
-345
- 
-985
+Sorted Array ( ladradix sort ) : 
+27 64 91 129 325 345 985
 ```
+
+
 ### Postman Sort Algorithm		
 
  Code Sample 
@@ -1851,7 +1501,7 @@ void arrange(int k,int n)
 ```bash
 
 $ cc  postman.c
-$ a.out
+$ a
 
 /*
  Average 
@@ -1892,7 +1542,7 @@ sort
 170
  
 802
-$ a.out
+$ a
 
 /*
  Best 
@@ -1931,7 +1581,7 @@ sort
 185
  
 3645
-$ a.out
+$ a
 
 /*
  Worst 

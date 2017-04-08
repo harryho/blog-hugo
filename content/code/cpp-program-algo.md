@@ -2,7 +2,7 @@
 tags = ["c++"]
 categories = ["code"]
 title = "C++ Program Algo"
-draft = true
+draft = false
 +++
 
 ### Apply the Kruskal’s Algorithm to Find the Minimum Spanning Tree of a Graph		
@@ -196,7 +196,7 @@ int main()
  Output 
 ```
 $ g++ KruskalsMST.cpp
-$ a.out
+$ a
 
 Following are the edges in the constructed MST
 2 -- 3 == 4
@@ -308,7 +308,7 @@ int main()
  Output 
 ```
 $ g++ PrimsMST.cpp
-$ a.out
+$ a
 
 Edge   Weight
 0 - 1    2 
@@ -408,7 +408,7 @@ int main()
 ```bash
 
 $ g++  bipartite_2color.cpp
-$ a.out
+$ a
 The graph 
 1
  is not Bipartite
@@ -507,7 +507,7 @@ int main()
  Output 
 ```
 $ g++ Warshall.cpp
-$ a.out
+$ a
 
 Maximum number of nodes in the graph :5
 
@@ -596,7 +596,7 @@ int main(void)
  Output 
 ```
 $ g++ GCDEuclidean.cpp
-$ a.out
+$ a
 
 Enter two numbers to find GCD using Euclidean algorithm: 12 30
 The GCD of 12 and 30 is: 6
@@ -1138,7 +1138,7 @@ int main()
  Output 
 ```
 $ g++ PathBetweenNodes.cpp
-$ a.out
+$ a
 
 Enter the source and destination vertices: (0-3)
 1 3
@@ -1300,7 +1300,7 @@ int main()
  Output 
 ```
 $ g++ Aho–Corasick.cpp
-$ a.out
+$ a
 
 Keyword his appears from 1 to 3
 Keyword he appears from 4 to 5
@@ -1508,7 +1508,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ BinPacking.cpp
-$ a.out
+$ a
 
 BIN - PACKING Algorithm
 Enter the number of items in Set: 5
@@ -1581,7 +1581,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ BitapStringMatching.cpp
-$ a.out
+$ a
 
 Bitap Algorithm Test
 Enter Text
@@ -1739,7 +1739,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ BoothsMultiplication.cpp
-$ a.out
+$ a
 
 --Enter the multiplicand and multipier in signed 2's complement form if negative--
 Number of multiplicand bit=5
@@ -1836,7 +1836,7 @@ int main()
  Output 
 ```
 $ g++ Boyer-Moore.cpp
-$ a.out
+$ a
 
 pattern occurs at shift = 4
 ------------------
@@ -1959,7 +1959,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ CoppersmithFreivalds.cpp
-$ a.out
+$ a
 
 Enter the dimension of the matrices: 2
 Enter the 1st matrix: 
@@ -2268,7 +2268,7 @@ int main()
  Output 
 ```
 $ g++ DijkstraUsingQueue.cpp
-$ a.out
+$ a
 
 Enter the number of vertices and edges: 6
 7
@@ -2390,7 +2390,7 @@ int main()
  Output 
 ```
 $ g++ DijkstraUsingSet.cpp
-$ a.out
+$ a
 
 Vertex   Distance from Source
 0 		 0
@@ -2731,7 +2731,7 @@ int main()
 ```bash
 
 $ g++  eucledian.cpp
-$ a.out
+$ a
 
 Enter number to 
 find
@@ -2797,7 +2797,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ Fisher-YatesShuffling.cpp
-$ a.out
+$ a
 
 Enter the array size: 7
 Enter the array elements: 12 23 34 45 56 67 78
@@ -3040,7 +3040,7 @@ int main()
  Output 
 ```
 $ g++ GiftWrapping2D.cpp
-$ a.out
+$ a
 
 The points in the convex hull are: (0, 3)
 (3, 0)
@@ -3182,7 +3182,7 @@ int main()
  Output 
 ```
 $ g++ GrahamScan.cpp
-$ a.out
+$ a
 
 The points in the convex hull are: 
 (0, 3)
@@ -3254,7 +3254,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ JohnsonsShortestPath.cpp
-$ a.out
+$ a
 
 Enter no of vertices 3
 Enter no of edges 5
@@ -3313,7 +3313,7 @@ int main()
  Output 
 ```
 $ g++ Kadane.cpp
-$ a.out
+$ a
 
 Enter the array length: 5
 Enter the array: 1 -5 2 -1 3
@@ -3405,7 +3405,7 @@ int main()
 ```bash
 
 $ g++  kmp.cpp
-$ a.out
+$ a
 'lin'
  found  in  string 
 'san and linux training'
@@ -3462,7 +3462,7 @@ int main()
  Output 
 ```
 $ g++ LevenshteinDist.cpp
-$ a.out
+$ a
 
 the Levinstein distance is 9
 
@@ -3518,7 +3518,7 @@ int main()
 ```bash
 
 $ g++  mod_exponentiation.cpp
-$ a.out
+$ a
 
 Enter Base Value: 
 2
@@ -3595,7 +3595,7 @@ int main()
  Output 
 ```
 $ g++ TSPNearestNeighbour.cpp
-$ a.out
+$ a
 
 minimum cost:80
 
@@ -3691,7 +3691,7 @@ int main()
  Output 
 ```
 $ g++ OneTimePad.cpp
-$ a.out
+$ a
 
 Enter Message to Encrypt: This is the demonstration of OTP algorithm
 Encoded Message:IOYYaCEaTFPaOJPLSAKTVLKLTaPBaTGFaUICTENHGH
@@ -3750,7 +3750,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ ParkMillerRandomNumbers.cpp
-$ a.out
+$ a
 
 Random numbers are:
 1.08525e+009
@@ -3833,7 +3833,7 @@ int main()
 ```bash
 
 $ g++  rabinkarp.cpp
-$ a.out
+$ a
 
 Pattern found at index: 
 13
@@ -3991,7 +3991,7 @@ void decrypt()
  Output 
 ```
 $ g++ RSA.cpp
-$ a.out
+$ a
 ENTER FIRST PRIME NUMBER
 47
 
@@ -4103,7 +4103,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ Schonhage-StrassenAlgorithm.cpp
-$ a.out
+$ a
 
 Enter the numbers:3452 1245
 The Linear Convolution is: ( 3 10 25 43 44 33 10 )
@@ -4263,7 +4263,7 @@ int main()
  Output 
 ```
 $ g++ ShortestPathDAG.cpp
-$ a.out
+$ a
 
 Following are shortest distances from source 1 
 INF 0 2 6 5 3 
@@ -4340,7 +4340,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ PloygonAreaSlickerAlgo.cpp
-$ a.out
+$ a
 
 Enter the number of points in Polygon: 4
 Enter the coordinates of each point: <x> <y>
@@ -4596,7 +4596,7 @@ int main()
  Output 
 ```
 $ g++ StrassenMulitplication.cpp
-$ a.out
+$ a
 
 A = {
  1.2, 0.83, 0.39, 0.41, 
@@ -4792,7 +4792,7 @@ int main()
  Output 
 ```
 $ g++ WagnerFischer.cpp
-$ a.out
+$ a
 
 the Levinstein distance is 9
 
@@ -4868,7 +4868,7 @@ int main()
 ```bash
 
 $ g++  z-algorithm.cpp
-$ a.out
+$ a
 'lin'
  found  in  string 
 'san and linux training'
@@ -4964,7 +4964,7 @@ int main()
  Output 
 ```
 $ g++ HeapSort.cpp
-$ a.out
+$ a
 
 Enter no of elements to be sorted: 20
 Elements are:
@@ -4982,6 +4982,8 @@ Sorted elements are:
 (program exited with code: 0)
 Press return to continue
 ```
+
+
 ### Use the Bellman-Ford Algorithm to Find the Shortest Path Between Two Vertices Assuming that Negative Size Edges Exist in the Graph		
 
  Code Sample 
@@ -5129,7 +5131,7 @@ int main()
  Output 
 ```
 $ g++ BellmanFord.cpp
-$ a.out
+$ a
 
 Vertex   Distance from Source
 0 		 0

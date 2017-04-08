@@ -196,7 +196,7 @@ int main()
  Output 
 ```
 $ g++ KruskalsMST.cpp
-$ a.out
+$ a
 
 Following are the edges in the constructed MST
 2 -- 3 == 4
@@ -308,7 +308,7 @@ int main()
  Output 
 ```
 $ g++ PrimsMST.cpp
-$ a.out
+$ a
 
 Edge   Weight
 0 - 1    2 
@@ -421,7 +421,7 @@ int main()
  Output 
 ```
 $ g++ DirectedTree.cpp
-$ a.out
+$ a
 
 Directed Graph isn't a tree
 
@@ -742,7 +742,7 @@ int main()
  Output 
 ```
 $ g++ CheckAVL.cpp
-$ a.out
+$ a
 
 SelfBalancingBinarySearchTree Test
 
@@ -980,7 +980,7 @@ int main()
  Output 
 ```
 $ g++ UndirectedTree.cpp
-$ a.out
+$ a
 
 Undirected Graph isn't a tree
 Undirected Graph is a tree
@@ -1343,7 +1343,7 @@ int main(int argc, char** argv)
  Output 
 ```
 $ g++ ExpressionTreeInfix.cpp
-$ a.out
+$ a
 
 Enter expression
 2+3*5
@@ -1483,7 +1483,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ ExpressionTreePostfix.cpp
-$ a.out
+$ a
 
 Enter Postfix Expression : 32+5*
 
@@ -1575,7 +1575,7 @@ int main(int argc, char* argv[])
  Output 
 ```
 $ g++ BalancedBinaryTree.cpp
-$ a.out
+$ a
 
 Preorder of balanced tree is: 15 7 3 1 0 2 5 4 6 11 9 8 10 13 12 14 23 19 17 16 18 21 20 22 27 25 24 26 29 28 
 Inorder of balanced tree is: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 
@@ -1669,7 +1669,7 @@ int main()
 ```bash
 
 $ g++  deepest_leftleaf.cpp
-$ a.out
+$ a
 
 The deepest left child is 
 9
@@ -1952,7 +1952,7 @@ int main()
  Output 
 ```
 $ g++ LargestIndependetSetBTree.cpp
-$ a.out
+$ a
 
 Size of the Largest Independent Set is 5
 ------------------
@@ -2161,7 +2161,7 @@ int main()
 ```bash
 
 $ g++  xor_list.cpp
-$ a.out
+$ a
 
 -------------
 
@@ -3120,7 +3120,7 @@ void BST::display(node *ptr, int level)
 ```bash
 
 $ g++  bst.cpp
-$ a.out
+$ a
 
 -----------------
 
@@ -4061,7 +4061,7 @@ int main()
 ```bash
 
 $ g++  binomailtree.cpp
-$ a.out
+$ a
 
 Enter Security Price: 
 10
@@ -4279,7 +4279,7 @@ void BST::display(node *ptr, int level)
  Output 
 ```
 $ g++ DoubleOrrderTraversal.cpp
-$ a.out
+$ a
 
 -----------------
 Operations on BST
@@ -4790,7 +4790,7 @@ int main()
 ```bash
 
 $ g++  prefix.cpp
-$ a.out
+$ a
 
 Expression Tree Test
 
@@ -4973,7 +4973,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ IntervalTree.cpp
-$ a.out
+$ a
 
 In-order traversal of constructed Interval Tree is
 [5, 20] max = 20
@@ -5266,7 +5266,7 @@ int main()
 ```bash
 
 $ g++  treap.cpp
-$ a.out
+$ a
 
 Randomized Binary SearchTree Test
 
@@ -6638,7 +6638,7 @@ int main()
 ```bash
 
 $ g++  rbtree.cpp
-$ a.out
+$ a
 <
 empty 
 tree
@@ -7256,7 +7256,7 @@ int main()
 ```bash
 
 $ g++  sgt.cpp
-$ a.out
+$ a
 ScapeGoat Tree Test
 
 ScapeGoat Tree Operations
@@ -8196,7 +8196,7 @@ int main()
 ```bash
 
 $ g++  self_bst.cpp
-$ a.out
+$ a
 
 SelfBalancingBinarySearchTree Test
 
@@ -8905,7 +8905,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ DictionaryBST.cpp
-$ a.out
+$ a
 MENU:
 1.Create
 2.Search for a value
@@ -9145,7 +9145,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ NonRecursiveInorder.cpp
-$ a.out
+$ a
 
 1.INSERT
 2.DISPLAY
@@ -9443,7 +9443,7 @@ void avlTree::postorder(avl_node *tree)
  Output 
 ```
 $ g++ ALVLeftRotation.cpp
-$ a.out
+$ a
 
 AVL Tree Implementation
 
@@ -9945,7 +9945,7 @@ int main(int argc, char **argv)
  Output 
 ```
 $ g++ NonRecursivePostorder.cpp
-$ a.out
+$ a
 1.INSERT
 2.DISPLAY
 3.POSTORDER TRAVERSE
@@ -10056,7 +10056,7 @@ int main()
  Output 
 ```
 $ g++ NonRecursivePreorder.cpp
-$ a.out
+$ a
 
 Pre order traversal: 10 8 3 5 2 2 
 
@@ -10335,7 +10335,7 @@ void avlTree::postorder(avl_node *tree)
  Output 
 ```
 $ g++ ALVRightRotation.cpp
-$ a.out
+$ a
 
 AVL Tree Implementation
 
@@ -10955,7 +10955,7 @@ void avlTree::postorder(avl_node *tree)
  Output 
 ```
 $ g++ TypeOfRotation.cpp
-$ a.out
+$ a
 ---------------------
 AVL Tree Implementation
 
@@ -11176,7 +11176,7 @@ int main()
  Output 
 ```
 $ g++ OddLevelsOfTree.cpp
-$ a.out
+$ a
 
 Level Order traversal of binary tree is 
 1 4 5 

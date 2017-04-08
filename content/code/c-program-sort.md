@@ -80,7 +80,7 @@ void main()
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 Enter the value of num
 
 5
@@ -115,7 +115,7 @@ Enter the element to be searched
 
 SEARCH SUCCESSFUL
 
-$ a.out
+$ a
 Enter the value of num
 
 4
@@ -147,62 +147,7 @@ Enter the element to be searched
 
 SEARCH FAILED
 ```
-### Find Ceiling & Floor of  X given a Sorted Array & a value X		
 
- Code Sample 
-```c
-/*
-* C Program to Find Ceiling & Floor of  X given a Sorted Array & a value X
-*/
- #include <stdio.h>
-
-/* Function to get index of ceiling of x in arr[low..high] */
-int ceilSearch(int arr[], int low, int high, int x)
-{
-     int i;
-
-    /* If x is smaller than or equal to first element,then return the first element */
-    if (x <= arr[low])
-    return low;
-
-   /* Otherwise, linearly search for ceil value */
-   for (i = low; i < high; i++)
-   {
-       if (arr[i] == x)
-          return i;
-
-       /* if x lies between arr[i] and arr[i+1] including arr[i+1], then return arr[i+1] */
-       if (arr[i] < x && arr[i + 1] >= x)
-           return i + 1;
-   }
-
-   /* If we reach here then x is greater than the last element of the array,  return -1 in this case */
-   return -1;
-}
-
-int main()
-{
-    int arr[] = {1, 2, 8, 10, 10, 12, 19};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    int x = 3;
-    int index = ceilSearch(arr, 0, n-1, x);
-    if (index == -1)
-        printf("Ceiling of %d doesn't exist in array ", x);
-    else
-        printf("ceiling of %d is %d", x, arr[index]);
-    getchar();
-    return 0;
-}
-```
-
- Output 
-```bash
-
-$ cc sample_code.c 
-$ a.out
-ceiling of 
-3 is 8
-```
 ### Cyclesort		
 
  Code Sample 
@@ -272,50 +217,24 @@ void cycle_sort(int * a)
 ```bash
 
 $ cc  cyclesort.c
-$ a.out
+$ a
 enter the elements into array :
-7
- 
-3
- 
-2
- 
-5
- 
-4
- 
-8
- 
-9
- 
-6
+7 3 2 5 4 8 9 6
 
 sorted elements are :
 
 23456789
 
-$ a.out
+$ a
 enter the elements into array :
-7
- 
-3
- 
-2
- 
-4
- 
-5
- 
-4
- 
-6
- 
-3
+7 3 2 4 5 4 6 3
 
 sorted elements are :
 
 23344567
 ```
+
+
 ### Sort the Array Elements using Gnome Sort		
 
  Code Sample 
@@ -356,330 +275,35 @@ void main()
 ```bash
 
 $ cc  gnomesort.c
-$ a.out
+$ a
 enter the elemts number u would like to enter:
 7
 
 enter the elements to be sorted through gnome sort:
+6 0 9 5 2 4 3 
+0 2 3 4 5 6 9
 
-6
-0
-9
-5
-2
-4
-3
-0
-       
-2
-       
-3
-       
-4
-       
-5
-       
-6
-       
-9
-$ a.out
+$ a
 enter the elemts number u would like to enter:
 6
 
 enter the elements to be sorted through gnome sort:
 
-1
-2
-4
-5
-6
-7
-1
-       
-2
-       
-4
-       
-5
-       
-6
-       
-7
-$ a.out
+1 2 4 5 6 7
+1 2 4 5 6 7
+
+$ a
 enter the elemts number u would like to enter:
 9
 
 enter the elements to be sorted through gnome sort:
 
-9
-8
-7
-6
-5
-4
-3
-3
-2
-2
-       
-3
-       
-3
-       
-4
-       
-5
-       
-6
-       
-7
-       
-8
-       
-9
-```
-### Sort an Array based on Heap Sort Algorithm		
+9 8 7 6 5 4 3 3 2 
+2 3 3 4 5 6 7 8 9
 
- Code Sample 
-```c
-/*
-* C Program to sort an array based on heap sort algorithm(MAX heap)
-*/ 
-#include <stdio.h>
-
-void main()
-{
-    int heap[10], no, i, j, c, root, temp;
-
-    printf("\n Enter no of elements :");
-    scanf("%d", &no);
-    printf("\n Enter the nos : ");
-    for (i = 0; i < no; i++)
-       scanf("%d", &heap[i]);
-    for (i = 1; i < no; i++)
-    {
-        c = i;
-        do
-        {
-            root = (c - 1) / 2;             
-            if (heap[root] < heap[c])   /* to create MAX heap array */
-            {
-                temp = heap[root];
-                heap[root] = heap[c];
-                heap[c] = temp;
-            }
-            c = root;
-        } while (c != 0);
-    }
-
-    printf("Heap array : ");
-    for (i = 0; i < no; i++)
-        printf("%d\t ", heap[i]);
-    for (j = no - 1; j >= 0; j--)
-    {
-        temp = heap[0];
-        heap[0] = heap[j    /* swap max element with rightmost leaf element */
-        heap[j] = temp;
-        root = 0;
-        do 
-        {
-            c = 2 * root + 1;    /* left node of root element */
-            if ((heap[c] < heap[c + 1]) && c < j-1)
-                c++;
-            if (heap[root]<heap[c] && c<j)    /* again rearrange to max heap array */
-            {
-                temp = heap[root];
-                heap[root] = heap[c];
-                heap[c] = temp;
-            }
-            root = c;
-        } while (c < j);
-    } 
-    printf("\n The sorted array is : ");
-    for (i = 0; i < no; i++)
-       printf("\t %d", heap[i]);
-    printf("\n Complexity : \n Best case = Avg case = Worst case = O(n logn) \n");
-}
 ```
 
- Output 
-```bash
 
-$ cc  heap.c
-$ a.out
-Average 
-case
- 
-Enter no of elements :
-7
-Enter the nos : 
-6
-5
-3
-1
-8
-7
-2
-
-Heap array : 
-8
-   
-6
-       
-7
-       
-1
-       
-5
-       
-3
-       
-2
-
-The sorted array is :      
-1
-     
-2
-     
-3
-     
-5
-     
-6
-     
-7
-     
-8
-
-Complexity : 
-Best 
-case
- = Avg 
-case
- = Worst 
-case
- = O
-(
-n logn
-)
-$ a.out
-
-/*
- Best 
-case
- 
-Enter no of elements :
-7
-Enter the nos : 
-12
-10
-8
-9
-7
-4
-2
-
-Heap array : 
-12
-  
-10
-      
-8
-       
-9
-       
-7
-       
-4
-       
-2
-
-The sorted array is :      
-2
-     
-4
-     
-7
-     
-8
-     
-9
-     
-10
-     
-12
-
-Complexity : 
-Best 
-case
- = Avg 
-case
- = Worst 
-case
- = O
-(
-n logn
-)
-$ a.out
-
-/*
- Worst 
-case
- 
-Enter no of elements :
-7
-Enter the nos : 
-5
-7
-12
-6
-9
-10
-14
-
-Heap array : 
-14
-  
-9
-    
-12
-      
-5
-       
-6
-       
-7
-       
-10
-
-The sorted array is :  
-5
-     
-6
-     
-7
-     
-9
-     
-10
-     
-12
-     
-14
-
-Complexity : 
-Best 
-case
- = Avg 
-case
- = Worst 
-case
- = O
-(
-n logn
-)
-*/
-```
 ### Bitonic sort		
 
  Code Sample 
@@ -776,7 +400,7 @@ void sort()
 ```bash
 
 $ gcc  bitonicsort.c
-$ a.out
+$ a
 
 /*
 *
@@ -786,38 +410,10 @@ case
 
 Enter the data
 
-3
- 
-5
- 
-8
- 
-9
- 
-7
- 
-4
- 
-2
- 
-1
-1
-  
-2
-  
-3
-  
-4
-  
-5
-  
-7
-  
-8
-  
-9
+3 5 8 9 7 4 2 1 
+1 2 3 4 5 7 8 9
 
-$  a.out
+$  a
 
 /*
 *
@@ -827,37 +423,9 @@ case
 
 Enter the data
 
-100
- 
-99
- 
-98
- 
-97
- 
-96
- 
-95
- 
-94
- 
-93
-93
-  
-94
-  
-95
-  
-96
-  
-97
-  
-98
-  
-99
-  
-100
-$  a.out
+100 99 98 97 96 95 94 93
+93 94 95 96 97 98 99 100
+$  a
 
 /*
 *
@@ -867,36 +435,8 @@ case
 
 Enter the data
 
-1111
- 
-2222
- 
-3333
- 
-4444
- 
-5555
- 
-6666
- 
-7777
- 
-8888
-1111
-  
-2222
-  
-3333
-  
-4444
-  
-5555
-  
-6666
-  
-7777
-  
-8888
+1111 2222 3333 4444 5555 6666 7777 8888
+1111 2222 3333 4444 5555 6666 7777 8888
 ```
 
 ### BogoSort in an Integer Array		
@@ -976,28 +516,14 @@ void bogosort(int *a, int n)
 
 $ cc  bogo_sort.c
 Average case:
-$ a.out
+$ a
 Enter the elements of array:
-56
-34
-96
-26
-
-08
-
-87
-36
+56 34 96 26 08 87 36
 
 The array after sorting is:
-8
-26
-34
-36
-56
-87
-96
-Best case:
-$ a.out
+8 26 34 36 56 87 96
+ Best case:
+$ a
 Enter the elements of array:
 12
 23
@@ -1016,7 +542,7 @@ The array after sorting is:
 67
 78
 Worst case:
-$ a.out
+$ a
 Enter the elements of array:
 984
 38
@@ -1100,7 +626,7 @@ int main()
 ```bash
 
 $ gcc  cocktailsort.c
-$ a.out
+$ a
 
 /*
 *
@@ -1110,38 +636,10 @@ case
 
 Enter the data
 
-9
- 
-6
- 
-2
- 
-12
- 
-11
- 
-9
- 
-3
- 
-7
+9 6 2 12 11 9 3 7
 
 The sorted elements are:
-2
-       
-3
-       
-6
-       
-7
-       
-9
-       
-9
-       
-11
-      
-12
+2 3 6 7 9 9 11 12
 /*
 *
  Worst 
@@ -1150,38 +648,10 @@ case
 
  Enter the data
  
-8
- 
-7
- 
-6
- 
-5
- 
-4
- 
-3
- 
-2
- 
-1
+8 7 6 5 4 3 2 1
 
  The sorted elements are:
-1
-         
-2
-        
-3
-        
-4
-        
-5
-        
-6
-        
-7
-        
-8
+1 2 3 4 5 6 7 8
 /*
 *
 Best 
@@ -1190,39 +660,13 @@ case
 
   Enter the data
   
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
- 
-8
-
+1 2 3 4 5 6 7 8 
   The sorted elements are:
-1
-     
-2
-        
-3
-        
-4
-        
-5
-        
-6
-        
-7
-        
-8
+1 2 3 4 5 6 7 8
+
 ```
+
+
 ### Perform Comb Sort on Array of Integers		
 
  Code Sample 
@@ -1268,6 +712,7 @@ void combsort(int a[], int aSize)
             break;
     }
 }
+
 int main ()
 {
     int n, i;
@@ -1299,232 +744,71 @@ int main ()
 ```bash
 
 $ cc  combsort.c
-$ a.out
+$ a
 Please insert the number of elements to be sorted: 
 10
 
-Input element 
-0
- :
-5
+Input element 0 : 5
+Input element 1 : 6
+Input element 2 : 1
+Input element 3 : 3
+Input element 4 : 4
+Input element 5 : 7
+Input element 6 : 8
+Input element 7 : 9 
+Input element 8 : 0
+Input element 9 : 6
 
-Input element 
-1
- :
-6
+unsorted list
+5613478906
 
-Input element 
-2
- :
-1
+Sorted list:
+0 1 3 4 5 6 6 7 8 9
 
-Input element 
-3
- :
-3
-
-Input element 
-4
- :
-4
-
-Input element 
-5
- :
-7
-
-Input element 
-6
- :
-8
-
-Input element 
-7
- :
-9
-
-Input element 
-8
- :
-0
-
-Input element 
-9
- :
-6
-
-unsorted list5613478906Sorted list:
-
-0
- 
-1
- 
-3
- 
-4
- 
-5
- 
-6
- 
-6
- 
-7
- 
-8
- 
-9
-$ ./a.out
+$ ./a
 Please insert the number of elements to be sorted: 
 10
 
-Input element 
-0
- :
-1
+Input element 0 : 1 
+Input element 1 : 2 
+Input element 2 : 3 
+Input element 3 : 4
+Input element 4 : 5 
+Input element 5 : 6
+Input element 6 : 7 
+Input element 7 : 8 
+Input element 8 : 9 
+Input element 9 : 10
 
-Input element 
-1
- :
-2
-
-Input element 
-2
- :
-3
-
-Input element 
-3
- :
-4
-
-Input element 
-4
- :
-5
-
-Input element 
-5
- :
-6
-
-Input element 
-6
- :
-7
-
-Input element 
-7
- :
-8
-
-Input element 
-8
- :
-9
-
-Input element 
-9
- :
-10
-
-unsorted list12345678910Sorted list:
-
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
- 
-8
- 
-9
+unsorted list
+12345678910
+Sorted list:
+ 1 2 3 4 5 6 7 8 9
  
 10
-$ ./a.out
+$ ./a
 Please insert the number of elements to be sorted: 
 10
 
-Input element 
-0
- :
-10
+Input element 0 : 10 
+Input element 1 : 9 
+Input element 2 : 8 
+Input element 3 : 7 
+Input element 4 : 6 
+Input element 5 : 5 
+Input element 6 : 4 
+Input element 7 : 3 
+Input element 8 : 2 
+Input element 9 : 1
 
-Input element 
-1
- :
-9
+unsorted list
+10987654321
 
-Input element 
-2
- :
-8
+Sorted list:
 
-Input element 
-3
- :
-7
-
-Input element 
-4
- :
-6
-
-Input element 
-5
- :
-5
-
-Input element 
-6
- :
-4
-
-Input element 
-7
- :
-3
-
-Input element 
-8
- :
-2
-
-Input element 
-9
- :
-1
-
-unsorted list10987654321Sorted list:
-
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
- 
-8
- 
-9
- 
-10
+1 2 3 4 5 6 7 8 9 10
 ```
+
 ### Merge Sort Algorithm on Linked List		
 
  Code Sample 
@@ -1651,18 +935,9 @@ $ ./linkedlistsort
 
 Sorted Linked List is:
 
-3
- 
-5
- 
-10
- 
-15
- 
-20
- 
-26775
+3 5 10 15 20 26775
 ```
+
 ### Pancake Sort on Array of Integers		
 
  Code Sample 
@@ -1746,64 +1021,13 @@ int main(int argc,  char **argv)
 ```bash
 
 $ cc  pancake.c
-$ a.out
-enter the 
-9
- elements of array:
-
-10
-9
-8
-7
-6
-5
-4
-3
-2
-Original: 
-10
- 
-9
- 
-8
- 
-7
- 
-6
- 
-5
- 
-4
- 
-3
- 
-2
-
-Sorted: 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
- 
-8
- 
-9
- 
-10
-   - with a total of 
-0
- moves
-$ a.out
-enter the 
-9
- elements of array:
+$ a
+enter the 9 elements of array: 10 9 8 7 6 5 4 3 2 
+Original: 10 9 8 7 6 5 4 3 2 
+Sorted: 2 3 4 5 6 7 8 9 10
+   - with a total of 0 moves
+$ a
+enter the 9 elements of array:
 
 1
 2
@@ -1815,50 +1039,11 @@ enter the
 8
 9
 Original: 
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
- 
-8
- 
-9
-
-Sorted: 
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
- 
-8
- 
-9
-   - with a total of 
-0
- moves
-$ a.out
-enter the 
-9
- elements of array:
-
+1 2 3 4 5 6 7 8 9 
+Sorted: 1 2 3 4 5 6 7 8 9
+   - with a total of 0 moves
+$ a
+enter the 9 elements of array: 
 5
 6
 7
@@ -1870,46 +1055,12 @@ enter the
 3
 
 Original: 
-5
- 
-6
- 
-7
- 
-8
- 
-9
- 
-1
- 
-4
- 
-2
- 
-3
-
+5 6 7 8 9 1 4 2 3 
 Sorted: 
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
- 
-8
- 
-9
-   - with a total of 
-3
- moves
+1 2 3 4 5 6 7 8 9
+   - with a total of 3 moves
 ```
+
 ### Quick Sort Using Randomization		
 
  Code Sample 
@@ -1994,205 +1145,10 @@ $ gcc  randomizedquicksort.c
 
 $ ./randomizedquicksort
 Sorted array is : 
-0
- 
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
- 
-8
- 
-9
- 
-10
- 
-11
- 
-12
- 
-13
- 
-14
- 
-15
- 
-16
- 
-17
- 
-18
- 
-19
- 
-20
- 
-21
- 
-22
- 
-23
- 
-24
- 
-25
- 
-26
- 
-27
- 
-28
- 
-29
- 
-30
- 
-31
- 
-32
- 
-33
- 
-34
- 
-35
- 
-36
- 
-37
- 
-38
- 
-39
- 
-40
- 
-41
- 
-42
- 
-43
- 
-44
- 
-45
- 
-46
- 
-47
- 
-48
- 
-49
- 
-50
- 
-51
- 
-52
- 
-53
- 
-54
- 
-55
- 
-56
- 
-57
- 
-58
- 
-59
- 
-60
- 
-61
- 
-62
- 
-63
- 
-64
- 
-65
- 
-66
- 
-67
- 
-68
- 
-69
- 
-70
- 
-71
- 
-72
- 
-73
- 
-74
- 
-75
- 
-76
- 
-77
- 
-78
- 
-79
- 
-80
- 
-81
- 
-82
- 
-83
- 
-84
- 
-85
- 
-86
- 
-87
- 
-88
- 
-89
- 
-90
- 
-91
- 
-92
- 
-93
- 
-94
- 
-95
- 
-96
- 
-97
- 
-98
- 
-99
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
+26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 
+51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 
+76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99
 ```
 ### Selection Sort Method using Functions		
 
@@ -2263,7 +1219,7 @@ void exchang(int b[10], int k)
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 Enter the value of n
 
 4
@@ -2347,28 +1303,17 @@ $ ./selectionsort
 
 How many numbers you want to sort: 
 5
-Enter 5
- numbers : 
-34
- 
-13
- 
-204
- 
-355
- 
+Enter 5 numbers : 
+34 
+13 
+204 
+355 
 333
 Sorted array is : 
-13
- 
-34
- 
-204
- 
-333
- 
-355
+13 34 204 333 355
+
 ```
+
 ### Shell Sort		
 
  Code Sample 
@@ -2431,50 +1376,25 @@ Enter total no. of elements :
 10
 
 Enter numbers : 
-36
- 
-432
- 
-43
- 
-44
- 
-57
- 
-63
-  
-94
- 
-3
- 
-5
- 
+36 
+432 
+43 
+44 
+57 
+63 
+94 
+3 
+5 
 6
 
 Sorted array is : 
-3
- 
-5
- 
-6
- 
-36
- 
-43
- 
-44
- 
-57
- 
-63
- 
-94
- 
-432
+3 5 6 36 43 44 57 63 94 432
 ```
+
 ### Stooge Sort		
 
  Code Sample 
+
 ```c
 /*
 * C Program to Implement Stooge Sort
@@ -2524,12 +1444,8 @@ void stoogesort(int a[], int i, int j)
 ```bash
 
 $ gcc  stoogesort.c
-$ a.out
-Enter the values you want to 
-sort
- using STOOGE SORT
-!!!
-:
+$ a
+Enter the values you want to sort using STOOGE SORT !!! :
 
 6
 1
@@ -2539,28 +1455,17 @@ sort
 7
 2
 
-sorted by stooge 
-sort
-1
- 
-2
- 
-3
- 
-5
- 
-6
- 
-7
- 
+sorted by stooge sort
+1 
+2 
+3 
+5 
+6 
+7 
 8
 
-$ a.out
-Enter the values you want to 
-sort
- using STOOGE SORT
-!!!
-:
+$ a
+Enter the values you want to sort using STOOGE SORT !!! :
 
 7
 6
@@ -2570,28 +1475,17 @@ sort
 2
 1
 
-sorted by stooge 
-sort
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
+sorted by stooge sort
+1 
+2 
+3 
+4 
+5 
+6 
 7
 
-$ a.out
-Enter the values you want to 
-sort
- using STOOGE SORT
-!!!
-:
+$ a
+Enter the values you want to sort using STOOGE SORT !!! :
 
 1
 2
@@ -2676,112 +1570,36 @@ case
  
 */
 
-$ a.out
+$ a
 enter elements to be sorted:
-8
- 
-2
- 
-4
- 
-9
- 
-3
- 
-6
- 
-1
+8 2 4 9 3 6 1
 
 sorted elements:
  
-1
- 
-2
- 
-3
- 
-4
- 
-6
- 
-8
- 
-9
+1 2 3 4 6 8 9
 /*
  Best 
 case
  
 */
 
-$ a.out
+$ a
 enter elements to be sorted:
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
+1 2 3 4 5 6 7 
+sorted elements: 
+1 2 3 4 5 6 7
+
+/* Worst case */
+
+$ a
+enter elements to be sorted:
+7 6 5 4 3 2 1
 
 sorted elements:
  
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
-/*
- Worst 
-case
- 
-*/
-
-$ a.out
-enter elements to be sorted:
-7
- 
-6
- 
-5
- 
-4
- 
-3
- 
-2
- 
-1
-
-sorted elements:
- 
-1
- 
-2
- 
-3
- 
-4
- 
-5
- 
-6
- 
-7
+1 2 3 4 5 6 7
 ```
+
 ### Find if a given Integer X appears more than N/2 times in a Sorted Array of N Integers		
 
  Code Sample 
@@ -2824,7 +1642,7 @@ int main()
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 The given no 
 15
  appears 
@@ -2891,7 +1709,7 @@ void main()
 ```bash
 
 $ cc  lsdradix.c
-$ a.out
+$ a
 
 /*
  Average Case 
@@ -2910,26 +1728,9 @@ Enter elements into array :
 24
 2
 
-Sorted Array 
-(
-ladradix 
-sort
-)
- : 
-2
- 
-24
- 
-45
- 
-75
- 
-90
- 
-170
- 
-802
-$ a.out
+Sorted Array ( ladradix sort ) : 
+2 24 45 75 90 170 802
+$ a
 
 /*
 Best 
@@ -2950,35 +1751,13 @@ Enter elements into array :
 206
 348
 
-Sorted Array 
-(
-ladradix 
-sort
-)
- : 
-22
- 
-64
- 
-78
- 
-159
- 
-121
- 
-206
- 
-348
-$ a.out
+Sorted Array ( ladradix sort ) : 
+22 64 78 159 121 206 348
+$ a
 
-/*
- Worst 
-case
- 
-*/
+/* Worst case */
 
-Enter size
- of array :
+Enter size of array :
 7
 
 Enter elements into array :
@@ -2990,95 +1769,8 @@ Enter elements into array :
 325
 
 091
-Sorted Array 
-(
-ladradix 
-sort
-)
- : 
-27
- 
-64
- 
-91
- 
-129
- 
-325
- 
-345
- 
-985
-```
-### Find the Median of the Elements after Merging these 2 Sorted Arrays with Same Size		
-
- Code Sample 
-```c
-/*
-* C Program to Find the Median of the Elements after Merging these 2 Sorted Arrays with Same Size
-*/
-#include <stdio.h>
-
-int getMedian(int array1[], int array2[], int n)
-{
-    int i = 0;  /* Current index of i/p array array1[] */
-    int j = 0; /* Current index of i/p array array2[] */
-    int count;
-    int m1 = -1, m2 = -1;
-
-    for (count = 0; count <= n; count++)
-    {
-        if (i == n)
-        {
-            m1 = m2;
-            m2 = array2[0];
-            break;
-        }
-        else if (j == n)
-        {
-            m1 = m2;
-            m2 = array1[0];
-            break;
-        }
-        if (array1[i] < array2[j])
-        {
-            m1 = m2;  /* Store the prev median */
-            m2 = array1[i];
-            i++;
-        }
-        else
-        {
-            m1 = m2;  /* Store the prev median */
-            m2 = array2[j];
-            j++;
-        }
-    }
-    return (m1 + m2)/2;
-}
-
-int main()
-{
-    int array1[] = {20, 25, 35, 30, 38};
-    int array2[] = {22, 53, 65, 72, 45};
-
-    int n1 = sizeof(array1) / sizeof(array1[0]);
-    int n2 = sizeof(array2) / sizeof(array2[0]);
-    if (n1 == n2)
-        printf("Median is %d", getMedian(array1, array2, n1));
-    else
-        printf("not possible to findout");
-    getchar();
-    return 0;
-}
-```
-
- Output 
-```bash
-
-$ cc sample_code.c 
-$ a.out
-Median is 
-34
+Sorted Array ( ladradix sort ) : 
+27 64 91 129 325 345 985
 ```
 
 
@@ -3163,43 +1855,25 @@ int main()
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 
-enter the 
-size
- of an array10
+enter the size of an array 10
 
-enter the array elements-
-12
-10
-45
-32
-49
--58
-69
-38
-98
-34
--58
- 
+enter the array elements
 -12
- 
 10
- 
-32
- 
-34
- 
-38
- 
 45
- 
+32
 49
- 
+-58
 69
- 
+38
 98
+34
+
+-58 -12 10 32 34 38 45 49 69 98
 ```
+
 ### Input Few Numbers & Perform Merge Sort on them using Recursion		
 
  Code Sample 
@@ -3297,7 +1971,7 @@ void mergeSort(int list[],int low,int mid,int high)
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 Enter total number of elements:
 5
 
@@ -3311,16 +1985,9 @@ Enter the elements:
 
 After merge sort:
 
-12
-   
-22
-   
-36
-   
-54
-   
-76
+12 22 36 54 76
 ```
+
 ### Merge the Elements of 2 Sorted Array		
 
  Code Sample 
@@ -3394,32 +2061,26 @@ void main()
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 
 Enter size
  of array Array  1:  
 4
-Enter sorted elements of array  1: 12
+Enter sorted elements of array  1: 
+12
 18
 40
 60
-Enter size
- of array  2:  
-4
-Enter sorted elements of array  2: 47
+Enter size of array  2: 4
+Enter sorted elements of array  2: 
+47
 56
 89
 90
 After merging:
-12
-18
-40
-47
-56
-60
-89
-90
+12 18 40 47 56 60 89 90
 ```
+
 ### Perform the Shaker Sort		
 
  Code Sample 
@@ -3464,25 +2125,7 @@ $ gcc  shakersort.c
 
 $ ./shakersort
 Sorted array is : 
-3
- 
-5
- 
-6
- 
-36
- 
-43
- 
-44
- 
-57
- 
-63
- 
-94
- 
-432
+3 5 6 36 43 44 57 63 94 432
 ```
 
 
@@ -3547,7 +2190,7 @@ int shell_sort(int array[])
 
 $ cc  shellsort.c
 Average case:
-$ a.out
+$ a
 Enter the elements to be sorted:
 57
 67
@@ -3559,15 +2202,9 @@ Enter the elements to be sorted:
 
 The array after sorting is:
 
-42
-48
-57
-67
-84
-93
-95
+42 48 57 67 84 93 95 
 Best case:
-$ a.out
+$ a
 Enter the elements of array:
 22
 33
@@ -3578,15 +2215,9 @@ Enter the elements of array:
 98
 
 The array after sorting is:
-22
-33
-74
-85
-86
-87
-98
+22 33 74 85 86 87 98
 Worst case:
-$ a.out
+$ a
 Enter the elements of array:
 94
 92
@@ -3711,46 +2342,20 @@ $ ./countsort
 Enter the number of elements : 
 10
 Enter the elements to be sorted : 
-8
- 
-11
- 
-34
- 
-2
- 
-1
- 
-5
- 
-4
- 
-9
- 
-6
- 
+8 
+11 
+34 
+2 
+1 
+5 
+4 
+9 
+6 
 47
+
 The Sorted array is :
 
-1
- 
-2
- 
-4
- 
-5
- 
-6
- 
-8
- 
-9
- 
-11
- 
-34
- 
-47
+1 2 4 5 6 8 9 11 34 47
 ```
 ### Perform Stooge Sort		
 
@@ -3809,28 +2414,17 @@ $ ./stoogesort
 
 How many numbers you want to sort: 
 5
-Enter 5
- numbers : 
-755
- 
-32
- 
-20
- 
-35
- 
+Enter 5 numbers : 
+755 
+32 
+20 
+35 
 333
+
 Sorted array is : 
-20
- 
-32
- 
-35
- 
-333
- 
-755
+20 32 35 333 755
 ```
+
 ### Pigeonhole Sort		
 
  Code Sample 
@@ -3909,7 +2503,7 @@ case
  
 */
 
-$ a.out
+$ a
 enter the values into the matrix :
 7
  
@@ -3934,7 +2528,7 @@ case
  
 */
 
-$ a.out
+$ a
 enter the values into the matrix :
 1
  
@@ -3959,7 +2553,7 @@ case
  
 */
 
-$ a.out
+$ a
 enter the values into the matrix :
 7
  
@@ -4080,7 +2674,7 @@ void arrange(int k,int n)
 ```bash
 
 $ cc  postman.c
-$ a.out
+$ a
 
 /*
  Average 
@@ -4121,7 +2715,7 @@ sort
 170
  
 802
-$ a.out
+$ a
 
 /*
  Best 
@@ -4160,7 +2754,7 @@ sort
 185
  
 3645
-$ a.out
+$ a
 
 /*
  Worst 
@@ -4279,7 +2873,7 @@ void main()
 ```bash
 
 $ cc  qsort_fp.c
-$ a.out
+$ a
 
 10
     
@@ -4379,7 +2973,7 @@ void quicksort(int list[], int low, int high)
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 Enter the number of elements: 
 6
 
@@ -4537,7 +3131,7 @@ void selection(int list[], int i, int j, int size, int flag)
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 Enter the 
 size
  of the list: 
@@ -4553,15 +3147,7 @@ Enter the elements  in  list:
 
 The sorted list  in  ascending order is
 
-12
-  
-23
-  
-34
-  
-45
-  
-64
+12 23 34 45 64
 ```
 
 
@@ -4617,13 +3203,12 @@ void main()
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 Enter the value of n
-
 7
 
 Enter 7
- names
+names
 heap
 stack
 queue
@@ -4737,7 +3322,7 @@ void main()
 ```bash
 
 $ cc sample_code.c 
-$ a.out
+$ a
 Enter the order of the matrix
 
 3
@@ -4746,21 +3331,7 @@ Enter the order of the matrix
 
 Enter co-efficients of the matrix
 
-3
- 
-7
- 
-9
-2
- 
-4
- 
-8
-5
- 
-2
- 
-6
+3 7 9 2 4 8 5 2 6
 
 The given matrix is
  
@@ -4886,7 +3457,7 @@ void main()
 ```bash
 
 $ cc  string99.c
-$ a.out
+$ a
 
 Enter a string:abcdel bcdl abcdefg
 The sorted string is:abcdefgl
@@ -4957,7 +3528,7 @@ void main()
 ```bash
 
 $ cc  string15.c
-$ a.out
+$ a
 enter the string:abcde
 |
  bcd
@@ -5022,7 +3593,7 @@ void main()
 
 
 $ cc sample_code.c 
-$ a.out
+$ a
 Enter the value of num
 
 6
@@ -5113,7 +3684,7 @@ void main()
 ```bash
 
 $ cc  string18.c
-$ a.out
+$ a
 Enter the string
 welcome to sanfoundry
 's c programming class, welcome to c class again

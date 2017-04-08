@@ -108,7 +108,7 @@ int main()
  Output 
 ```
 $ g++ TopologicalSort.cpp
-$ a.out
+$ a
 
 Following is a Topological Sort of the given graph 
 5 4 2 3 1 0 
@@ -404,7 +404,7 @@ int main()
 ```bash
 
 $ g++  median_sorted.cpp
-$ a.out
+$ a
 
 Median is 
 5
@@ -751,7 +751,7 @@ int main()
 ```bash
 
 $ g++  mergesort_ll.cpp
-$ a.out
+$ a
 
 Sorted Linked List is:
 
@@ -939,7 +939,7 @@ int main()
 ```bash
 
 $ g++  radix_sort.cpp
-$ a.out
+$ a
 2
  
 24
@@ -1025,7 +1025,7 @@ void print (int temp_ar[], int size)
 
 $ g++  SelectionSort.cpp
 
-$ ./a.out
+$ ./a
 
 Array intially : 
 10
@@ -1225,7 +1225,7 @@ int main()
  Output 
 ```
 $ g++ ShortestPathDAG.cpp
-$ a.out
+$ a
 
 Following are shortest distances from source 1 
 INF 0 2 6 5 3 
@@ -1271,7 +1271,7 @@ int main()
 ```bash
 
 $ g++  sorted_array.cpp
-$ a.out
+$ a
 Enter an integer to be inserted: 
 10
 
@@ -1611,7 +1611,7 @@ int main()
 ```bash
 
 $ g++  sorting_container.cpp
-$ a.out
+$ a
 
 ---------------------
 
@@ -1861,26 +1861,19 @@ int main()
 Output
 
 enter the no of nodes
-7
-
+7 
 enter value of node
-4
-
+4 
 enter value of node
-6
-
+6 
 enter value of node
-1
-
+1 
 enter value of node
-9
-
+9 
 enter value of node
-3
-
+3 
 enter value of node
-8
-
+8 
 enter value of node
 2
 linear display of nodes currently present in circularly linked list....
@@ -1972,7 +1965,7 @@ int main()
  Output 
 ```
 $ g++ HeapSort.cpp
-$ a.out
+$ a
 
 Enter no of elements to be sorted: 20
 Elements are:
