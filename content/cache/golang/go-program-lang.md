@@ -6721,13 +6721,12 @@ Throughout the book, we’ve been using two similar functions for string formatt
 
 ```go
 package fmt 
-func Fprintf(w io.Writer, format string, args 
-...interface{}) (int, error) 
+func Fprintf(w io.Writer, format string, args ...interface{}) (int, error) 
 func Printf(format string, args ...interface{}) (int, error) {return Fprintf(os.Stdout, format, args...) } 
 func Sprintf(format string, args ...interface{}) string { 
-var buf bytes.Buffer
-Fprintf(&buf, format, args...) 
-return buf.String() 
+    var buf bytes.Buffer
+    Fprintf(&buf, format, args...)
+    return buf.String()
 } 
 ```
 
@@ -6767,8 +6766,11 @@ Let’s test this out using a new type. The Write method of the *ByteCounter typ
 ```go
 // gopl.io/ch7/bytecounter 
 type ByteCounter int 
-func (c *ByteCounter) Write(p []byte) (int, error) { *c += ByteCounter(len(p)) // convert int to ByteCounterreturn len(p), nil } 
-
+func (c *ByteCounter) Write(p []byte) (int, error) { 
+    *c += ByteCounter(len(p)) // convert int to ByteCounter
+    return len(p), nil 
+} 
+```
 Since *ByteCounter satisfies the io.Writer contract, we can pass it to Fprintf, which does its string formatting oblivious to this change; the ByteCounter correctly accumulates the length of the result. 
 
 ```go
@@ -6789,8 +6791,8 @@ package fmt
 // as an operand to any format that accepts a string 
 // or to an unformatted printer such as Print. 
 type Stringer interface {
-
-String() string } 
+    String() string 
+}
 ```
 
 
@@ -6818,43 +6820,43 @@ The io.Writer type is one of the most widely used interfaces because it provides
 ```go
 package io 
 type Reader interface {
-Read(p []byte) (n int, err error) 
+    Read(p []byte) (n int, err error) 
 } 
 
 type Closer interface {
-Close() error 
+    Close() error 
 } 
 ```
+
 Looking farther, we find declarations of new interface types as combinations of existing ones. Here are two examples: 
 
 
 ```go
 type ReadWriter interface {
-Reader 
-Writer 
+    Reader 
+    Writer 
 } 
 type ReadWriteCloser interface {
-Reader 
-Writer 
-Closer 
-
+    Reader 
+    Writer 
+    Closer
 } 
 ```
 The syntax used above, which resembles struct embedding, lets us name another interface as a shorthand for writing out all of its methods. This is called embedding an interface. We could have written io.ReadWriter without embedding, albeit less succinctly, like this: 
 
 ```go
 type ReadWriter interface {
-Read(p []byte) (n int, err error) 
-Write(p []byte) (n int, err error) 
+    Read(p []byte) (n int, err error) 
+    Write(p []byte) (n int, err error)
+}
+```
 
-} 
 or even using a mixture of the two styles: 
 
 ```go
 type ReadWriter interface {
-Read(p []byte) (n int, err error) 
-Writer 
-
+    Read(p []byte) (n int, err error) 
+    Writer
 } 
 ```
 

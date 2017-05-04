@@ -316,3 +316,64 @@ Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
     fastcgi_buffer_size 128k;
     fastcgi_buffers 4 256k;
     fastcgi_busy_buffers_size 256k;
+
+
+### PHP 5.x on Ubuntu 16
+
+## Add repo
+    sudo add-apt-repository -y ppa:ondrej/php
+    sudo apt-get update
+    sudo apt-get install php5.6-fpm
+    sudo apt-get install 
+
+
+## Update
+Today I got again problem with PHP 7 running despite I have disabled php7.0 apache module: phpinfo was showing php 7 using fastCGI ...
+... So if after you follow the below instructions you face this situation, you may need to disable the proxy_fcgi apache module:
+
+    sudo a2dismod proxy_fcgi proxy; sudo service apache2 restart
+
+1. Re-Install PHP 5.6
+
+What worked for me was this guide: http://www.lornajane.net/posts/2016/php-7-0-and-5-6-on-ubuntu
+
+Actually is not required to remove php7.0, you can install php5.6 together ( also because you will have dependency problem with phpmyadmin package that required php7.0)
+
+Assuming libapache2-mod-php is a suitable way to enable PHP in Apache for you, you can proceed in this way:
+
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt-get update
+    sudo apt-get install php7.0 php5.6 php5.6-mysql php-gettext php5.6-mbstring php-mbstring php7.0-mbstring php-xdebug libapache2-mod-php5.6 libapache2-mod-php7.0
+
+2. Switch PHP version:
+
+From php5.6 to php7.0:
+Apache:
+    sudo a2dismod php5.6 ; sudo a2enmod php7.0 ; sudo service apache2 restart
+CLI:
+    sudo update-alternatives --set php /usr/bin/php7.0
+
+From php7.0 to php5.6:
+Apache:
+    sudo a2dismod php7.0 ; sudo a2enmod php5.6 ; sudo service apache2 restart
+CLI:
+    sudo update-alternatives --set php /usr/bin/php5.6
+
+
+NOTICE: Not enabling PHP 5.6 FPM by default.
+NOTICE: To enable PHP 5.6 FPM in Apache2 do:
+NOTICE: a2enmod proxy_fcgi setenvif
+NOTICE: a2enconf php5.6-fpm
+NOTICE: You are seeing this message because you have apache2 package installed.
+Setting up php5.6-curl (5.6.30-9+deb.sury.org~xenial+1) ...
+
+Creating config file /etc/php/5.6/mods-available/curl.ini with new version
+Setting up php5.6-xmlrpc (5.6.30-9+deb.sury.org~xenial+1) ...
+
+Creating config file /etc/php/5.6/mods-available/xmlrpc.ini with new version
+Processing triggers for libapache2-mod-php5.6 (5.6.30-9+deb.sury.org~xenial+1) ...
+Processing triggers for php5.6-fpm (5.6.30-9+deb.sury.org~xenial+1) ...
+NOTICE: Not enabling PHP 5.6 FPM by default.
+NOTICE: To enable PHP 5.6 FPM in Apache2 do:
+NOTICE: a2enmod proxy_fcgi setenvif
+NOTICE: a2enconf php5.6-fpm
