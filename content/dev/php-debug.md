@@ -202,3 +202,162 @@ server {
 
 
 cat file | xclip -selection clipboard
+
+
+### PHP 5.x anp PHP 7.x on Ubuntu 16
+
+## Add repo
+    sudo add-apt-repository -y ppa:ondrej/php
+    sudo apt-get update
+    sudo apt-get install php5.6-fpm
+    sudo apt-get install 
+
+
+### Trouble shooting
+
+
+## Update
+Today I got again problem with PHP 7 running despite I have disabled php7.0 apache module: phpinfo was showing php 7 using fastCGI ...
+... So if after you follow the below instructions you face this situation, you may need to disable the proxy_fcgi apache module:
+
+    sudo a2dismod proxy_fcgi proxy; sudo service apache2 restart
+
+1. Re-Install PHP 5.6
+
+What worked for me was this guide: http://www.lornajane.net/posts/2016/php-7-0-and-5-6-on-ubuntu
+
+Actually is not required to remove php7.0, you can install php5.6 together ( also because you will have dependency problem with phpmyadmin package that required php7.0)
+
+Assuming libapache2-mod-php is a suitable way to enable PHP in Apache for you, you can proceed in this way:
+
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt-get update
+    sudo apt-get install php7.0 php5.6 php5.6-mysql php-gettext php5.6-mbstring php-mbstring php7.0-mbstring php-xdebug libapache2-mod-php5.6 libapache2-mod-php7.0
+
+2. Switch PHP version:
+
+From php5.6 to php7.0:
+
+Apache:
+
+    sudo a2dismod php5.6 ; sudo a2enmod php7.0 ; sudo service apache2 restart
+
+CLI:
+
+    sudo update-alternatives --set php /usr/bin/php7.0
+
+From php7.0 to php5.6:
+
+Apache:
+
+    sudo a2dismod php7.0 ; sudo a2enmod php5.6 ; sudo service apache2 restart
+
+CLI:
+
+    sudo update-alternatives --set php /usr/bin/php5.6
+
+
+
+## Build xdebug for different PHP
+
+### PHP 5.6 
+
+```
+php5.6 -i | xsel --clipboard
+
+# open url http://xdebug.org/wizard.php
+# copy the content and download the correct xdebug tar ball xdebug-2.5.3.tar.gz
+
+tar -xvf xdebug-2.5.3.tar.gz 
+
+cd xdebug-2.5.3
+
+phpize5.6 
+
+# You will output as below
+#  ...
+# Zend Module Api No:      20131226
+# Zend Extension Api No:   220131226
+
+./configure --with-php-config=/usr/bin/php-config5.6
+
+make
+
+sudo cp modules/xdebug.so /usr/lib/php/20131226
+
+
+```
+
+### Create xdebug.ini with `mods-available`
+
+```
+zend_extension="/usr/lib/php/20131226/xdebug.so"
+xdebug.remote_enable=1
+xdebug.remote_handler=dbgp 
+xdebug.remote_mode=req
+xdebug.remote_host=127.0.0.1 
+xdebug.remote_port=9000
+```
+
+### Create symbolic links
+
+```
+sudo ln -s /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/cli/conf.d/20-xdebug.ini
+sudo ln -s /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/fpm/conf.d/20-xdebug.ini
+```
+
+
+
+
+
+### PHP 7.0
+
+```
+
+php7.0 -i | xsel --clipboard
+
+# open url http://xdebug.org/wizard.php
+# copy the content and download the correct xdebug tar ball xdebug-2.5.3.tar.gz
+
+tar -xvf xdebug-2.5.3.tar.gz 
+
+cd xdebug-2.5.3
+
+phpize7.0 
+
+# You will output as below
+# ...
+# Zend Module Api No:      20151012
+# Zend Extension Api No:   320151012
+
+./configure --with-php-config=/usr/bin/php-config7.0
+
+make
+
+sudo cp modules/xdebug.so /usr/lib/php/20151012
+
+```
+
+
+### Create xdebug.ini with `mods-available`
+
+```
+zend_extension="/usr/lib/php/20151012/xdebug.so"
+xdebug.remote_enable=1
+xdebug.remote_handler=dbgp 
+xdebug.remote_mode=req
+xdebug.remote_host=127.0.0.1 
+xdebug.remote_port=9000
+```
+
+### Create symbolic links
+
+```
+sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
+sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini
+```
+
+
+
+
+
