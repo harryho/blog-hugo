@@ -1,22 +1,29 @@
 #!/bin/bash
 
-echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
+echo "Deploying updates to GitHub..."
 
-# Build the project.
-hugo -t bootie-docs # if using a theme, replace by `hugo -t <yourtheme>`
+# Build the project. If using a theme, replace by `hugo -t <yourtheme>`
+hugo -t bootie-docs
 
 # Go To Public folder
 cd public
+
 # Add changes to git.
+git config user.name "Harry Ho"
+git config user.email "harry.ho_long@yahoo.com"
+
 git add -A
 
 # Commit changes.
+# set msg="rebuilding site `date`"
+# if  NOT "%1"=="" set msg=%1
+
 msg="rebuilding site `date`"
 if [ $# -eq 1 ]
   then msg="$1"
 fi
-git commit -m "$msg"
 
+git commit -m "$msg"
 # Push source and build repos.
 git push origin master
 
