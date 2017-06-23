@@ -11,8 +11,7 @@ draft = true
 > From Net 4.0, .Net applicatoin introduced Parallel Framework Extensions (PFx), along the way it delivered an entirely new model for async processing in
 .NET. In .NET 4.0 the thread pool queue was redesigned with the new requirements of PFx in mind. Instead of using a simple linked list, the queue was built with arrays of work items with the arrays connected into a linked list.
 
-> With the release of .NET 4.0, Microsoft introduced yet another API for building asynchronous applications: the
-Task Parallel Library (TPL).
+> With the release of .NET 4.0, Microsoft introduced yet another API for building asynchronous applications: the Task Parallel Library (TPL).
  
 
 ## Old way of C# thread
@@ -111,6 +110,7 @@ public class MonitorSemaphore
         this.currentCount = initialCount;
         this.maxCount = maxCount;
     }
+
     public void Enter()
     {
         lock (guard)
@@ -122,6 +122,7 @@ public class MonitorSemaphore
             currentCount++;
         }
     }
+
     public void Exit()
     {
         lock (guard)

@@ -1,0 +1,63 @@
++++
+categories = ["project"]
+date = "2016-12-07T16:56:21+11:00"
+title = "Reetek Vue 2 Crm Project"
+tags = ["javascript"]
++++
+
+**Vue2Crm** is a simple Vue.js CRM starter project based on Vue 2 PWA template and Vuetify UI. 
+
+* This starter project is built-in with Vue 2 PWA from scratch.
+* The whole UI is built on the Vuetify
+* It includes Vuex, Axios as well.
+* It uses Json-Server as fake Restful API. (You can simple replace it with your own API)
+
+## Structure of Reetek Vue2Crm
+
+``` ini
+path\to\vue2crm
++---build              <-// webpack files
++---config             <-// configuration of dev or prod environment
++---db                 <-// json files for json-server
+|   +---db.json        <-// dummy db
+|   \---routes.json    <-// configure fake restful api
++---screenshots
++---src                <-// vue components 
+|   +---components
+|   |   +---404.vue
+|   |   +---About.vue
+|   |   +---Customers.vue
+|   |   +---Customer.vue
+|   |   +---Orders.vue
+|   |   +---Order.vue
+|   |   +---Login.vue
+|   |   \---...
+|   +---router         <-// vue-router
+|   +---utils
+|   |   +---auth.js    <-// auth service
+|   |   +---backend-api.js  <-// Axios instance 
+|   |   +---store.js   <-//  Vuex
+|   \---stylus         <-// Customize stylus
++---static              <-// css, fonts, image files
+|   +---img
+|   \---manifest.json   <-// PWA manifest file
+\---test
+    +---e2e
+    \---unit
+
+```
+
+
+### Screenshots
+
+> ![Screenshot1](/img/rvcrm-screenshot-1.jpg)
+
+> ![Screenshot2](/img/rvcrm-screenshot-2.jpg)
+
+> ![Screenshot3](/img/rvcrm-screenshot-3.jpg)
+
+> ![Screenshot5](/img/rvcrm-screenshot-5.jpg)
+
+> ![Screenshot6](/img/rvcrm-screenshot-6.jpg)
+
+## Browse [Repository](https://github.com/harryho/vue2crm.git)
