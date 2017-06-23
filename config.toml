@@ -17,10 +17,6 @@ disqusShortname = "harryho"
   highlightStyle = "github"
 
 [[params.mainMenu]]
-  name = "Info"
-  link = "info/"
-
-[[params.mainMenu]]
   name = "Code"
   link = "code/" 
 
@@ -35,7 +31,6 @@ disqusShortname = "harryho"
     pre = "<i class='fa fa-road'></i>"
     weight = -100
     url = "/java/"
-
 
 [[params.mainMenu]]
   name = "Dev"
