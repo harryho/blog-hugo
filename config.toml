@@ -8,7 +8,7 @@ enableRobotsTXT = true
 disqusShortname = "harryho"
 
 [params]
-  description = "Collect simple & smart ideas. Refine practical & reusable solutions. It is a note site, not a blog site"
+  description = "Collect simple & smart ideas. Share flexible & reusable solutions. "
   withSitePosts = false
   searchDomain = "harryho.github.io"
   noCategoryLink = true
