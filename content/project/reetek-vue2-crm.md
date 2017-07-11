@@ -1,18 +1,23 @@
 +++
 categories = ["project"]
 date = "2016-12-07T16:56:21+11:00"
-title = "Reetek Vue 2 Crm Project"
+title = "Vue 2 Crm Project"
 tags = ["javascript"]
 +++
 
-**Vue2Crm** is a simple Vue.js CRM starter project based on Vue 2 PWA template and Vuetify UI. 
+**Vue2Crm** is a reusable Vue.js CRM starter project for real-world business based on Vue 2 PWA template with Vuetify.  
+
+The goal of this project is to create a reusable project for real-world business. To achieve this target, we need a solution which includes authentication process, restful API feature and simple but elegant UI design. 
+
+
+__Features__
 
 * This starter project is built-in with Vue 2 PWA from scratch.
 * The whole UI is built on the Vuetify
 * It includes Vuex, Axios as well.
 * It uses Json-Server as fake Restful API. (You can simple replace it with your own API)
 
-## Structure of Reetek Vue2Crm
+## Structure of Vue2Crm
 
 ``` ini
 path\to\vue2crm
@@ -50,14 +55,23 @@ path\to\vue2crm
 
 ### Screenshots
 
-> ![Screenshot1](/img/rvcrm-screenshot-1.jpg)
+> ![Screenshot1](/img/v2crm-screenshot-1.jpg)
 
-> ![Screenshot2](/img/rvcrm-screenshot-2.jpg)
+> ![Screenshot2](/img/v2crm-screenshot-2.jpg)
 
-> ![Screenshot3](/img/rvcrm-screenshot-3.jpg)
+> ![Screenshot3](/img/v2crm-screenshot-3.jpg)
 
-> ![Screenshot5](/img/rvcrm-screenshot-5.jpg)
+> ![Screenshot4](/img/v2crm-screenshot-4.jpg)
 
-> ![Screenshot6](/img/rvcrm-screenshot-6.jpg)
 
-## Browse [Repository](https://github.com/harryho/vue2crm.git)
+
+#### Browse [Repository](https://github.com/harryho/vue2crm.git)
+
+
+
+__Alternatives__
+
+There are two similar projects respectively built on the Angular and React. If you have interests in those technical stacks. You can find those projects below.
+
+* [Angular4 Crm](/project/reetek-angular4-crm).
+* [React Redux Crm](/project/reetek-react-crm).

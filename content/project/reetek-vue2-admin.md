@@ -1,7 +1,7 @@
 +++
 categories = ["project"]
 date = "2016-12-07T16:56:21+11:00"
-title = "Reetek Vue 2 Admin Project"
+title = "Vue 2 Admin Project"
 tags = ["javascript"]
 +++
 

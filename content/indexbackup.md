@@ -1,31 +1,43 @@
 +++
 date = "2016-03-06T16:43:12+11:00"
-title = "_index"
+title = " backup"
+draft=true
 
 +++
 
-## Do you have potential to be a programmer?
+>*It is not a blog site, but my tech note instead.*
 
->*For many novices or beginners of software engineering or computer programming, they always question themselves like this "Do I have potential to be a programmer?" or "Should I choose programmer as my career?" or "Is it programmer right for me?". I am pretty sure you can find tons of answers or advices online, but there is a simple answer for such question for any career. If you love what you do, then it is right for you. It brings another question, how do I know if I love it or not. Not everyone has chance to try different jobs before they are qualified.*
+>*The home page content had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I am not passionate blogger. Blog to me is kind of note for knowledge base, which commes from work, research and project. To manage a blog site is not a piece of cake, but putting these tricks and tips online is quite helpful for myself to solve similar problems, which have been solved and investiaged before. After I try hugo, it make me feel fun to continue writing notes again. So I created a blog(note) site on Github Pages, and I posted a blog(note) - [Create a blog on GitHub Pages](/blog/create-a-blog-on-github-pages) to show you how I did it on Windows machine. If you have interests in creating your blog site, please take a look the instruction and give a go on your own.* 
 
->*There is a test created for this purpose. It is designed for people who have not enough programming skills but they want to know if they have such potential to be a programmer.* 
+>*I leave the `Hello World` article on home page to make my site not too boring. By the way, my note is not wiki, so most posts here are just technical stuff, tricks, solutions. All those things are practical stuff instead of stories, so I want the home page a bit fun at least.*
 
->*The test needs you to create a few "Hello World" programs as the samples below with different programming languages. The programming languages I pick can run on Windows, Mac or Linux/Unix. You should try to complete the test on your own. There is no time limit.*
+```bash
+Dutch : "Hello wereld",
+English : "Hello world",
+French : "Bonjour monde",
+German : "Hallo Welt",
+Greek : "γειά σου κόσμος",
+Italian : "Ciao mondo",
+Japanese : "こんにちは世界",
+Korean : "여보세요 세계",
+Mandarin : "你好世界",
+Portuguese : "Olá mundo",
+Russian : "Здравствулте мир",
+Spanish : "Hola mundo"
+```
 
->*How much time you take to complete these programs or how many programs you can complete is not the purpose of this test, but you should try your best to complete as much as possible. I have to say it is not an easy task for most novices or beginners. Even you can't complete all programs, it doesn't mean you can't be a great programmer. I believe everyone can learn or do anything if they love or enjoy it.*
+The different languages above say the same two words "Hello World" are just for fun. This article is for beginner who has interest in programming and want to try do some programming for fun. Here I am going to show you how to use different **programming** languages to say "Hello World". The languages I pick here are ordered by alphabet. 
 
-__So the test is to check if you really enjoy the process or problem-solving when you face to such challenges. If you always can learn something after you solve problem or you keep improving your skills during the test, it means you really love it and you can consider programmer as one of your future careers.__
+In my opinion, all languages in this article are useful and important for most software engineer or system analyst. Some languages which I don't choose, doesn't mean they are not important or useful. because usually they are not recognized as **programming** language.  e.g. SQL. It is not only the basic skill for DBA or software engineer but also data analyst and data scientist. 
 
-__If you complete them within 2 hours to one day from scratch, it means you already have capacity to be a programmer. It means it is not designed for you.__
+Some popular languages are not shown here, because they are not available for Windows or difficult to setup the playground to test. for instance, `Swift`, `Objective-C`. Some are designed for special purpose. `R` and `Matlab` are such typical samples. 
+
+And some are kind of terrible, e.g. Assembly language and C#(Installation of Visual Studio will let beginner down). Are you serious? No, I'm kidding. As I mentioned before, here is for beginner to code for fun instead of scaring them, so I just pick some which are useful, popular and convenient for people to play. 
 
 
 ## Assumptions
 
-* You have a proper computer instead of a tablet or ipad. 
-
-* You know how to download and install softwares on your computer.
-
-* You know how to organize your folders and files.
+* You have a proper computer instead of a tablet or ipad. Actually you can write some code to create an app directly on your smart phone or tablet after installing some development apps. *AIDE*, *DroidScript* and *QPython* are such applications you can try if you want to play around.
 
 * If you use Mac, the code for Linux should work on Mac as well. You know how to start a terminal on Mac or a command prompt on Windows. Finally, you are ready to get your hands dirty. 
 
@@ -67,10 +79,7 @@ The C programming language was originally developed as a language to replace ass
 
 Today C is one of the most used programming languages. Since C was designed to replace assembler language, and that in several important ways, it retains a very low level view of the machine. The C++ programming language was designed as a higher level version of C, providing support for object-oriented programming. It gives developer more power to handle the problem of real world. 
 
-### Windows
-
-* Download and install C/C++ development and compiler. [Instructions](http://www.cprogramming.com/code_blocks/)
-* Create a program file `hello.c ` or `hello.cpp` with codeblocks, vi or notepad
+* Create a program file `hello.c ` or `hello.cpp` with vi or notepad
 
     ```cpp
     #include<stdio.h>
@@ -84,9 +93,7 @@ Today C is one of the most used programming languages. Since C was designed to r
     }
     ```
 
-### Unix/Linux 
-
-Unix/Linux includes `gcc` by default. You just need to compile and run the console app. For Windows, you might need install another tool [cygwin](https://cygwin.com/install.html) or [MinGW](http://www.mingw.org/wiki/MinGW_for_First_Time_Users_HOWTO)
+* Unix/Linux includes `gcc` by default. You just need to compile and run the console app. For Windows, you might need install another tool [cygwin](https://cygwin.com/install.html) or [MinGW](http://www.mingw.org/wiki/MinGW_for_First_Time_Users_HOWTO)
 
     ```
     g++ hello.c -o hello
@@ -97,7 +104,6 @@ Unix/Linux includes `gcc` by default. You just need to compile and run the conso
 
 C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines. In January 1999, Anders Hejlsberg formed a team to build a new language at the time called Cool, which stood for "C-like Object Oriented Language". By the time the .NET project was publicly announced at the July 2000,Microsoft the language had been renamed C#. 
 
-### Windows
 * Download and install .net framework from Microsoft website
 * Create a program file helloworld.cs
 
@@ -118,18 +124,6 @@ C# is a multi-paradigm programming language encompassing strong typing, imperati
     C:\Windows\Microsoft.NET\Framework\v3.5\csc.exe helloworld.cs
     helloworld.exe
     ```
-
-### Linux/Mac
-#### Mono
-* Download and install mono framework and IDE for Linux or Mac from [here](http://www.mono-project.com/download/)
-* Create a program file helloworld.cs as above in the IDE and run
-
-#### .Net Core
-* Download and install .Net Core framework for Linux or mac from [here](https://www.microsoft.com/net/download/core)
-* Follow the instructions to create a "Hello World" app
-
-
-
 
 ## Go
 
@@ -176,7 +170,7 @@ Java is a general-purpose computer programming language that is concurrent, obje
     java HelloWorld
     ```
   
-## JavaScript
+## Javascript
 
 JavaScript, not to be confused with Java, was created in 10 days in May 1995 by Brendan Eich, then working at Netscape and now of Mozilla. The original name of this language was Mocha, in September of 1995 it was changed to LiveScript, then in December of the same year, the name JavaScript was adopted, because of very popular Java around then. 
 
@@ -209,7 +203,7 @@ PHP as it's known today is actually the successor to a product named PHP/FI. Cre
 * Download and install 
 
 **Linux**
-Please find the install command [here](/os/ubuntu-server-14/#install-php-compser)
+Please find the install command [here](/blog/ubuntu-server-14/#install-php-compser)
 
 **Windows**    
     *  Download the file [PHP 5.x here](http://php.net/downloads.php) 
@@ -231,7 +225,7 @@ Please find the install command [here](/os/ubuntu-server-14/#install-php-compser
 Python is currently one of the most popular dynamic programming languages, along with Perl, Tcl, PHP, and newcomer Ruby. Although it is often viewed as a "scripting" language, it is really a general purpose programming language along the lines of Lisp or Smalltalk (as are the others, by the way). Today, Python is used for everything from throw-away scripts to large scalable web servers that provide uninterrupted service 24x7. It is used for GUI and database programming, client- and server-side web programming, and application testing. It is used by scientists writing applications for the world's fastest supercomputers and by children first learning to program.
 
 * Download and install [python 3.x](https://www.python.org/downloads/)
-* Create a python script hello.py with any file editor
+* Create a python script hello.py with notepad
 
     ```python
     print "Hello World!"
@@ -239,17 +233,7 @@ Python is currently one of the most popular dynamic programming languages, along
     
 * Run the script `python hello.py` 
 
-## Ruby 
 
-Ruby is a dynamic, reflective, object-oriented, general-purpose programming language. Ruby was influenced by Perl, Smalltalk, Eiffel, Ada, and Lisp. It supports multiple programming paradigms, including functional, object-oriented, and imperative. It also has a dynamic type system and automatic memory management.
-
-* Download and install proper [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
-* Create a ruby program hello.rb with with any file editor
-
-    ```ruby
-    print "Hello World!"
-    ```
-* Run the program `ruby hello.rb`    
 
 
 
