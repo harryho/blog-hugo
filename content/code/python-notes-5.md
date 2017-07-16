@@ -156,8 +156,12 @@ title = "Python Notes - 5"
     # This is from Child. The name is GrandChild 
 
 
-    # Multi-inheritance in Python is very different from other OO language like C++, C#, Java
-    # Above result make me surprised a the first time, but after I check the MRO then I can understand why many veterans suggest to avoid multi-inheritance. Its `super` "Magic" really confuses many people.
+    # Multi-inheritance in Python is very different from 
+    # other OO language like C++, C#, Java
+    # Above result make me surprised a the first time, 
+    # but after I check the MRO then I can understand 
+    # why many veterans suggest to avoid multi-inheritance. 
+    # Its `super` "Magic" really confuses many people.
 
     ```
 

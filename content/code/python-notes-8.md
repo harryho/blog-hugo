@@ -93,6 +93,7 @@ title = "Python Notes - 8"
 * `contextmanager` swallows exceptions by not re-raising them
 * Exceptions propagated from __inner__ context managers will be seen by __outer__ context managers
 * multiple context managers with-statements can use as many context-managers as you need
+* Never pass list 
     
     * Example -- The code below is the same
     
