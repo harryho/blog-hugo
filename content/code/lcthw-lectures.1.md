@@ -1,7 +1,7 @@
 +++
 tags = ["c"]
 categories = ["code"]
-date = "2016-04-10T14:59:31+11:00"
+date = "2016-03-19T14:59:31+11:00"
 title = "LCTHW C Lectures 1"
 draft = false
 +++

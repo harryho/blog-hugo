@@ -1,6 +1,6 @@
 +++
-categories = ["dev"]
-date = "2016-12-07T16:56:21+11:00"
+categories = ["article"]
+date = "2017-06-07T16:56:21+11:00"
 title = "Angular vs React vs Vue"
 tags = ["javascript"]
 +++
@@ -16,10 +16,9 @@ On the client-side, it is a completely different story, there are tons of varian
 
 There is a big risk to adopt new programming language(ES 6 or Typescript), new  framework, as well as new development, build and test tool. As a solution architect, he or she needs to think it through for development team, and also consider if the team can really pick it up quickly. That is why we have to compare those frameworks here before we make a decision. 
 
-## Performance is not crucial for many applications
+## Performance is not a priority or crucial criterion for choosing a framework
 
-We can find lots of comparison between those frameworks, and so many of them are related to performance, programming language, design pattern, etc. Actually most web applications in the world are just small to median size web application, we don't need to build the web application as Google, Facebook or Twitter. In my opinion, the performance of framework is the not critical benchmark, at lease it is not first priority which we need to consider if it is right for the team. Except performance, we have more concern on tech stacks, community and ecosystem of the framework, which has more impact on our team productivity. 
-
+We can find lots of comparison between those frameworks, and so many of them are related to performance, programming language, design pattern, etc. Actually many web applications in the world are just small to median size web application, we don't need to build the web application as Google, Facebook or Twitter. In my opinion, the performance of framework is the not critical benchmark, at lease it is not first priority which we need to consider if it is right for the team. Except performance, we have more concern on tech stacks, community and ecosystem involved with the framework, which have more impact on team's productivity and system's maintainability. 
 
 
 ## The difference of those framework
@@ -28,12 +27,13 @@ Let's look into the frameworks and list the difference of these frameworks.
 
 ### Basic tech stacks
 
- Tech Stacks   |    Angular 1.x   | Angular 2 / 4 | React 1.5 (Redux)  | Vue 2   
-----------------|------------------- | ---------------|---------------------|---------
-  Vanilla JS     |     Yes       |  Supported  |  Supported       | Supported
-  ES 6          |     1.5+          |  Supported  |  Yes            | Yes
-  TypeScript    |               |  Yes        |                | Supported |
-  MVC           |   1.2-1.4 |            | |
+
+Tech Stacks   |    Angular 1.x   | Angular 2 / 4 | React 1.5 (Redux)  | Vue 2   
+----------------|-------------------| ---------------|---------------------|---------
+Vanilla JS     |     Yes       |  Supported  |  Supported       | Supported
+ES 6          |     1.5+          |  Supported  |  Yes            | Yes
+TypeScript    |               |  Yes        |                | Supported |
+MVC           |   1.2-1.4 |            | |
 Component-Based |  1.5+ |  Yes   | Yes |  Yes 
 Shadow DOM | | Yes | |
 Virtual DOM| | | Yes | Yes

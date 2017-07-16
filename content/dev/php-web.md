@@ -99,6 +99,7 @@ php -S 0.0.0.0:8080 -t public public/index.php
 #### Migrate database and seed dummy data
 * Create data model
 * Following is the sample code 
+
 ```php 
 <?php
 
