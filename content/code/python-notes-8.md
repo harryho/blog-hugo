@@ -232,6 +232,7 @@ title = "Python Notes - 8"
 
 ## Introspection
 
+* type of object is type
 
 * Example
 
@@ -328,7 +329,7 @@ title = "Python Notes - 8"
 
     def full_sig(method):
         try:
-            return method.__name__ + inspect.signature(method)
+            return method.__name__ + str(inspect.signature(method))
         except ValueError:
             return method.__name__ + '(...)'
 
@@ -392,25 +393,111 @@ title = "Python Notes - 8"
         print_table(method_names_and_doc, "Name", "Description")
         print()
 
+    if __name__ == "__main__":
+        dump('a')
 
     # test result
+    # Type
+    # ====
+    # <class 'str'>
+    #
+    # Documentation
+    # =============
+    # str(object='') -> str
+    # str(bytes_or_buffer[, encoding[, errors]]) -> str
+    # Create a new string object from the given object. If encoding or
+    # errors is specified, then the object must expose a data buffer
+    # that will be decoded using the given encoding and error handler.
+    # Otherwise, returns the result of object.__str__() (if defined)
+    # or repr(object).
+    # encoding defaults to sys.getdefaultencoding().
+    # errors defaults to 'strict'.
+    #
     # Attributes
     # ==========
-    # Name                        Value                         
-    # --------------------------- ------------------------------
-    # __abstractmethods__         frozenset()                   
-    # __dict__                    {'_items': []}                
-    # __doc__                     None                          
-    # __hash__                    None                          
-    # __module__                  '__main__'                    
-    # __slots__                   ()                            
-    # __weakref__                 None                          
-    # _abc_cache                  <_weakrefset....000A7D5C57240>
-    # _abc_negative_cache         <_weakrefset....000A7D5C572B0>
-    # _abc_negative_cache_version 36                            
-    # _abc_registry               <_weakrefset....000A7D5C571D0>
-    # _items                      []  
-
-
+    # Name    Value                         
+    # ------- ------------------------------
+    # __doc__ "str(object='... to 'strict'."
+    #
+    # Methods
+    # =======
+    # Name              Description                                                            
+    # ----------------- -----------------------------------------------------------------------
+    # __add__(value, /)               Return self+value.                                                     
+    # str(...)                        str(object='') -> str                                                  
+    # __contains__(key, /)            Return key in self.                                                    
+    # __delattr__(name, /)            Implement delattr(self, name).                                         
+    # __dir__(...)                    __dir__() -> list                                                      
+    # __eq__(value, /)                Return self==value.                                                    
+    # __format__(...)                 S.__format__(format_spec) -> str                                       
+    # __ge__(value, /)                Return self>=value.                                                    
+    # __getattribute__(name, /)       Return getattr(self, name).                                            
+    # __getitem__(key, /)             Return self[key].                                                      
+    # __getnewargs__(...)                                                                                    
+    # __gt__(value, /)                Return self>value.                                                     
+    # __hash__()                      Return hash(self).                                                     
+    # __init__(*args, **kwargs)       Initialize self.  See help(type(self)) for accurate signature.         
+    # __init_subclass__(...)          This method is called when a class is subclassed.                      
+    # __iter__()                      Implement iter(self).                                                  
+    # __le__(value, /)                Return self<=value.                                                    
+    # __len__()                       Return len(self).                                                      
+    # __lt__(value, /)                Return self<value.                                                     
+    # __mod__(value, /)               Return self%value.                                                     
+    # __mul__(value, /)               Return self*value.n                                                    
+    # __ne__(value, /)                Return self!=value.                                                    
+    # __new__(*args, **kwargs)        Create and return a new object.  See help(type) for accurate signature.
+    # __reduce__(...)                 helper for pickle                                                      
+    # __reduce_ex__(...)              helper for pickle                                                      
+    # __repr__()                      Return repr(self).                                                     
+    # __rmod__(value, /)              Return value%self.                                                     
+    # __rmul__(value, /)              Return self*value.                                                     
+    # __setattr__(name, value, /)     Implement setattr(self, name, value).                                  
+    # __sizeof__(...)                 S.__sizeof__() -> size of S in memory, in bytes                        
+    # __str__()                       Return str(self).                                                      
+    # __subclasshook__(...)           Abstract classes can override this to customize issubclass().          
+    # capitalize(...)                 S.capitalize() -> str                                                  
+    # casefold(...)                   S.casefold() -> str                                                    
+    # center(...)                     S.center(width[, fillchar]) -> str                                     
+    # count(...)                      S.count(sub[, start[, end]]) -> int                                    
+    # encode(...)                     S.encode(encoding='utf-8', errors='strict') -> bytes                   
+    # endswith(...)                   S.endswith(suffix[, start[, end]]) -> bool                             
+    # expandtabs(...)                 S.expandtabs(tabsize=8) -> str                                         
+    # find(...)                       S.find(sub[, start[, end]]) -> int                                     
+    # format(...)                     S.format(*args, **kwargs) -> str      
+    # format_map(...)                 S.format_map(mapping) -> str                                           
+    # index(...)                      S.index(sub[, start[, end]]) -> int                                    
+    # isalnum(...)                    S.isalnum() -> bool                                                    
+    # isalpha(...)                    S.isalpha() -> bool                                                    
+    # isdecimal(...)                  S.isdecimal() -> bool                                                  
+    # isdigit(...)                    S.isdigit() -> bool                                                    
+    # isidentifier(...)               S.isidentifier() -> bool                                               
+    # islower(...)                    S.islower() -> bool                                                    
+    # isnumeric(...)                  S.isnumeric() -> bool                                                  
+    # isprintable(...)                S.isprintable() -> bool                                                
+    # isspace(...)                    S.isspace() -> bool                                                    
+    # istitle(...)                    S.istitle() -> bool                                                    
+    # isupper(...)                    S.isupper() -> bool                                                    
+    # join(...)                       S.join(iterable) -> str                                                
+    # ljust(...)                      S.ljust(width[, fillchar]) -> str                                      
+    # lower(...)                      S.lower() -> str                                                       
+    # lstrip(...)                     S.lstrip([chars]) -> str                                               
+    # maketrans(x, y=None, z=None, /) Return a translation table usable for str.translate().                 
+    # partition(...)                  S.partition(sep) -> (head, sep, tail)                                  
+    # replace(...)                    S.replace(old, new[, count]) -> str                                    
+    # rfind(...)                      S.rfind(sub[, start[, end]]) -> int                                    
+    # rindex(...)                     S.rindex(sub[, start[, end]]) -> int                                   
+    # rjust(...)                      S.rjust(width[, fillchar]) -> str                                      
+    # rpartition(...)                 S.rpartition(sep) -> (head, sep, tail)                                 
+    # rsplit(...)                     S.rsplit(sep=None, maxsplit=-1) -> list of strings                     
+    # rstrip(...)                     S.rstrip([chars]) -> str                                               
+    # split(...)                      S.split(sep=None, maxsplit=-1) -> list of strings                      
+    # splitlines(...)                 S.splitlines([keepends]) -> list of strings                            
+    # startswith(...)                 S.startswith(prefix[, start[, end]]) -> bool                           
+    # strip(...)                      S.strip([chars]) -> str                                                
+    # swapcase(...)                   S.swapcase() -> str                                                    
+    # title(...)                      S.title() -> str                                                       
+    # translate(...)                  S.translate(table) -> str                                              
+    # upper(...)                      S.upper() -> str                                                       
+    # zfill(...)                      S.zfill(width) -> str   
 
     ```
