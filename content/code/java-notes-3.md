@@ -314,10 +314,10 @@ public class LambdaDemo {
     public static void main(String[] args) {
 
         // FunctionalInterface 
-        System.out.println("x + y:" + engine((x, y) -> x + y));// w w  w .j  av a 2s.  c om
-        System.out.println("x - y:" + engine((x, y) -> x * y));
-        System.out.println("x * y:" + engine((x, y) -> x / y));
-        System.out.println("x / y:" + engine((x, y) -> x % y));
+        System.out.println("x + y:" + engine((x, y) -> x + y)); // 6
+        System.out.println("x - y:" + engine((x, y) -> x * y)); // 8
+        System.out.println("x * y:" + engine((x, y) -> x / y)); // 0 
+        System.out.println("x / y:" + engine((x, y) -> x % y)); // 2
 
         String[] strArray = new String[] { "abc", "klm", "xyz", "pqr" };
         List list = Arrays.asList(strArray);
@@ -325,11 +325,22 @@ public class LambdaDemo {
         // Default Methods
         list.forEach(System.out::println);
 
+        // abc
+        // klm
+        // xyz
+        // pqr
+
         Arrays.sort(strArray, (first, second) -> first.compareToIgnoreCase(second));
         list = Arrays.asList(strArray);
 
         System.out.println("After sorting ... ");
         list.forEach(System.out::println);
+
+        // After sorting ...
+        // abc
+        // klm
+        // pqr
+        // xyz
 
         // Common Functional Interfaces
         // Runnable
@@ -382,12 +393,19 @@ public class LambdaDemo {
         BiFunction<String, String, Person> personBiFunc = (x, y) -> new Person(x, y);
         // Consumer<String> personCon = (Person p) -> p.setTitle;
 
-        System.out.println(" personSup " + personSup.get());
-        System.out.println(" personFunc " + personFunc.apply("John Doe"));
-        System.out.println(" personBiFunc " + personBiFunc.apply("John", "Doe"));
+        System.out.println(personSup.get());
+        // Person() constructor called
+        // name = Unknown, title = Unknown
+        System.out.println(personFunc.apply("John Doe"));
+        // Person( fullName ) constructor called
+        // name = John Doe, title = Unknown
+
+        System.out.println(personBiFunc.apply("John", "Doe"));
+        // Person(firstName, lastName ) constructor called
+        // name = John, title = Unknown
+
 
         // Recursive Lambda Expressions
-
         IntFunction<Long> factorialCalc = new IntFunction<Long>() {
             @Override
             public Long apply(int n) {
@@ -406,8 +424,14 @@ public class LambdaDemo {
         int n = 5;
         long fact = factorialCalc.apply(n);
         System.out.println("Factorial of " + n + " is " + fact);
+        // Factorial of 5 is 120
 
+
+        
     }
+
+
+
 
     private static int engine(Calculator calculator) {
         int x = 2, y = 4;
@@ -436,8 +460,7 @@ final class Person {
     }
 
     public Person(String fullName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.fullName = fullName;
         System.out.println(" Person( fullName ) constructor called ");
     }
 
@@ -457,12 +480,12 @@ final class Person {
     }
 
     public String getFullName() {
-        return fullName == null ? firstName != null ? firstName : "Unknown" : fullName;
+        return fullName == null ?( firstName != null ? firstName : "Unknown" ): fullName;
     }
 
     @Override
     public String toString() {
-        return "name = " + getFullName() + ", title = " + title != null ? title : "Unknown";
+        return "name = " + getFullName() + ", title = " + (title != null ? title : "Unknown");
     }
 }
 
