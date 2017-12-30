@@ -2,7 +2,7 @@
 tags =  ["linux","ubuntu","centos"]
 categories = ["os"]
 date = "2014-01-10T14:59:31+11:00"
-title = "CentOS 6/7 -- desktop Setup"
+title = "CentOS 6/7 -- Setup"
 draft = false
 +++
 
@@ -160,7 +160,36 @@ sda
 
 ### Troubleshooting
 
-### Fedora boot error
+#### ifconfig not found in CentOS minimal server
+
+Use command `ip`
+
+```
+ip addr
+ip -s link
+```
+
+#### Enable Network (Non-wifi) onboot after minimal installation
+
+If you cannot ping any domain, use `dhclient -v` to check if the internet is available. 
+
+Setup the network enabled onboot
+
+```
+# cd /etc/sysconfig/network-scripts/ 
+# sed -i -e 's@^ONBOOT="no@ONBOOT="yes@' ifcfg-e.xx.xxx
+``` 
+
+#### Boot CentOS in terminal
+
+```
+# cat /etc/inittab
+# systemctl get-default 
+graphic.target
+# systemctl set-default multi-user.target
+```
+
+#### Fedora boot error
 
 * Please check the grub.cfg if you get booting error
 * You can try following command to boot Fedora from Grub menu
@@ -169,3 +198,4 @@ sda
 linux /boot/vmluz-x.x.x-x.x.x
 initrd /boot/intrd-plymouth.img
 ```
+
