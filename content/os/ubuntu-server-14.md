@@ -6,8 +6,9 @@ title = "Ubuntu 14 -- server setup"
 draft = false
 +++
 
-## Prelude
-> *This article is mainly to help experienced user install and setup Ubuntu server. If you are not familiar with Ubuntu system, please install Ubuntu desktop version at first, and you can follow [Ubuntu deskstop setup](/blog/ubuntu-desktop-14/)*
+Prelude
+
+> *This article is mainly to help experienced user install and setup Ubuntu server. If you are not familiar with Ubuntu system, please install Ubuntu desktop version at first, and you can follow [Ubuntu deskstop setup](/os/ubuntu-desktop-14/)*
 
 ## Brief history
 * Please find it from [Brief history of Linux](/blog/linux-history/)
@@ -22,7 +23,7 @@ draft = false
 
 * How to setup your server 
 
-### ***UFW setup***
+### UFW setup
 
 ```bash
 sudo ufw enable
@@ -32,7 +33,9 @@ sudo ufw allow 443/tcp
 sudo ufw allow 8000/tcp
 ```
 
-### ***SSH server setup***
+### SSH server setup
+
+`!!! For production environment, SSH should be secured by the CA`
 
 ```bash
 sudo apt-get install openssh-server 
@@ -45,22 +48,26 @@ sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
 sudo nano /etc/ssh/sshd_config
 
 # uncomment  PasswordAuthentication yes to allow remote password login
+# Password authentication is only for test environment
+
+# setup ssh auto-start onboot
+sudo update-rc.d ssh defaults
 ```
 
 
-### ***Time Zone setup***
+### Time Zone setup
 
 ```bash
 sudo dpkg-reconfigure tzdata
 ```
 
-### ***install software-properties-common Package***
+### install software-properties-common Package
 
 ```bash
 software-properties-common python-software-properties
 ```
 
-***Install byobu screen***
+Install byobu screen
 
 ```bash
 sudo apt-get install byobu screen 
@@ -72,7 +79,7 @@ byobu
 ```
 
 
-### ***install docker (Ubuntu 14.04 LTS)***
+### install docker (Ubuntu 14.04 LTS)
 
 ```bash
 # add GBG Key
@@ -94,7 +101,7 @@ apt-cache policy docker-engine
 ```
 
 
-### ***build vim***
+### build vim
 
 * I am not `vi` fans, but if you really want to use `vi`. I wiil suggest spend some time to dig into [`vimawesome`](http://vimawesome.com) and play around with those plugins. Some are pretty cool, e.g. `NERD Tree`, 'youcompleteme`, `syntastic`, etc. 
 
@@ -108,7 +115,7 @@ make VIMRUNTIMEDIR=/usr/share/vim/vim74
 sudo make install
 ```
 
-### ***Install JDK 8*** 
+### Install JDK 8 
 
 * If you are going to run Java Web Application on server, or you are going to setup Hadoop environment. 
 * Setup oracle jdk ppa and install oracle jdk from ppa.
@@ -120,7 +127,7 @@ sudo apt-get install oracle-java8-installer
 sudo apt-get install oracle-java8-set-default     
 ```
 
-### ***Install OpenJdk*** 
+### Install OpenJdk 
 
 * Setup OpenJdk ppa and install it from ppa
 
@@ -144,7 +151,7 @@ java -version
    * Start on (net-device-up
 
 
-### ***Install nodejs***
+### Install nodejs
 
 ```bash
 curl -sL https://deb.nodesource.com/setup | sudo bash -
@@ -152,7 +159,7 @@ sudo apt-get install nodejs
 sudo apt-get install build-essential
 ```
 
-***Setup NPM***
+Setup NPM
 
 * You can use default `npm` on your server after you install nodejs, but there is a better way to manage your `npm`. It allows you easily to control your packages.  
 
@@ -176,7 +183,7 @@ which npm
 export PATH="$HOME/.node_modules_global/bin:$PATH"
 ```
 
-### ***Install nvm***
+### Install nvm
 
 * Using `nvm` is no longer popular and best option. I will recommand you just use `npm` to manage eveything you need.
 
@@ -192,14 +199,14 @@ nvm alias default 0.11.13
 nvm use default
 ```
 
-### ***Install PHP & Compser*** 
+### Install PHP & Compser 
 
 ```bash
 sudo apt-get install curl php5-cli git
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
 
-### ***Install Python2, Python3***
+### Install Python2, Python3
 
 * Ubuntu has python instaleld by default
 
@@ -213,7 +220,7 @@ sudo pip3 install virtualenv
 
 
 
-### ***Install Go***
+### Install Go
 
 ```bash
 wget https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz
@@ -225,7 +232,7 @@ GOROOT="/usr/local/go"
 PATH=$GOROOT/bin:$PATH
 ```
 
-### ***Install R*** 
+### Install R 
 
 ```bash
 sudo apt-key adv –keyserver keyserver.ubuntu.com –recv-keys E084DAB9
@@ -235,7 +242,7 @@ sudo apt-get install r-base
 ```
 
 
-### ***Install Rust***
+### Install Rust
 
 ```bash
 $ curl -sf -L https://static.rust-lang.org/rustup.sh | sh

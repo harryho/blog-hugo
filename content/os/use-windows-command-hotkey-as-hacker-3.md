@@ -8,7 +8,7 @@ draft = true
 
 
 
-*This article will continue the topic of Windows command & hotkeys. [Part-1](/blog/use-windows-command-hotkey-as-hacker-1) shows you common hotkeys and short command lines for `Run` windnow dialog. [Part-2](/blog/use-windows-command-hotkey-as-hacker-2) advanced commands and how to create a batch script with all those commands. Here I am going to show you another secret weapon in Windows system-VBScript/JScript*
+*This article will continue the topic of Windows command & hotkeys. [Part-1](/blog/use-windows-command-hotkey-as-hacker-1) shows you common hotkeys and short command lines for `Run` windnow dialog. [Part-2](/os/use-windows-command-hotkey-as-hacker-2) advanced commands and how to create a batch script with all those commands. Here I am going to show you another secret weapon in Windows system-VBScript/JScript*
 
 ## Breif history
 
