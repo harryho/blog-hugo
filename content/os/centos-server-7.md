@@ -86,7 +86,8 @@ git --version
 ```
 sudo yum groupinstall "Development Tools"
 
-sudo yum install gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel libcurl-devel expat-devel
+sudo yum install gettext-devel openssl-devel perl-CPAN perl-devel \
+    zlib-devel libcurl-devel expat-devel
 
 sudo yum install yum-utils
 ```
