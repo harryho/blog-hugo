@@ -278,7 +278,8 @@ tree test
 del /s/q test & rd /s/q
 ```
 
-### Use pipeline `|` to setup a channel between commands pass the data through the commands. 
+
+### Use pipeline `>` to setup a channel between commands pass the data through the commands. 
 
 Actually you have seen many samples from above advanced commands. I just use a very simple one to show you how it works. 
 
@@ -286,9 +287,14 @@ Actually you have seen many samples from above advanced commands. I just use a v
 REM write some content to a text file all.txt
 echo aaa>all.txt & echo mark aaa >>all.txt & echo mark bbb>>all.txt
 
-REM retrive lines start with mark and write them to mark.txt
-cat all.txt | find "mark">mark.txt
-cat mark.txt
+```
+
+### Check CPU usage via command 
+
+```
+wmic cpu get loadpercentage
+@for /f "skip=1" %p in ('wmic cpu get loadpercentage') do @echo %p%
+
 ```
 
 ### Use `for` loop to combine commands. Please check the samples above.  

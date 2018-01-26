@@ -14,12 +14,12 @@ Prelude
 ## Assumption
 
 * You know what Raspberry Pi is. [Raspbery Pi](https://www.raspberrypi.org)
-* You have a Raspberry Pi with 'NOOBS' preinstalled SD Card
+* You have a Raspberry Pi 
 * RPi is short for Raspberry Pi  
 
 ## Raspberry Pi model
 
-I only have the RPi 1 model B in place. It is a birthday gift. There is no wifi or bluetooth support on this model. I have to connect this tiny box to my switch via cable all the time. It commes a smal problem, because my switch is far away from my laptop, monitor, keyboard, etc. and I don't have a cable long enough to connect the RPi and switch. 
+I only have the RPi 1 model B in place. It is a birthday gift. There is no wifi or bluetooth support on this model. I have to connect this tiny box to my switch via cable all the time. It commes a small problem, because my switch is far away from my laptop, monitor, keyboard, etc. and I don't have a cable long enough to connect the RPi and switch. 
 
 The clumsy way to do it is move my kits near to the swtich, but I am too lazy to move things around. I choose to use remote access to control RPi from my laptop. 
 
@@ -332,3 +332,63 @@ PiZero	| 512MB | 	900092(no camera connector) 900093(camera connector)
 Pi 3 Model B	| 1GB | 	a02082 (Sony, UK) a22082 (Embest, China)
 PiZero W	| 512MB | 	9000c1
 
+### Setup Wifi Adapter
+
+Wifi is not necessary for media centre, but it would save some effort to move your RPi around in your place, especially you want to connect your RPi with different devices from time to time. 
+
+As you know, there is always some hiccup to find the correct wifi drive to support your portable wifi adapter. It took me a while to find the proper way to install the wifi drive. If you have the RPi 2/3, it would be much more easier. My RPi 1 model B comes with kernel 4.18. I cannot find the soruce code which supports this old kernel today. 
+
+Finally, I found a post on RPi's forum which solved my problem. Link of (MrEngman's post)[https://www.raspberrypi.org/forums/viewtopic.php?f=45&t=103989&p=1048709&hilit=Realtek+RTL8192EU+ID+0BDA%3A818B+WiFi+drivers+for+Raspbian#p1048709]. He updated on April aobut the dropbox issue and alternative solution. 
+
+Download and install the new version of the script with commands
+
+```
+sudo wget http://www.fars-robotics.net/install-wifi -O /usr/bin/install-wifi
+sudo chmod +x /usr/bin/install-wifi
+
+# Shows details on using it.
+sudo install-wifi -h
+
+
+# To install the driver on your current kernel you should just need to run command
+sudo install-wifi
+
+# Check the wifi interface after installation
+ifconfig -a
+```
+
+Setup Wifi password. You can simply do it via GUI application or via command lines if you like. Please check out the official document as below.
+
+https://www.raspberrypi.org/documentation/configuration/wireless/
+
+
+
+
+### Install Kodi as media centre
+
+If you have NOOBS in the place, then you have everything you need. Because I don't have it, I follow the official instruction to install kodi. It is a simple way to convert your RPi into a media centre without scratching your head too much. 
+
+```bash
+
+# Install kodi
+sudo apt-get update
+sudo apt-get install kodi
+
+
+# Config kodi
+sudo nano /etc/default/kodi
+ENABLED=1
+
+```
+
+Reboot the RPi, before you reboot it make sure your TV's HDMI has plugged into RPi. After a few minutes, you can enjoy your home media centre. 
+
+Home page of kodai
+
+![KodiTVHomePage](/img/kodi-tv-homepage.jpg)
+
+### Install remote control app on your mobile
+
+Screenshot of kodi mobile app on my android phone.
+
+![kodi-mobile-app](/img/kodi-mobile-app.png)

@@ -283,14 +283,11 @@ not a book that teaches you how to program, this is a book that just
 teaches you how to use Go. 
 
 As with learning new things, probably the best way to do this is to discover it for yourself by creating your own programs. Each chapter therefore includes a number of exercises (and answers) to acquaint you with the language. An exercise is numbered as Qn, where n is a number. After the exercise number another number in parentheses displays the dif.culty of this particular assignment. This dif.culty ranges from 0 to 2: 
-0. 
-easy; 
+0. easy; 
 
-1. 
-intermediate; 
+1. intermediate; 
 
-2. 
-dif.cult. 
+2. dif.cult. 
 
 
 Then a short name is given, for easier reference. For example: 
@@ -381,6 +378,7 @@ Hello World
 In the Go tutorial, Go is presented to the world in the typical manner: letting it print “Hello World” (Ken Thompson and Dennis Ritchie started this when they presented the C language in the 1970s). We don’t think we can do better, so here it is, “Hello World” in Go. 
 
 Listing 1.1. Hello world 
+```
 package main 
 0 import "fmt" 
 1 // Implements formatted I/O. 
@@ -389,7 +387,7 @@ package main
 3 fmt.Printf("Hello, world; or aa>1µ´aó.µ.; or.......")
 ..a 
 } 
-
+```
 bYes, that sounds a lot like coroutines, but goroutines are slightly different as we will see in chapter 6. 
 
 Lets look at the program line by line. 
@@ -407,7 +405,7 @@ The line ends with a comment which is started with //;
 
 Compiling and running code 
 The preferred way to build a Go program is to use the go tool. To build helloworld we just enter: 
-% 	go build helloworld.go 
+`% 	go build helloworld.go `
 
 This results in an executable called helloworld. 
 % 	./helloworld 

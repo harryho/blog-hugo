@@ -3323,6 +3323,8 @@ The built-in function make creates a slice of a specified element type, length, 
 ```go
 make([]T, len) 
 make([]T, len, cap) // same as make([]T, cap)[:len] 
+```
+
 Under the hood, make creates an unnamed array variable and returns a slice of it; the array is accessible only through the returned slice. In the first form, the slice is a view of the entire array. In the second, the slice is a view of only the array’s first len elements, but its capacity includes the entire array. The additional elements are set aside for future growth. 
 
 ### The append Function 
@@ -3408,9 +3410,12 @@ On the next iteration, i=4, there is no slack at all, so appendInt allocates a n
 The built-in append function may use a more sophisticated growth strategy than appendInt’s simplistic one. Usually we don’t know whether a given call to append will cause a reallocation, so we can’t assume that the original slice refers to the same array as the resulting slice, nor that it refers to a different one. Similarly, we must not assume that assignments to elements of the old slice will (or will not) be reflected in the new slice. Consequently, it’s usual to assign the result of a call to append to the same slice variable whose value we passed to append: 
 runes = append(runes, r) 
 Updating the slice variable is required not just when calling append, but for any function that may change the length or capacity of a slice or make it refer to a different underlying array. To use slices correctly, it’s important to bear in mind that although the elements of the underlying array are indirect, the slice’s pointer, length, and capacity are not. To update them requires an assignment like the one above. In this respect, slices are not “pure” reference types but resemble an aggregate type such as this struct: 
+
+```go
 type IntSlice struct {
 ptr *int 
 len, cap int } 
+```
 
 Our appendInt function adds a single element to a slice, but the built-in append lets us add more than one new element, or even a whole slice of them. 
 
@@ -3465,6 +3470,7 @@ i++
 return strings[:i] 
 
 } 
+```
 
 The subtle part is that the input slice and the output slice share the same underlying array. This avoids the need to allocate another array, though of course the contents of data are partly overwritten, as evidenced by the second print statement: 
 
@@ -3474,6 +3480,7 @@ fmt.Printf("%q\n", nonempty(data)) // `["one"
 "three"]`
 fmt.Printf("%q\n", data) // `["one" "three" 
 "three"]` 
+```
 
 Thus we would usually write: data = nonempty(data) . 
 
@@ -3492,6 +3499,8 @@ out = append(out, s)
 return out 
 
 } 
+```
+
 Whichever variant we use, reusing an array in this way requires that at most one output value is produced for each input value, which is true of many algorithms that filter out elements of a sequence or combine adjacent ones. Such intricate slice usage is the exception, not the rule, but it can be clear, efficient, and useful on occasion. 
 
 A slice can be used to implement a stack. Given an initially empty slice stack, we can push a new value onto the end of the slice with append: 
@@ -3523,6 +3532,7 @@ return slice[:len(slice)-1] }
 func main() { 
 s := []int{5, 6, 7, 8, 9} 
 fmt.Println(remove(s, 2)) // "[5 6 8 9]" } 
+```
 
 And if we don’t need to preserve the order, we can just move the last element into the gap: 
 
@@ -3537,7 +3547,6 @@ s := []int{5, 6, 7, 8, 9}
 fmt.Println(remove(s, 2)) // "[5 6 9 8] 
 
 } 
-
 ```
 
 
@@ -7595,18 +7604,20 @@ fmt.Sprintf("$%.2f", d) }
 
 type database map[string]dollars 
 func (db database) ServeHTTP(w http.ResponseWriter, req *http.Request) {for item, price := range db {fmt.Fprintf(w, "%s: %s\n", item, price) }} 
-
+```
 If we start the server, 
+```
 $ go build gopl.io/ch7/http1 
 $ ./http1 & 
-
+```
 then connect to it with the fetch program from Section 1.5 (or a web browser if you prefer), we get the following output: 
 
-```go
+```
 $ go build gopl.io/ch1/fetch 
 $ ./fetch http://localhost:8000 
 shoes: $50.00 
 socks: $5.00 
+```
 
 So far, the server can only list its entire inventory and will do this for every request, regardless of URL. A more realistic server defines multiple different URLs, each triggering a different behavior. Let’s call the existing one /list and add another one called /price that reports the price of a single item, specified as a request parameter like /price?item=socks. 
 
@@ -7640,7 +7651,7 @@ The case for /price calls the URL’s Query method to parse the HTTP request par
 
 Here’s an example session with the new server: 
 
-```go
+```
 $ go build gopl.io/ch7/http2 
 $ go build gopl.io/ch1/fetch 
 
@@ -7656,6 +7667,8 @@ $ ./fetch http://localhost:8000/price?item=hat
 no such item: "hat" 
 $ ./fetch http://localhost:8000/help 
 no such page: /help 
+```
+
 Obviously we could keep adding cases to ServeHTTP, but in a realistic application, it’s convenient to define the logic for each case in a separate function or method. Furthermore, related URLs may need similar logic; several image files may have URLs of the form /images/*.png, for instance. For these reasons, net/http provides ServeMux,a request multiplexer, to simplify the association between URLs and handlers. A ServeMux aggregates a collection of http.Handlers into a single http.Handler. Again, we see that different types satisfying the same interface are substitutable: the web server can dispatch requests to any http.Handler, regardless of which concrete type is behind it. 
 
 For a more complex application, several ServeMuxes may be composed to handle more intricate dispatching requirements. Go doesn’t have a canonical web framework analogous to Ruby’s Rails or Python’s Django. This is not to say that such frameworks don’t exist, but the building blocks in Go’s standard library are flexible enough that frameworks are often unnecessary. Furthermore, although frameworks are convenient in the early phases of a project, their additional complexity can make longer-term maintenance harder. 

@@ -3,7 +3,7 @@ tags =  ["windows","cmd"]
 categories = ["os"]
 date = "2014-05-04T10:59:31+11:00"
 title = "Use Windows command & hotkey as a hacker - Part 3"
-draft = true
+draft = false
 +++
 
 
@@ -109,3 +109,8 @@ WScript.Quit(rtn);
 
 #### The sample above is a bit complicated, and it is combination of Batch script and JScript.
 #### The batch script part checks and validate the input arguments, if there is no issue, then it will trigger the JScript to complete the work.   
+
+
+### Troubleshooting
+
+From the Windows 7 and on, Windows is no longer to recognize the file with suffix "vbs" as executable file. You need to change the add "vbs" to Windows's registory. 
