@@ -338,7 +338,7 @@ Wifi is not necessary for media centre, but it would save some effort to move yo
 
 As you know, there is always some hiccup to find the correct wifi drive to support your portable wifi adapter. It took me a while to find the proper way to install the wifi drive. If you have the RPi 2/3, it would be much more easier. My RPi 1 model B comes with kernel 4.18. I cannot find the soruce code which supports this old kernel today. 
 
-Finally, I found a post on RPi's forum which solved my problem. Link of (MrEngman's post)[https://www.raspberrypi.org/forums/viewtopic.php?f=45&t=103989&p=1048709&hilit=Realtek+RTL8192EU+ID+0BDA%3A818B+WiFi+drivers+for+Raspbian#p1048709]. He updated on April aobut the dropbox issue and alternative solution. 
+Finally, I found a post on RPi's forum which solved my problem. Link of [MrEngman's post](https://www.raspberrypi.org/forums/viewtopic.php?f=45&t=103989&p=1048709&hilit=Realtek+RTL8192EU+ID+0BDA%3A818B+WiFi+drivers+for+Raspbian#p1048709). He updated on April aobut the dropbox issue and alternative solution. 
 
 Download and install the new version of the script with commands
 
