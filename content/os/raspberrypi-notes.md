@@ -13,15 +13,27 @@ Prelude
 
 ## Assumption
 
-* You know what Raspberry Pi is. [Raspbery Pi](https://www.raspberrypi.org)
-* You have a Raspberry Pi 
+* You have a Raspberry Pi with pre-installed raspbian SD card
+* You are happy to get your hands dirty
+* You have some basic computer concept.
 * RPi is short for Raspberry Pi  
 
-## Raspberry Pi model
+## My Raspberry Pi is a bit old
 
-I only have the RPi 1 model B in place. It is a birthday gift. There is no wifi or bluetooth support on this model. I have to connect this tiny box to my switch via cable all the time. It commes a small problem, because my switch is far away from my laptop, monitor, keyboard, etc. and I don't have a cable long enough to connect the RPi and switch. 
+I only have the RPi 1 model B with pre-installed raspbian SD card in place. It is quite outdated. If you don’t know the model of your RPi, please don’t worry it now. I will explain how to get the info later. I got this RPi as a gift 2 years ago. I left it in the garage and totally forgot it, until I cleaned up my garage a couple months ago. Actually I loved the old model with transparent plastic box more than the new one. I knew if I continued to leave it in the garage, it would be a rubbish soon, because it is not easy to find some equipment or software compatible with the old RPi. Luckily the lifespan of RPi is much longer than the mobile phone, but it still took me some effort to setup the wifi adapter.
 
-The clumsy way to do it is move my kits near to the swtich, but I am too lazy to move things around. I choose to use remote access to control RPi from my laptop. 
+After 6-hour on and off, I got it up and run. Honestly I’m not a hardware guru, but I’m so happy not to throw this beautiful (my aesthetics is sort of quirky) box into the bin. I captured the home screen of Kodi, the media center and mobile control app.
+
+Home page of kodai
+
+![KodiTVHomePage](/img/kodi-tv-homepage.jpg)
+
+Screenshot of kodi mobile app on my android phone.
+
+![kodi-mobile-app](/img/kodi-mobile-app.png)
+
+## How to start
+There is no wifi or bluetooth support on this model. I have to connect this tiny box to my switch via cable all the time. There is a small problem, because my switch is far away from my laptop, monitor, keyboard, etc. and I don’t have a cable long enough to connect the RPi and switch.
 
 First thing first, I need to setup ssh server, and change the configuration to allow password login, also make it auto-start after reboot. To do so I just need monitor and keyboard. 
 
@@ -126,6 +138,7 @@ pi@192.168.1.10's password:
 
 ```
 
+
 ### Access RPi via VNC
 
 #### Setup VNC server on RPi 
@@ -150,6 +163,7 @@ sudo reboot
 ```
 
 
+
 #### Setup VNC client on your PC
 
 Linux: Use __xRDP__
@@ -167,7 +181,13 @@ Windows: Install [RealVNC Viewer](https://www.realvnc.com/en/connect/download/vi
 ![Screenshot-VNC](/img/raspberry-pi-vnc.jpg)
 
 
-### Setup Samba to share files
+
+After all above is done, you have your RPi ready. You can choose what you want to build on it. Considering its CPU and RAM, it is not sufficient to be used as daily desktop PC, but it is still enough to work as a server. e.g. File Server, Web Server, Email Server, FTP server or Media Center.
+
+Now I want to make a file server and media center on it.
+
+
+### Setup File Server via Samba
 
 * Attach external storage to your RPi. The capacity of preinstalled SD card has only 8G space, so I attached my portal hard drives to RPi. You can attach the PC hard drive, USD or another SD card via adapter. It is really up to what you have in place. 
 
@@ -334,9 +354,11 @@ PiZero W	| 512MB | 	9000c1
 
 ### Setup Wifi Adapter
 
-Wifi is not necessary for media centre, but it would save some effort to move your RPi around in your place, especially you want to connect your RPi with different devices from time to time. 
+Wifi adapter is not necessary for media centre, but it would save some effort to move your RPi around in your place, especially you want to connect your RPi with different devices from time to time.
 
-As you know, there is always some hiccup to find the correct wifi drive to support your portable wifi adapter. It took me a while to find the proper way to install the wifi drive. If you have the RPi 2/3, it would be much more easier. My RPi 1 model B comes with kernel 4.18. I cannot find the soruce code which supports this old kernel today. 
+I bought a D-Link adapter, which is dwa-131 with usb 2.0. This is the oldest one I can find in the store. If you are going to buy wifi adapter for old Unix-like system, please don’t buy the latest model. You will find you are trapped into incompatible issue between wifi drive and Linux kernel. You may have to upgrade the kernel or rebuild the drive.
+
+As you know, there is always some hiccup to find the correct wifi drive to support your portable wifi adapter. It took me a while to find the proper way to install the wifi adapter drive. If you have the RPi 2⁄3, it would be much more easier. My RPi 1 model B comes with kernel 4.1.18*. I cannot find the source code of wifi drive which supports this old kernel today, and I don’t want to upgrade and rebuild the kernel.
 
 Finally, I found a post on RPi's forum which solved my problem. Link of [MrEngman's post](https://www.raspberrypi.org/forums/viewtopic.php?f=45&t=103989&p=1048709&hilit=Realtek+RTL8192EU+ID+0BDA%3A818B+WiFi+drivers+for+Raspbian#p1048709). He updated on April aobut the dropbox issue and alternative solution. 
 
@@ -381,14 +403,5 @@ ENABLED=1
 
 ```
 
-Reboot the RPi, before you reboot it make sure your TV's HDMI has plugged into RPi. After a few minutes, you can enjoy your home media centre. 
+Reboot the RPi, before you reboot it please make sure your TV’s HDMI has plugged into RPi. After a couple minutes, you will see the home page as I posted above. Don’t forget to install remote control app on your mobile. I pretty sure you find some remote control app for Kodi on your phone. Finally, you can enjoy your home media center.
 
-Home page of kodai
-
-![KodiTVHomePage](/img/kodi-tv-homepage.jpg)
-
-### Install remote control app on your mobile
-
-Screenshot of kodi mobile app on my android phone.
-
-![kodi-mobile-app](/img/kodi-mobile-app.png)

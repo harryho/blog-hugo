@@ -169,6 +169,16 @@ Generally, Material-Design libraries for React is not handy as other customized 
 
 Angular’s Material-Design library has very limit components. To build a real-world application you need to add another UI library to supplement the former missing components. Last but not least, the Vuetify is the best Material-Design so far we have found and tested.
 
+Angular 4 CRM — https://github.com/harryho/ng4crm
+React Redux CRM — https://github.com/harryho/react-crm
+Vue 2 CRM — https://github.com/harryho/vue2crm
+
+Update:
+
+Angular Material Design App — https://github.com/harryho/ng-md-app
+React Redux CRM — https://github.com/harryho/react-crm
+Vue 2 CRM — https://github.com/harryho/vue2crm
+Angular 4 CRM — https://github.com/harryho/ng4crm (It is no longer maintained to support latest Angular)
 
 ### Summary
 
