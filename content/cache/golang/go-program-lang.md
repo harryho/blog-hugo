@@ -3188,18 +3188,20 @@ The two inputs differ by only a single bit, but approximately half the bits are 
 When a function is called, a copy of each argument value is assigned to the corresponding parameter variable, so the function receives a copy, not the original. Passing large arrays in this way can be inefficient, and any changes that the function makes to array elements affect only the copy, not the original. In this regard, Go treats arrays like any other type, but this behavior is different from languages that implicitly pass arrays by reference. 
 
 Of course, we can explicitly pass a pointer to an array so that any modifications the function makes to array elements will be visible to the caller. This function zeroes the contents of a [32]byte array: 
-```
+
+```go
 func zero(ptr *[32]byte) { 
-for i := range ptr {
-ptr[i] = 0 
-}
+    for i := range ptr {
+        ptr[i] = 0 
+    }
 } 
 ```
 
 The array literal [32]byte{} yields an array of 32 bytes. Each element of the array has the zero value for byte, which is zero. We can use that fact to write a different version of zero: 
-```
+
+```go   
 func zero(ptr *[32]byte) { 
-*ptr = [32]byte{} 
+    *ptr = [32]byte{} 
 } 
 ```
 
@@ -3247,8 +3249,7 @@ Slicing beyond cap(s) causes a panic, but slicing beyond len(s) extends the slic
 
 ```go
 fmt.Println(summer[:20]) // panic: out of range 
-endlessSummer := summer[:5] // extend a slice (within 
-capacity)
+endlessSummer := summer[:5] // extend a slice (within capacity)
 fmt.Println(endlessSummer) // "[June July August September October]" 
 ```
 
@@ -3333,12 +3334,10 @@ The built-in append function appends items to slices:
 
 ```go
 var runes []rune 
-for _, r := range "Hello, 
-" {
-runes = append(runes, r) }
-fmt.Printf("%q\n", runes) // "['H' 'e' 'l' 'l' 'o' ',' 
-'''
-'' ']" 
+for _, r := range "Hello, " {
+    runes = append(runes, r) 
+}
+fmt.Printf("%q\n", runes) // "['H' 'e' 'l' 'l' 'o' ',' ''' '' ']" 
 ```
 
 
@@ -3457,18 +3456,14 @@ import "fmt"
 strings.
 // The underlying array is modified during the call. 
 func nonempty(strings []string) []string { 
-
-i := 0 
-for _, s := range strings {
-
-if s != "" {
-strings[i] = s 
-i++ 
-
-}
-}
-return strings[:i] 
-
+    i := 0 
+    for _, s := range strings {
+        if s != "" {
+            strings[i] = s 
+            i++ 
+        }
+    }
+    return strings[:i] 
 } 
 ```
 
@@ -3488,16 +3483,13 @@ The nonempty function can also be written using append:
 
 ```go
 func nonempty2(strings []string) []string { 
-out := strings[:0] // zero-length slice of 
-original
-for _, s := range strings {
-if s != "" {
-out = append(out, s) 
-
-}
-}
-return out 
-
+out := strings[:0] // zero-length slice of original
+    for _, s := range strings {
+        if s != "" {
+            out = append(out, s) 
+        }
+    }
+    return out 
 } 
 ```
 
@@ -3527,25 +3519,25 @@ To remove an element from the middle of a slice, preserving the order of the rem
 
 ```go
 func remove(slice []int, i int) []int {
-copy(slice[i:], slice[i+1:]) 
-return slice[:len(slice)-1] } 
+    copy(slice[i:], slice[i+1:]) 
+    return slice[:len(slice)-1] 
+} 
 func main() { 
-s := []int{5, 6, 7, 8, 9} 
-fmt.Println(remove(s, 2)) // "[5 6 8 9]" } 
+    s := []int{5, 6, 7, 8, 9} 
+    fmt.Println(remove(s, 2)) // "[5 6 8 9]" 
+} 
 ```
 
 And if we don’t need to preserve the order, we can just move the last element into the gap: 
 
 ```go
 func remove(slice []int, i int) []int {
-slice[i] = slice[len(slice)-1] 
-return slice[:len(slice)-1] 
-
+    slice[i] = slice[len(slice)-1] 
+    return slice[:len(slice)-1] 
 } 
 func main() { 
-s := []int{5, 6, 7, 8, 9} 
-fmt.Println(remove(s, 2)) // "[5 6 9 8] 
-
+    s := []int{5, 6, 7, 8, 9} 
+    fmt.Println(remove(s, 2)) // "[5 6 9 8] 
 } 
 ```
 
@@ -3573,9 +3565,8 @@ ages := make(map[string]int) // mapping from strings to ints
 
 We can also use a map literal to create a new map populated with some initial key/value pairs: 
 ages := map[string]int{
-"alice": 31, 
-"charlie": 34, 
-
+    "alice": 31, 
+    "charlie": 34, 
 } 
 ```
 This is equivalent to 
@@ -3624,7 +3615,7 @@ To enumerate all the key/value pairs in the map, we use a range-based for loop s
 
 ```go
 for name, age := range ages { 
-fmt.Printf("%s\t%d\n", name, age) 
+    fmt.Printf("%s\t%d\n", name, age) 
 } 
 ```
 
@@ -3635,13 +3626,11 @@ The order of map iteration is unspecified, and different implementations might u
 import "sort" 
 var names []string 
 for name := range ages {
-
-names = append(names, name) 
+    names = append(names, name) 
 }
 sort.Strings(names)
 for _, name := range names {
-
-fmt.Printf("%s\t%d\n", name, ages[name]) 
+    fmt.Printf("%s\t%d\n", name, ages[name]) 
 } 
 ```
 
@@ -3650,6 +3639,8 @@ Since we know the final size of names from the outset, it is more efficient to a
 
 ```go
 names := make([]string, 0, len(ages)) 
+```
+
 In the first range loop above, we require only the keys of the ages map, so we omit the second loop variable. In the second loop, we require only the elements of the names slice, so we use the blank identifier _ to ignore the first variable, the index. 
 
 The zero value for a map type is nil, that is, a reference to no hash table at all. 
@@ -3677,7 +3668,6 @@ if !ok { /* "bob" is not a key in this map; age == 0.
 */ } 
 ```
 
-
 You’ll often see these two statements combined, like this: 
 if age, ok := ages["bob"]; !ok { /* ... */ } 
 Subscripting a map in this context yields two values; the second is a boolean that reports whether the element was present. The boolean variable is often called ok, especially if it is immediately used in an if condition. 
@@ -3687,16 +3677,18 @@ As with slices, maps cannot be compared to each other; the only legal comparison
 
 ```go
 func equal(x, y map[string]int) bool {
-if len(x) != len(y) { 
-return false 
-}
-for k, xv := range x { 
-if yv, ok := y[k]; !ok || yv != xv {return false 
-}
-}
-return true 
-
+    if len(x) != len(y) { 
+        return false 
+    }
+    for k, xv := range x { 
+        if yv, ok := y[k]; !ok || yv != xv {
+            return false 
+        }
+    }
+    return true 
 } 
+```
+
 Observe how we use !ok to distinguish the “missing” and “present but zero” cases. Had we naïvely written xv != y[k] , the call below would incorrectly report its arguments as equal: 
 
 ```go
@@ -3756,40 +3748,42 @@ import (
 "unicode" 
 "unicode/utf8" ) 
 func main() {
-counts := make(map[rune]int) // counts of 
-Unicode characters 
-var utflen [utf8.UTFMax + 1]int // count of lengths of UTF-8 encodings 
-invalid := 0 // count of invalid UTF-8 characters 
+    counts := make(map[rune]int) // counts of 
+    Unicode characters 
+    var utflen [utf8.UTFMax + 1]int // count of lengths of UTF-8 encodings 
+    invalid := 0 // count of invalid UTF-8 characters 
 
-in := bufio.NewReader(os.Stdin) 
-for {
-r, n, err := in.ReadRune() // returns rune, nbytes, error 
-if err == io.EOF {
-break 
-}
-if err != nil {
-fmt.Fprintf(os.Stderr, "charcount: %v\n", err) 
-os.Exit(1) 
-}
-if r == unicode.ReplacementChar && n == 1 {
-invalid++ 
-continue 
-}
-counts[r]++
-utflen[n]++ 
-}
-fmt.Printf("rune\tcount\n")
-for c, n := range counts {
-fmt.Printf("%q\t%d\n", c, n) 
-}
-fmt.Print("\nlen\tcount\n")
-for i, n := range utflen {
-if i > 0 {fmt.Printf("%d\t%d\n", i, n) 
-}
-}
-if invalid > 0 {
-
-fmt.Printf("\n%d invalid UTF-8 characters\n", invalid)}} 
+    in := bufio.NewReader(os.Stdin) 
+    for {
+        r, n, err := in.ReadRune() // returns rune, nbytes, error 
+        if err == io.EOF {
+            break 
+        }
+        if err != nil {
+            fmt.Fprintf(os.Stderr, "charcount: %v\n", err) 
+            os.Exit(1) 
+        }
+        if r == unicode.ReplacementChar && n == 1 {
+            invalid++ 
+            continue 
+        }
+        counts[r]++
+        utflen[n]++ 
+    }
+    fmt.Printf("rune\tcount\n")
+    for c, n := range counts {
+        fmt.Printf("%q\t%d\n", c, n) 
+    }
+    fmt.Print("\nlen\tcount\n")
+    for i, n := range utflen {
+        if i > 0 {
+            fmt.Printf("%d\t%d\n", i, n) 
+        }
+    }
+    if invalid > 0 {
+        fmt.Printf("\n%d invalid UTF-8 characters\n", invalid)
+    }
+} 
 
 ```
 
@@ -3803,7 +3797,7 @@ The charcount program also prints a count of the lengths of the UTF-8 encodings 
 As an experiment, we ran charcount on this book itself at one point. Although it’s mostly in English, of course, it does have a fair number of non-ASCII characters. Here are the top ten: 
 
 
-```go
+```
 °27 
 15 
 14 é13 x10 =5×5 
@@ -3818,6 +3812,7 @@ len count
 3 70 
 
 40 
+```
 
 The value type of a map can itself be a composite type, such as a map or slice. In the following code, the key type of graph is string and the value type is map[string]bool, representing a set of strings. Conceptually, graph maps a string to a set of related strings, its successors in a directed graph. 
 
@@ -3846,6 +3841,8 @@ Exercise 4.9: Write a program wordfreq to report the frequency of each word in a
 
 A struct is an aggregate data type that groups together zero or more named values of arbitrary types as a single entity. Each value is called a field. The classic example of a struct from data processing is the employee record, whose fields are a unique ID, the employee’s name, address, date of birth, position, salary, manager, and the like. All of these fields are collected into a single entity that can be copied as a unit, passed to functions and returned by them, stored in arrays, and so on. 
 These two statements declare a struct type called Employee and a variable called dilbert that is an instance of an Employee: 
+
+```go
 type Employee struct {
 ID int 
 Name string 
@@ -3857,6 +3854,7 @@ ManagerID int
 
 } 
 var dilbert Employee 
+```
 
 The individual fields of dilbert are accessed using dot notation like dilbert.Name and dilbert.DoB. Because dilbert is a variable, its fields are variables too, so we may assign to a field: 
 
@@ -3876,8 +3874,7 @@ The dot notation also works with a pointer to a struct:
 
 ```go
 var employeeOfTheMonth *Employee = &dilbert 
-employeeOfTheMonth.Position += " (proactive team 
-player)" 
+employeeOfTheMonth.Position += " (proactive team player)" 
 ```
 
 
@@ -3899,16 +3896,18 @@ id := dilbert.ID EmployeeByID(id).Salary = 0 // fired for... no real reason
 The last statement updates the Employee struct that is pointed to by the result of the call to EmployeeByID. If the result type of EmployeeByID were changed to Employee instead of *Employee, the assignment statement would not compile since its left-hand side would not identify a variable.
  
 Fields are usually written one per line, with the field’s name preceding its type, but consecutive fields of the same type may be combined, as with Name and Address here: 
+
+```go
 type Employee struct {
-ID int 
-Name, Address string 
-DoB time.Time 
-Position string 
+    ID int 
+    Name, Address string 
+    DoB time.Time 
+    Position string 
 
-Salary int 
-ManagerID int 
+    Salary int 
+    ManagerID int 
 } 
-
+```
 Field order is significant to type identity. Had we also combined the declaration of the Position field (also a string), or interchanged Name and Address, we would be defining a different struct type. Typically we only combine the declarations of related fields. 
 
 
@@ -3924,36 +3923,39 @@ A named struct type S can’t declare a field of the same type S: an aggregate v
 // gopl.io/ch4/treesort 
 
 type tree struct {
-value int 
-left, right *tree } 
+    value int 
+    left, right *tree 
+} 
+
 // Sort sorts values in place. 
 func Sort(values []int) { 
-var root *tree 
-for _, v := range values {
-root = add(root, v) }
-appendValues(values[:0], root) } // appendValues appends the elements of t to values in 
-order 
-// and returns the resulting slice. 
-func appendValues(values []int, t *tree) []int {
-if t != nil {
-values = appendValues(values, t.left) 
-values = append(values, t.value) 
-values = appendValues(values, t.right) 
-}
-return values 
+    var root *tree 
+    for _, v := range values {
+    root = add(root, v) }
+    appendValues(values[:0], root) } // appendValues appends the elements of t to values in 
+    order 
+    // and returns the resulting slice. 
+    func appendValues(values []int, t *tree) []int {
+    if t != nil {
+    values = appendValues(values, t.left) 
+    values = append(values, t.value) 
+    values = appendValues(values, t.right) 
+    }
+    return values 
 } 
+
 func add(t *tree, value int) *tree {
-if t == nil {
-// Equivalent to return &tree{value: value}. 
-t = new(tree)
-t.value = value 
-return t 
-}
-if value < t.value {
-t.left = add(t.left, value) 
-} else {
-t.right = add(t.right, value) }
-return t 
+    if t == nil {
+    // Equivalent to return &tree{value: value}. 
+    t = new(tree)
+    t.value = value 
+    return t 
+    }
+    if value < t.value {
+    t.left = add(t.left, value) 
+    } else {
+    t.right = add(t.right, value) }
+    return t    
 } 
 ```
 
@@ -4028,8 +4030,7 @@ and this is required if the function must modify its argument, since in a call-b
 
 ```go
 func AwardAnnualRaise(e *Employee) { 
-e.Salary = e.Salary * 105 / 100 
-
+    e.Salary = e.Salary * 105 / 100 
 } 
 
 Because structs are so commonly dealt with through pointers, it’s possible to use this shorthand notation to create and initialize a struct variable and obtain its address: 
@@ -4058,8 +4059,8 @@ Comparable struct types, like other comparable types, may be used as the key typ
 
 ```go
 type address struct {
-hostname string 
-port int 
+    hostname string 
+    port int 
 
 } 
 
@@ -4073,6 +4074,8 @@ hits := make(map[address]int) hits[address{"golang.org", 443}]++
 
 In this section, we’ll see how Go’s unusual struct embedding mechanism lets us use one named struct type as an anonymous field of another struct type, providing a convenient syntactic shortcut so that a simple dot expression like x.f can stand for a chain of fields like x.d.e.f. 
 Consider a 2-D drawing program that provides a library of shapes, such as rectangles, ellipses, stars, and wheels. Here are two of the types it might define: 
+
+```go
 type Circle struct {
 X, Y, Radius int 
 } 
@@ -4081,16 +4084,21 @@ type Wheel struct {
 X, Y, Radius, Spokes int 
 } 
 
+```
 
 A Circle has fields for the X and Y coordinates of its center, and a Radius.A Wheel has all the features of a Circle, plus Spokes, the number of inscribed radial spokes. Let’s create a wheel: 
+
+```go
 var w Wheel 
 w.X = 8 
 w.Y = 8 
 w.Radius = 5 
 w.Spokes = 20 
-
+```
 
 As the set of shapes grows, we’re bound to notice similarities and repetition among them, so it may be convenient to factor out their common parts: 
+
+```go
 type Point struct {
 X, Y int 
 } 
@@ -4109,14 +4117,18 @@ Spokes int
 
 
 The application may be clearer for it, but this change makes accessing the fields of a Wheel more verbose: 
+
+```go
 var w Wheel 
 w.Circle.Center.X = 8 
 w.Circle.Center.Y = 8 
 w.Circle.Radius = 5 
 w.Spokes = 20 
-
+```
 
 Go lets us declare a field with a type but no name; such fields are called anonymous fields. The type of the field must be a named type or a pointer to a named type. Below, Circle and Wheel have one anonymous field each. We say that a Point is embedded within Circle, and a Circle is embedded within Wheel. 
+
+```go
 type Circle struct {
 Point 
 Radius int 
@@ -4148,7 +4160,7 @@ w = Wheel{8, 8, 5, 20} //
 compile error: unknown fields 
 w = Wheel{X: 8, Y: 8, Radius: 5, Spokes: 20} // 
 compile error: unknown fields 
-
+```
 
 The struct literal must follow the shape of the type declaration, so we must use one of the two forms below, which are equivalent to each other: 
 
@@ -4212,6 +4224,7 @@ array ["gold", "silver", "bronze"]
 object {"year": 1980, "event": "archery", 
 "medals": ["gold", "silver", 
 "bronze"]} 
+```
 
 Consider an application that gathers movie reviews and offers recommendations. Its Movie data type and a typical list of values are declared below. (The string literals after the Year and Color field declarations are field tags; we’ll explain them in a moment.) 
 
@@ -4458,6 +4471,7 @@ Parse(templ)
 if err != nil {
 log.Fatal(err) 
 } 
+```
 
 Because templates are usually fixed at compile time, failure to parse a template indicates a fatal bug in the program. The template.Must helper function makes error handling more convenient: it accepts a template and an error, checks that the error is nil (and panics otherwise), and then returns the template. We’ll come back to this idea in Section 5.9. 
 
@@ -4895,7 +4909,9 @@ log.Println(links, err)
 Well-chosen names can document the significance of a function’s results. Names are particularly valuable when a function returns multiple results of the same type, like 
 
 ```go
-func Size(rect image.Rectangle) (width, height int) func Split(path string) (dir, file string) func HourMinSec(t time.Time) (hour, minute, second int) 
+func Size(rect image.Rectangle) (width, height int) 
+func Split(path string) (dir, file string) 
+func HourMinSec(t time.Time) (hour, minute, second int) 
 ```
 
 but it’s not always necessary to name multiple results solely for documentation. For instance, convention dictates that a final bool result indicates success; an error result often needs no explanation. 
@@ -5526,6 +5542,7 @@ os.MkdirAll(dirs[i], 0755) // OK
 rmdirs = append(rmdirs, func() {
 os.RemoveAll(dirs[i]) // NOTE: incorrect! 
 }) } 
+```
 
 The problem of iteration variable capture is most often encountered when using the go statement (Chapter 8) or with defer (which we will see in a moment) since both may delay the execution of a function value until after the loop has finished. But the problem is not inherent to go or defer. 
 
@@ -5579,8 +5596,7 @@ fmt.Printf("%T\n", g) // "func([]int)"
 Variadic functions are often used for string formatting. The errorf function below constructs a formatted error message with a line number at the beginning. The suffix f is a widely followed naming convention for variadic functions that accept a Printf-style format string. 
 
 ```go
-func errorf(linenum int, format string, args 
-...interface{}) {
+func errorf(linenum int, format string, args ...interface{}) {
 fmt.Fprintf(os.Stderr, "Line %d: ", linenum) 
 fmt.Fprintf(os.Stderr, format, args...) 
 fmt.Fprintln(os.Stderr) 
@@ -5604,8 +5620,7 @@ func ElementsByTagName(doc *html.Node, name ...string)
 []*html.Node 
 
 images := ElementsByTagName(doc, "img") 
-headings := ElementsByTagName(doc, "h1", "h2", "h3", 
-"h4") 
+headings := ElementsByTagName(doc, "h1", "h2", "h3", "h4") 
 ```
 
 
@@ -5624,8 +5639,7 @@ if err != nil {
 return err 
 } 
 
-// Check Content-Type is HTML (e.g., "text/html; 
-charset=utf-8").
+// Check Content-Type is HTML (e.g., "text/html; charset=utf-8").
 ct := resp.Header.Get("Content-Type") 
 if ct != "text/html" && !strings.HasPrefix(ct, 
 
@@ -5675,21 +5689,21 @@ resp.Body.Close():
 ```go
 // gopl.io/ch5/title2 
 func title(url string) error {
-resp, err := http.Get(url) 
-if err != nil {
-return err 
-}
-defer resp.Body.Close() 
-ct := resp.Header.Get("Content-Type") 
-if ct != "text/html" && !strings.HasPrefix(ct, 
-"text/html;") {
-return fmt.Errorf("%s has type %s, not 
-text/html", url, ct) 
-} 
+    resp, err := http.Get(url) 
+    if err != nil {
+    return err 
+    }
+    defer resp.Body.Close() 
+    ct := resp.Header.Get("Content-Type") 
+    if ct != "text/html" && !strings.HasPrefix(ct, 
+    "text/html;") {
+    return fmt.Errorf("%s has type %s, not 
+    text/html", url, ct) 
+    } 
 
-doc, err := html.Parse(resp.Body) if err != nil {return fmt.Errorf("parsing %s as HTML: %v", url, err) } 
-// ...print doc's title element... 
-return nil 
+    doc, err := html.Parse(resp.Body) if err != nil {return fmt.Errorf("parsing %s as HTML: %v", url, err) } 
+    // ...print doc's title element... 
+    return nil 
 } 
 ```
 
@@ -5700,19 +5714,25 @@ The same pattern can be used for other resources beside network connections, for
 io/ioutil 
 package ioutil 
 func ReadFile(filename string) ([]byte, error) { 
-f, err := os.Open(filename) 
+    f, err := os.Open(filename) 
 
-if err != nil {
-return nil, err }
-defer f.Close() 
-return ReadAll(f) } 
+    if err != nil {
+    return nil, err 
+    }
+    defer f.Close() 
+    return ReadAll(f) 
+} 
+```
+
 or to unlock a mutex (§9.2): 
+```go
 var mu sync.Mutex 
 var m = make(map[string]int) 
 func lookup(key string) int {
-mu.Lock()
-defer mu.Unlock() 
-return m[key] } 
+    mu.Lock()
+    defer mu.Unlock() 
+    return m[key] 
+} 
 ```
 
 
@@ -5762,6 +5782,7 @@ _ = double(4)
 This trick is overkill for a function as simple as double but may be useful in functions with many return statements. 
 
 A deferred anonymous function can even change the values that the enclosing function returns to its caller: 
+```go
 func triple(x int) (result int) { 
 defer func() { result += x }() 
 return double(x) 
@@ -5782,7 +5803,7 @@ return err }defer f.Close() // NOTE: risky; could run out of
 file descriptors
 // ...process f... 
 } 
-
+```
 
 One solution is to move the loop body, including the defer statement, into another function that is called on each iteration. 
 
@@ -5853,6 +5874,7 @@ case "Clubs": // ...
 default: 
 panic(fmt.Sprintf("invalid suit %q", s)) // Joker? 
 } 
+```
 
 It’s good practice to assert that the preconditions of a function hold, but this can easily be done to excess. Unless you can provide a more informative error message or detect an error sooner, there is no point asserting a condition that the runtime will check for you. 
 
@@ -5889,8 +5911,9 @@ return re
 The wrapper function makes it convenient for clients to initialize a package-level variable with a compiled regular expression, like this: 
 
 ```go
-var httpSchemeRE = regexp.MustCompile(`^https?:`) // 
-"http:" or "https:" 
+var httpSchemeRE = regexp.MustCompile(`^https?:`) // "http:" or "https:" 
+```
+
 Of course, MustCompile should not be called with untrusted input values. The Must prefix is a common naming convention for functions of this kind, like template.Must in Section 4.6. 
 
 When a panic occurs, all deferred functions are run in reverse order, starting with those of the topmost function on the stack and proceeding up to main, as the program below demonstrates: 
@@ -5906,13 +5929,15 @@ func f(x int) {fmt.Printf("f(%d)\n", x+0/x) // panics if x == 0 defer fmt.Printf
 ```
 
 When run, the program prints the following to the standard output: 
+
+```
 f(3)
 f(2)
 f(1)
 defer 1 
 defer 2 
-defer 3 
-
+defer 3
+```
 
 A panic occurs during the call to f(0), causing the three deferred calls to fmt.Printf to run. Then the runtime terminates the program, printing the panic message and a stack dump to the standard error stream (simplified for clarity): 
 
@@ -6115,6 +6140,8 @@ if i > 0 {
 sum += path[i-1].Distance(path[i]) 
 }}
 return sum } 
+```
+
 Path is a named slice type, not a struct type like Point, yet we can still define methods for it. In allowing methods to be associated with any type, Go is unlike many other object-oriented languages. It is often convenient to define additional behaviors for simple types such as numbers, strings, slices, maps, and sometimes even functions. Methods may be declared on any named type defined in the same package, so long as its underlying type is neither a pointer nor an interface. 
 
 The two Distance methods have different types. They’re not related to each other at all, though Path.Distance uses Point.Distance internally to compute the length of each segment that connects adjacent points. 
@@ -7222,12 +7249,14 @@ Calling the Write method on an interface value containing an *os.File pointer ca
 
 ```go
 w.Write([]byte("hello")) // "hello" 
+```
 
 In general, we cannot know at compile time what the dynamic type of an interface value will be, so a call through an interface must use dynamic dispatch. Instead of a direct call, the compiler must generate code to obtain the address of the method named Write from the type descriptor, then make an indirect call to that address. The receiver argument for the call is a copy of the interface’s dynamic value, os.Stdout. The effect is as if we had made this call directly: 
 
 ```go
 os.Stdout.Write([]byte("hello")) // "hello" The third statement assigns a value of type *bytes.Buffer to the interface value: 
 w = new(bytes.Buffer) 
+```
 
 The dynamic type is now *bytes.Buffer and the dynamic value is a pointer to the newly allocated buffer (Figure 7.3). 
 
@@ -7256,7 +7285,7 @@ However, if two interface values are compared and have the same dynamic type, bu
 var x interface{} = []int{1, 2, 3} 
 fmt.Println(x == x) // panic: comparing uncomparable 
 type []int 
-
+```
 In this respect, interface types are unusual. Other types are either safely comparable (like basic types and pointers) or not comparable at all (like slices, maps, and functions), but when comparing interface values or aggregate types that contain interface values, we must be aware of the potential for a panic. A similar risk exists when using interfaces as map keys or switch operands. Only compare interface values if you are certain that they contain dynamic values of comparable types. 
 
 When handling errors, or during debugging, it is often helpful to report the dynamic type of an interface value. For that, we use the fmt package’s %T verb: 
