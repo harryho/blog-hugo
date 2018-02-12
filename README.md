@@ -1,4 +1,6 @@
 # blog-hugo
+
+[![Join the chat at https://gitter.im/blog-hugo/Lobby](https://badges.gitter.im/blog-hugo/Lobby.svg)](https://gitter.im/blog-hugo/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Hugo blog repo
 
 * Use any `markdown` editor to edit the blog or post under the folder `content`
