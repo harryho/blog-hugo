@@ -330,10 +330,7 @@ $ curl -f -L https://static.rust-lang.org/rustup.sh -O
 $ sh rustup.sh
 ```
 
-
-
-
-# Install vim 8
+### Install vim 8
 
 * Add ppa repo
 
@@ -341,13 +338,21 @@ $ sh rustup.sh
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
 sudo apt install vim
-
 ```
 
 * Install awesome vimrc
 
-
 ```
 git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
+```
+
+### Install MySql
+
+```
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.9-1_all.deb
+sudo apt-get install mysql-server
+systemctl status mysql
+mysqladmin -u root -p version
 ```
