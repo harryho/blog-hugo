@@ -362,8 +362,8 @@ mysql -u root -p mysql
 ```
 
 * create a sample table products
-```
 
+```
 CREATE TABLE products (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(255),
@@ -375,7 +375,6 @@ CREATE TABLE products (
 );
 
 load data local infile '/home/<your_name>/db/products.csv' into table products fields terminated by ',' enclosed by '"' lines terminated by '\n' (id, title, price, created_at, deleted_at, tags);
-
 ```
 
 ### Install PostgresQL
@@ -402,8 +401,6 @@ psql
 
 # Rename database -- use double quote 
 ALTER database "pgguide" rename to "sample"
-
-
 ```
 
 * export the database to sql file
@@ -417,15 +414,12 @@ pg_dump sample >> sample.sql
 
 ```
 COPY products to '/home/<your_name>/db/products.csv' delimiter ',' csv; 
-
-
 ```
 
 * export data to json file
 
 ```
-select json_agg(t) from (select * from products) t \t on \pset format unaligned \g products.json;
-       
+select json_agg(t) from (select * from products) t \t on \pset format unaligned \g products.json
 ```
 
 
@@ -459,5 +453,4 @@ db.products.find();
 
 ```
 mongoimport --db sample --collection products --drop --jsonArray --file ~/db/products.json
-
 ```
