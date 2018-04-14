@@ -117,7 +117,6 @@ class Solution {
             bin = bin.Substring( bin.IndexOf("1") + 1 );
            
             next = bin.IndexOf("1");
-         //   Console.WriteLine(" bin , {0}, {1} " , bin, next  );
             
             if( next  > gap ) gap = next;
             
@@ -182,8 +181,7 @@ class Solution {
                          r[i] = A[ i -k ];
                 } 
             }
-        }
-        
+        }        
         return r;
     }
 }
