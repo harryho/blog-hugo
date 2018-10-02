@@ -6,4 +6,16 @@ title = "Golang Notes - 1"
 draft = true
 +++
 
+## Different Concurrency Implementations with Golang
 
+
+### Promise 
+
+```go
+
+package {
+   "fmt"
+
+}
+
+```

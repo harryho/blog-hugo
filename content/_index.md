@@ -1,196 +1,253 @@
 +++
-date = "2017-06-07T16:56:21+11:00"
-title = "_index"
-tags = ["javascript"]
+date = "2018-08-06T16:43:12+11:00"
+title = " backup"
+draft=true
 +++
 
-# Angular vs React vs Vue
+>*It is not a blog site, but my tech note instead.*
 
->Angular, React, Vue as most popular JavaScript frameworks at present, we just discuss Angular 1.x, Angular 2 / 4, React 15+ (Redux), and Vue 2+ here. There is no Angular 3, if you have not noticed before.
+>*The home page content had been posted on my old WordPress blog for ages. I moved it here, because the old one has been shut down. I am not passionate blogger. Blog to me is kind of note for knowledge base, which commes from work, research and project. To manage a blog site is not a piece of cake, but putting these tricks and tips online is quite helpful for myself to solve similar problems, which have been solved and investiaged before. After I try hugo, it make me feel fun to continue writing notes again. So I created a blog(note) site on Github Pages, and I posted a blog(note) - [Create a blog on GitHub Pages](/blog/create-a-blog-on-github-pages) to show you how I did it on Windows machine. If you have interests in creating your blog site, please take a look the instruction and give a go on your own.* 
 
+>*I leave the `Hello World` article on home page to make my site not too boring. By the way, my note is not wiki, so most posts here are just technical stuff, tricks, solutions. All those things are practical stuff instead of stories, so I want the home page a bit fun at least.*
 
-## Client side is a battle field
+```bash
+Dutch : "Hello wereld",
+English : "Hello world",
+French : "Bonjour monde",
+German : "Hallo Welt",
+Greek : "γειά σου κόσμος",
+Italian : "Ciao mondo",
+Japanese : "こんにちは世界",
+Korean : "여보세요 세계",
+Mandarin : "你好世界",
+Portuguese : "Olá mundo",
+Russian : "Здравствулте мир",
+Spanish : "Hola mundo"
+```
 
-In past 6–8 years, the Restful API has been accepted as one of standard web interfaces for most web applications, solution architect can simply add REST API on the top of existing web layer or business layer to provide REST API and support multiple client devices. So the developers can continue to develop or maintain system with their favorite programming language, framework or technical stacks.
+The different languages above say the same two words "Hello World" are just for fun. This article is for beginner who has interest in programming and want to try do some programming for fun. Here I am going to show you how to use different **programming** languages to say "Hello World". The languages I pick here are ordered by alphabet. 
 
-On the contrary, it is a completely different story on the client-side, there are tons of variant JavaScript frameworks emerged in the last 10 years. It is good to have more options, but it is a nightmare for web developers who are working in such battle field, because they need to try a lot of different stuff to make a decision, especially when the project schedule is tight, it makes tech lead or architect quite stressed. Something becomes much worse is when the development team try to adopt new framework for the new project, it is not easy to work out which framework we should choose.
+In my opinion, all languages in this article are useful and important for most software engineer or system analyst. Some languages which I don't choose, doesn't mean they are not important or useful. because usually they are not recognized as **programming** language.  e.g. SQL. It is not only the basic skill for DBA or software engineer but also data analyst and data scientist. 
 
-Don’t forget there is another big risk to adopt new programming language(ES 6 or Typescript) with the new framework, as well as new development, build and test tool, if the team has no enough skills or experience. As solution architect, they need to think it through for development team, and also consider if the team can really pick it up quickly. That is why we have to compare those frameworks here before we make a decision.
+Some popular languages are not shown here, because they are not available for Windows or difficult to setup the playground to test. for instance, `Swift`, `Objective-C`. Some are designed for special purpose. `R` and `Matlab` are such typical samples. 
 
-## Performance is not a priority or crucial criterion for choosing a framework
+And some are kind of terrible, e.g. Assembly language and C#(Installation of Visual Studio will let beginner down). Are you serious? No, I'm kidding. As I mentioned before, here is for beginner to code for fun instead of scaring them, so I just pick some which are useful, popular and convenient for people to play. 
 
-We can find lots of comparison between those frameworks, and so many of them are related to performance, programming language, design pattern, etc. Actually many web applications in the world are just small to median size web application, we don’t need to build the web application as Google, Facebook or Twitter. In my opinion, the performance of framework is the not critical benchmark, at lease it is not first priority which we need to consider if it is right for the team. Except performance, we have more concern on tech stacks, community and ecosystem involved with the framework, which have more impact on team’s productivity and system’s maintainability. 
 
+## Assumptions
 
-## The difference of those framework
+* You have a proper computer instead of a tablet or ipad. Actually you can write some code to create an app directly on your smart phone or tablet after installing some development apps. *AIDE*, *DroidScript* and *QPython* are such applications you can try if you want to play around.
 
-Let's look into the frameworks and list the difference of these frameworks.
+* If you use Mac, the code for Linux should work on Mac as well. You know how to start a terminal on Mac or a command prompt on Windows. Finally, you are ready to get your hands dirty. 
 
-### Basic tech stacks
 
+## Bash/Batch script
 
-Tech Stacks   |    Angular 1.x   | Angular 2 / 4 | React 1.5 (Redux)  | Vue 2   
-----------------|-------------------| ---------------|---------------------|---------
-Vanilla JS     |     Yes       |  Supported  |  Supported       | Supported
-ES 6          |     1.5+          |  Supported  |  Yes            | Yes
-TypeScript    |               |  Yes        |                | Supported |
-MVC           |   1.2-1.4 |            | |
-Component-Based |  1.5+ |  Yes   | Yes |  Yes 
-Shadow DOM | | Yes | |
-Virtual DOM| | | Yes | Yes
-Immutable state  | | | Yes | Yes
+`Bash` is built-in script on Unix/Linux-like operating system. Bash script file is end with `sh` as extension. Batch is built-in script on Windows operating system. Bash script is known as one of Unix shell scripts. The other shell scrips include ksh, csh, zsh, etc. Bash is one of most important and  powerful tool for system admin. 
 
+`Batch` script file is end with `bat` as extension. On Windows there is another file end with `cmd`, it works the same as batch file. From November 2006, Microsoft create a new powerful language `PowerShell`, which is similar to Unix shells. Basically `PowerShell` has replaced `Batch` as first option for system admin.
 
+* Unix/Linux 
 
-* Yes:  Programming language which the framework uses.
-* Supported: Programming language which the framework supports.
+    * Create a script file `hello.sh` with vi or nano
 
+    ```bash
+    #!/bin/bash
+    var="Hello World!"
+    echo $var
+    ```
 
-### Cool stuff is not always the best
+    * Change mode `chmod 755 hello.sh`
+    * Run the script `./hello.sh`
 
-We have seen so many cool stuff which are finally abandoned in the past, the Silverlight is one of such examples. We shouldn’t choose new framework because it looks cool or it is the latest one. We choose the new one because it really can solve our problem, improve our productivity and quality in the long run. Don’t forget there is always some cost to adopt new things. We need to balance the cost and outcome of the technical investment, and we need to work it out if it is right time to do it.
+* Batch/Cmd (Windows) 
 
+    * Create a script file hello.bat or hello.cmd with any editor
 
-### Programming language is still the barrier
+    ```dos
+    @echo off
+    set var='Hello World!'
+    echo.%var%
+    ```
 
+    * Run the script `hello.bat` or `hello.cmd`
 
-If we need to use new programming language, we have to evaluate with the existing development team. Even ES6 or TypeScript (TS) claims it is compatible to Vanilla JS, but when you start to look into new framework or sample project, which are coded with ES6 or TS, it still makes you so confused if you are not familiar with such syntax. It will significantly impact the efficiency of learning new framework. So there is always a learning curve, which we cannot ignore, to code something in a new programming language.
+## C/C++
 
+The C programming language was originally developed as a language to replace assembler in systems programming. It was very successful, making system code portable and easier to write and read. So Basically the kernel of most operating systems,  Windows, Mac, Linux are coded in C. 
 
-Someone complaints all those JS frameworks makes the build process much more complicated than the old web frameworks, because of the new programming language. Does it really matter? The short answer is Yes, but we are not going discuss the advantage in details here. If your team comes from .Net Web Form or Java MVC background, it would be a steep curve for the team to pick up ES6 or TypeScript and Component-based framework, not to mentioned new build and test tools.
+Today C is one of the most used programming languages. Since C was designed to replace assembler language, and that in several important ways, it retains a very low level view of the machine. The C++ programming language was designed as a higher level version of C, providing support for object-oriented programming. It gives developer more power to handle the problem of real world. 
 
+* Create a program file `hello.c ` or `hello.cpp` with vi or any editor
 
-No wonder a few .Net teams were struggling with Node stack integration on Visual Studio, especially when the team members have no Node.js experience. So we need the whole team to discuss the difficulties before we adopt new technology and framework. It is helpful to make sure the team has the same view, and it is also important to plan our training and decide how to transform development team step by step.
+    ```cpp
+    #include<stdio.h>
 
+    int main( ) 
+    {
+        char var[] = "World";   
+        printf( "Hello %s \n Press any key to exit.", var );
+        char key = getchar();
+        return 0;
+    }
+    ```
 
-### Where to start 
+* Unix/Linux includes `gcc` by default. You just need to compile and run the console app. For Windows, you might need install another tool [cygwin](https://cygwin.com/install.html) or [MinGW](http://www.mingw.org/wiki/MinGW_for_First_Time_Users_HOWTO)
 
-For the team which comes with Web Form, with Vanilla JS background, we can start with Angular 1.x (Up to 1.4) on some small projects, or we can build something training project, because the MVC pattern is very similar to their previous coding experience.
+    ```
+    g++ hello.c -o hello
+    ./hello
+    ```
 
-One more thing, I have to mention is the Angular 1.x application can be built without any Node.js tools, such as Gulp, Grunt, Webpack, etc. It makes the team feel comfortable to adopt it without prior experiences. Also, it gives the team some buffer to organize the training to pick up Node.js tools for the future.
+## C\# ##
 
-For the team which has experience of Angular 1.2 ~ 1.4, they can choose to stay on later version of Angular 1.x, e.g. Angular 1.5+, and they can start to convert coding pattern from MVC to Component-based. After that, if the team is planning to move to Angular 2 / 4, it is better to do some TypeScript training. In my view, so far the ecosystem for Angular 2 / 4 is still under development. It is a bit risky to use Angular 2 / 4 to build the real-world production. There are quite many gotchas which you have to figure out on your own.
+C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines. In January 1999, Anders Hejlsberg formed a team to build a new language at the time called Cool, which stood for "C-like Object Oriented Language". By the time the .NET project was publicly announced at the July 2000,Microsoft the language had been renamed C#. 
 
-For the team which has TypeScript or ES6 experience, they can choose what they prefer. They can spend more time on UI integration. There are a few customized UI package for bespoke framework. That is what we are going to discuss in the next.
+* Download and install .net framework from Microsoft website
+* Create a program file helloworld.cs
+
+    ```cs
+    public class Hello
+    {
+        public static void Main()
+        {
+            System.Console.WriteLine("Hello, World!");
+        }
+    }
+    ```
+
+* Compile with .net framework command. 
+* Run helloworld.exe file 
+
+    ```bash
+    C:\Windows\Microsoft.NET\Framework\v3.5\csc.exe helloworld.cs
+    helloworld.exe
+    ```
 
+## Go
+
+Go ,as known as golang, is a free and open source programming language created at Google. It is a compiled, statically typed language in the tradition of Algol and C, with garbage collection, expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its novel type system enables flexible and modular program construction. 
 
+* Download Go binary from www.golang.org
+* Follow the instruction to [install](https://golang.org/doc/install) golang on your computer
+* Create a program file hello.go
+
+    ```go
+    package main
 
-### Responsive UI library support
+    import "fmt"
+    func main() {
+        fmt.Println("hello world")
+    }
+    ```
 
-To build a real-world application, we need to integrate some popular responsive UI libraries instead of building all styles on our own. Let’s take a look the support of Bootstrap or Material-Design for different frameworks.
+* Compile & run `go run hello.go`
+  
+## Java
 
+Java is a general-purpose computer programming language that is concurrent, object-oriented, and specifically designed to have as few implementation dependencies as possible. It is intended to let application developers "write once, run anywhere", meaning that compiled Java code can run on all platforms with JVM without the need for recompilation.
 
- UI library   |    Angular 1.x     | Angular 2 / 4 | React 1.5 (Redux)  | Vue 2   
---------------|------------------- | ---------------|------------------|---------
-Bootstrap 3  | ui-bootstrap (Very Good) |            | react-bootstrap(Very Good) | VueStrap* (Very Good)
-Bootstrap 4  |                          | ui-bootstrap (Alpha) | In progress | BootstrapVue (Good) |
-Material Design | Materialize (Good)   | Angular Material(Basic)  |  Material-UI (Good) | Vuetify (Very Good)
+* Download and install [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+      * For any Ubuntu 12 or higher version I recommand you follow this [instruction](http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html). It is pretty simple. 
+      * For CentOS 6 or higher version, please follow this [instruction](https://wiki.centos.org/HowTos/JavaRuntimeEnvironment)
+      * For Windows please make sure you click the [JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) button. The installer file end with `exe` is best option for beginner, instead of the zip file, because you don't need to setup **PATH** system environment by yourself.  
 
+* Create a program file HelloWorld.java
 
+    ```java
+    public class HelloWorld {
+        public static void main(String[] args) {
+            System.out.println("Hello, World");
+        }
+    }
+    ```
 
-* VueStrap: Please use the [Willen's fork](https://github.com/wffranco/vue-strap) for Vue 2.
-* Libraries in the table above has been tested or used in some projects.
+* Compile & run 
 
+    ```
+    javac HelloWorld.java
+    java HelloWorld
+    ```
+  
+## Javascript
 
-From what we can see now, the Bootstrap 4 is similar to Material-Desgin. So it is good news for developer. They just need to pick their favor, and they will always get analogical effect.
+JavaScript, not to be confused with Java, was created in 10 days in May 1995 by Brendan Eich, then working at Netscape and now of Mozilla. The original name of this language was Mocha, in September of 1995 it was changed to LiveScript, then in December of the same year, the name JavaScript was adopted, because of very popular Java around then. 
 
+JavaScript is the programming language of the web. It's one of the most popular and in demand skills in today's job market for good reason. As a web developer, it is essential that you have a solid understanding of this versatile language.
 
-Actually there are tons of UI libraries / CSS framework available on Github, so many are platform neutral framework, i.e. It can be integreated with Angular, React or Vue. Be honest, integration is always not easy, it will take you or your team some extra effort. Keep it in mind, to integrate platform neutral framework you need to take care of dependencies and build, test tools on your own, such as webpack or yarn.
+* The sample will be presented as web page.
+* Create a program file HelloWorld.html
 
-### Stable API 
+    ```html
+    <!doctype html>
+    <html>
+        <head>
+            <script>
+            function helloWorld() {
+                document.write("Hello World");
+            }
+            helloWorld();
+            </script>
+        </head>
+    </html>
+    ```
+    
+* Open file HelloWorld.html with your browser. 
 
-Against to Angular 1.x, the Angular 2 is completely a new animal. Angular 4 comes with some breaking changes, which breaks a few Angular 2 dependencies (third parties). Since the API of Angular 4 is still under active development, we cannot use it for production. According to Angular team’s announcement, they want to fix all Angular-2’s bugs and issues in Angular 4 and keep all built-in libraries sync to Angular 4. It will take a long while to get things ready. If your project uses Angular 1.2–1.4, I’d like to suggest you to keep it, until Angular 4 is finalized.
 
-React-Redux is much more popular than React-Flux recently, but it doesn’t means it is better than React-Flux pattern. In my opinion, React-Flux is much more straight and close to original React design. If you ready use React-Flux, you have better to stick with it.
+## PHP
 
-Vue 2 comes with some breaking changes. There is migration guide for Vue 1.x to Vue 2. It doesn’t seem very different. Vue 2 is ready for production.
+PHP as it's known today is actually the successor to a product named PHP/FI. Created in 1994 by Rasmus Lerdorf, the very first incarnation of PHP was a simple set of Common Gateway Interface (CGI) binaries written in the C programming language. Originally used for tracking visits to his online resume, he named the suite of scripts "Personal Home Page Tools," more frequently referenced as "PHP Tools." Over time, more functionality was desired, and Rasmus rewrote PHP Tools, producing a much larger and richer implementation. 
 
-### How to compare  
+* Download and install 
 
-In order to compare those frameworks properly, I use those frameworks to create a small real-world web application, which has built-in authentication support for the back-end API service, and integrated with some responsive UI framework, e.g. Bootstrap or Material-Design.
+**Linux**
+Please find the install command [here](/blog/ubuntu-server-14/#install-php-compser)
 
-You will find there is no project built on the Angular 1.x, because my team and me have done a lot real-world application upon Angular 1.x. We know Angular 1.x, inlcuding its ecosystem is quite reliable, which you replicate any web application with this framework.
+**Windows**    
+    *  Download the file [PHP 5.x here](http://php.net/downloads.php) 
+    *  Pick the Thread safe zip file, download extra it to \path\to\php_folder. 
+    *  Update the PATH environment variable with your php directory
 
-On the other hand, Angular 1.x is built with Vanilla JS, i.e. you don’t need transpiler to build Angular 1.x app, so it is a bit unfair to compare with the framework which is coded with ES 6 or TypeScript, because the build tool and setup for Angular 1.x is easier than others. I mention the Angular 1.x here to remind them, actually there is other option for the team comes from traditional MVC stacks. It would be proper way to transform the team smoothly.
+* Create a python script hello.py with any editor
 
+    ```php
+    <?php
+        echo "Hello World!" 
+   ?>
+    ```
+    
+* Run the script `php hello.php` 
 
-### Following are the projects and related screenshots
+## Python
 
+Python is currently one of the most popular dynamic programming languages, along with Perl, Tcl, PHP, and newcomer Ruby. Although it is often viewed as a "scripting" language, it is really a general purpose programming language along the lines of Lisp or Smalltalk (as are the others, by the way). Today, Python is used for everything from throw-away scripts to large scalable web servers that provide uninterrupted service 24x7. It is used for GUI and database programming, client- and server-side web programming, and application testing. It is used by scientists writing applications for the world's fastest supercomputers and by children first learning to program.
 
-[Angular 4 CRM](/project/reetek-angular4-crm/)
+* Download and install [python 3.x](https://www.python.org/downloads/)
+* Create a python script hello.py with any editor
 
-![Screenshot-Angular4Crm](/img/ng4crm-screenshot-2.jpg)
+    ```python
+    print "Hello World!"
+    ```
+    
+* Run the script `python hello.py` 
 
-[React CRM](/project/reetek-react-crm/)
 
-![Screenshot-React-Crm](/img/rrcrm-screenshot-2.jpg)
+## Rust 
 
-[Vue 2 CRM](/project/reetek-vue2-crm/)
+Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety. Rust programming language is fundamentally about empowerment: no matter what kind of code you are writing now, Rust empowers you to reach farther, to program with confidence in a wider variety of domains than you did before.
 
-![Screenshot-Vue2crm](/img/v2crm-screenshot-2.jpg)
+* Download and install [rust 1.x](https://www.rust-lang.org/en-US/install.html)
+* Create a rust file hello.rs with any editor
 
+    ```rust
+    fn main() {
+        println!("Hello World !")
+    }
+    ```
 
 
-### Comparison of projects for different framework
 
-Let’s go back to projects above and take a look. Basically they are implemented almost the same features as real-world simple CRM application.
 
+  
 
-__Features__
-
-
-* Authentication & Token support for Restful API
-* Customer CRUD functions
-* Order CRUD functions
-* Dashboard including two charts (Bar/Line/Doughnut)
-* Integrate with Material Design (Angular project includes bootstrap)
-
-
-|             |Angular 4 CRM   |  React Redux CRM  | Vue 2 CRM
---------------|-------------------|------------------|-------------
-Dependencies |       22           |      13           |  9
-Code Size    |     135KB          |     113KB         |  49KB
-Effort       |     72 hrs         |    80 hrs         |    48hrs
-
-* Dependencies: Any dependencies for test, distribute are excluded
-* Code Size: It includes some customized CSS file, but image files are excluded
-* Effort: The effort for learning curve has been eliminated, but R&D effort cannot be excluded. 
-
-
-Firstly, I have to explain why React project took more effort than the other two projects. Comparing with React, the Angular 4 and Vue 2 are a bit new, i.e. there are more available packages or libraries for React on-line. As I mentioned before, it is not a good news. We need to try more different to figure out the pros and cons of different solutions. Unfortunately, we cannot exclude such R&D effort when we build these projects. 
-
-According to above the dependencies, code size, we can see the project based on Vue.js is much simpler than other two projects.
-
-
-In my view, Vue 2 is my favor for next new project. It combines advantages of Angular and React. It also addresses some problems which we found in Angular and React.
-
-Vue.js uses Virtual DOM, which avoids many dirty checking in Angular 1.x, and the complicated coding pattern (Observable & ReactiveJs, IMO) in Angular 2 / 4.
-
-Vue.js makes the handling of immutable and mutable variables much easier than React. Its template is very handy and straight. It is the same as regular HTML, it is very easy to convert the mock-up HTML into Vue template, especially when you need to customize you styles. Vue’s template and directive is similar to Angular.
-
-Vue.js is not just cool, it is elegant and simple. I am pretty sure if you have Angular or React background, you will pick it up in a couple hours or days. Once you start to use it, you won’t want to go back. Its official routing system is quite stable and easy to use. Compare with Angular-Router or React-Router, it is much more reliable.
-
-Generally, Material-Design libraries for React is not handy as other customized version for Angular or Vue. The special coding style of JSX needs to convert all CSS and HTML into JSX format. To be honest, I am not so convinced by React’s JSX, because it is not straight as final HTML or CSS. Compare to other framework, it is a bit verbose and inconvenient. We cannot simply copy the style code from the browser’s dev tool when we debug it on the browser. i.e. You need to put more effort to make your page pretty.
-
-Angular’s Material-Design library has very limit components. To build a real-world application you need to add another UI library to supplement the former missing components. Last but not least, the Vuetify is the best Material-Design so far we have found and tested.
-
-
-### Summary
-
-Before we make any conclusion, we have to be aware the world keeps changing. Perhaps when I was writing this article, some problem of framework have been solved, or some small problem became worse and worse. We have to review the decision we made from time to time and correct them ASAP if we find the cost is overweight the outcome.
-
-* Team with Web Form and Vanilla Js background should starts with Angular 1.4 and take some time to be familiar with Node.js tools
-
-* Team with Vanilla Js background should start to learn ES 6 or TypeScript, since sooner or later all the browsers, including mobile devices, will support ES 6 or TypeScript.
-
-* Teamwith ES6 /TypeScript background can choose any framework you prefer, the integration with other UI library will take you some time to make a judgement.
-
-* Teamwith React-Flux can continue or switch to React-Redux. It maybe reduces some boiler code, but I don’t think it is a big deal.
-
-* For the newcomer of React, I will recommand React-Redux, because it has better community support.
-
-* In my opinion, if you continue to invest anything on Angular 2, it is a bit waste, because Angular team hopes you to move to Angular 4 as soon as possible once Angular 4 is ready for production, and they are planning to fix Angular 2’s issues in Angular 4.
-
-* Angular 4 and its ecosystem are under active development, but please be careful if you want to use them in your production.
-
-* Vue.js framework is a very nice one. Give a go on your next project.
