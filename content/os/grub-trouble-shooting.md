@@ -2,7 +2,7 @@
 tags =  ["linux"]
 categories = ["os"]
 date = "2017-09-20T14:59:31+11:00"
-title = "Ubuntu 14 -- desktop setup & dual boot "
+title = "Grub Trouble Shooting"
 draft = false
 +++
 
@@ -42,4 +42,6 @@ bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
 | ....
 
 ```
+
+
 
