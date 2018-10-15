@@ -3,7 +3,7 @@ tags = ["java"]
 categories = ["code"]
 type   = "java"
 date = "2013-07-08T14:59:31+11:00"
-title = "Java Notes, Part-2"
+title = "Java Notes - Part 2: Currency"
 draft = false
 +++
 

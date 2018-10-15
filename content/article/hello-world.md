@@ -2,6 +2,7 @@
 categories = ["article"]
 date = "2013-09-06T16:43:12+11:00"
 title = "Do you have potential to be a programmer?"
+draft=true
 
 +++
 

@@ -1,7 +1,7 @@
 +++
 date = "2018-08-06T16:43:12+11:00"
-title = " backup"
-draft=true
+title = "_index"
+draft=false
 +++
 
 >*It is not a blog site, but my tech note instead.*
@@ -237,14 +237,23 @@ Python is currently one of the most popular dynamic programming languages, along
 
 Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety. Rust programming language is fundamentally about empowerment: no matter what kind of code you are writing now, Rust empowers you to reach farther, to program with confidence in a wider variety of domains than you did before.
 
-* Download and install [rust 1.x](https://www.rust-lang.org/en-US/install.html)
-* Create a rust file hello.rs with any editor
+* Download and install rust  [rust 1.x](https://www.rust-lang.org/en-US/install.html)
+
+* Create a project 
+
+    `cargo new helloworld`
+
+* Copy the content below into the rust file main.rs with any editor
 
     ```rust
     fn main() {
         println!("Hello World !")
     }
     ```
+
+* Run with rust app with cargo
+
+     `cargo run`
 
 
 
