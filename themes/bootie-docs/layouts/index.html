@@ -14,8 +14,14 @@
 
 {{ range where .Site.Pages "Title" "_index" }}
 	<div class="row doc-main">
+		<main role="main">
 		<!--<p class="doc-entry-meta">updated at <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time></p>-->
-		{{ .Content }}
+			<article>
+				<section>
+					{{ .Content }}
+				</section>
+			</article>
+		</main>
 	</div>
 {{ end }}
 

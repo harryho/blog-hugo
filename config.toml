@@ -13,24 +13,16 @@ disqusShortname = "harryho"
   searchDomain = "harryho.github.io"
   noCategoryLink = true
   repositoryUrl = "https://github.com/harryho/harryho.github.io.git"
-  # highlightStyle = "railscasts"
-  highlightStyle = "github"
+  highlightStyle = "railscasts"
+  # highlightStyle = "github"
+
+[[params.mainMenu]]
+  name = "Article"
+  link = "article/"  
 
 [[params.mainMenu]]
   name = "Code"
   link = "code/" 
-
-[[menu.code]]
-    name = "about hugo"
-    pre = "<i class='fa fa-heart'></i>"
-    weight = -110
-    identifier = "about"
-    url = "/java/"
-[[menu.code]]
-    name = "getting started"
-    pre = "<i class='fa fa-road'></i>"
-    weight = -100
-    url = "/java/"
 
 [[params.mainMenu]]
   name = "Dev"

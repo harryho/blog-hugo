@@ -7,7 +7,7 @@
             </div>
             <div class="doc-list-entry">
                 <ul>
-                    {{ range .Data.Pages }}
+                    {{ range  .Data.Pages.ByTitle }}
                     <li>
                         <a class="doc-entry" href="{{ .RelPermalink }}">
                             <span class="doc-entry-title">{{ .Title }}{{ if .Draft }} #Draft{{ end }}</span>

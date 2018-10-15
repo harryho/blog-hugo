@@ -18,6 +18,11 @@ Thumbs.db
 *.cache
 *.ilk
 *.log
+
+# Ingore java class or jar files
+*.class
+*.jar
+
 [Bb]in
 [Dd]ebug*/
 *.lib
@@ -27,4 +32,7 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 
-public/
+public/*
+serve/*
+demo/
+playground/*
