@@ -16,9 +16,157 @@ Prelude
 * You are familiar with Ubuntu, at least you have some experience working on Linux system. 
 * You are familiar with basic bash/shell command
 
+
+## Wireless Setup
+
+> If you install ubuntu server on a laptop, you might end up to setup the wifi first. Usually you won't bring the cable with your laptop wherever you go, also you might just have no cable or run out all cables. Now let's dive into how to setup the wifi on sever. 
+
+* Find out network control installed on your laptop. The column link lists the name of interfaces. The interface name on your laptop will be possible slightly a bit different. It depends on laptop maker. Basically the interface with the type __wlan__ is your wifi interface. 
+
+```
+networkctl 
+
+## You will see network interfaces on your laptop. enp1s0 is the ethernet interface., and 
+wlp3s0 is your wifi interface
+
+IDX LINK           TYPE         OPERATIONAL              SETUP
+    1   lo         loopback     n/a                      unmanaged
+    2   enp1s0     ether        n/a                      unmanaged
+    3   wlp3s0     wlan         n/a                      unmanaged
+```
+
+* Disable IP V6 if you don't use it. (Highly recommanded for personal laptop user)
+ 
+    - Add  following setting to file  `/etc/sysctl.conf` 
+
+    ```
+    net.ipv6.conf.all.disable_ipv6 = 1
+    net.ipv6.conf.default.disable_ipv6 = 1
+    net.ipv6.conf.lo.disable_ipv6 = 1
+    ```
+
+    - Reconfigure by running the following command
+
+    ```
+    sudo sysctl -p
+
+    # Check the ipv6 status. If you see 1 after running command below, it means ipv6
+     has been disabled
+    cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+        
+    ```
+
+* Find out the status `wpa_supplicant`
+
+    ```
+    sudo systemctl status wpa_supplicant
+
+    # If you find "disabled" in the output, you can simply enable it as below
+
+    sudo systemctl enable wpa_supplicant
+
+    ```
+
+* Find out your wifi ESSID
+
+    ```
+    sudo iwlist wlp3s0 scan | grep ESSID
+
+    # If you get error message like "network is down", use ifconfig to bring it up and 
+    # re-run previous commmand    
+    sudo ifconfig wlp3s0 up
+    ```
+
+* Setup the wpa passphrase for your wifi
+
+   ```
+   # Use following command to add pass phrase to your wpa_supplicant
+   # 
+   # wpa_passphrase <your-ESSID> <your-passphrase> | sudo tee /etc/wpa_supplicant.conf
+
+   # If your ESSID is mywifi and password of wifi is mypasswork, then you will end up the 
+   # command below
+   wpa_passphrase mywifi mypasswork | sudo tee /etc/wpa_supplicant.conf
+
+   ```
+
+* Config your wpa supplicant for your wifi interface and run the comand as background process
+
+   ```
+   sudo wpa_supplicant -c /etc/wpa_supplicant.conf -i wlp3s0 > /dev/null 2>1& &
+   ```
+   
+* Add SSID scan into config `/etc/wpa_supplicant.conf`
+
+
+    ```
+    network={
+        ssid="mywifi"
+        #psk="mypassword"
+        psk=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        scan_ssid=1
+    }
+    ```
+
+* Get IP address from external DHCP
+  
+  ```
+  sudo dhclient wlp3s0
+
+  # Check the ip address
+  ifconfig wlp3s0
+  ```
+  
+### Wifi Trouble Shooting
+
+* There is no ip address assigned to your wifi interface
+
+    - Check out the wpa_supplicant status
+    `sudo systemctl status wpa_supplicant`
+
+    - If you find some error like 'Failed to construct signal', it means
+    some network service has been disabled
+
+    `sudo systemctl list-unit-files  --state disabled | grep network`
+
+    - Enable `systemd-networkd.service`, `networking.service` if they are disabled
+
+* The error message comes after the `dhclient`
+
+    - Enable the `squid.service`
+
+
+
+* Auto connect to wifi on Starup
+
+```
+sudo cp /lib/systemd/system/wpa_supplicant.service /etc/systemd/system/wpa_supplicant.service
+
+sudo vi /etc/systemd/system/wpa_supplicant.service
+```
+
+* Replace the following line
+ `ExecStart=/sbin/wpa_supplicant -u -s -O /run/wpa_supplicant`
+ with 
+ `ExecStart=/sbin/wpa_supplicant -u -s -c /etc/wpa_supplicant.conf -i wlp3s0`
+
+
+* Add wifi  interface into auto startup file `/etc/network/interfaces`
+
+```
+auto lo
+iface lo net loopback
+
+auto wlp3s0
+iface wlp3s0 net dchp
+```
+
+
+
+
 ## Things to do after installing Ubuntu server
 
-* How to setup your server 
+
 
 ### UFW setup
 

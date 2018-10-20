@@ -6,7 +6,7 @@ title = "Grub Trouble Shooting"
 draft = false
 +++
 
-
+### Update Grub Menu for dual OS boot
 
 **Change BIOS**
 * Start your PC by pressing a pressing a special function key (usually F12, F10 or F2 depending on the vendor specifications).
@@ -42,6 +42,37 @@ bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
 | ....
 
 ```
+
+
+### Boot from Grub command promp
+
+* Use <ESC> to navigate to grub command promp from Grub menu
+
+* List all available dirves by typing `ls`. After that, you willl see a couple drives. If you have multiple hard drive, USB or SD Card pluged in. 
+
+```
+(hd0) (hd0,gpt4) (hd0, gpt3) (hd0,gpt2) (hd0, gpt1)  (hd1) (hd1,msdos2)(hd1, msdos2)(hd2)
+
+# Get more detail of drives
+ls -l
+```
+
+* From the above detail information, you might find the hard drive of your PC. Continue to use `ls` to locate the actual boot file to confirm the drive contains the boot file. 
+
+```
+# Assume the (hd0,gpt2) contains the linux kernal boot file. 
+ls -a (hd0,gpt2)/
+```
+
+* Set root drive
+
+```
+set root=(hd0,gpt2)
+linux (hd0,gpt2)/boot/vmluz-linux-4.4.x.generic
+initrd (hd0,gpt2)/boot/initrid.img-linux-4.4.x-initrd.img
+normal
+```
+
 
 
 
