@@ -23,23 +23,24 @@ Prelude
 
 * Find out network control installed on your laptop. The column link lists the name of interfaces. The interface name on your laptop will be possible slightly a bit different. It depends on laptop maker. Basically the interface with the type __wlan__ is your wifi interface. 
 
-```
+```bash
 networkctl 
-
-## You will see network interfaces on your laptop. enp1s0 is the ethernet interface., and 
-wlp3s0 is your wifi interface
-
-IDX LINK           TYPE         OPERATIONAL              SETUP
-    1   lo         loopback     n/a                      unmanaged
-    2   enp1s0     ether        n/a                      unmanaged
-    3   wlp3s0     wlan         n/a                      unmanaged
 ```
+ 
+ * You will see network interfaces on your laptop. enp1s0 is the ethernet interface., and `wlp3s0` is your wifi interface
+
+    ```
+    IDX LINK           TYPE         OPERATIONAL              SETUP
+        1   lo         loopback     n/a                      unmanaged
+        2   enp1s0     ether        n/a                      unmanaged
+        3   wlp3s0     wlan         n/a                      unmanaged
+    ```
 
 * Disable IP V6 if you don't use it. (Highly recommanded for personal laptop user)
  
     - Add  following setting to file  `/etc/sysctl.conf` 
 
-    ```
+    ```bash
     net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv6.conf.default.disable_ipv6 = 1
     net.ipv6.conf.lo.disable_ipv6 = 1
@@ -47,18 +48,18 @@ IDX LINK           TYPE         OPERATIONAL              SETUP
 
     - Reconfigure by running the following command
 
-    ```
+    ```bash
     sudo sysctl -p
 
     # Check the ipv6 status. If you see 1 after running command below, it means ipv6
-     has been disabled
+    # has been disabled
     cat /proc/sys/net/ipv6/conf/all/disable_ipv6
         
     ```
 
 * Find out the status `wpa_supplicant`
 
-    ```
+    ```bash
     sudo systemctl status wpa_supplicant
 
     # If you find "disabled" in the output, you can simply enable it as below
@@ -69,7 +70,7 @@ IDX LINK           TYPE         OPERATIONAL              SETUP
 
 * Find out your wifi ESSID
 
-    ```
+    ```bash
     sudo iwlist wlp3s0 scan | grep ESSID
 
     # If you get error message like "network is down", use ifconfig to bring it up and 
@@ -79,7 +80,7 @@ IDX LINK           TYPE         OPERATIONAL              SETUP
 
 * Setup the wpa passphrase for your wifi
 
-   ```
+   ```bash
    # Use following command to add pass phrase to your wpa_supplicant
    # 
    # wpa_passphrase <your-ESSID> <your-passphrase> | sudo tee /etc/wpa_supplicant.conf
@@ -92,14 +93,14 @@ IDX LINK           TYPE         OPERATIONAL              SETUP
 
 * Config your wpa supplicant for your wifi interface and run the comand as background process
 
-   ```
+   ```bash
    sudo wpa_supplicant -c /etc/wpa_supplicant.conf -i wlp3s0 > /dev/null 2>1& &
    ```
    
 * Add SSID scan into config `/etc/wpa_supplicant.conf`
 
 
-    ```
+    ```bash
     network={
         ssid="mywifi"
         #psk="mypassword"
@@ -110,7 +111,7 @@ IDX LINK           TYPE         OPERATIONAL              SETUP
 
 * Get IP address from external DHCP
   
-  ```
+  ```bash
   sudo dhclient wlp3s0
 
   # Check the ip address
@@ -139,7 +140,7 @@ IDX LINK           TYPE         OPERATIONAL              SETUP
 
 * Auto connect to wifi on Starup
 
-```
+```bash
 sudo cp /lib/systemd/system/wpa_supplicant.service /etc/systemd/system/wpa_supplicant.service
 
 sudo vi /etc/systemd/system/wpa_supplicant.service
@@ -153,7 +154,7 @@ sudo vi /etc/systemd/system/wpa_supplicant.service
 
 * Add wifi  interface into auto startup file `/etc/network/interfaces`
 
-```
+```bash
 auto lo
 iface lo net loopback
 
