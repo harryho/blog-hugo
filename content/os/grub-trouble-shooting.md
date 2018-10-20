@@ -68,8 +68,8 @@ ls -a (hd0,gpt2)/
 
 ```
 set root=(hd0,gpt2)
-linux (hd0,gpt2)/boot/vmluz-linux-4.4.x.generic
-initrd (hd0,gpt2)/boot/initrid.img-linux-4.4.x-initrd.img
+linux (hd0,gpt2)/boot/vmlinuz-linux-4.4.x-xxx-generic
+initrd (hd0,gpt2)/boot/initrd.img-linux-4.4.x-xxx-generic
 normal
 ```
 
