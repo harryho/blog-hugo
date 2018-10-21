@@ -2,7 +2,7 @@
 tags = ["c"]
 categories = ["code"]
 date = "2016-04-10T14:59:31+11:00"
-title = "LCTHW C Lectures 2"
+title = "C Lecture - 2"
 draft = false
 +++
 

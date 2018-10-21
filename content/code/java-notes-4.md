@@ -56,17 +56,18 @@ soon as it occurs.
 ## Common functional Interfaces
 
 |Functional Interface|Parameter Types|Return|Abstract Description Method|Description| Other Methods |
-|--------------------|---------------|------|---------------------------|-----------|-----|
+|----------|-----------|------|----------------|-----------|-----|
 |Runnable|none|void|run|Runs an action|  |
 |Supplier<T>|none|T|get|Supplies a value of type T|  |
 |Consumer<T>|T|void|accept|Consumes a  value of type T| chain  |
-|BiConsumer<T,U>|T,U|void|accept|Consumes a  value of type T and U| chain  |
-|Function<T, R>| T |R | apply| A function with argument oftype T|compose,andThen,identity|
-|BiFunction<T, U, R>| T,U |R | apply| A function with argument of type T and U|andThen|
-|UnaryOperator<T>| T |T | apply| A unary operator on type T|compose,andThen,identity|
+|BiConsumer<T, U>|T, U|void|accept|Consumes a  value of type T and U| chain  |
+|Function<T, R>| T |R | apply| A function with argument oftype T|compose, andThen,identity|
+|BiFunction<T, U, R>| T, U |R | apply| A function with argument of type T and U|andThen|
+|UnaryOperator<T>| T |T | apply| A unary operator on type T|compose, andThen, identity|
 |BiUnaryOperator<T,T>| T,T |T | apply| A binary operator on type T|andThen|
-|Predicate<T>| T |boolean | test| A Boolean-valued function |and, or, negate, isEqual|
-|BiPredicate<T,T>| T,T |boolean | test| A Boolean-valued function with tow arguments|and, or, negate|
+|Predicate<T>| T |boolean | test| A Boolean-valued function |and,  or, negate, isEqual|
+|BiPredicate<T,T>| T,T |boolean | test| A Boolean-valued function with tow arguments|and,  or, negate|
+
 
 ## Method Reference
 

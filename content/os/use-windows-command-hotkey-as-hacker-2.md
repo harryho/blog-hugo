@@ -71,7 +71,8 @@ runas /user:yourpc\administrator "cmd"
 
 REM ##BE CAREFUL When you try the command below ##  
 REM it shows how to create, delete files as admin under C drive root.  
-runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & dir c:\z.txt & pause & del c:\z.txt " 
+runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & \
+    dir c:\z.txt & pause & del c:\z.txt " 
 
 ```
 
@@ -251,14 +252,16 @@ REM get list of tasks in details
 SCHTASKS /Query /FO LIST /V     
 
 REM get table of running tasks in details and output to csv file 
-SCHTASKS /Query /FO TABLE /NH /V | find "Running">running_tasks.csv
+SCHTASKS /Query /FO TABLE /NH /V | find "Running" >running_tasks.csv
 ```
 
 ## Combination of multiple commands
 
 As we know, usually each command is designed to complete some specific actions, but sometimes we have to combine different commands together to achieve what we want. There are a few ways to put the commands together. 
 
-### Use `&` to simply connect to commands 
+### Use `&` 
+
+It is used to connect to two commands  and execute them sequentially
 
 * Delete a folder with non-empty subdirectries `test` we need to combine `del` and `rd` together. Actually we can two commands one by one, but we can put it together and just execute once.  
 
@@ -279,7 +282,9 @@ del /s/q test & rd /s/q
 ```
 
 
-### Use pipeline `>` to setup a channel between commands pass the data through the commands. 
+### Use pipeline `>`
+
+It is used to setup a channel between commands pass the data through the commands. 
 
 Actually you have seen many samples from above advanced commands. I just use a very simple one to show you how it works. 
 
@@ -297,7 +302,9 @@ wmic cpu get loadpercentage
 
 ```
 
-### Use `for` loop to combine commands. Please check the samples above.  
+### Use `for` 
+
+It is used to loop to combine commands. Please check out the samples for `tasklist` or `netstat`.  
 
 
 ## script
@@ -318,7 +325,11 @@ wmic cpu get loadpercentage
 
 @echo off
 
-@echo."Assumption: You have multiple temp folders in different drives. You want to delete log files inside temp folder and its subdirectries. Before you delete them, you want to list all files first, file list should be sorted by time"
+@echo."Task: "
+@echo."You have multiple temp folders in different drives. "
+@echo."You want to delete log files inside temp folder and its subdirectries. "
+@echo."Before you delete them, you want to list all files first, file list"
+@echo."should be sorted by time"
 
 :again 
    echo "Checking all Recycle bins for each drive ..."

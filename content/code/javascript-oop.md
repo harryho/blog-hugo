@@ -2,7 +2,7 @@
 tags =  ["javascript", "oo"]
 categories = ["code"]
 date = "2014-03-20T14:59:31+11:00"
-title = "JavaScript and Object Oriented Programming"
+title = "JavaScript and OOP"
 draft = false
 +++
 
@@ -11,7 +11,7 @@ draft = false
 
 * Please find the answer on [Home Page](/#JavaScript)
 
-## What is Object Oriented Programming?
+## What is OOP?
 
 > Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects", which may contain data, in the form of fields, as known as attributes or properties; and actions, in the form of functions, as known as methods.
 
@@ -199,25 +199,34 @@ var objectA = new MyClass();
 var objectB = new MyClass();
 
 console.log( 'object A:', objectA.name ,  'object B:', objectB.name  );
-console.log( 'MyClass.prototype  === objectA.constructor.prototype ? ', MyClass.prototype === objectA.constructor.prototype );
-console.log( 'MyClass.prototype  === objectB.constructor.prototype ? ', MyClass.prototype  === objectB.constructor.prototype );
+console.log( 'MyClass.prototype  === objectA.constructor.prototype ? ', 
+    MyClass.prototype === objectA.constructor.prototype );
+console.log( 'MyClass.prototype  === objectB.constructor.prototype ? ', 
+    MyClass.prototype  === objectB.constructor.prototype );
 
-console.log( " objectA.propObject : ", objectA.propObject , " objectB.propObject : ",  objectB.propObject  );
+console.log( " objectA.propObject : ", objectA.propObject , 
+    " objectB.propObject : ",  objectB.propObject  );
 
 objectA.propObject.id = 1; 
 objectA.propObject.property = 'AAA'; 
 
-console.log( " objectA.propObject : ", objectA.propObject,  " objectB.propObject : ",  objectB.propObject  );
+console.log( " objectA.propObject : ", objectA.propObject,  
+    " objectB.propObject : ",  objectB.propObject  );
 /*
 output :
 
 MyClass object B: MyClass
 MyClass.prototype  === objectA.constructor.prototype ?  true
 MyClass.prototype  === objectB.constructor.prototype ?  true
-objectA.propObject :  Object {id: 0, property: "property"}  objectB.propObject :  Object {id: 0, property: "property"}
-objectA.propObject :  Object {id: 1, property: "AAA"}  objectB.propObject :  Object {id: 1, property: "AAA"}  
+
+objectA.propObject :  Object {id: 0, property: "property"}  
+objectB.propObject :  Object {id: 0, property: "property"}
+
+objectA.propObject :  Object {id: 1, property: "AAA"}  
+objectB.propObject :  Object {id: 1, property: "AAA"}  
 */
 ```
+
 If we draw a diagram of above sample, you will see what is happening behind the scene. Since the prototype property is a reference, changing the prototype object’s properties at runtime will affect all objects using the prototype. 
 
 ```ini
@@ -250,7 +259,11 @@ function Pet(name, master) {
         this.offsprings.push(obj);
     },
     this.getInfo = function () {
-        console.log(" species: ", this.species, " name: ", this.name, " master : ", this.master.name, " ", this.master.gender);
+        console.log(" species: ", this.species, 
+            " name: ", this.name, 
+            " master : ", this.master.name, 
+            " ", this.master.gender);
+
         this.offsprings.forEach(function (e) {
             console.log(" has baby :  ", e.name, " ", e.species);
         });
@@ -323,7 +336,11 @@ Dog.prototype = {
         self.offsprings.push(obj);
     },
     getInfo: function (self) {
-        console.log(" species: ", self.species, " name: ", self.name, " master : ", self.master.name, " ", this.master.gender);
+        console.log(" species: ", self.species, 
+            " name: ", self.name, 
+            " master : ", self.master.name, 
+            " ", this.master.gender);
+
         self.offsprings.forEach(function (e) {
             console.log(" has baby :  ", e.name, " ", e.species);
         });
@@ -383,7 +400,10 @@ Pet.prototype.deliverBaby = function (obj) {
 };
 
 Pet.prototype.getInfo = function () {
-    console.log(" species: ", this.species, " name: ", this.name, " master : ", (this.master?this.master.name:''), " ",  (this.master?this.master.gender:''));
+    console.log(" species: ", self.species, 
+            " name: ", self.name, 
+            " master : ", self.master.name, 
+            " ", this.master.gender);
     this.offsprings.forEach(function (e) {
         console.log(" has baby :  ", e.name, " ", e.species);
     });
@@ -455,7 +475,11 @@ var Pet = {
         this.offsprings.push(obj);
     },
     getInfo: function () {
-        console.log(" species: ", this.species, " name: ", name, " master : ", this.master.name, " ", this.master.gender);
+        console.log(" species: ", this.species, 
+        " name: ", name, 
+        " master : ", this.master.name,
+         " ", this.master.gender);
+
         this.offsprings.forEach(function (e) {
             console.log(" has baby :  ", e.name, " ", e.species);
         });
@@ -466,7 +490,11 @@ var Dog = clone(Pet);
 Dog.species = 'Dog';
 
 Dog.getInfo = function () {
-    console.log(" Override -- species: ", this.species, " name: ", this.name, " master : ", this.master.name, " ", this.master.gender);
+    console.log(" Override -- species: ", this.species, 
+    " name: ", this.name,
+    " master : ", this.master.name, 
+    " ", this.master.gender);
+
     this.offsprings.forEach(function (e) {
         console.log(" has baby :  ", e.name, " ", e.species);
     });
@@ -541,7 +569,8 @@ var closureObject = (function() {
 
 console.log(  closureObject.publicProperty );
 console.log(  closureObject._privateProperty ); 
-// console.log(  closureObject._privateMethod() ); // This will cause Uncaught TypeError
+// console.log(  closureObject._privateMethod() ); 
+// This will cause Uncaught TypeError
 console.log(  closureObject.getPrivateProperty() );
 
 closureObject.setPrivateProperty( 'public');
@@ -551,9 +580,9 @@ console.log(  closureObject.getPrivateProperty() );
 output:
 
 Public Property
-undefined             // privateProperty can not be accessed directly
+undefined      //--> privateProperty can not be accessed directly
 private               
-public                // privateProperty can be updated by public method
+public            //--> privateProperty can be updated by public method
 */
 ```
 
@@ -644,8 +673,8 @@ A common pattern that you will see in many libraries, widgets, and plugins
         if (obj === null || typeof obj !== 'object') {
             return obj;
         }
-
-        var temp = obj.constructor(); // give temp the original obj's constructor
+        // give temp the original obj's constructor
+        var temp = obj.constructor(); 
         for (var key in obj) {
             temp[key] = clone(obj[key]);
         } 
@@ -719,8 +748,17 @@ console.log(rtkns.utils.toString( client2));
 /*
 
 output:
-{"id":0,"createdBy":"","modifiedBy":"","created":null,"modified":null,"name":"client 1","email":"client1.email@test.com","orders":[{"id":0,"createdBy":"","modifiedBy":"","created":null,"modified":null,"amount":100,"description":"order 1"}]}
-VM95:2 {"id":0,"createdBy":"","modifiedBy":"","created":null,"modified":null,"name":"client 2","email":"client2.email@test.com","orders":[{"id":0,"createdBy":"","modifiedBy":"","created":null,"modified":null,"amount":600,"description":"order 2"}]}
+{"id":0,"createdBy":"","modifiedBy":"","created":null,"modified":null,
+    "name":"client 1","email":"client1.email@test.com",
+    "orders":[{"id":0,"createdBy":"","modifiedBy":"",
+        "created":null,"modified":null,
+        "amount":100,"description":"order 1"}]}
+    
+{"id":0,"createdBy":"","modifiedBy":"","created":null,"modified":null,
+    "name":"client 2","email":"client2.email@test.com",
+    "orders":[{"id":0,"createdBy":"","modifiedBy":"",
+        "created":null,"modified":null,
+        "amount":600,"description":"order 2"}]}
 */
 ```
 
@@ -760,7 +798,10 @@ var Interface = function(interfaceName, interfaceMembers) {
 };
 
 Interface.errorDetect = function(interfaceName, interfaceMember) {
-    throw Error('errorDetect: Class does not implement interface member ' + interfaceName + '.' + interfaceMember + '()');
+    throw Error('errorDetect: Class does not implement interface member '
+     + interfaceName 
+     + '.' 
+     + interfaceMember + '()');
 };
 
 Interface.ensureImplement = function(obj /*, interfaces */ ) {
@@ -814,7 +855,8 @@ console.log(Interface.ensureImplement( loggerB, ILog));
 /*
 output:
 true
-Uncaught Error: errorDetect: Class does not implement interface member ILog.logError()
+Uncaught Error: errorDetect: Class does not
+ implement interface member ILog.logError()
 ...
 */
 

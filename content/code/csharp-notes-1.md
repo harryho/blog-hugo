@@ -222,14 +222,18 @@ public class ExpressionBuilder
                 if (exp == null)
                     exp = GetExpression<T>(param, filters[0], filters[1]);
                 else
-                    exp = Expression.AndAlso(exp, GetExpression<T>(param, filters[0], filters[1]));
+                    exp = Expression.AndAlso(
+                        exp, 
+                        GetExpression<T>(param, filters[0], filters[1]));
 
                 filters.Remove(f1);
                 filters.Remove(f2);
 
                 if (filters.Count == 1)
                 {
-                    exp = Expression.AndAlso(exp, GetExpression<T>(param, filters[0]));
+                    exp = Expression.AndAlso(
+                        exp, 
+                        GetExpression<T>(param, filters[0]));
                     filters.RemoveAt(0);
                 }
             }
@@ -238,7 +242,9 @@ public class ExpressionBuilder
         return Expression.Lambda<Func<T, bool>>(exp, param);
     }
 
-    private static ConstantExpression ConvetValueType(MemberExpression member, object value)
+    private static ConstantExpression ConvetValueType(
+        MemberExpression member, 
+        object value)
     {
         if (member.Type == typeof(int))
         {
@@ -260,42 +266,66 @@ public class ExpressionBuilder
         return Expression.Constant(value);
     }
 
-    private static Expression GetExpression<T>(ParameterExpression param, Filter filter)
+    private static Expression GetExpression<T>(
+        ParameterExpression param, 
+        Filter filter)
     {
 
-        MemberExpression member = Expression.Property(param, filter.Property);
+        MemberExpression member = Expression.Property(
+            param, filter.Property);
 
         switch (filter.Op)
         {
             case Op.Equals:
-                return Expression.Equal(member, Expression.Constant(filter.Val, member.Type));
+                return Expression.Equal(
+                    member, 
+                    Expression.Constant(filter.Val, member.Type));
 
             case Op.GreaterThan:
-                return Expression.GreaterThan(member, ConvetValueType(member, filter.Val));
+                return Expression.GreaterThan(
+                    member, 
+                    ConvetValueType(member, filter.Val));
 
             case Op.GreaterThanOrEqual:
-                return Expression.GreaterThanOrEqual(member, ConvetValueType(member, filter.Val));
+                return Expression.GreaterThanOrEqual(
+                    member, 
+                    ConvetValueType(member, filter.Val));
 
             case Op.LessThan:
-                return Expression.LessThan(member, ConvetValueType(member, filter.Val));
+                return Expression.LessThan(
+                    member, 
+                    ConvetValueType(member, filter.Val));
 
             case Op.LessThanOrEqual:
-                return Expression.LessThanOrEqual(member, ConvetValueType(member, filter.Val));
+                return Expression.LessThanOrEqual(
+                    member, 
+                    ConvetValueType(member, filter.Val));
 
             case Op.Contains:
-                return Expression.Call(member, containsMethod, Expression.Constant(filter.Val, member.Type));
+                return Expression.Call(
+                    member, 
+                    containsMethod, 
+                    Expression.Constant(filter.Val, member.Type));
 
             case Op.StartsWith:
-                return Expression.Call(member, startsWithMethod, Expression.Constant(filter.Val, member.Type));
+                return Expression.Call(
+                    member, 
+                    startsWithMethod, Expression.Constant(
+                        filter.Val, 
+                        member.Type));
 
             case Op.EndsWith:
-                return Expression.Call(member, endsWithMethod, Expression.Constant(filter.Val, member.Type));
+                return Expression.Call(
+                    member, 
+                    endsWithMethod, 
+                    Expression.Constant(filter.Val, member.Type));
         }
 
         return null;
     }
 
-    private static BinaryExpression GetExpression<T>(ParameterExpression param, Filter filter1, Filter filter2)
+    private static BinaryExpression GetExpression<T>(\
+        ParameterExpression param, Filter filter1, Filter filter2)
     {
         Expression bin1 = GetExpression<T>(param, filter1);
         Expression bin2 = GetExpression<T>(param, filter2);
@@ -321,21 +351,31 @@ public static class PredicateBuilder
     public static Expression<Func<T, bool>> True<T>() { return f => true; }
     public static Expression<Func<T, bool>> False<T>() { return f => false; }
 
-    public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+    public static Expression<Func<T, bool>> Or<T>(
+        this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
     {
-        var secondBody = expr2.Body.Replace(expr2.Parameters[0], expr1.Parameters[0]);
-        return Expression.Lambda<Func<T, bool>>
-                (Expression.OrElse(expr1.Body, secondBody), expr1.Parameters);
+        var secondBody = expr2.Body.Replace(
+            expr2.Parameters[0], expr1.Parameters[0]);
+        return Expression.Lambda<Func<T, bool>>(
+            Expression.OrElse(expr1.Body, secondBody), 
+            expr1.Parameters);
     }
 
-    public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+    public static Expression<Func<T, bool>> And<T>(
+        this Expression<Func<T, bool>> expr1, 
+        Expression<Func<T, bool>> expr2)
     {
-        var secondBody = expr2.Body.Replace(expr2.Parameters[0], expr1.Parameters[0]);
-        return Expression.Lambda<Func<T, bool>>
-                (Expression.AndAlso(expr1.Body, secondBody), expr1.Parameters);
+        var secondBody = expr2.Body.Replace(
+            expr2.Parameters[0], expr1.Parameters[0]);
+        return Expression.Lambda<Func<T, bool>> (
+                    Expression.AndAlso(expr1.Body, secondBody), 
+                    expr1.Parameters);
     }
 
-    public static Expression Replace(this Expression expression, Expression searchEx, Expression replaceEx)
+    public static Expression Replace(
+        this Expression expression, 
+        Expression searchEx, 
+        Expression replaceEx)
     {
         return new ReplaceVisitor(searchEx, replaceEx).Visit(expression);
     }

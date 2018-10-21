@@ -16,10 +16,9 @@ On the contrary, it is a completely different story on the client-side, there ar
 
 Don’t forget there is another big risk to adopt new programming language(ES 6 or Typescript) with the new framework, as well as new development, build and test tool, if the team has no enough skills or experience. As solution architect, they need to think it through for development team, and also consider if the team can really pick it up quickly. That is why we have to compare those frameworks here before we make a decision.
 
-## Performance is not a priority or crucial criterion for choosing a framework
+## Performance is not a priority
 
 We can find lots of comparison between those frameworks, and so many of them are related to performance, programming language, design pattern, etc. Actually many web applications in the world are just small to median size web application, we don’t need to build the web application as Google, Facebook or Twitter. In my opinion, the performance of framework is the not critical benchmark, at lease it is not first priority which we need to consider if it is right for the team. Except performance, we have more concern on tech stacks, community and ecosystem involved with the framework, which have more impact on team’s productivity and system’s maintainability. 
-
 
 ## The difference of those framework
 
@@ -145,7 +144,7 @@ __Features__
 
 
 |             |Angular 4 CRM   |  React Redux CRM  | Vue 2 CRM
---------------|-------------------|------------------|-------------
+|----------|-----------------|--------------|-------------
 Dependencies |       22           |      13           |  9
 Code Size    |     135KB          |     113KB         |  49KB
 Effort       |     72 hrs         |    80 hrs         |    48hrs
@@ -170,15 +169,24 @@ Generally, Material-Design libraries for React is not handy as other customized 
 Angular’s Material-Design library has very limit components. To build a real-world application you need to add another UI library to supplement the former missing components. Last but not least, the Vuetify is the best Material-Design so far we have found and tested.
 
 Angular 4 CRM — https://github.com/harryho/ng4crm
+
 React Redux CRM — https://github.com/harryho/react-crm
+
 Vue 2 CRM — https://github.com/harryho/vue2crm
+
 
 Update:
+--
 
 Angular Material Design App — https://github.com/harryho/ng-md-app
+
 React Redux CRM — https://github.com/harryho/react-crm
+
 Vue 2 CRM — https://github.com/harryho/vue2crm
+
 Angular 4 CRM — https://github.com/harryho/ng4crm (It is no longer maintained to support latest Angular)
+
+
 
 ### Summary
 

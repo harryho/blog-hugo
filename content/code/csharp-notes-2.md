@@ -117,7 +117,8 @@ namespace MyScheduler
 
         protected override void OnStart(string[] args)
         {
-            System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory + TART_SERVICE);
+            System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory 
+                    + TART_SERVICE);
             ThreadStart tsTask = new ThreadStart(TaskLoop);
             Thread rtkTask = new Thread(tsTask);
             rtkTask.Start();
@@ -140,7 +141,10 @@ namespace MyScheduler
             try
             {
                 // Call customized tasks
-                var types = Assembly.GetExecutingAssembly().GetExportedTypes().Where(p => typeof(ITask).IsAssignableFrom(p.BaseType));
+                var types = Assembly.GetExecutingAssembly()
+                                        .GetExportedTypes()
+                                        .Where(p => typeof(ITask)
+                                             .IsAssignableFrom(p.BaseType));
 
                 foreach (var t in types)
                 {
@@ -161,7 +165,8 @@ namespace MyScheduler
         protected override void OnStop()
         {
             // Insert code here to close all the open IO or conection.
-            System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory + STOP_SERVICE);
+            System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory
+                         + STOP_SERVICE);
         }
 
         private void InitializeComponent()
@@ -247,7 +252,8 @@ namespace MyScheduler
         {
             if (base.IsReadyToProcess())
             {                
-                System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory + "Task-1-" + DateTime.Now.ToString("dd-MM-yyyy"));
+                System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory
+                         + "Task-1-" + DateTime.Now.ToString("dd-MM-yyyy"));
             }
         }
     }
@@ -268,7 +274,9 @@ namespace MyScheduler
         {
             if (base.IsReadyToProcess())
             {                
-                System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory + "Task-2-" + DateTime.Now.ToString("dd-MM-yyyy"));
+                System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory 
+                        + "Task-2-" 
+                        + DateTime.Now.ToString("dd-MM-yyyy"));
             }
         }
     }
@@ -299,7 +307,8 @@ namespace MyScheduler
             InitializeComponent();
         }
 
-        private void MySchedulerServiceInstaller_AfterInstall(object sender, InstallEventArgs e)
+        private void MySchedulerServiceInstaller_AfterInstall(
+                object sender, InstallEventArgs e)
         {
         }
     }
