@@ -8,7 +8,7 @@ draft = false
 
 Prelude
 
-> *This article is mainly to help experienced user install and setup CentOS 7 Server. If you are looking for the information for CentOS 14, please install CentOS desktop version at first, and you can follow [Ubuntu 14 server setup](/os/ubuntu-server-14/)*
+> *This article is mainly to help experienced user install and setup CentOS 7 Server.
 
 
 ## Assumption
