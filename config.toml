@@ -13,7 +13,8 @@ disqusShortname = "harryho"
   searchDomain = "harryho.github.io"
   noCategoryLink = true
   repositoryUrl = "https://github.com/harryho/harryho.github.io.git"
-  highlightStyle = "railscasts"
+  highlightStyle = "dracula"
+  # highlightStyle = "railscasts"
   # highlightStyle = "github"
 
 [[params.mainMenu]]
