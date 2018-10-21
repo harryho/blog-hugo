@@ -8,7 +8,7 @@ draft = false
 
 Prelude
 
-> *This article is mainly to help experienced user install and setup CentOS 7 Server.
+> This article is mainly to help experienced user install and setup CentOS 7 Server.
 
 
 ## Assumption

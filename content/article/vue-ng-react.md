@@ -175,19 +175,6 @@ React Redux CRM — https://github.com/harryho/react-crm
 Vue 2 CRM — https://github.com/harryho/vue2crm
 
 
-Update:
---
-
-Angular Material Design App — https://github.com/harryho/ng-md-app
-
-React Redux CRM — https://github.com/harryho/react-crm
-
-Vue 2 CRM — https://github.com/harryho/vue2crm
-
-Angular 4 CRM — https://github.com/harryho/ng4crm (It is no longer maintained to support latest Angular)
-
-
-
 ### Summary
 
 Before we make any conclusion, we have to be aware the world keeps changing. Perhaps when I was writing this article, some problem of framework have been solved, or some small problem became worse and worse. We have to review the decision we made from time to time and correct them ASAP if we find the cost is overweight the outcome.
@@ -207,3 +194,15 @@ Before we make any conclusion, we have to be aware the world keeps changing. Per
 * Angular 4 and its ecosystem are under active development, but please be careful if you want to use them in your production.
 
 * Vue.js framework is a very nice one. Give a go on your next project.
+
+
+### Update
+----
+
+Angular Material Design App — https://github.com/harryho/ng-md-app
+
+React Redux CRM — https://github.com/harryho/react-crm
+
+Vue 2 CRM — https://github.com/harryho/vue2crm
+
+Angular 4 CRM — https://github.com/harryho/ng4crm (It is no longer maintained to support latest Angular)

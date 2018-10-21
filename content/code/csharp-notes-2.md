@@ -1,7 +1,7 @@
 +++
 categories = ["code"]
 date = "2015-04-10T14:59:31+11:00"
-title = "C# Notes -- Part 2"
+title = "C# Note - 2"
 draft = false
 +++
 
@@ -11,7 +11,7 @@ draft = false
 
 # Solution
 
-## Options as scheduled backgroud service
+## Option 1
 
 ### Windows Task Scheduler
 
@@ -20,6 +20,8 @@ draft = false
 * Click System and Maintenance.
 * Click Administrative Tools.
 * Double-click Task Scheduler.
+
+## Option 2
 
 ### Use Window Service as task scheduler
 
@@ -30,7 +32,7 @@ draft = false
 ```ini
 
         +----------------------------------+          Register as
-        |     System.ServiceProces  ------ |--------O Window Service
+        |     System.ServiceProces  -----  |--------o Window Service
         +----------------------------------+
         |  +----------------------------+  |
         |  |   Thread (Infinite)        |  | 
@@ -54,11 +56,11 @@ draft = false
                  /|\
                   |
         +------------------+
-        |      BaseTask    |  -----------O Customized Task inherit BaseTask   
+        |      BaseTask    |  -----------o Customized Task inherit BaseTask   
         +------------------+
-        | lastProcessTime  | ------------O Last process time 
-        | intervalTime     | ------------O Customize for next process time 
-        | IsReadyProcess() | ------------O Check taks is ready to process 
+        | lastProcessTime  | ------------o Last process time 
+        | intervalTime     | ------------o Customize for next process time 
+        | IsReadyProcess() | ------------o Check taks is ready to process 
         +------------------+
 
 ```

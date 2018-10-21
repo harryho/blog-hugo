@@ -1,7 +1,7 @@
 +++
 categories = ["code"]
 date = "2015-04-10T14:59:31+11:00"
-title = "C# Notes -- Part 1"
+title = "C# Note - 1"
 draft = false
 +++
 
