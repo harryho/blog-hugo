@@ -35,7 +35,9 @@ public class JoinDemo implements Runnable {
         for (int i = 0; i < threads.length; i++) {
             threads[i].join();
         }
-        System.out.println("[" + Thread.currentThread().getName() + "] All  -threads have finished.");
+        System.out.println("[" 
+            + Thread.currentThread().getName() 
+            + "] All  -threads have finished.");
     }
 }
 ```
@@ -56,9 +58,13 @@ public class NotSyncCounter implements Runnable {
 
     public void run() {
         while (counter < 10) {
-            System.out.println("[" + Thread.currentThread().getName() + "]  -    before: " + counter);
+            System.out.println("[" 
+                + Thread.currentThread().getName() 
+                + "]  -    before: " + counter);
             counter++;
-            System.out.println("[" + Thread.currentThread().getName() + "]  -    after: " + counter);
+            System.out.println("[" 
+                + Thread.currentThread().getName() 
+                + "]  -    after: " + counter);
         }
     }
 
@@ -112,9 +118,13 @@ public class SyncCounter implements Runnable {
     public void run() {
         while (counter < 10) {
             synchronized (SyncCounter.class) {
-                System.out.println("[" + Thread.currentThread().getName() + "] - before: " + counter);
+                System.out.println("[" 
+                    + Thread.currentThread().getName() 
+                    + "] - before: " + counter);
                 counter++;
-                System.out.println("[" + Thread.currentThread().getName() + "] - after: " + counter);
+                System.out.println("[" 
+                    + Thread.currentThread().getName() 
+                    + "] - after: " + counter);
             }
         }
     }
@@ -268,14 +278,16 @@ public class SemaphoreDemo {
             binary.acquire();
 
             //mutual exclusive region
-            System.out.println(Thread.currentThread().getName() + " inside mutual exclusive region");
+            System.out.println(Thread.currentThread().getName() 
+                + " inside mutual exclusive region");
             Thread.sleep(1000);
 
         } catch (InterruptedException i.e.) {
             ie.printStackTrace();
         } finally {
             binary.release();
-            System.out.println(Thread.currentThread().getName() + " outside of mutual exclusive region");
+            System.out.println(Thread.currentThread().getName() 
+                + " outside of mutual exclusive region");
         }
     } 
   
@@ -564,7 +576,9 @@ final class Task implements Runnable{
   
     @Override
     public void run() {
-        System.out.println("Task ID : " + this.taskId +" performed by " + Thread.currentThread().getName());
+        System.out.println("Task ID : " 
+            + this.taskId +" performed by " 
+            + Thread.currentThread().getName());
     }  
 }
 
@@ -660,8 +674,7 @@ public class SubmitInvokeDemo {
 
 ### Join and Fork with Executor Service
 
-* The demo code submit() our tasks to the ExecutorService and then use the returned instance of `Future` to wait() for the result. The normal
-`ExecutorService` where you would have to block the current thread while waiting for a result. If we would only provide as many threads to the pool as we have CPUs available, the program would run out of resources and hang indefinitely.
+* The demo code submit() our tasks to the ExecutorService and then use the returned instance of `Future` to wait() for the result. The normal `ExecutorService` where you would have to block the current thread while waiting for a result. If we would only provide as many threads to the pool as we have CPUs available, the program would run out of resources and hang indefinitely.
 
 ```java
 import java.util.concurrent.ExecutorService;
@@ -677,7 +690,10 @@ public class FindMinTask implements Callable<Integer> {
     private int endIndex;
     private ExecutorService executorService;
 
-    public FindMinTask(ExecutorService executorService, int[] numbers, int startIndex, int endIndex) {
+    public FindMinTask(
+        ExecutorService executorService, 
+        int[] numbers, int startIndex, int endIndex) {
+
         this.executorService = executorService;
         this.numbers = numbers;
         this.startIndex = startIndex;
@@ -688,11 +704,15 @@ public class FindMinTask implements Callable<Integer> {
 
         int sliceLength = (endIndex - startIndex) + 1;
         if (sliceLength > 2) {
-            FindMinTask lowerFindMin = new FindMinTask(executorService, numbers, startIndex,
+            FindMinTask lowerFindMin = new FindMinTask(
+                    executorService, numbers, startIndex,
                     startIndex + (sliceLength / 2) - 1);
+                    
             Future<Integer> futureLowerFindMin = executorService.submit(lowerFindMin);
-            FindMinTask upperFindMin = new FindMinTask(executorService, numbers, startIndex + (sliceLength / 2),
+            FindMinTask upperFindMin = new FindMinTask(
+                    executorService, numbers, startIndex + (sliceLength / 2),
                     endIndex);
+
             Future<Integer> futureUpperFindMin = executorService.submit(upperFindMin);
             return Math.min(futureLowerFindMin.get(), futureUpperFindMin.get());
         } else {
@@ -700,7 +720,9 @@ public class FindMinTask implements Callable<Integer> {
         }
     }
 
-    public static void main(String[] args) throws InterruptedException, ExecutionException {
+    public static void main(String[] args) 
+        throws InterruptedException, ExecutionException {
+
         int[] numbers = new int[100];
         Random random = new Random(System.currentTimeMillis());
         for (int i = 0; i < numbers.length; i++) {
@@ -708,7 +730,10 @@ public class FindMinTask implements Callable<Integer> {
         }
         ExecutorService executorService = Executors.newFixedThreadPool(64);
         Future<Integer> futureResult = executorService
-                .submit(new FindMinTask(executorService, numbers, 0, numbers.length - 1));
+                .submit(new FindMinTask(
+                        executorService, 
+                        numbers, 0, numbers.length - 1));
+
         System.out.println(futureResult.get());
         executorService.shutdown();
     }
@@ -754,10 +779,12 @@ public class GrayscaleImageAction extends RecursiveAction {
     }
 
     public static void main(String[] args) throws IOException {
-        ForkJoinPool pool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
+        ForkJoinPool pool = new ForkJoinPool(
+                Runtime.getRuntime().availableProcessors());
         BufferedImage bufferedImage = ImageIO.read(new File(args[0]));
         for (int row = 0; row < bufferedImage.getHeight(); row++) {
-            GrayscaleImageAction action = new GrayscaleImageAction(row, bufferedImage);
+            GrayscaleImageAction action = new GrayscaleImageAction(
+                row, bufferedImage);
             pool.execute(action);
         }
         pool.shutdown();
