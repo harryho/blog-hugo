@@ -29,11 +29,11 @@ draft = false
 
 ## Assumption
 
-### Apache path `c:\apache`. Version 2.4.x, VC11, x86
-### PHP path `c:\php`, Version 5.6.x, VC11, x86
-### Use `localhost:1234` as test website URL
-### Project workspace path `c:\php_workspace`
-### Website root path `c:\php_workspace\phpsite`, the `index.php` is under this root path
+* Apache path `c:\apache`. Version 2.4.x, VC11, x86
+* PHP path `c:\php`, Version 5.6.x, VC11, x86
+* Use `localhost:1234` as test website URL
+* Project workspace path `c:\php_workspace`
+* Website root path `c:\php_workspace\phpsite`, the `index.php` is under this root path
 
 
 ## Prepare PHP for debugging
@@ -101,60 +101,60 @@ DocumentRoot "c:/php_workspace/phpsite"
 
 **If you have PHP 7 installed, please choose the up to PHP 5.6.x as PHP runtime.**
 
-### Open phpsite as PHP the project with Eclipse PDT 
+* Open phpsite as PHP the project with Eclipse PDT 
 
-### Setup PHP Web Application for debugging
+* Setup PHP Web Application for debugging
 
-* Choose menu `Run` > `Debug Configurations` > `PHP Web Application` 
-* Add new configuration by clicking ![New](/img/php_pdt_new_debug.png)
+  - Choose menu `Run` > `Debug Configurations` > `PHP Web Application` 
+  - Add new configuration by clicking ![New](/img/php_pdt_new_debug.png)
 
-### Configure PHP Web Server
+* Configure PHP Web Server
 
-* Choose `Default PHP Web Server` from the dropdown list
-* Click the button  `configuration`, it prop up a Window dialog. 
-* On the tab `Server`, Set the `localhost:1234` as `Base URL`. It should be the same as ServerName in your `httd.conf` 
-* On the tab `Debugger`, choose `XDebug` from the dropdown list, then other setting as default. 
-* On the tab `Path Mapping`, add new mapping. Enter `/` as `Path on Server`, Put `c:\php_workspace\phpsite` as `Path in File system`, then leave other setting as default.
-* Close the Window dialog.
-* Choose the File `c:\php_workspace\phpsite\index.php` as startup page.
-* If the `Auto Generated URL` is not `localhost:1234/index.php`, then manually update it.
-* After all these done, you can debug your website now. 
+  - Choose `Default PHP Web Server` from the dropdown list
+  - Click the button  `configuration`, it prop up a Window dialog. 
+  - On the tab `Server`, Set the `localhost:1234` as `Base URL`. It should be the same as ServerName in your `httd.conf` 
+  - On the tab `Debugger`, choose `XDebug` from the dropdown list, then other setting as default. 
+  - On the tab `Path Mapping`, add new mapping. Enter `/` as `Path on Server`, Put `c:\php_workspace\phpsite` as `Path in File system`, then leave other setting as default.
+  - Close the Window dialog.
+  - Choose the File `c:\php_workspace\phpsite\index.php` as startup page.
+  - If the `Auto Generated URL` is not `localhost:1234/index.php`, then manually update it.
+  - After all these done, you can debug your website now. 
 
 
 ## Debug PHP with Netbeans 
 
 **If you have PHP 7 installed, please choose the up to PHP 5.6.x as PHP runtime.**
 
-### Open phpsite as PHP the project with Netbeans. 
+* Open phpsite as PHP the project with Netbeans. 
 
-### Configure PHP Web Server
+* Configure PHP Web Server
 
-* On the `Projects` panel, choose the project `phpsite` , right click and choose `Properties` 
-* Choose `Sources` within the categories. Check the PHP version is the same as your PHP version. 
-* Choose `Run Configurations` within the categories, and update the default configuration.
-* Choose `Local Web Site` from `Run As` dropdown list.
-* Set `localhost:1234` as Project URL
-* Click the button `Advanced ...` to update web server
-* Add a new path mapping. Enter `/` as `Path on Server`, Put `c:\php_workspace\phpsite` as `Path in File system`, then leave other setting as default.
-* Leave other default setting and click button `OK`
-* Now you can debug php site with Netbeans
+  - On the `Projects` panel, choose the project `phpsite` , right click and choose `Properties` 
+  - Choose `Sources` within the categories. Check the PHP version is the same as your PHP version. 
+  - Choose `Run Configurations` within the categories, and update the default configuration.
+  - Choose `Local Web Site` from `Run As` dropdown list.
+  - Set `localhost:1234` as Project URL
+  - Click the button `Advanced ...` to update web server
+  - Add a new path mapping. Enter `/` as `Path on Server`, Put `c:\php_workspace\phpsite` as `Path in File system`, then leave other setting as default.
+  - Leave other default setting and click button `OK`
+  - Now you can debug php site with Netbeans
 
 
 ## Use Nginx instead of Apache
 
-### Download `RunHiddenConsole` 
-* Download [RunHiddenConsole](http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip)
-* Extract the file `RunHiddenConsole.exe` to folder `c:\bin\`
+* Download `RunHiddenConsole` 
+  - Download [RunHiddenConsole](http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip)
+  - Extract the file `RunHiddenConsole.exe` to folder `c:\bin\`
 
-### Install Nginx 32 bit version. 
-* We assume the ngnix's path is `c:\nginx\`
+* Install Nginx 32 bit version. 
+  - We assume the ngnix's path is `c:\nginx\`
 
-### Confirm `php-cgi.exe` is within the PHP folder `c:\php`.
+* Confirm `php-cgi.exe` is within the PHP folder `c:\php`.
 
-### Setup Nginx FastCGI with PHP
+* Setup Nginx FastCGI with PHP
 
-* Back the original `nginx.conf` 
-* Create a script to launch `nginx` and `php` in sequence.
+  - Back the original `nginx.conf` 
+  - Create a script to launch `nginx` and `php` in sequence.
 
 ```dos
 @ECHO OFF
@@ -165,8 +165,8 @@ ECHO Start Nginx ...
 c:\bin\RunHiddenConsole.exe c:\nginx\nginx.exe 
 ```
 
-* Open the `nginx.conf` via notepad
-* Replace the `server` block with following setting
+  - Open the `nginx.conf` via notepad
+  - Replace the `server` block with following setting
 
 ```nginx
 server {

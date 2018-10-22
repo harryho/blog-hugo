@@ -36,11 +36,12 @@ oOutput.Close
 
 ### Replace content script
 
-#### Create a file named `repltxt.bat` and open the file with `Notepad`
-#### Copy & paste the code into the file `repltxt.bat`, then script is ready to play
+* Create a file named `repltxt.bat`
+* Copy the code into the file `repltxt.bat`
+* Run the script
 
 
-```powershell
+```vbscript
 
 @if (@X)==(@Y) @end /* Harmless hybrid line that begins a JScript comment
 
@@ -107,8 +108,8 @@ WScript.Quit(rtn);
 
 ```
 
-#### The sample above is a bit complicated, and it is combination of Batch script and JScript.
-#### The batch script part checks and validate the input arguments, if there is no issue, then it will trigger the JScript to complete the work.   
+ The sample above is a bit complicated, and it is combination of Batch script and JScript.
+The batch script part checks and validate the input arguments, if there is no issue, then it will trigger the JScript to complete the work.   
 
 
 ### Troubleshooting

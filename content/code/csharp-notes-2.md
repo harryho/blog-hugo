@@ -1,5 +1,6 @@
 +++
 categories = ["code"]
+series = ["CSharp"]
 date = "2015-04-10T14:59:31+11:00"
 title = "C# Note - 2"
 draft = false
