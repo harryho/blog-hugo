@@ -1,6 +1,6 @@
 +++
 date = "2016-04-10T14:59:31+11:00"
-title = "Algorithm"
+title = "Algorithm 1"
 draft = false
 +++
 
@@ -378,13 +378,9 @@ class Solution {
             }
             else{
                  count = jd / D + 1;
-            }
-                        
-        }
-        
-        return count;
-        
-        
+            }                        
+        }        
+        return count;       
     }
 }
 ```
@@ -817,244 +813,252 @@ def solution(A):
 # A5 =[0]
 ```
 
+# L5 Prefix Sums
 
-## LongestPassword
+##   PassingCars
 
-You would like to set a password for a bank account. However, there are three restrictions on the format of the password:
+A non-empty array A consisting of N integers is given. The consecutive elements of array A represent consecutive cars on a road.
 
-it has to contain only alphanumerical characters (a−z, A−Z, 0−9);
-there should be an even number of letters;
-there should be an odd number of digits.
-You are given a string S consisting of N characters. String S can be divided into words by splitting it at, and removing, the spaces. The goal is to choose the longest word that is a valid password. You can assume that if there are K spaces in string S then there are exactly K + 1 words.
+Array A contains only 0s and/or 1s:
 
-For example, given "test 5 a0A pass007 ?xy1", there are five words and three of them are valid passwords: "5", "a0A" and "pass007". Thus the longest password is "pass007" and its length is 7. Note that neither "test" nor "?xy1" is a valid password, because "?" is not an alphanumerical character and "test" contains an even number of digits (zero).
-
-Write a function:
-
-int solution(char *S);
-
-that, given a non-empty string S consisting of N characters, returns the length of the longest word from the string that is a valid password. If there is no such word, your function should return −1.
-
-For example, given S = "test 5 a0A pass007 ?xy1", your function should return 7, as explained above.
-
-Assume that:
-
-N is an integer within the range [1..200];
-string S consists only of printable ASCII characters and spaces.
-
-
-```js
-function solution(S) {
-      const isDigit = (c) => (c.charCodeAt(0) >= 48 && c.charCodeAt(0) <= 59)
-    const isLetter = (c) => (c.charCodeAt(0) >= 65 && c.charCodeAt(0) <= 90) 
-    || (c.charCodeAt(0) >= 97 && c.charCodeAt(0) <= 122)
-
-    var rst = S.split(' ').filter(a => {
-        var ca = a.split('');
-        var isValid = true;
-        isValid = !ca.some(c => !(isDigit(c) || isLetter(c)) );
-
-        if (isValid){
-            isValid  = ca.filter(c=>isLetter(c)).length % 2 ===0 ;
-            if (isValid) {
-                isValid  = ca.filter(c=>isDigit(c)).length % 2 !==0 ;
-            }
-        }
-        return isValid;
-    }).map(a => 
-      
-        a.length
-    ).sort();
-
-    return rst.length > 0 ? rst[rst.length - 1] : -1;
-}
-```
-
-## SlalomSkiing
-
-You are a skier participating in a giant slalom. The slalom track is located on a ski slope, goes downhill and is fenced by barriers on both sides. The barriers are perpendicular to the starting line located at the top of the slope. There are N slalom gates on the track. Each gate is placed at a distinct distance from the starting line and from the barrier on the right-hand side (looking downhill).
-
-You start from any place on the starting line, ski down the track passing as many gates as possible, and finish the slalom at the bottom of the slope. Passing a gate means skiing through the position of the gate.
-
-You can ski downhill in either of two directions: to the left or to the right. When you ski to the left, you pass gates of increasing distances from the right barrier, and when you ski to the right, you pass gates of decreasing distances from the right barrier. You want to ski to the left at the beginning.
-
-Unfortunately, changing direction (left to right or vice versa) is exhausting, so you have decided to change direction at most two times during your ride. Because of this, you have allowed yourself to miss some of the gates on the way down the slope. You would like to know the maximum number of gates that you can pass with at most two changes of direction.
-
-The arrangement of the gates is given as an array A consisting of N integers, whose elements specify the positions of the gates: gate K (for 0 ≤ K < N) is at a distance of K+1 from the starting line, and at a distance of A[K] from the right barrier.
+- 0 represents a car traveling east,
+- 1 represents a car traveling west.
+- The goal is to count passing cars. 
+- We say that a pair of cars (P, Q), where 0 ≤ P < Q < N, is passing when P is traveling to the east and Q is traveling to the west.
 
 For example, consider array A such that:
 
-    A[0] = 15
-    A[1] = 13
-    A[2] = 5
-    A[3] = 7
-    A[4] = 4
-    A[5] = 10
-    A[6] = 12
-    A[7] = 8
-    A[8] = 2
-    A[9] = 11
-    A[10] = 6
-    A[11] = 9
-    A[12] = 3
+    A[0] = 0
+    A[1] = 1
+    A[2] = 0
+    A[3] = 1
+    A[4] = 1
 
- ![SlalomSkiing](/img/SlalomSkiing.png)
-The picture above illustrates the example track with N = 13 gates and a course that passes eight gates. After starting, you ski to the left (from your own perspective). You pass gates 2, 3, 5, 6 and then change direction to the right. After that you pass gates 7, 8 and then change direction to the left. Finally, you pass gates 10, 11 and finish the slalom. There is no possible way of passing more gates using at most two changes of direction.
+We have five pairs of passing cars: (0, 1), (0, 3), (0, 4), (2, 3), (2, 4).
 
 Write a function:
 
 - int solution(int A[], int N);
 
-- that, given an array A consisting of N integers, describing the positions of the gates on the track, returns the maximum number of gates that you can pass during one ski run.
+- that, given a non-empty array A of N integers, returns the number of pairs of passing cars.
 
-For example, given the above data, the function should return 8, as explained above.
+The function should return −1 if the number of pairs of passing cars exceeds 1,000,000,000.
 
-For the following array A consisting of N = 2 elements:
+For example, given:
 
-    A[0] = 1
-    A[1] = 5
-the function should return 2.
+    A[0] = 0
+    A[1] = 1
+    A[2] = 0
+    A[3] = 1
+    A[4] = 1
+the function should return 5, as explained above.
 
 Write an efficient algorithm for the following assumptions:
 
 N is an integer within the range [1..100,000];
-each element of array A is an integer within the range [1..1,000,000,000];
-the elements of A are all distinct.
+each element of array A is an integer that can have one of the following values: 0, 1.
+
+```py
+def solution(A):
+    N = len(A)
+    p = [None] * N
+    pc = 0
+    c = 0
+
+    for i in range(N):
+        if A[i]==0 and p[pc] == None:
+            p[pc] = i
+            pc +=1
+        
+    
+    for i in range(len(p)):
+        if p[i] == None:
+            break
+        # print( i, c , pc )
+        pi = p[i]
+        pn =N - pi - (pc-i)
+        # print( i, c , pc, pn, N )
+        c += pn
+        if c >1000000000:
+            c = -1
+            break
+
+    return c
+```
+
+
+A non-empty array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P < Q < N, is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice. To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
+
+For example, array A such that:
+
+    A[0] = 4
+    A[1] = 2
+    A[2] = 2
+    A[3] = 5
+    A[4] = 1
+    A[5] = 5
+    A[6] = 8
+contains the following example slices:
+
+slice (1, 2), whose average is (2 + 2) / 2 = 2;
+slice (3, 4), whose average is (5 + 1) / 2 = 3;
+slice (1, 4), whose average is (2 + 2 + 5 + 1) / 4 = 2.5.
+The goal is to find the starting position of a slice whose average is minimal.
+
+Write a function:
+
+def solution(A)
+
+that, given a non-empty array A consisting of N integers, returns the starting position of the slice with the minimal average. If there is more than one slice with a minimal average, you should return the smallest starting position of such a slice.
+
+For example, given array A such that:
+
+    A[0] = 4
+    A[1] = 2
+    A[2] = 2
+    A[3] = 5
+    A[4] = 1
+    A[5] = 5
+    A[6] = 8
+the function should return 1, as explained above.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [2..100,000];
+each element of array A is an integer within the range [−10,000..10,000].
 
 
 ```py
-def LongestIncreasingSubsequence(seq):
-
-    ''' The classic dynamic programming solution for longest increasing
-        subsequence. More details could be found:
-        https://en.wikipedia.org/wiki/Longest_increasing_subsequence
-        http://www.geeksforgeeks.org/dynamic-programming-set-3-longest-increasing-subsequence/
-        http://stackoverflow.com/questions/3992697/longest-increasing-subsequence
-    '''
-    # smallest_end_value[i] = j means, for all i-length increasing
-    # subsequence, the minmum value of their last elements is j.
-    smallest_end_value = [None] * (len(seq) + 1)
-
-    # The first element (with index 0) is a filler and never used.
-    smallest_end_value[0] = -1
-
-    # The length of the longest increasing subsequence.
-    lic_length = 0 
-
-    for i in range(len(seq)):
-        # Binary search: we want the index j such that:
-        #     smallest_end_value[j-1] < seq[i]
-        #     AND
-        #     (  smallest_end_value[j] > seq[i]
-        #        OR
-        #        smallest_end_value[j] == None
-        #     )
-        # Here, the result "lower" is the index j.
-
-        lower = 0
-        upper = lic_length
-        while lower <= upper:
-            mid = (upper + lower) // 2
-            if seq[i] < smallest_end_value[mid]:
-                upper = mid - 1
-            elif seq[i] > smallest_end_value[mid]:
-                lower = mid + 1
-            else:
-                raise "Should never happen: the elements of A are all distinct"        
-
-        if smallest_end_value[lower] == None:
-            smallest_end_value[lower] = seq[i]
-            lic_length += 1
-        else:
-            smallest_end_value[lower] = min(smallest_end_value[lower], seq[i])
-
-    return lic_length    
-    
-
 def solution(A):
 
-    # We are solving this question by creating two mirrors.
-    bound = max(A) + 1
+    min_avg_value = (A[0] + A[1])/2.0   # The mininal average
+    min_avg_pos = 0     # The begin position of the first
+    # slice with mininal average
+    for index in range(0, len(A)-2):
+        # Try the next 2-element slice
+        if (A[index] + A[index+1]) / 2.0 < min_avg_value:
+            min_avg_value = (A[index] + A[index+1]) / 2.0
+            min_avg_pos = index
+        # Try the next 3-element slice
+        if (A[index] + A[index+1] + A[index+2]) / 3.0 < min_avg_value:
+            min_avg_value = (A[index] + A[index+1] + A[index+2]) / 3.0
+            min_avg_pos = index
 
-    multiverse = []
+    # Try the last 2-element slice
+    if (A[-1]+A[-2])/2.0 < min_avg_value:
+        min_avg_value = (A[-1]+A[-2])/2.0
+        min_avg_pos = len(A)-2
 
-    for point in A:
+    return min_avg_pos
+```
 
-        # The point in the double-mirror universe.
-        multiverse.append(bound * 2 + point)
-
-        # The point in the mirror universe.
-        multiverse.append(bound * 2 - point)
-
-        # The point in the original universe.
-        multiverse.append(point)
+## CountDiv
 
  
+Write a function:
 
-    return LongestIncreasingSubsequence(multiverse)
-```
+- int solution(int A, int B, int K);
 
-## Longest increasing subsequence
+- that, given three integers A, B and K, returns the number of integers within the range [A..B] that are divisible by K, i.e.:
 
+    ` { i : A ≤ i ≤ B, i mod K = 0 }`
 
-```
-0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15 # sequence
+For example, for A = 6, B = 11 and K = 2, your function should return 3, because there are three numbers divisible by 2 within the range [6..11], namely 6, 8 and 10.
 
-1, 9, 13, 15 # non-decreasing subsequence
+Write an efficient algorithm for the following assumptions:
 
-0, 2, 6, 9, 13, 15 # longest non-deceasing subsequence (not unique)
-```
+A and B are integers within the range [0..2,000,000,000];
+K is an integer within the range [1..2,000,000,000];
+A ≤ B.
+
 
 ```py
-def subsequence(seq):
-    if not seq:
-        return seq
+def solution(A, B, K):
+    if A % K == 0:  return (B - A) // K + 1
+    else:           return (B - (A - A % K )) // K
+```
 
-    M = [None] * len(seq)    # offset by 1 (j -> j-1)
-    P = [None] * len(seq)
 
-    # Since we have at least one element in our list, we can start by 
-    # knowing that the there's at least an increasing subsequence of length one:
-    # the first element.
-    L = 1
-    M[0] = 0
+## GenomicRangeQuery
 
-    # Looping over the sequence starting from the second element
-    for i in range(1, len(seq)):
-        # Binary search: we want the largest j <= L
-        #  such that seq[M[j]] < seq[i] (default j = 0),
-        #  hence we want the lower bound at the end of the search process.
-        lower = 0
-        upper = L
 
-        # Since the binary search will not look at the upper bound value,
-        # we'll have to check that manually
-        if seq[M[upper-1]] < seq[i]:
-            j = upper
+A DNA sequence can be represented as a string consisting of the letters A, C, G and T, which correspond to the types of successive nucleotides in the sequence. Each nucleotide has an impact factor, which is an integer. Nucleotides of types A, C, G and T have impact factors of 1, 2, 3 and 4, respectively. You are going to answer several queries of the form: What is the minimal impact factor of nucleotides contained in a particular part of the given DNA sequence?
 
-        else:
-            # actual binary search loop
-            while upper - lower > 1:
-                mid = (upper + lower) // 2
-                if seq[M[mid-1]] < seq[i]:
-                    lower = mid
-                else:
-                    upper = mid
+The DNA sequence is given as a non-empty string S = S[0]S[1]...S[N-1] consisting of N characters. There are M queries, which are given in non-empty arrays P and Q, each consisting of M integers. The K-th query (0 ≤ K < M) requires you to find the minimal impact factor of nucleotides contained in the DNA sequence between positions P[K] and Q[K] (inclusive).
 
-            j = lower    # this will also set the default value to 0
+For example, consider string S = CAGCCTA and arrays P, Q such that:
 
-        P[i] = M[j-1]
+    P[0] = 2    Q[0] = 4
+    P[1] = 5    Q[1] = 5
+    P[2] = 0    Q[2] = 6
+The answers to these M = 3 queries are as follows:
 
-        if j == L or seq[i] < seq[M[j]]:
-            M[j] = i
-            L = max(L, j+1)
+The part of the DNA between positions 2 and 4 contains nucleotides G and C (twice), whose impact factors are 3 and 2 respectively, so the answer is 2.
+The part between positions 5 and 5 contains a single nucleotide T, whose impact factor is 4, so the answer is 4.
+The part between positions 0 and 6 (the whole string) contains all nucleotides, in particular nucleotide A whose impact factor is 1, so the answer is 1.
+Assume that the following declarations are given:
 
-    # Building the result: [seq[M[L-1]], seq[P[M[L-1]]], seq[P[P[M[L-1]]]], ...]
+    struct Results {
+    int * A;
+    int M; // Length of the array
+    };
+
+Write a function:
+
+- struct Results solution(char *S, int P[], int Q[], int M);
+
+- that, given a non-empty string S consisting of N characters and two non-empty arrays P and Q consisting of M integers, returns an array consisting of M integers specifying the consecutive answers to all queries.
+
+Result array should be returned as a structure Results.
+
+For example, given the string S = CAGCCTA and arrays P, Q such that:
+
+    P[0] = 2    Q[0] = 4
+    P[1] = 5    Q[1] = 5
+    P[2] = 0    Q[2] = 6
+the function should return the values [2, 4, 1], as explained above.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [1..100,000];
+M is an integer within the range [1..50,000];
+each element of arrays P, Q is an integer within the range [0..N − 1];
+P[K] ≤ Q[K], where 0 ≤ K < M;
+string S consists only of upper-case English letters A, C, G, T.
+
+
+```py
+# This is a typical case that uses more space for less time.
+
+def solution(S, P, Q):
     result = []
-    pos = M[L-1]
-    for _ in range(L):
-        result.append(seq[pos])
-        pos = P[pos]
+    DNA_len = len(S)
+    mapping = {"A":1, "C":2, "G":3, "T":4}
+    # next_nucl is used to store the position information
+    # next_nucl[0] is about the "A" nucleotides, [1] about "C"
+    #    [2] about "G", and [3] about "T"
+    # next_nucl[i][j] = k means: for the corresponding nucleotides i,
+    #    at position j, the next corresponding nucleotides appears
+    #    at position k (including j)
+    # k == -1 means: the next corresponding nucleotides does not exist
+    next_nucl = [[-1]*DNA_len, [-1]*DNA_len, [-1]*DNA_len, [-1]*DNA_len]
+    # Scan the whole DNA sequence, and retrieve the position information
+    next_nucl[mapping[S[-1]] - 1][-1] = DNA_len-1
+    for index in range(DNA_len-2,-1,-1):
+        next_nucl[0][index] = next_nucl[0][index+1]
+        next_nucl[1][index] = next_nucl[1][index+1]
+        next_nucl[2][index] = next_nucl[2][index+1]
+        next_nucl[3][index] = next_nucl[3][index+1]
+        next_nucl[mapping[S[index]] - 1][index] = index
+    for index in range(0,len(P)):
+        if next_nucl[0][P[index]] != -1 and next_nucl[0][P[index]] <= Q[index]:
+            result.append(1)
+        elif next_nucl[1][P[index]] != -1 and next_nucl[1][P[index]] <= Q[index]:
+            result.append(2)
+        elif next_nucl[2][P[index]] != -1 and next_nucl[2][P[index]] <= Q[index]:
+            result.append(3)
+        else:
+            result.append(4)
+    return result
 
-    return result[::-1]    # reversing
-```    
+```
