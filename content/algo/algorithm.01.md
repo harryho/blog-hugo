@@ -163,10 +163,11 @@ class Solution {
 
 
 Test cases: 
-328
-1162
-66561
-1376796946
+
+    328
+    1162
+    66561
+    1376796946
 
 
 
@@ -271,13 +272,13 @@ that, given an array A consisting of N integers fulfilling the above conditions,
 
 For example, given array A such that:
 
-> A[0] = 9  
-> A[1] = 3  
-> A[2] = 9  
-> A[3] = 3   
-> A[4] = 9  
-> A[5] = 7  
-> A[6] = 9
+ A[0] = 9  
+ A[1] = 3  
+ A[2] = 9  
+ A[3] = 3   
+ A[4] = 9  
+ A[5] = 7  
+ A[6] = 9
 
 the function should return 7, as explained in the example above.
 
@@ -288,8 +289,8 @@ each element of array A is an integer within the range [1..1,000,000,000];
 all but one of the values in A occur an even number of times.
 Complexity:
 
-expected worst-case time complexity is O(N);
-expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
+- expected worst-case time complexity is O(N);
+- expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
 Elements of input arrays can be modified.
 
 ```cs
@@ -297,24 +298,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-  
-
-// you can also use other imports, for example:
-// using System.Collections.Generic;
-
-// you can write to stdout for debugging purposes, e.g.
-// Console.WriteLine("this is a debug message");
 
 class Solution {
     public int solution(int[] A) {
-        // write your code in C# 6.0 with .NET 4.5 (Mono)
-        int r = -1;
-        
-
-          Array.Sort(A);
-        
+        int r = -1;   
+        Array.Sort(A);       
          
-         for( int i =0; i < A.Length; ){
+        for( int i =0; i < A.Length; ){
             if ( i == A.Length -1  ){
                 return A[i];
             }            
@@ -322,10 +312,8 @@ class Solution {
                 return  A[i];
             }        
             i +=2;             
-         }
-         
-         return r;
-         
+        }         
+        return r;         
     }
 }
 ```

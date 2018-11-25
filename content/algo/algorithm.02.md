@@ -263,130 +263,8 @@ def solution(A):
         if iNext < N : stop_intersecting[iNext] += stop_intersecting[i]
     return counter
 ```
-# L8  Leader
-## EquiLeader
-
-A non-empty array A consisting of N integers is given.
-
-The leader of this array is the value that occurs in more than half of the elements of A.
-
-An equi leader is an index S such that 0 ≤ S < N − 1 and two sequences A[0], A[1], ..., A[S] and A[S + 1], A[S + 2], ..., A[N − 1] have leaders of the same value.
-
-For example, given array A such that:
-
-    A[0] = 4
-    A[1] = 3
-    A[2] = 4
-    A[3] = 4
-    A[4] = 4
-    A[5] = 2
-we can find two equi leaders:
-
-- 0, because sequences: (4) and (3, 4, 4, 4, 2) have the same leader, whose value is 4.
-- 2, because sequences: (4, 3, 4) and (4, 4, 2) have the same leader, whose value is 4.
-
-The goal is to count the number of equi leaders.
-
-Write a function:
-
-- int solution(int A[], int N);
-
-- that, given a non-empty array A consisting of N integers, returns the number of equi leaders.
-
-For example, given:
-
-    A[0] = 4
-    A[1] = 3
-    A[2] = 4
-    A[3] = 4
-    A[4] = 4
-    A[5] = 2
-the function should return 2, as explained above.
-
-Write an efficient algorithm for the following assumptions:
-
-N is an integer within the range [1..100,000];
-each element of array A is an integer within the range [−1,000,000,000..1,000,000,000].
-
-```py
-
-def solution(A):
-    N = len(A)
-    lead = None
-    c = 0
-    cc = 0
-    
-    if N > 1:
-        for a in A:
-            if c ==0:
-                lead = a
-                c +=1
-            elif a == lead:
-                c +=1
-            elif c ==1 and lead !=a :
-                lead = a 
-            elif c > 1 :
-                c -=1
-
-        if lead !=None and c > 0:
-            c = 0
-            for a in A:
-                if lead == a:
-                    c +=1
-           
-            if c > N / 2:
-                lc = 0
-                rc = 0
-                for i in range(N-1):
-                    a = A[i]
-                    if a == lead:
-                        lc +=1
-                    if lc > 0 and lc/ (i+ 1) > 0.5 and (c-lc)/(N-i-1) > 0.5:
-                        cc +=1            
-    return cc
-```
 
 
-```java
-class Solution {
-    int solution(int[] a){
-    int len = a.length;
-    int equi_leaders = 0;
-
-    // first, compute the leader
-    int leader = a[0];
-    int ctr = 1;
-
-    for(int i = 1; i < a.length; i++){
-        if(a[i] == leader) ctr++;
-        else ctr--;
-        if(ctr == 0){
-        ctr = 1;
-        leader = a[i];
-        }
-    }
-
-    // check if it's a leader?
-    int total = 0;
-    for(int i : a){
-        if(i == leader) total++; 
-    }
-
-    if(total <= (len/2)) return 0; // impossible
-
-    int ldrCount = 0;
-    for(int i = 0; i < a.length; i++){
-        if(a[i] == leader) ldrCount++;
-        int leadersInRightPart = (total - ldrCount);
-        if(ldrCount > (i+1)/2   &&   leadersInRightPart > (len-i-1)/2){
-        equi_leaders++;
-        }
-    }
-
-    return equi_leaders;
-    }
-}
-```
 
 # L7 Stack & Queue
 ## Brackets
@@ -578,10 +456,75 @@ N is an integer within the range [0..1,000,000];
 string S consists only of the characters "(" and/or ")".
 
 ```py
-
+def solution(S):
+    if len(S) % 2 == 1:   return 0
+    matched = {")": "("}
+    to_push = ["("]
+    stack = []
+    for element in S:
+        if element in to_push:
+            stack.append(element)
+        else:
+            if len(stack) == 0:
+                return 0
+            elif matched[element] != stack.pop():
+                return 0
+    if len(stack) == 0:
+        return 1
+    else:
+        return 0
 
 ```
 
+
+## StoneWall
+
+You are going to build a stone wall. The wall should be straight and N meters long, and its thickness should be constant; however, it should have different heights in different places. The height of the wall is specified by an array H of N positive integers. H[I] is the height of the wall from I to I+1 meters to the right of its left end. In particular, H[0] is the height of the wall's left end and H[N−1] is the height of the wall's right end.
+
+The wall should be built of cuboid stone blocks (that is, all sides of such blocks are rectangular). Your task is to compute the minimum number of blocks needed to build the wall.
+
+Write a function:
+
+- int solution(int H[], int N);
+- that, given an array H of N positive integers specifying the height of the wall, returns the minimum number of blocks needed to build it.
+
+For example, given array H containing N = 9 integers:
+
+    H[0] = 8    H[1] = 8    H[2] = 5
+    H[3] = 7    H[4] = 9    H[5] = 8
+    H[6] = 7    H[7] = 4    H[8] = 8
+the function should return 7. The figure shows one possible arrangement of seven blocks.
+
+![StoneWall](/img/StoneWall.jpg)
+
+Write an efficient algorithm for the following assumptions:
+
+- N is an integer within the range [1..100,000];
+- each element of array H is an integer within the range [1..1,000,000,000].
+
+```py
+
+def solution(H):
+    N = len(H)
+    stones = 0
+    stack = [0] * N
+    stack_num = 0
+
+    for i in range(N):
+        while stack_num > 0 and stack[stack_num - 1] > H[i]:
+            stack_num -= 1
+        
+        print ( 'while', stones,  stack_num, stack)
+        if stack_num > 0 and stack[stack_num - 1] == H[i]:
+            pass
+        else:
+            stones += 1
+            stack[stack_num] = H[i]
+            stack_num += 1
+        print ( stones,  stack_num, stack)
+
+    return stones
+```
 
 ## Fish
 
@@ -593,9 +536,11 @@ Fish number P is represented by A[P] and B[P]. Array A contains the sizes of the
 
 - 0 represents a fish flowing upstream,
 - 1 represents a fish flowing downstream.
-- If two fish move in opposite directions and there are no other (living) fish between them, they will eventually meet each other. Then only one fish can stay alive − the larger fish eats the smaller one. More precisely, we say that two fish P and Q meet each other when P < Q, B[P] = 1 and B[Q] = 0, and there are no living fish between them. After they meet:
-    * If A[P] > A[Q] then P eats Q, and P will still be flowing downstream,
-    * If A[Q] > A[P] then Q eats P, and Q will still be flowing upstream.
+
+If two fish move in opposite directions and there are no other (living) fish between them, they will eventually meet each other. Then only one fish can stay alive − the larger fish eats the smaller one. More precisely, we say that two fish P and Q meet each other when P < Q, B[P] = 1 and B[Q] = 0, and there are no living fish between them. After they meet:
+
+* If A[P] > A[Q] then P eats Q, and P will still be flowing downstream,
+* If A[Q] > A[P] then Q eats P, and Q will still be flowing upstream.
 
 We assume that all the fish are flowing at the same speed. That is, fish moving in the same direction never meet. The goal is to calculate the number of fish that will stay alive.
 
@@ -619,43 +564,288 @@ For example, given the arrays shown above, the function should return 2, as expl
 
 Write an efficient algorithm for the following assumptions:
 
-N is an integer within the range [1..100,000];
-each element of array A is an integer within the range [0..1,000,000,000];
-each element of array B is an integer that can have one of the following values: 0, 1;
-the elements of A are all distinct.
+- N is an integer within the range [1..100,000];
+- each element of array A is an integer within the range [0..1,000,000,000];
+- each element of array B is an integer that can have one of the following values: 0, 1;
+- the elements of A are all distinct.
+
+### Solution 1 
 
 ```py
+
+def solution(A, B):
+    N = len(A)
+    stones = 0
+    upStack = [] 
+    dnStack =  [] 
+
+    for i in range(N):
+        P = i 
+        Q = -1 
+        s = B [i]
+        if s == 1:
+            dnStack.append(i )
+        elif s == 0:
+            upStack.append(i )
+
+        for i in range(N):
+            if len(upStack) > 0 and len(dnStack) > 0 and dnStack[-1] < upStack[-1]:
+                P = dnStack.pop()
+                Q = upStack.pop()
+                if  A [P] > A [Q]:
+                    dnStack.append(P)
+                elif A [P] <  A [Q]:
+                    upStack.append(Q)
+            else:   
+                break
+
+```
+
+### Solution 2
+```py
+def solution(A, B):
+    alive_count = 0        # The number of fish that will stay alive
+    downstream = []        # To record the fishs flowing downstream
+    downstream_count = 0   # To record the number of elements in downstream
+    for index in range(len(A)):
+        # Compute for each fish
+        if B[index] == 1:
+            # This fish is flowing downstream. It would
+            # NEVER meet the previous fishs. But possibly
+            # it has to fight with the downstream fishs.
+            downstream.append(A[index])
+            downstream_count += 1
+        else:
+            # This fish is flowing upstream. It would either
+            #    eat ALL the previous downstream-flow fishs,
+            #    and stay alive.
+            # OR
+            #    be eaten by ONE of the previous downstream-
+            #    flow fishs, which is bigger, and died.
+            while downstream_count != 0:
+                # It has to fight with each previous living
+                # fish, with nearest first.
+                if downstream[-1] < A[index]:
+                    # Win and to continue the next fight
+                    downstream_count -= 1
+                    downstream.pop()
+                else:
+                    # Lose and die
+                    break
+            else:
+                # This upstream-flow fish eat all the previous
+                # downstream-flow fishs. Win and stay alive.
+                alive_count += 1
+    # Currently, all the downstream-flow fishs in stack
+    # downstream will not meet with any fish. They will
+    # stay alive.
+    alive_count += len(downstream)
+    return alive_count
 ```
 
 
-# L9 
 
-##  MaxSliceSum
+# L8  Leader
 
-A non-empty array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P ≤ Q < N, is called a slice of array A. The sum of a slice (P, Q) is the total of A[P] + A[P+1] + ... + A[Q].
+## EquiLeader
+
+A non-empty array A consisting of N integers is given.
+
+The leader of this array is the value that occurs in more than half of the elements of A.
+
+An equi leader is an index S such that 0 ≤ S < N − 1 and two sequences A[0], A[1], ..., A[S] and A[S + 1], A[S + 2], ..., A[N − 1] have leaders of the same value.
+
+For example, given array A such that:
+
+    A[0] = 4
+    A[1] = 3
+    A[2] = 4
+    A[3] = 4
+    A[4] = 4
+    A[5] = 2
+we can find two equi leaders:
+
+- 0, because sequences: (4) and (3, 4, 4, 4, 2) have the same leader, whose value is 4.
+- 2, because sequences: (4, 3, 4) and (4, 4, 2) have the same leader, whose value is 4.
+
+The goal is to count the number of equi leaders.
 
 Write a function:
 
 - int solution(int A[], int N);
 
-- that, given an array A consisting of N integers, returns the maximum sum of any slice of A.
+- that, given a non-empty array A consisting of N integers, returns the number of equi leaders.
 
-For example, given array A such that:
+For example, given:
 
-    A[0] = 3  A[1] = 2  A[2] = -6
-    A[3] = 4  A[4] = 0
-the function should return 5 because:
+    A[0] = 4
+    A[1] = 3
+    A[2] = 4
+    A[3] = 4
+    A[4] = 4
+    A[5] = 2
+the function should return 2, as explained above.
 
-    (3, 4) is a slice of A that has sum 4,
-    (2, 2) is a slice of A that has sum −6,
-    (0, 1) is a slice of A that has sum 5,
-no other slice of A has sum greater than (0, 1).
 Write an efficient algorithm for the following assumptions:
 
-N is an integer within the range [1..1,000,000];
-each element of array A is an integer within the range [−1,000,000..1,000,000];
-the result will be an integer within the range [−2,147,483,648..2,147,483,647].
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [−1,000,000,000..1,000,000,000].
 
 ```py
 
+def solution(A):
+    N = len(A)
+    lead = None
+    c = 0
+    cc = 0
+    
+    if N > 1:
+        for a in A:
+            if c ==0:
+                lead = a
+                c +=1
+            elif a == lead:
+                c +=1
+            elif c ==1 and lead !=a :
+                lead = a 
+            elif c > 1 :
+                c -=1
+
+        if lead !=None and c > 0:
+            c = 0
+            for a in A:
+                if lead == a:
+                    c +=1
+           
+            if c > N / 2:
+                lc = 0
+                rc = 0
+                for i in range(N-1):
+                    a = A[i]
+                    if a == lead:
+                        lc +=1
+                    if lc > 0 and lc/ (i+ 1) > 0.5 and (c-lc)/(N-i-1) > 0.5:
+                        cc +=1            
+    return cc
+```
+
+
+```java
+class Solution {
+    int solution(int[] a){
+    int len = a.length;
+    int equi_leaders = 0;
+
+    // first, compute the leader
+    int leader = a[0];
+    int ctr = 1;
+
+    for(int i = 1; i < a.length; i++){
+        if(a[i] == leader) ctr++;
+        else ctr--;
+        if(ctr == 0){
+        ctr = 1;
+        leader = a[i];
+        }
+    }
+
+    // check if it's a leader?
+    int total = 0;
+    for(int i : a){
+        if(i == leader) total++; 
+    }
+
+    if(total <= (len/2)) return 0; // impossible
+
+    int ldrCount = 0;
+    for(int i = 0; i < a.length; i++){
+        if(a[i] == leader) ldrCount++;
+        int leadersInRightPart = (total - ldrCount);
+        if(ldrCount > (i+1)/2   &&   leadersInRightPart > (len-i-1)/2){
+        equi_leaders++;
+        }
+    }
+
+    return equi_leaders;
+    }
+}
+```
+
+##  Dominator
+
+An array A consisting of N integers is given. The dominator of array A is the value that occurs in more than half of the elements of A.
+
+For example, consider array A such that
+
+    A[0] = 3    A[1] = 4    A[2] =  3
+    A[3] = 2    A[4] = 3    A[5] = -1
+    A[6] = 3    A[7] = 3
+The dominator of A is 3 because it occurs in 5 out of 8 elements of A (namely in those with indices 0, 2, 4, 6 and 7) and 5 is more than a half of 8.
+
+Write a function
+
+- int solution(int A[], int N);
+- that, given an array A consisting of N integers, returns index of any element of array A in which the dominator of A occurs. The function should return −1 if array A does not have a dominator.
+
+For example, given array A such that
+
+    A[0] = 3    A[1] = 4    A[2] =  3
+    A[3] = 2    A[4] = 3    A[5] = -1
+    A[6] = 3    A[7] = 3
+the function may return 0, 2, 4, 6 or 7, as explained above.
+
+Write an efficient algorithm for the following assumptions:
+
+- N is an integer within the range [0..100,000];
+- element of array A is an integer within the range [−2,147,483,648..2,147,483,647].
+
+
+```PY
+def solution(A):
+    N = len(A)
+    cc = -1
+    dict = {}
+    maxLen = 0 
+    for i in range(N):
+        a = A [i]
+        if a in dict.keys():
+            dict[a].append(i) 
+            if len(dict[a]) > maxLen:
+                maxLen = len(dict[a]) 
+        else:
+            dict[a] = []
+            dict[a].append(i) 
+            if len(dict[a]) > maxLen:
+                maxLen = len(dict[a]) 
+    
+    for i, k  in enumerate(dict):
+        L = len(dict[k]) 
+        if L ==maxLen and   L > N /2 :
+            # print (k, dict[k][-1])
+            return dict[k][-1]   
+    return cc
+```
+
+
+```py
+def solution(A):
+    A_len = len(A)
+    candidate = -1
+    candidate_count = 0
+    candidate_index = -1
+    for index in range(A_len):
+        if candidate_count == 0:
+            candidate = A[index]
+            candidate_index = index
+            candidate_count += 1
+        else:
+            if A[index] == candidate:
+                candidate_count += 1
+            else:
+                candidate_count -= 1
+    if len([number for number in A if number == candidate]) <= A_len//2:
+        print( candidate )
+        return -1
+    else:
+        return candidate_index
 ```
