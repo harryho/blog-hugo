@@ -263,8 +263,135 @@ def solution(A):
         if iNext < N : stop_intersecting[iNext] += stop_intersecting[i]
     return counter
 ```
+<<<<<<< HEAD
 
 
+=======
+# L8  Leader
+## EquiLeader
+
+A non-empty array A consisting of N integers is given.
+
+The leader of this array is the value that occurs in more than half of the elements of A.
+
+An equi leader is an index S such that 0 ≤ S < N − 1 and two sequences A[0], A[1], ..., A[S] and A[S + 1], A[S + 2], ..., A[N − 1] have leaders of the same value.
+
+For example, given array A such that:
+
+    A[0] = 4
+    A[1] = 3
+    A[2] = 4
+    A[3] = 4
+    A[4] = 4
+    A[5] = 2
+we can find two equi leaders:
+
+- 0, because sequences: (4) and (3, 4, 4, 4, 2) have the same leader, whose value is 4.
+- 2, because sequences: (4, 3, 4) and (4, 4, 2) have the same leader, whose value is 4.
+
+The goal is to count the number of equi leaders.
+
+Write a function:
+
+- int solution(int A[], int N);
+
+- that, given a non-empty array A consisting of N integers, returns the number of equi leaders.
+
+For example, given:
+
+    A[0] = 4
+    A[1] = 3
+    A[2] = 4
+    A[3] = 4
+    A[4] = 4
+    A[5] = 2
+the function should return 2, as explained above.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [−1,000,000,000..1,000,000,000].
+
+```py
+
+def solution(A):
+    N = len(A)
+    lead = None
+    c = 0
+    cc = 0
+    
+    if N > 1:
+        for a in A:
+            if c ==0:
+                lead = a
+                c +=1
+            elif a == lead:
+                c +=1
+            elif c ==1 and lead !=a :
+                lead = a 
+            elif c > 1 :
+                c -=1
+
+        if lead !=None and c > 0:
+            c = 0
+            for a in A:
+                if lead == a:
+                    c +=1
+           
+            if c > N / 2:
+                lc = 0
+                rc = 0
+                for i in range(N-1):
+                    a = A[i]
+                    if a == lead:
+                        lc +=1
+                    if lc > 0 and lc/ (i+ 1) > 0.5 and (c-lc)/(N-i-1) > 0.5:
+                        cc +=1            
+    return cc
+```
+
+
+```java
+class Solution {
+    int solution(int[] a){
+    int len = a.length;
+    int equi_leaders = 0;
+
+    // first, compute the leader
+    int leader = a[0];
+    int ctr = 1;
+
+    for(int i = 1; i < a.length; i++){
+        if(a[i] == leader) ctr++;
+        else ctr--;
+        if(ctr == 0){
+        ctr = 1;
+        leader = a[i];
+        }
+    }
+
+    // check if it's a leader?
+    int total = 0;
+    for(int i : a){
+        if(i == leader) total++; 
+    }
+
+    if(total <= (len/2)) return 0; // impossible
+
+    int ldrCount = 0;
+    for(int i = 0; i < a.length; i++){
+        if(a[i] == leader) ldrCount++;
+        int leadersInRightPart = (total - ldrCount);
+        if(ldrCount > (i+1)/2   &&   leadersInRightPart > (len-i-1)/2){
+        equi_leaders++;
+        }
+    }
+
+    return equi_leaders;
+    }
+}
+```
+>>>>>>> origin
 
 # L7 Stack & Queue
 ## Brackets
@@ -456,6 +583,7 @@ N is an integer within the range [0..1,000,000];
 string S consists only of the characters "(" and/or ")".
 
 ```py
+<<<<<<< HEAD
 def solution(S):
     if len(S) % 2 == 1:   return 0
     matched = {")": "("}
@@ -526,6 +654,13 @@ def solution(H):
     return stones
 ```
 
+=======
+
+
+```
+
+
+>>>>>>> origin
 ## Fish
 
 You are given two non-empty arrays A and B consisting of N integers. Arrays A and B represent N voracious fish in a river, ordered downstream along the flow of the river.
@@ -536,11 +671,17 @@ Fish number P is represented by A[P] and B[P]. Array A contains the sizes of the
 
 - 0 represents a fish flowing upstream,
 - 1 represents a fish flowing downstream.
+<<<<<<< HEAD
 
 If two fish move in opposite directions and there are no other (living) fish between them, they will eventually meet each other. Then only one fish can stay alive − the larger fish eats the smaller one. More precisely, we say that two fish P and Q meet each other when P < Q, B[P] = 1 and B[Q] = 0, and there are no living fish between them. After they meet:
 
 * If A[P] > A[Q] then P eats Q, and P will still be flowing downstream,
 * If A[Q] > A[P] then Q eats P, and Q will still be flowing upstream.
+=======
+- If two fish move in opposite directions and there are no other (living) fish between them, they will eventually meet each other. Then only one fish can stay alive − the larger fish eats the smaller one. More precisely, we say that two fish P and Q meet each other when P < Q, B[P] = 1 and B[Q] = 0, and there are no living fish between them. After they meet:
+    * If A[P] > A[Q] then P eats Q, and P will still be flowing downstream,
+    * If A[Q] > A[P] then Q eats P, and Q will still be flowing upstream.
+>>>>>>> origin
 
 We assume that all the fish are flowing at the same speed. That is, fish moving in the same direction never meet. The goal is to calculate the number of fish that will stay alive.
 
@@ -569,6 +710,7 @@ Write an efficient algorithm for the following assumptions:
 - each element of array B is an integer that can have one of the following values: 0, 1;
 - the elements of A are all distinct.
 
+<<<<<<< HEAD
 ### Solution 1 
 
 ```py
@@ -669,11 +811,23 @@ we can find two equi leaders:
 - 2, because sequences: (4, 3, 4) and (4, 4, 2) have the same leader, whose value is 4.
 
 The goal is to count the number of equi leaders.
+=======
+```py
+```
+
+
+# L9 
+
+##  MaxSliceSum
+
+A non-empty array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P ≤ Q < N, is called a slice of array A. The sum of a slice (P, Q) is the total of A[P] + A[P+1] + ... + A[Q].
+>>>>>>> origin
 
 Write a function:
 
 - int solution(int A[], int N);
 
+<<<<<<< HEAD
 - that, given a non-empty array A consisting of N integers, returns the number of equi leaders.
 
 For example, given:
@@ -849,3 +1003,29 @@ def solution(A):
     else:
         return candidate_index
 ```
+=======
+- that, given an array A consisting of N integers, returns the maximum sum of any slice of A.
+
+For example, given array A such that:
+
+    A[0] = 3  A[1] = 2  A[2] = -6
+    A[3] = 4  A[4] = 0
+the function should return 5 because:
+
+* (3, 4) is a slice of A that has sum 4,
+* (2, 2) is a slice of A that has sum −6,
+* (0, 1) is a slice of A that has sum 5,
+* no other slice of A has sum greater than (0, 1).
+
+Write an efficient algorithm for the following assumptions:
+
+- N is an integer within the range [1..1,000,000];
+- each element of array A is an integer within the range [−1,000,000..1,000,000];
+- the result will be an integer within the range [−2,147,483,648..2,147,483,647].
+
+```py
+
+```
+
+
+>>>>>>> origin
