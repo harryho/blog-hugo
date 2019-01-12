@@ -1,23 +1,22 @@
 +++
 tags =  ["php"]
-categories = ["dev"]
 title = "Debug PHP with Eclipse PDT and Netbeans"
-draft = false
+description="Free IDE Tool to debug PHP"
 +++
 
-## PDT and Netbeans
+##### PDT and Netbeans
 
 > *PDT and Netbeans are two most popluar free PHP IDEs. We choose such IDE for productivity, so code intelligence and debug are two key factors, which let us love IDE. Because both are not created for PHP development at the start, there is no built-in server to support the PHP web debug. When we want to use it to debug, we would come across some wierd problems. Here is how to prepare the IDE for PHP debug.*
 
-## AMP package or without AMP
+##### AMP package or without AMP
 
-### Use AMP package as smart choice 
+#### Use AMP package as smart choice 
 
 * If you haven't installed install any MySQL, Apache, PHP on your computer, I will recommend you to choose AMP ( Apache, MySQL, PHP ) package first, especially when project is small, the time is so tight, your client just want you to do some minor change. In that scenario, AMP package is a much better choice. Popular AMP packages include : EasyPHP, MAMP, WAMP, XAMPP. You can pick any of them on your favor.  
 
 * Here is not going to discuss any specific AMP package. You can find more detailed instruction from their official website. If you still have problem, you can take a look how to do without the AMP package, but I won't guarantee you the solution below will work for your AMP.  
 
-### Manage your shits without AMP package
+#### Manage your shits without AMP package
 
 * Here we just focus on how to work with shits ( Apache, PHP ) which you download and install them piece by piece. 10 years ago, it was easier to choose which one to download and install, because there was no much option, but now there are many options which make us confused.  
 
@@ -27,7 +26,7 @@ draft = false
 
 * Download the compatible packages, especially Apache and PHP. When you download PHP, you need to know the PHP is compiled by VC9, VC11, or VC14, and x86 or x64. After that, you need to download proper Apache from [here](https://www.apachelounge.com/download)
 
-## Assumption
+##### Assumption
 
 * Apache path `c:\apache`. Version 2.4.x, VC11, x86
 * PHP path `c:\php`, Version 5.6.x, VC11, x86
@@ -36,9 +35,9 @@ draft = false
 * Website root path `c:\php_workspace\phpsite`, the `index.php` is under this root path
 
 
-## Prepare PHP for debugging
+##### Prepare PHP for debugging
 
-### Download XDebug and install it
+#### Download XDebug and install it
 
 * Go to xdebug [site](xdebug.org). Use the [wizard tool](https://xdebug.org/wizard.php) to find the xdebug tool. 
 
@@ -56,28 +55,28 @@ xdebug.remote_autostart=1
 xdebug.remote_connect_back=1
 ```
 
-### Setup Apache to load PHP
+#### Setup Apache to load PHP
 
 * Add php module loading inside your apache configuration file. 
 * On the file `c:\apache\conf\httpd.conf` with nodepad and update as following setting
 
 ```apache
 
-# Update apache root
-# ServerRoot "c:/Apache24"
+#### Update apache root
+#### ServerRoot "c:/Apache24"
 ServerRoot "c:/apache"
 
-# Change origin 80 to 1234
-# Listen 80
+#### Change origin 80 to 1234
+#### Listen 80
 Listen 1234
 
-# Add ServerName
+#### Add ServerName
 ServerName localhost:1234
 
-# Add PHP directory
+#### Add PHP directory
 PHPIniDir "C:/php"
 
-# Add PHP module and handler
+#### Add PHP module and handler
 LoadModule php5_module "c:/php/php5apache2_4.dll"
 AddHandler application/x-httpd-php .php
 
@@ -85,8 +84,8 @@ AddHandler application/x-httpd-php .php
       SetHandler application/x-httpd-php
 </FilesMatch>
 
-# Change origin doc root htdocs 
-# DocumentRoot "c:/Apache24/htdocs"
+#### Change origin doc root htdocs 
+#### DocumentRoot "c:/Apache24/htdocs"
 DocumentRoot "c:/php_workspace/phpsite"
 
 <Directory "c:/php_workspace/phpsite">
@@ -97,7 +96,7 @@ DocumentRoot "c:/php_workspace/phpsite"
 ```
 
 
-## Debug PHP with PDT 
+##### Debug PHP with PDT 
 
 **If you have PHP 7 installed, please choose the up to PHP 5.6.x as PHP runtime.**
 
@@ -121,7 +120,7 @@ DocumentRoot "c:/php_workspace/phpsite"
   - After all these done, you can debug your website now. 
 
 
-## Debug PHP with Netbeans 
+##### Debug PHP with Netbeans 
 
 **If you have PHP 7 installed, please choose the up to PHP 5.6.x as PHP runtime.**
 
@@ -140,7 +139,7 @@ DocumentRoot "c:/php_workspace/phpsite"
   - Now you can debug php site with Netbeans
 
 
-## Use Nginx instead of Apache
+##### Use Nginx instead of Apache
 
 * Download `RunHiddenConsole` 
   - Download [RunHiddenConsole](http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip)
@@ -175,10 +174,10 @@ server {
         root          c:/php_workspace/phpsite;
         #charset koi8-r;
 
-        # Static
+        #### Static
         location / {
             index  index.php;
-        #    try_files $uri $uri/ @missing;
+        ####    try_files $uri $uri/ @missing;
         }
         location ~ /\.ht {
             deny  all;
@@ -187,10 +186,10 @@ server {
             deny  all;
         }
         
-        # PHP FastCGI
+        #### PHP FastCGI
         location ~ \.php$ {
             root           c:/php_workspace/phpsite;
-            # root  html; 
+            #### root  html; 
             fastcgi_pass   127.0.0.1:41234;
            fastcgi_index  index.php;
            fastcgi_param  SCRIPT_FILENAME  c:/php_workspace/phpsite/$fastcgi_script_name;
@@ -204,19 +203,19 @@ server {
 cat file | xclip -selection clipboard
 
 
-### PHP 5.x anp PHP 7.x on Ubuntu 16
+#### PHP 5.x anp PHP 7.x on Ubuntu 16
 
-## Add repo
+##### Add repo
     sudo add-apt-repository -y ppa:ondrej/php
     sudo apt-get update
     sudo apt-get install php5.6-fpm
     sudo apt-get install 
 
 
-### Trouble shooting
+#### Trouble shooting
 
 
-## Update
+##### Update
 Today I got again problem with PHP 7 running despite I have disabled php7.0 apache module: phpinfo was showing php 7 using fastCGI ...
 ... So if after you follow the below instructions you face this situation, you may need to disable the proxy_fcgi apache module:
 
@@ -258,15 +257,15 @@ CLI:
 
 
 
-## Build xdebug for different PHP
+##### Build xdebug for different PHP
 
-### PHP 5.6 
+#### PHP 5.6 
 
 ```
 php5.6 -i | xsel --clipboard
 
-# open url http://xdebug.org/wizard.php
-# copy the content and download the correct xdebug tar ball xdebug-2.5.3.tar.gz
+#### open url http://xdebug.org/wizard.php
+#### copy the content and download the correct xdebug tar ball xdebug-2.5.3.tar.gz
 
 tar -xvf xdebug-2.5.3.tar.gz 
 
@@ -274,10 +273,10 @@ cd xdebug-2.5.3
 
 phpize5.6 
 
-# You will output as below
-#  ...
-# Zend Module Api No:      20131226
-# Zend Extension Api No:   220131226
+#### You will output as below
+####  ...
+#### Zend Module Api No:      20131226
+#### Zend Extension Api No:   220131226
 
 ./configure --with-php-config=/usr/bin/php-config5.6
 
@@ -288,7 +287,7 @@ sudo cp modules/xdebug.so /usr/lib/php/20131226
 
 ```
 
-### Create xdebug.ini with `mods-available`
+#### Create xdebug.ini with `mods-available`
 
 ```
 zend_extension="/usr/lib/php/20131226/xdebug.so"
@@ -299,7 +298,7 @@ xdebug.remote_host=127.0.0.1
 xdebug.remote_port=9000
 ```
 
-### Create symbolic links
+#### Create symbolic links
 
 ```
 sudo ln -s /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/cli/conf.d/20-xdebug.ini
@@ -310,14 +309,14 @@ sudo ln -s /etc/php/5.6/mods-available/xdebug.ini /etc/php/5.6/fpm/conf.d/20-xde
 
 
 
-### PHP 7.0
+#### PHP 7.0
 
 ```
 
 php7.0 -i | xsel --clipboard
 
-# open url http://xdebug.org/wizard.php
-# copy the content and download the correct xdebug tar ball xdebug-2.5.3.tar.gz
+#### open url http://xdebug.org/wizard.php
+#### copy the content and download the correct xdebug tar ball xdebug-2.5.3.tar.gz
 
 tar -xvf xdebug-2.5.3.tar.gz 
 
@@ -325,10 +324,10 @@ cd xdebug-2.5.3
 
 phpize7.0 
 
-# You will output as below
-# ...
-# Zend Module Api No:      20151012
-# Zend Extension Api No:   320151012
+#### You will output as below
+#### ...
+#### Zend Module Api No:      20151012
+#### Zend Extension Api No:   320151012
 
 ./configure --with-php-config=/usr/bin/php-config7.0
 
@@ -339,7 +338,7 @@ sudo cp modules/xdebug.so /usr/lib/php/20151012
 ```
 
 
-### Create xdebug.ini with `mods-available`
+#### Create xdebug.ini with `mods-available`
 
 ```
 zend_extension="/usr/lib/php/20151012/xdebug.so"
@@ -350,7 +349,7 @@ xdebug.remote_host=127.0.0.1
 xdebug.remote_port=9000
 ```
 
-### Create symbolic links
+#### Create symbolic links
 
 ```
 sudo ln -s /etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini

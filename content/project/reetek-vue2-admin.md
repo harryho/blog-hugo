@@ -11,7 +11,7 @@ tags = ["javascript"]
 * It include Vue Resource, Vuex as well.
 * The plugins for this project are loaded with script loader. 
 
-## Structure of Reetek Vue2Admin
+##### Structure of Reetek Vue2Admin
 
 ``` ini
 path\to\vue2admin
@@ -52,10 +52,10 @@ path\to\vue2admin
 ```
 
 
-### Screenshots
+#### Screenshots
 
 > ![Screenshot1](/img/vue2admin_screenshot1_sm.png)
 
 > ![Screenshot2](/img/vue2admin_screenshot2_sm.png)
 
-## Browse [Repository](https://github.com/harryho/vue2admin.git)
+##### Browse [Repository](https://github.com/harryho/vue2admin.git)

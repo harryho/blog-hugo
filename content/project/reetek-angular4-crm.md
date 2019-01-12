@@ -19,7 +19,7 @@ __Features__
 * This project includes ng-charts, pagination, progress-bar, confirmation dialog, etc. features.
 * It uses Json-Server as fake Restful API. (You can simple replace it with your own API)
 
-## Structure of Ng4Crm
+##### Structure of Ng4Crm
 
 ``` ini
 path\to\ng4crm
@@ -58,7 +58,7 @@ path\to\ng4crm
 ```
 
 
-### Screenshots
+#### Screenshots
 
 > ![Screenshot1](/img/ng4crm-screenshot-1.jpg)
 
@@ -70,7 +70,7 @@ path\to\ng4crm
 
 
 
-#### Browse [Repository](https://github.com/harryho/ng4crm.git)
+#####  Browse [Repository](https://github.com/harryho/ng4crm.git)
 
 
 __Alternatives__

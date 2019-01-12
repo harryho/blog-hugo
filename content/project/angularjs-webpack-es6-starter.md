@@ -1,7 +1,7 @@
 +++
-categories = ["project"]
 date = "2016-11-15T16:56:21+11:00"
 title = "Angularjs Webpack ES6 Starter"
+description = "Angularjs Webpack ES6 Starter"
 tags = ["angularjs","webpack","javascript"]
 
 +++
@@ -20,7 +20,7 @@ This starter was inspired by another similar angular webpack starter repository.
 * Include Bootstrap 3 without bootstrap-loader.
 * No gulp and no grunt, just npm scripts.
 
-## Structure of starter
+##### Structure of starter
 
 ```bash
 
@@ -76,7 +76,7 @@ This starter was inspired by another similar angular webpack starter repository.
 ```
 
 
-### Browse [Repository](https://github.com/harryho/angularjs-webpack-es6-starter.git)
+#### Browse [Repository](https://github.com/harryho/angularjs-webpack-es6-starter.git)
 
 
 

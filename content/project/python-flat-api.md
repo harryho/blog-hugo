@@ -35,11 +35,11 @@ Quick Start
 - Launch FlatApi without configuration
 
 ```bash
-# Start the FlatApi - Sample 1 
+#### Start the FlatApi - Sample 1 
 $ python3 /<path_to_package>/flatapi -S MEMORY -G NO
-# Start the FlatApi - Sample 2
+#### Start the FlatApi - Sample 2
 $ python3 /<path_to_package>/flatapi --storage MEMORY -cfgfile NO
-# Start the FlatApi with prefix - Sample 3
+#### Start the FlatApi with prefix - Sample 3
 $ python3 /<path_to_package>/flatapi --storage memory -cfgfile no -X api
 
 
@@ -75,24 +75,24 @@ DELETE /posts    --> Delete all posts
 - Test api via curl 
 
 ```bash
-# Add a new post
+#### Add a new post
 $ curl -d "{\"text\":\"post 1\",\"author\":\"harry\"}" -H "Content-Type: application/json" -X POST http://localhost:5000/posts
 {"author": "harry", "text": "post 1", "id": 1}
 
-# Get post by Id
+#### Get post by Id
 $ curl -X GET http://localhost:5000/posts/1
 {"author": "harry", "text": "post 1", "id": 1}
 
-# Get all posts
+#### Get all posts
 $ curl -X GET http://localhost:5000/posts
 [{"author": "harry", "text": "post 1", "id": 1}]
 
-# Update  the post
+#### Update  the post
 $ curl -d "{\"text\":\"post updated\",\"author\":\"harry\"}" -H "Content-Type: application/json" -X PUT http://localhost:5000/posts/1
 [{"author": "harry", "text": "post updated", "id": 1}]
 
-# Delete 
+#### Delete 
 $ curl -X DELETE http://localhost:5000/posts 
 ```
   
-## Browse [Repository](https://github.com/harryho/flat-api.git)
+##### Browse [Repository](https://github.com/harryho/flat-api.git)

@@ -18,7 +18,7 @@ __Features__
 * This project uses Redux-Thunk to support backend API.
 * It uses Json-Server as fake Restful API. (You can simple replace it with your own API)
 
-## Structure of React-Crm
+##### Structure of React-Crm
 
 ``` ini
 path\to\ng4crm
@@ -57,7 +57,7 @@ path\to\ng4crm
 ```
 
 
-### Screenshots
+#### Screenshots
 
 > ![Screenshot1](/img/rrcrm-screenshot-1.jpg)
 
@@ -68,7 +68,7 @@ path\to\ng4crm
 > ![Screenshot4](/img/rrcrm-screenshot-4.jpg)
 
 
-#### Browse [Repository](https://github.com/harryho/react-crm.git)
+#####  Browse [Repository](https://github.com/harryho/react-crm.git)
 
 
 

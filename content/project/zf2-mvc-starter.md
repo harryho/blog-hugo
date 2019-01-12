@@ -16,7 +16,7 @@ This starter is the starting point of zendframework 2 MVC project. This applicat
 * Include html5shiiv.js to support older IE browser. 
 
 
-## Structure of starter
+##### Structure of starter
 
 ```bash
 
@@ -62,10 +62,10 @@ This starter is the starting point of zendframework 2 MVC project. This applicat
 ```
 
 
-### Screenshot of home page
+#### Screenshot of home page
 
 
 > ![zf2-mvc-starter](/img/zf2-mvc-starter.png)
 
-## Browse [Repository](https://github.com/harryho/zf2-mvc-starter.git)
+##### Browse [Repository](https://github.com/harryho/zf2-mvc-starter.git)
 

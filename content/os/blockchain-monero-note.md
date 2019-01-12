@@ -6,16 +6,16 @@ title = "Monero Blockchain notes"
 draft = true
 +++
 
-## Assumption
+##### Assumption
 
 * You have a VPS or Dedicated Server. 
 * You have some basic concept of blockchain, cryptocurrency. 
 * You are happy to play round with infrastructures. 
 
 
-## Windows
+##### Windows
 
-### Infrasture 
+#### Infrasture 
 * Machine : VPS
 * OS : Windows 2012 R2 64bit
 * CPU: 
@@ -24,7 +24,7 @@ draft = true
 
  
 
-### Install Msys2 
+#### Install Msys2 
 
 * Update package 
 
@@ -41,4 +41,4 @@ pacman -Syuu
 * Build the  
 
 
-## Linux 
+##### Linux 

@@ -3,19 +3,19 @@ tags = ["python"]
 categories = ["dev"]
 date = "2015-09-28T09:59:31+11:00"
 title = "Python Web framework"
-draft = false
+description="Introduction of Django"
 +++
 
-## Getting started
+##### Getting started
 
-### Install Python & pip & virtualenv
+#### Install Python & pip & virtualenv
 * Windows: Please find in from [Home Page](/)
 * Ubuntu: Please find it from [Ubuntu setup](ubuntu-server-14)
 * Python 3.4 (released March 2014) and Python 2.7.9 (released December 2014) ship with Pip.
 * You can simply use pip or pip3 install any package you need.
 
 
-### Install Django
+#### Install Django
 
 **Windows**
 
@@ -35,7 +35,7 @@ which python
 pip install django==1.x.x
 ```
 
-### Create django project 
+#### Create django project 
 
 * SET PATH in current command promp
 * Navigate to workspace folder
@@ -62,9 +62,9 @@ python manage.py runserver
 ```python
 python manage.py syncdb 
 python manage.py makemigrations new_app 
-# migrate 
+#### migrate 
 pyrhon manage.py sqlmigrate new_app 0001 
-# migrate 
+#### migrate 
 python manage.py migrate new_app 0001
 ```
 
@@ -90,15 +90,15 @@ pip3 install virtualenv
 cd ~
 mkdir .envs
 
-# create python2 env
+#### create python2 env
 virtualenv -p /usr/bin/python2.7 py2env
 virtualenv -p /usr/bin/python3.4 py3env
 
 cd py2env 
 source bin/activate
-# Check python path 
+#### Check python path 
 which python
-# Exit
+#### Exit
 deactivate
 
 ```

@@ -1,9 +1,8 @@
 +++
 tags =  ["itext"]
-categories = ["dev"]
 date = "2016-08-11T11:59:31+11:00"
 title = "Git Notes"
-draft = false
+description="Common Git Commands & Tricks"
 +++
 
 
@@ -15,7 +14,7 @@ Create a new branch with git and manage branches
 		
 * Push the branch on github :
 
-	      $ git push origin [name_of_your_new_branch]
+        $ git push origin [name_of_your_new_branch]
 
 When you want to commit something in your branch, be sure to be in your branch.
 
@@ -72,18 +71,23 @@ Fast-Forward Merge
 
 Our first example demonstrates a fast-forward merge. The code below creates a new branch, adds two commits to it, then integrates it into the main line with a fast-forward merge.
 
-    # Start a new feature
-    git checkout -b new-feature master
-    # Edit some files
-    git add <file>
-    git commit -m "Start a feature"
-    # Edit some files
-    git add <file>
-    git commit -m "Finish a feature"
-    # Merge in the new-feature branch
-    git checkout master
-    git merge new-feature
-    git branch -d new-feature
+    ```bash
+    #### Start a new feature
+    $ git checkout -b new-feature master
+    
+    #### Edit some files    
+    $ git add <file>
+    $ git commit -m "Start a feature"
+    
+    #### Edit some files    
+    $ git add <file>
+    $ git commit -m "Finish a feature"
+    
+    #### Merge in the new-feature branch    
+    $ git checkout master
+    $ git merge new-feature
+    $ git branch -d new-feature
+    ```
 
 This is a common workflow for short-lived topic branches that are used more as an isolated development than an organizational tool for longer-running features.
 
@@ -93,19 +97,26 @@ Also note that Git should not complain about the git branch -d, since new-featur
 
 The next example is very similar, but requires a 3-way merge because master progresses while the feature is in-progress. This is a common scenario for large features or when several developers are working on a project simultaneously.
 
-    # Start a new feature
-    git checkout -b new-feature master
-    # Edit some files
-    git add <file>
-    git commit -m "Start a feature"
-    # Edit some files
-    git add <file>
-    git commit -m "Finish a feature"
-    # Develop the master branch
-    git checkout master
-    # Edit some files
-    git add <file>
-    git commit -m "Make some super-stable changes to master"
-    # Merge in the new-feature branch
-    git merge new-feature
-    git branch -d new-feature
+    ```bash
+    #### Start a new feature
+    $ git checkout -b new-feature master
+
+    #### Edit some files
+    $ git add <file>
+    $ git commit -m "Start a feature"
+
+    #### Edit some files
+    $ git add <file>
+    $ git commit -m "Finish a feature"
+
+    #### Develop the master branch
+    $ git checkout master
+
+    #### Edit some files
+    $ git add <file>
+    $ git commit -m "Make some super-stable changes to master"
+
+    #### Merge in the new-feature branch
+    $ git merge new-feature
+    $ git branch -d new-feature
+    ```

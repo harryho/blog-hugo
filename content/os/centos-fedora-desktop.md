@@ -6,21 +6,21 @@ title = "CentOS 6/7 Multi-Boot Setup"
 draft = false
 +++
 
-## Breif History
+##### Breif History
 * Please find it from [Brief history of Linux](/blog/linux-history/#centos)
 
-### Bootable usb preparation
+#### Bootable usb preparation
 > Download dvd iso from url or torrent
 > Use Win32 Image Writer to create usb. ( Bootice is useful tool to reformat the USB as origin )
 
-### Install CentOS on virtual machine
+#### Install CentOS on virtual machine
 
 * Before you install, you are better to backup anything on the device which you are going to install, and chcek your internet is working properly. 
 
 * CentOS provide a friendly and nice installation process. If you choose VMWare or VirtulBox as machine, you can open [installation steps](http://www.tecmint.com/centos-7-installation) on your browser or use ipad /tablet to access this page. You just need to follow the instruction step by step, it will be done within an hour or more(it varies in computing power of PC).
 
 
-### Prepare VM for CentOS
+#### Prepare VM for CentOS
 
 * Create a new virtual machine. 
     * Type in the name of vm. e.g. CentOS
@@ -48,7 +48,7 @@ draft = false
     * Click the CD button at the end of the dropdown list of CD/DVD Drive. Choose the Unbuntu iso file which you download from Unbuntu.org. Click `OK`.
     * Leave all the other setting as default. Click the `Power on this virtual machine` option on the tab page. 
  
-### Config CentOS default setting
+#### Config CentOS default setting
  
  After the CentOS starts, we can config the default setting of CentOS. Don't be panic, the configuration envrionment is very nice. You don't need to type any command line so far.
  
@@ -64,7 +64,7 @@ draft = false
     * The progress of installation is complete. Click Finish configuration button.
      w$w4 d. After a few seconds, you will the Reboot button. Then click it. 
 
-### Manage CentOS packages and software
+#### Manage CentOS packages and software
 
 * there are two management tools rpm and yum. To make it easy, we just talk about yum. It is a very handy tool. Comparing with the windows built-in program management tool, it is much powerful than that. It provides necessary functions for admin. If you need to maintain the Linux server, then you will use it in your daily task. 
 * Use `man yum` to take a look the description of yum. You do not need to understand all usage of yum. Just have an overview is enough. 
@@ -77,9 +77,9 @@ yum grouplist
 ```
 
 
-## Install CentOS on PC or laptop
+##### Install CentOS on PC or laptop
 
-### Setup network ( via cable )
+#### Setup network ( via cable )
 
 If you install a minimal version without network configuration, you will find you can not ping public domain. Here I am going to show you how to setup the connection. 
  
@@ -88,18 +88,18 @@ If you install a minimal version without network configuration, you will find yo
  
 ```bash
 
-# lo ****  qdisc pfifo_fast noqueue UNKNOWN
-# eth0 **** qdisc pfifo_fast state DOWN
+#### lo ****  qdisc pfifo_fast noqueue UNKNOWN
+#### eth0 **** qdisc pfifo_fast state DOWN
 
 ```
  
-* Use `# ifup eth0` to start the ech0 then you can access internet. It is a bit tedious to start the network service every time we reboot the system. Next step we will setup network service to start automatically after the system is up. 
+* Use `#### ifup eth0` to start the ech0 then you can access internet. It is a bit tedious to start the network service every time we reboot the system. Next step we will setup network service to start automatically after the system is up. 
 * There is a configuration file which can help you setup internet connection after the startup. Ususally the configuration is under this path `/etc/sysconfig/network-scripts`, and file name would `ifcfg-eth<*>`. So we check the real file name at first. 
  
 ```bash
 ls /etc/sysconfig/network-scripts/ifcfg-*
 
-# Following are sample of files which will sit in your system. 
+#### Following are sample of files which will sit in your system. 
 /etc/sysconfig/network-scripts/ifcfg-eth0
 /etc/sysconfig/network-scripts/ifcfg-lo
 ```
@@ -109,7 +109,7 @@ http://www.openvim.com/tutorial.html
 
 We use vi to open the config file.
 ```bash
-# vi /etc/sysconfig/network-scripts/ifcfg-eth0
+#### vi /etc/sysconfig/network-scripts/ifcfg-eth0
 ```
 
 You will a setting below.
@@ -117,13 +117,13 @@ ONBOOT=no
 
 You just need to update it to ONBOOT=yes, then save it and reboot CentOS to test the result.
 ```bash
-# reboot
+#### reboot
 ```
 
 After you reboot and login CentOS, you can use ping to test if your system can access internet, then configuration is updated successful.
 
 
-#### Setup Wifi 
+#####  Setup Wifi 
 
 * Setup Wifi during the installation. After the installation, you will find the Wifi is not available on Cent OS
 * Mount the DVD or iso file
@@ -133,9 +133,9 @@ After you reboot and login CentOS, you can use ping to test if your system can a
 yum --disablerepo=\* install /path/to/dvd/Packages/NetworkManager-wifi* 
 ```
 
-## Multiple boot system ( Fedora, CentOS, Redhat )
+##### Multiple boot system ( Fedora, CentOS, Redhat )
 
-### Partition setup for multiple OS installation 
+#### Partition setup for multiple OS installation 
 
 > Fedora, CentOS and Redhat share the almost the same installation process. 
 > Click on the `Installation Destination` icon to change this to custom partitioning
@@ -158,9 +158,9 @@ sda
 
 ```
 
-### Troubleshooting
+#### Troubleshooting
 
-#### ifconfig not found in CentOS minimal server
+#####  ifconfig not found in CentOS minimal server
 
 Use command `ip`
 
@@ -169,27 +169,27 @@ ip addr
 ip -s link
 ```
 
-#### Enable Network (Non-wifi) onboot after minimal installation
+#####  Enable Network (Non-wifi) onboot after minimal installation
 
 If you cannot ping any domain, use `dhclient -v` to check if the internet is available. 
 
 Setup the network enabled onboot
 
 ```
-# cd /etc/sysconfig/network-scripts/ 
-# sed -i -e 's@^ONBOOT="no@ONBOOT="yes@' ifcfg-e.xx.xxx
+#### cd /etc/sysconfig/network-scripts/ 
+#### sed -i -e 's@^ONBOOT="no@ONBOOT="yes@' ifcfg-e.xx.xxx
 ``` 
 
-#### Boot CentOS in terminal
+#####  Boot CentOS in terminal
 
 ```
-# cat /etc/inittab
-# systemctl get-default 
+#### cat /etc/inittab
+#### systemctl get-default 
 graphic.target
-# systemctl set-default multi-user.target
+#### systemctl set-default multi-user.target
 ```
 
-#### Fedora boot error
+#####  Fedora boot error
 
 * Please check the grub.cfg if you get booting error
 * You can try following command to boot Fedora from Grub menu

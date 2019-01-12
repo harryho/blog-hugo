@@ -6,27 +6,27 @@ title = "Python & MoviePy"
 draft = true
 +++
 
-# Python
+#### Python
 
-## Assumption 
+##### Assumption 
 
 * Windows based development environment. 
 
-## Install Anaconda
+##### Install Anaconda
 
-## Install MoviePy
+##### Install MoviePy
 `\path\to\andacoda\scripts\pip install -i https://pypi.anaconda.org/pypi/simple moviepy`
 
-## Download FFMpeg & ImageMagicK
+##### Download FFMpeg & ImageMagicK
 * Download the lasted [static file](https://ffmpeg.zeranoe.com/builds/win64/static/). You can choose zip or 7z format, and then extra to your local PC. 
 * Download the [ImageMagick](https://www.imagemagick.org/script/download.php) from its website. I will suggest download ImageMagick-7.0.5-0-portable-Q16-x86.zip (32bit) or ImageMagick-x.x.x.x-portable-Q16-x64.zip (64bit) and extra it to local PC. 
 * Update the `config.py` within the `moviepy` module to setup the correct paths for `FF`
 
-## Setup FFMpeg
+##### Setup FFMpeg
 
 ```
 
 ```
 
-## FFMpeg manipulation
+##### FFMpeg manipulation
 ```

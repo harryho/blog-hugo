@@ -6,32 +6,32 @@ draft = true
 +++
 
 
-# MySql/MariaDB
+#### MySql/MariaDB
 
-### Start mysql server
+#### Start mysql server
 ```
 mysqld
 ```
 
-### Start mysql client 
+#### Start mysql client 
 ```
 mysql -p 3306
 ```
 
-### stop mysql server
+#### stop mysql server
 ```
 mysqladmin -u root -p shutdown
 ```
 
 
-### Change mysql root user password
+#### Change mysql root user password
 ```
 mysql --user=root --pass='' 
 mysql -e "update user set password=password('') \
 where user='root'; flush privileges;"
 ```
 
-### Back database as SQL Dump 
+#### Back database as SQL Dump 
 
 If it's an entire DB, then:
 
@@ -45,7 +45,7 @@ mysqldump -u [uname] -p[pass] db_name > db_backup.sql
 $ mysqldump -u [uname] -p[pass] db_name table1 table2 > table_backup.sql
 ```
 
-### Import dataase 
+#### Import dataase 
 
 ```bash
 mysql -u username -p -h localhost DATA-BASE-NAME < data.sql
@@ -61,9 +61,9 @@ CREATE DATABASE <your-database> CHAR SET utf8 COLLATE 'utf8_unicode_ci';
 
 ```
 
-# PostGreSQL
+#### PostGreSQL
 
-## Start db
+##### Start db
 
 ```
 e:\db\pgsql9\bin\pg_ctl.exe -D "e:\db\pgsql9\data"  -l logFile start
@@ -71,13 +71,13 @@ e:\db\pgsql9\bin\pg_ctl.exe -D "e:\db\pgsql9\data" stop
 ```
 
 
-# SQL Server
+#### SQL Server
 
-### Collation precedence, also known as collation coercion rules
+#### Collation precedence, also known as collation coercion rules
 
 ```
 SELECT * 
 FROM TestTab 
 WHERE GreekCol = LatinCol COLLATE greek_ci_as;
 ```
-### SQL Pagination
+#### SQL Pagination

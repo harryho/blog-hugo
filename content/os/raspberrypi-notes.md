@@ -11,14 +11,14 @@ Prelude
 > *This note is mainly to record how to setup Raspberry Pi as file server.
 
 
-## Assumption
+##### Assumption
 
 * You have a Raspberry Pi with pre-installed raspbian SD card
 * You are happy to get your hands dirty
 * You have some basic computer concept.
 * RPi is short for Raspberry Pi  
 
-## My Raspberry Pi is a bit old
+##### My Raspberry Pi is a bit old
 
 I only have the RPi 1 model B with pre-installed raspbian SD card in place. It is quite outdated. If you don’t know the model of your RPi, please don’t worry it now. I will explain how to get the info later. I got this RPi as a gift 2 years ago. I left it in the garage and totally forgot it, until I cleaned up my garage a couple months ago. Actually I loved the old model with transparent plastic box more than the new one. I knew if I continued to leave it in the garage, it would be a rubbish soon, because it is not easy to find some equipment or software compatible with the old RPi. Luckily the lifespan of RPi is much longer than the mobile phone, but it still took me some effort to setup the wifi adapter.
 
@@ -32,12 +32,12 @@ Screenshot of kodi mobile app on my android phone.
 
 ![kodi-mobile-app](/img/kodi-mobile-app.png)
 
-## How to start
+##### How to start
 There is no wifi or bluetooth support on this model. I have to connect this tiny box to my switch via cable all the time. There is a small problem, because my switch is far away from my laptop, monitor, keyboard, etc. and I don’t have a cable long enough to connect the RPi and switch.
 
 First thing first, I need to setup ssh server, and change the configuration to allow password login, also make it auto-start after reboot. To do so I just need monitor and keyboard. 
 
-### Connect the RPi with monitor and keyboard
+#### Connect the RPi with monitor and keyboard
 
 * Reset pasword of `pi`
 
@@ -45,42 +45,42 @@ First thing first, I need to setup ssh server, and change the configuration to a
 sudo passwd pi
 ```
 
-### SSH server setup
+#### SSH server setup
 
 ```bash
 sudo apt-get install openssh-server 
 
-# backup default config 
+#### backup default config 
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.ori
 sudo chmod a-w /etc/ssh/sshd_config.ori
 
-# use any editor to update sshd_config 
+#### use any editor to update sshd_config 
 sudo nano /etc/ssh/sshd_config 
 
-# uncomment  PasswordAuthentication yes to allow remote password login
+#### uncomment  PasswordAuthentication yes to allow remote password login
 
-# setup ssh auto-start onboot
+#### setup ssh auto-start onboot
 sudo update-rc.d ssh defaults
 
-# reboot
+#### reboot
 sudo reboot
 
-# Check the ssh is running after reboot
+#### Check the ssh is running after reboot
 sudo service ssh status 
 
-# You should see sth as below
+#### You should see sth as below
 [ok] sshd is running
 
-# Turn off Pi 
+#### Turn off Pi 
 sudo poweroff
 ```
 
-### Connect RPi with the switch
+#### Connect RPi with the switch
 
 After all above is done, you can disconnect the monitor and keyboard, and connect the RPi with the switch (or modem). Once the power is on, you should be able to access the RPi from you PC or laptop. 
 
 
-### Find the ip address
+#### Find the ip address
 
 Access the admin home page of my switch via browser. e.g. `http://192.168.0.1/index.html` (The actual URL depends on your switch or modem. You can find it on the label sticked on the back or bottom.)
 
@@ -111,15 +111,15 @@ You will see table as blew.
  raspberrypi| a5:06:b2:07:c4:03 | 192.168.1.10 | x hours x mins 
 
 
-### Access RPi with your laptop
+#### Access RPi with your laptop
 
 * From Linux or Mac 
 
 ```
 ssh username@192.168.1.10
 
-# type yes 
-# type the password 
+#### type yes 
+#### type the password 
 
 ```
 
@@ -130,18 +130,18 @@ You need to download a ssh tool. If you installed git before, you would have it 
 After you install and launch Putty, you just need to type in the IP address `192.168.1.10` to the field `Host Name (or IP Address)`, then click button `Open`. 
 
 ```
-# type in pi as login user
+#### type in pi as login user
 login as: pi
 
-# type in password
+#### type in password
 pi@192.168.1.10's password: 
 
 ```
 
 
-### Access RPi via VNC
+#### Access RPi via VNC
 
-#### Setup VNC server on RPi 
+#####  Setup VNC server on RPi 
 
 ```bash
 sudo apt-get update
@@ -153,10 +153,10 @@ sudo apt-get install tightvncserver
 ```bash
 /usr/bin/tightvncserver
 
-# Setup password for remote access. 
-# View only password is not necessary
+#### Setup password for remote access. 
+#### View only password is not necessary
 
-# setup VNC server to auto start
+#### setup VNC server to auto start
 sudo update_rc.d tightvncserver defaults
 
 sudo reboot
@@ -164,7 +164,7 @@ sudo reboot
 
 
 
-#### Setup VNC client on your PC
+#####  Setup VNC client on your PC
 
 Linux: Use __xRDP__
 I believe you can figure it out yourself, if you used Linux as desktop. 
@@ -187,7 +187,7 @@ After all above is done, you have your RPi ready. You can choose what you want t
 Now I want to make a file server and media center on it.
 
 
-### Setup File Server via Samba
+#### Setup File Server via Samba
 
 * Attach external storage to your RPi. The capacity of preinstalled SD card has only 8G space, so I attached my portal hard drives to RPi. You can attach the PC hard drive, USD or another SD card via adapter. It is really up to what you have in place. 
 
@@ -205,7 +205,7 @@ sudo apt-get install ntfs-3g
 ```bash
 sudo lsblk
 
-# You will see the tree structure of drives
+#### You will see the tree structure of drives
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda           8:0    0   1.8T  0 disk
 └─sda1        8:1    0   1.8T  0 part /media/mydrive1
@@ -219,7 +219,7 @@ mmcblk0     179:0    0   7.4G  0 disk
 * Remount the drives with proper name
 
 ```bash
-sudo su # switch to root
+sudo su #### switch to root
 cd /media
 umount mydrive1 
 umount mydrive2
@@ -264,7 +264,7 @@ sudo apt-get install samba samba-common-bin
 
 * Setup Samba configuration
 
-#### Backup original config and update the config
+#####  Backup original config and update the config
 
 ```bash
 sudo su
@@ -274,9 +274,9 @@ cp smb.conf smb.conf.ori
 nano smb.conf
 ```
 
-#### Change the line `#   wins support = no` to `wins support = yes`
+#####  Change the line `####   wins support = no` to `wins support = yes`
 
-#### Add follow lines to end of the file
+#####  Add follow lines to end of the file
 
 ```
 [public]
@@ -300,22 +300,22 @@ read only = no
 guest ok = yes
 ```
 
-#### Add new user `smbu` for remote access. In case you 
+#####  Add new user `smbu` for remote access. In case you 
 
 ```bash
 sudo useradd smbu
 sudo passwd smbu
 sudo usermod -a -G root smbu
-sudo smbpasswd smbu # setup pasword for remote access
+sudo smbpasswd smbu #### setup pasword for remote access
 ```
 
 * Access the network folder
 
-#### Linx 
+#####  Linx 
 
 I have no any problem to access the both netowrk drives via Linux. 
 
-#### Windows
+#####  Windows
 
 It took me some time to make it work for me. There are some bullet points, which may help you for trouble shooting.
 
@@ -327,7 +327,7 @@ It took me some time to make it work for me. There are some bullet points, which
 
 
 
-### Get accurate version of RPi model 
+#### Get accurate version of RPi model 
 
 * Get the revision code 
 
@@ -352,7 +352,7 @@ PiZero	| 512MB | 	900092(no camera connector) 900093(camera connector)
 Pi 3 Model B	| 1GB | 	a02082 (Sony, UK) a22082 (Embest, China)
 PiZero W	| 512MB | 	9000c1
 
-### Setup Wifi Adapter
+#### Setup Wifi Adapter
 
 Wifi adapter is not necessary for media centre, but it would save some effort to move your RPi around in your place, especially you want to connect your RPi with different devices from time to time.
 
@@ -368,14 +368,14 @@ Download and install the new version of the script with commands
 sudo wget http://www.fars-robotics.net/install-wifi -O /usr/bin/install-wifi
 sudo chmod +x /usr/bin/install-wifi
 
-# Shows details on using it.
+#### Shows details on using it.
 sudo install-wifi -h
 
 
-# To install the driver on your current kernel you should just need to run command
+#### To install the driver on your current kernel you should just need to run command
 sudo install-wifi
 
-# Check the wifi interface after installation
+#### Check the wifi interface after installation
 ifconfig -a
 ```
 
@@ -386,18 +386,18 @@ https://www.raspberrypi.org/documentation/configuration/wireless/
 
 
 
-### Install Kodi as media centre
+#### Install Kodi as media centre
 
 If you have NOOBS in the place, then you have everything you need. Because I don't have it, I follow the official instruction to install kodi. It is a simple way to convert your RPi into a media centre without scratching your head too much. 
 
 ```bash
 
-# Install kodi
+#### Install kodi
 sudo apt-get update
 sudo apt-get install kodi
 
 
-# Config kodi
+#### Config kodi
 sudo nano /etc/default/kodi
 ENABLED=1
 

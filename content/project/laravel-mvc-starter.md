@@ -9,9 +9,9 @@ tags = ["php"]
 This starter is the starting point of laravel 5 MVC project. This application is meant to be used as a starting place for those looking to get their feet wet with laravel. 
 
 
-## Overview of project
+##### Overview of project
 
-## BDD ( Business domain design)
+##### BDD ( Business domain design)
 
 ``` ini
 +-------+ 0...*     0...* +--------+ 1     0...* +---------+ 
@@ -27,7 +27,7 @@ This starter is the starting point of laravel 5 MVC project. This application is
 ```
 
 
-## Structure of starter
+##### Structure of starter
 
 ```
 \path\to\lara-mvc-starter
@@ -74,10 +74,10 @@ This starter is the starting point of laravel 5 MVC project. This application is
 ```
 
 
-### Screenshots
+#### Screenshots
 
 > ![laravel-mvc-starter](/img/lara-mvc-starter.png)
 
-## Browse [Repository](https://github.com/harryho/lara-mvc-starter.git)
+##### Browse [Repository](https://github.com/harryho/lara-mvc-starter.git)
 
 

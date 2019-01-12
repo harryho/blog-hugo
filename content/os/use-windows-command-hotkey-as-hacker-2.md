@@ -1,7 +1,7 @@
 +++
 tags =  ["windows","cmd"]
 categories = ["os"]
-date = "2014-03-24T10:59:31+11:00"
+date = "2012-03-24T10:59:31+11:00"
 title = "Use Windows command & hotkey as a hacker - Part 2"
 
 +++
@@ -11,21 +11,21 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 *Let me clarify something first. Advanced command here does not mean that commands here are very complicated or much more powerful than common ones, which have been shown in the Part-1. Here we call them advanced, because they are used by experienced users to complete their given tasks, and those commands are used seldom by majority people. Comparing with Part-1, advanced commands have some specific features which allow them to do some special jobs, which usually are done by system admin. Advanced command is known as Admin command as well.*
 
 
-## Advanced commands and usages
+##### Advanced commands and usages
 
-### attrib 
+#### attrib 
 
 * Type `attrib +h a.txt` to hide file and use `attrib -h a.txt` to unhide it. 
 * Type `attrib +r a.txt` to change file to read-only and reverse the action by `-r`
 
-### env 
+#### env 
 * Type `env>env.txt & notepad env.txt` Display all environment variable in text file
 
-### set 
+#### set 
 * Type `set path` to display **PATH** environment variable, which is useful to check if your **PATH** has been setup properly.
 * Type `set /P a=b` to set b as value to variable a. It will be used in bat/cmd script. 
 
-### net 
+#### net 
     
 **get sub-commands** -- type `net /? `
 
@@ -63,13 +63,13 @@ title = "Use Windows command & hotkey as a hacker - Part 2"
 * User `net accounts /unique:5` to prevent user reuse previous passwords, and default value is 5.
 
 
-### runas 
+#### runas 
 
 ```dos
 start command prompt as administrator
 runas /user:yourpc\administrator "cmd"
 
-REM ##BE CAREFUL When you try the command below ##  
+REM ##BE CAREFUL When you try the command below #####  
 REM it shows how to create, delete files as admin under C drive root.  
 runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & \
     dir c:\z.txt & pause & del c:\z.txt " 
@@ -77,7 +77,7 @@ runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & \
 ```
 
 
-### sc
+#### sc
 
 * sc command usage: `sc <server> [command] [service name] <option1> <option2>...`
 
@@ -158,13 +158,13 @@ sc stop  <servicename>
 ```
 
 
-### ipconfig
+#### ipconfig
 
 * Type `ipconfig /all` to display full configuration information.
 * Type `ipconfig /flushdns`    to purge the DNS Resolver cache.
 
 
-### tasklist
+#### tasklist
 
 **syntax**
 
@@ -189,7 +189,7 @@ REM get process by PID
 tasklist /fi "pid eq 4444"
 ```
 
-### netstat 
+#### netstat 
 
 * Type `netstat` to get all ports and IP addresses, which are connected or listening 
 * Type PID of process which is using some given port, such as 80, 443, 22, etc.
@@ -208,7 +208,7 @@ for /f "tokens=5" %p in ( 'netstat -ano ^| find ":80"') do @(
 )
 ```
 
-### taskkill
+#### taskkill
 
 **syntax**
 
@@ -232,7 +232,7 @@ taskkill /F /FI "PID ge 1000" /FI "WINDOWTITLE ne untitle*"
 taskkill /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM notepad.exe
 ```
 
-### schtasks
+#### schtasks
 
 * Syntax -- `schtasks /parameter [arguments]`
     * parameters include -- Change, Create, Delete, End, Query, Run, ShowSid  
@@ -255,11 +255,11 @@ REM get table of running tasks in details and output to csv file
 SCHTASKS /Query /FO TABLE /NH /V | find "Running" >running_tasks.csv
 ```
 
-## Combination of multiple commands
+##### Combination of multiple commands
 
 As we know, usually each command is designed to complete some specific actions, but sometimes we have to combine different commands together to achieve what we want. There are a few ways to put the commands together. 
 
-### Use `&` 
+#### Use `&` 
 
 It is used to connect to two commands  and execute them sequentially
 
@@ -282,7 +282,7 @@ del /s/q test & rd /s/q
 ```
 
 
-### Use pipeline `>`
+#### Use pipeline `>`
 
 It is used to setup a channel between commands pass the data through the commands. 
 
@@ -294,7 +294,7 @@ echo aaa>all.txt & echo mark aaa >>all.txt & echo mark bbb>>all.txt
 
 ```
 
-### Check CPU usage via command 
+#### Check CPU usage via command 
 
 ```
 wmic cpu get loadpercentage
@@ -302,18 +302,18 @@ wmic cpu get loadpercentage
 
 ```
 
-### Use `for` 
+#### Use `for` 
 
 It is used to loop to combine commands. Please check out the samples for `tasklist` or `netstat`.  
 
 
-## script
+##### script
 
-### Basic hello world script
+#### Basic hello world script
 
 * You can find it on the [home page](https://harryho.github.io)
 
-### Customized script 
+#### Customized script 
 
 * This sample script is used to query temp folders and clean up log files within the folder. 
 * We assume you have multiple temp folders in different drives and You want to delete log files inside temp folder and its subdirectries from time to time. Before you delete them, you want to list all files first. You can confirm if you want to delete them or not. 

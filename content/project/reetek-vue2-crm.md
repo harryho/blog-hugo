@@ -17,7 +17,7 @@ __Features__
 * It includes Vuex, Axios as well.
 * It uses Json-Server as fake Restful API. (You can simple replace it with your own API)
 
-## Structure of Vue2Crm
+##### Structure of Vue2Crm
 
 ``` ini
 path\to\vue2crm
@@ -53,7 +53,7 @@ path\to\vue2crm
 ```
 
 
-### Screenshots
+#### Screenshots
 
 > ![Screenshot1](/img/v2crm-screenshot-1.jpg)
 
@@ -65,7 +65,7 @@ path\to\vue2crm
 
 
 
-#### Browse [Repository](https://github.com/harryho/vue2crm.git)
+#####  Browse [Repository](https://github.com/harryho/vue2crm.git)
 
 
 

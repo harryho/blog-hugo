@@ -10,7 +10,7 @@ draft = false
 
 *This article will continue the topic of Windows command & hotkeys. [Part-1](/blog/use-windows-command-hotkey-as-hacker-1) shows you common hotkeys and short command lines for `Run` windnow dialog. [Part-2](/os/use-windows-command-hotkey-as-hacker-2) advanced commands and how to create a batch script with all those commands. Here I am going to show you another secret weapon in Windows system-VBScript/JScript*
 
-## Breif history
+##### Breif history
 
 > VBScript/JScript is an Active Scripting language developed by Microsoft that is modeled on Visual Basic. It allows Microsoft Windows system administrators to generate powerful tools for managing computers with error handling, subroutines, and other advanced programming constructs. 
 
@@ -21,7 +21,7 @@ draft = false
 > With Cscript.exe, you can run scripts by typing the name of a script file at the command prompt. Like Microsoft Internet Explorer, Windows Script Host serves as a controller of Windows Script compliant scripting engines, but Windows Script Host has very low memory requirements. Windows Script Host is ideal for both interactive and non-interactive scripting needs, such as logon scripting and administrative scripting.
 
 
-### Sample of VBScript file 
+#### Sample of VBScript file 
 
 ```ps
 Set oFSO = CreateObject("Scripting.FileSystemObject"^)
@@ -34,7 +34,7 @@ oOutput.Close
 
 ```
 
-### Replace content script
+#### Replace content script
 
 * Create a file named `repltxt.bat`
 * Copy the code into the file `repltxt.bat`
@@ -112,6 +112,6 @@ WScript.Quit(rtn);
 The batch script part checks and validate the input arguments, if there is no issue, then it will trigger the JScript to complete the work.   
 
 
-### Troubleshooting
+#### Troubleshooting
 
 From the Windows 7 and on, Windows is no longer to recognize the file with suffix "vbs" as executable file. You need to change the add "vbs" to Windows's registory. 

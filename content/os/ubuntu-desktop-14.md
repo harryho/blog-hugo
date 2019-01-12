@@ -8,10 +8,10 @@ draft = false
 
 > *This article is mainly to help beginner install Ubuntu desktop at the first time. If you are looking for setup of Ubuntu server, please check out the blog -- [Ubuntu server setup](/blog/ubuntu-server-14/)*
 
-## Brief history
+##### Brief history
 * Please find it from [Brief history of Linux](/blog/linux-history/)
 
-## Where to install Linux?
+##### Where to install Linux?
 
 * How to answer this quetion really depends user's computer knowledge and skills. Basically Linux can be installed on almost any PC, laptop, embedded device or tablet. So there are some suggestions for people with different level skills.*
 
@@ -22,7 +22,7 @@ draft = false
 * Expert -- You can try dual boot or multiple boot operating systems on your PC. Install 10-20 operating systems on a PC with 400GB harddisk should be alright. The only problem I encountered before some operating system can not find all proper drivers to support the all devices on your PC/laptop, such as the drivers for camera, touchpad, wifi, etc. It would take you so much time to research and try. 
 
 
-## Install virtual machine
+##### Install virtual machine
 
 __*Let's get our hands dirty*__
 
@@ -30,14 +30,14 @@ __*Let's get our hands dirty*__
 
 * If you lean to commercial product, you can choose VMWare. There is free trial option for you. 
 
-### Which version to choose
+#### Which version to choose
 
 * Ubuntu has variant versions for you to download and play. I will suggest you always pick LTS (Long Term Support) version to download. As beginner, desktop version is the best option for you to start. 
 
 * After downlaod the [Ubuntu Desktop](https://www.ubuntu.com/download/desktop) from the internet. You will get a `ISO` file like this: ubuntu-xx.xx.x-desktop-amd64.iso, if your OS is 64 bits, or something like ubuntu-xx.xx.x-desktop-x86.iso for 32 bits.
 
 
-## Install Unbuntu
+##### Install Unbuntu
 
 * Before you install, you had better to backup anything on the device which you are going to install, and chcek your internet is working properly. 
 
@@ -70,7 +70,7 @@ __*Let's get our hands dirty*__
 
 * Ubuntu provides a friendly and beautiful UI to complete installation instead of ugly and terrified terminal, as geek's computer shown on sci-fi movie. If you choose VMWare or VirtulBox as machine, you can open the page of [installation steps](https://www.ubuntu.com/download/desktop/install-ubuntu-desktop) on your browser. You just need to follow the instruction step by step, it will take you around 1-2 hours to complete. 
 
-## Things to do after installing Ubuntu desktop
+##### Things to do after installing Ubuntu desktop
 
 * Ubuntu desktop is very nice and friendly, even it is different from your Windows. Basically you don't need any geek's skill to play around on Uubuntu desktop and use it as your Windows. There are tons of free software you can download from Ubuntu Software Center, so you don't worry where to find the softwre you need. Considering you are the beginner, some suggestions and caveats will be highlighted below, but none of these needs command line and terminal. 
  * Disable the system upgrade automatically to new LTS version.
@@ -79,7 +79,7 @@ __*Let's get our hands dirty*__
  * Enbale the third party packages. 
  * Install `Utity Tweek` to help you customize your UI. 
 
-## Things don't do
+##### Things don't do
 
 * Something below is suggested not to do, because I assume you are Ubuntu or Linux beginner. I don't wnat you to feel frustrated at the beginning of your Ubuntu desktop journey. It is the same that 99.9999% of Windows user should not delete cache files `C:\Windows` or change the system registry, expect they really understand what they are doing.     
  * Don't optimzie your memory setting. It is really not a big deal. 
@@ -88,7 +88,7 @@ __*Let's get our hands dirty*__
  * Don't try to mount other drives on your computer, if it is mounted automatically.   
 
 
-## Dual boot or multiple boot with Windows
+##### Dual boot or multiple boot with Windows
 
 **This section is for  people who want to install multiple operating system on the actual PC, instead of virtual machine as above. Obviously, it is not for beginner user, but everyone must experience the first time to go to higher level. For safe side, I strongly suggest you should use a old PC or redundant one to test it.**
 
@@ -114,7 +114,7 @@ sda
   + ...
 ```
 
-### Troubleshooting: Windows always boots first
+#### Troubleshooting: Windows always boots first
 
 **Change BIOS**
 * Start your PC by pressing a pressing a special function key (usually F12, F10 or F2 depending on the vendor specifications).
