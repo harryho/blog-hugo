@@ -19,7 +19,7 @@ Thumbs.db
 *.ilk
 *.log
 
-# Ingore java class or jar files
+#### Ingore java class or jar files
 *.class
 *.jar
 
@@ -37,3 +37,7 @@ public/*
 serve/*
 demo/
 playground/*
+
+
+/public/*
+!/public/.gitkeep

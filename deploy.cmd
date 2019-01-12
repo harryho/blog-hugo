@@ -37,7 +37,7 @@ if EXIST %pubDir% (
 
 REM Build the project. If using a theme, replace by `hugo -t <yourtheme>`
 echo buiding the site ...
-hugo -t bootie-docs
+hugo -t docdock
 
 REM Navigate to public folder
 cd %pubDir%

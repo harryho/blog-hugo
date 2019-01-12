@@ -1,1 +1,1 @@
-hugo serve -t docdock --watch
+hugo serve -t docdock --watch  --disableFastRender

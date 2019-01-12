@@ -4,4 +4,4 @@
 	branch = master
 [submodule "themes/docdock"]
 	path = themes/docdock
-	url = https://github.com/vjeantet/hugo-theme-docdock.git
+	url = https://github.com/harryho/hugo-theme-docdock.git

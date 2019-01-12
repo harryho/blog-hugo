@@ -34,13 +34,13 @@ disqusShortname = "harryho"
   link = "os/"  
 
 #[[params.mainMenu]]
-#   name = "Cloud"
-#   link = "cloud/" 
+####   name = "Cloud"
+####   link = "cloud/" 
 
 [[params.mainMenu]]
   name = "Project"
   link = "project/"
 
 #[[params.mainMenu]]
-#  name = "Index"
-#  link = "index/"
+####  name = "Index"
+####  link = "index/"
