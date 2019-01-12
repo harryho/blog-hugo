@@ -1,0 +1,46 @@
+languageCode = "en-us"
+baseurl = "https://harryho.github.io"
+title = "Hello World"
+theme = "bootie-docs"
+uglyurls = false
+copyright = "Copyright (c) 2015, harryho; All rights reserved."
+enableRobotsTXT = true
+disqusShortname = "harryho"
+
+[params]
+  description = "Collect simple & smart ideas. Share flexible & reusable solutions. "
+  withSitePosts = false
+  searchDomain = "harryho.github.io"
+  noCategoryLink = true
+  repositoryUrl = "https://github.com/harryho/harryho.github.io.git"
+  highlightStyle = "dracula"
+  # highlightStyle = "railscasts"
+  # highlightStyle = "github"
+
+[[params.mainMenu]]
+  name = "Article"
+  link = "article/"  
+
+[[params.mainMenu]]
+  name = "Code"
+  link = "code/" 
+
+[[params.mainMenu]]
+  name = "Dev"
+  link = "dev/"  
+
+[[params.mainMenu]]
+  name = "OS"
+  link = "os/"  
+
+#[[params.mainMenu]]
+#   name = "Cloud"
+#   link = "cloud/" 
+
+[[params.mainMenu]]
+  name = "Project"
+  link = "project/"
+
+#[[params.mainMenu]]
+#  name = "Index"
+#  link = "index/"

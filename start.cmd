@@ -1,1 +1,1 @@
-hugo serve -t bootie-docs --watch
+hugo serve -t docdock --watch

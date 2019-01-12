@@ -1,46 +1,70 @@
+baseURL = "/"
+
 languageCode = "en-us"
-baseurl = "https://harryho.github.io"
-title = "Hello World"
-theme = "bootie-docs"
-uglyurls = false
-copyright = "Copyright (c) 2015, harryho; All rights reserved."
-enableRobotsTXT = true
-disqusShortname = "harryho"
+DefaultContentLanguage = "en"
+title = "DocDock Documentation"
+# theme = "hugo-theme-docdock"
+theme = "docdock"
+# themesdir = "../.."
+themesdir = "themes"
+pygmentsCodeFences = true
+pygmentsStyle = "monokailight"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir= false
+enableMissingTranslationPlaceholders = false
+
+
+# [Languages]
+# [Languages.en]
+# title = "Documentation for Hugo docDock"
+# weight = 1
+# languageName = "English"
+# 
+# [Languages.fr]
+# title = "Documentation du thème docDock"
+# weight = 2
+# languageName = "Français"
+
+
+
 
 [params]
-  description = "Collect simple & smart ideas. Share flexible & reusable solutions. "
-  withSitePosts = false
-  searchDomain = "harryho.github.io"
-  noCategoryLink = true
-  repositoryUrl = "https://github.com/harryho/harryho.github.io.git"
-  highlightStyle = "dracula"
-  # highlightStyle = "railscasts"
-  # highlightStyle = "github"
+editURL = "https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/"
+showVisitedLinks = true # default is false
+themeStyle = "flex" # "original" or "flex" # default "flex"
+themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)
+ordersectionsby = "weight" # ordersectionsby = "title"
+disableHomeIcon = false # default is false
+disableSearch = false # default is false
+disableNavChevron = false # set true to hide next/prev chevron, default is false
+highlightClientSide = false # set true to use highlight.pack.js instead of the default hugo chroma highlighter
+menushortcutsnewtab = false # set true to open shortcuts links to a new tab/window
+enableGitInfo = true
 
-[[params.mainMenu]]
-  name = "Article"
-  link = "article/"  
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
 
-[[params.mainMenu]]
-  name = "Code"
-  link = "code/" 
 
-[[params.mainMenu]]
-  name = "Dev"
-  link = "dev/"  
+[[menu.shortcuts]]
+pre = "<h3>More</h3>"
+name = "<i class='fa fa-github'></i> <label>Github repo</label>"
+identifier = "ds"
+url = "https://github.com/vjeantet/hugo-theme-docdock"
+weight = 10
 
-[[params.mainMenu]]
-  name = "OS"
-  link = "os/"  
+[[menu.shortcuts]]
+name = "<i class='fa fa-cloud-download'></i> <label>Download</label>"
+url = "https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"
+weight = 11
 
-#[[params.mainMenu]]
-#   name = "Cloud"
-#   link = "cloud/" 
+[[menu.shortcuts]]
+name = "<i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>"
+identifier = "hugodoc"
+url = "https://gohugo.io/"
+weight = 20
 
-[[params.mainMenu]]
-  name = "Project"
-  link = "project/"
-
-#[[params.mainMenu]]
-#  name = "Index"
-#  link = "index/"
+[[menu.shortcuts]]
+name = "<i class='fa fa-bullhorn'></i> <label>Credits</label>"
+url = "/credits"
+weight = 30
