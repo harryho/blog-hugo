@@ -2,6 +2,3 @@
 	path = public
 	url = https://github.com/harryho/harryho.github.io.git
 	branch = master
-[submodule "themes/docdock"]
-	path = themes/docdock
-	url = https://github.com/harryho/hugo-theme-docdock.git
