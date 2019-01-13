@@ -1,6 +1,6 @@
 +++
 tags =  ["linux","ubuntu"]
-categories = ["os"]
+
 date = "2017-05-04T14:59:31+11:00"
 title = "Ubuntu 16 server note"
 draft = false
@@ -11,13 +11,13 @@ Prelude
 > *This article is mainly to help experienced user install and setup Ubuntu 16 LTS Server. If you are looking for the information for Ubuntu 14, please go to the page [Ubuntu 14 server setup](/os/ubuntu-server-14/)*
 
 
-##### Assumption
+## Prerequisites
 
 * You are familiar with Ubuntu, at least you have some experience working on Linux system. 
 * You are familiar with basic bash/shell command
 
 
-##### Wireless Setup
+## Wireless Setup
 
 > If you install ubuntu server on a laptop, you might end up to setup the wifi first. Usually you won't bring the cable with your laptop wherever you go, also you might just have no cable or run out all cables. Now let's dive into how to setup the wifi on sever. 
 
@@ -51,8 +51,8 @@ networkctl
     ```bash
     sudo sysctl -p
 
-    #### Check the ipv6 status. If you see 1 after running command below, it means ipv6
-    #### has been disabled
+    ## Check the ipv6 status. If you see 1 after running command below, it means ipv6
+    ## has been disabled
     cat /proc/sys/net/ipv6/conf/all/disable_ipv6
         
     ```
@@ -62,7 +62,7 @@ networkctl
     ```bash
     sudo systemctl status wpa_supplicant
 
-    #### If you find "disabled" in the output, you can simply enable it as below
+    ## If you find "disabled" in the output, you can simply enable it as below
 
     sudo systemctl enable wpa_supplicant
 
@@ -73,20 +73,20 @@ networkctl
     ```bash
     sudo iwlist wlp3s0 scan | grep ESSID
 
-    #### If you get error message like "network is down", use ifconfig to bring it up and 
-    #### re-run previous commmand    
+    ## If you get error message like "network is down", use ifconfig to bring it up and 
+    ## re-run previous commmand    
     sudo ifconfig wlp3s0 up
     ```
 
 * Setup the wpa passphrase for your wifi
 
    ```bash
-   #### Use following command to add pass phrase to your wpa_supplicant
-   #### 
-   #### wpa_passphrase <your-ESSID> <your-passphrase> | sudo tee /etc/wpa_supplicant.conf
+   ## Use following command to add pass phrase to your wpa_supplicant
+   ## 
+   ## wpa_passphrase <your-ESSID> <your-passphrase> | sudo tee /etc/wpa_supplicant.conf
 
-   #### If your ESSID is mywifi and password of wifi is mypasswork, then you will end up the 
-   #### command below
+   ## If your ESSID is mywifi and password of wifi is mypasswork, then you will end up the 
+   ## command below
    wpa_passphrase mywifi mypasswork | sudo tee /etc/wpa_supplicant.conf
 
    ```
@@ -114,11 +114,11 @@ networkctl
   ```bash
   sudo dhclient wlp3s0
 
-  #### Check the ip address
+  ## Check the ip address
   ifconfig wlp3s0
   ```
   
-#### Wifi Trouble Shooting
+## Wifi Trouble Shooting
 
 * There is no ip address assigned to your wifi interface
 
@@ -165,11 +165,7 @@ iface wlp3s0 net dchp
 
 
 
-##### Things to do after installing Ubuntu server
-
-
-
-#### UFW setup
+## UFW setup
 
 ```bash
 sudo ufw enable
@@ -179,42 +175,42 @@ sudo ufw allow 443/tcp
 sudo ufw allow 8000/tcp
 ```
 
-#### SSH server setup
+## SSH server setup
 
 `!!! For production environment, SSH should be secured by the CA`
 
 ```bash
 sudo apt-get install openssh-server 
 
-#### backup default config 
+## backup default config 
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
 sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
 
-#### use any editor to update sshd_config 
+## use any editor to update sshd_config 
 sudo nano /etc/ssh/sshd_config 
 
-#### uncomment  PasswordAuthentication yes to allow remote password login
-#### Password authentication is only for test environment
+## uncomment  PasswordAuthentication yes to allow remote password login
+## Password authentication is only for test environment
 
-#### setup ssh auto-start onboot
+## setup ssh auto-start onboot
 sudo update-rc.d ssh defaults
 ```
 
-#### !!! Install the software-properties-common Package
+## !!! Install the software-properties-common Package
 
 ```bash 
 sudo apt-get install software-properties-common python-software-properties
 ```
 
 
-#### Time Zone setup
+## Time Zone setup
 
 ```bash
 sudo dpkg-reconfigure tzdata
 ```
 
 
-#### Install tmux
+## Install tmux
 
 ```bash
 sudo apt-get install tmux
@@ -240,7 +236,7 @@ sudo apt-get install tmux
 > Ctrl+b p — move to the (p)revious window.
 
 
-#### Install git 
+## Install git 
 
 ```bash
 sudo add-apt-repository ppa:git-core/ppa
@@ -250,45 +246,45 @@ sudo apt-get install git
 
 
 
-#### install docker CE (Ubuntu 16 LTS)
+## install docker CE (Ubuntu 16 LTS)
 
 ```bash
 
-#### Update the apt package index
+## Update the apt package index
 sudo apt-get update
 
-#### Install packages to allow apt to use a repository over HTTPS
+## Install packages to allow apt to use a repository over HTTPS
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
     software-properties-common
 
-#### Add Docker’s official GPG key
+## Add Docker’s official GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 
 
-#### Verify the last 8 characters of the fingerprint.
+## Verify the last 8 characters of the fingerprint.
 sudo apt-key fingerprint xxxxxxxx
 
 
-####   set up the stable repository
+##   set up the stable repository
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
-#### apt update 
+## apt update 
 sudo apt-get update
 
-#### install docker CE
+## install docker CE
 sudo apt-get install docker-ce
 
 ```
 
 
-#### Install JDK 8
+## Install JDK 8
 
 * Downlaod the JDK from Oracle website. 
 
@@ -341,7 +337,7 @@ java HelloWorld.java
 ```
 
 
-#### Install nodejs
+## Install nodejs
 
 
 * Install Nodejs 8.x
@@ -362,7 +358,7 @@ sudo mpm install -g yarn
 ```
 
 
-#### Install PHP
+## Install PHP
 
 * Add new repo 
 
@@ -397,7 +393,7 @@ sudo systemctl disable apache2.service
 sudo systemctl disable nginx.service 
 ```
 
-#### Install Python2, Python3
+## Install Python2, Python3
 
 * Ubuntu has python2 installed by default
 
@@ -406,14 +402,14 @@ sudo apt-get python-pip
 sudo apt-get install python3-pip
 sudo apt-get install python3-dev python-dev
 
-#### Install virtualenv 
+## Install virtualenv 
 sudo pip install virtualenv
 sudo pip3 install virtualenv
 ```
 
 
 
-#### Install Go
+## Install Go
 
 * Install Go 
 
@@ -421,10 +417,10 @@ sudo pip3 install virtualenv
 wget https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz
 
 
-#### check hash
+## check hash
 shasum -a 256 go*linux-amd64.tar.gz
 
-#### install tar ball
+## install tar ball
 sudo tar -C /usr/local -xvzf go1.9.2.linux-amd64.tar.gz
 ```
 * Setup GOROOT by overwriting the file `/etc/environment` with following content
@@ -475,14 +471,14 @@ $GOBIN/hello
 
 
 
-#### Install clang & cmake
+## Install clang & cmake
 
 ```bash
 sudo apt-get install clang
 sudo apt-get install cmake
 ```
 
-#### Install Rust
+## Install Rust
 
 ```bash
 $ curl -f -L https://static.rust-lang.org/rustup.sh -O

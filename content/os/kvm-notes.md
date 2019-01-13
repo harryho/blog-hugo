@@ -1,6 +1,6 @@
 +++
 tags =  ["linux","kvm", "qemu"]
-categories = ["os"]
+
 date = "2016-03-04T14:59:31+11:00"
 title = "KVM Notes"
 draft = true

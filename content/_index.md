@@ -29,21 +29,21 @@ The different languages above say the same two words "Hello World" are just for 
 As I mentioned before, here is for beginner to code for fun instead of terrifying them, so I just pick some which is useful or popular you might already heard or convenient for people to try on your own. The languages are simply ordered by alphabet.
 
 
-#####   Assumptions
+###  Assumptions
 
 * You have a proper computer instead of a tablet or ipad. Actually you can write some code to create an app directly on your smart phone or tablet after installing some development apps. *AIDE*, *DroidScript* and *QPython* are such applications you can try if you want to play around.
 
 * If you use Mac, the code for Linux should work on Mac as well. You know how to start a terminal on Mac or a command prompt on Windows. Finally, you are ready to get your hands dirty. 
 
 
-#####  Online Programming Editor
+### Online Programming Editor
 
 I list some online programming editor and compiler here, then you can simply try without installing any framework or tool on your PC or laptop.
 
 * [repl.it](https://repl.it/languages )
 * [tutorialspoint codingground](https://www.tutorialspoint.com/codingground.htm)
 
-#####   Bash/Batch script
+###  Bash/Batch script
 
 `Bash` is built-in script on Unix/Linux-like operating system. Bash script file is end with `sh` as extension. Batch is built-in script on Windows operating system. Bash script is known as one of Unix shell scripts. The other shell scrips include ksh, csh, zsh, etc. Bash is one of most important and  powerful tool for system admin. 
 
@@ -74,7 +74,7 @@ I list some online programming editor and compiler here, then you can simply try
 
     * Run the script `hello.bat` or `hello.cmd`
 
-#####   C/C++
+###  C/C++
 
 The C programming language was originally developed as a language to replace assembler in systems programming. It was very successful, making system code portable and easier to write and read. So Basically the kernel of most operating systems,  Windows, Mac, Linux are coded in C. 
 
@@ -101,7 +101,7 @@ Today C is one of the most used programming languages. Since C was designed to r
     ./hello
     ```
 
-#####   C\# ##
+###  C\# ##
 
 C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines. In January 1999, Anders Hejlsberg formed a team to build a new language at the time called Cool, which stood for "C-like Object Oriented Language". By the time the .NET project was publicly announced at the July 2000,Microsoft the language had been renamed C#. 
 
@@ -126,7 +126,7 @@ C# is a multi-paradigm programming language encompassing strong typing, imperati
     helloworld.exe
     ```
 
-#####   Go
+###  Go
 
 Go ,as known as golang, is a free and open source programming language created at Google. It is a compiled, statically typed language in the tradition of Algol and C, with garbage collection, expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its novel type system enables flexible and modular program construction. 
 
@@ -145,7 +145,7 @@ Go ,as known as golang, is a free and open source programming language created a
 
 * Compile & run `go run hello.go`
   
-#####   Java
+###  Java
 
 Java is a general-purpose computer programming language that is concurrent, object-oriented, and specifically designed to have as few implementation dependencies as possible. It is intended to let application developers "write once, run anywhere", meaning that compiled Java code can run on all platforms with JVM without the need for recompilation.
 
@@ -171,7 +171,7 @@ Java is a general-purpose computer programming language that is concurrent, obje
     java HelloWorld
     ```
   
-#####   Javascript
+###  Javascript
 
 JavaScript, not to be confused with Java, was created in 10 days in May 1995 by Brendan Eich, then working at Netscape and now of Mozilla. The original name of this language was Mocha, in September of 1995 it was changed to LiveScript, then in December of the same year, the name JavaScript was adopted, because of very popular Java around then. 
 
@@ -197,7 +197,7 @@ JavaScript is the programming language of the web. It's one of the most popular 
 * Open file HelloWorld.html with your browser. 
 
 
-#####   PHP
+###  PHP
 
 PHP as it's known today is actually the successor to a product named PHP/FI. Created in 1994 by Rasmus Lerdorf, the very first incarnation of PHP was a simple set of Common Gateway Interface (CGI) binaries written in the C programming language. Originally used for tracking visits to his online resume, he named the suite of scripts "Personal Home Page Tools," more frequently referenced as "PHP Tools." Over time, more functionality was desired, and Rasmus rewrote PHP Tools, producing a much larger and richer implementation. 
 
@@ -221,7 +221,7 @@ Please find the install command [here](/blog/ubuntu-server-14/#install-php-comps
     
 * Run the script `php hello.php` 
 
-#####   Python
+###  Python
 
 Python is currently one of the most popular dynamic programming languages, along with Perl, Tcl, PHP, and newcomer Ruby. Although it is often viewed as a "scripting" language, it is really a general purpose programming language along the lines of Lisp or Smalltalk (as are the others, by the way). Today, Python is used for everything from throw-away scripts to large scalable web servers that provide uninterrupted service 24x7. It is used for GUI and database programming, client- and server-side web programming, and application testing. It is used by scientists writing applications for the world's fastest supercomputers and by children first learning to program.
 
@@ -235,7 +235,7 @@ Python is currently one of the most popular dynamic programming languages, along
 * Run the script `python hello.py` 
 
 
-#####   Rust 
+###  Rust 
 
 Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety. Rust programming language is fundamentally about empowerment: no matter what kind of code you are writing now, Rust empowers you to reach farther, to program with confidence in a wider variety of domains than you did before.
 

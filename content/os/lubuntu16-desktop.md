@@ -1,5 +1,5 @@
 +++
-categories = ["os"]
+
 date = "2018-01-04T13:59:31+11:00"
 title = "Lubuntu 16 desktop"
 draft = false
@@ -9,15 +9,12 @@ Prelude
 
 > There is no big difference against setup between Lubuntu and Ubuntu. I just want to keep a latest version of setup for myself as reference
 
-##### Assumption
+## Prerequisites
 
 * You have Lubuntu 16 in place
+* Internet is available 
 
-##### Things to do after installing Lubuntu 16
-
-* How to setup your server
-
-#### UFW setup
+## UFW setup
 
 ```bash
 sudo ufw enable
@@ -27,40 +24,40 @@ sudo ufw allow 443/tcp
 sudo ufw allow 8000/tcp
 ```
 
-#### SSH server setup
+## SSH server setup
 
 `!!! For production environment, SSH should be secured by the CA`
 
 ```bash
 sudo apt-get install openssh-server
 
-#### backup default config
+## backup default config
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
 sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
 
-#### use any editor to update sshd_config
+## use any editor to update sshd_config
 sudo nano /etc/ssh/sshd_config
 
-#### uncomment  PasswordAuthentication yes to allow remote password login
-#### Password authentication is only for test environment
+## uncomment  PasswordAuthentication yes to allow remote password login
+## Password authentication is only for test environment
 
-#### setup ssh auto-start onboot
+## setup ssh auto-start onboot
 sudo update-rc.d ssh defaults
 ```
 
-#### !!! Install the software-properties-common Package
+## !!! Install the software-properties-common Package
 
 ```bash
 sudo apt-get install software-properties-common python-software-properties
 ```
 
-#### Time Zone setup
+## Time Zone setup
 
 ```bash
 sudo dpkg-reconfigure tzdata
 ```
 
-#### Install tmux
+## Install tmux
 
 ```bash
 sudo apt-get install tmux
@@ -84,7 +81,7 @@ sudo apt-get install tmux
 >
 > Ctrl+b p — move to the (p)revious window.
 
-#### Install git
+## Install git
 
 ```bash
 sudo add-apt-repository ppa:git-core/ppa
@@ -92,42 +89,42 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
-#### install docker CE (Ubuntu 16 LTS)
+## install docker CE (Ubuntu 16 LTS)
 
 ```bash
-#### Update the apt package index
+## Update the apt package index
 sudo apt-get update
 
-#### Install packages to allow apt to use a repository over HTTPS
+## Install packages to allow apt to use a repository over HTTPS
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
     software-properties-common
 
-#### Add Docker’s official GPG key
+## Add Docker’s official GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 
 
-#### Verify the last 8 characters of the fingerprint.
+## Verify the last 8 characters of the fingerprint.
 sudo apt-key fingerprint xxxxxxxx
 
 
-####   set up the stable repository
+##   set up the stable repository
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
-#### apt update
+## apt update
 sudo apt-get update
 
-#### install docker CE
+## install docker CE
 sudo apt-get install docker-ce
 ```
 
-#### Install JDK 9
+## Install JDK 9
 
 * Downlaod the JDK from Oracle website.
 
@@ -145,12 +142,12 @@ java -version
 sudo apt-get install oracle-java9-set-default
 sudo apt autoremove
 
-#### Following setup is no longer required
-#### sudo su
-#### cat >> /etc/environment <<EOL
-#### JAVA_HOME=/usr/lib/jvm/java-9-oracle
-#### JRE_HOME=/usr/lib/jvm/java-9-oracle/jre
-#### EOL
+## Following setup is no longer required
+## sudo su
+## cat >> /etc/environment <<EOL
+## JAVA_HOME=/usr/lib/jvm/java-9-oracle
+## JRE_HOME=/usr/lib/jvm/java-9-oracle/jre
+## EOL
 ```
 
 * Test JDK with a simple HelloWorld program
@@ -180,7 +177,7 @@ javac HelloWorld.java
 java HelloWorld.java
 ```
 
-#### Install nodejs
+## Install nodejs
 
 * Install Nodejs 8.x
 
@@ -197,7 +194,7 @@ sudo npm install -g typescript
 sudo mpm install -g yarn
 ```
 
-#### Install PHP
+## Install PHP
 
 * Add new repo
 
@@ -232,7 +229,7 @@ sudo systemctl disable apache2.service
 sudo systemctl disable nginx.service
 ```
 
-#### Install Python2, Python3
+## Install Python2, Python3
 
 * Ubuntu has python2 installed by default
 
@@ -241,7 +238,7 @@ sudo apt-get python-pip
 sudo apt-get install python3-pip
 sudo apt-get install python3-dev python-dev
 
-#### Install virtualenv
+## Install virtualenv
 sudo pip install virtualenv
 sudo pip3 install virtualenv
 ```
@@ -254,7 +251,7 @@ sudo apt-get update
 sudo apt-get install python3.6
 ```
 
-#### Install Go
+## Install Go
 
 * Install Go
 
@@ -262,10 +259,10 @@ sudo apt-get install python3.6
 wget https://dl.google.com/go/go1.10.1.linux-amd64.tar.gz
 
 
-#### check hash
+## check hash
 shasum -a 256 go*linux-amd64.tar.gz
 
-#### install tar ball
+## install tar ball
 sudo tar -xvzf go*linux-amd64.tar.gz
 sudo mv go /usr/local
 ```
@@ -315,21 +312,21 @@ wget https://github.com/gohugoio/hugo/releases/download/v0.38.2/hugo_0.38.2_Linu
 sudo dpkg -i hugo*Linux-64bit.deb
 ```
 
-#### Install clang & cmake
+## Install clang & cmake
 
 ```bash
 sudo apt-get install clang
 sudo apt-get install cmake
 ```
 
-#### Install Rust
+## Install Rust
 
 ```bash
 $ curl -f -L https://static.rust-lang.org/rustup.sh -O
 $ sh rustup.sh
 ```
 
-#### Install vim 8
+## Install vim 8
 
 * Add ppa repo
 
@@ -346,7 +343,7 @@ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 ```
 
-#### Install MySql
+## Install MySql
 
 * Install mysql 
 
@@ -379,7 +376,7 @@ fields terminated by ',' enclosed by '"' lines terminated by '\n' \
 
 ```
 
-#### Install PostgresQL
+## Install PostgresQL
 
 * psql is case sensitive
 
@@ -393,7 +390,7 @@ sudo apt-get install postgresql-10
 sudo su - postgres
 psql -U postgres
 
-#### Create a dump databbase
+## Create a dump databbase
 curl -L -O http://cl.ly/173L141n3402/download/example.dump
 createdb pgguide
 pg_restore --no-owner --dbname pgguide example.dump
@@ -401,7 +398,7 @@ psql --dbname pgguide
 
 psql 
 
-#### Rename database -- use double quote 
+## Rename database -- use double quote 
 ALTER database "pgguide" rename to "sample"
 ```
 
@@ -426,7 +423,7 @@ select json_agg(t) from (select * from products) t \t on \pset format unaligned 
 
 
 
-#### Install mongodb
+## Install mongodb
 
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \ 

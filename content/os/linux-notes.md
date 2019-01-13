@@ -1,6 +1,6 @@
 +++
 tags =  ["linux","ubuntu"]
-categories = ["os"]
+
 date = "2016-03-04T14:59:31+11:00"
 title = "Linux notes"
 draft = true
@@ -8,65 +8,65 @@ draft = true
 
 
 
-##### Run in background
+### Run in background
 
 ```bash
 command &>/dev/null &
 ``
 
-##### Linux info
+### Linux info
 
 ```bash
 
-#### Linux kernel and distribution
+## Linux kernel and distribution
 
 uname -a 
 
-#### Show distribution detail 
+## Show distribution detail 
 
 cat /etc/*-release
 
 ```
 
-##### dpkg
+### dpkg
 
 ```bash
 sudo lsof /var/lib/dpkg/lock
 
 ``
 
-##### User / group
+### User / group
 
-#### Debian / Ubuntu
+## Debian / Ubuntu
 ```bash
-#### Add new group 
+## Add new group 
 groupadd <groupname>
 
-#### add user to group
+## add user to group
 
 usermod -a -G <groupname> username
 
-#### add user and assign to one group
+## add user and assign to one group
 useradd -g <groupname> username
 
 ```
 
-#### ls 
+## ls 
 
 ```bash
-#### list folders
+## list folders
 ls -d */
-#### list items with proper size format 
-ls -lha #### 
+## list items with proper size format 
+ls -lha ## 
 
 
-#### list directories as tree
+## list directories as tree
 
 ls -dR | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 
 ```
 
-#### user and group
+## user and group
 
 ```bash
 sudo gpasswd -a demo sudo
@@ -74,7 +74,7 @@ sudo gpasswd -a demo sudo
 ```
 
 
-#### ps 
+## ps 
 
 ```bash
 ps auxww | grep mysql
@@ -83,27 +83,27 @@ ps -eo pri,pid,user,nice,pcpu,time,comm | grep dpkg
 
 ```
 
-#### VMware
+## VMware
 
 ```bash
 dmidecode | grep -i vmware
 ```
 
-#### kill
+## kill
 
 ```bash
 
 ```
 
 
-#### ssh
+## ssh
 
 ```bash
 ssh -p 22 <username>@<yourservername_or_ip>
 ```
 
 
-#### ssh key
+## ssh key
 
 ```bash
 
@@ -112,30 +112,30 @@ cat ~/.ssh/id_rsa.pub
 
 ```
 
-#### nginx
+## nginx
 
 ```bash
 sudo apt-get update
 sudo apt-get install nginx
 
-##### disable auto start
+### disable auto start
 
 sudo update-rc.d -f nginx disable
 
 
-##### Start/Stop/Restart Nginx
-#### OR
+### Start/Stop/Restart Nginx
+## OR
 
 sudo service nginx start
 sudo service nginx stop
 sudo service nginx restart
 
-#### OR 
+## OR 
 sudo /etc/init.d/nginx start
 sudo /etc/init.d/nginx stop
 sudo /etc/init.d/nginx restart
 
-##### Ubuntu Linux has switched to upstart as above :
+### Ubuntu Linux has switched to upstart as above :
 
 sudo systemctl start nginx 
 sudo systemctl stop nginx 
@@ -145,20 +145,20 @@ sudo systemctl restart nginx
 
 ```
 
-##### ftp
+### ftp
 
 ```bash
 
 ftp <servername_or_ip>
 
-##### type in username and password
+### type in username and password
 name :
 password:
 
 ```
 
 
-#### Mirenesse dev PhpAdmin
+## Mirenesse dev PhpAdmin
 
 http://devsite.mirenesse.com/phpmyadmin
 
