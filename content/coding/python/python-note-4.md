@@ -1,6 +1,6 @@
 +++
 tags=["python"]
-title = "Python Note4"
+title = "Python Note 4"
 description="Iterables & Iteration"
 +++
 

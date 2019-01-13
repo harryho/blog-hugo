@@ -1,7 +1,7 @@
 +++
 tags=["python"]
-title = "Python Note8"
-description = "Python Note8"
+title = "Python Note 8"
+description = "Python Note 8"
 +++
 
 

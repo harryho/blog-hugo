@@ -1,7 +1,7 @@
 +++
 tags=["python"]
-title = "Python Note5"
-description = "Python Note5"
+title = "Python Note 5"
+description = "Python Note 5"
 +++
 
 ## Inheritance & Polymorphism

@@ -1,6 +1,6 @@
 +++
 tags=["python"]
-title = "Python Note1"
+title = "Python Note 1"
 description="Good practices for package & module"
 +++
 
