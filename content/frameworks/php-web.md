@@ -2,7 +2,7 @@
 tags =  ["php"]
 date = "2016-08-11T11:59:31+11:00"
 title = "PHP Web Framework"
-description="Introduction of PHP Web Frameworks:  Zend Framework, Laravel ..."
+description="Introduction of PHP Web Frameworks:  Zend Framework, Laravel "
 
 draft = false
 +++

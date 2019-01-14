@@ -1,7 +1,7 @@
 +++
 date = "2017-06-07T16:56:21+11:00"
 title = "Angular vs React vs Vue"
-description="Angular, React, Vue as most popular JavaScript frameworks at present, we just discuss Angular 1.x, Angular 2 / 4, React 15+ (Redux), and Vue 2+ here ..."
+description="Angular, React, Vue as most popular JavaScript frameworks at present, we just discuss Angular 1.x, Angular 2 / 4, React 15+ (Redux), and Vue 2+ here "
 +++
 
 >Angular, React, Vue as most popular JavaScript frameworks at present, we just discuss Angular 1.x, Angular 2 / 4, React 15+ (Redux), and Vue 2+ here. There is no Angular 3, if you have not noticed before.

@@ -1,7 +1,7 @@
 +++
 tags = ["CSharp"]
 title = "C# Note - 2"
-description="How to build a configurable scheduled task on Window Service?"
+description="How to build a configurable scheduled task on Window Service"
 +++
 
 ## Problem
