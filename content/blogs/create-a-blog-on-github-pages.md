@@ -2,7 +2,7 @@
 tags =  ["hugo"]
 date = "2017-02-15T14:59:31+11:00"
 title = "Create a blog site on GitHub Pages"
-description="After I setup a blog site with Hugo on my ubuntu machine, I decided to use it to create a blog to GitHub pages on my windows machine ..."
+description="After I setup a blog site with Hugo on my ubuntu machine, I decided to use it to create a blog to GitHub pages on my windows machine "
 +++
 
 
@@ -12,10 +12,15 @@ description="After I setup a blog site with Hugo on my ubuntu machine, I decided
 ### Assumptions
 
 * You already have *Hugo* on your computer. If not, please follow the instruction to [install hugo on Windows](https://gohugo.io/tutorials/installing-on-windows).
-* You will have two repositories `blog-hugo` and `<username>.github.io` repositories to hold your hugo content and blog site respectively.
-* The `blog-hugo` repository will host actual Hugo’s blog content.
+
+* You will have two repositories **blog-hugo** and `<username>.github.io` repositories to hold your hugo content and blog site respectively.
+
+* The **blog-hugo** repository will host actual Hugo’s blog content.
+
 * `<username>.github.io repository` repository will host the static website.
+
 * Your *Hugo* blog folder will be "C:\git\blog-hugo" in this example.
+
 * Your blog site will finally sit in C driver and map to repositories as follow
 
     ```bash
@@ -35,6 +40,7 @@ description="After I setup a blog site with Hugo on my ubuntu machine, I decided
 ### Create a blog site on GitHub pages
 
 * Create on GitHub blog-hugo and <username>.github.io repositories  repository via GitHub website
+
 * Clone blog-hugo via Windows command prompt
 
     ```bash
@@ -88,4 +94,4 @@ description="After I setup a blog site with Hugo on my ubuntu machine, I decided
     cd ..
     ```
 
-* You might want to commit the changes to `blog-hugo` repository. Please don't forget to add `public` into the `.gitignore`.
+* You might want to commit the changes to **blog-hugo** repository. Please don't forget to add `public` into the `.gitignore`.

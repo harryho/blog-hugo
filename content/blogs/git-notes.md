@@ -123,3 +123,30 @@ The next example is very similar, but requires a 3-way merge because master prog
     $ git merge new-feature
     $ git branch -d new-feature
     ```
+
+### Git Rebase Tricks
+
+Problem: You are working with a few experienced devs constantly improving an online shooping site. After you complete the first assignment and ready to commit to master you find someone merged a change that affects or overlaps with the ones you made, and it could lead to bugs in the online-shoppping website. 
+
+Solution: Situations like these are a big example of when you'd want to rebase. Let's say when you created your branch off of the master branch, the master branch was on commit No. 1. Every commit in your branch was put on top of commit #1. When you're ready to merge your branch to master, you find  other developers have some changes and the most recent commit is commit No. 4. **Rebasing is taking all your branch's commits and adding them on top of commit No. 4 instead of commit No. 1.** If you consider commit No. 1 as the "base" of your branch, you're changing that base to the most recent one, commit No. 4. Hence why it's called rebasing!
+
+#### Rebase interactively
+
+Rebase to master branch 
+
+    $ git rebase -i master 
+
+    
+
+
+
+### Git reword 
+
+Reword the last commit message. The command below will open an editor to let you change previous commit message
+
+    $ git commit --amend   
+
+Reword the last commit message and author. 
+
+    $ git commit --amend   --author="Other author <other_author@test.com>"
+

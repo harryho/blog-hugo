@@ -2,7 +2,7 @@
 tags=["mobile"]
 date = "2016-07-10T14:59:31+11:00"
 title = "Build mobile app with web tech stacks"
-decription="JavaScript, CSS, HTML are not just  web tech stacks, but also available for Mobile ..."
+decription="JavaScript, CSS, HTML are not just  web tech stacks, but also available for Mobile "
 type="page"
 +++
 

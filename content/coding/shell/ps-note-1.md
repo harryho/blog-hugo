@@ -1,7 +1,7 @@
 +++
 tags = ["powershell"]
 title = "Powershell Note - 1"
-description = "Introduction of Powershell ..."
+description = "Introduction of Powershell "
 +++
 
 

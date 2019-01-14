@@ -1,7 +1,7 @@
 +++
 date = "2017-01-11T11:59:31+11:00"
 title = "JIRA Practices"
-description="JIRA is a proprietary issue tracking product, developed by Atlassian. Today I recap the bullet points about how I work with client within JIRA ..."
+description="JIRA is a proprietary issue tracking product, developed by Atlassian. Today I recap the bullet points about how I work with client within JIRA "
 draft="true"
 +++
 

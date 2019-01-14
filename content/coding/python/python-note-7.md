@@ -1,7 +1,7 @@
 +++
 tags=["python"]
 title = "Python Note 7"
-description = "Python Note 7"
+description = "Exception & Assertion"
 +++
 
 

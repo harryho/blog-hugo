@@ -1,7 +1,7 @@
 +++
 tags=["python"]
 title = "Python Note 8"
-description = "Python Note 8"
+description = "Context Manager,  Introspection"
 +++
 
 
@@ -14,7 +14,6 @@ description = "Python Note 8"
     ```
     with context-manager:
         body
-
 
     with context-manager:
         context-manager.begin()
@@ -78,15 +77,15 @@ description = "Python Note 8"
     ```python
     @contextlib.contextmanager
     def my_context_manager():
-    ## <ENTER>
-    try:
-    yield [value]
-    ## <NORMAL EXIT>
-    except:
-    ## <EXCEPTIONAL EXIT>
-    raise
-    with my_context_manager() as x:
-    ## . . .
+        ## <ENTER>
+        try:
+        yield [value]
+        ## <NORMAL EXIT>
+        except:
+        ## <EXCEPTIONAL EXIT>
+        raise
+        with my_context_manager() as x:
+        ## . . .
     ```
 
 * `contextmanager` lets you define context-managers with simple control flow It allows you to leverage the statefulness of generators

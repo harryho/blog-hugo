@@ -2,7 +2,7 @@
 tags =  ["windows","cmd"]
 date = "2011-03-09T10:59:31+11:00"
 title = "Windows command & hotkey - 1"
-description="A note for everyone who wants to use Commnd and Hot Key as hacker ..."
+description="A note for everyone who wants to use Commnd and Hot Key as hacker "
 +++
 
 *Do you want to make your friends amazed by your computer skill and praise you as genius? Or the hacker as watched in Sci-Fi movies? You don't need Mac, Linux or other operating systems, just Windows, you can show-off and look like hacker and master of Zeroes and Ones, even you have no any idea of it. Here are some tricks by which you can make your friends' jaw drop.*

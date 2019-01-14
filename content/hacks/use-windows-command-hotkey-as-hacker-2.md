@@ -3,7 +3,7 @@ tags =  ["windows","cmd"]
 
 date = "2012-03-24T10:59:31+11:00"
 title = "Windows command & hotkey - 2"
-description="A note for everyone who wants to use Commnd and Hot Key as hacker ..."
+description="A note for everyone who wants to use Commnd and Hot Key as hacker "
 +++
 
 *This article will continue the topic of Windows command & hotkeys. Part-1 shows you common hotkeys and short command lines for `Run` windnow dialog. The rest of this topic will focus on the advanced commands and how to create a batch script with all those commands.*
