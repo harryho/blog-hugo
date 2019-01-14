@@ -9,19 +9,20 @@ draft=false
 
 >*The `Hello World` home page comes from my old site. It has been updated for few times by adding some new programming languages and it is not supposed for developer. It is prepared for non-tech people who want to know what the program actually looks llike.*
 
+
 ```bash
-Dutch : "Hello wereld",
-English : "Hello world",
-French : "Bonjour monde",
-German : "Hallo Welt",
-Greek : "γειά σου κόσμος",
-Italian : "Ciao mondo",
-Japanese : "こんにちは世界",
-Korean : "여보세요 세계",
-Mandarin : "你好世界",
-Portuguese : "Olá mundo",
-Russian : "Здравствулте мир",
-Spanish : "Hola mundo"
+    Dutch : "Hello wereld",
+    English : "Hello world",
+    French : "Bonjour monde",
+    German : "Hallo Welt",
+    Greek : "γειά σου κόσμος",
+    Italian : "Ciao mondo",
+    Japanese : "こんにちは世界",
+    Korean : "여보세요 세계",
+    Mandarin : "你好世界",
+    Portuguese : "Olá mundo",
+    Russian : "Здравствулте мир",
+    Spanish : "Hola mundo"
 ```
 
 The different languages above say the same two words "Hello World" are just for fun. Basically most software engineers start writing "Hello World" application from the very beginning with different programming language. I hope after you read through this page, you will find programming is not rock science and everyone can do it with fun. 
@@ -101,7 +102,7 @@ Today C is one of the most used programming languages. Since C was designed to r
     ./hello
     ```
 
-###  C\# ##
+###  C\#
 
 C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines. In January 1999, Anders Hejlsberg formed a team to build a new language at the time called Cool, which stood for "C-like Object Oriented Language". By the time the .NET project was publicly announced at the July 2000,Microsoft the language had been renamed C#. 
 
@@ -232,7 +233,9 @@ Python is currently one of the most popular dynamic programming languages, along
     print "Hello World!"
     ```
     
-* Run the script `python hello.py` 
+* Run the script 
+        
+        python hello.py 
 
 
 ###  Rust 
@@ -255,7 +258,7 @@ Rust is a systems programming language that runs blazingly fast, prevents segfau
 
 * Run with rust app with cargo
 
-     `cargo run`
+        cargo run
 
 
 
