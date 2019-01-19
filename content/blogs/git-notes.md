@@ -9,11 +9,11 @@ description="Useful Git commands  & practices for repository management"
 
 ### Create the branch on your local machine and switch in this branch
         
-        $ git checkout -b [name_of_your_new_branch]
+    $ git checkout -b [name_of_your_new_branch]
 		
 ### Push the branch on git-repository (Github, Bitbucket)
 
-        $ git push origin [name_of_your_new_branch]
+    $ git push origin [name_of_your_new_branch]
 
 When you want to commit something in your branch, be sure to be in your branch.
 
@@ -21,13 +21,13 @@ When you want to commit something in your branch, be sure to be in your branch.
 
 * You can see all branches created by using :
     
-        $ git branch
+    $ git branch
 
 * Which will show :
 
-        * approval_messages
-        master
-        master_clean
+    * approval_messages
+    master
+    master_clean
 
 ## Manage branches (Push, Fetch & Merge)
 
@@ -130,17 +130,46 @@ Problem: You are working with a few experienced devs constantly improving an onl
 
 Solution: Situations like these are a big example of when you'd want to rebase. Let's say when you created your branch off of the master branch, the master branch was on commit No. 1. Every commit in your branch was put on top of commit #1. When you're ready to merge your branch to master, you find  other developers have some changes and the most recent commit is commit No. 4. **Rebasing is taking all your branch's commits and adding them on top of commit No. 4 instead of commit No. 1.** If you consider commit No. 1 as the "base" of your branch, you're changing that base to the most recent one, commit No. 4. Hence why it's called rebasing!
 
+#### Rebase with conflict 
+
+    ```bash
+    git rebase master
+
+    # When there is conflict, the rebase will pause. 
+    # You have to manually solve the conflict
+    # Add the resolved files to stage and commit it
+    git add <Resolved-File>
+    git commit 
+
+    # Conttinue the rebase process
+    git rebase --continue
+
+    ```
+
 #### Rebase interactively
 
 Rebase to master branch 
 
     $ git rebase -i master 
 
+Rebase with fixup and autosquash
+
     
+    * fixup (f for short), which acts like “squash”, but discards this commit’s message
+
+    # Commit your changes
+    $ git add. 
+    $ git commit 
+
+
+    $ git rebase  -i master
+    # 
+    $ fixup <COMMIT-ID>
 
 
 
-### Git reword 
+
+## Git reword 
 
 Reword the last commit message. The command below will open an editor to let you change previous commit message
 
