@@ -124,7 +124,7 @@ The next example is very similar, but requires a 3-way merge because master prog
     $ git branch -d new-feature
     ```
 
-### Git Rebase Tricks
+### Rebase for merge
 
 Problem: You are working with a few experienced devs constantly improving an online shooping site. After you complete the first assignment and ready to commit to master you find someone merged a change that affects or overlaps with the ones you made, and it could lead to bugs in the online-shoppping website. 
 
@@ -152,22 +152,27 @@ Rebase to master branch
 
     $ git rebase -i master 
 
-Rebase with fixup and autosquash
+Rebase with fixup and squash
 
-    
+    * squash (s for short), which melds the commit into the previous one (the one in the line before)
     * fixup (f for short), which acts like “squash”, but discards this commit’s message
 
+    ```bash
     # Commit your changes
     $ git add. 
     $ git commit 
 
 
     $ git rebase  -i master
-    # 
-    $ fixup <COMMIT-ID>
+    # Update the prop up  editor
+    # fixup <COMMIT-ID>
+    # squahs   <COMMIT-ID> <Message>
+    ```
 
+Rebase with autosquash
 
-
+    $ git rebase -i --autosquash master
+    
 
 ## Git reword 
 
@@ -179,3 +184,24 @@ Reword the last commit message and author.
 
     $ git commit --amend   --author="Other author <other_author@test.com>"
 
+
+## Git Submodule
+
+Add other repository into your existing project as submodule
+
+    $ git submodule add <Git-Repository-URL>  <your-repo-folder>
+
+Add other repository into your existing project as submodule under specific location 
+
+    $ git submodule add <Git-Repository-URL>  <your-specific-location>/<your-repo-folder>
+
+Add other repository into your existing project for specific branch
+
+    $ git submodule add <Git-Repository-URL>  -b <branch-name> <your-repo-folder>    
+
+Initialize and update submoule 
+
+    $ git submodule init
+    $ git submodule update 
+
+    
