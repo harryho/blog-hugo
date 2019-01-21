@@ -3,7 +3,7 @@
 echo "Deploying updates to GitHub..."
 
 # Build the project. If using a theme, replace by `hugo -t <yourtheme>`
-hugo -t bootie-docs
+hugo -t docdock
 
 # Go To Public folder
 cd public
