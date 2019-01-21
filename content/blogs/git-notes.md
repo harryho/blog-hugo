@@ -17,19 +17,13 @@ description="Useful Git commands  & practices for repository management"
 
 When you want to commit something in your branch, be sure to be in your branch.
 
-## List all branches
 
-* You can see all branches created by using :
-    
-    $ git branch
-
-* Which will show :
-
-    * approval_messages
-    master
-    master_clean
 
 ## Manage branches (Push, Fetch & Merge)
+
+List all branches
+
+    $ git branch
 
 Add a new remote for your branch :
 
@@ -74,23 +68,23 @@ Compare two branch:
 
 Our first example demonstrates a fast-forward merge. The code below creates a new branch, adds two commits to it, then integrates it into the main line with a fast-forward merge.
 
-    ```bash
-    ## Start a new feature
-    $ git checkout -b new-feature master
-    
-    ## Edit some files    
-    $ git add <file>
-    $ git commit -m "Start a feature"
-    
-    ## Edit some files    
-    $ git add <file>
-    $ git commit -m "Finish a feature"
-    
-    ## Merge in the new-feature branch    
-    $ git checkout master
-    $ git merge new-feature
-    $ git branch -d new-feature
-    ```
+```bash
+## Start a new feature
+$ git checkout -b new-feature master
+
+## Edit some files    
+$ git add <file>
+$ git commit -m "Start a feature"
+
+## Edit some files    
+$ git add <file>
+$ git commit -m "Finish a feature"
+
+## Merge in the new-feature branch    
+$ git checkout master
+$ git merge new-feature
+$ git branch -d new-feature
+```
 
 This is a common workflow for short-lived topic branches that are used more as an isolated development than an organizational tool for longer-running features.
 
@@ -100,29 +94,29 @@ Also note that Git should not complain about the git branch -d, since new-featur
 
 The next example is very similar, but requires a 3-way merge because master progresses while the feature is in-progress. This is a common scenario for large features or when several developers are working on a project simultaneously.
 
-    ```bash
-    ## Start a new feature
-    $ git checkout -b new-feature master
+```bash
+## Start a new feature
+$ git checkout -b new-feature master
 
-    ## Edit some files
-    $ git add <file>
-    $ git commit -m "Start a feature"
+## Edit some files
+$ git add <file>
+$ git commit -m "Start a feature"
 
-    ## Edit some files
-    $ git add <file>
-    $ git commit -m "Finish a feature"
+## Edit some files
+$ git add <file>
+$ git commit -m "Finish a feature"
 
-    ## Develop the master branch
-    $ git checkout master
+## Develop the master branch
+$ git checkout master
 
-    ## Edit some files
-    $ git add <file>
-    $ git commit -m "Make some super-stable changes to master"
+## Edit some files
+$ git add <file>
+$ git commit -m "Make some super-stable changes to master"
 
-    ## Merge in the new-feature branch
-    $ git merge new-feature
-    $ git branch -d new-feature
-    ```
+## Merge in the new-feature branch
+$ git merge new-feature
+$ git branch -d new-feature
+```
 
 ### Rebase for merge
 
@@ -132,19 +126,18 @@ Solution: Situations like these are a big example of when you'd want to rebase. 
 
 #### Rebase with conflict 
 
-    ```bash
-    git rebase master
+```bash
+git rebase master
 
-    # When there is conflict, the rebase will pause. 
-    # You have to manually solve the conflict
-    # Add the resolved files to stage and commit it
-    git add <Resolved-File>
-    git commit 
+# When there is conflict, the rebase will pause. 
+# You have to manually solve the conflict
+# Add the resolved files to stage and commit it
+git add <Resolved-File>
+git commit 
 
-    # Conttinue the rebase process
-    git rebase --continue
-
-    ```
+# Conttinue the rebase process
+git rebase --continue
+```
 
 #### Rebase interactively
 
@@ -154,20 +147,20 @@ Rebase to master branch
 
 Rebase with fixup and squash
 
-    * squash (s for short), which melds the commit into the previous one (the one in the line before)
-    * fixup (f for short), which acts like “squash”, but discards this commit’s message
+* squash (s for short), which melds the commit into the previous one (the one in the line before)
+* fixup (f for short), which acts like “squash”, but discards this commit’s message
 
-    ```bash
-    # Commit your changes
-    $ git add. 
-    $ git commit 
+```bash
+# Commit your changes
+$ git add. 
+$ git commit 
 
 
-    $ git rebase  -i master
-    # Update the prop up  editor
-    # fixup <COMMIT-ID>
-    # squahs   <COMMIT-ID> <Message>
-    ```
+$ git rebase  -i master
+# Update the prop up  editor
+# fixup <COMMIT-ID>
+# squahs   <COMMIT-ID> <Message>
+```
 
 Rebase with autosquash
 
