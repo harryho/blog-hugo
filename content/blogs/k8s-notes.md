@@ -8,20 +8,20 @@ description="K8s & Minikube"
 
 ## Prerequisites
 
-     * Install K8s on Ubuntu / Debian
-
+### Install K8s on Ubuntu / Debian
+### Install KVM or VirtualBox
      
 
 
 
-### Check K8s version and config 
+## Check K8s version and config 
 
     kubectl version
     kubectl config
     kubectl cluster-info
 
 
-### Get / Describe command
+## Get / Describe command
 
     kubectl get ndoes
     kubectl get pods
@@ -31,7 +31,7 @@ description="K8s & Minikube"
     kubectl describe pods
 
 
-### Deploy hello-world node demo app    
+## Deploy hello-world node demo app    
 
 * Deploy a demo app
 
@@ -89,7 +89,6 @@ description="K8s & Minikube"
 
     ```
 
-* 
 
 
 
