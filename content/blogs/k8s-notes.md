@@ -81,7 +81,8 @@ description="K8s & Minikube"
     kubectl scale deployments/kubernetes-bootcamp --replicas=2
 
     # Get NodePort
-    export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+    export NODE_PORT=$(kubectl get services/kubernetes-bootcamp \
+        -o go-template='{{(index .spec.ports 0).nodePort}}')
     echo NODE_PORT=$NODE_PORT
 
     # Test load balance
