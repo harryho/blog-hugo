@@ -1,5 +1,4 @@
 +++
-tags=["coding", "code"]
 title = "Coding"
 +++
 
