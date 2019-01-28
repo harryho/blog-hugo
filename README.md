@@ -7,6 +7,20 @@ Hugo blog repo
 * Commit the markdown files to repo `blog-hugo` by running script the commit.bat. The commit.bat will only commit the markdown files. To commit other files please use git bash or git extension.
 * Deploy posts to harryho.github.io by running script deploy.bat. After that, you can check it via browser.
 
+
+Update submodule 
+
+```
+git submodule init
+git submodule update
+
+cd themes/public
+git checkout hw
+git pull
+
+```
+
+
 Run the site locally
 
 ```
