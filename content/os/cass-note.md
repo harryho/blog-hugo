@@ -29,7 +29,7 @@ python --version
 
 ## Install Cassandra
 
-* First, we have to install the Cassandra repository to `/etc/apt/sources.list.d/cassandra.sources.list` directory by running following command `39x` is the version. Use 40x if Cassandra 4.0 is the newest version:
+* First, we have to add Cassandra repository to source list by running following command. The `39x` is the version. Use 40x if Cassandra 4.0 is the newest version:
 
 ```bash
 echo "deb http://www.apache.org/dist/cassandra/debian 39x main" | \
