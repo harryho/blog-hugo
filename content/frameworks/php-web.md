@@ -78,7 +78,7 @@ php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
 ## Use Zf2-MVC-Starter project
-* Please find the project introduction [here](/project/zf2-mvc-starter/). 
+* Please find the project introduction [here](/projects/zf2-mvc-starter/). 
 
 ### Laravel
 
@@ -162,7 +162,7 @@ class AppServiceProvider extends ServiceProvider
 ```
 
 ## Use Lavarel MVC Starter project 
-    * Please find the project introduction [here](/project/lara-mvc-starter/). 
+    * Please find the project introduction [here](/projects/lara-mvc-starter/). 
 
 ## Use Laravel Rest Starter project
 

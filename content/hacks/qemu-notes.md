@@ -3,11 +3,12 @@ title = "Qemu & Virtual Machine"
 description="Use Qemu to create virtual machines"
 +++
 
-> __What is Qemu__
+___What is Qemu ?___
 
-[QEMU](https://wiki.qemu.org/Main_Page) is a virtualization technology emulator that allows you to run operating systems and Linux distributions easily on your current system without the need to install them or burn their ISO files. It is like VMware or VirtualBox. You can use it at anytime to emulate running any operating system you want on a lot of devices and architecture.
+[QEMU](https://wiki.qemu.org/Main_Page)  is free and open source. And is licensed under GPL 2. it has the ability to run under both KVM and XEN models (if you enabled virtualization technology from your BIOS first) and offers a lot of options and virtualization options. In this article, we’ll explain how to use QEMU and install it.
 
-QEMU is free and open source. And is licensed under GPL 2. it has the ability to run under both KVM and XEN models (if you enabled virtualization technology from your BIOS first) and offers a lot of options and virtualization options. In this article, we’ll explain how to use QEMU and install it.
+QEMU is a virtualization technology emulator that allows you to run operating systems and Linux distributions easily on your current system without the need to install them or burn their ISO files. It is like VMware or VirtualBox. You can use it at anytime to emulate running any operating system you want on a lot of devices and architecture.
+
 
 ## Prerequisites
 
@@ -17,6 +18,7 @@ QEMU is free and open source. And is licensed under GPL 2. it has the ability to
 ## Assumptions
 * Assume the new iso files are stored in folder "Download"
 * Architect of your machine is x86_64
+* Install Ubuntu as VM on Qemu
 
 ## Create new image
 
@@ -61,8 +63,15 @@ Create a new VM (virtual machine) on the image file
 
 
 
-### Start the new Virtual Machine
+### Start the new VM
 
       qemu-system-x86_64 -m 2048 -boot d -enable-kvm \
         -smp 2 -net nic -net user \
         -hda ~/ws/vms/ubuntu16-vm.img 
+
+### Post-Create VM
+
+* Install `spice-vdagent` to Copy content from Host to Guest
+* Install `tmux` 
+
+
