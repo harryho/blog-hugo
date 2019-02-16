@@ -5,9 +5,9 @@ draft=false
 
 <!-- >*Hello World* is the classic starter project for any programmer.  -->
 
->*After I moved the old blog site from WordPress to github pages, I found it is much easier for managing my site with hugo and github. I am not passionate blogger.  Blog to me is kind of note or collection of knowledge base, which comes from work, hobby and project. Github is the developer's favor instead of mainstream user, so I won't suggest everyone give a go. Comparing to markdown and command line, WordPress's UI is more friendly to non-tech people. If you want to give a shot on your own, you can check out my note - [Create a blog on GitHub Pages](/blog/create-a-blog-on-github-pages), it shows you how I did it on Windows machine and make it available on your github page.* 
+>*After I tried hugo to create a blog site 2 years ago, I found it is pretty simple to manage my site with hugo and github. Honestly, I am not a passionate blogger. My blog is more like peronsal notes or gallery of projects and experiences, which comes from work, hobby and individual projects. Github is the developer's favor instead of internet user, so I won't suggest everyone to dump your WordPress. Comparing to markdown and command line, WordPress's UI is more friendly to non-tech people. If you want to give a shot on your own, you can check out my note - [Create a blog on GitHub Pages](/blog/create-a-blog-on-github), it shows you how I did it my machine and make it available on your github page.* 
 
->*The `Hello World` home page comes from my old site. It has been updated for few times by adding some new programming languages and it is not supposed for developer. It is prepared for non-tech people who want to know what the program actually looks llike.*
+>*The `Hello World` home page comes from my old site. It has been updated for few times by adding some new programming languages and it is not written for developer. It is prepared for non-tech people who want to know what the program actually looks llike.*
 
 
 ```bash
@@ -25,7 +25,7 @@ draft=false
     Spanish : "Hola mundo"
 ```
 
-The different languages above say the same two words "Hello World" are just for fun. Basically most software engineers start writing "Hello World" application from the very beginning with different programming language. I hope after you read through this page, you will find programming is not rock science and everyone can do it with fun. 
+The different languages above say the same two words "Hello World" are just for fun. Basically most software engineers start writing "Hello World" application from the very beginning with different programming language. I hope after you read through this page, you will find programming is not rock science and everyone can code for fun. 
 
 As I mentioned before, here is for beginner to code for fun instead of terrifying them, so I just pick some which is useful or popular you might already heard or convenient for people to try on your own. The languages are simply ordered by alphabet.
 
