@@ -1,6 +1,6 @@
 +++
 title = "Cassandra Practices"
-description="Install Cassandra on Ubuntu 16"
+description="Cassandra Introduction & Good practices ..."
 draft = "false"
 
 +++
