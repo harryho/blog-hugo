@@ -1,9 +1,7 @@
 +++
-
 date = "2016-07-10T14:59:31+11:00"
 title = "Build mobile app with web tech"
-decription="JavaScript, CSS, HTML are not just  web tech stacks, but also available for Mobile "
-
+description="JavaScript, CSS, HTML are not just  web tech stacks, but also available for Mobile "
 +++
 
 

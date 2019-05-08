@@ -8,9 +8,10 @@ description="K8s & Minikube"
 
 ## Prerequisites
 
-### Install K8s on Ubuntu / Debian
+
 ### Install KVM or VirtualBox
-     
+### Install Ubuntu / Debian on KVM or VirtualBox
+### Install Minikube 
 
 
 
