@@ -2,7 +2,7 @@
 tags =  ["windows","cmd"]
 
 date = "2012-03-24T10:59:31+11:00"
-title = "Windows command & hotkey - 2"
+title = "Windows cmd & hotkey - 2"
 description="A note for everyone who wants to use Commnd and Hot Key as hacker "
 +++
 
