@@ -39,5 +39,7 @@ demo/
 playground/*
 
 
-/public/*
+/public/
 !/public/.gitkeep
+
+*.DS_Store
