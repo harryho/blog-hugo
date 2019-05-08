@@ -116,15 +116,15 @@ On the other hand, Angular 1.x is built with Vanilla JS, i.e. you don’t need t
 ### Following are the projects and related screenshots
 
 
-[Angular 4 CRM](/projects/reetek-angular4-crm/)
+[Angular 4 CRM](/projects/angular4-crm/)
 
 ![Screenshot-Angular4Crm](/img/ng4crm-screenshot-2.jpg)
 
-[React CRM](/projects/reetek-react-crm/)
+[React CRM](/projects/react-crm/)
 
 ![Screenshot-React-Crm](/img/rrcrm-screenshot-2.jpg)
 
-[Vue 2 CRM](/projects/reetek-vue2-crm/)
+[Vue 2 CRM](/projects/vue2-crm/)
 
 ![Screenshot-Vue2crm](/img/v2crm-screenshot-2.jpg)
 

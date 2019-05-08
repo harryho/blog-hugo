@@ -1,7 +1,8 @@
+
 +++
 
 date = "2016-12-07T16:56:21+11:00"
-title = "React Redux Crm Project"
+title = "React Redux CRM Project"
 tags = ["javascript"]
 description="React-Crm is reusable CRM starter project for real-world business based on React 15.4"
 +++
@@ -80,6 +81,6 @@ __Alternatives__
 
 There are two similar projects respectively built on the Vue.js and Angular. If you have interests in those technical stacks. You can find and clone those projects below.
 
-* [Vue2 Crm](/projects/reetek-vue2-crm/).
-* [Angular4 Crm](/projects/reetek-angular4-crm).
+* [Vue2 Crm](/projects/vue2-crm/).
+* [Angular4 Crm](/projects/angular4-crm).
 

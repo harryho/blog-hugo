@@ -80,5 +80,5 @@ __Alternatives__
 
 There are two similar projects respectively built on the Vue.js and React. If you have interests in those technical stacks. You can find and clone those projects below.
 
-* [Vue2 Crm](/projects/reetek-vue2-crm).
-* [React Redux Crm](/projects/reetek-react-crm).
+* [Vue2 Crm](/projects/vue2-crm).
+* [React Redux Crm](/projects/react-crm).

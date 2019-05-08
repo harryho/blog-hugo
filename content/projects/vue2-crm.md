@@ -1,6 +1,6 @@
 +++
 date = "2016-12-07T16:56:21+11:00"
-title = "Vue 2 Crm Project"
+title = "Vue 2 CRM Project"
 tags = ["javascript"]
 description="Vue2Crm is a reusable Vue.js CRM starter project for real-world business based on Vue 2 PWA template"
 +++
@@ -75,5 +75,5 @@ path\to\vue2crm
 
 There are two similar projects respectively built on the Angular and React. If you have interests in those technical stacks. You can find those projects below.
 
-* [Angular4 Crm](/projects/reetek-angular4-crm).
-* [React Redux Crm](/projects/reetek-react-crm).
+* [Angular4 Crm](/projects/angular4-crm).
+* [React Redux Crm](/projects/react-crm).
