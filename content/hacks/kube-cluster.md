@@ -25,15 +25,15 @@ description="5 Mins to create a kubernetes cluster on Ubuntu or Centos Linux mac
  
 ## Caveat
 
-### Use Virtual Machine to test it before runing it on physical machine
-### VirtualBox or VMWare is a good option.
-### Kubernetes is supposed to run on Linux server, but it should be able to run on desktop version as well. 
+- Use Virtual Machine to test it before runing it on physical machine
+- VirtualBox or VMWare is a good option.
+- Kubernetes is supposed to run on Linux server, but it should be able to run on desktop version as well. 
 
 ## Steps to use the script 
 
-### Setup SSH Server if you need
-### Get the script from my github repo
-### Switch to root user and run the script
+- Setup SSH Server if you need
+- Get the script from my github repo
+- Switch to root user and run the script
 
 ```bash
 # Ubuntu
