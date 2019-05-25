@@ -210,16 +210,18 @@ apt-cache pkgnames | grep php7.2
 
 ```bash
 sudo apt-get install -y apache2
-sudo apt-get install -y php7.2 libapache2-mod-php7.2 php7.2-cli php7.2-common \
-    php7.2-mbstring php7.2-gd php7.2-intl php7.2-xml php7.2-mysql php7.1-mcrypt php7.2-zip
+sudo apt-get install -y php7.2 libapache2-mod-php7.2 \
+    php7.2-cli php7.2-common php7.2-mbstring php7.2-gd \
+    php7.2-intl php7.2-xml php7.2-mysql php7.1-mcrypt php7.2-zip
 ```
 
 * Option 2: Install LEMP stack
 
 ```bash
 sudo apt-get install -y nginx
-sudo apt-get install -y php7.2 php7.2-fpm php7.2-cli php7.2-common php7.2-mbstring \
-    php7.2-gd php7.2-intl php7.2-xml php7.2-mysql php7.1-mcrypt php7.2-zip
+sudo apt-get install -y php7.2 php7.2-fpm php7.2-cli \
+    php7.2-common php7.2-mbstring php7.2-gd php7.2-intl \
+    php7.2-xml php7.2-mysql php7.1-mcrypt php7.2-zip
 ```
 
 * Disable Apache and Nginx if you install both
@@ -308,8 +310,11 @@ $GOPATH/bin/hello
 * Install hugo
 
 ```
-wget https://github.com/gohugoio/hugo/releases/download/v0.38.2/hugo_0.38.2_Linux-64bit.deb
-sudo dpkg -i hugo*Linux-64bit.deb
+# use apt
+sudo apt install hugo
+
+# use snap
+sudo snap install hugo
 ```
 
 ## Install clang & cmake
@@ -381,8 +386,10 @@ fields terminated by ',' enclosed by '"' lines terminated by '\n' \
 * psql is case sensitive
 
 ```
-echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' >> /etc/apt/sources.list.d/pgdg.list
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' \
+    >> /etc/apt/sources.list.d/pgdg.list
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
+    sudo apt-key add -
 
 sudo apt-get update
 sudo apt-get install postgresql-10
@@ -418,7 +425,8 @@ COPY products to '/home/<your_name>/db/products.csv' delimiter ',' csv;
 * export data to json file
 
 ```
-select json_agg(t) from (select * from products) t \t on \pset format unaligned \g products.json
+select json_agg(t) from \
+    (select * from products) t \t on \pset format unaligned \g products.json
 ```
 
 
@@ -428,7 +436,8 @@ select json_agg(t) from (select * from products) t \t on \pset format unaligned 
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \ 
     --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" \
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu \
+  xenial/mongodb-org/3.6 multiverse" \
   | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 
 sudo apt-get update
@@ -442,9 +451,15 @@ sudo service mongod status
 
 * Create a database `sample` and insert one record into document `products`
 
-```
+```json
 use sample
-db.products.insertOne({id: 1, title: "Dictionary", price: 9.99, created_at: "2011-01-02 07:00:00+11", tags: "{Book}"});
+db.products.insertOne({
+    id: 1,
+    title: "Dictionary", 
+    price: 9.99, 
+    created_at: "2011-01-02 07:00:00+11", 
+    tags: "{Book}"
+});
 
 db.products.find();
 ```
@@ -453,5 +468,6 @@ db.products.find();
 
 
 ```
-mongoimport --db sample --collection products --drop --jsonArray --file ~/db/products.json
+mongoimport --db sample --collection products --drop \
+    --jsonArray --file ~/db/products.json
 ```
