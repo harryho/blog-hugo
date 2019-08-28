@@ -8,6 +8,13 @@ Hugo blog repo
 * Deploy posts to harryho.github.io by running script deploy.bat. After that, you can check it via browser.
 
 
+The theme Docdock has been forked as customized repository 
+
+```
+git submodule add --force https://github.com/harryho/hugo-theme-docdock.git themes/docdock 
+
+```
+
 Update submodule 
 
 ```
