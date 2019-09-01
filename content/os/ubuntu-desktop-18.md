@@ -153,6 +153,36 @@ Plug '~/my-prototype-plugin'
 call plug#end()
 ```
 
+### Install MySql
+
+- Here I just install the default MySql 5.7. If you want to install the new version or MariaDB, please check out the official website. 
+
+
+```bash
+# Install MySql server and client
+sudo apt install mysql-server mysql-client
+
+# Check if the MySql service active and running
+sudo systemctl status mysql.service
+
+# Enable or Restart MySql service
+sudo systemctl enable mysql.service
+sudo systemctl restart mysql.service
+
+# Create root account
+sudo mysql_secure_installation
+
+# After the password for root has been created
+sudo mysql -u root -p
+
+# Update the password via mysql comomand pompt
+mysql>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_strong_password';
+
+# Create another admin is highly recommended in production env
+mysql>GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'your_strong_password';
+
+```
+
 ### Other useful tools
 
 - Office
