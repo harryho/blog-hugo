@@ -1,7 +1,6 @@
 +++
 title = "MySql Note - 1"
 description="MySql introduction"
-hidden="true"
 +++
 
 ### Create a new database 
@@ -45,7 +44,8 @@ SELECT * FROM new_table_a na
 
 ```
 
-### temporary table
+
+### Useful temporary table
 
 ```sql
 DROP TEMPORARY TABLE IF EXISTS tmp_table; 
