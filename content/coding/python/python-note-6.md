@@ -54,233 +54,233 @@ Mutable Mapping | dict
 
 ### Example
 
-    * sortedset 
+* sortedset 
 
 
-    ```python
-    from bisect import bisect_left
-    from collections.abc import Sequence, Set
-    from itertools import chain
+```python
+from bisect import bisect_left
+from collections.abc import Sequence, Set
+from itertools import chain
 
 
-    class SortedSet(Sequence, Set):
+class SortedSet(Sequence, Set):
 
-        def __init__(self, items=None):
-            self._items = sorted(set(items)) if items is not None else []
+    def __init__(self, items=None):
+        self._items = sorted(set(items)) if items is not None else []
 
-        def __contains__(self, item):
-            try:
-                self.index(item)
-                return True
-            except ValueError:
-                return False
+    def __contains__(self, item):
+        try:
+            self.index(item)
+            return True
+        except ValueError:
+            return False
 
-        def __len__(self):
-            return len(self._items)
+    def __len__(self):
+        return len(self._items)
 
-        def __iter__(self):
-            return iter(self._items)
+    def __iter__(self):
+        return iter(self._items)
 
-        def __getitem__(self, index):
-            result = self._items[index]
-            return SortedSet(result) if isinstance(index, slice) else result
+    def __getitem__(self, index):
+        result = self._items[index]
+        return SortedSet(result) if isinstance(index, slice) else result
 
-        def __repr__(self):
-            return "SortedSet({})".format(repr(self._items) if self._items else '')
+    def __repr__(self):
+        return "SortedSet({})".format(repr(self._items) if self._items else '')
 
-        def __eq__(self, rhs):
-            if not isinstance(rhs, SortedSet):
-                return False
-            return self._items == rhs._items
+    def __eq__(self, rhs):
+        if not isinstance(rhs, SortedSet):
+            return False
+        return self._items == rhs._items
 
-        def _is_unique_and_sorted(self):
-            return all(self[i] < self[i + 1] for i in range(len(self) - 1))
+    def _is_unique_and_sorted(self):
+        return all(self[i] < self[i + 1] for i in range(len(self) - 1))
 
-        def index(self, item):
-            assert self._is_unique_and_sorted()
-            index = bisect_left(self._items, item)
-            if (index != len(self._items)) and self._items[index] == item:
-                return index
-            raise ValueError("{} not found".format(repr(item)))
+    def index(self, item):
+        assert self._is_unique_and_sorted()
+        index = bisect_left(self._items, item)
+        if (index != len(self._items)) and self._items[index] == item:
+            return index
+        raise ValueError("{} not found".format(repr(item)))
 
-        def count(self, item):
-            assert self._is_unique_and_sorted()
-            return int(item in self._items)
+    def count(self, item):
+        assert self._is_unique_and_sorted()
+        return int(item in self._items)
 
-        def __add__(self, rhs):
-            return SortedSet(chain(self._items, rhs._items))
+    def __add__(self, rhs):
+        return SortedSet(chain(self._items, rhs._items))
 
-        def __mul__(self, rhs):
-            return SortedSet(self) if rhs > 0 else SortedSet()
+    def __mul__(self, rhs):
+        return SortedSet(self) if rhs > 0 else SortedSet()
 
-        def __rmul__(self, lhs):
-            return self * lhs
+    def __rmul__(self, lhs):
+        return self * lhs
 
-        def issubset(self, iterable):
-            return self <= SortedSet(iterable)
+    def issubset(self, iterable):
+        return self <= SortedSet(iterable)
 
-        def issuperset(self, iterable):
-            return self >= SortedSet(iterable)
+    def issuperset(self, iterable):
+        return self >= SortedSet(iterable)
 
-        def intersection(self, iterable):
-            return self & SortedSet(iterable)
+    def intersection(self, iterable):
+        return self & SortedSet(iterable)
 
-        def union(self, iterable):
-            return self | SortedSet(iterable)
+    def union(self, iterable):
+        return self | SortedSet(iterable)
 
-        def symmetric_difference(self, iterable):
-            return self ^ SortedSet(iterable)
+    def symmetric_difference(self, iterable):
+        return self ^ SortedSet(iterable)
 
-        def difference(self, iterable):
-            return self - SortedSet(iterable)
-    ```
+    def difference(self, iterable):
+        return self - SortedSet(iterable)
+```
 
 
-    * test case
+* test case
 
 
-    ```python
-    import unittest
-    from sorted_set import SortedSet
+```python
+import unittest
+from sorted_set import SortedSet
 
 
-    class TestConstruction(unittest.TestCase):
+class TestConstruction(unittest.TestCase):
 
-        def test_empty(self):
-            s = SortedSet([])
+    def test_empty(self):
+        s = SortedSet([])
 
-        def test_from_sequence(self):
-            s = SortedSet([7, 8, 3, 1])
+    def test_from_sequence(self):
+        s = SortedSet([7, 8, 3, 1])
 
-        def test_with_duplicates(self):
-            s = SortedSet([8, 8, 8])
+    def test_with_duplicates(self):
+        s = SortedSet([8, 8, 8])
 
-        def test_from_iterable(self):
-            def gen6842():
-                yield 6
-                yield 8
-                yield 4
-                yield 2
-            g = gen6842()
-            s = SortedSet(g)
+    def test_from_iterable(self):
+        def gen6842():
+            yield 6
+            yield 8
+            yield 4
+            yield 2
+        g = gen6842()
+        s = SortedSet(g)
 
-        def test_default_empty(self):
-            s = SortedSet()
+    def test_default_empty(self):
+        s = SortedSet()
 
 
-    class TestContainerProtocol(unittest.TestCase):
+class TestContainerProtocol(unittest.TestCase):
 
-        def setUp(self):
-            self.s = SortedSet([6, 7, 3, 9])
+    def setUp(self):
+        self.s = SortedSet([6, 7, 3, 9])
 
-        def test_positive_contained(self):
-            self.assertTrue(6 in self.s)
+    def test_positive_contained(self):
+        self.assertTrue(6 in self.s)
 
-        def test_negative_contained(self):
-            self.assertFalse(2 in self.s)
+    def test_negative_contained(self):
+        self.assertFalse(2 in self.s)
 
-        def test_positive_not_contained(self):
-            self.assertTrue(5 not in self.s)
+    def test_positive_not_contained(self):
+        self.assertTrue(5 not in self.s)
 
-        def test_negative_not_contained(self):
-            self.assertFalse(9 not in self.s)
+    def test_negative_not_contained(self):
+        self.assertFalse(9 not in self.s)
 
 
-    class TestSizedProtocol(unittest.TestCase):
+class TestSizedProtocol(unittest.TestCase):
 
-        def test_empty(self):
-            s = SortedSet()
-            self.assertEqual(len(s), 0)
+    def test_empty(self):
+        s = SortedSet()
+        self.assertEqual(len(s), 0)
 
-        def test_one(self):
-            s = SortedSet([42])
-            self.assertEqual(len(s), 1)
+    def test_one(self):
+        s = SortedSet([42])
+        self.assertEqual(len(s), 1)
 
-        def test_ten(self):
-            s = SortedSet(range(10))
-            self.assertEqual(len(s), 10)
+    def test_ten(self):
+        s = SortedSet(range(10))
+        self.assertEqual(len(s), 10)
 
-        def test_with_duplicates(self):
-            s = SortedSet([5, 5, 5])
-            self.assertEqual(len(s), 1)
+    def test_with_duplicates(self):
+        s = SortedSet([5, 5, 5])
+        self.assertEqual(len(s), 1)
 
 
-    class TestIterableProtocol(unittest.TestCase):
+class TestIterableProtocol(unittest.TestCase):
 
-        def setUp(self):
-            self.s = SortedSet([7, 2, 1, 1, 9])
+    def setUp(self):
+        self.s = SortedSet([7, 2, 1, 1, 9])
 
-        def test_iter(self):
-            i = iter(self.s)
-            self.assertEqual(next(i), 1)
-            self.assertEqual(next(i), 2)
-            self.assertEqual(next(i), 7)
-            self.assertEqual(next(i), 9)
-            self.assertRaises(StopIteration, lambda: next(i))
+    def test_iter(self):
+        i = iter(self.s)
+        self.assertEqual(next(i), 1)
+        self.assertEqual(next(i), 2)
+        self.assertEqual(next(i), 7)
+        self.assertEqual(next(i), 9)
+        self.assertRaises(StopIteration, lambda: next(i))
 
-        def test_for_loop(self):
-            index = 0
-            expected = [1, 2, 7, 9]
-            for item in self.s:
-                self.assertEqual(item, expected[index])
-                index += 1
+    def test_for_loop(self):
+        index = 0
+        expected = [1, 2, 7, 9]
+        for item in self.s:
+            self.assertEqual(item, expected[index])
+            index += 1
 
 
-    class TestSequenceProtocol(unittest.TestCase):
+class TestSequenceProtocol(unittest.TestCase):
 
-        def setUp(self):
-            self.s = SortedSet([1, 4, 9, 13, 15])
+    def setUp(self):
+        self.s = SortedSet([1, 4, 9, 13, 15])
 
-        def test_index_zero(self):
-            self.assertEqual(self.s[0], 1)
+    def test_index_zero(self):
+        self.assertEqual(self.s[0], 1)
 
-        def test_index_four(self):
-            self.assertEqual(self.s[4], 15)
+    def test_index_four(self):
+        self.assertEqual(self.s[4], 15)
 
-        def test_index_one_beyond_the_end(self):
-            with self.assertRaises(IndexError):
-                self.s[5]
+    def test_index_one_beyond_the_end(self):
+        with self.assertRaises(IndexError):
+            self.s[5]
 
-        def test_index_minus_one(self):
-            self.assertEqual(self.s[-1], 15)
+    def test_index_minus_one(self):
+        self.assertEqual(self.s[-1], 15)
 
-        def test_index_minus_five(self):
-            self.assertEqual(self.s[-5], 1)
+    def test_index_minus_five(self):
+        self.assertEqual(self.s[-5], 1)
 
-        def test_index_one_before_the_beginning(self):
-            with self.assertRaises(IndexError):
-                self.s[-6]
+    def test_index_one_before_the_beginning(self):
+        with self.assertRaises(IndexError):
+            self.s[-6]
 
-        def test_slice_from_start(self):
-            self.assertEqual(self.s[:3], SortedSet([1, 4, 9]))
+    def test_slice_from_start(self):
+        self.assertEqual(self.s[:3], SortedSet([1, 4, 9]))
 
-        def test_slice_to_end(self):
-            self.assertEqual(self.s[3:], SortedSet([13, 15]))
+    def test_slice_to_end(self):
+        self.assertEqual(self.s[3:], SortedSet([13, 15]))
 
-        def test_slice_empty(self):
-            self.assertEqual(self.s[10:], SortedSet())
+    def test_slice_empty(self):
+        self.assertEqual(self.s[10:], SortedSet())
 
-        def test_slice_arbitrary(self):
-            self.assertEqual(self.s[2:4], SortedSet([9, 13]))
+    def test_slice_arbitrary(self):
+        self.assertEqual(self.s[2:4], SortedSet([9, 13]))
 
-        def test_slice_full(self):
-            self.assertEqual(self.s[:], self.s)
+    def test_slice_full(self):
+        self.assertEqual(self.s[:], self.s)
 
 
-    class TestReprProtocol(unittest.TestCase):
+class TestReprProtocol(unittest.TestCase):
 
-        def test_repr_empty(self):
-            s = SortedSet()
-            self.assertEqual(repr(s), "SortedSet()")
+    def test_repr_empty(self):
+        s = SortedSet()
+        self.assertEqual(repr(s), "SortedSet()")
 
-        def test_repr_some(self):
-            s = SortedSet([42, 40, 19])
-            self.assertEqual(repr(s), "SortedSet([19, 40, 42])")
+    def test_repr_some(self):
+        s = SortedSet([42, 40, 19])
+        self.assertEqual(repr(s), "SortedSet([19, 40, 42])")
 
 
-    if __name__ == '__main__':
-        unittest.main()
-    ```
+if __name__ == '__main__':
+    unittest.main()
+```
 
 
 
