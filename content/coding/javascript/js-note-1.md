@@ -7,7 +7,7 @@ description="The most confused [this] in JavaScript"
 
 ## The most confused keyword and feature
 
-I am sure you know I am talking about. Yes, **this** is not only a powerful feature, but also often misinterpreted keyword.
+You may already guessed what I am talking about. Yes,  the**this** keyword. It is not only a powerful feature, but also often misinterpreted keyword.
 
 In JavaScript, we also have this concept inside a Function constructor when it is invoked using the “new” keyword, however it is not the only rule and “this” can often refer to a different object from a different execution context. 
 
@@ -106,4 +106,3 @@ testBind2(obj4);
 
 ```
 
-### 
