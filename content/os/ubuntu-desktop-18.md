@@ -3,7 +3,6 @@ tags =  ["linux","ubuntu"]
 
 date = "2018-07-04T14:59:31+11:00"
 title = "Ubuntu Desktop 18 LTS note"
-draft = false
 +++
 
 ### Prelude
