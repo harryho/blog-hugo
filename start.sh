@@ -8,3 +8,7 @@ if [ ! -z themes/docdock/layouts ]; then
 fi
 
 hugo serve -t docdock --watch  --disableFastRender
+
+
+
+

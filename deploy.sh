@@ -3,7 +3,7 @@
 echo "Deploying updates to GitHub..."
 
 # Build the project. If using a theme, replace by `hugo -t <yourtheme>`
-hugo -t docdock
+hugo -t docdock --disableFastRender
 
 # Go To Public folder
 cd public
