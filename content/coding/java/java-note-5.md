@@ -101,9 +101,9 @@ public class LambdaDemo {
 
         // FunctionalInterface 
         System.out.println("x + y:" + engine((x, y) -> x + y)); // 6
-        System.out.println("x - y:" + engine((x, y) -> x * y)); // 8
-        System.out.println("x * y:" + engine((x, y) -> x / y)); // 0 
-        System.out.println("x / y:" + engine((x, y) -> x % y)); // 2
+        System.out.println("x * y:" + engine((x, y) -> x * y)); // 8
+        System.out.println("x / y:" + engine((x, y) -> x / y)); // 0 
+        System.out.println("x % y:" + engine((x, y) -> x % y)); // 2
 
         String[] strArray = new String[] { "abc", "klm", "xyz", "pqr" };
         List list = Arrays.asList(strArray);

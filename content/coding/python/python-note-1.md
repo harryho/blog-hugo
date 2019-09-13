@@ -18,11 +18,11 @@ description="Good practices for package & module"
 * List of directories which Python searches for modules.
 
 
-```python
-# list directories
->>>import sys
->>>sys.path
-```
+    ```python
+    # list directories
+    >>>import sys
+    >>>sys.path
+    ```
 
 
 * Use `append` to attach the package directory to sys.path 
@@ -34,40 +34,41 @@ description="Good practices for package & module"
     * path: path_root\package0\module0.py
     * The code of module0.py
 
-    ```python
-    def test():
-        print('module0 -- test !')
-    ```
+        ```python
+        def test():
+            print('module0 -- test !')
+        ```
     
     * Test module importing
 
-    ```python
-    cd root
-    python
-    >>>import sys
-    >>>sys.append('package0')
-    >>>import module0
-    >>>module0.test
-    module0 -- test !
-    >>>exit()
 
-    # It will fail if you launch python at the parent directory of root 
+        ```python
+        cd root
+        python
+        >>>import sys
+        >>>sys.append('package0')
+        >>>import module0
+        >>>module0.test
+        module0 -- test !
+        >>>exit()
 
-    cd ..
-    python
-    >>>import sys
-    >>>sys.append('package0')
-    >>>import module0
-    Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-    ImportError: No module named 'module0'
+        # It will fail if you launch python at the parent directory of root 
 
-    ### It will success if you adjust relative path as below
-    >>>sys.append('path_root/package0')
-    >>>import module0
-    >>>module0.test
-    module0 -- test !
-    ```
+        cd ..
+        python
+        >>>import sys
+        >>>sys.append('package0')
+        >>>import module0
+        Traceback (most recent call last):
+        File "<stdin>", line 1, in <module>
+        ImportError: No module named 'module0'
+
+        ### It will success if you adjust relative path as below
+        >>>sys.append('path_root/package0')
+        >>>import module0
+        >>>module0.test
+        module0 -- test !
+        ```
 
 ## PYTHONPATH
 
@@ -75,21 +76,21 @@ description="Good practices for package & module"
 * Use previous `module0.py` to test
 * Linux 
 
-```bash
-export PYTHONPATH=package0
-python
->>>import module0
-module0 -- test !
-```
+    ```bash
+    export PYTHONPATH=package0
+    python
+    >>>import module0
+    module0 -- test !
+    ```
 
 * Windows
 
-```
-set PYTHONPATH=package0
-python
->>>import module0
-module0 -- test !
-```
+    ```
+    set PYTHONPATH=package0
+    python
+    >>>import module0
+    module0 -- test !
+    ```
 
 ### Package structure
 ---
@@ -98,19 +99,21 @@ module0 -- test !
 * Convert a package into a module
 * Basic structure of package0
 
-```
+```bash
 path_root  <--// it must be attached sys.path
 +---package0    <--// package root 
     +---__init__.py  <--// package init file
     \---module0.py
 ```
-`
+
 * Sample code -  `__init__.py` ( The sample code is for demo purpose)
+
 ```python
 print('package0 --init...')
 ```
 
 * Test 
+
 ```
 python
 >>>import package0
@@ -123,19 +126,19 @@ module0 -- test !
 * Add a `FileReader` class into `module0.py`
 * Sample code of `module0.py`
 
-```python
-class FileReader:
-    def __init__(self, filename):
-        self.filename = filename
-        self.f = open(self.filename, 'rt')
+    ```python
+    class FileReader:
+        def __init__(self, filename):
+            self.filename = filename
+            self.f = open(self.filename, 'rt')
 
-    def close(self):
-        self.f.close()
-    
-    def read(self):
-        return self.f.read()
+        def close(self):
+            self.f.close()
+        
+        def read(self):
+            return self.f.read()
 
-```
+    ```
 
 * Test
 
@@ -389,18 +392,18 @@ project_root <--// Project root directory contains everything
 
 * Sample code - `__main__.py`
 
-```python
-from package1 import FileReader
+    ```python
+    from package1 import FileReader
 
-if __name__ == "__main__":
-    app = FileReader('C:/ws/python/plural/pbb/gh/test.gz')
-    print(app.read())
-    app.close()
+    if __name__ == "__main__":
+        app = FileReader('C:/ws/python/plural/pbb/gh/test.gz')
+        print(app.read())
+        app.close()
 
-    app = FileReader('C:/ws/python/plural/pbb/gh/test.bz2')
-    print(app.read())
-    app.close()
-```
+        app = FileReader('C:/ws/python/plural/pbb/gh/test.bz2')
+        print(app.read())
+        app.close()
+    ```
 
 
 

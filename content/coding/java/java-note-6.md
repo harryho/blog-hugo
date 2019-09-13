@@ -18,9 +18,8 @@ hidden="true"
 
 ### Lambda Collection Map Demo
 
+
 ```java
-
-
 public class LambdaCollectionMapDemo {
 
     public static void main(String[] args) {

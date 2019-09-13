@@ -4,6 +4,8 @@ description="MySql schema & permission "
 
 +++
 
+
+
 ### Check out table size
 
 ```sql
@@ -20,3 +22,20 @@ ORDER BY data_length DESC
 LIMIT 50;
 
 ```
+
+
+### Check out running process 
+
+
+```sql
+SET @target_schema='THE_TARGET_SCHEMA';
+
+SELECT * FROM information_schema.PROCESSES
+WHERE command <> 'Sleep'
+  AND db = target_schema 
+
+;
+
+```
+
+

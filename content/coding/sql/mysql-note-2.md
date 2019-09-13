@@ -34,7 +34,7 @@ DROP PROCEDURE IF EXISTS stored_proc_1;
 DELIMITER $
 
 CREATE PROCEDURE stored_proc_1 (
-
+    
 )
 BEGIN
 
