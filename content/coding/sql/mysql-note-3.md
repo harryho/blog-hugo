@@ -36,6 +36,10 @@ WHERE command <> 'Sleep'
 
 ;
 
+-- Another simple command to show all
+
+SHOW FULL PROCESSLIST;
+
 ```
 
 

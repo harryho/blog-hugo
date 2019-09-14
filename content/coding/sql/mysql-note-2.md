@@ -6,6 +6,8 @@ description="MySql Stored Proc  & Function "
 
 ### Function 
 
+* Check the input string is OZ land line 
+
 ```sql
 
 DROP FUNCTION IF EXISTS isAusLandLine;
@@ -21,28 +23,91 @@ END $$
 
 DELIMITER ;
 
+-- SELECT isAusLandLine('03123322') from dual; -- TRUE
+
+-- SELECT isAusLandLine('06123322') from dual; -- FALSE
+
+```
+
+* EXtract the Json to String
+
+
+```sql
+DROP FUNCTION IF EXISTS json_extract_string;
+
+DELIMITER $
+
+CREATE FUNCTION `json_extract_string`(
+  p_json text,
+  p_key text
+) RETURNS varchar(40) CHARSET latin1
+  BEGIN
+    SET p_json = replace(p_json, '\\"', '"');
+    SET p_json = replace(p_json, '" :', '":');
+    SET p_json = replace(p_json, ': "', ':"');
+    SET p_json = replace(p_json, ': [', ':[');
+
+    SET @pattern_start_type = '"';
+    SET @pattern_end_type = '"';
+    SET @pattern = CONCAT('"', p_key, '":',@pattern_start_type);
+
+    IF LOCATE(@pattern, p_json) > 0 THEN
+      SET @start_i = LOCATE(@pattern, p_json) + CHAR_LENGTH(@pattern);
+    ELSE
+      SET @pattern_start_type = '[';
+      SET @pattern_end_type = ']';
+      SET @pattern = CONCAT('"', p_key, '":',@pattern_start_type);
+      SET @start_i = LOCATE(@pattern, p_json) + CHAR_LENGTH(@pattern);
+    END IF;
+
+    if @start_i = CHAR_LENGTH(@pattern) then
+      SET @end_i = 0;
+    else
+      SET @end_i = LOCATE(@pattern_end_type, p_json, @start_i) - @start_i;
+    end if;
+    RETURN SUBSTR(p_json, @start_i, @end_i);
+  END $
+
+DELIMITER ;
+
+-- SELECT json_extract_string('{"key": 123}' ) from dual; -- 123
+
 ```
 
 
 ### Stored proc sample
 
 
+* Create a stored proc to execute dynamic SQL script based on the previous execution result 
+
 ```sql
 
-DROP PROCEDURE IF EXISTS stored_proc_1;
+DROP PROCEDURE IF EXISTS RunIf;
 
-DELIMITER $
+DELIMITER $$
 
-CREATE PROCEDURE stored_proc_1 (
-    
-)
-BEGIN
-
-SELECT * FROM table_1;
-END
-
+create procedure RunIf(ifExpr MEDIUMTEXT, execStmt MEDIUMTEXT)
+  BEGIN
+    set @sql = concat('select @result := (', ifExpr, ')');
+    prepare stmt from @sql;
+    EXECUTE stmt;
+    DEALLOCATE prepare stmt;
+    IF (@result = true) THEN
+      set @sql = execStmt;
+      PREPARE stmt FROM @sql;
+      EXECUTE stmt;
+      DEALLOCATE prepare stmt;
+    END IF;
+  end
+$$
 
 DELIMITER ;
+
+-- CALL( CALL RunIf('EXISTS (SELECT * FROM information_schema.columns 
+-- WHERE table_schema = DATABASE() AND table_name = \'TargeTable\' 
+-- AND column_name = \'description\')',
+--  'ALTER TABLE TargeTable DROP COLUMN description');)
+
 
 ```
 
