@@ -1,14 +1,16 @@
 #!/bin/bash
 
-echo "Deploying updates to GitHub..."
+echo "Deploying updates to GitHub ..."
 
 # Build the project. If using a theme, replace by `hugo -t <yourtheme>`
-hugo -t docdock --disableFastRender
+hugo -t docdock --ignoreCache
 
 # Go To Public folder
 cd public
 
 # Add changes to git.
+pwd
+git remote show origin
 git config user.name "harryho"
 git config user.email "harry.ho_long@yahoo.com"
 

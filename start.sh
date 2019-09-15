@@ -7,7 +7,14 @@ if [ ! -z themes/docdock/layouts ]; then
     git submodule update .
 fi
 
-hugo serve -t docdock --watch  --disableFastRender
+DRAFT=$1
+
+if [ ${DRAFT} == 'd' ]; then 
+    echo 'start with draft '
+    hugo serve -t docdock -D --watch  --disableFastRender
+else
+    hugo serve -t docdock --watch  --disableFastRender 
+fi
 
 
 

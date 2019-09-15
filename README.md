@@ -32,4 +32,19 @@ Run the site locally
 
 ```
 hugo server
+
+# with script 
+# Linux / Mac
+./start.sh
+
+# Windows
+./start.cmd
+```
+
+
+Edit the site with draft
+
+```bash
+# Run the start script with param d
+./start.sh  d
 ```
