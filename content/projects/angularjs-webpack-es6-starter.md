@@ -2,7 +2,7 @@
 date = "2016-11-15T16:56:21+11:00"
 title = "Angularjs Webpack ES6 Starter"
 description = "This starter was inspired by another similar angular webpack starter repository"
-tags = ["angularjs","webpack","javascript"]
+
 
 +++
 

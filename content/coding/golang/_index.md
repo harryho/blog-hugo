@@ -1,5 +1,5 @@
 +++
-title = "OS"
+title = "Golang"
 
 +++
 

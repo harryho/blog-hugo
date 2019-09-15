@@ -2,7 +2,7 @@
 
 date = "2016-12-07T16:56:21+11:00"
 title = "Angular 4 CRM Project"
-tags = ["javascript"]
+
 description="Ng4Crm is reusable CRM project for real-world business based on Angular 4"
 +++
 

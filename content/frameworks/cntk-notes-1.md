@@ -2,7 +2,7 @@
 date = "2016-12-07T16:56:21+11:00"
 title = "CNTK Note - 1"
 description="AI Framework from Microsoft"
-tags = ["AI"]
+
 +++
 
 

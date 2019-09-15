@@ -1,5 +1,5 @@
 +++
-tags =  ["linux"]
+
 
 date = "2017-09-20T14:59:31+11:00"
 title = "Grub Trouble Shooting"

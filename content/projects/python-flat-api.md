@@ -2,7 +2,7 @@
 
 date = "2017-08-03T16:56:21+11:00"
 title = "FlatApi - Restful API for python dev"
-tags = ["python"]
+
 description = "FlatApi is a zero coding and zero configuration restful API server inspired by Json-Server and Eve"
 +++
 

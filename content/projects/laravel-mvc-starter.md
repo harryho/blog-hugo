@@ -2,7 +2,7 @@
 
 date = "2016-12-07T16:56:21+11:00"
 title = "Laravel MVC Starter"
-tags = ["php"]
+
 description = "This starter is the starting point of laravel 5 MVC project. "
 +++
 

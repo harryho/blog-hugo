@@ -2,7 +2,7 @@
 
 date = "2016-12-07T16:56:21+11:00"
 title = "Vue 2 Admin Project"
-tags = ["javascript"]
+
 description="Vue2Admin is a fully responsive admin template that is inspired by AdminLTE"
 +++
 

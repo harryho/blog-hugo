@@ -9,7 +9,6 @@ description="MySql Stored Proc  & Function "
 * Check the input string is OZ land line 
 
 ```sql
-
 DROP FUNCTION IF EXISTS isAusLandLine;
 DELIMITER $$
 CREATE FUNCTION isAusLandLine (in_value VARCHAR(500)) RETURNS TINYINT
@@ -81,7 +80,6 @@ DELIMITER ;
 * Create a stored proc to execute dynamic SQL script based on the previous execution result 
 
 ```sql
-
 DROP PROCEDURE IF EXISTS RunIf;
 
 DELIMITER $$

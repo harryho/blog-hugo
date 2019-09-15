@@ -1,7 +1,7 @@
 +++
 date = "2016-12-07T16:56:21+11:00"
 title = "Vue 2 CRM Project"
-tags = ["javascript"]
+
 description="Vue2Crm is a reusable Vue.js CRM starter project for real-world business based on Vue 2 PWA template"
 +++
 

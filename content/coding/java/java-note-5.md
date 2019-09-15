@@ -1,5 +1,5 @@
 +++
-tags = ["java"]
+
 title = "Java Note - 5: Lambda "
 description="Lambda expressions are Java's first step into functional programming"
 +++

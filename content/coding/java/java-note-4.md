@@ -1,5 +1,5 @@
 +++
-tags = ["java"]
+
 title = "Java Note - 4: Date Time "
 description="Java 8 provides a comprehensive Date-Time API to work with date, time, and datetime"
 +++

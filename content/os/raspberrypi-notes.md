@@ -1,5 +1,5 @@
 +++
-tags =  ["linux","raspberry pi"]
+
 
 date = "2018-01-06T14:59:31+11:00"
 title = "Raspberry Pi setup"

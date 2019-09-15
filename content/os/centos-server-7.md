@@ -1,5 +1,5 @@
 +++
-tags =  ["linux","centos"]
+
 date = "2017-02-03T10:59:31+11:00"
 title = "CentOS 7 Server note"
 draft = false

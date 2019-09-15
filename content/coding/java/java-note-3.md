@@ -1,5 +1,5 @@
 +++
-tags = ["java"]
+
 title = "Java Note - 3: Path and Files"
 description="Some good part of Java 7 - Path and Files API"
 +++

@@ -1,5 +1,5 @@
 +++
-tags =  ["windows","cmd"]
+
 
 date = "2012-03-24T10:59:31+11:00"
 title = "Windows cmd & hotkey - 2"

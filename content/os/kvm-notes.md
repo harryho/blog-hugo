@@ -1,5 +1,5 @@
 +++
-tags =  ["linux","kvm", "qemu"]
+
 
 date = "2016-03-04T14:59:31+11:00"
 title = "KVM Notes"

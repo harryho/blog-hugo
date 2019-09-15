@@ -1,5 +1,5 @@
 +++
-tags = ["java"]
+
 title = "Java Note - 7: Stream API"
 description="Java Stream"
 hidden="true"

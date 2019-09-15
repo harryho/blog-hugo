@@ -1,5 +1,5 @@
 +++
-tags = ["java"]
+
 title = "Java Note - Part 6: Lambda & Collection"
 hidden="true"
 +++

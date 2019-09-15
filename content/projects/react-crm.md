@@ -1,10 +1,7 @@
-
 +++
-
 date = "2016-12-07T16:56:21+11:00"
 title = "React Redux CRM Project"
-tags = ["javascript"]
-description="React-Crm is reusable CRM starter project for real-world business based on React 15.4"
+description = "React-Crm is reusable CRM starter project for real-world business based on React 15.4"
 +++
 
 

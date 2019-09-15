@@ -1,5 +1,5 @@
 +++
-tags = ["java"]
+
 title = "Java Note - 1: Enum"
 description="Replace constant property of the interface or abstract class with Enum"
 +++

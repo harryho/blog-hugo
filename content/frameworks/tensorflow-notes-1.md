@@ -2,7 +2,7 @@
 date = "2016-12-07T16:56:21+11:00"
 title = "Tensorflow Note - 1"
 description = "Tensorflow Note - 1"
-tags = ["AI"]
+
 +++
 
 ## Prerequisites

@@ -1,5 +1,5 @@
 +++
-tags =  ["hugo"]
+
 date = "2017-02-15T14:59:31+11:00"
 title = "Create a blog site on GitHub Pages"
 description="After I setup a blog site with Hugo on my ubuntu machine, I decided to use it to create a blog to GitHub pages on my windows machine "

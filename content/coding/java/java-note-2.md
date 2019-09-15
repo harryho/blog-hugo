@@ -1,5 +1,5 @@
 +++
-tags = ["java"]
+
 title = "Java Note - 2: Concurrency"
 description="Common good practice for Java Concurrency programming"
 +++

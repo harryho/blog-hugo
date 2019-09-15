@@ -1,8 +1,6 @@
 +++
-
 date = "2016-02-09T16:56:21+11:00"
 title = "Zend Framework 2 MVC Starter"
-tags = ["php"]
 description="This starter is the starting point of zend framework 2 MVC project"
 +++
 

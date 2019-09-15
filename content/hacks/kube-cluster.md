@@ -1,6 +1,6 @@
 +++
 
-tags =  ["kubernetes"]
+
 title = "Create Kubernetes Cluster"
 description="5 Mins to create a kubernetes cluster on Ubuntu or Centos Linux machine"
 

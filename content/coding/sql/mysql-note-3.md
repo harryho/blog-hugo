@@ -9,7 +9,6 @@ description="MySql schema & permission "
 ### Check out table size
 
 ```sql
-
 SET @target_schema='THE_TARGET_SCHEMA';
 
 SELECT 

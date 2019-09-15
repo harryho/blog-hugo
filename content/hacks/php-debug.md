@@ -1,5 +1,5 @@
 +++
-tags =  ["php"]
+
 title = "Debug PHP with Free IDE"
 description="Eclipse PDT and Netbeans for PHP development"
 +++

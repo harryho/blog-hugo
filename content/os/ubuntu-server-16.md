@@ -1,6 +1,4 @@
 +++
-tags =  ["linux","ubuntu"]
-
 date = "2017-05-04T14:59:31+11:00"
 title = "Ubuntu 16 server note"
 draft = false

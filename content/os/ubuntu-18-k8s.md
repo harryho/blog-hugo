@@ -1,5 +1,5 @@
 +++
-tags =  ["k8s"]
+
 
 date = "2017-05-04T14:59:31+11:00"
 title = "Ubuntu 18 & Kubernetes"

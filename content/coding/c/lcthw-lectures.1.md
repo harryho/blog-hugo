@@ -1,5 +1,5 @@
 +++
-tags = ["c"]
+
 title = "C Lecture - 1"
 description = "Exercise 0 ~ 31"
 +++

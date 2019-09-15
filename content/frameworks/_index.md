@@ -1,5 +1,5 @@
 +++
-tags = ["Developmment", "Framework"]
+
 title = "Frameworks"
 +++
 

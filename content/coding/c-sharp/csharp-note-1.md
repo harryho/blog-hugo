@@ -1,5 +1,5 @@
 +++
-tags = ["C#"]
+
 title = "C# Note - 1"
 description = "How to create C# console application without Visual Studio"
 +++

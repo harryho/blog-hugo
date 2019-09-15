@@ -1,5 +1,5 @@
 +++
-tags =  ["windows","cmd"]
+
 date = "2011-03-09T10:59:31+11:00"
 title = "Windows cmd & hotkey - 1"
 description="A note for everyone who wants to use Commnd and Hot Key as hacker "
