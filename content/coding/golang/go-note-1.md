@@ -4,7 +4,7 @@ description="Golang Introduction: Basic Command, Slice ..."
 +++
 
 
-### Go Introduction
+## Go Introduction
 
 > Golang's popularity is skyrocketing. The thriving of Docker and Kubernetes push the Golang to a higher level. 
 
