@@ -1,108 +1,141 @@
 +++
 title = "JS & ES Note - 2"
-description="The equal operator is evil and angle"
-draft = "true"
+description="The equal operator doesn't always mean equivalent"
 +++
 
 
-## The equal operator is evil and angle
+## The equal operator doesn't always mean equivalent
 
-You may already guessed what I am talking about. Yes,  the**this** keyword. It is not only a powerful feature, but also often misinterpreted keyword.
-
-In JavaScript, we also have this concept inside a Function constructor when it is invoked using the “new” keyword, however it is not the only rule and “this” can often refer to a different object from a different execution context. 
+> Have you got confused by the equal or not equal expression in the JavaScript? I will say you are definitely not the only one. Even many senior developers come from back-end programming background, they all scratch the head to find out why the equal or not-equal expression doesn't work as they expect. The truth is those expression are really different from other programming language. 
 
 
-### **this** can be anything
- 
-* **this** represents different things. 
+
+### "===" is not the same as "=="
 
 
-```
+* JavaScript has both strict and type–converting comparisons. A strict comparison (e.g., ===) is only true if the operands are of the same type and the contents match. The more commonly-used abstract comparison (e.g. ==) converts the operands to the same type before making the comparison.
 
-var a = "abc"
-console.log(a);
+* The equality operator (==) converts the operands if they are not of the same type, then applies strict comparison. If both operands are objects, then JavaScript compares internal references which are equal when operands refer to the same object in memory.
 
-this.a = "123";
-console.log(a);
+* The identity operator (===) returns true if the operands are strictly equal.
 
-console.log(this);
+### "!=" is not the same as "!=="
 
-```
+* The inequality operator (!=) returns true if the operands are not equal. If the two operands are not of the same type, JavaScript attempts to convert the operands to an appropriate type for the comparison.
 
-- Do you know what output will be?
-
-  - Running in the console of Chrome / Firefox
-
-```
-abc
-123
-Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
-```
-
-  - Running in the js file via node 
-
-```
-# Save the content as index.js
-# Run command - node index.js
-
-abc
-abc
-{ a: '123' }
-```
-    
-  - Running in the node command prompt
-
-```
-abc
-123
-Object [global] {global: [Circular],...}
-```
-
-* Basically the **this** represents the context environment, AKA, the global object. The best way to confirm what the **this** means is better to print it out. 
+* The non-identity operator (!==) returns true if the operands are not equal and/or not of the same type.
 
 
-### **this** inside a function
+### Follow are samples to show difference
 
-From 2015, ECMAScript 6, aka ES 2015, has been supported by most modern browesers. So when we talk about function in JavaScript, literally we are talking two slightly different functions. One is defined with keyword `function`, another one is aka arrow function or fat arrow. For most scenario, arrow function is the same as old style function, but fat arrow hanles the **this** keyword in a more stable and predictable way.  
+> Try to test yourself before checking the answers
 
-> Mozila - MDN: The value of this is determined by how a function is called (runtime binding). It can't be set by assignment during execution, and it may be different each time the function is called. ES5 introduced the bind() method to set the value of a function's this regardless of how it's called. The arrow functions which don't provide their own this binding (it retains the this value of the enclosing lexical context).
-
-According MDN's explanation, the arrow function is a better implementation. It is more predictable and stable. Arrow function is highly recommanded to replace the old style function. 
+  
+#### Sample 1
 
 
 ```js
 
-var obj3 = {
-  p: 'obj3',
-  toBeCalled: function() {
-    console.log(' this is toBeCalled ', this.p);
-  },
-  toBind: function(obj) {
-    obj.toBeCalled();
-  }
-};
+console.log( " 1==true : ", 1==true)
 
-var testBind = obj3.toBind;
-testBind(obj3);
+console.log( " ''==true : ", ''==true)
 
-/// output:
-///  this is toBeCalled  obj3
+console.log( " '1'==true : ", '1'==true)
 
-var obj4 = {
-  p: 'obj4',
-  toBeCalled: () => {
-    console.log(' this is toBeCalled ', this.p);
-  },
-  toBind: obj => {
-    obj.toBeCalled();
-  }
-};
+console.log( " \"1\"==true : ", "1"==true)
 
-var testBind2 = obj4.toBind;
-testBind2(obj4);
+console.log( " {}==true : ", [{}]==true)
 
-/// output
-///  this is toBeCalled  undefined
+console.log( " []==true : ", ['1']==true)
 
 ```
+
+#### Answer of Sample 1
+
+```js
+
+console.log( " 1==true : ", 1==true)      // 1==true :  true
+console.log( " ''==true : ", ''==true)    // ''==true :  false
+console.log( " '1'==true : ", '1'==true)  // '1'==true :  true
+console.log( " \"1\"==true : ", "1"==true)// "1"==true :  true
+console.log( " {}==true : ", [{}]==true)  // {}==true :  false
+console.log( " []==true : ", ['1']==true) // []==true :  true
+
+```
+
+#### Sample 2
+
+
+
+```js
+
+console.log( " 0==false : ", 0==false)
+
+console.log( " 1==false : ", 1==false)
+
+console.log( " ''==false : ", ''==false)
+
+console.log( " '1'==false : ", '1'==false)
+
+console.log( " \"\"==false : ", ""==false)
+
+console.log( " {}==false : ", {}==false)
+
+console.log( " []==false : ", []==false)
+
+```
+
+#### Answer of Sample 2
+
+```js
+
+console.log( " 0==false : ", 0==false)    // 0==false :  true 
+console.log( " 1==false : ", 1==false)    // 1==false :  false 
+console.log( " ''==false : ", ''==false)  // ''==false :  true
+console.log( " '1'==false : ", '1'==false)// '1'==false :  false
+console.log( " \"\"==false : ", ""==false)// ""==false :  true
+console.log( " {}==false : ", {}==false)  // {}==false :  false 
+console.log( " []==false : ", []==false)  // []==false :  true 
+```
+
+
+#### Sample 3
+
+```js
+console.log( " null==false : ", null==false)
+
+console.log( " undefined==false : ", undefined==false)
+
+console.log( " undefined==null : ", null==undefined)
+```
+
+
+#### Answer of Sample 3
+
+
+```js
+console.log( " null==false : ", null==false) 
+// null==false: false
+
+console.log( " undefined==false : ", undefined==false) 
+// undefined==false: false
+
+console.log( " undefined==null : ", null==undefined) 
+// undefined==null: true
+```
+
+
+### Tricks to compare arrays of numbers
+
+* Compare two arrays to sure both contain the same numbers
+
+```js
+const arr1= [1,2.20,-3.5]
+
+const arr2 =  [1.0,-3.5,2.2]
+
+console.log(  " arr1 = arr2 ? ", obj1.sort().toString()===obj2.sort().toString())
+
+```
+
 
