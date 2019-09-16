@@ -17,7 +17,7 @@ description = "Common Cron Job examples - Refresh Cassandra database"
 * Cron job setting
 
     ```bash
-    00 20   * * *   ubuntu  /home/<user_account>/cass_staging_refresh/cass_prod_snapshot.sh >> /home/<user_account>/cass_staging_refresh/refresh.log 2>&1
+    00 20   * * *   <user_account>  /home/<user_account>/cass_staging_refresh/cass_prod_snapshot.sh >> /home/<user_account>/cass_staging_refresh/refresh.log 2>&1
     ```
 
 * The script to create a snapshot:   `cass_prod_snapshot.sh`
@@ -73,12 +73,12 @@ description = "Common Cron Job examples - Refresh Cassandra database"
 
     # Copy tarball and schema script to staging Cassandra
     echo "$(date): Copy tarball and schema script to staging Cassandra ${CASS_STG_IP}"
-    scp snapshots.tar.gz ubuntu@${CASS_STG_IP}:/home/ubuntu/ # ~5mins
-    scp hho_ks.cql ubuntu@${CASS_STG_IP}:/home/ubuntu/
+    scp snapshots.tar.gz <user_account>@${CASS_STG_IP}:/home/<user_account>/ # ~5mins
+    scp hho_ks.cql <user_account>@${CASS_STG_IP}:/home/<user_account>/
 
     # Refresh snapshots on staging Cassandra
     echo "$(date): SSH to staging Cassandra ${CASS_STG_IP}"
-    sudo ssh ubuntu@${CASS_STG_IP} 'bash -s' < /home/ubuntu/cass_staging_refresh/cass_staging_refresh.sh
+    sudo ssh <user_account>@${CASS_STG_IP} 'bash -s' < /home/<user_account>/cass_staging_refresh/cass_staging_refresh.sh
 
     echo "$(date): Completed refresh of staging Cassandra ${CASS_STG_IP}"
     END=$(date +%s)
