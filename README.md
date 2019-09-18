@@ -21,8 +21,8 @@ Update submodule
 git submodule init
 git submodule update
 
-cd themes/public
-git checkout hw
+cd themes/<your_theme>
+git checkout hw  # only hw branch should be used
 git pull
 
 ```

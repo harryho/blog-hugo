@@ -38,8 +38,12 @@ serve/*
 demo/
 playground/*
 
-
-/public/
+## public
+public/*
 !/public/.gitkeep
 
+# Mac
 *.DS_Store
+
+# Theme
+themes/*

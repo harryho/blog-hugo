@@ -10,9 +10,15 @@ cd public
 
 # Add changes to git.
 pwd
-git remote show origin
+
 git config user.name "harryho"
 git config user.email "harry.ho_long@yahoo.com"
+
+git remote show origin
+
+git checkout master
+
+git pull origin master
 
 git add -A
 
