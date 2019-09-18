@@ -59,7 +59,7 @@ console.log( " ''==true : ", ''==true)    // ''==true :  false
 console.log( " '1'==true : ", '1'==true)  // '1'==true :  true
 console.log( " \"1\"==true : ", "1"==true)// "1"==true :  true
 console.log( " {}==true : ", [{}]==true)  // {}==true :  false
-console.log( " []==true : ", ['1']==true) // []==true :  true
+console.log( " ['1']==true : ", ['1']==true) // []==true :  true
 
 ```
 
@@ -68,20 +68,14 @@ console.log( " []==true : ", ['1']==true) // []==true :  true
 
 
 ```js
-
 console.log( " 0==false : ", 0==false)
-
 console.log( " 1==false : ", 1==false)
-
 console.log( " ''==false : ", ''==false)
-
 console.log( " '1'==false : ", '1'==false)
-
 console.log( " \"\"==false : ", ""==false)
-
 console.log( " {}==false : ", {}==false)
-
 console.log( " []==false : ", []==false)
+console.log( " ['0']==false : ", ['0']==false)
 
 ```
 
@@ -96,6 +90,7 @@ console.log( " '1'==false : ", '1'==false)// '1'==false :  false
 console.log( " \"\"==false : ", ""==false)// ""==false :  true
 console.log( " {}==false : ", {}==false)  // {}==false :  false 
 console.log( " []==false : ", []==false)  // []==false :  true 
+console.log( " ['0']==false : ", ['0']==false)  // ['0']==false :  true 
 ```
 
 

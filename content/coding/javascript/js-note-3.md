@@ -18,11 +18,11 @@ description="The var , let and const keywords "
 #### Sample 1
 
 ```js
-// 'use strict'
 function testVar(){
     console.log(a)
     console.log(b)
     var b = 2
+    c=3
 }
 
 var a = 1
@@ -36,18 +36,15 @@ console.log(b)
 
 
 ```js
-// 'use strict'
 function testVar(){
-    console.log(a)
-    console.log(b)
+    console.log(a) // 1
+    console.log(b) // undefined
     var b = 2
+    c = 3
 }
-
-var a = 1
-
+var a = 1 
 testVar()
-
-console.log(c)
+console.log(c) // 3
 ```
 
 #### Sample 2 (Run in browser's console)
