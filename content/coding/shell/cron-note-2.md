@@ -17,16 +17,16 @@ description = "Common Cron Job examples - Refresh Cassandra database"
 * Cron job setting
 
     ```bash
-    00 20   * * *   <user_account>  /home/<user_account>/cass_staging_refresh/cass_prod_snapshot.sh >> /home/<user_account>/cass_staging_refresh/refresh.log 2>&1
+    00 20   * * *   <user_account>  /home/<user_account>/refresh/cass_snapshot.sh >> /home/<user_account>/refresh/refresh.log 2>&1
     ```
 
-* The script to create a snapshot:   `cass_prod_snapshot.sh`
+* The script to create a snapshot:   `cass_snapshot.sh`
 
 
     ```bash
     #!/bin/bash
 
-    # the log file sits home/<user_account>/cass_staging_refresh/refresh.log 
+    # the log file sits home/<user_account>/refresh/refresh.log 
 
     # SET staging Cassandra IP
     CASS_STG_IP=0.0.0.0
@@ -78,7 +78,7 @@ description = "Common Cron Job examples - Refresh Cassandra database"
 
     # Refresh snapshots on staging Cassandra
     echo "$(date): SSH to staging Cassandra ${CASS_STG_IP}"
-    sudo ssh <user_account>@${CASS_STG_IP} 'bash -s' < /home/<user_account>/cass_staging_refresh/cass_staging_refresh.sh
+    sudo ssh <user_account>@${CASS_STG_IP} 'bash -s' < /home/<user_account>/refresh/cass_refresh.sh
 
     echo "$(date): Completed refresh of staging Cassandra ${CASS_STG_IP}"
     END=$(date +%s)
@@ -87,7 +87,7 @@ description = "Common Cron Job examples - Refresh Cassandra database"
     ```
 
 * Refresh the staging Cassandra node
-* The script to refresh the staging node: `cass_staging_refresh`
+* The script to refresh the staging node: `cass_refresh`
 
 
     ```bash

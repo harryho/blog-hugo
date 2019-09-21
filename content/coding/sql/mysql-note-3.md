@@ -35,7 +35,7 @@ WHERE command <> 'Sleep'
 
 ;
 
--- Another simple command to show all
+-- Another short cut to show all process
 
 SHOW FULL PROCESSLIST;
 

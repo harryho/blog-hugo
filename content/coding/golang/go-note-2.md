@@ -15,13 +15,21 @@ description="Golang Introduction: Map & Function "
 
 Maps are reference types: memory is allocated with the make -function
 
-    Initialization of a map: `var map1[keytype]valuetype = make(map[keytype]valuetype)`
+* Initialization of a map: 
+    
+        var map1[keytype]valuetype = make(map[keytype]valuetype)
 
-    or shorter with: `map1 := make(map[keytype]valuetype)`
+* or shorter with:
 
-    mapCreated is made in this way: `mapCreated := make(map[string]float)`
+        map1 := make(map[keytype]valuetype)
 
-    which is equivalent to: `mapCreated := map[string]float{}`
+* mapCreated is made in this way:
+
+        mapCreated := make(map[string]float)
+
+* which is equivalent to: 
+    
+        mapCreated := map[string]float{}
 
 #### Does the key exist
 
@@ -31,7 +39,6 @@ Maps are reference types: memory is allocated with the make -function
 if _, ok := map1[key1]; ok {
     delete(map1, key1)
 }
-
 ```
 
 ### Function
@@ -50,14 +57,14 @@ if _, ok := map1[key1]; ok {
 
 - Sample
 
-```go
-func f() {
-    for i := 0; i < 5; i++ {
-        defer fmt.Printf(“%d “, i)
+    ```go
+    func f() {
+        for i := 0; i < 5; i++ {
+            defer fmt.Printf(“%d “, i)
+        }
     }
-}
-// output : 4 3 2 1 0
-```
+    // output : 4 3 2 1 0
+    ```
 
 - Defer allows us to guarantee that certain clean-up tasks are performed before we return from a function.
 
@@ -67,27 +74,27 @@ func f() {
 * An important problem when using recursive functions is stack overflow: this can occur when a large number of recursive calls are needed and the programs runs out of allocated stack memory. This can be solved by using a technique called lazy evaluation, implemented in Go with a channel and a goroutine.
 
 
-```go
-package main
-import "fmt"
+    ```go
+    package main
+    import "fmt"
 
-func main() {
-    result := 0
-    for i:=0; i <= 10; i++ {
-        result = fibonacci(i)
-        fmt.Printf("fibonacci(%d) is: %d\n", i, result)
+    func main() {
+        result := 0
+        for i:=0; i <= 10; i++ {
+            result = fibonacci(i)
+            fmt.Printf("fibonacci(%d) is: %d\n", i, result)
+        }
     }
-}
 
-func fibonacci(n int) (res int) {
-	if n <= 1 {
-		res = 1
-	} else {
-		res = fibonacci(n-1) + fibonacci(n-2)
-	}
-	return
-}
-```
+    func fibonacci(n int) (res int) {
+        if n <= 1 {
+            res = 1
+        } else {
+            res = fibonacci(n-1) + fibonacci(n-2)
+        }
+        return
+    }
+    ```
 
 #### Callback
 
@@ -117,7 +124,6 @@ plus( 1,2) // 3
 
 // invoke func immediatley
 func(x, y int) int { return x + y }( 1, 2) // 3
-
 ```
 
 
@@ -125,17 +131,17 @@ func(x, y int) int { return x + y }( 1, 2) // 3
 
 * Use return function for Debugging
 
-```go
-where := func() {
-    _, file, line, _ := runtime.Caller(1)
-    log.Printf(“%s:%d”, file, line)
-}
+    ```go
+    where := func() {
+        _, file, line, _ := runtime.Caller(1)
+        log.Printf(“%s:%d”, file, line)
+    }
 
-func Func () {
-    //....do sth 
-    where ()
-    // ....do another thing
-}
-```
+    func Func () {
+        //....do sth 
+        where ()
+        // ....do another thing
+    }
+    ```
 
 
