@@ -1,0 +1,275 @@
++++
+title="Golang Note - 6"
+description="Goroutine & Channels"
++++
+
+
+### Goroutine
+
+* A goroutine is implemented as a function or method (this can also be an anonymous or lambda function) and called (invoked) with the keyword go. This starts the function running in parallel with the current computation but in the same address space and with its own stack.
+
+* Go’s concurrency primitives provide the basis for a good concurrency program design: expressing program structure so as to represent independently executing actions; so Go’s emphasis is not in the 1 st place on parallelism: concurrent programs may or may not be parallel. Parallelism is the ability to make things run quickly by using multiple processors. But it turns out most often that a well designed concurrent program also has excellent performing parallel capabilities.
+
+#### Basic Goroutine
+
+* Sample 1: The code below will not print out anything, because the main exits before the "hello" goroutine kicks off. Actually the main is another goroutine which always runs first. 
+
+```go
+func main() {
+	go func() {
+		println("Hello") 
+	}()
+}
+```
+
+* Sample 2: Add timer to set main goroutine sleep a while, and let the "hello"
+goroutine to start.
+
+```go
+func main() {
+	go func() {
+		println("Hello") // Hello
+    }()
+    time.Sleep(3000)
+}
+```
+
+* Sample 3: The code below will print "hello" 10 times and then print "world" 10 times. 
+
+```go
+func main() {
+	go func() {
+		for i := 0; i < 10; i++ {
+            println("Hello")
+            time.Sleep(2000)
+		}
+	}()
+	go func() {
+		for i := 0; i < 10; i++ {
+			println("World")
+		}
+	}()
+	time.Sleep(9999)
+}
+```
+
+* Sample 4: The code below will print "hello" and "world" in different order.
+
+```go
+func main() {
+	runtime.GOMAXPROCS(4)
+	go func() {
+		for i := 0; i < 10; i++ {
+			println("Hello")
+			time.Sleep(500)
+		}
+
+	}()
+	go func() {
+		for i := 0; i < 10; i++ {
+			println("World")
+			time.Sleep(500)
+		}
+	}()
+	time.Sleep(999999)
+}
+```
+
+* Sample 5: File watcher
+
+```go
+
+const watchedPath = "./source"
+
+func main() {
+	for {
+		d, _ := os.Open(watchedPath)
+		files, _ := d.Readdir(-1)
+		for _, fi := range files {
+			filePath := watchedPath + "/" + fi.Name()
+			f, _ := os.Open(filePath)
+			data, _ := ioutil.ReadAll(f)
+			f.Close()
+			os.Remove(filePath)
+			go func(data string) {
+				reader := csv.NewReader(strings.NewReader(data))
+				records, _ := reader.ReadAll()
+				for _, r := range records {
+					invoice := new(Invoice)
+					invoice.Number = r[0]
+					invoice.Amount, _ = strconv.ParseFloat(r[1], 64)
+					invoice.PurchaseOrderNumber, _ = strconv.Atoi(r[2])
+					unixTime, _ := strconv.ParseInt(r[3], 10, 64)
+					invoice.InvoiceDate = time.Unix(unixTime, 0)
+					
+					fmt.Printf("Received Invoice '%v' for $%.2f and submitted for processing\n", invoice.Number, invoice.Amount)
+				}
+			}(string(data))
+		}
+		d.Close()
+		time.Sleep(100 * time.Millisecond)
+	}
+}
+
+type Invoice struct {
+	Number string
+	Amount float64
+	PurchaseOrderNumber int
+	InvoiceDate time.Time
+}
+```
+
+
+#### Using GOMAXPROCS
+
+* When GOMAXPROCS is greater than 1, they run on a thread pool with that many threads.With the gccgo compiler GOMAXPROCS is effectively equal to the number of running goroutines.
+
+* Observations from experiments: on a 1 CPU laptop performance improved when GOMAXPROCS was increased to 9. On a 32 core machine, the best performance was reached with GOMAXPROCS=8, a higher number didn’t increase performance in that benchmark.
+
+### Channels
+
+#### Channels for communication between goroutines
+
+* Go has a special type, the channel, which is a like a conduit (pipe) through which you can send typed values and which takes care of communication between goroutines, avoiding all the pitfalls of shared memory; the very act of communication through a channel guarantees synchronization.
+
+
+* Data are passed around on channels: only one goroutine has access to a data item at any given time: so data races cannot occur, by design. The ownership of the data (that is the ability to read and write it) is passed around.
+
+* A channel is in fact a typed message queue: data can be transmitted through it. It is a First In First Out (FIFO) structure and so they preserve the order of the items that are sent into them (for those who are familiar with it, a channel can be compared to a two-way pipe in Unix shells).
+
+* A channel is also a reference type, so we have to use the make() function to allocate memory for it.
+
+**NOTE: Don’t use print statements to indicate the order of sending to and receiving from a channel: this could be out of order with what actually happens due to the time lag between the print statement and the actual channel sending and receiving.**
+
+
+#### Blocking of channels
+
+* A send operation on a channel (and the goroutine or function that contains it) blocks until a receiver is available for the same channel
+
+* A receive operation for a channel blocks (and the goroutine or function that contains it) until a sender is available for the same channel
+ 
+
+
+##### Goroutine sync through one or more channels
+
+* Blocking - deadlock
+
+* Sample 1 :  deadlock because of lack of sender
+
+```go
+func main() {
+	ch := make(chan string)
+	fmt.Println(<-ch)
+}
+//fatal error: all goroutines are asleep - deadlock!
+```
+
+* Sample 2: deadlock because of lack of receiver
+
+```go
+func main() {
+	ch := make(chan string, 1)
+	ch <- "Hello"
+	
+}
+```
+
+* Sample 3 
+
+```go
+func main() {
+	ch := make(chan string, 1)
+	ch <- "Hello"
+	fmt.Println(<-ch) // Hello
+}
+```
+
+
+
+##### Async channels - channel with buffer
+
+* Channel with buffer
+
+```go
+buf := 100
+ch1 := make(chan string, buf)
+```
+
+
+* Sample 4: deadlock again because the 2nd sender can not send message
+
+```go
+func main() {
+	ch := make(chan string, 1)
+	ch <- "Hello"
+	ch <- "Hello"
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+}
+```
+
+* Sample 5 
+
+```go
+func main() {
+	ch := make(chan string, 2)
+	ch <- "Hello"
+	ch <- "Hello"
+	fmt.Println(<-ch) //Hello
+	fmt.Println(<-ch) // Hello
+}
+```
+
+##### Closing channel
+
+
+
+* Sample 6: Closing channel will not impact the receiver to get the message
+
+```go
+func main() {
+	ch := make(chan string, 1)
+	ch <- "Hello"
+	ch <- "Hello"
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+}
+```
+
+* Sample 7: Sender cannot send message to closing channel 
+
+```go
+func main() {
+	ch := make(chan string, 2)
+	ch <- "Hello"
+	ch <- "Hello"
+	fmt.Println(<-ch) //Hello
+    fmt.Println(<-ch) // Hello
+    ch <- "Hello" // panic: send on closed channel
+}
+```
+
+
+##### Semaphore pattern
+
+* The goroutine compute signals its completion by putting a value on the channel ch, the main routine waits on <-ch until this value gets through.
+
+```go
+func compute(ch chan int) {
+	ch <- someComputation()
+	// when it completes, signal on the channel.
+}
+
+func main() {
+	ch := make(chan int) // allocate a channel.
+	go compute(ch)       // start something in a goroutine
+	doSomethingElseForAWhile()
+	result := <-ch
+}
+```
+
+##### Implement a semaphore with a buffered channel
+
+* 
+
+

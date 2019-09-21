@@ -16,18 +16,17 @@ But mutability can be very useful. To make them mutable is simply adding mut in 
 
 * Sample 
 
-```rs
-fn main() {
-    let x = 5;
+    ```rs
+    fn main() {
+        let x = 5;
 
-    let x = x + 1;
+        let x = x + 1;
 
-    let x = x * 2;
+        let x = x * 2;
 
-    println!("The value of x is: {}", x); // 12
-}
-
-```
+        println!("The value of x is: {}", x); // 12
+    }
+    ```
 
 * Shadowing is different from marking a variable as mut, because we’ll get a compile-time error if we accidentally try to reassign to this variable without using the let keyword. By using let, we can perform a few transformations on a value but have the variable be immutable after those transformations have been completed. 
 
