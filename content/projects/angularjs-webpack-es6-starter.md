@@ -12,7 +12,7 @@ It simply includes font-awesome, bootstrap for the people who don't want to use 
 
 
 * This starter uses angular 1.5 for someone want to build component.
-* This repo followes mvc patterns instead of component pattern. 
+* This repo follows mvc patterns instead of component pattern. 
 * ES6, and ES7 support with babel.
 * Development server with live reload.
 * Production builds with cache busting.

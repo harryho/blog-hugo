@@ -1,7 +1,6 @@
 +++
 title = "Rust-lang Note - 1"
 description="Rust-lang Introduction: Mutability, Shadowing, Data Types, Ownership, Borrowing,  "
-draft="true"
 +++
 
 ### Mutability 

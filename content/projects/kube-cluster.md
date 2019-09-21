@@ -1,7 +1,7 @@
 +++
 
 
-title = "Create Kubernetes Cluster"
+title = "Kubernetes Cluster in 5min"
 description="5 Mins to create a kubernetes cluster on Ubuntu or Centos Linux machine"
 
 +++
@@ -19,13 +19,13 @@ description="5 Mins to create a kubernetes cluster on Ubuntu or Centos Linux mac
 
 
 * You have a Linux machine in place. Physical or virtual machine doesn't mather.
-* The Linux OS is supposed to be one of folllowing distroes: the Ubuntu 16+, 18+ or CentOS 7.
+* The Linux OS is supposed to be one of following distroes: the Ubuntu 16+, 18+ or CentOS 7.
 * Internet is available on your machine
 
  
 ## Caveat
 
-- Use Virtual Machine to test it before runing it on physical machine
+- Use Virtual Machine to test it before running it on physical machine
 - VirtualBox or VMWare is a good option.
 - Kubernetes is supposed to run on Linux server, but it should be able to run on desktop version as well. 
 
