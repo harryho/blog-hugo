@@ -668,7 +668,6 @@ func main() {
 
 * By making clever use of the empty interface, closures and higher order functions we can implement a generic builder BuildLazyEvaluator for the lazy evaluation function (this should best placed inside a utility package). The builder takes a function that has to be evaluated and an initial state as arguments and returns a function without arguments returning the desired value. The passed evaluation function has to calculate the next return value as well as the next state based on the state argument. Inside the builder a channel and a goroutine with an endless loop are created. The return values are passed to the channel from which they are fetched by the returned function for later usage. Each time a value is fetched the next one will be calculated.
 
-*  
 
 ```go
 type Any interface{}
@@ -771,7 +770,7 @@ func main() {
 }
 ```
 
-* 
+
 
 
 

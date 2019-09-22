@@ -2,9 +2,6 @@
 
 echo "Deploying updates to GitHub ..."
 
-# Build the project. If using a theme, replace by `hugo -t <yourtheme>`
-hugo -t docdock --ignoreCache
-
 # Go To Public folder
 cd public
 
@@ -20,15 +17,24 @@ git checkout master
 
 git pull origin master
 
+## back to root of blog-hugo
+cd ..
+
+# Build the project. If using a theme, replace by `hugo -t <yourtheme>`
+hugo -t docdock --ignoreCache
+
+# Navigate into public
+cd public
+
 git add -A
 
 # Commit changes.
 # set msg="rebuilding site `date`"
 # if  NOT "%1"=="" set msg=%1
 
-msg="rebuilding site `date`"
-if [ $# -eq 1 ]
-  then msg="$1"
+msg="rebuilding site $(date)"
+if [ $# -eq 1 ]; then
+  msg="$1"
 fi
 
 git commit -m "$msg"
