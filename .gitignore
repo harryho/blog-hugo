@@ -47,3 +47,8 @@ public/*
 
 # Theme
 themes/*
+
+# sample
+archived/sample/**/*.txt
+archived/sample/**/*.csv
+archived/sample/**/*.json
