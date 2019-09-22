@@ -1,5 +1,5 @@
 +++
-title = "JS & ES Note - 91"
+title = "JavaScript, ECMAScript snippet"
 description="JavaScript, ECMAScript snippets"
 +++
 

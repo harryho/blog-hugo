@@ -1,6 +1,6 @@
 +++
-title = "Golang Note - 91"
-description="Golang snippets - Stringer "
+title = "Golang snippets"
+description="Golang snippets"
 +++
 
 

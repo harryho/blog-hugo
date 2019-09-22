@@ -3,7 +3,7 @@ title = "Rust-lang Note - 1"
 description="Rust-lang Introduction: Mutability, Shadowing, Data Types, Ownership, Borrowing,  "
 +++
 
-### Mutability 
+### Mutability
 
 Rust encourages you to favor immutability. It’s important that we get compile-time errors when we attempt to change a value that we previously designated as immutable because this very situation can lead to bugs.
 
@@ -114,6 +114,7 @@ let s2 = s1.clone();
 
 * At any given time, you can have either one mutable reference or any number of immutable references.
 * References must always be valid.
+
 
 
 
