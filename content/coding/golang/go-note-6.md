@@ -17,7 +17,7 @@ description="Goroutine & Channels"
 ```go
 func main() {
 	go func() {
-		println("Hello") 
+		println("Hello")
 	}()
 }
 ```
@@ -250,7 +250,7 @@ func main() {
 ```
 
 
-##### Semaphore pattern
+#### Semaphore pattern
 
 * The goroutine compute signals its completion by putting a value on the channel ch, the main routine waits on <-ch until this value gets through.
 
@@ -337,7 +337,7 @@ func (s semaphore) Signal() {
 
 
 
-##### Channel Factory pattern
+#### Channel Factory pattern
 
 * Another pattern common in this style of programming goes as follows: instead of passing a channel as a parameter to a goroutine, let the function make the channel and return it (so it plays the role of a factory); inside the function a lambda function is called as a goroutine.
 
@@ -434,6 +434,8 @@ for {
 
 ##### Channel directionality
 
+* A channel type may be annotated to specify that it may only send or only receive
+
 		var send_only chan<- int // channel can only receive data
 		var recv_only <-chan int // channel can only send data
 
@@ -442,7 +444,7 @@ for {
 
 
 
-##### Pipe & Filter pattern
+#### Pipe & Filter pattern
 
 * A goroutine channel process will processes what it receives from an input channel and sends this to an output channel
 

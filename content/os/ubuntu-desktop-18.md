@@ -205,6 +205,7 @@ mysql>GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'your_str
     ```
 
 - Meida
+
     - VLC
     
     ```

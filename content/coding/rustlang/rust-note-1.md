@@ -1,6 +1,6 @@
 +++
-title = "Rust-lang Note - 1"
-description="Rust-lang Introduction: Mutability, Shadowing, Data Types, Ownership, Borrowing,  "
+title = "Rustlang Note - 1"
+description="Rustlang Introduction: Mutability, Shadowing, Data Types, Ownership, Borrowing "
 +++
 
 ### Mutability
@@ -50,6 +50,12 @@ let guess: u32 = "42".parse().expect("Not a number!");
 
 * A tuple is a general way of grouping together some number of other values with a variety of types into one compound type. 
 
+```rs
+let tup: (i32, f64, u8) = (500, 6.4, 1);
+let tup = (500, 6.4, 1);
+let (x, y, z) = tup;
+println!("The value of y is: {}", y); //6.4
+```
 
 
 ### Ownership
@@ -115,12 +121,217 @@ let s2 = s1.clone();
 * At any given time, you can have either one mutable reference or any number of immutable references.
 * References must always be valid.
 
+#### Slice
+
+* Another data type that does not have ownership is the slice. Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection.
 
 
+### Struct
+
+* Structs are similar to tuples, which were discussed in Chapter 3. Like tuples, the pieces of a struct can be different types. Unlike with tuples, you’ll name each piece of data so it’s clear what the values mean. 
+
+* sample code of strut
+
+    ```rs 
+    struct User {
+        username: String,
+        email: String,
+        sign_in_count: u64,
+        active: bool,
+    }
 
 
+    fn build_user(email: String, username: String) -> User {
+        User {
+            email: email,
+            username: username,
+            active: true,
+            sign_in_count: 1,
+        }
+    }
+    ```
+
+* Creating Instances From Other Instances 
+
+    ```rs
+    let user2 = User {
+        email: String::from("another@example.com"),
+        username: String::from("anotherusername567"),
+        ..user1
+    };
+    ```
+
+#### Unit-Like Struct
+
+* structs that don’t have any fields! These are called unit-like structs because they behave similarly to (), the unit type. 
+
+#### Methods
+
+* Methods are similar to functions: they’re declared with the fn keyword and their name, they can have parameters and a return value, and they contain some code that is run when they’re called from somewhere else. However, methods are different from functions in that they’re defined within the context of a struct (or an enum or a trait object. Their first parameter is always self, which represents the instance of the struct the method is being called on.
+
+    ```rs
+    #[derive(Debug)]
+    struct Rectangle {
+        width: u32,
+        height: u32,
+    }
+
+    impl Rectangle {
+        fn area(&self) -> u32 {
+            self.width * self.height
+        }
+
+        fn can_hold(&self, other: &Rectangle) -> bool {
+            self.width > other.width && self.height > other.height
+        }
+    }
+
+    fn main() {
+        let rect1 = Rectangle {
+            width: 30,
+            height: 50,
+        };
+
+        println!(
+            "The area of the rectangle is {} square pixels.",
+            rect1.area()
+        );
+
+        let rect2 = Rectangle {
+            width: 10,
+            height: 40,
+        };
+        let rect3 = Rectangle {
+            width: 60,
+            height: 45,
+        };
+
+        println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+        println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+    }
+    ```
+
+### Enum & Option
+
+* Enums allow you to define a type by enumerating its possible values. First, we’ll define and use an enum to show how an enum can encode meaning along with data. 
+
+* A particularly useful enum, called Option, which expresses that a value can be either something or nothing. 
+
+* Pattern matching in the match expression makes it easy to run different code for different values of an enum.
+
+* Sample from Rust standard library
+
+    ```rs
+    struct Ipv4Addr {
+        // --snip--
+    }
+
+    struct Ipv6Addr {
+        // --snip--
+    }
+
+    enum IpAddr {
+        V4(Ipv4Addr),
+        V6(Ipv6Addr),
+    }
+    ```
+
+* Rust does not have nulls, but it does have an enum that can encode the concept of a value being present or absent. This enum is Option<T>
+
+    ```rs
+    enum Option<T> {
+        Some(T),
+        None,
+    }
+    ```
+
+#### Match
+
+* Rust has an extremely powerful control flow operator called match that allows you to compare a value against a series of patterns and then execute code based on which pattern matches. Patterns can be made up of literal values, variable names, wildcards, and many other things; 
+
+    ```rs
+
+    #![allow(unused_variables)]
+    fn main() {
+        enum Coin {
+            Penny,
+            Nickel,
+            Dime,
+            Quarter,
+        }
+
+        fn value_in_cents(coin: Coin) -> u8 {
+            match coin {
+                Coin::Penny => 1,
+                Coin::Nickel => 5,
+                Coin::Dime => 10,
+                Coin::Quarter => 25,
+            }
+        }
+    }
+    ```
+
+* Match with Option<T>
+
+    ```rs
+    #![allow(unused_variables)]
+    fn main() {
+    fn plus_one(x: Option<i32>) -> Option<i32> {
+        match x {
+            None => None,
+            Some(i) => Some(i + 1),
+        }
+    }
+
+    let five = Some(5);
+    let six = plus_one(five);
+    let none = plus_one(None);
+    }
+    ```
 
 
+#### Matches Are Exhaustive
+
+* Rust knows that we didn’t cover every possible case and even knows which pattern we forgot! Matches in Rust are exhaustive: we must exhaust every last possibility in order for the code to be valid. Especially in the case of Option<T>, when Rust prevents us from forgetting to explicitly handle the None case.
+
+
+* The _ Placeholder
+
+    ```rs
+    let some_u8_value = 0u8;
+    match some_u8_value {
+        1 => println!("one"),
+        3 => println!("three"),
+        5 => println!("five"),
+        7 => println!("seven"),
+        _ => (),
+    }
+    ```
+
+### Control Flow with if let
+
+* The if let syntax lets you combine if and let into a less verbose way to handle values that match one pattern while ignoring the rest. 
+
+    ```rs
+    #![allow(unused_variables)]
+    fn main() {
+        let some_u8_value = Some(0u8);
+        match some_u8_value {
+            Some(3) => println!("three"),
+            _ => (),
+        }
+    }
+    ```
+* with else
+
+    ```rs
+    let mut count = 0;
+    if let Coin::Quarter(state) = coin {
+        println!("State quarter from {:?}!", state);
+    } else {
+        count += 1;
+    }
+    ```
 
 
 
