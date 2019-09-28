@@ -1,6 +1,6 @@
 +++
 title = "Golang"
-
+weight = 4
 +++
 
-{{%children style="card" description="true" sort="Name" %}}
+{{%children style="card" description="false" sort="Weight" %}}

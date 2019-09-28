@@ -4,7 +4,7 @@
 
 date = "2014-05-04T10:59:31+11:00"
 title = "Windows cmd & hotkey - 3"
-description="A note for everyone who wants to use Commnd and Hot Key as hacker "
+description="A note for everyone who wants to use Command and Hot Key as hacker "
 +++
 
 

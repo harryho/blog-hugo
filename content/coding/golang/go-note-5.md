@@ -1,6 +1,7 @@
 +++
 title="Golang Note - 5"
 description="Error handling"
+weight=5
 +++
 
 
@@ -18,25 +19,31 @@ description="Error handling"
     - After the function call the error is checked, in case of an error ( if error != nil) the execution of the actual function (or if necessary the entire program) is stopped.
 
 
-##### !!Never ignore errors, because ignoring them can lead to program crashes!!
+__!!Never ignore errors, because ignoring them can lead to program crashes!!__
 
 #### Error interface
 
 * Go has a predefined error interface type:
 
-        type error interface {
-            Error() string
-        }
+    ```go
+    type error interface {
+        Error() string
+    }
+    ```
 
 * Defining errors
 
-        err := errors.New("math - square root of negative number")
-
+    ```go
+    err := errors.New("math - square root of negative number")
+    ```
 * Making an error-object with fmt
 
-        if f < 0 {
-            return 0, fmt.Errorf("math: square root of negative number %g", f)
-        }
+    
+    ```go
+    if f < 0 {
+        return 0, fmt.Errorf("math: square root of negative number %g", f)
+    }
+    ```
 
 #### Run-time exceptions & panicking
 
@@ -62,29 +69,29 @@ description="Error handling"
 * Table-driven test
 
 
-```go
-var tests = [] struct {
-    in
-    // Test table
-    string
-    out string
-}{
-    {"in1", "exp1"},
-    {"in2", "exp2"},
-    {"in3", "exp3"},
-// ....
-}
-
-func verify(t *testing.T, testnum int, testcase, input, output, expected string) {
-    if input != output {
-        t.Errorf("%d. %s with input = %s: output %s != %s", testnum, testcase, input, output, expected)
+    ```go
+    var tests = [] struct {
+        in
+        // Test table
+        string
+        out string
+    }{
+        {"in1", "exp1"},
+        {"in2", "exp2"},
+        {"in3", "exp3"},
+    // ....
     }
-}
 
-func TestFunction(t *testing.T) {
-    for i, tt := range tests {
-        s := FuncToBeTested(tt.in)
-        verify(t, i, "FuncToBeTested: ", tt.in, s, tt.out)
+    func verify(t *testing.T, testnum int, testcase, input, output, expected string) {
+        if input != output {
+            t.Errorf("%d. %s with input = %s: output %s != %s", testnum, testcase, input, output, expected)
+        }
     }
-}
-```
+
+    func TestFunction(t *testing.T) {
+        for i, tt := range tests {
+            s := FuncToBeTested(tt.in)
+            verify(t, i, "FuncToBeTested: ", tt.in, s, tt.out)
+        }
+    }
+    ```

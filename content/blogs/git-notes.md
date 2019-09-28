@@ -7,13 +7,18 @@ description="Useful Git commands  & practices for repository management"
 
 ## Create a new branch with git 
 
-### Create the branch on your local machine and switch in this branch
-        
-    $ git checkout -b [name_of_your_new_branch]
-		
-### Push the branch on git-repository (Github, Bitbucket)
 
-    $ git push origin [name_of_your_new_branch]
+### Create the branch locally
+
+*  Create the branch on your local machine and switch in this branch
+        
+        $ git checkout -b [name_of_your_new_branch]
+		
+### Push the branch 
+
+* Push the branch on git-repository (Github, Bitbucket)
+
+        $ git push origin [name_of_your_new_branch]
 
 When you want to commit something in your branch, be sure to be in your branch.
 
@@ -150,17 +155,17 @@ Rebase with fixup and squash
 * squash (s for short), which melds the commit into the previous one (the one in the line before)
 * fixup (f for short), which acts like “squash”, but discards this commit’s message
 
-```bash
-# Commit your changes
-$ git add. 
-$ git commit 
+    ```bash
+    # Commit your changes
+    $ git add. 
+    $ git commit 
 
 
-$ git rebase  -i master
-# Update the prop up  editor
-# fixup <COMMIT-ID>
-# squahs   <COMMIT-ID> <Message>
-```
+    $ git rebase  -i master
+    # Update the prop up  editor
+    # fixup <COMMIT-ID>
+    # squahs   <COMMIT-ID> <Message>
+    ```
 
 Rebase with autosquash
 

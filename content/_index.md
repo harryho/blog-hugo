@@ -5,9 +5,9 @@ draft=false
 
 <!-- >*Hello World* is the classic starter project for any programmer.  -->
 
->*After I tried hugo to create a blog site 2 years ago, I found it is pretty simple to manage my site with hugo and github. Honestly, I am not a passionate blogger. My blog is more like peronsal notes or gallery of projects and experiences, which comes from work, hobby and individual projects. Github is the developer's favor instead of internet user, so I won't suggest everyone to dump your WordPress. Comparing to markdown and command line, WordPress's UI is more friendly to non-tech people. If you want to give a shot on your own, you can check out my note - [Create a blog on GitHub Pages](/blog/create-a-blog-on-github), it shows you how I did it my machine and make it available on your github page.* 
+>*After I tried [go hugo](https://gohugo.io/) a few years ago, I found it is a no-brainer WordPress alternative tool to manage my site with github. Honestly, I am not a passionate blogger. My blog is just a personal notes or gallery of projects and experiences, which comes from work, hobby and individual projects. Github is definitely the developer's favor instead of mainstream blogger, so I won't suggest everyone to dump your WordPress. Comparing to markdown and command line, WordPress's UI is much more user friendly to most people. If you want to give a shot on your own, you can check out my note - [Create a blog on GitHub Pages](/blogs/create-a-blog-on-github), it shows you how I did it on my machine and make it available on your github page.* 
 
->*The `Hello World` home page comes from my old site. It has been updated for few times by adding some new programming languages and it is not written for developer. It is prepared for non-tech people who want to know what the program actually looks llike.*
+>*The `Hello World` home page comes from my old site. I am too lazy to write a new one. It has been updated for few times by adding some new programming languages and it is not written for developer.*
 
 
 ```bash
@@ -25,14 +25,14 @@ draft=false
     Spanish : "Hola mundo"
 ```
 
-The different languages above say the same two words "Hello World" are just for fun. Basically most software engineers start writing "Hello World" application from the very beginning with different programming language. I hope after you read through this page, you will find programming is not rock science and everyone can code for fun. 
+The different languages above express the same meaning "Hello World". Basically most software engineers start writing "Hello World" application from the very beginning with different programming language. I hope after you read through this page, you will find programming is not rock science and everyone can code for fun. 
 
-As I mentioned before, here is for beginner to code for fun instead of terrifying them, so I just pick some which is useful or popular you might already heard or convenient for people to try on your own. The languages are simply ordered by alphabet.
+As I mentioned before, here is for beginner to have fun to code sth, so I just pick some language which is easy to start or popular you might already heard or convenient for people to try it on your own. The languages below are simply ordered by alphabet.
 
 
 ###  Assumptions
 
-* You have a proper computer instead of a tablet or ipad. Actually you can write some code to create an app directly on your smart phone or tablet after installing some development apps. *AIDE*, *DroidScript* and *QPython* are such applications you can try if you want to play around.
+* You have a proper computer instead of a tablet or ipad. Actually you can write some code to create an app directly on your smart phone or tablet after installing some development apps. *AIDE*, *DroidScript* and *QPython* are such applications you can try if you want to play around. 
 
 * If you use Mac, the code for Linux should work on Mac as well. You know how to start a terminal on Mac or a command prompt on Windows. Finally, you are ready to get your hands dirty. 
 
@@ -46,7 +46,7 @@ I list some online programming editor and compiler here, then you can simply try
 
 ###  Bash/Batch script
 
-`Bash` is built-in script on Unix/Linux-like operating system. Bash script file is end with `sh` as extension. Batch is built-in script on Windows operating system. Bash script is known as one of Unix shell scripts. The other shell scrips include ksh, csh, zsh, etc. Bash is one of most important and  powerful tool for system admin. 
+`Bash, aka shell, is built-in script on Unix/Linux-like operating system. Bash script file is end with `sh` as extension. Batch is built-in script on Windows operating system. Bash script is known as one of Unix shell scripts. The other shell scrips include ksh, csh, zsh, etc. Bash is one of most important and  powerful tool for system admin. 
 
 `Batch` script file is end with `bat` as extension. On Windows there is another file end with `cmd`, it works the same as batch file. From November 2006, Microsoft create a new powerful language `PowerShell`, which is similar to Unix shells. Basically `PowerShell` has replaced `Batch` as first option for system admin.
 
@@ -195,7 +195,7 @@ JavaScript is the programming language of the web. It's one of the most popular 
     </html>
     ```
     
-* Open file HelloWorld.html with your browser. 
+* Open file HelloWorld.html with your favorite browser. 
 
 
 ###  PHP

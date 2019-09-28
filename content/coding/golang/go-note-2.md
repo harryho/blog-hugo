@@ -1,6 +1,7 @@
 +++
 title = "Golang Note - 2"
-description="Golang Introduction: Map & Function "
+description="Golang Introduction: Map & Function & Closure "
+weight=2
 +++
 
 ### Map

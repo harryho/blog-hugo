@@ -1,6 +1,7 @@
 +++
 title = "Golang snippets"
 description="Golang snippets"
+weight=99
 +++
 
 

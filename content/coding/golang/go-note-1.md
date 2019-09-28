@@ -1,6 +1,7 @@
 +++
 title = "Golang Note - 1"
-description="Golang Introduction: Basic Command, Slice ..."
+description="Golang Introduction: Basic Command, Assignment operator,Array, Slice  ..."
+weight=1
 +++
 
 

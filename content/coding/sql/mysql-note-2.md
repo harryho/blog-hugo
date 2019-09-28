@@ -59,11 +59,11 @@ CREATE FUNCTION `json_extract_string`(
       SET @start_i = LOCATE(@pattern, p_json) + CHAR_LENGTH(@pattern);
     END IF;
 
-    if @start_i = CHAR_LENGTH(@pattern) then
+    IF @start_i = CHAR_LENGTH(@pattern) THEN
       SET @end_i = 0;
-    else
+    ELSE
       SET @end_i = LOCATE(@pattern_end_type, p_json, @start_i) - @start_i;
-    end if;
+    END IF;
     RETURN SUBSTR(p_json, @start_i, @end_i);
   END $
 
@@ -84,19 +84,19 @@ DROP PROCEDURE IF EXISTS RunIf;
 
 DELIMITER $$
 
-create procedure RunIf(ifExpr MEDIUMTEXT, execStmt MEDIUMTEXT)
+CREATE PROCEDURE RunIf(ifExpr MEDIUMTEXT, execStmt MEDIUMTEXT)
   BEGIN
-    set @sql = concat('select @result := (', ifExpr, ')');
-    prepare stmt from @sql;
+    SET @sql = concat('select @result := (', ifExpr, ')');
+    PREPARE stmt from @sql;
     EXECUTE stmt;
     DEALLOCATE prepare stmt;
     IF (@result = true) THEN
-      set @sql = execStmt;
+      SET @sql = execStmt;
       PREPARE stmt FROM @sql;
       EXECUTE stmt;
       DEALLOCATE prepare stmt;
     END IF;
-  end
+  END
 $$
 
 DELIMITER ;

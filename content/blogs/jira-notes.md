@@ -45,6 +45,7 @@ draft="true"
 * Choose `Isssues` > `Permission schemes `
 
 * Change all permissions from `Project Access - Any logged in user` to `Project role - Administrator` except the following items.
+
     * View Development Tools
     * View Read-Only Workflow
     * Assignable User

@@ -1,5 +1,4 @@
 +++
-
 title = "Cron Job Note - 1"
 description = "Common Cron Job examples"
 +++

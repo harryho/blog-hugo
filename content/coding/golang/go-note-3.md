@@ -1,6 +1,7 @@
 +++
 title = "Golang Note - 3"
 description="Golang Introduction: Struct & Interface "
+weight=3
 +++
 
 

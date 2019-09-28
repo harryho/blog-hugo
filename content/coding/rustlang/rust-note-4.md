@@ -168,6 +168,14 @@ fn main() {
 * Because Rust compiles generic code into code that specifies the type in each instance, there is no runtime cost for using generics. When the code runs, it performs just as it would if we had duplicated each definition by hand. The process of monomorphization makes Rust’s generics extremely efficient at runtime.
 
 
+### Traits: Defining Shared Behavior
+
+* A trait tells the Rust compiler about functionality a particular type has and can share with other types. We can use trait bounds to specify that a generic can be any type that has certain behavior.
+
+#### Defining a trait
+
+* A type’s behavior consists of the methods we can call on that type. Different types share the same behavior if we can call the same methods on all of those types. Trait definitions are a way to group method signatures together to define a set of behaviors necessary to accomplish some purpose.
+
 
 
 
