@@ -2,6 +2,7 @@ baseURL = "/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"
+disableKinds = ["taxonomy", "taxonomyTerm"]
 title = "Hello World"
 # theme = "hugo-theme-docdock"
 theme = "docdock"
@@ -49,7 +50,7 @@ enableGitInfo = false
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+
 
 # [[menu.shortcuts]]
 # pre = "<h3>More</h3>"
