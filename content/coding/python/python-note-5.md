@@ -66,7 +66,9 @@ description = "Python Note 5"
 ### Explanation with example
 
 
-* Example to demo the weird `super()` in Python
+#### Example code  
+
+* The code below demonstrates the weird `super()` in Python
 
     ```python
     from pprint import pprint as pp
@@ -167,7 +169,12 @@ description = "Python Note 5"
 
     ```
 
-* Let's break down the how the super works with sample code 
+#### Explanation with break down
+
+* Let's break down the how the super works with sample code
+
+##### Case 1: Parent and child
+
 * Case 1:    
     * code : `super(Child, Child).do_otherthing()`
     * `super` takes the MRO of its second argument `Child`
@@ -181,6 +188,8 @@ description = "Python Note 5"
     * `super` finds the first argument `Child` in that MRO, and uses everything after it in the MRO for method resolution
     * `super` uses the method from `Parent` which is after `Child`, and bind the `Child` class object
     
+##### Case 2: Grandparent and grandchild
+
 * Case 2: 
 
     * code : `super(GrandChild, GrandChild).do_otherthing()`
@@ -197,6 +206,9 @@ description = "Python Note 5"
 
     * `super` finds the first argument `GrandChild` in that MRO, and uses everything after it in the MRO for method resolution
     * `super` uses the method from `Child` which is after `GrandChild`, and bind the `GrandChild` class object
+
+
+##### Case 3: Grandparent, children & grandchild
 
 * Case 3:   
 
