@@ -1,5 +1,5 @@
 +++
-tags=["python"]
+
 title = "Python Note 9"
 description = "Context Manager,  Introspection"
 +++

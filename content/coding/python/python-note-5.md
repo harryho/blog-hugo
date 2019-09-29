@@ -1,5 +1,5 @@
 +++
-tags=["python"]
+
 title = "Python Note 5"
 description = "Python Note 5"
 +++

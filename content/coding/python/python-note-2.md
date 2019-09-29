@@ -1,5 +1,5 @@
 +++
-tags=["python"]
+
 title = "Python Note 2"
 description ="Closure & Decorator"
 +++

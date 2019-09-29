@@ -1,5 +1,4 @@
 +++
-
 title = "Java Note - 5: Lambda "
 description="Lambda expressions are Java's first step into functional programming"
 +++
@@ -81,9 +80,9 @@ array type |
 
 ### Lambda Demo
 
-<iframe height="800px" width="100%" src="https://repl.it/@harryh0/LambdaDemo?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<!-- <iframe height="800px" width="100%" src="https://repl.it/@harryh0/LambdaDemo?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-[lambda-demo](https://repl.it/@harryh0/AttentiveElementaryTriangles)
+[lambda-demo](https://repl.it/@harryh0/AttentiveElementaryTriangles) -->
 
 ```java
 import java.util.Locale;
@@ -214,14 +213,8 @@ public class LambdaDemo {
         int n = 5;
         long fact = factorialCalc.apply(n);
         System.out.println("Factorial of " + n + " is " + fact);
-        // Factorial of 5 is 120
-
-
-        
+        // Factorial of 5 is 120   
     }
-
-
-
 
     private static int engine(Calculator calculator) {
         int x = 2, y = 4;
@@ -281,8 +274,4 @@ final class Person {
 
 
 ```
-
-
-
-
 
