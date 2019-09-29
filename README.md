@@ -22,7 +22,7 @@ git submodule init
 git submodule update
 
 cd themes/<your_theme>
-git checkout hw  # only hw branch should be used
+git checkout hho-blog  # only hho-blog branch should be used
 git pull
 
 ```
