@@ -1,7 +1,7 @@
 +++
-title="Golang Note - 11"
+title="Golang Note - 21"
 description="Good practice advice - Part 2"
-weight=11
+weight=21
 +++
 
 
