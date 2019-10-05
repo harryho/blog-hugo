@@ -12,7 +12,7 @@ import (
 	_ "os"
 	"reflect"
 	_ "strings"
-	"time"
+	"testing"
 )
 
 // func main() {
@@ -1021,43 +1021,256 @@ func modifyValByReflect() {
 // 	fmt.Println(bs)
 // }
 
-var values = [5]int{10, 11, 12, 13, 14}
+// var values = [5]int{10, 11, 12, 13, 14}
+
+// func main() {
+// 	// version A:
+// 	fmt.Println("\nVersion A:")
+// 	for ix := range values { // ix is the index
+// 		func() {
+// 			fmt.Print(ix, " ")
+// 		}() // call closure, prints each index
+// 	}
+// 	fmt.Println()
+// 	// version B: same as A, but call closure as a goroutine
+// 	fmt.Println("\nVersion B:")
+// 	for ix := range values {
+// 		go func() {
+// 			fmt.Print(ix, " ")
+// 		}()
+// 	}
+// 	fmt.Println()
+// 	time.Sleep(5e9)
+// 	// version C: the right way
+// 	fmt.Println("\n\nVersion C:")
+// 	for ix := range values {
+// 		go func(ix interface{}) {
+// 			fmt.Print(ix, " ")
+// 		}(ix)
+// 	}
+// 	fmt.Println()
+// 	time.Sleep(5e9)
+// 	// version D: print out the values:
+// 	fmt.Println("\n\nVersion D:")
+// 	for ix := range values {
+
+// 		val := values[ix]
+// 		go func() {
+// 			fmt.Print(val, " ")
+// 		}()
+// 	}
+// 	time.Sleep(1e9)
+// }
+
+// func badCall() {
+// 	panic("bad end")
+// }
+
+// func test() {
+// 	defer func() {
+// 		if e := recover(); e != nil {
+// 			fmt.Printf("Panicking %s\r\n", e)
+// 		}
+// 	}()
+// 	badCall()
+// 	fmt.Printf("After bad call\r\n")
+// }
+
+// func main() {
+// 	fmt.Printf("Calling test\r\n")
+// 	test()
+// 	fmt.Printf("Test completed\r\n")
+// }
+
+// func main() {
+// 	// 1) os.StartProcess //
+// 	/*********************/
+// 	/* Linux: */
+// 	env := os.Environ()
+// 	procAttr := &os.ProcAttr{
+// 		Env: env,
+// 		Files: []*os.File{
+// 			os.Stdin,
+// 			os.Stdout,
+// 			os.Stderr,
+// 		},
+// 	}
+// 	pid, err := os.StartProcess("/bin/ls", []string{"ls", "-l"}, procAttr)
+// 	if err != nil {
+// 		fmt.Printf("Error %v starting process!", err) //
+// 		os.Exit(1)
+// 	}
+// 	fmt.Printf("The process id is %v", pid)
+// 	/* Output:
+// 	The process id is &{21275 0 0 {{0 0} 0 0 0 0}}The process id is &{21276 0 0 {{0 0} 0 0 0 0}}total 54
+// 	-rwxrwxrwx 1 root root   250 Sep 21 19:33 csv_data.txt
+// 	-rwxrwxrwx 1 root root 25227 Oct  4 23:34 hello.go
+// 	-rwxrwxrwx 1 root root  6708 Sep 21 10:25 hello.go.txt
+// 	-rwxrwxrwx 1 root root   130 Sep 21 11:08 output.txt
+// 	-rwxrwxrwx 1 root root  8898 Sep 21 12:10 target_hello.txt
+// 	-rwxrwxrwx 1 root root  1619 Sep 22 14:40 urlshorten.go.txt
+// 	-rwxrwxrwx 1 root root   182 Sep 21 13:50 vcard.json
+// 	*/
+// 	// 2nd example: show all processes
+// 	pid, err = os.StartProcess("/bin/ps", []string{"-e", "opid,ppid,comm"}, procAttr)
+// 	if err != nil {
+// 		fmt.Printf("Error %v starting process!", err) //
+// 		os.Exit(1)
+// 	}
+// 	fmt.Printf("The process id is %v", pid)
+// 	// 2) cmd.Run //
+// 	/***************/
+// 	cmd := exec.Command("gedit") // this opens a gedit-window
+// 	err = cmd.Run()
+// 	if err != nil {
+// 		fmt.Printf("Error %v executing command!", err)
+// 		os.Exit(1)
+// 	}
+// 	fmt.Printf("The command is %v", cmd)
+// }
+
+// const (
+// 	AvailableMemory         = 10 << 20                                  // 10 MB, for example
+// 	AverageAverageMemoryPerRequest = 10 << 10                                  // 10 KB
+// 	MAXREQS                 = AvailableMemory / AverageAverageMemoryPerRequest // here amounts to 1000
+// )
+
+// var sem = make(chan int, MAXREQS)
+
+// type Request struct {
+// 	a, b   int
+// 	replyc chan int
+// }
+
+// func process(r *Request) {
+// 	// Do something
+// 	// May take a long time and use a lot of memory or CPU
+// }
+// func handle(r *Request) {
+// 	process(r)
+// 	// signal done: enable next request to start
+// 	// by making 1 empty place in the buffer
+// 	<-sem
+// }
+// func Server(queue chan *Request) {
+// 	for {
+// 		sem <- 1
+// 		// blocks when channel is full (1000 requests are active)
+// 		// so wait here until there is capacity to process a request
+// 		// (doesn’t matter what we put in it)
+// 		request := <-queue
+// 		go handle(request)
+// 	}
+// }
+// func main() {
+// 	fmt.Println(" AvailableMemory ", AvailableMemory)
+// 	fmt.Println(" AverageAverageMemoryPerRequest ", AverageAverageMemoryPerRequest)
+// 	queue := make(chan *Request)
+// 	go Server(queue)
+// }
+
+// const NCPU = 4
+
+// func DoAll() {
+// 	sem := make(chan int, NCPU) // Buffering optional but sensible.
+// 	for i := 0; i < NCPU; i++ {
+// 		go DoPart(sem)
+
+// 	}
+// 	// Drain the channel sem, waiting for NCPU tasks to complete
+// 	for i := 0; i < NCPU; i++ {
+// 		<-sem // wait for one task to complete
+// 	}
+// 	// All done.
+// }
+// func DoPart(sem chan int) {
+// 	// do the part of the computation
+
+// 	sem <- 1 // signal that this piece is done
+// }
+
+// func main() {
+// 	runtime.GOMAXPROCS(NCPU)
+// 	DoAll()
+// }
+
+// type Person struct {
+// 	Name   string
+// 	salary float64
+// 	chF    chan func()
+// }
+
+// func NewPerson(name string, salary float64) *Person {
+// 	p := &Person{name, salary, make(chan func())}
+// 	go p.backend()
+// 	return p
+// }
+// func (p *Person) backend() {
+// 	for f := range p.chF {
+// 		f()
+// 	}
+// }
+
+// // Set salary.
+// func (p *Person) SetSalary(sal float64) {
+// 	p.chF <- func() { p.salary = sal }
+// }
+
+// // Retrieve salary.
+// func (p *Person) Salary() float64 {
+// 	fChan := make(chan float64)
+// 	p.chF <- func() { fChan <- p.salary }
+// 	return <-fChan
+// }
+// func (p *Person) String() string {
+// 	return "Person - name is: " + p.Name + " - salary is: " + strconv.
+// 		FormatFloat(p.Salary(), 'f', 2, 64)
+// }
+// func main() {
+// 	bs := NewPerson("Smith Bill", 2500.5)
+// 	fmt.Println(bs)
+// 	bs.SetSalary(4000.25)
+// 	fmt.Println("Salary changed:")
+// 	fmt.Println(bs)
+// }
+
+// /* Output Person - name is: Smith Bill - salary is: 2500.50
+// Salary changed:
+// Person - name is: Smith Bill - salary is: 4000.25 *
+// */
 
 func main() {
-	// version A:
-	fmt.Println("\nVersion A:")
-	for ix := range values { // ix is the index
-		func() {
-			fmt.Print(ix, " ")
-		}() // call closure, prints each index
-	}
-	fmt.Println()
-	// version B: same as A, but call closure as a goroutine
-	fmt.Println("\nVersion B:")
-	for ix := range values {
-		go func() {
-			fmt.Print(ix, " ")
-		}()
-	}
-	fmt.Println()
-	time.Sleep(5e9)
-	// version C: the right way
-	fmt.Println("\n\nVersion C:")
-	for ix := range values {
-		go func(ix interface{}) {
-			fmt.Print(ix, " ")
-		}(ix)
-	}
-	fmt.Println()
-	time.Sleep(5e9)
-	// version D: print out the values:
-	fmt.Println("\n\nVersion D:")
-	for ix := range values {
-
-		val := values[ix]
-		go func() {
-			fmt.Print(val, " ")
-		}()
-	}
-	time.Sleep(1e9)
+	fmt.Println("sync", testing.Benchmark(BenchmarkChannelSync).String())
+	fmt.Println("buffered", testing.Benchmark(BenchmarkChannelBuffered).String())
 }
+
+func BenchmarkChannelSync(b *testing.B) {
+	ch := make(chan int)
+	go func() {
+		for i := 0; i < b.N; i++ {
+			ch <- i
+		}
+		close(ch)
+	}()
+	for _ = range ch {
+	}
+}
+
+func BenchmarkChannelBuffered(b *testing.B) {
+	ch := make(chan int, 128)
+	go func() {
+		for i := 0; i < b.N; i++ {
+			ch <- i
+		}
+		close(ch)
+	}()
+	for _ = range ch {
+	}
+}
+
+/* Output:
+Windows: N Time 1 op Operations per sec
+sync 1000000 2443 ns/op --> 409 332 / s
+buffered 1000000 4850 ns/op --> 810 477 / s
+Linux:
+*/
