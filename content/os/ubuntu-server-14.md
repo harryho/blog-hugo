@@ -27,7 +27,7 @@ sudo ufw allow 8000/tcp
 
 ## SSH server setup
 
-`!!! For production environment, SSH should be secured by the CA`
+### Secure SSH with CA in production
 
 ```bash
 sudo apt-get install openssh-server 

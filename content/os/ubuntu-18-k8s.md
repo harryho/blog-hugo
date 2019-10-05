@@ -3,6 +3,7 @@
 
 date = "2017-05-04T14:59:31+11:00"
 title = "Ubuntu 18 & Kubernetes"
+description = "How to make a ubuntu 18 server to a kubernetes master machine"
 draft = true
 +++
 

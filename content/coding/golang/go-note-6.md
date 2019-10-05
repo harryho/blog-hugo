@@ -400,27 +400,27 @@ func suck(ch chan int) {
 
 ##### Iterator pattern
 
-* Another common case where we have to populate a channel with the items of a container type which contains an 394The Way to Go index-addressable field items . For this we can define a method which returns a read-only channel.
+* Another common case where we have to populate a channel with the items of a container type which contains an index-addressable field items . For this we can define a method which returns a read-only channel.
 
 * Inside the goroutine, a for-loop iterates over the elements in the container c (for tree or graph algorithms, this simple for-loop could be replaced with a depth-first search)
 
 
-```go
-func (c *container) Iter() <-chan items {
-	ch := make(chan item)
-	go func() {
-		for i := 0; i < c.Len(); i++ {
-			// or use a for-range loop
-			ch <- c.items[i]
-		}
-	}()
-	return ch
-}
+	```go
+	func (c *container) Iter() <-chan items {
+		ch := make(chan item)
+		go func() {
+			for i := 0; i < c.Len(); i++ {
+				// or use a for-range loop
+				ch <- c.items[i]
+			}
+		}()
+		return ch
+	}
 
-// The code which calls this method can then iterate over the container
-for x := range container.Iter() { ... }
+	// The code which calls this method can then iterate over the container
+	for x := range container.Iter() { ... }
 
-```
+	```
 
 
 #### Producer Consumer pattern 
@@ -445,18 +445,17 @@ for x := range container.Iter() { ... }
 
 	func consume () {
 		for {
-		msg := <-msgs
-		fmt.Println(msg)
-	}
+			msg := <-msgs
+			fmt.Println(msg)
+		}
 	}
 
 	func main () {
-	go produce()
-	go consume()
-	<- done
+		go produce()
+		go consume()
+		<- done
 	}
 	```
-
 
 
 

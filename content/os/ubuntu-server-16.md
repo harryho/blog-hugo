@@ -309,30 +309,30 @@ EOL
 
 * Test JDK with a simple HelloWorld program
 
-```java
-import java.util.Calendar;
+    ```java
+    import java.util.Calendar;
 
-class HelloWorld {
-    public static void main(String[] args) {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH) + 1;
-        int day = cal.get(Calendar.DATE);
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int minute = cal.get(Calendar.MINUTE);
-        String username = System.getProperty("user.name");
-        System.out.println(username+ ": Hello World! ");
-        System.out.println(year + "/" + month + "/" + day + " " + hour + ":" + minute);
+    class HelloWorld {
+        public static void main(String[] args) {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH) + 1;
+            int day = cal.get(Calendar.DATE);
+            int hour = cal.get(Calendar.HOUR_OF_DAY);
+            int minute = cal.get(Calendar.MINUTE);
+            String username = System.getProperty("user.name");
+            System.out.println(username+ ": Hello World! ");
+            System.out.println(year + "/" + month + "/" + day + " " + hour + ":" + minute);
+        }
     }
-}
-```
+    ```
 
 * Compile and run the program
 
-```bash
-javac HelloWorld.java
-java HelloWorld.java
-```
+    ```bash
+    javac HelloWorld.java
+    java HelloWorld.java
+    ```
 
 
 ## Install nodejs
@@ -441,23 +441,23 @@ export PATH="$GOPATH/bin:$PATH"
 
 * Create a simple `hello.go` file to test 
 
-```go
-package main                                                        
-                                                                    
-import (                                                            
-    "fmt"                                                           
-    "log"                                                           
-    "os/user"                                                       
-)
+    ```go
+    package main                                                        
+                                                                        
+    import (                                                            
+        "fmt"                                                           
+        "log"                                                           
+        "os/user"                                                       
+    )
 
-func main(){                                                        
-    user, err := user.Current()                                 
-    if err != nil {                                             
-        log.Fatal(err)                                      
-    }                                                                 
-    fmt.Printf(user.Name + " said : Hello World! \n" )      
-}                                                                   
-```
+    func main(){                                                        
+        user, err := user.Current()                                 
+        if err != nil {                                             
+            log.Fatal(err)                                      
+        }                                                                 
+        fmt.Printf(user.Name + " said : Hello World! \n" )      
+    }                                                                   
+    ```
 
 * Run the program
 

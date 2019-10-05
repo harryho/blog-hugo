@@ -3,6 +3,7 @@
 
 date = "2016-01-10T14:59:31+11:00"
 title = "Ubuntu 14 -- desktop, extra tools"
+description = "Post-installation for Ubuntu 14 desktop - Part 2"
 draft = false
 +++
 

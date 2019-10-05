@@ -1,6 +1,8 @@
 +++
 date = "2018-11-30T14:59:31+11:00"
 title = "Dual Boot Windows 10 & Ubuntu 18"
+description = "Steps to create a machine with dual-boot OS: Windows 10 and Ubuntu 18"
+
 +++
 
 

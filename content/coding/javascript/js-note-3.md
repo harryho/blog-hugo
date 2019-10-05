@@ -82,9 +82,9 @@ console.log( i )             // NaN
 console.log( this.i )        // NaN
 ```
 
-#### Conclusion: Because of the above unexpected results, it is recommended to always declare variables, regardless of whether they are in a function or global scope. 
+* Conclusion: Because of the above unexpected results, it is recommended to always declare variables, regardless of whether they are in a function or global scope. 
 
-Since the var statement is difficult to harness, people have to come up a solution to address the problem. Then it turns out other new keywords: let & const from ECMAScript 2015 (6th Edition, ECMA-262)
+> Since the var statement is difficult to harness, people have to come up a solution to address the problem. Then it turns out other new keywords: let & const from ECMAScript 2015 (6th Edition, ECMA-262)
 
 ### Let and Const statement
 

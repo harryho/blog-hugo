@@ -45,11 +45,12 @@ description = "Tensorflow Note - 1"
     ## GPU info sample
     ## NVIDIA Corporation GM107M [GeForce GTX 850M]
 
-### Download and install Nvidia driver based on above GPU info http://www.geforce.com/drivers
+### Download and install Nvidia driver based on above [GPU info](http://www.geforce.com/drivers)
+
     chmod +x NVIDIA-Linux-xxxx.run
     sudo ./NVIDIA-Linux-xxxx.run   
 
-### Download and install  CUDA from NVIDIA https://developer.nvidia.com/cuda-downloads
+### Download and install [CUDA from NVIDIA](https://developer.nvidia.com/cuda-downloads)
 
     sudo dpkg -i cuda-repo-xxxxx.deb
     sudo apt-get udpate
@@ -62,7 +63,7 @@ description = "Tensorflow Note - 1"
     export LD_LIBRARY_PATH=${CUDA_HOME}/lib64 
 
 
-### Download and install cuDNN for CUDA https://developer.nvidia.com/cudnn
+### Download and install [cuDNN for CUDA](https://developer.nvidia.com/cudnn)
 
     ## extra the cuDNN tar ball
     tar -xvf cudnn-8.0

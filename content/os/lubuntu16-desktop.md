@@ -2,6 +2,7 @@
 
 date = "2018-01-04T13:59:31+11:00"
 title = "Lubuntu 16 desktop"
+description = "Post-installation for Lubuntu 16 desktop"
 draft = false
 +++
 

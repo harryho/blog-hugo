@@ -25,6 +25,7 @@ mysqladmin -u root -p shutdown
 
 
 ## Change mysql root user password
+
 ```
 mysql --user=root --pass='' 
 mysql -e "update user set password=password('') \
@@ -45,16 +46,17 @@ mysqldump -u [uname] -p[pass] db_name > db_backup.sql
 $ mysqldump -u [uname] -p[pass] db_name table1 table2 > table_backup.sql
 ```
 
-## Import dataase 
+## Import database 
 
 ```bash
 mysql -u username -p -h localhost DATA-BASE-NAME < data.sql
 ```
 
 
-###
+### Create database
+
 ```sql
--- Drop database if it exsits
+-- Drop database if it exists
 DROP DATABASE   /*!32312 IF EXISTS*/ <your-database>;
 -- Create database with UTF-8 CHARSET 
 CREATE DATABASE <your-database> CHAR SET utf8 COLLATE 'utf8_unicode_ci';
@@ -73,7 +75,7 @@ e:\db\pgsql9\bin\pg_ctl.exe -D "e:\db\pgsql9\data" stop
 
 ## SQL Server
 
-## Collation precedence, also known as collation coercion rules
+## Collation precedence
 
 ```
 SELECT * 
