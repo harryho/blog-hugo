@@ -2,6 +2,7 @@
 
 title = "Python Note 4"
 description="Iterables & Iteration"
+weight=4
 +++
 
 ## Iterables & Iteration

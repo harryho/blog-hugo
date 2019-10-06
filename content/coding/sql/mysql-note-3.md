@@ -42,3 +42,14 @@ SHOW FULL PROCESSLIST;
 ```
 
 
+### Get the information of stored proc or function
+
+```sql
+SET @target_schema='THE_TARGET_SCHEMA';
+
+SELECT * FROM information_schema.ROUTINES
+WHERE  routine_schema = target_schema 
+;
+
+```
+

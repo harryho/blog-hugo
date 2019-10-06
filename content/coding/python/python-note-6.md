@@ -2,6 +2,7 @@
 
 title = "Python Note 6"
 description = "Collection"
+weight=6
 +++
 
 ## Collection

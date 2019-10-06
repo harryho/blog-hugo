@@ -9,10 +9,10 @@ import (
 	"fmt"
 	_ "io/ioutil"
 	"math"
+	"os"
 	_ "os"
 	"reflect"
 	_ "strings"
-	"testing"
 )
 
 // func main() {
@@ -1239,38 +1239,77 @@ func modifyValByReflect() {
 // Person - name is: Smith Bill - salary is: 4000.25 *
 // */
 
+// func main() {
+// 	fmt.Println("sync", testing.Benchmark(BenchmarkChannelSync).String())
+// 	fmt.Println("buffered", testing.Benchmark(BenchmarkChannelBuffered).String())
+// }
+
+// func BenchmarkChannelSync(b *testing.B) {
+// 	ch := make(chan int)
+// 	go func() {
+// 		for i := 0; i < b.N; i++ {
+// 			ch <- i
+// 		}
+// 		close(ch)
+// 	}()
+// 	for _ = range ch {
+// 	}
+// }
+
+// func BenchmarkChannelBuffered(b *testing.B) {
+// 	ch := make(chan int, 128)
+// 	go func() {
+// 		for i := 0; i < b.N; i++ {
+// 			ch <- i
+// 		}
+// 		close(ch)
+// 	}()
+// 	for _ = range ch {
+// 	}
+// }
+
+// /* Output:
+// Windows: N Time 1 op Operations per sec
+// sync 1000000 2443 ns/op --> 409 332 / s
+// buffered 1000000 4850 ns/op --> 810 477 / s
+// Linux:
+// */
+
 func main() {
-	fmt.Println("sync", testing.Benchmark(BenchmarkChannelSync).String())
-	fmt.Println("buffered", testing.Benchmark(BenchmarkChannelBuffered).String())
+	file, err := os.Open("csv_data.txt")
+
+	if err != nil {
+		fmt.Printf("An error occurred on opening the inputfile\n" +
+			"Does the file exist?\n" +
+			"Have you got acces to it?\n")
+		return
+	}
+	defer file.Close()
+	cat(file)
+	// iReader := bufio.NewReader(file)
+	// for {
+	// 	str, err := iReader.ReadString('\n')
+	// 	if err != nil {
+	// 		return // error or EOF
+	// 	}
+	// 	fmt.Printf("The input was: %s", str)
+	// }
 }
 
-func BenchmarkChannelSync(b *testing.B) {
-	ch := make(chan int)
-	go func() {
-		for i := 0; i < b.N; i++ {
-			ch <- i
+func cat(f *os.File) {
+	const NBUF = 512
+	var buf [NBUF]byte
+	for {
+		switch nr, er := f.Read(buf[:]); true {
+		case nr < 0:
+			fmt.Fprintf(os.Stderr, "cat: error reading from %s: %s\n", f, er)
+			os.Exit(1)
+		case nr == 0: // EOF
+			return
+		case nr > 0:
+			if nw, ew := os.Stdout.Write(buf[0:nr]); nw != nr {
+				fmt.Fprintf(os.Stderr, "cat: error writing from %s: %s\n", f, ew)
+			}
 		}
-		close(ch)
-	}()
-	for _ = range ch {
 	}
 }
-
-func BenchmarkChannelBuffered(b *testing.B) {
-	ch := make(chan int, 128)
-	go func() {
-		for i := 0; i < b.N; i++ {
-			ch <- i
-		}
-		close(ch)
-	}()
-	for _ = range ch {
-	}
-}
-
-/* Output:
-Windows: N Time 1 op Operations per sec
-sync 1000000 2443 ns/op --> 409 332 / s
-buffered 1000000 4850 ns/op --> 810 477 / s
-Linux:
-*/

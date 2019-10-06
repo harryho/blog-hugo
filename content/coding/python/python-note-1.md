@@ -2,6 +2,7 @@
 
 title = "Python Note 1"
 description="Good practices for package & module"
+weight=1
 +++
 
 ## Package & Module

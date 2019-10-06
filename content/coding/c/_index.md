@@ -1,6 +1,5 @@
 +++
-title = "C / C++"
-weight = 1
+title = "C "
 +++
 
 {{%children style="card" description="true" sort="Weight" %}}

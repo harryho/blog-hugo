@@ -23,69 +23,69 @@ weight = 7
 * A goroutine channel process will processes what it receives from an input channel and sends this to an output channel
 
 
-```go
-func main() {
-	sendChan := make(chan int)
-	receiveChan := make(chan string)
-	go processChannel(sendChan, receiveChan)
+	```go
+	func main() {
+		sendChan := make(chan int)
+		receiveChan := make(chan string)
+		go processChannel(sendChan, receiveChan)
 
-}
-
-func processChannel(in <-chan int, out chan<- string) {
-	for inValue := range in {
-		result := strconv.Itoa(inValue) // processing inValue
-		// ...
-		out <- result
 	}
-}
-```
+
+	func processChannel(in <-chan int, out chan<- string) {
+		for inValue := range in {
+			result := strconv.Itoa(inValue) // processing inValue
+			// ...
+			out <- result
+		}
+	}
+	```
 
 * Prime number generator sample
 
-```go
-func generate() chan int {
-	ch := make(chan int)
-	go func() {
-		for i := 2; ; i++ {
-			ch <- i
-		}
-	}()
-	return ch
-}
-
-// Filter out input values divisible by prime, send rest to returned channel
-func filter(in chan int, prime int) chan int {
-	out := make(chan int)
-	go func() {
-		for {
-			if i := <-in; i%prime != 0 {
-				out <- i
+	```go
+	func generate() chan int {
+		ch := make(chan int)
+		go func() {
+			for i := 2; ; i++ {
+				ch <- i
 			}
-		}
-	}()
-	return out
-}
-
-func sieve() chan int {
-	out := make(chan int)
-	go func() {
-		ch := generate()
-		for {
-			prime := <-ch
-			ch = filter(ch, prime)
-			out <- prime
-		}
-	}()
-	return out
-}
-
-func main() {
-	primes := sieve()
-	for {
-		fmt.Println(<-primes)
+		}()
+		return ch
 	}
-}
-```
+
+	// Filter out input values divisible by prime, send rest to returned channel
+	func filter(in chan int, prime int) chan int {
+		out := make(chan int)
+		go func() {
+			for {
+				if i := <-in; i%prime != 0 {
+					out <- i
+				}
+			}
+		}()
+		return out
+	}
+
+	func sieve() chan int {
+		out := make(chan int)
+		go func() {
+			ch := generate()
+			for {
+				prime := <-ch
+				ch = filter(ch, prime)
+				out <- prime
+			}
+		}()
+		return out
+	}
+
+	func main() {
+		primes := sieve()
+		for {
+			fmt.Println(<-primes)
+		}
+	}
+	```
 
 ##### Goroutine with select
 
@@ -99,38 +99,38 @@ func main() {
 
 * Sample 9
 
-```go
-func main() {
-	runtime.GOMAXPROCS(2) // in goroutine_select2.go
-	ch1 := make(chan int)
-	ch2 := make(chan int)
-	go pump1(ch1)
-	go pump2(ch2)
-	go suck(ch1, ch2)
-	time.Sleep(1e9)
-}
-func pump1(ch chan int) {
-	for i := 0; ; i++ {
-		ch <- i * 2
+	```go
+	func main() {
+		runtime.GOMAXPROCS(2) // in goroutine_select2.go
+		ch1 := make(chan int)
+		ch2 := make(chan int)
+		go pump1(ch1)
+		go pump2(ch2)
+		go suck(ch1, ch2)
+		time.Sleep(1e9)
 	}
-}
-func pump2(ch chan int) {
-	for i := 0; ; i++ {
-		ch <- i + 5
-	}
-}
-func suck(ch1 chan int, ch2 chan int) {
-	for {
-		select {
-		case v := <-ch1:
-
-			fmt.Printf("Received on channel 1: %d\n", v)
-		case v := <-ch2:
-			fmt.Printf("Received on channel 2: %d\n", v)
+	func pump1(ch chan int) {
+		for i := 0; ; i++ {
+			ch <- i * 2
 		}
 	}
-}
-```
+	func pump2(ch chan int) {
+		for i := 0; ; i++ {
+			ch <- i + 5
+		}
+	}
+	func suck(ch1 chan int, ch2 chan int) {
+		for {
+			select {
+			case v := <-ch1:
+
+				fmt.Printf("Received on channel 1: %d\n", v)
+			case v := <-ch2:
+				fmt.Printf("Received on channel 2: %d\n", v)
+			}
+		}
+	}
+	```
 
 
 ##### Timeout & Ticker
@@ -138,45 +138,46 @@ func suck(ch1 chan int, ch2 chan int) {
 * Ticker: a struct time.Ticker which is an object that repeatedly sends a time value on a contained channel C at a specified time interval
 
 
-```go
-type Ticker struct {
-	C <-chan Time // the channel on which the ticks are delivered.
-				// contains filtered or unexported fields
-	// ...
-}
-```
+	```go
+	type Ticker struct {
+		C <-chan Time // the channel on which the ticks are delivered.
+					// contains filtered or unexported fields
+		// ...
+	}
+	```
+
 
 * A ticker is stopped with Stop(), use this in a defer statement.
 
-```go
-ticker := time.NewTicker(updateInterval)
-defer ticker.Stop()
-// ...
-select {
-	case u:= <- ch1:
-		// ...
-	case v:= <- ch2:
-		// ...
-	case <- ticker.C:
-		logState(status) // call some logging function logState
-	default: // no value ready to be received
-		// ...
-}
-```
+	```go
+	ticker := time.NewTicker(updateInterval)
+	defer ticker.Stop()
+	// ...
+	select {
+		case u:= <- ch1:
+			// ...
+		case v:= <- ch2:
+			// ...
+		case <- ticker.C:
+			logState(status) // call some logging function logState
+		default: // no value ready to be received
+			// ...
+	}
+	```
 
 * Handy to use when you have to limit the rate of processing per unit time. The time.Tick() function with signature func Tick(d Duration) <-chan Time is useful when you only need access to the return channel and don’t need to shutdown it.
 
 * Sample below is good use case for time.Tick function
 
-```go
-rate_per_sec := 10
-var dur Duration = 1e9 / rate_per_sec
-chRate := time.Tick(dur) // a tick every 1/10th of a second
-for req := range requests {
-	<- chRate // rate limit our Service.Method RPC calls
-	go client.Call("Service.Method", req, ...) // client.Call is RPC call
-}
-```
+	```go
+	rate_per_sec := 10
+	var dur Duration = 1e9 / rate_per_sec
+	chRate := time.Tick(dur) // a tick every 1/10th of a second
+	for req := range requests {
+		<- chRate // rate limit our Service.Method RPC calls
+		go client.Call("Service.Method", req, ...) // client.Call is RPC call
+	}
+	```
 
 
 * A Timer type looks exactly the same as a Ticker type (it is constructed with NewTimer(d but it sends the time only once, after a Duration d.
@@ -185,24 +186,24 @@ for req := range requests {
 
 * Sample of timer 
 
-```go
-func main() {
-	tick := time.Tick(1e8)
-	boom := time.After(5e8)
-	for {
-		select {
-			case <-tick:
-				fmt.Println("tick.")
-			case <-boom:
-				fmt.Println("BOOM!")
-				return
-			default:
-				fmt.Println(" .")
-				time.Sleep(5e7)
+	```go
+	func main() {
+		tick := time.Tick(1e8)
+		boom := time.After(5e8)
+		for {
+			select {
+				case <-tick:
+					fmt.Println("tick.")
+				case <-boom:
+					fmt.Println("BOOM!")
+					return
+				default:
+					fmt.Println(" .")
+					time.Sleep(5e7)
+			}
 		}
 	}
-}
-```
+	```
 
 
 ### Generator
@@ -246,46 +247,46 @@ func main() {
 * By making clever use of the empty interface, closures and higher order functions we can implement a generic builder BuildLazyEvaluator for the lazy evaluation function (this should best placed inside a utility package). The builder takes a function that has to be evaluated and an initial state as arguments and returns a function without arguments returning the desired value. The passed evaluation function has to calculate the next return value as well as the next state based on the state argument. Inside the builder a channel and a goroutine with an endless loop are created. The return values are passed to the channel from which they are fetched by the returned function for later usage. Each time a value is fetched the next one will be calculated.
 
 
-```go
-type Any interface{}
-type EvalFunc func(Any) (Any, Any)
+	```go
+	type Any interface{}
+	type EvalFunc func(Any) (Any, Any)
 
-func main() {
-	evenFunc := func(state Any) (Any, Any) {
-		oldSate := state.(int)
-		newState := oldSate + 2
-		return oldSate, newState
-	}
-	even := BuildLazyIntEvaluator(evenFunc, 0)
-	for i := 0; i < 10; i++ {
-		fmt.Printf("%vth even: %v\n", i, even())
-	}
-}
-
-func BuildLazyEvaluator(evalFunc EvalFunc, initState Any) func() Any {
-	retValChan := make(chan Any)
-	loopFunc := func() {
-		var actState Any = initState
-		var retVal Any
-		for {
-			retVal, actState = evalFunc(actState)
-			retValChan <- retVal
+	func main() {
+		evenFunc := func(state Any) (Any, Any) {
+			oldSate := state.(int)
+			newState := oldSate + 2
+			return oldSate, newState
+		}
+		even := BuildLazyIntEvaluator(evenFunc, 0)
+		for i := 0; i < 10; i++ {
+			fmt.Printf("%vth even: %v\n", i, even())
 		}
 	}
-	retFunc := func() Any {
-		return <-retValChan
-	}
-	go loopFunc()
-	return retFunc
-}
 
-func BuildLazyIntEvaluator(evalFunc EvalFunc, initState Any) func() int {
-	evalFn := BuildLazyEvaluator(evalFunc, initState)
-	return func() int {
-		return evalFn().(int)
+	func BuildLazyEvaluator(evalFunc EvalFunc, initState Any) func() Any {
+		retValChan := make(chan Any)
+		loopFunc := func() {
+			var actState Any = initState
+			var retVal Any
+			for {
+				retVal, actState = evalFunc(actState)
+				retValChan <- retVal
+			}
+		}
+		retFunc := func() Any {
+			return <-retValChan
+		}
+		go loopFunc()
+		return retFunc
 	}
-}
-```
+
+	func BuildLazyIntEvaluator(evalFunc EvalFunc, initState Any) func() int {
+		evalFn := BuildLazyEvaluator(evalFunc, initState)
+		return func() int {
+			return evalFn().(int)
+		}
+	}
+	```
 
 ### Future
 
@@ -296,67 +297,67 @@ a future needs only to return one value.
 
 * Matrix package will look like the code below
 
-```go
-// futures used internally
-type futureMatrix chan Matrix;
+	```go
+	// futures used internally
+	type futureMatrix chan Matrix;
 
-// API remains the same
-func Inverse (a Matrix) Matrix {
-    return <-InverseAsync(promise(a))
-}
+	// API remains the same
+	func Inverse (a Matrix) Matrix {
+		return <-InverseAsync(promise(a))
+	}
 
-func Product (a Matrix, b Matrix) Matrix {
-    return <-ProductAsync(promise(a), promise(b))
-}
+	func Product (a Matrix, b Matrix) Matrix {
+		return <-ProductAsync(promise(a), promise(b))
+	}
 
-// expose async version of the API
-func InverseAsync (a futureMatrix) futureMatrix {
-    c := make (futureMatrix)
-    go func () { c <- inverse(<-a) } ()
-    return c
-}
+	// expose async version of the API
+	func InverseAsync (a futureMatrix) futureMatrix {
+		c := make (futureMatrix)
+		go func () { c <- inverse(<-a) } ()
+		return c
+	}
 
-func ProductAsync (a futureMatrix) futureMatrix {
-    c := make (futureMatrix)
-    go func () { c <- product(<-a) } ()
-    return c
-}
+	func ProductAsync (a futureMatrix) futureMatrix {
+		c := make (futureMatrix)
+		go func () { c <- product(<-a) } ()
+		return c
+	}
 
-// actual implementation is the same as before
-func product (a Matrix, b Matrix) Matrix {
-    ....
-}
+	// actual implementation is the same as before
+	func product (a Matrix, b Matrix) Matrix {
+		....
+	}
 
-func inverse (a Matrix) Matrix {
-    ....
-}
+	func inverse (a Matrix) Matrix {
+		....
+	}
 
-// utility fxn: create a futureMatrix from a given matrix
-func promise (a Matrix) futureMatrix {
-    future := make (futureMatrix, 1)
-    future <- a;
-    return future;
-}
-```
+	// utility fxn: create a futureMatrix from a given matrix
+	func promise (a Matrix) futureMatrix {
+		future := make (futureMatrix, 1)
+		future <- a;
+		return future;
+	}
+	```
 
 * Use the matrix package 
 
-```go
-func InverseProduct (a Matrix, b Matrix) {
-    a_inv := Inverse(a)
-    b_inv := Inverse(b)
-    return Product(a_inv, b_inv)
-}
+	```go
+	func InverseProduct (a Matrix, b Matrix) {
+		a_inv := Inverse(a)
+		b_inv := Inverse(b)
+		return Product(a_inv, b_inv)
+	}
 
-// async way
-func InverseProduct (a Matrix, b Matrix) {
-    a_inv_future := InverseAsync(a);
-    b_inv_future := InverseAsync(b);
-    a_inv := <-a_inv_future;
-    b_inv := <-b_inv_future;
-    return Product(a_inv, b_inv);
-}
-```
+	// async way
+	func InverseProduct (a Matrix, b Matrix) {
+		a_inv_future := InverseAsync(a);
+		b_inv_future := InverseAsync(b);
+		a_inv := <-a_inv_future;
+		b_inv := <-b_inv_future;
+		return Product(a_inv, b_inv);
+	}
+	```
 
 
 #### Multiplexing 
@@ -365,91 +366,91 @@ func InverseProduct (a Matrix, b Matrix) {
 
 * Server side simulator sample
 
-```go
-type Request struct {
-	a, b      int
-	replyChan chan int // reply channel inside the Request
-}
+	```go
+	type Request struct {
+		a, b      int
+		replyChan chan int // reply channel inside the Request
+	}
 
-type binOp func(a, b int) int
+	type binOp func(a, b int) int
 
-func run(op binOp, req *Request) {
-	req.replyChan <- op(req.a, req.b)
-}
+	func run(op binOp, req *Request) {
+		req.replyChan <- op(req.a, req.b)
+	}
 
-func server(op binOp, service chan *Request, quitChan chan bool) {
-	for {
-		select {
-		case req := <-service:
-			go run(op, req)
-		case <-quitChan:
-			return
+	func server(op binOp, service chan *Request, quitChan chan bool) {
+		for {
+			select {
+			case req := <-service:
+				go run(op, req)
+			case <-quitChan:
+				return
+			}
 		}
 	}
-}
-func startServer(op binOp) (service chan *Request, quitChan chan bool) {
-	service = make(chan *Request)
-	quitChan = make(chan bool)
-	go server(op, service, quitChan)
-	return service, quitChan
-}
-
-func main() {
-	adder, quitChan := startServer(func(a, b int) int { return a + b })
-	const N = 100
-	var reqs [N]Request
-	for i := 0; i < N; i++ {
-		req := &reqs[i]
-		req.a = i
-		req.b = i + N
-		req.replyChan = make(chan int)
-		adder <- req
+	func startServer(op binOp) (service chan *Request, quitChan chan bool) {
+		service = make(chan *Request)
+		quitChan = make(chan bool)
+		go server(op, service, quitChan)
+		return service, quitChan
 	}
-	// checks:
-	for i := N - 1; i >= 0; i-- { // doesn’t matter what order
-		if <-reqs[i].replyChan != N+2*i {
-			fmt.Println("fail at", i)
-		} else {
 
-			fmt.Println("Request ", i, "is ok!")
+	func main() {
+		adder, quitChan := startServer(func(a, b int) int { return a + b })
+		const N = 100
+		var reqs [N]Request
+		for i := 0; i < N; i++ {
+			req := &reqs[i]
+			req.a = i
+			req.b = i + N
+			req.replyChan = make(chan int)
+			adder <- req
 		}
+		// checks:
+		for i := N - 1; i >= 0; i-- { // doesn’t matter what order
+			if <-reqs[i].replyChan != N+2*i {
+				fmt.Println("fail at", i)
+			} else {
+
+				fmt.Println("Request ", i, "is ok!")
+			}
+		}
+		quitChan <- true
+		fmt.Println("done")
 	}
-	quitChan <- true
-	fmt.Println("done")
-}
-```
+	```
 
 ### Parallel For-Loop
 
 * In summary, we need a channel for synchronization purposes (used as a semaphore) when implementing a parallel for-loop, but we do not need to communicate with goroutine through channels when the stack works perfectly well.
 
-```go
-xi := make(float chan);
-out := make(float chan);
-for _,xi := range data {
-    xch := make(float chan);
-    go func () {
-        xi := <- xch;
-        out <- doSomething(xi);
-    }()
-    xch <- xi;
-}
-```
+	```go
+	xi := make(float chan);
+	out := make(float chan);
+	for _,xi := range data {
+		xch := make(float chan);
+		go func () {
+			xi := <- xch;
+			out <- doSomething(xi);
+		}()
+		xch <- xi;
+	}
+	```
 
 * Another sample of parallel-loop with semaphore
 
-```go
-func VectorScalarAdd (v []float, s float) {
-    sem := make (semaphore, len(v));
-    for i,_ := range v {
-        go func (i int) {
-            v [i] += s; 
-            sem.Signal();
-        } (i);
-    }()
-    sem.Wait(len(v));
-}
-```
+	```go
+	func VectorScalarAdd (v []float, s float) {
+		sem := make (semaphore, len(v));
+		for i,_ := range v {
+			go func (i int) {
+				v [i] += s; 
+				sem.Signal();
+			} (i);
+		}()
+		sem.Wait(len(v));
+	}
+	```
 
 
 
@@ -460,46 +461,46 @@ func VectorScalarAdd (v []float, s float) {
 * In the following program we have a type Person which now contains a field chF, a channel of anonymous functions. This is initialized in the constructor-method NewPerson, which also starts a method backend() as a goroutine.This method executes in an infinite loop all the functions placed on chF, effectively serializing them and thus providing safe concurrent access. The methods that change and retrieve the salary make an anonymous function which does that and put this function on chF, and backend() will sequentially execute them.
 
 
-```go
-type Person struct {
-	Name   string
-	salary float64
-	chF    chan func()
-}
-
-func NewPerson(name string, salary float64) *Person {
-	p := &Person{name, salary, make(chan func())}
-	go p.backend()
-	return p
-}
-func (p *Person) backend() {
-	for f := range p.chF {
-		f()
+	```go
+	type Person struct {
+		Name   string
+		salary float64
+		chF    chan func()
 	}
-}
 
-// Set salary.
-func (p *Person) SetSalary(sal float64) {
-	p.chF <- func() { p.salary = sal }
-}
+	func NewPerson(name string, salary float64) *Person {
+		p := &Person{name, salary, make(chan func())}
+		go p.backend()
+		return p
+	}
+	func (p *Person) backend() {
+		for f := range p.chF {
+			f()
+		}
+	}
 
-// Retrieve salary.
-func (p *Person) Salary() float64 {
-	fChan := make(chan float64)
-	p.chF <- func() { fChan <- p.salary }
-	return <-fChan
-}
-func (p *Person) String() string {
-	return "Person - name is: " + p.Name + " - salary is: " + strconv.FormatFloat(p.Salary(), 'f', 2, 64)
-}
-func main() {
-	bs := NewPerson("Smith Bill", 2500.5)
-	fmt.Println(bs)
-	bs.SetSalary(4000.25)
-	fmt.Println("Salary changed:")
-	fmt.Println(bs)
-}
-```
+	// Set salary.
+	func (p *Person) SetSalary(sal float64) {
+		p.chF <- func() { p.salary = sal }
+	}
+
+	// Retrieve salary.
+	func (p *Person) Salary() float64 {
+		fChan := make(chan float64)
+		p.chF <- func() { fChan <- p.salary }
+		return <-fChan
+	}
+	func (p *Person) String() string {
+		return "Person - name is: " + p.Name + " - salary is: " + strconv.FormatFloat(p.Salary(), 'f', 2, 64)
+	}
+	func main() {
+		bs := NewPerson("Smith Bill", 2500.5)
+		fmt.Println(bs)
+		bs.SetSalary(4000.25)
+		fmt.Println("Salary changed:")
+		fmt.Println(bs)
+	}
+	```
 
 
 

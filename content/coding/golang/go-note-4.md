@@ -1,7 +1,7 @@
 +++
 title = "Golang Note - 4"
 description="Golang Introduction: IO, JSON, XML , Gob, Crypto "
-weight=5
+weight=4
 +++
 
 

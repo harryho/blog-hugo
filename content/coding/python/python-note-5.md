@@ -2,6 +2,7 @@
 
 title = "Python Note 5"
 description = "Python Note 5"
+weight=5
 +++
 
 ## Inheritance & Polymorphism

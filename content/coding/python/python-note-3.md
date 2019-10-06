@@ -2,6 +2,7 @@
 
 title = "Python Note 3"
 description="String & Representation"
+weight=3
 +++
 
 ## String & Representation

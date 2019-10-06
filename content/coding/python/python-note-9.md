@@ -2,6 +2,7 @@
 
 title = "Python Note 9"
 description = "Context Manager,  Introspection"
+weight=9
 +++
 
 

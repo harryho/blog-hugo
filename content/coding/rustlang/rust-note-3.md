@@ -41,35 +41,35 @@ panic = 'abort'
 
 * Result enum is defined as having two variants, Ok and Err
 
-```rs
-enum Result<T, E> {
-    Ok(T),
-    Err(E),
-}
-```
+    ```rs
+    enum Result<T, E> {
+        Ok(T),
+        Err(E),
+    }
+    ```
 
 * Matching on Different Errors
 
 
-```rs
-use std::fs::File;
-use std::io::ErrorKind;
+    ```rs
+    use std::fs::File;
+    use std::io::ErrorKind;
 
-fn main() {
-    let f = File::open("hello.txt");
+    fn main() {
+        let f = File::open("hello.txt");
 
-    let f = match f {
-        Ok(file) => file,
-        Err(error) => match error.kind() {
-            ErrorKind::NotFound => match File::create("hello.txt") {
-                Ok(fc) => fc,
-                Err(e) => panic!("Problem creating the file: {:?}", e),
+        let f = match f {
+            Ok(file) => file,
+            Err(error) => match error.kind() {
+                ErrorKind::NotFound => match File::create("hello.txt") {
+                    Ok(fc) => fc,
+                    Err(e) => panic!("Problem creating the file: {:?}", e),
+                },
+                other_error => panic!("Problem opening the file: {:?}", other_error),
             },
-            other_error => panic!("Problem opening the file: {:?}", other_error),
-        },
-    };
-}
-```
+        };
+    }
+    ```
 
 #### Shortcuts for Panic on Error: unwrap and expect
 
@@ -77,15 +77,15 @@ fn main() {
 
 * Another method, expect, which is similar to unwrap, lets us also choose the panic! error message. Using expect instead of unwrap and providing good error messages can convey your intent and make tracking down the source of a panic easier.
 
-```rs
-use std::fs::File;
+    ```rs
+    use std::fs::File;
 
-fn main() {
-    let f = File::open("hello.txt").unwrap();
-    let f = File::open("hello.txt")
-                .expect("Failed to open hello.txt");
-}
-```
+    fn main() {
+        let f = File::open("hello.txt").unwrap();
+        let f = File::open("hello.txt")
+                    .expect("Failed to open hello.txt");
+    }
+    ```
 
 #### Propagating Errors
 
@@ -132,21 +132,21 @@ fn main() {
 
 * A more concise sample 
 
-```rs
-use std::io;
-use std::io::Read;
-use std::fs::File;
+    ```rs
+    use std::io;
+    use std::io::Read;
+    use std::fs::File;
 
-fn read_username_from_file() -> Result<String, io::Error> {
-    let mut s = String::new();
+    fn read_username_from_file() -> Result<String, io::Error> {
+        let mut s = String::new();
 
-    File::open("hello.txt")?.read_to_string(&mut s)?;
+        File::open("hello.txt")?.read_to_string(&mut s)?;
 
-    Ok(s)
-}
-```
+        Ok(s)
+    }
+    ```
 
-##### The ? Operator Can Only Be Used in Functions That Return Result
+##### The ? Operator Can Only Be Used in Functions
 
 * The ? operator can only be used in functions that have a return type of Result, because it is defined to work in the same way as the match expression 
 
@@ -175,48 +175,48 @@ __When code panics, there’s no way to recover. You could call panic! for any e
 
 * Sample of validation with loop
 
-```rs
-loop {
-    // --snip--
+    ```rs
+    loop {
+        // --snip--
 
-    let guess: i32 = match guess.trim().parse() {
-        Ok(num) => num,
-        Err(_) => continue,
-    };
+        let guess: i32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
-    if guess < 1 || guess > 100 {
-        println!("The secret number will be between 1 and 100.");
-        continue;
+        if guess < 1 || guess > 100 {
+            println!("The secret number will be between 1 and 100.");
+            continue;
+        }
+
+        match guess.cmp(&secret_number) {
+        // --snip--
     }
-
-    match guess.cmp(&secret_number) {
-    // --snip--
-}
-```
+    ```
 
 * Above  is not an ideal solution.  it’s safe for functions to use the new type in their signatures and confidently use the values they receive. 
 
-```rs
-pub struct Guess {
-    value: i32,
-}
-
-impl Guess {
-    pub fn new(value: i32) -> Guess {
-        if value < 1 || value > 100 {
-            panic!("Guess value must be between 1 and 100, got {}.", value);
-        }
-
-        Guess {
-            value
-        }
+    ```rs
+    pub struct Guess {
+        value: i32,
     }
 
-    pub fn value(&self) -> i32 {
-        self.value
+    impl Guess {
+        pub fn new(value: i32) -> Guess {
+            if value < 1 || value > 100 {
+                panic!("Guess value must be between 1 and 100, got {}.", value);
+            }
+
+            Guess {
+                value
+            }
+        }
+
+        pub fn value(&self) -> i32 {
+            self.value
+        }
     }
-}
-```
+    ```
 
 *  The panic! macro signals that your program is in a state it can’t handle and lets you tell the process to stop instead of trying to proceed with invalid or incorrect values. The Result enum uses Rust’s type system to indicate that operations might fail in a way that your code could recover from. 
 

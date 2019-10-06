@@ -2,6 +2,7 @@
 
 title = "Python Note 2"
 description ="Closure & Decorator"
+weight=2
 +++
 
 ## Closure & Decorator
