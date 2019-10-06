@@ -340,9 +340,9 @@ buffered 10000000	       103 ns/op
 
 #### Stopping a goroutine
 
-	 runtime.Goexit()
-
-
+```go
+runtime.Goexit()
+```
 
 
 
