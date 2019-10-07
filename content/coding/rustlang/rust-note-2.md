@@ -193,9 +193,9 @@ for (key, value) in &scores {
 
 #### Updating a Hash Map
 
-##### Overwrites value
+__Overwrites value__
 
-* If we insert a key and a value into a hash map and then insert that same key with a different value, the value associated with that key will be replaced. 
+If we insert a key and a value into a hash map and then insert that same key with a different value, the value associated with that key will be replaced. 
 
 ```rs
 
@@ -209,7 +209,7 @@ scores.insert(String::from("Blue"), 25);
 println!("{:?}", scores);
 ```
 
-##### Only Inserting a Value If the Key Has No Value
+__Only Inserting a Value If the Key Has No Value__
 
 * It’s common to check whether a particular key has a value and, if it doesn’t, insert a value for it. Hash maps have a special API for this called entry that takes the key you want to check as a parameter. The return value of the entry method is an enum called Entry that represents a value that might or might not exist.
 
@@ -229,9 +229,9 @@ fn main() {
 }
 ```
 
-##### Updating a Value Based on the Old Value
+__Updating a Value Based on the Old Value__
 
-* Another common use case for hash maps is to look up a key’s value and then update it based on the old value. 
+Another common use case for hash maps is to look up a key’s value and then update it based on the old value. 
 
 ```rs
 use std::collections::HashMap;

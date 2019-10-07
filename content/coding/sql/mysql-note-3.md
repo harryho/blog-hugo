@@ -1,7 +1,6 @@
 +++
 title = "MySql Note - 3"
 description="MySql schema & permission "
-
 +++
 
 

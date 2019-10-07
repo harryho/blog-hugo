@@ -17,7 +17,11 @@ BEGIN
 
     SELECT REPLACE(in_value, '+','') INTO vv_number;
 
-    RETURN CASE WHEN LEFT(vv_number, 2) IN ('02','03','07','08') THEN LENGTH(vv_number) = 10 ELSE 0 END;
+    RETURN 
+      CASE 
+          WHEN LEFT(vv_number, 2) IN ('02','03','07','08') ss
+          THEN LENGTH(vv_number) = 10 ELSE 0 
+      END;
 END $$
 
 DELIMITER ;
