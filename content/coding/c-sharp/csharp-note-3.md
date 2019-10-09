@@ -1,6 +1,6 @@
 +++
-title = "C# Note - 3"
-description = " Thread & Task "
+title = "Thread & Task"
+description = "Introduction of Thread & Task "
 +++
 
 

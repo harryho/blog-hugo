@@ -56,7 +56,6 @@ description="Rustlang Introduction: Generic Type, Trait and Lifetime "
 * define enums to hold generic data types in their variants. 
 
     ```rs
-
     enum Option<T> {
         Some(T),
         None,
@@ -177,26 +176,367 @@ description="Rustlang Introduction: Generic Type, Trait and Lifetime "
 * A type’s behavior consists of the methods we can call on that type. Different types share the same behavior if we can call the same methods on all of those types. Trait definitions are a way to group method signatures together to define a set of behaviors necessary to accomplish some purpose.
 
 
+* Sample of trait
+
+    ```rs
+    pub trait Summary {
+        fn summarize(&self) -> String;
+    }
+    ```
+
+#### Implementing a trait
+
+* Implementing a trait on a type is similar to implementing regular methods. The difference is that after impl, we put the trait name that we want to implement, then use the for keyword, and then specify the name of the type we want to implement the trait for. 
+
+
+    ```rs
+    pub struct NewsArticle {
+        pub headline: String,
+        pub location: String,
+        pub author: String,
+        pub content: String,
+    }
+
+    impl Summary for NewsArticle {
+        fn summarize(&self) -> String {
+            format!("{}, by {} ({})", self.headline, self.author, self.location)
+        }
+    }
+
+    pub struct Tweet {
+        pub username: String,
+        pub content: String,
+        pub reply: bool,
+        pub retweet: bool,
+    }
+
+    impl Summary for Tweet {
+        fn summarize(&self) -> String {
+            format!("{}: {}", self.username, self.content)
+        }
+    }
+    ```
+
+    * Test the implementation
+
+    ```rs
+    let tweet = Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from("of course, as you probably already know, people"),
+        reply: false,
+        retweet: false,
+    };
+
+    println!("1 new tweet: {}", tweet.summarize());
+    ```
+
+#### Default implementation
+
+* Sample 
+
+    ```rs
+    pub trait Summary {
+        fn summarize(&self) -> String {
+            String::from("(Read more...)")
+        }
+    }
+    ```
+
+* Default implementations can call other methods in the same trait, even if those other methods don’t have a default implementation. In this way, a trait can provide a lot of useful functionality and only require implementors to specify a small part of it. 
+
+    ```rs
+    pub trait Summary {
+        fn summarize_author(&self) -> String;
+
+        fn summarize(&self) -> String {
+            format!("(Read more from {}...)", self.summarize_author())
+        }
+    }
+
+    impl Summary for Tweet {
+        fn summarize_author(&self) -> String {
+            format!("@{}", self.username)
+        }
+    }
+
+    let tweet = Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from("of course, as you probably already know, people"),
+        reply: false,
+        retweet: false,
+    };
+
+    println!("1 new tweet: {}", tweet.summarize());
+    ```
+
+#### Traits as Parameters
+
+* use traits to define functions that accept many different types.
+
+* Sample: Instead of a concrete type for the item parameter, we specify the impl keyword and the trait name. 
+
+    ```rs
+    pub fn notify(item: impl Summary) {
+        println!("Breaking news! {}", item.summarize());
+    }
+    ```
+
+* Anotehr sample
+
+    ```rs
+    pub fn notify<T: Summary>(item1: T, item2: T) {}
+    ```
+
+#### Clearer Trait Bounds with where Clauses
+
+* Using too many trait bounds has its downsides. Each generic has its own trait bounds, so functions with multiple generic type parameters can contain lots of trait bound information between the function’s name and its parameter list, making the function signature hard to read. 
+
+* Sample with where
+
+    ```rs
+    fn some_function<T, U>(t: T, u: U) -> i32
+        where T: Display + Clone,
+            U: Clone + Debug {}
+    ```
+
+#### Returning Types that Implement Traits
+
+*  use the impl Trait syntax in the return position to return a value of some type that implements a trait
+
+* However, you can only use impl Trait if you’re returning a single type
+
+```rs
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from("of course, as you probably already know, people"),
+        reply: false,
+        retweet: false,
+    }
+}
+```
+
+#### Fixing the largest Function with Trait Bounds
+
+* Without the PartialOrd trait, the largest will throw error "an implementation of `std::cmp::PartialOrd` might be missing for `T`"
+
+* Without the Copy trait, the largest function will throw compilation error as well
+
+    ```rs
+    fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+        let mut largest = list[0]; // Without copy -- error: "cannot move out of here"  
+
+        for &item in list.iter() {
+            if item > largest { // // Without copy -- error: "cannot move out of borrowed content"
+                largest = item;
+            }
+        }
+
+        largest
+    }
+
+    fn main() {
+        let number_list = vec![34, 50, 25, 100, 65];
+
+        let result = largest(&number_list);
+        println!("The largest number is {}", result);
+
+        let char_list = vec!['y', 'm', 'a', 'q'];
+
+        let result = largest(&char_list);
+        println!("The largest char is {}", result);
+    }
+    ```
 
 
 
+#### Using Trait Bounds to Conditionally Implement Methods
+
+* By using a trait bound with an impl block that uses generic type parameters, we can implement methods conditionally for types that implement the specified traits. 
+
+
+    ```rs
+    #![allow(unused_variables)]
+    fn main() {
+    use std::fmt::Display;
+
+    struct Pair<T> {
+        x: T,
+        y: T,
+    }
+
+    impl<T> Pair<T> {
+        fn new(x: T, y: T) -> Self {
+            Self {
+                x,
+                y,
+            }
+        }
+    }
+
+    impl<T: Display + PartialOrd> Pair<T> {
+        fn cmp_display(&self) {
+            if self.x >= self.y {
+                println!("The largest member is x = {}", self.x);
+            } else {
+                println!("The largest member is y = {}", self.y);
+            }
+        }
+    }
+    ```
+
+### Lifetimes
+
+#### Preventing Dangling References with Lifetimes
+
+* Rust requires us to annotate the relationships using generic lifetime parameters to ensure the actual references used at runtime will definitely be valid.
+
+* The main aim of lifetimes is to prevent dangling references, which cause a program to reference data other than the data it’s intended to reference. 
+
+
+    ```rs
+    {
+        let r;                // ---------+-- 'a
+                              //          |
+        {                     //          |
+            let x = 5;        // -+-- 'b  |
+            r = &x;           //  |       |
+        }                     // -+       |
+                              //          |
+        println!("r: {}", r); //          |
+    }                         // ---------+
+    ```
+
+#### Generic Lifetimes in Functions
+
+*
 
 
 
+#### Lifetime Annotation Syntax
+
+```rs
+&i32        // a reference
+&'a i32     // a reference with an explicit lifetime
+&'a mut i32 // a mutable reference with an explicit lifetime
+```
+
+
+#### Lifetime Annotations in Function Signatures
+
+
+```rs
+#![allow(unused_variables)]
+fn main() {
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+
+    let result = longest(string1.as_str(), string2);
+    println!("The longest string is {}", result);
+}
+
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+
+
+```
 
 
 
+#### Lifetime Elision
+
+```rs
+
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+```
+
+* The patterns programmed into Rust’s analysis of references are called the lifetime elision rules. These aren’t rules for programmers to follow; they’re a set of particular cases that the compiler will consider, and if your code fits these cases, you don’t need to write the lifetimes explicitly.
+
+* The elision rules don’t provide full inference. If Rust deterministically applies the rules but there is still ambiguity as to what lifetimes the references have, the compiler won’t guess what the lifetime of the remaining references should be. 
+
+* Lifetimes on function or method parameters are called input lifetimes, and lifetimes on return values are called output lifetimes.
+
+
+#### Lifetime Elision Rules
+
+* The compiler uses three rules to figure out what lifetimes references have when there aren’t explicit annotations. The first rule applies to input lifetimes, and the second and third rules apply to output lifetimes. If the compiler gets to the end of the three rules and there are still references for which it can’t figure out lifetimes, the compiler will stop with an error. These rules apply to fn definitions as well as impl blocks.
 
 
 
+* The second rule is if there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters
+
+* The third rule is if there are multiple input lifetime parameters, but one of them is &self or &mut self because this is a method, the lifetime of self is assigned to all output lifetime parameters. 
+
+    ```rs
+    #![allow(unused_variables)]
+    fn main() {
+        struct ImportantExcerpt<'a> {
+            part: &'a str,
+        }
+
+        impl<'a> ImportantExcerpt<'a> {
+            fn announce_and_return_part(&self, announcement: &str) -> &str {
+                println!("Attention please: {}", announcement);
+                self.part
+            }
+        }
+    }
+    ```
+
+#### Lifetime Annotations in Method Definitions
+
+* Lifetime names for struct fields always need to be declared after the impl keyword and then used after the struct’s name, because those lifetimes are part of the struct’s type.
+
+* In method signatures inside the impl block, references might be tied to the lifetime of references in the struct’s fields, or they might be independent. In addition, the lifetime elision rules often make it so that lifetime annotations aren’t necessary in method signatures.
+
+    ```rs
+    impl<'a> ImportantExcerpt<'a> {
+        fn level(&self) -> i32 {
+            3
+        }
+    }
+    ```
+
+#### The Static Lifetime
+
+```rs
+let s: &'static str = "I have a static lifetime.";
+```
 
 
+#### Generic Type, Trait Bounds & Lifetimes
 
 
+```rs
+use std::fmt::Display;
 
-
-
-
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+    where T: Display
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
 
 
 

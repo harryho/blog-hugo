@@ -1,6 +1,6 @@
 +++
 
-title = "C# Note - 2"
+title = "Scheduled task with window service"
 description="How to build a configurable scheduled task on Window Service"
 +++
 
