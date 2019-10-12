@@ -1,61 +1,84 @@
 +++
 
-
-date = "2015-09-28T09:59:31+11:00"
 title = "Python Web Framework"
-description="Introduction of Django - Most popular python web framework"
+description = "Introduction of Django: Most popular python web framework"
 +++
 
-## Install Python & pip & virtualenv
-* Windows: Please find in from [Home Page](/)
-* Ubuntu: Please find it from [Ubuntu setup](ubuntu-server-14)
+> Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source. 
+
+## Install Python, pip and virtualenv
+
+* Windows: Please find in from Home Page
+
+* Ubuntu: Please find it from [Ubuntu setup](/os/ubuntu-server-14)
+
 * Python 3.4 (released March 2014) and Python 2.7.9 (released December 2014) ship with Pip.
+
 * You can simply use pip or pip3 install any package you need.
 
 
-## Install Django
 
-**Windows**
 
-* Install django
- * create a folder virtualenvs within the location of python 3
- * create a new virtualenv named django18
- * Activate the new virtual env
- * Install Django 1.x.x (LTS version ) 
+## **Windows**
+
+### Install django
+
+* create a folder virtualenvs within the location of python 3
+
+* create a new virtualenv named django18
+
+* Activate the new virtual env
+
+* Install Django 1.x.x (LTS version) 
 
 ```bash
 cd  /path/to/python3
 cd  virtualenvs
+
 virtualenv django18
+
 cd django18
+
 Scripts\activate
+
 which python
+
 pip install django==1.x.x
 ```
 
-## Create django project 
+### Create django project 
 
 * SET PATH in current command promp
+
 * Navigate to workspace folder
+
 * Create new django project
+
 * Start the app
 
+    ```bat
+    SET PATH=c:\apps\python3\virtualenvs\django18\Script;%PATH%
+
+    which django-admin
+
+    cd c:\ws\python\django\
+
+    django-admin startproject demo
+
+    cd demo
+
+    python manage.py runserver
+    ```
+
+### Create a new app module
+
 ```bash
-SET PATH=c:\apps\python3\virtualenvs\django18\Script;%PATH%
-which django-admin
-cd c:\ws\python\django\
-django-admin startproject demo
-cd demo
-python manage.py runserver
+python manage.py startapp main
 ```
 
-* Create a new app module
+### Create a new db 
 
-`    python manage.py startapp main     `
-
-* Create a new db 
-
-**  following commands are just tested in django 1.8
+__following commands are just tested in django 1.8__
 
 ```python
 python manage.py syncdb 
@@ -66,7 +89,7 @@ pyrhon manage.py sqlmigrate new_app 0001
 python manage.py migrate new_app 0001
 ```
 
-* use python shell Model API
+### use python shell Model API
 
 ```python
 python manage.py shell
@@ -80,26 +103,32 @@ python manage.py shell
 >>> mc.delete()    
 ```
 
-**Linux**
+## **Linux**
 
 ```bash
 pip install virtualenv
+
 pip3 install virtualenv
+
 cd ~
+
 mkdir .envs
 
 ## create python2 env
 virtualenv -p /usr/bin/python2.7 py2env
+
 virtualenv -p /usr/bin/python3.4 py3env
 
 cd py2env 
 source bin/activate
+
 ## Check python path 
 which python
+
 ## Exit
 deactivate
 
 ```
 
-* Activate virtual environment need to use source instead of executing sh file
+**Activate virtual environment need to use source instead of executing sh file**
 

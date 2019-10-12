@@ -202,4 +202,34 @@ Initialize and update submoule
     $ git submodule init
     $ git submodule update 
 
-    
+
+## Git tag
+
+Listing the existing tags
+
+    $ git tag -l
+
+Creating Tags
+
+Git supports two types of tags: lightweight and annotated. IMO, I always prefer the annotated tag, because the tag is supposed to mark milestone in the repository's history.
+
+Annotated Tags
+
+    $ git tag -a v1.1 -m "release version 1.1"
+
+Lightweight tags
+
+    $ git tag -a v1.1-lw
+
+Push tags
+
+    $ git push origin v1.1
+
+Delete a tag (local)
+
+    $ git tag -D v1.1
+
+Delete a tag (remote)
+
+    $ git push --delete origin v1.1
+

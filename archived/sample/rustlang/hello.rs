@@ -1,21 +1,57 @@
 #![allow(unused_variables)]
 fn main() {
-    enum Coin {
-        Penny,
-        Nickel,
-        Dime,
-        Quarter,
-    }
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
 
-    fn value_in_cents(coin: Coin) -> u8 {
-        match coin {
-            Coin::Penny => 1,
-            Coin::Nickel => 5,
-            Coin::Dime => 10,
-            Coin::Quarter => 25,
-        }
+    let result = longest(string1.as_str(), string2);
+    println!("The longest string is {}", result);
+}
+
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
     }
 }
+
+
+// #![allow(unused_variables)]
+// fn main() {
+//     {
+//         let r;
+
+//         {
+//             let x = 5;
+//             r = &x;
+//         }
+
+//         println!("r: {}", r);
+//     }
+// }
+
+
+// #![allow(unused_variables)]
+// fn main() {
+//     enum Coin {
+//         Penny,
+//         Nickel,
+//         Dime,
+//         Quarter,
+//     }
+
+//     fn value_in_cents(coin: Coin) -> u8 {
+//         match coin {
+//             Coin::Penny => 1,
+//             Coin::Nickel => 5,
+//             Coin::Dime => 10,
+//             Coin::Quarter => 25,
+//         }
+//     }
+// }
+
+
 // #[derive(Debug)]
 // struct Rectangle {
 //     width: u32,

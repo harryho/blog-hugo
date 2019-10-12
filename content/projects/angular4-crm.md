@@ -2,7 +2,6 @@
 
 date = "2016-12-07T16:56:21+11:00"
 title = "Angular 4 CRM Project"
-
 description="Ng4Crm is reusable CRM project for real-world business based on Angular 4"
 +++
 
@@ -18,11 +17,15 @@ description="Ng4Crm is reusable CRM project for real-world business based on Ang
 ## __Features__
 
 * This project is built on the top of AngularClass/Angular-Starter. 
+
 * The UI part of this project combine Angular-Material and Bootstrap 3. Because the controls from Angular-Material is very limited, there are a few extra components require Bootstrap 3 for help. 
+
 * This project includes ng-charts, pagination, progress-bar, confirmation dialog, etc. features.
+
 * It uses Json-Server as fake Restful API. (You can simple replace it with your own API)
 
-### Structure of Ng4Crm
+
+## Structure of Ng4Crm
 
 ``` ini
 path\to\ng4crm
@@ -73,10 +76,10 @@ path\to\ng4crm
 
 
 
-### Browse [Repository](https://github.com/harryho/ng4crm.git)
+## Browse [Repository](https://github.com/harryho/ng4crm.git)
 
 
-__Alternatives__
+## __Alternatives__
 
 There are two similar projects respectively built on the Vue.js and React. If you have interests in those technical stacks. You can find and clone those projects below.
 

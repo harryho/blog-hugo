@@ -5,6 +5,7 @@ description = "Tensorflow Note - 2"
 
 +++
 
+
 ## Prerequisites
 
 * You are using Windows 7 or higher version
@@ -12,6 +13,8 @@ description = "Tensorflow Note - 2"
 
 
 ## Install Anaconda 
+
+> Anaconda® is a package manager, an environment manager, a Python/R data science distribution, and a collection of over 1,500+ open source packages. Anaconda is free and easy to install, and it offers free community support.
 
 * [Please download Anaconda from the official site](https://www.continuum.io/downloads)
   

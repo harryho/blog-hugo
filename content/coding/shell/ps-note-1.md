@@ -4,6 +4,7 @@ title = "Powershell Note - 1"
 description = "Introduction of Powershell "
 +++
 
+> PowerShell is a task-based command-line shell and scripting language built on .NET. PowerShell helps system administrators and power-users rapidly automate tasks that manage operating systems (Linux, macOS, and Windows) and processes.
 
 ## Prerequisites
 

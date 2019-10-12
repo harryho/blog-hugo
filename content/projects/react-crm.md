@@ -16,8 +16,11 @@ The goal of this starter project is to create reusable project for real-world bu
 ## __Features__
 
 * This project is built on the top of React/Redux. 
+
 * The UI part of this project uses Material-UI. 
+
 * This project uses Redux-Thunk to support backend API.
+
 * It uses Json-Server as fake Restful API. (You can simple replace it with your own API)
 
 ## Structure of React-Crm
@@ -74,7 +77,7 @@ path\to\ng4crm
 
 
 
-__Alternatives__
+## __Alternatives__
 
 There are two similar projects respectively built on the Vue.js and Angular. If you have interests in those technical stacks. You can find and clone those projects below.
 
