@@ -3,8 +3,13 @@ title = "MySql Note - 2"
 description="MySql Stored Proc  & Function "
 +++
 
+## Function - UDF
 
-### Function 
+>  For the UDF mechanism to work, functions must be written in C or C++ and your operating system must support dynamic loading. MySQL source distributions include a file sql/udf_example.cc that defines five UDF functions. Consult this file to see how UDF calling conventions work. The include/mysql_com.h header file defines UDF-related symbols and data structures, although you need not include this header file directly; it is included by mysql.h.
+
+> A UDF contains code that becomes part of the running server, so when you write a UDF, you are bound by any and all constraints that apply to writing server code. For example, you may have problems if you attempt to use functions from the libstdc++ library. T
+
+### Function sample 
 
 * Check the input string is OZ land line 
 
@@ -76,6 +81,18 @@ DELIMITER ;
 -- SELECT json_extract_string('{"key": 123}' ) from dual; -- 123
 
 ```
+
+## Stord procedure
+
+> MySQL supports stored routines (procedures and functions). A stored routine is a set of SQL statements that can be stored in the server. Once this has been done, clients don't need to keep reissuing the individual statements but can refer to the stored routine instead. 
+
+ Stored routines can be particularly useful in certain situations:
+
+* When multiple client applications are written in different languages or work on different platforms, but need to perform the same database operations.
+
+* When security is paramount. Banks, for example, use stored procedures and functions for all common operations. This provides a consistent and secure environment, and routines can ensure that each operation is properly logged. In such a setup, applications and users would have no access to the database tables directly, but can only execute specific stored routines. 
+
+
 
 
 ### Stored proc sample
