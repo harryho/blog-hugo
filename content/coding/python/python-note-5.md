@@ -1,7 +1,7 @@
 +++
 
-title = "Python Note 5"
-description = "Python Note 5"
+title = "Inheritance & Polymorphism"
+description = "Inheritance & Polymorphism"
 weight=5
 +++
 

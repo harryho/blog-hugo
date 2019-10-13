@@ -1,6 +1,6 @@
 +++
 
-title = "Python Note 1"
+title = "Package & Module"
 description="Good practices for package & module"
 weight=1
 +++

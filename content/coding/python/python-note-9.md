@@ -1,7 +1,7 @@
 +++
 
-title = "Python Note 9"
-description = "Context Manager,  Introspection"
+title = "ABC"
+description = "ABC - Abstract Base Classes"
 weight=9
 +++
 

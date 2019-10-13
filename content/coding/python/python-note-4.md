@@ -1,6 +1,6 @@
 +++
 
-title = "Python Note 4"
+title = "Iteration"
 description="Iterables & Iteration"
 weight=4
 +++

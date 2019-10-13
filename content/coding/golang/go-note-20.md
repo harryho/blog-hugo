@@ -1,5 +1,5 @@
 +++
-title="Golang Note - 20"
+title="Good practice - 1"
 description="Good practice advice - Part 1"
 weight=20
 +++

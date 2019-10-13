@@ -1,7 +1,7 @@
 +++
 
-title = "Python Note 20"
-description = "Context Manager,  Introspection"
+title = "Unpacking"
+description = "Data structure - Unpacking "
 draft=true
 weight=20
 +++

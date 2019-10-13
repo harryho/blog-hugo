@@ -1,5 +1,5 @@
 +++
-title = "Rustlang Note - 1"
+title = "Data Types & Ownership"
 description="Rustlang Introduction: Mutability, Shadowing, Data Types, Ownership, Borrowing "
 +++
 

@@ -1,5 +1,5 @@
 +++
-title = "Rustlang Note - 3"
+title = "Error handling"
 description="Rustlang Introduction: Error "
 +++
 

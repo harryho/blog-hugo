@@ -1,5 +1,5 @@
 +++
-title="Golang Note - 10"
+title="Template"
 description="Template"
 weight=10
 +++

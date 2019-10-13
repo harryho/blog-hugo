@@ -1,7 +1,7 @@
 +++
 date = "2017-10-11T11:59:31+11:00"
-title = "Kubernetes Practices"
-description="K8s & Minikube"
+title = "Try Minikube"
+description="Test Minikube on virtual machine"
 
 +++
 
@@ -9,9 +9,9 @@ description="K8s & Minikube"
 ## Prerequisites
 
 
-### Install KVM or VirtualBox
-### Install Ubuntu / Debian on KVM or VirtualBox
-### Install Minikube 
+* Install KVM or VirtualBox
+* Install Ubuntu / Debian on KVM or VirtualBox
+* Install Minikube 
 
 
 

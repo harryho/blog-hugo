@@ -1,6 +1,6 @@
 +++
-title = "Golang Note - 3"
-description="Golang Introduction: Struct & Interface "
+title = "Struct & Interface"
+description="Golang Introduction: Struct, Method, Interface & Reflection"
 weight=3
 +++
 

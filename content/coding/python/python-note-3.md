@@ -1,6 +1,6 @@
 +++
 
-title = "Python Note 3"
+title = "String & Representation"
 description="String & Representation"
 weight=3
 +++

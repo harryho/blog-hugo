@@ -1,5 +1,5 @@
 +++
-title="Golang Note - 9"
+title="Pitfalls"
 description="Common pitfalls"
 weight = 9
 +++

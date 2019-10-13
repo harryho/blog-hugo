@@ -1,5 +1,5 @@
 +++
-title="Golang Note - 5"
+title="Error handling"
 description="Error handling"
 weight=5
 +++

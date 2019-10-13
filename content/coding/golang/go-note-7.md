@@ -1,5 +1,5 @@
 +++
-title="Golang Note - 7"
+title="Goroutine & Channel - 2"
 description="Goroutine & Channels - Part 2"
 weight = 7
 +++

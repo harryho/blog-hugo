@@ -1,6 +1,6 @@
 +++
 
-title = "Python Note 2"
+title = "Closure & Decorator"
 description ="Closure & Decorator"
 weight=2
 +++

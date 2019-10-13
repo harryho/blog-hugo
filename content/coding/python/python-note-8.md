@@ -1,6 +1,6 @@
 +++
 
-title = "Python Note 8"
+title = "Context"
 description = "Context Manager,  Introspection"
 weight=8
 +++

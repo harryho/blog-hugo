@@ -1,6 +1,6 @@
 +++
 
-title = "Python Note 6"
+title = "Collection"
 description = "Collection"
 weight=6
 +++

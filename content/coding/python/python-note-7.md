@@ -1,6 +1,6 @@
 +++
 
-title = "Python Note 7"
+title = "Exception & Assertion"
 description = "Exception & Assertion"
 weight=7
 +++

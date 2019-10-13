@@ -1,5 +1,5 @@
 +++
-title = "Rustlang Note - 2"
+title = "Project, Vector, String & Hashmap"
 description="Rustlang Introduction: Project management, Vector, String and Hashmap"
 +++
 

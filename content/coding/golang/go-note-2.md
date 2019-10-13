@@ -1,5 +1,5 @@
 +++
-title = "Golang Note - 2"
+title = "Map, Function & Closure"
 description="Golang Introduction: Map & Function & Closure "
 weight=2
 +++

@@ -1,5 +1,5 @@
 +++
-title = "Golang Note - 1"
+title = "Getting started"
 description="Golang Introduction: Basic Command, Assignment operator,Array, Slice  ..."
 weight=1
 +++

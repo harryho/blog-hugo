@@ -1,5 +1,5 @@
 +++
-title="Golang Note - 8"
+title="Packaging"
 description="Package, Visibility, Pitfalls"
 weight=8
 +++

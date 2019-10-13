@@ -1,5 +1,5 @@
 +++
-title = "Rustlang Note - 4"
+title = "Generic Type & Trait "
 description="Rustlang Introduction: Generic Type, Trait and Lifetime "
 +++
 
