@@ -12,32 +12,32 @@ draft = false
 ## PHP development environment setup
 
 ### Install PHP 5.6.x
+
 * Please find the instruction from [home page](/#php)
 
-### Composer 
+* Composer 
 
-## Linux 
+### Linux 
 
 * Use `curl -s https://getcomposer.org/installer | php --` to install composer on Linux 
 * use 'composer -v ' to verify.
 
-## Windows
+### Windows
 
 * Download the [composer](https://getcomposer.org/download/) and install php on your PC
 * Use `composer -v` to verify the composer is ready.
 
 
-### Zend Framework
+## Zend Framework
 
-> Zend Framework is a collection of 60+ packages for professional PHP development. It can be used to develop web applications and services using PHP 5.6+, and provides 100% object-oriented code using a broad spectrum of language features.
+> Zend Framework 2.x is a collection of 60+ packages for professional PHP development. It can be used to develop web applications and services using PHP 5.6+, and provides 100% object-oriented code using a broad spectrum of language features.
 
-### Zend Framework 2.x
 
-## Create Zend Framework 2 project from scratch
+### Create Zend Framework 2 project 
 
-### * Clone Zend Framework skeleton project as new project. 
+    * Clone Zend Framework skeleton project as new project. 
 
-### * Install zend framework with composer
+    * Install zend framework with composer
 
 
 
@@ -49,7 +49,8 @@ draft = false
     php composer.phar install
 ```
 
-### * Start app with php built-in server 
+
+### Start app with php built-in server 
 
 **Linux**
 
@@ -62,7 +63,9 @@ php -S 0.0.0.0:8080 -t public/ public/index.php
 php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
-### * Use apache server
+### Use apache server
+
+* Apache configuration
 
 ```apache
  <VirtualHost *:80>
@@ -77,27 +80,32 @@ php -S 0.0.0.0:8080 -t public public/index.php
  </VirtualHost>
 ```
 
-## Use Zf2-MVC-Starter project
-* Please find the project introduction [here](/projects/zf2-mvc-starter/). 
+* Zf2-MVC-Starter project
+ 
+ * Please find the project introduction [here](/projects/zf2-mvc-starter/). 
 
-### Laravel
+## Laravel
 
 > Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller (MVC) architectural pattern. Some of the features of Laravel are a modular packaging system with a dedicated dependency manager, different ways for accessing relational databases, utilities that aid in application deployment and maintenance, and its orientation toward syntactic sugar.
 
-### Laravel 5.x
 
-## Install laravel global 
-    Use `composer global laravel/installer`
+### Install laravel global 
+   
+    * Use `composer global laravel/installer`
 
-## Enable the `mbs-string` extension
-### update `php.ini` config 
-* Open `php.ini` with notepad
-* Change `;extension=php_mbstring.dll` to `extension=php_mbstring.dll`
+    * Enable the `mbs-string` extension
 
-## Create new project from scratch
+    * update `php.ini` config 
+    
+    * Open `php.ini` with notepad
+    
+    * Change `;extension=php_mbstring.dll` to `extension=php_mbstring.dll`
 
-### Create new project
-### Migrate database and seed dummy data
+
+### Create new project from scratch
+
+#### Migrate database and seed dummy data
+
 * Create data model
 * Following is the sample code 
 
@@ -126,7 +134,7 @@ php artisan migrate -VVV
 php artisan db:seed
 ```
 
-## Troubleshooting
+### Troubleshooting
 
 **Fix the error of Specified key was too long**
 
@@ -161,28 +169,28 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-## Use Lavarel MVC Starter project 
+### Lavarel MVC Starter project 
+   
     * Please find the project introduction [here](/projects/lara-mvc-starter/). 
 
 ## Use Laravel Rest Starter project
 
-### PrestaShop 
+## PrestaShop 
 
 > PrestaShop is a free, open source e-commerce solution. The software is published under the Open Software License (OSL). It is written in the PHP programming language with support for the MySQL database management system.
 
-### Prestashop 1.5.4
 
-## Download the zip file from [download page](https://www.prestashop.com/en/developers-versions)
+### Download the zip file from [download page](https://www.prestashop.com/en/developers-versions)
 
-## Install Prestashop
+### Install Prestashop
 
 There is a instruction page inside the zip file. You can follow the instructions to complete the installation. There is no EasyPHP, Wamp, XAMPP, or any similar AMP (Apache+MySQL+PHP) package installed on my PC, but I have PHP, Apache, MySQL installed. Actually EasyPHP, Wamp are just the bundle of PHP development tools, which include PHP, Apache, MySQL. I don't want to install too many duplicate softwares and packages on my PC, so I prefer to install Prestashop with what I have on my PC. Which strategy is up to you.
 
-## Install Prestashop with AMP package
+### Install Prestashop with AMP package
 
 * Follow the instruction page within zip file.
 
-## Install Prestashop without AMP package
+### Install Prestashop without AMP package
 
 - Unzip file to `path\to\prestashop_workspace`. Your folder structure will look like this. 
 
@@ -258,7 +266,7 @@ php -S 0.0.0.0:1234 -t prestashop
 
 * Open the new link in browser and type in your admin id and password. Now you can start managing your Prestashop site. Enjoy it.   
 
-## Forgot admin's password
+### Forgot admin's password
 
 * Forgot admin's password or somehow you have to reset password and you cannot get admin's password from previous adminstrator. For such case, there is a simple way to update admin's password from database. 
 
@@ -269,9 +277,9 @@ UPDATE ps_employee SET passwd = MD5('<_COOKIE_KEY_>password')
 WHERE ps_employee.id_employee = <ID_EMPLOYEE>;
 ```
 
-## Troubleshooting
+### Troubleshooting
 
-### InnoDB error
+#### InnoDB error
 
 * Error : InnoDB is not supported by your MySQL server 
 
@@ -292,7 +300,7 @@ WHERE ps_employee.id_employee = <ID_EMPLOYEE>;
 * Restart the server and the proble will be fixed.
 
 
-### CORS 
+#### CORS 
 
 * Enable module header in `httpd.conf`
 
@@ -306,7 +314,7 @@ Header always set Access-Control-Allow-Headers  "USE ABOVE COMMENT AS DEFAULT VA
 Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
 ```
 
-### Too big header file 
+#### Too big header file 
 
 * Add this to your `http {}` of the nginx.conf file normally located at `/etc/nginx/nginx.conf`:
 

@@ -6,6 +6,7 @@ description = "Common Cron Job examples - Refresh Cassandra database"
 
 ### Refresh the database (NoSQL) - Cassandra
 
+> The sample script is used to backup the data from production database and refresh the data to staging or test database. It is not supposed to restore data because of database corruption. 
 
 #### Backup the Cassandra database nightly
 
@@ -17,7 +18,7 @@ description = "Common Cron Job examples - Refresh Cassandra database"
 * Cron job setting
 
     ```bash
-    00 20   * * *   <user_account>  /home/<user_account>/refresh/cass_snapshot.sh >> /home/<user_account>/refresh/refresh.log 2>&1
+    00 20   * * *   <user>  /home/<user>/bin/cass_snapshot.sh >> /home/<user>/bin/refresh.log 2>&1
     ```
 
 * The script to create a snapshot:   `cass_snapshot.sh`
@@ -26,7 +27,7 @@ description = "Common Cron Job examples - Refresh Cassandra database"
     ```bash
     #!/bin/bash
 
-    # the log file sits home/<user_account>/refresh/refresh.log 
+    # the log file sits home/<user>/bin/refresh.log 
 
     # SET staging Cassandra IP
     CASS_STG_IP=0.0.0.0
@@ -73,12 +74,12 @@ description = "Common Cron Job examples - Refresh Cassandra database"
 
     # Copy tarball and schema script to staging Cassandra
     echo "$(date): Copy tarball and schema script to staging Cassandra ${CASS_STG_IP}"
-    scp snapshots.tar.gz <user_account>@${CASS_STG_IP}:/home/<user_account>/ # ~5mins
-    scp hho_ks.cql <user_account>@${CASS_STG_IP}:/home/<user_account>/
+    scp snapshots.tar.gz <user>@${CASS_STG_IP}:/home/<user>/ # ~5mins
+    scp hho_ks.cql <user>@${CASS_STG_IP}:/home/<user>/
 
     # Refresh snapshots on staging Cassandra
     echo "$(date): SSH to staging Cassandra ${CASS_STG_IP}"
-    sudo ssh <user_account>@${CASS_STG_IP} 'bash -s' < /home/<user_account>/refresh/cass_refresh.sh
+    sudo ssh <user>@${CASS_STG_IP} 'bash -s' < /home/<user>/bin/cass_refresh.sh
 
     echo "$(date): Completed refresh of staging Cassandra ${CASS_STG_IP}"
     END=$(date +%s)
@@ -99,7 +100,8 @@ description = "Common Cron Job examples - Refresh Cassandra database"
     rm -rf snapshots
     tar -zxvf snapshots.tar.gz > /dev/null 2>&1 # ~5mins
 
-    # Attempt to drop keyspace hho_ks (will likely throw a java.lang.RuntimeException)
+    # Attempt to drop keyspace hho_ks 
+    # It will likely throw a java.lang.RuntimeException
     echo "$(date): Drop keyspace hho_ks"
     cqlsh -e "drop keyspace hho_ks" > /dev/null 2>&1 
     sleep 1m
@@ -116,7 +118,8 @@ description = "Common Cron Job examples - Refresh Cassandra database"
     # Check Cassandra service status
     # sudo systemctl status cassandra
 
-    # Attempt to drop keyspace hho_ks again (will likely compliain: Cannot drop non existing keyspace 'hho_ks')
+    # Attempt to drop keyspace hho_ks again 
+    # It will likely complain: Cannot drop non existing keyspace 'hho_ks'
     cqlsh -e "drop keyspace hho_ks" > /dev/null 2>&1 
     sleep 1m
 
