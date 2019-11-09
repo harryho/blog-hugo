@@ -52,3 +52,6 @@ themes/*
 archived/sample/**/*.txt
 archived/sample/**/*.csv
 archived/sample/**/*.json
+
+# Vs code setting
+*.vscode/
