@@ -1,11 +1,12 @@
 +++
 title = "Project, Vector, String & Hashmap"
 description="Rustlang Introduction: Project management, Vector, String and Hashmap"
+weight = 2
 +++
 
 ### Project management
 
-* Rust has a number of features that allow you to manage your code’s organization, including which details are exposed, which details are private, and what names are in each scope in your programs. 
+* Rust has a number of features that allow you to manage your code’s organization, including which details are exposed, which details are private, and what names are in each scope in your programs.
 
     * Packages: A Cargo feature that lets you build, test, and share crates
     * Crates: A tree of modules that produces a library or executable

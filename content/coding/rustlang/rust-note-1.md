@@ -1,6 +1,7 @@
 +++
 title = "Data Types & Ownership"
 description="Rustlang Introduction: Mutability, Shadowing, Data Types, Ownership, Borrowing "
+weight = 1
 +++
 
 ### Mutability

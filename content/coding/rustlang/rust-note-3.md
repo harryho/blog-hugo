@@ -1,6 +1,7 @@
 +++
 title = "Error handling"
 description="Rustlang Introduction: Error "
+weight = 3
 +++
 
 

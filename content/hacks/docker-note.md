@@ -15,11 +15,11 @@ draft = true
 
 Build an image from a Dockerfile
 
-    $ docker build <path_of_Dockfile>
+    $ docker build <path_of_dockerfile>
 
 Build an image with tag
 
-    $ docker build -t <tag_name> <path_of_Dockfile>
+    $ docker build -t <tag_name> <path_of_dockerfile>
 
 ### run
 

@@ -1,6 +1,7 @@
 +++
 title = "Generic Type & Trait "
 description="Rustlang Introduction: Generic Type, Trait and Lifetime "
+weight = 4
 +++
 
 
@@ -538,6 +539,10 @@ fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a st
 }
 ```
 
+
+#### Summary
+
+Generic type parameters let you apply the code to different types. Traits and trait bounds ensure that even though the types are generic, they’ll have the behavior the code needs. You learned how to use lifetime annotations to ensure that this flexible code won’t have any dangling references. And all of this analysis happens at compile time, which doesn’t affect runtime performance!
 
 
 
