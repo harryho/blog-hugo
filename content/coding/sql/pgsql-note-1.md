@@ -60,7 +60,7 @@ REVOKE postgres FROM new_role;
 ```sql
 sudo su - user_id psql -c 'createdb db_01;'
 
-sudo su - user_id psql  -d db_01 -f init_db.sql
+sudo su - user_id psql  -d postgres -f init_db.sql
 ```
 
 * Grant the privilege of database __db_01__ to other user
@@ -68,3 +68,4 @@ sudo su - user_id psql  -d db_01 -f init_db.sql
 ```sql
  GRANT ALL PRIVILEGES ON DATABASE db_01 to another_user;
 ```
+

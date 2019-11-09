@@ -20,10 +20,11 @@ Cron job is one of most common techniques used on every Unix / Linux.
     * The script will check the backup tar balls within the folder `bacup`, which is under your user account as well.
     * The script will remove the latest backup if total backup files are over 5.
 
-* Cron Job setting
+* Cron Job setting - 
 
 ```bash
-20 15 * * * /home/${USER}/bin/housekeeping 2>&1  | logger
+# Replace the user_id with you actual user name
+20 15 * * * <user_id> /home/<user_id>/bin/housekeeping 2>&1  | logger
 ```
 
 * The script file
