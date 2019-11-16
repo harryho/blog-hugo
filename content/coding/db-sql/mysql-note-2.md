@@ -1,9 +1,9 @@
 +++
-title = "MySql Note - 1"
-description="Introduction of SQL for MySql"
+title = "MySql Note - 2"
+description="Introduction of SQL for MySql: DDL - Data Definition Language"
 +++
 
-> MySQL is the world's most popular open source database. Whether you are a fast growing web property, technology ISV or large enterprise, MySQL can cost-effectively help you deliver high performance, scalable database applications.
+> As one of most popular open source databases, MySql is mainly used as data storage, aka database. To store the data into MySql server, we need to use SQL - Structural Query Language. But before we store the data to MySql, we need to define the schema which tells MySql how to organize the data in the proper manner. To define the schema, there is a special set of SQL, which we call it DDL - Data Definition Language, such as, CREATE, DROP, ALTER, etc. 
 
 ### Create a new database 
 

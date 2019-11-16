@@ -1,6 +1,6 @@
 +++
-title = "MySql Note - 3"
-description="MySql schema & permission "
+title = "MySql Note - 4"
+description="Query schema & permission "
 +++
 
 ## Information schema
