@@ -13,7 +13,7 @@ description="A note for everyone who wants to use Command and Hot Key as hacker 
 * Use use hotkeys to open `Run` feature in two keystrokes: `WinKey + R`
 * Type `cmd` and press `Enter`
 
-	![Run](/img/windows-run-feature.png)
+    ![Run](/img/windows-run-feature.png)
 
 * Type `color A` to change the color of text to **Green**
 * Change the title to **Hacker Tool**

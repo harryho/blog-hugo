@@ -27,22 +27,22 @@ Before Java 1.5 you will following coding in many Java program.
     
     public class Util {
          
-    	public static String getLanguageCode(String country) {
+        public static String getLanguageCode(String country) {
     
-    		String languageCode = "en";
-    		switch (country) {
-    			case Country.AU:
-    				languageCode = "en-au";
-    				break;
-    			case Country.UK:
-    				languageCode = "en-uk";
-    				break;
-    			case Country.US:
-    				languageCode = "en-us";
-    				break;
-		    }
-		    return languageCode;
-    	}
+            String languageCode = "en";
+            switch (country) {
+                case Country.AU:
+                    languageCode = "en-au";
+                    break;
+                case Country.UK:
+                    languageCode = "en-uk";
+                    break;
+                case Country.US:
+                    languageCode = "en-us";
+                    break;
+            }
+            return languageCode;
+        }
     }
 ```
 
@@ -57,27 +57,27 @@ After Java 1.5, you will see the change below. Enum is the best container for co
 ```java
 // Use Enum as constant variable container
 public enum  Country {
-	Australia, UnitedKingdom, UnitedState
+    Australia, UnitedKingdom, UnitedState
 }
 
 public class Util {
-		
-	public static String getLanguageCode(Country country) {
+        
+    public static String getLanguageCode(Country country) {
 
-		String languageCode = "en";
-		switch (country) {
-			case Australia:
-				languageCode = "en-au";
-				break;
-			case UnitedKingdom:
-				languageCode = "en-uk";
-				break;
-			case UnitedState:
-				languageCode = "en-us";
-				break;
-		}
-		return languageCode;
-	}
+        String languageCode = "en";
+        switch (country) {
+            case Australia:
+                languageCode = "en-au";
+                break;
+            case UnitedKingdom:
+                languageCode = "en-uk";
+                break;
+            case UnitedState:
+                languageCode = "en-us";
+                break;
+        }
+        return languageCode;
+    }
 }
 ```
 
@@ -90,31 +90,31 @@ New Enum class can support flexible requirement. In the early version of Enum, t
 ```java
 // It can return customized name and simplify coding 
 public enum Country {
-	AU("Australia", "au","en-au"), 
-	UK("United Kingdom", "en-uk"),
-	US("United State", "us","en-us");
+    AU("Australia", "au","en-au"), 
+    UK("United Kingdom", "en-uk"),
+    US("United State", "us","en-us");
 
-	String countryName;
-	String countryCode;
-	String languageCode;
-	
-	private Country(String name, String code) {
-		countryName = name;
-		countryCode = code;
-	}
+    String countryName;
+    String countryCode;
+    String languageCode;
+    
+    private Country(String name, String code) {
+        countryName = name;
+        countryCode = code;
+    }
 
-	public String getCode() {
-		return countryCode;
-	}
-	
-	public String getLanguageCode() {
-		return languageCode;
-	}
-	
-	@Override
-	public String toString() {
-		return countryName;
-	}
+    public String getCode() {
+        return countryCode;
+    }
+    
+    public String getLanguageCode() {
+        return languageCode;
+    }
+    
+    @Override
+    public String toString() {
+        return countryName;
+    }
 }
 ```
 
@@ -124,84 +124,84 @@ The Uitl class can convert any country name or country code to Enum Country, vic
 public class Util {
         
     public static Country convertCountryNameOrCode(String nameOrCode ) {
-	    
-		Country country = null;
-		switch (nameOrCode) {
-			case "au":
-			case "AU":
-			case "Australia":
-				country = Country.AU;
-				break;
-			case "uk":
-			case "UK":	
-			case "United Kingdom":
-				country = Country.UK;
-				break;
-			case "us":
-			case "US":	
-			case "United State":
-				country = Country.UK;
-				break;
-		}
-		return country;
-	}
-	
-	public static String getCountryName(  Country country ){
-		String countryName = null;
-		switch (country){
-			case AU:
-				countryName = Country.AU.toString();
-				break;
-			case US:
-				countryName = Country.UK.toString();
-				break;
-			case UK:
-				countryName = Country.US.toString();
-				break;
-			default:
-				System.err.println("Unknow Country");
-				assert false;
-				break;
-		}
-		return countryName;
-	}
+        
+        Country country = null;
+        switch (nameOrCode) {
+            case "au":
+            case "AU":
+            case "Australia":
+                country = Country.AU;
+                break;
+            case "uk":
+            case "UK":    
+            case "United Kingdom":
+                country = Country.UK;
+                break;
+            case "us":
+            case "US":    
+            case "United State":
+                country = Country.UK;
+                break;
+        }
+        return country;
+    }
+    
+    public static String getCountryName(  Country country ){
+        String countryName = null;
+        switch (country){
+            case AU:
+                countryName = Country.AU.toString();
+                break;
+            case US:
+                countryName = Country.UK.toString();
+                break;
+            case UK:
+                countryName = Country.US.toString();
+                break;
+            default:
+                System.err.println("Unknow Country");
+                assert false;
+                break;
+        }
+        return countryName;
+    }
 
-	
-	public static String getCountryCode(  Country country ){
-		String countryCode = null;
-		switch (country){
-			case AU:
-				countryCode = Country.AU.getCode();
-				break;
-			case US:
-				countryCode = Country.UK.getCode();
-				break;
-			case UK:
-				countryCode = Country.US.getCode();
-				break;
-			default:
-				System.err.println("Unknow Country");
-				assert false;
-				break;
-		}
-		return countryCode;
-	}
+    
+    public static String getCountryCode(  Country country ){
+        String countryCode = null;
+        switch (country){
+            case AU:
+                countryCode = Country.AU.getCode();
+                break;
+            case US:
+                countryCode = Country.UK.getCode();
+                break;
+            case UK:
+                countryCode = Country.US.getCode();
+                break;
+            default:
+                System.err.println("Unknow Country");
+                assert false;
+                break;
+        }
+        return countryCode;
+    }
         
     public static String getLanguageCode(Country country) {
     
-    		String languageCode = "en";
-    		switch (country) {
-    			case AU:
-    				languageCode = Country.AU.getLanguageCode() ;
-    				break;
-    			case UK:
-    				languageCode =  Country.UK.getLanguageCode();
-    				break;
-    			case US:
-    				languageCode =  Country.US.getLanguageCode();
-    				break;
-		    }
-		    return languageCode;
+            String languageCode = "en";
+            switch (country) {
+                case AU:
+                    languageCode = Country.AU.getLanguageCode() ;
+                    break;
+                case UK:
+                    languageCode =  Country.UK.getLanguageCode();
+                    break;
+                case US:
+                    languageCode =  Country.US.getLanguageCode();
+                    break;
+            }
+            return languageCode;
     }
 }
 ```

@@ -100,24 +100,24 @@ public class DateTimeApiDemo {
     }
 
     public static void parseStr(DateTimeFormatter formatter, String text) {
-		try {
-			TemporalAccessor ta = formatter.parseBest(text, OffsetDateTime::from, LocalDateTime::from, LocalDate::from);
-			if (ta instanceof OffsetDateTime) {
-				OffsetDateTime odt = OffsetDateTime.from(ta);
-				System.out.println("OffsetDateTime: " + odt);
-			} else if (ta instanceof LocalDateTime) {
-				LocalDateTime ldt = LocalDateTime.from(ta);
-				System.out.println("LocalDateTime: " + ldt);
-			} else if (ta instanceof LocalDate) {
-				LocalDate ld = LocalDate.from(ta);
-				System.out.println("LocalDate: " + ld);
-			} else {
-				System.out.println("Parsing returned: " + ta);
-			}
-		} catch (DateTimeParseException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+        try {
+            TemporalAccessor ta = formatter.parseBest(text, OffsetDateTime::from, LocalDateTime::from, LocalDate::from);
+            if (ta instanceof OffsetDateTime) {
+                OffsetDateTime odt = OffsetDateTime.from(ta);
+                System.out.println("OffsetDateTime: " + odt);
+            } else if (ta instanceof LocalDateTime) {
+                LocalDateTime ldt = LocalDateTime.from(ta);
+                System.out.println("LocalDateTime: " + ldt);
+            } else if (ta instanceof LocalDate) {
+                LocalDate ld = LocalDate.from(ta);
+                System.out.println("LocalDate: " + ld);
+            } else {
+                System.out.println("Parsing returned: " + ta);
+            }
+        } catch (DateTimeParseException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -157,7 +157,7 @@ public class DateTimeApiDemo {
         Instant i4 = i2.minus(d2);
         System.out.println("i1.plus(d1):" + i3); // i1.plus(d1):1970-01-01T00:01:15Z
 
-		System.out.println("i2.minus(d2):" + i4);  // i2.minus(d2):1970-01-01T00:01:12Z
+        System.out.println("i2.minus(d2):" + i4);  // i2.minus(d2):1970-01-01T00:01:12Z
 
         // Add two durations
         System.out.println("d1.plus(d2):" + d1.plus(d2)); // d1.plus(d2):PT38S
@@ -187,11 +187,11 @@ public class DateTimeApiDemo {
         Period p3 = Period.ofMonths(-3); // -3 months
         Period p4 = Period.ofWeeks(3); // 3 weeks (21 days)
 
-		// Date Adjuster
-		LocalDate ld3 = ld1.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-		System.out.println(ld3);
-		ld3 = ld1.with(TemporalAdjusters.nextOrSame(DayOfWeek.TUESDAY));
-		System.out.println(ld3);
+        // Date Adjuster
+        LocalDate ld3 = ld1.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+        System.out.println(ld3);
+        ld3 = ld1.with(TemporalAdjusters.nextOrSame(DayOfWeek.TUESDAY));
+        System.out.println(ld3);
 
         // Date Time Format         
         System.out.println(format(ld, "M/d/yyyy"));
@@ -202,12 +202,12 @@ public class DateTimeApiDemo {
         System.out.println(format(ld, "'Month' q 'in' QQQ"));
         System.out.println(format(ld, "[MM-dd-yyyy][' at' HH:mm:ss]"));
 
-		// Parse date time
-		DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyy-MM-dd['T'HH:mm:ss[Z]]");
-		parseStr(parser, "2012-05-31"); //  LocalDate: 2012-05-31
-		parseStr(parser, "2012-05-31T16:30:12"); // LocalDateTime: 2012-05-31T16:30:12
-		parseStr(parser, "2012-05-31T16:30:12-0500"); // OffsetDateTime: 2012-05-31T16:30:12-05:00
-		parseStr(parser, "2012-05-31Hello"); // Text '2012-05-31Hello' could not be parsed, unparsed text found at index 10
+        // Parse date time
+        DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyy-MM-dd['T'HH:mm:ss[Z]]");
+        parseStr(parser, "2012-05-31"); //  LocalDate: 2012-05-31
+        parseStr(parser, "2012-05-31T16:30:12"); // LocalDateTime: 2012-05-31T16:30:12
+        parseStr(parser, "2012-05-31T16:30:12-0500"); // OffsetDateTime: 2012-05-31T16:30:12-05:00
+        parseStr(parser, "2012-05-31Hello"); // Text '2012-05-31Hello' could not be parsed, unparsed text found at index 10
 
 
 

@@ -11,12 +11,12 @@ weight=22
 
 ```go
 if err != nil {
-	fmt.Printf("Program stopping with error %v", err)
-	os.Exit(1)
+    fmt.Printf("Program stopping with error %v", err)
+    os.Exit(1)
 }
 // OR :
 if err != nil {
-	panic("ERROR occurred: " + err.Error())
+    panic("ERROR occurred: " + err.Error())
 }
 ```
 

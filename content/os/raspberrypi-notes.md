@@ -104,7 +104,7 @@ Device
 You will see table as blew.
 
 
- Hostname | MAC Address | IP Address |	Expires In 
+ Hostname | MAC Address | IP Address |    Expires In 
 -----|---|----|---
  PC-1 | 2f:3f:09:ff:f5:24 | 192.168.1.7 | x hours x mins 
  PC-2 | c0:9f:05:ff:f9:14 | 192.168.1.8 | x hours x mins 
@@ -339,20 +339,20 @@ cat /etc/cpuinfo
 
 * Check the table below to find your model
 
-MODEL AND PI REVISION |	MEMORY |	HARDWARE REVISION CODE FROM CPUINFO
+MODEL AND PI REVISION |    MEMORY |    HARDWARE REVISION CODE FROM CPUINFO
 ---|-----|------
-Model B Revision 1.0	| 256MB | 	0002
-Model B Revision 1.0 + ECN0001 (no fuses, D14 removed)	| 256MB | 	0003
-Model B Revision 2.0 Mounting holes	| 256MB | 	0004 0005 0006
-Model A Mounting holes	| 256MB | 	0007,0008,0009
-Model B Revision 2.0 Mounting holes	| 512MB | 	000d 000e 000f
-Model B+	| 512MB | 	0010
-Compute Module	| 512MB | 	0011
-Model A+	| 256MB | 	0012
-Pi 2 Model B	| 1GB | 	a01041 (Sony, UK) a21041 (Embest, China)
-PiZero	| 512MB | 	900092(no camera connector) 900093(camera connector)
-Pi 3 Model B	| 1GB | 	a02082 (Sony, UK) a22082 (Embest, China)
-PiZero W	| 512MB | 	9000c1
+Model B Revision 1.0    | 256MB |     0002
+Model B Revision 1.0 + ECN0001 (no fuses, D14 removed)    | 256MB |     0003
+Model B Revision 2.0 Mounting holes    | 256MB |     0004 0005 0006
+Model A Mounting holes    | 256MB |     0007,0008,0009
+Model B Revision 2.0 Mounting holes    | 512MB |     000d 000e 000f
+Model B+    | 512MB |     0010
+Compute Module    | 512MB |     0011
+Model A+    | 256MB |     0012
+Pi 2 Model B    | 1GB |     a01041 (Sony, UK) a21041 (Embest, China)
+PiZero    | 512MB |     900092(no camera connector) 900093(camera connector)
+Pi 3 Model B    | 1GB |     a02082 (Sony, UK) a22082 (Embest, China)
+PiZero W    | 512MB |     9000c1
 
 ## Setup Wifi Adapter
 

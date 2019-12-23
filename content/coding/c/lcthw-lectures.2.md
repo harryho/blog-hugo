@@ -403,7 +403,7 @@ int List_bubble_sort(List * list, List_compare cmp)
     int sorted = 1;
 
     if (List_count(list) <= 1) {
-        return 0;		// already sorted
+        return 0;        // already sorted
     }
 
     do {
@@ -1744,7 +1744,7 @@ Hashmap *Hashmap_create(Hashmap_compare compare, Hashmap_hash hash)
     map->hash = hash == NULL ? default_hash : hash;
     map->buckets = DArray_create(
             sizeof(DArray *), DEFAULT_NUMBER_OF_BUCKETS);
-    map->buckets->end = map->buckets->max;	// fake out expanding it
+    map->buckets->end = map->buckets->max;    // fake out expanding it
     check_mem(map->buckets);
 
     return map;
@@ -1870,7 +1870,7 @@ void *Hashmap_get(Hashmap * map, void *key)
 
     return node->data;
 
-error:			// fallthrough
+error:            // fallthrough
     return NULL;
 }
 
@@ -2036,7 +2036,7 @@ uint32_t Hashmap_djb_hash(void *data)
     int i = 0;
 
     for (i = 0; i < blength(s); i++) {
-        hash = ((hash << 5) + hash) + bchare(s, i, 0);	/* hash * 33 + c */
+        hash = ((hash << 5) + hash) + bchare(s, i, 0);    /* hash * 33 + c */
     }
 
     return hash;
@@ -2156,7 +2156,7 @@ static inline const unsigned char *String_base_search(const unsigned
         haystack += skip_chars[haystack[last]];
     }
 
-error:			// fallthrough
+error:            // fallthrough
     return NULL;
 }
 

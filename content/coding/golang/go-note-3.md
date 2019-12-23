@@ -23,19 +23,19 @@ import (
 )
 
 type TagType struct { //tags
-	field1 bool   "An important answer"
-	field2 string "The name of the thing"
-	field3 int    "How much there are"
+    field1 bool   "An important answer"
+    field2 string "The name of the thing"
+    field3 int    "How much there are"
 }
 
 func main() {
-	tt := TagType{true, "Barak Obama", 1}
-	for i := 0; i < 3; i++ {
-		refTag(tt, i)
-	}
+    tt := TagType{true, "Barak Obama", 1}
+    for i := 0; i < 3; i++ {
+        refTag(tt, i)
+    }
 }
 func refTag(tt TagType, ix int) {
-	ttType := reflect.TypeOf(tt)
+    ttType := reflect.TypeOf(tt)
     ixField := ttType.Field(ix)
     fmt.Printf("%v\n", ixField.Tag)
 }
@@ -49,18 +49,18 @@ func refTag(tt TagType, ix int) {
 
 ```go
 type innerS struct {
-	in1 int
-	in2 int
+    in1 int
+    in2 int
 }
 type outerS struct {
-	b int
-	c float32
-	int // anonymous field
-	innerS // anonymous field
+    b int
+    c float32
+    int // anonymous field
+    innerS // anonymous field
 }
 func Func(){
-	outer2 := outerS{6, 7.5, 60, innerS{5, 10}}
-	fmt.Println("output : ", outer2) // output: {6 7.5 60 {5 10}}
+    outer2 := outerS{6, 7.5, 60, innerS{5, 10}}
+    fmt.Println("output : ", outer2) // output: {6 7.5 60 {5 10}}
 }
 
 ```
@@ -152,55 +152,55 @@ Method2(param_list) return_type
 
 ```go
 type Shape interface {
-	Area() float32
+    Area() float32
 }
 type Square struct {
-	side float32
+    side float32
 }
 
 type Circle struct {
-	radius float32
+    radius float32
 }
 
 func (sq *Square) Area() float32 {
-	return sq.side * sq.side
+    return sq.side * sq.side
 }
 
 func (c *Circle) Area() float32 {
-	return c.radius * c.radius * math.Pi
+    return c.radius * c.radius * math.Pi
 }
 
 type Rectangle struct {
-	length, width float32
+    length, width float32
 }
 
 func (r Rectangle) Area() float32 {
-	return r.length * r.width
+    return r.length * r.width
 }
 
 func main() {
-	shapes := []Shape{Rectangle{5, 3}, &Square{5}, &Circle{5}}
-	fmt.Println("Looping through shapes for area ...")
-	for n, _ := range shapes {
-		fmt.Println("Shape details: ", shapes[n])
-		fmt.Println("Area of this shape is: ", shapes[n].Area())
-	}
+    shapes := []Shape{Rectangle{5, 3}, &Square{5}, &Circle{5}}
+    fmt.Println("Looping through shapes for area ...")
+    for n, _ := range shapes {
+        fmt.Println("Shape details: ", shapes[n])
+        fmt.Println("Area of this shape is: ", shapes[n].Area())
+    }
 
-	var shape Shape
-	shape = &Square{4}
+    var shape Shape
+    shape = &Square{4}
 
-	switch t := shape.(type) {
-	case *Square:
-		fmt.Printf("Type Square %T with value %v\n", t, t)
-	case *Circle:
-		fmt.Printf("Type Circle %T with value %v\n", t, t)
-	case *Rectangle:
-		fmt.Printf("Type Rectangle %T with value %v\n", t, t)
-	case nil:
-		fmt.Println("nil value: nothing to check?")
-	default:
-		fmt.Printf("Unexpected type %T", t)
-	}
+    switch t := shape.(type) {
+    case *Square:
+        fmt.Printf("Type Square %T with value %v\n", t, t)
+    case *Circle:
+        fmt.Printf("Type Circle %T with value %v\n", t, t)
+    case *Rectangle:
+        fmt.Printf("Type Rectangle %T with value %v\n", t, t)
+    case nil:
+        fmt.Println("nil value: nothing to check?")
+    default:
+        fmt.Printf("Unexpected type %T", t)
+    }
 }
 
 // Looping through shapes for area ...
@@ -226,22 +226,22 @@ type Any interface{}
 
 ```go
 func classifier(items ...interface{}) {
-	for i, x := range items {
-		switch x.(type) {
-		case bool:
-			fmt.Printf("param #%d is a bool\n", i)
-		case float64:
-			fmt.Printf("param #%d is a float64\n", i)
-		case int, int64:
-			fmt.Printf("param #%d is an int\n", i)
-		case nil:
-			fmt.Printf("param #%d is nil\n", i)
-		case string:
-			fmt.Printf("param #%d is a string\n", i)
-		default:
-			fmt.Printf("param #%d’s type is unknown\n", i)
-		}
-	}
+    for i, x := range items {
+        switch x.(type) {
+        case bool:
+            fmt.Printf("param #%d is a bool\n", i)
+        case float64:
+            fmt.Printf("param #%d is a float64\n", i)
+        case int, int64:
+            fmt.Printf("param #%d is an int\n", i)
+        case nil:
+            fmt.Printf("param #%d is nil\n", i)
+        case string:
+            fmt.Printf("param #%d is a string\n", i)
+        default:
+            fmt.Printf("param #%d’s type is unknown\n", i)
+        }
+    }
 }
 ```
 
@@ -267,18 +267,18 @@ func classifier(items ...interface{}) {
 
 ```go
 func modifyValByReflect() {
-	var x float64 = 3.4
-	v := reflect.ValueOf(x)                      // Pass value
-	fmt.Println("Settability of v:", v.CanSet()) // false
-	v = reflect.ValueOf(&x)                      // Note: take the address of x.
-	fmt.Println("type of v:", v.Type())          // float64
-	fmt.Println("Settability of v:", v.CanSet()) // false
-	v = v.Elem()
-	fmt.Println("The Elem of v is: ", v)         // <float64 Value>
-	fmt.Println("Settability of v:", v.CanSet()) // true
-	v.SetFloat(3.1415)                           // this works!
-	fmt.Println(v.Interface())
-	fmt.Println(v) // <float64 Value>
+    var x float64 = 3.4
+    v := reflect.ValueOf(x)                      // Pass value
+    fmt.Println("Settability of v:", v.CanSet()) // false
+    v = reflect.ValueOf(&x)                      // Note: take the address of x.
+    fmt.Println("type of v:", v.Type())          // float64
+    fmt.Println("Settability of v:", v.CanSet()) // false
+    v = v.Elem()
+    fmt.Println("The Elem of v is: ", v)         // <float64 Value>
+    fmt.Println("Settability of v:", v.CanSet()) // true
+    v.SetFloat(3.1415)                           // this works!
+    fmt.Println(v.Interface())
+    fmt.Println(v) // <float64 Value>
 }
 ```
 

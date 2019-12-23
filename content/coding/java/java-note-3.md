@@ -28,44 +28,44 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
 public class CustomFileVisitor extends SimpleFileVisitor<Path> {
-	@Override
-	public FileVisitResult postVisitDirectory(Path dir , IOException arg1) throws IOException {
-		System.out.println( "post visit dir :  "+  dir );
-		return FileVisitResult.CONTINUE;
+    @Override
+    public FileVisitResult postVisitDirectory(Path dir , IOException arg1) throws IOException {
+        System.out.println( "post visit dir :  "+  dir );
+        return FileVisitResult.CONTINUE;
         }
 
         @Override
-	public FileVisitResult preVisitDirectory(Path dir , IOException arg1) throws IOException {
-		System.out.println( "post visit dir :  "+  dir );
-		return FileVisitResult.CONTINUE;
+    public FileVisitResult preVisitDirectory(Path dir , IOException arg1) throws IOException {
+        System.out.println( "post visit dir :  "+  dir );
+        return FileVisitResult.CONTINUE;
         }
 
-	@Override
-	public FileVisitResult visitFile(Path file, BasicFileAttributes attr)
-			throws IOException {
-		 if ( attr.isSymbolicLink() )
-		  { System.out.println( " symbolic link  :  "+  file  );
-		  
-		  }else if (  attr.isSymbolicLink() ){			  
-			  System.out.println( " regular file : "+ file );
-		  }
-		return FileVisitResult.CONTINUE;
-	}
-	 
-	@Override
-	public FileVisitResult visitFileFailed(Path file, IOException exc)
-			throws IOException {		
-		 System.err.println( exc.getMessage());
-		return FileVisitResult.CONTINUE;
-	}
+    @Override
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attr)
+            throws IOException {
+         if ( attr.isSymbolicLink() )
+          { System.out.println( " symbolic link  :  "+  file  );
+          
+          }else if (  attr.isSymbolicLink() ){              
+              System.out.println( " regular file : "+ file );
+          }
+        return FileVisitResult.CONTINUE;
+    }
+     
+    @Override
+    public FileVisitResult visitFileFailed(Path file, IOException exc)
+            throws IOException {        
+         System.err.println( exc.getMessage());
+        return FileVisitResult.CONTINUE;
+    }
 }
 ```
 
 To use this customized  is so easy. Just 3 lines coding you can test it by yourself. 
 ```
-		CustomFileVisitor fileVisitor = new CustomFileVisitor();
-		Path path = Paths.get("TestDir");
-		Files.walkFileTree(path, fileVisitor);
+        CustomFileVisitor fileVisitor = new CustomFileVisitor();
+        Path path = Paths.get("TestDir");
+        Files.walkFileTree(path, fileVisitor);
 ```
 
 ### ARM 
@@ -80,17 +80,17 @@ In the past, java programmers use any external resources like file, printer or a
 FileInputStream exchangeCurrencyReader= null;
 FileOutputStream exchangeCurrencyWriter = null;
 try {
-	exchangeCurrencyReader = new FileInputStream("AUDvsUSD.txt");
-	exchangeCurrencyWriter = new FileOutputStream("AUDvsUSD.txt");
-	int var;
-	while (var = exchangeCurrencyReader.read()) != -1)
-		exchangeCurrencyWriter.write(var);
+    exchangeCurrencyReader = new FileInputStream("AUDvsUSD.txt");
+    exchangeCurrencyWriter = new FileOutputStream("AUDvsUSD.txt");
+    int var;
+    while (var = exchangeCurrencyReader.read()) != -1)
+        exchangeCurrencyWriter.write(var);
 } 
 finally {
-	if (exchangeCurrencyReader!= null)
-		exchangeCurrencyReader.close();
-	if (exchangeCurrencyWriter!= null)
-		exchangeCurrencyWriter.close();
+    if (exchangeCurrencyReader!= null)
+        exchangeCurrencyReader.close();
+    if (exchangeCurrencyWriter!= null)
+        exchangeCurrencyWriter.close();
 }
 ```
 
@@ -98,7 +98,7 @@ finally {
 
 ```java
 try ( FileInputStream exchangeCurrencyReader = new FileInputStream("AUDvsUSD.txt");
-	FileOutputStream exchangeCurrencyWriter = new FileOutputStream("AUDvsUSD.txt")){
+    FileOutputStream exchangeCurrencyWriter = new FileOutputStream("AUDvsUSD.txt")){
       int var;
       while((var= exchangeCurrencyReader.read()) != -1 )
             exchangeCurrencyWriter.write();
@@ -130,31 +130,31 @@ import java.util.Map;
 
 public class FileWatchService {
 
-	public static void watchFileUpdate() {
-		try (WatchService service = FileSystems.getDefault().newWatchService()) {
-			Map<WatchKey, Path> eventMap = new HashMap<>();
-			Path dir = Paths.get("TestDir");
+    public static void watchFileUpdate() {
+        try (WatchService service = FileSystems.getDefault().newWatchService()) {
+            Map<WatchKey, Path> eventMap = new HashMap<>();
+            Path dir = Paths.get("TestDir");
 
-			eventMap.put(dir.register(service, StandardWatchEventKinds.ENTRY_MODIFY),dir);
+            eventMap.put(dir.register(service, StandardWatchEventKinds.ENTRY_MODIFY),dir);
 
-			WatchKey key;
-			do {
-				key = service.take();
-				Path eventPath = eventMap.get(key);
-				for (WatchEvent<?> event : key.pollEvents()) {
-					WatchEvent.Kind<?> kind = event.kind();
-					Path path = (Path) event.context();
-					System.out.println(eventPath + " : " + kind + "  : " + path);
-				}
-			} while (key.reset());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void main (String [] args ){
-	   watchFileUpdate();
-	}
+            WatchKey key;
+            do {
+                key = service.take();
+                Path eventPath = eventMap.get(key);
+                for (WatchEvent<?> event : key.pollEvents()) {
+                    WatchEvent.Kind<?> kind = event.kind();
+                    Path path = (Path) event.context();
+                    System.out.println(eventPath + " : " + kind + "  : " + path);
+                }
+            } while (key.reset());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void main (String [] args ){
+       watchFileUpdate();
+    }
 }
 ```
 

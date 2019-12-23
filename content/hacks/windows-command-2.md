@@ -82,7 +82,7 @@ runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & \
 
 **sc query**
 
-* Basic usage 	
+* Basic usage     
 
 ```dos
 REM query all service on the PC -- <yourpcname>

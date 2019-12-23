@@ -87,71 +87,71 @@ function as goroutine populating the channel
 
 #### Channel Iterator pattern
 
-* 
+* Channel Iterator pattern: Implement the Iter() method of a container returns a channel for the calling for-loop to read from.
 
-```go
-func (c *container) Iter() <-chan items {
-	ch := make(chan item)
-	go func() {
-		for i := 0; i < c.Len(); i++ {
-			// or use a for-range loop
-			ch <- c.items[i]
-		}
-	}()
-	return ch
-}
+    ```go
+    func (c *container) Iter() <-chan items {
+        ch := make(chan item)
+        go func() {
+            for i := 0; i < c.Len(); i++ {
+                // or use a for-range loop
+                ch <- c.items[i]
+            }
+        }()
+        return ch
+    }
 
-// The code which calls this method can then iterate over the container
-for x := range container.Iter() { ... }
-```
+    // The code which calls this method can then iterate over the container
+    for x := range container.Iter() { ... }
+    ```
 
 
 #### Limiting the number of requests 
 
 * Limiting the number of requests processed concurrently
 
-```go
-const (
-	AvailableMemory         = 10 << 20                                  // 10 MB, for example
-	AverageMemoryPerRequest = 10 << 10                                  // 10 KB
-	MAXREQS                 = AvailableMemory / AverageMemoryPerRequest // here amounts to 1000
-)
+    ```go
+    const (
+        AvailableMemory         = 10 << 20                                  // 10 MB, for example
+        AverageMemoryPerRequest = 10 << 10                                  // 10 KB
+        MAXREQS                 = AvailableMemory / AverageMemoryPerRequest // here amounts to 1000
+    )
 
-var sem = make(chan int, MAXREQS)
+    var sem = make(chan int, MAXREQS)
 
-type Request struct {
-	a, b   int
-	replyc chan int
-}
+    type Request struct {
+        a, b   int
+        replyc chan int
+    }
 
-func process(r *Request) {
-	// Do something
-	// May take a long time and use a lot of memory or CPU
-}
-func handle(r *Request) {
-	process(r)
-	// signal done: enable next request to start
-	// by making 1 empty place in the buffer
-	<-sem
-}
-func Server(queue chan *Request) {
-	for {
-		sem <- 1
-		// blocks when channel is full (1000 requests are active)
-		// so wait here until there is capacity to process a request
-		// (doesn’t matter what we put in it)
-		request := <-queue
-		go handle(request)
-	}
-}
+    func process(r *Request) {
+        // Do something
+        // May take a long time and use a lot of memory or CPU
+    }
+    func handle(r *Request) {
+        process(r)
+        // signal done: enable next request to start
+        // by making 1 empty place in the buffer
+        <-sem
+    }
+    func Server(queue chan *Request) {
+        for {
+            sem <- 1
+            // blocks when channel is full (1000 requests are active)
+            // so wait here until there is capacity to process a request
+            // (doesn’t matter what we put in it)
+            request := <-queue
+            go handle(request)
+        }
+    }
 
-func main() {
-	fmt.Println(" AvailableMemory ", AvailableMemory)
-	fmt.Println(" AverageMemoryPerRequest ", AverageMemoryPerRequest)
-	queue := make(chan *Request)
-	go Server(queue)
-}
-```
+    func main() {
+        fmt.Println(" AvailableMemory ", AvailableMemory)
+        fmt.Println(" AverageMemoryPerRequest ", AverageMemoryPerRequest)
+        queue := make(chan *Request)
+        go Server(queue)
+    }
+    ```
 
 
 
@@ -164,26 +164,26 @@ func main() {
 const NCPU = 4
 
 func DoAll() {
-	sem := make(chan int, NCPU) // Buffering optional but sensible.
-	for i := 0; i < NCPU; i++ {
-		go DoPart(sem)
+    sem := make(chan int, NCPU) // Buffering optional but sensible.
+    for i := 0; i < NCPU; i++ {
+        go DoPart(sem)
 
-	}
-	// Drain the channel sem, waiting for NCPU tasks to complete
-	for i := 0; i < NCPU; i++ {
-		<-sem // wait for one task to complete
-	}
-	// All done.
+    }
+    // Drain the channel sem, waiting for NCPU tasks to complete
+    for i := 0; i < NCPU; i++ {
+        <-sem // wait for one task to complete
+    }
+    // All done.
 }
 func DoPart(sem chan int) {
-	// do the part of the computation
+    // do the part of the computation
 
-	sem <- 1 // signal that this piece is done
+    sem <- 1 // signal that this piece is done
 }
 
 func main() {
-	runtime.GOMAXPROCS(NCPU)
-	DoAll()
+    runtime.GOMAXPROCS(NCPU)
+    DoAll()
 }
 ```
 
@@ -240,43 +240,43 @@ func Worker(in, out chan *Task) {
 
 ```go
 type Person struct {
-	Name   string
-	salary float64
-	chF    chan func()
+    Name   string
+    salary float64
+    chF    chan func()
 }
 
 func NewPerson(name string, salary float64) *Person {
-	p := &Person{name, salary, make(chan func())}
-	go p.backend()
-	return p
+    p := &Person{name, salary, make(chan func())}
+    go p.backend()
+    return p
 }
 func (p *Person) backend() {
-	for f := range p.chF {
-		f()
-	}
+    for f := range p.chF {
+        f()
+    }
 }
 
 // Set salary.
 func (p *Person) SetSalary(sal float64) {
-	p.chF <- func() { p.salary = sal }
+    p.chF <- func() { p.salary = sal }
 }
 
 // Retrieve salary.
 func (p *Person) Salary() float64 {
-	fChan := make(chan float64)
-	p.chF <- func() { fChan <- p.salary }
-	return <-fChan
+    fChan := make(chan float64)
+    p.chF <- func() { fChan <- p.salary }
+    return <-fChan
 }
 func (p *Person) String() string {
-	return "Person - name is: " + p.Name + " - salary is: " + strconv.
-		FormatFloat(p.Salary(), 'f', 2, 64)
+    return "Person - name is: " + p.Name + " - salary is: " + strconv.
+        FormatFloat(p.Salary(), 'f', 2, 64)
 }
 func main() {
-	bs := NewPerson("Smith Bill", 2500.5)
-	fmt.Println(bs)
-	bs.SetSalary(4000.25)
-	fmt.Println("Salary changed:")
-	fmt.Println(bs)
+    bs := NewPerson("Smith Bill", 2500.5)
+    fmt.Println(bs)
+    bs.SetSalary(4000.25)
+    fmt.Println("Salary changed:")
+    fmt.Println(bs)
 }
 /* Output Person - name is: Smith Bill - salary is: 2500.50
 Salary changed:
@@ -304,37 +304,37 @@ Person - name is: Smith Bill - salary is: 4000.25 *
 
 ```go
 func main() {
-	fmt.Println("sync", testing.Benchmark(BenchmarkChannelSync).String())
-	fmt.Println("buffered", testing.Benchmark(BenchmarkChannelBuffered).String())
+    fmt.Println("sync", testing.Benchmark(BenchmarkChannelSync).String())
+    fmt.Println("buffered", testing.Benchmark(BenchmarkChannelBuffered).String())
 }
 
 func BenchmarkChannelSync(b *testing.B) {
-	ch := make(chan int)
-	go func() {
-		for i := 0; i < b.N; i++ {
-			ch <- i
-		}
-		close(ch)
-	}()
-	for _ = range ch {
-	}
+    ch := make(chan int)
+    go func() {
+        for i := 0; i < b.N; i++ {
+            ch <- i
+        }
+        close(ch)
+    }()
+    for _ = range ch {
+    }
 }
 
 func BenchmarkChannelBuffered(b *testing.B) {
-	ch := make(chan int, 128)
-	go func() {
-		for i := 0; i < b.N; i++ {
-			ch <- i
-		}
-		close(ch)
-	}()
-	for _ = range ch {
-	}
+    ch := make(chan int, 128)
+    go func() {
+        for i := 0; i < b.N; i++ {
+            ch <- i
+        }
+        close(ch)
+    }()
+    for _ = range ch {
+    }
 }
 
 /* Output:
-sync  3000000	       420 ns/op
-buffered 10000000	       103 ns/op
+sync  3000000           420 ns/op
+buffered 10000000           103 ns/op
 */
 ```
 

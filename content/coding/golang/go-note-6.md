@@ -17,9 +17,9 @@ weight=6
 
 ```go
 func main() {
-	go func() {
-		println("Hello")
-	}()
+    go func() {
+        println("Hello")
+    }()
 }
 ```
 
@@ -28,8 +28,8 @@ goroutine to start.
 
 ```go
 func main() {
-	go func() {
-		println("Hello") // Hello
+    go func() {
+        println("Hello") // Hello
     }()
     time.Sleep(3000)
 }
@@ -39,18 +39,18 @@ func main() {
 
 ```go
 func main() {
-	go func() {
-		for i := 0; i < 10; i++ {
+    go func() {
+        for i := 0; i < 10; i++ {
             println("Hello")
             time.Sleep(2000)
-		}
-	}()
-	go func() {
-		for i := 0; i < 10; i++ {
-			println("World")
-		}
-	}()
-	time.Sleep(9999)
+        }
+    }()
+    go func() {
+        for i := 0; i < 10; i++ {
+            println("World")
+        }
+    }()
+    time.Sleep(9999)
 }
 ```
 
@@ -58,21 +58,21 @@ func main() {
 
 ```go
 func main() {
-	runtime.GOMAXPROCS(4)
-	go func() {
-		for i := 0; i < 10; i++ {
-			println("Hello")
-			time.Sleep(500)
-		}
+    runtime.GOMAXPROCS(4)
+    go func() {
+        for i := 0; i < 10; i++ {
+            println("Hello")
+            time.Sleep(500)
+        }
 
-	}()
-	go func() {
-		for i := 0; i < 10; i++ {
-			println("World")
-			time.Sleep(500)
-		}
-	}()
-	time.Sleep(999999)
+    }()
+    go func() {
+        for i := 0; i < 10; i++ {
+            println("World")
+            time.Sleep(500)
+        }
+    }()
+    time.Sleep(999999)
 }
 ```
 
@@ -83,40 +83,40 @@ func main() {
 const watchedPath = "./source"
 
 func main() {
-	for {
-		d, _ := os.Open(watchedPath)
-		files, _ := d.Readdir(-1)
-		for _, fi := range files {
-			filePath := watchedPath + "/" + fi.Name()
-			f, _ := os.Open(filePath)
-			data, _ := ioutil.ReadAll(f)
-			f.Close()
-			os.Remove(filePath)
-			go func(data string) {
-				reader := csv.NewReader(strings.NewReader(data))
-				records, _ := reader.ReadAll()
-				for _, r := range records {
-					invoice := new(Invoice)
-					invoice.Number = r[0]
-					invoice.Amount, _ = strconv.ParseFloat(r[1], 64)
-					invoice.PurchaseOrderNumber, _ = strconv.Atoi(r[2])
-					unixTime, _ := strconv.ParseInt(r[3], 10, 64)
-					invoice.InvoiceDate = time.Unix(unixTime, 0)
-					
-					fmt.Printf("Received Invoice '%v' for $%.2f and submitted for processing\n", invoice.Number, invoice.Amount)
-				}
-			}(string(data))
-		}
-		d.Close()
-		time.Sleep(100 * time.Millisecond)
-	}
+    for {
+        d, _ := os.Open(watchedPath)
+        files, _ := d.Readdir(-1)
+        for _, fi := range files {
+            filePath := watchedPath + "/" + fi.Name()
+            f, _ := os.Open(filePath)
+            data, _ := ioutil.ReadAll(f)
+            f.Close()
+            os.Remove(filePath)
+            go func(data string) {
+                reader := csv.NewReader(strings.NewReader(data))
+                records, _ := reader.ReadAll()
+                for _, r := range records {
+                    invoice := new(Invoice)
+                    invoice.Number = r[0]
+                    invoice.Amount, _ = strconv.ParseFloat(r[1], 64)
+                    invoice.PurchaseOrderNumber, _ = strconv.Atoi(r[2])
+                    unixTime, _ := strconv.ParseInt(r[3], 10, 64)
+                    invoice.InvoiceDate = time.Unix(unixTime, 0)
+                    
+                    fmt.Printf("Received Invoice '%v' for $%.2f and submitted for processing\n", invoice.Number, invoice.Amount)
+                }
+            }(string(data))
+        }
+        d.Close()
+        time.Sleep(100 * time.Millisecond)
+    }
 }
 
 type Invoice struct {
-	Number string
-	Amount float64
-	PurchaseOrderNumber int
-	InvoiceDate time.Time
+    Number string
+    Amount float64
+    PurchaseOrderNumber int
+    InvoiceDate time.Time
 }
 ```
 
@@ -159,8 +159,8 @@ type Invoice struct {
 
 ```go
 func main() {
-	ch := make(chan string)
-	fmt.Println(<-ch)
+    ch := make(chan string)
+    fmt.Println(<-ch)
 }
 //fatal error: all goroutines are asleep - deadlock!
 ```
@@ -169,9 +169,9 @@ func main() {
 
 ```go
 func main() {
-	ch := make(chan string, 1)
-	ch <- "Hello"
-	
+    ch := make(chan string, 1)
+    ch <- "Hello"
+    
 }
 ```
 
@@ -179,9 +179,9 @@ func main() {
 
 ```go
 func main() {
-	ch := make(chan string, 1)
-	ch <- "Hello"
-	fmt.Println(<-ch) // Hello
+    ch := make(chan string, 1)
+    ch <- "Hello"
+    fmt.Println(<-ch) // Hello
 }
 ```
 
@@ -201,11 +201,11 @@ ch1 := make(chan string, buf)
 
 ```go
 func main() {
-	ch := make(chan string, 1)
-	ch <- "Hello"
-	ch <- "Hello"
-	fmt.Println(<-ch)
-	fmt.Println(<-ch)
+    ch := make(chan string, 1)
+    ch <- "Hello"
+    ch <- "Hello"
+    fmt.Println(<-ch)
+    fmt.Println(<-ch)
 }
 ```
 
@@ -213,11 +213,11 @@ func main() {
 
 ```go
 func main() {
-	ch := make(chan string, 2)
-	ch <- "Hello"
-	ch <- "Hello"
-	fmt.Println(<-ch) //Hello
-	fmt.Println(<-ch) // Hello
+    ch := make(chan string, 2)
+    ch <- "Hello"
+    ch <- "Hello"
+    fmt.Println(<-ch) //Hello
+    fmt.Println(<-ch) // Hello
 }
 ```
 
@@ -229,11 +229,11 @@ func main() {
 
 ```go
 func main() {
-	ch := make(chan string, 1)
-	ch <- "Hello"
-	ch <- "Hello"
-	fmt.Println(<-ch)
-	fmt.Println(<-ch)
+    ch := make(chan string, 1)
+    ch <- "Hello"
+    ch <- "Hello"
+    fmt.Println(<-ch)
+    fmt.Println(<-ch)
 }
 ```
 
@@ -241,10 +241,10 @@ func main() {
 
 ```go
 func main() {
-	ch := make(chan string, 2)
-	ch <- "Hello"
-	ch <- "Hello"
-	fmt.Println(<-ch) //Hello
+    ch := make(chan string, 2)
+    ch <- "Hello"
+    ch <- "Hello"
+    fmt.Println(<-ch) //Hello
     fmt.Println(<-ch) // Hello
     ch <- "Hello" // panic: send on closed channel
 }
@@ -257,25 +257,25 @@ func main() {
 
 ```go
 func compute(ch chan int) {
-	ch <- someComputation()
-	// when it completes, signal on the channel.
+    ch <- someComputation()
+    // when it completes, signal on the channel.
 }
 
 func main() {
-	ch := make(chan int) // allocate a channel.
-	go compute(ch)       // start something in a goroutine
-	doSomethingElseForAWhile()
-	result := <-ch
+    ch := make(chan int) // allocate a channel.
+    go compute(ch)       // start something in a goroutine
+    doSomethingElseForAWhile()
+    result := <-ch
 }
 ```
 
 ##### Implement a semaphore with a buffered channel
 
 * There is no semaphore implementation in Go’s sync package, but they can be emulated easily using a buffered channel:
-	
-	*  the buffered channel is the number of resources we wish to synchronize
-	* the length (number of elements currently stored) of the channel is the number of resources currently being used.
-	* the capacity minus the length of the channel is the number of free resources (the integer value of traditional semaphores)
+    
+    *  the buffered channel is the number of resources we wish to synchronize
+    * the length (number of elements currently stored) of the channel is the number of resources currently being used.
+    * the capacity minus the length of the channel is the number of free resources (the integer value of traditional semaphores)
 
 
 * Sample 8: semaphore pattern
@@ -289,10 +289,10 @@ res := make([]float64, N)
 sem := make(chan Empty, N) // semaphore
 // do sth  ...
 for i, xi := range data {
-	go func (i int, xi float64) {
-		res[i] = doSomething(i,xi)
-		sem <- empty
-	} (i, xi)
+    go func (i int, xi float64) {
+        res[i] = doSomething(i,xi)
+        sem <- empty
+    } (i, xi)
 }
 // wait for goroutines to finish
 for i := 0; i < N; i++ { <-sem }
@@ -304,16 +304,16 @@ for i := 0; i < N; i++ { <-sem }
 ```go
 // acquire n resources
 func (s semaphore) P(n int) {
-	e := new(Empty)
-	for i := 0; i < n; i++ {
-		s <- e
-	}
+    e := new(Empty)
+    for i := 0; i < n; i++ {
+        s <- e
+    }
 }
 // release n resources
 func (s semaphore) V(n int) {
-	for i := 0; i < n; i++ {
-		<-s
-	}
+    for i := 0; i < n; i++ {
+        <-s
+    }
 }
 ```
 
@@ -322,17 +322,17 @@ func (s semaphore) V(n int) {
 ```go
 /* mutexes */
 func (s semaphore) Lock() {
-	s.P(1)
+    s.P(1)
 }
 func (s semaphore) Unlock() {
-	s.V(1)
+    s.V(1)
 }
 /* signal-wait */
 func (s semaphore) Wait(n int) {
-	s.P(n)
+    s.P(n)
 }
 func (s semaphore) Signal() {
-	s.V(1)
+    s.V(1)
 }
 ```
 
@@ -345,24 +345,24 @@ func (s semaphore) Signal() {
 
 ```go
 func main() {
-	stream := pump()
-	go suck(stream)
-	// the above 2 lines can be shortened to: go suck( pump() )
-	time.Sleep(1e9)
+    stream := pump()
+    go suck(stream)
+    // the above 2 lines can be shortened to: go suck( pump() )
+    time.Sleep(1e9)
 }
 func pump() chan int {
-	ch := make(chan int)
-	go func() {
-		for i := 0; ; i++ {
-			ch <- i
-		}
-	}()
-	return ch
+    ch := make(chan int)
+    go func() {
+        for i := 0; ; i++ {
+            ch <- i
+        }
+    }()
+    return ch
 }
 func suck(ch chan int) {
-	for {
-		fmt.Println(<-ch)
-	}
+    for {
+        fmt.Println(<-ch)
+    }
 }
 ```
 
@@ -375,24 +375,24 @@ func suck(ch chan int) {
 ```go
 
 func main() {
-	suck(pump())
-	time.Sleep(1e9)
+    suck(pump())
+    time.Sleep(1e9)
 }
 func pump() chan int {
-	ch := make(chan int)
-	go func() {
-		for i := 0; ; i++ {
-			ch <- i
-		}
-	}()
-	return ch
+    ch := make(chan int)
+    go func() {
+        for i := 0; ; i++ {
+            ch <- i
+        }
+    }()
+    return ch
 }
 func suck(ch chan int) {
-	go func() {
-		for v := range ch {
-			fmt.Println(v)
-		}
-	}()
+    go func() {
+        for v := range ch {
+            fmt.Println(v)
+        }
+    }()
 }
 ```
 
@@ -405,57 +405,57 @@ func suck(ch chan int) {
 * Inside the goroutine, a for-loop iterates over the elements in the container c (for tree or graph algorithms, this simple for-loop could be replaced with a depth-first search)
 
 
-	```go
-	func (c *container) Iter() <-chan items {
-		ch := make(chan item)
-		go func() {
-			for i := 0; i < c.Len(); i++ {
-				// or use a for-range loop
-				ch <- c.items[i]
-			}
-		}()
-		return ch
-	}
+    ```go
+    func (c *container) Iter() <-chan items {
+        ch := make(chan item)
+        go func() {
+            for i := 0; i < c.Len(); i++ {
+                // or use a for-range loop
+                ch <- c.items[i]
+            }
+        }()
+        return ch
+    }
 
-	// The code which calls this method can then iterate over the container
-	for x := range container.Iter() { ... }
+    // The code which calls this method can then iterate over the container
+    for x := range container.Iter() { ... }
 
-	```
+    ```
 
 
 #### Producer Consumer pattern 
 
 * A Produce() function which delivers the values needed by a Consume function. Both could be run as a separate goroutine, Produce putting the values on a channel which is read by Consume. 
 
-	```go
-	package main
-	/* producer-consumer problem in Go */
+    ```go
+    package main
+    /* producer-consumer problem in Go */
 
-	import ("fmt")
+    import ("fmt")
 
-	var done = make(chan bool)
-	var msgs = make(chan int)
+    var done = make(chan bool)
+    var msgs = make(chan int)
 
-	func produce () {
-		for i := 0; i < 10; i++ {
-			msgs <- i
-		}
-		done <- true
-	}
+    func produce () {
+        for i := 0; i < 10; i++ {
+            msgs <- i
+        }
+        done <- true
+    }
 
-	func consume () {
-		for {
-			msg := <-msgs
-			fmt.Println(msg)
-		}
-	}
+    func consume () {
+        for {
+            msg := <-msgs
+            fmt.Println(msg)
+        }
+    }
 
-	func main () {
-		go produce()
-		go consume()
-		<- done
-	}
-	```
+    func main () {
+        go produce()
+        go consume()
+        <- done
+    }
+    ```
 
 
 

@@ -319,7 +319,7 @@ int DB_find(const char *url)
         res = 1;
     }
 
-error:			// fallthrough
+error:            // fallthrough
     if (data)
         bdestroy(data);
     if (line)
@@ -575,7 +575,7 @@ int Shell_exec(Shell template, ...)
         for (i = 0; template.args[i] != NULL; i++) {
             if (strcmp(template.args[i], key) == 0) {
                 template.args[i] = arg;
-                break;		// found it
+                break;        // found it
             }
         }
     }
@@ -1079,7 +1079,7 @@ int DB_find(const char *url)
         res = 1;
     }
 
-error:			// fallthrough
+error:            // fallthrough
     if (data)
         bdestroy(data);
     if (line)
@@ -1335,7 +1335,7 @@ int Shell_exec(Shell template, ...)
         for (i = 0; template.args[i] != NULL; i++) {
             if (strcmp(template.args[i], key) == 0) {
                 template.args[i] = arg;
-                break;		// found it
+                break;        // found it
             }
         }
     }

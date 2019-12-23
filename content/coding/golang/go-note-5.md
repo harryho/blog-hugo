@@ -187,23 +187,23 @@ func protect(g func()) {
 
 ```go
 func badCall() {
-	panic("bad end")
+    panic("bad end")
 }
 
 func test() {
-	defer func() {
-		if e := recover(); e != nil {
-			fmt.Printf("Panicking %s\r\n", e)
-		}
-	}()
-	badCall()
-	fmt.Printf("After bad call\r\n")
+    defer func() {
+        if e := recover(); e != nil {
+            fmt.Printf("Panicking %s\r\n", e)
+        }
+    }()
+    badCall()
+    fmt.Printf("After bad call\r\n")
 }
 
 func main() {
-	fmt.Printf("Calling test\r\n")
-	test()
-	fmt.Printf("Test completed\r\n")
+    fmt.Printf("Calling test\r\n")
+    test()
+    fmt.Printf("Test completed\r\n")
 }
 ```
 
@@ -240,50 +240,50 @@ func main() {
 
 ```go
 func main() {
-	// 1) os.StartProcess //
-	/*********************/
-	/* Linux: */
-	env := os.Environ()
-	procAttr := &os.ProcAttr{
-		Env: env,
-		Files: []*os.File{
-			os.Stdin,
-			os.Stdout,
-			os.Stderr,
-		},
-	}
-	pid, err := os.StartProcess("/bin/ls", []string{"ls", "-l"}, procAttr)
-	if err != nil {
-		fmt.Printf("Error %v starting process!", err) //
-		os.Exit(1)
-	}
-	fmt.Printf("The process id is %v", pid)
-	/* Output:
-	The process id is &{21275 0 0 {{0 0} 0 0 0 0}}The process id is &{21276 0 0 {{0 0} 0 0 0 0}}total 54
-	-rwxrwxrwx 1 root root   250 Sep 21 19:33 csv_data.txt
-	-rwxrwxrwx 1 root root 25227 Oct  4 23:34 hello.go
-	-rwxrwxrwx 1 root root  6708 Sep 21 10:25 hello.go.txt
-	-rwxrwxrwx 1 root root   130 Sep 21 11:08 output.txt
-	-rwxrwxrwx 1 root root  8898 Sep 21 12:10 target_hello.txt
-	-rwxrwxrwx 1 root root  1619 Sep 22 14:40 urlshorten.go.txt
-	-rwxrwxrwx 1 root root   182 Sep 21 13:50 vcard.json
-	*/
-	// 2nd example: show all processes
-	pid, err = os.StartProcess("/bin/ps", []string{"-e", "opid,ppid,comm"}, procAttr)
-	if err != nil {
-		fmt.Printf("Error %v starting process!", err) //
-		os.Exit(1)
-	}
-	fmt.Printf("The process id is %v", pid)
-	// 2) cmd.Run //
-	/***************/
-	cmd := exec.Command("gedit") // this opens a gedit-window
-	err = cmd.Run()
-	if err != nil {
-		fmt.Printf("Error %v executing command!", err)
-		os.Exit(1)
-	}
-	fmt.Printf("The command is %v", cmd)
+    // 1) os.StartProcess //
+    /*********************/
+    /* Linux: */
+    env := os.Environ()
+    procAttr := &os.ProcAttr{
+        Env: env,
+        Files: []*os.File{
+            os.Stdin,
+            os.Stdout,
+            os.Stderr,
+        },
+    }
+    pid, err := os.StartProcess("/bin/ls", []string{"ls", "-l"}, procAttr)
+    if err != nil {
+        fmt.Printf("Error %v starting process!", err) //
+        os.Exit(1)
+    }
+    fmt.Printf("The process id is %v", pid)
+    /* Output:
+    The process id is &{21275 0 0 {{0 0} 0 0 0 0}}The process id is &{21276 0 0 {{0 0} 0 0 0 0}}total 54
+    -rwxrwxrwx 1 root root   250 Sep 21 19:33 csv_data.txt
+    -rwxrwxrwx 1 root root 25227 Oct  4 23:34 hello.go
+    -rwxrwxrwx 1 root root  6708 Sep 21 10:25 hello.go.txt
+    -rwxrwxrwx 1 root root   130 Sep 21 11:08 output.txt
+    -rwxrwxrwx 1 root root  8898 Sep 21 12:10 target_hello.txt
+    -rwxrwxrwx 1 root root  1619 Sep 22 14:40 urlshorten.go.txt
+    -rwxrwxrwx 1 root root   182 Sep 21 13:50 vcard.json
+    */
+    // 2nd example: show all processes
+    pid, err = os.StartProcess("/bin/ps", []string{"-e", "opid,ppid,comm"}, procAttr)
+    if err != nil {
+        fmt.Printf("Error %v starting process!", err) //
+        os.Exit(1)
+    }
+    fmt.Printf("The process id is %v", pid)
+    // 2) cmd.Run //
+    /***************/
+    cmd := exec.Command("gedit") // this opens a gedit-window
+    err = cmd.Run()
+    if err != nil {
+        fmt.Printf("Error %v executing command!", err)
+        os.Exit(1)
+    }
+    fmt.Printf("The command is %v", cmd)
 }
 ```
 

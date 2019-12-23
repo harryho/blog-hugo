@@ -144,7 +144,7 @@ Makefile
     CFLAGS=-Wall -g
 
     clean:
-    	rm -f ex1
+        rm -f ex1
 
 The Analysis
 
@@ -1841,7 +1841,7 @@ int test_check(char *file_name)
     char *block = NULL;
 
     block = malloc(100);
-    check_mem(block);		// should work
+    check_mem(block);        // should work
 
     input = fopen(file_name, "r");
     check(input, "Failed to open %s.", file_name);
@@ -2131,7 +2131,7 @@ void scope_demo(int count)
     log_info("count is: %d", count);
 
     if (count > 10) {
-        int numbers = 100;	// BAD! BUGS!
+        int numbers = 100;    // BAD! BUGS!
 
         log_info("count in this scope is %d", numbers);
     }
@@ -2742,8 +2742,8 @@ error:
 CFLAGS=-Wall -g
 
 all: logfind
-	./logfind || true
-	./logfind test test test
+    ./logfind || true
+    ./logfind test test test
 
 ```
 
@@ -2810,11 +2810,11 @@ error:
 CFLAGS=-Wall -g
 
 all: logfind
-	./logfind || true
-	./logfind error
+    ./logfind || true
+    ./logfind error
 
 clean:
-	rm -f logfind
+    rm -f logfind
 
 ```
 
@@ -2917,11 +2917,11 @@ error:
 CFLAGS=-Wall -g
 
 all: logfind
-	./logfind || true
-	./logfind error
+    ./logfind || true
+    ./logfind error
 
 clean:
-	rm -f logfind
+    rm -f logfind
 
 ```
 
@@ -3031,11 +3031,11 @@ error:
 CFLAGS=-Wall -g
 
 all: logfind
-	./logfind || true
-	./logfind MAX_LINE
+    ./logfind || true
+    ./logfind MAX_LINE
 
 clean:
-	rm -f logfind
+    rm -f logfind
 
 ```
 
@@ -3189,13 +3189,13 @@ error:
 CFLAGS=-Wall -g
 
 all: logfind
-	./logfind || true
-	./logfind MAX_LINE
-	./logfind error MAX LINE
-	./logfind -o error MAX LINE
+    ./logfind || true
+    ./logfind MAX_LINE
+    ./logfind error MAX LINE
+    ./logfind -o error MAX LINE
 
 clean:
-	rm -f logfind
+    rm -f logfind
 
 ```
 
@@ -3402,13 +3402,13 @@ error:
 CFLAGS=-Wall -g
 
 all: logfind
-	./logfind || true
-	./logfind MAX_LINE
-	./logfind error MAX LINE
-	./logfind -o error MAX LINE
+    ./logfind || true
+    ./logfind MAX_LINE
+    ./logfind error MAX LINE
+    ./logfind -o error MAX LINE
 
 clean:
-	rm -f logfind
+    rm -f logfind
 
 ```
 
@@ -3566,13 +3566,13 @@ error:
 CFLAGS=-Wall -g
 
 all: logfind
-	./logfind || true
-	./logfind MAX_LINE
-	./logfind error MAX LINE
-	./logfind -o error MAX LINE
+    ./logfind || true
+    ./logfind MAX_LINE
+    ./logfind error MAX LINE
+    ./logfind -o error MAX LINE
 
 clean:
-	rm -f logfind
+    rm -f logfind
 
 ```
 
