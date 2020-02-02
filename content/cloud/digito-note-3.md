@@ -14,3 +14,55 @@ UFW, or Uncomplicated Firewall, is a front-end to iptables. Its main goal is to 
 
 ### Enable IP V6
 
+* Open the UFW configuration with vi:
+
+```
+sudo vi /etc/default/ufw
+```
+
+* Make sure "IPV6" is set to "yes", like so:
+
+```
+...
+IPV6=yes
+...
+```
+
+### Set default rules
+
+```
+sudo ufw deny incoming
+sudo ufw allow outgoing
+```
+
+### Allow SSH / OpenSSH
+
+* Check app list & enable OpenSSH
+
+```
+# List applications
+sudo ufw app list
+
+# Allow SSH
+sudo ufw allow OpenSSH
+```
+
+* Directly allow port 22 or other SSH port, e.g. 2222
+
+```
+sudo ufw allow 22 
+```
+
+
+### Enable UFW
+
+```
+sudo ufw enable
+sudo ufw sattus verbose
+```
+
+
+## Nginx
+
+
+### 

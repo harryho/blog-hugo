@@ -12,10 +12,10 @@ description="User Setup, Security Update & Features"
 ```
 # Add new user 
 # set password
-adduser hho
+adduser <admin_user>
 
 # user to sudo group
-usermod -aG sudo hho
+usermod -aG sudo <admin_user>
 
 ```
 
@@ -23,7 +23,7 @@ usermod -aG sudo hho
 
 ```
 # Switch session to new user 
-su - hho
+su - <admin_user>
 
 # navigate to user home 
 cd
@@ -34,14 +34,14 @@ chmod 700 ~/.ssh
 
 # Copy root key
 sudo cp /root/.ssh/authorized_keys ~/.ssh/authorized_keys
-chmod 644 /home/hho/.ssh/authorized_keys
-sudo chown -R hho:hho ~/
+chmod 644 /home/<admin_user>/.ssh/authorized_keys
+sudo chown -R <admin_user>:<admin_user> ~/
 ```
 
 #### Login as new user via SSH 
 
 ```
-ssh -i ~/.ssh/<your_droplet_rsa> hho@<your_droplet_ip>
+ssh -i ~/.ssh/<your_droplet_rsa> <admin_user>@<your_droplet_ip>
 ```
 
 #### Set root password & disable SSH
