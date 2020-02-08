@@ -1,5 +1,5 @@
 +++
-title = "Digitial Ocean Note - 1"
+title = "DigitialOcean Note - 1"
 description="Droplet Introduction"
 +++
 

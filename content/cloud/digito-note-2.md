@@ -1,5 +1,5 @@
 +++
-title = "Digitial Ocean Note - 2"
+title = "DigitialOcean Note - 2"
 description="User Setup, Security Update & Features"
 +++
 
@@ -112,3 +112,7 @@ DigitalOcean Load Balancers are a fully-managed, highly available load balancing
 
 * You can't create more than 10 Droplets at the same time using the control panel or the API
 
+
+### Build Web Host
+
+* Next step is to build a web host in droplet. 
