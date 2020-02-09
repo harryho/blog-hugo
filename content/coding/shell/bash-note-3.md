@@ -26,9 +26,34 @@ Operator	|Tests Whether|Operator	|Tests Whether
 
 
 
+### Sample 
 
 
+```
 
+function is_symbolic_link(){
+    echo "Is the file $1  a symbolic link?";
+
+    if  [ -f $1 ] && [ -h $1 ]; 
+    then
+        echo 'true' ; 
+    else 
+        echo 'false'; 
+    fi;
+}
+
+function is_file_empty () {
+
+    echo "Is the file $1  empty?";
+
+    if  [ -f $1 ] && [ ! -s $1 ]; 
+    then
+        echo 'true' ; 
+    else 
+        echo 'false'; 
+    fi;
+}
+```
 
 
 

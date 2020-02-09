@@ -1,7 +1,6 @@
 +++
 title = "DigitialOcean Note - 3"
 description="UFW, Nginx & Web Host"
-
 +++
 
 > Here I contineu to setup SSL certificates for all sites on my web host
@@ -111,7 +110,7 @@ sudo mkdir -p /var/www/domain-one.com
 sudo touch /var/www/domain-one.com/index.html
 ```
 
-* Copy following content to the file: `/var/www/domain-one.com/index.html`
+* Copy following content to the file: __/var/www/domain-one.com/index.html__ 
 
 ```html
 <!DOCTYPE html>
@@ -140,9 +139,9 @@ sudo chown -R www-data: /var/www/domain-one.com
 
 #### Create a Server Block
 
-By default on Ubuntu systems, Nginx server blocks configuration files are stored in `/etc/nginx/sites-available` directory, which are enabled through symbolic links to the `/etc/nginx/sites-enabled/` directory.
+By default on Ubuntu systems, Nginx server blocks configuration files are stored in __/etc/nginx/sites-available__ directory, which are enabled through symbolic links to the __/etc/nginx/sites-enabled/__ directory.
 
-Open your editor of choice and create the following server block file: `/etc/nginx/sites-available/domain-one.com`
+Open your editor of choice and create the following server block file: __/etc/nginx/sites-available/domain-one.com__
 
 ```nginx
 server {

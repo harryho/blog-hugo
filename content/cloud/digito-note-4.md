@@ -29,12 +29,12 @@ sudo apt install python-certbot-nginx
 
 ### Confirming Nginx’s Configuration
 
-* In the previous setup, the site for `domain-one.com` has been up and running in the droplet. 
-* Open the server block file of`domain-one.com`  via any text editor:
+* In the previous setup, the site for __domain-one.com__ has been up and running in the droplet. 
+* Open the server block file of __domain-one.com__  via any text editor:
 
         sudo vi /etc/nginx/sites-available/example.com
 
-* Find the existing `server_name` line in the file
+* Find the existing __server_name__ line in the file
 
         server_name domain-one.com www.domain-one.com;
 
