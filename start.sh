@@ -13,7 +13,7 @@ if [ ${DRAFT} == 'd' ]; then
     echo 'start with draft '
     hugo serve -t docdock -D --watch  --disableFastRender
 else
-    hugo serve -t docdock --watch  --disableFastRender 
+    hugo serve -t docdock --watch  --disableFastRender --ignoreCache
 fi
 
 

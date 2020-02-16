@@ -1,6 +1,6 @@
 +++
 title = "MySql Note - 2"
-description="Introduction of SQL: DDL - Data Definition Language \n DML - Data Manipulation Language"
+description="Introduction of SQL: DDL - Data Definition Language DML - Data Manipulation Language"
 +++
 
 > As one of most popular open source databases, MySql is mainly used as data storage, aka database. To store the data into MySql server, we need to use SQL - Structural Query Language. But before we store the data to MySql, we need to define the schema which tells MySql how to organize the data in the proper manner. To define the schema, there is a special set of SQL, which we call it DDL - Data Definition Language, such as, CREATE, DROP, ALTER, etc. 
