@@ -35,10 +35,10 @@ A subnet has traffic routed to a virtual private gateway for a Site-to-Site VPN 
 
 #### Sizing for IPv4
 
-* 10.0.0.0 - 10.255.255.255 (10/8 prefix)
-* 172.16.0.0 - 172.31.255.255 (172.16/12 prefix)
-* 192.168.0.0 - 192.168.255.255 (192.168/16 prefix)
-
+* 10.0.0.0 - 10.255.255.255 (10 / 8 prefix)
+* 172.16.0.0 - 172.31.255.255 (172.16 / 12 prefix)
+* 192.168.0.0 - 192.168.255.255 (192.168 / 16 prefix)
+ 
 #### Basic demo
 
 {{<mermaid>}}
@@ -61,6 +61,7 @@ graph RL
         subgraph VPN_Subnet
              VPNIPv4(10.0.3.0/24)
              EC2_E
+             EC2_F
         end
         subgraph Public_Subnet
             PubIPv4(10.0.1.0/24)
