@@ -55,3 +55,6 @@ archived/sample/**/*.json
 
 # Vs code setting
 *.vscode/
+
+# Ignroe tutorial section
+*tut/
