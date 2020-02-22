@@ -118,10 +118,6 @@ In TypeScript, the same types as you would expect in JavaScript are supported, w
 
 
 
-## Class, Type & Interface
-
-
-
 
 
 
