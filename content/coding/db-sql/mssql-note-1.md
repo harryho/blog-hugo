@@ -17,14 +17,14 @@ description="Introduction of MS Sql Server"
 -- Get database size 
 
 SELECT      sys.databases.name,  
-            CONVERT(VARCHAR,SUM(size)*8/1024)+' MB' AS [Total disk space]  ,
-            CONVERT(VARCHAR,SUM(size)*8/1024/1024)+' GB' AS [Total disk space]  
+            CONVERT(VARCHAR,SUM(size)*8/1024)+' MB' AS TotalDiskSpaceMB  ,
+            CONVERT(VARCHAR,SUM(size)*8/1024/1024)+' GB' AS TotalDiskSpaceGB
 FROM        sys.databases   
 JOIN        sys.master_files  
 ON          sys.databases.database_id=sys.master_files.database_id  
 
 GROUP BY    sys.databases.name  
-ORDER BY    sys.databases.name  
+ORDER BY     TotalDiskSpaceMB
 
 -- Get database space & unallocated space
 
