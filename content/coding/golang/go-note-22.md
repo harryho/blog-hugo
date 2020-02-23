@@ -37,3 +37,5 @@ if err != nil {
 
 
 
+/dev/sda1=snap-0f75ee322dbe2249e:70:false:gp2, xvdf=snap-0c12b9ad6e4346898:50:false:gp2:encrypted, xvdg=snap-04ece5bba81647e22:100:false:gp2, xvdc=snap-0096b6863670d38de:150:false:gp2:encrypted
+
