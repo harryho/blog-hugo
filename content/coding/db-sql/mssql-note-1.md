@@ -125,7 +125,7 @@ ORDER BY    TableName
 
 
 ```sql
-exec sp_change_users_login Report
+EXEC sp_change_users_login Report
 
 EXEC sp_change_users_login 'Auto_Fix', 'your_username', NULL, 'your_password';
 ```
