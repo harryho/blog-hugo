@@ -2,7 +2,7 @@
 title = "AWS : VPC - 3"
 description = "VPC Peering, Direct Connect, Transit Gateway"
 weight=5
-draft=true
+
 +++
 
 
