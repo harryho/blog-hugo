@@ -82,10 +82,17 @@ A VPC endpoint policy is an IAM resource policy that you attach to an endpoint w
 
 
 
-
 ### VPC Peering
 
 A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them privately. Instances in either VPC can communicate with each other as if they are within the same network. You can create a VPC peering connection between your own VPCs, with a VPC in another AWS account, or with a VPC in a different AWS Region.
 
 AWS uses the existing infrastructure of a VPC to create a VPC peering connection; it is neither a gateway nor an AWS Site-to-Site VPN connection, and does not rely on a separate piece of physical hardware. There is no single point of failure for communication or a bandwidth bottleneck.
 
+### VPN Connections
+
+VPN connectivity option |          Description       |
+  -----  |:-----------   |
+AWS Site-to-Site VPN |You can create an IPsec VPN connection between your VPC and your remote network. On the AWS side of the Site-to-Site VPN connection, a virtual private gateway provides two VPN endpoints (tunnels) for automatic failover. You configure your customer gateway on the remote side of the Site-to-Site VPN connection. For more information, see the AWS Site-to-Site VPN User Guide, and the AWS Site-to-Site VPN Network Administrator Guide.
+AWS Client VPN 	| AWS Client VPN is a managed client-based VPN service that enables you to securely access your AWS resources in your on-premises network. With AWS Client VPN, you configure an endpoint to which your users can connect to establish a secure TLS VPN session. This enables clients to access resources in AWS or an on-premises from any location using an OpenVPN-based VPN client. For more information, see the AWS Client VPN User Guide.
+AWS VPN CloudHub 	| If you have more than one remote network (for example, multiple branch offices), you can create multiple AWS Site-to-Site VPN connections via your virtual private gateway to enable communication between these networks. For more information, see Providing Secure Communication Between Sites Using VPN CloudHub in the AWS Site-to-Site VPN User Guide.
+Third party software |  VPN appliance 	You can create a VPN connection to your remote network by using an Amazon EC2 instance in your VPC that's running a third party software VPN appliance. AWS does not provide or maintain third party software VPN appliances; however, you can choose from a range of products provided by partners and open source communities. Find third party software VPN appliances on the AWS Marketplace. 
