@@ -61,9 +61,7 @@ JSON_VALID() |   Whether JSON value is valid
 * Return json object
 
 ```sql
-
 ---  Return record as json in query
-
 SELECT 
 json_object( 
    'entityId',  entityId,
@@ -91,9 +89,7 @@ json_object(
 
 
 ```sql
-
 -- Use json_array and json_object functions 
-
 DROP TEMPORARY TABLE IF EXISTS tmp_json_data;
 
 CREATE TEMPORARY TABLE tmp_json_data (

@@ -127,7 +127,6 @@ DELIMITER ;
 -- AND column_name = \'description\')',
 --  'ALTER TABLE TargeTable DROP COLUMN description');)
 
-
 ```
 
 

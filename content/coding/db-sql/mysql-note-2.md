@@ -50,7 +50,6 @@ SELECT * FROM new_table_a na
 ### Useful temporary table
 
 ```sql
-
 DROP TEMPORARY TABLE IF EXISTS tmp_table; 
 
 CREATE TEMPORARY TABLE tmp_table AS 
