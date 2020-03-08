@@ -1,5 +1,5 @@
 +++
-title = "DigitialOcean Note - 3"
+title = "DigitialOcean: First Web Host"
 description="UFW, Nginx & Web Host"
 +++
 

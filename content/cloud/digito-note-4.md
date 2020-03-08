@@ -1,5 +1,5 @@
 +++
-title = "DigitialOcean Note - 4"
+title = "DigitialOcean: Lets Encrypt"
 description="Lets Encrypt & Auto renewal"
 +++
 
