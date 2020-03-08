@@ -15,9 +15,19 @@ A VPC endpoint enables you to privately connect your VPC to supported AWS servic
 
 Endpoints are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between instances in your VPC and services without imposing availability risks or bandwidth constraints on your network traffic.
 
-#### Interface Endpoint
 
-An interface VPC endpoint (interface endpoint) enables you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and Partners in their own VPCs (referred to as endpoint services), and supported AWS Marketplace Partner services.
+
+* Endpoint service — Your own application in your VPC. Other AWS principals can create a connection from their VPC to your endpoint service
+
+* Gateway endpoint — A gateway endpoint is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service.
+
+> Amazon S3
+
+> DynamoDB
+
+
+* Interface endpoint — An interface endpoint is an elastic network interface with a private IP address from the IP address range of your subnet that serves as an entry point for traffic destined to a supported service.
+
 
 #### Limits of Interface Endpoint
 
@@ -28,13 +38,6 @@ An interface VPC endpoint (interface endpoint) enables you to connect to service
 * Endpoints support IPv4 traffic only.
 
 
-#### Gateway Endpoint
-
-A gateway endpoint is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service. The following AWS services are supported:
-
-> Amazon S3
-
-> DynamoDB
 
 #### Limits of Gateway Endpoint
 
@@ -46,9 +49,38 @@ A gateway endpoint is a gateway that you specify as a target for a route in your
 * Must enable DNS resolution in your VPC, or if you're using your own DNS server, ensure that DNS requests to the required service (such as Amazon S3) are resolved correctly to the IP addresses maintained by AWS. 
 
 
+### Endpoint Service
+
+#### Steps to the connections
+
+* Create a Network Load Balancer for your application in your VPC and configure it for each subnet (Availability Zone) in which the service should be available. 
+* Create a VPC endpoint service configuration and specify your Network Load Balancer.
+* Grant permissions to specific service consumers (AWS accounts, IAM users, and IAM roles) to create a connection to your endpoint service.
+* A service consumer that has been granted permissions creates an interface endpoint to your service, optionally in each Availability Zone in which you configured your service.
+* To activate the connection, accept the interface endpoint connection request. By default, connection requests must be manually accepted. However, you can configure the acceptance settings for your endpoint service so that any connection requests are automatically accepted.
+* To help achieve high availability for service consumers that use zonal DNS hostnames to access the service, you can enable cross-zone load balancing. Cross-zone load balancing enables the load balancer to distribute traffic across the registered targets in all enabled Availability Zones.
+
+#### Endpoint Service DNS Names
+
+AWS generates endpoint-specific DNS hostnames that you can use to communicate with the service. These names include the VPC endpoint ID, the Availability Zone name and Region Name, for example, vpce-1234-abcdev-us-east-1.vpce-svc-123345.us-east-1.vpce.amazonaws.com. By default, your consumers access the service with that DNS name and usually need to modify the application configuration. 
+
+
+#### Endpoint Service Limitations
+
+* An endpoint service supports IPv4 traffic over TCP only.
+* Service consumers can use the endpoint-specific DNS hostnames to access the endpoint service, or the private DNS name.
+* If an endpoint service is associated with multiple Network Load Balancers, then for a specific Availability Zone, an interface endpoint establishes a connection with *one load balancer only.
+* For the endpoint service, the associated Network Load Balancer can support 55,000 simultaneous connections or about 55,000 connections per minute to each unique *target (IP address and port). 
+* Availability Zones in your account might not map to the same locations as Availability Zones in another account. 
+* Review the service-specific limits for your endpoint service.
+
+
+
 #### VPC Endpoint Policies
 
 A VPC endpoint policy is an IAM resource policy that you attach to an endpoint when you create or modify the endpoint. If you do not attach a policy when you create an endpoint, AWS attaches a default policy for you that allows full access to the service. 
+
+
 
 
 ### VPC Peering
@@ -56,19 +88,4 @@ A VPC endpoint policy is an IAM resource policy that you attach to an endpoint w
 A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them privately. Instances in either VPC can communicate with each other as if they are within the same network. You can create a VPC peering connection between your own VPCs, with a VPC in another AWS account, or with a VPC in a different AWS Region.
 
 AWS uses the existing infrastructure of a VPC to create a VPC peering connection; it is neither a gateway nor an AWS Site-to-Site VPN connection, and does not rely on a separate piece of physical hardware. There is no single point of failure for communication or a bandwidth bottleneck.
-
-
-### Direct Connect
-
-AWS Direct Connect is a cloud service solution that makes it easy to establish a dedicated network connection from your premises to AWS. Using AWS Direct Connect, you can establish private connectivity between AWS and your datacenter, office, or colocation environment, which in many cases can reduce your network costs, increase bandwidth throughput, and provide a more consistent network experience than Internet-based connections.
-
-Using industry standard 802.1q VLANs, this dedicated connection can be partitioned into multiple virtual interfaces. This allows you to use the same connection to access public resources such as objects stored in Amazon S3 using public IP address space, and private resources such as Amazon EC2 instances running within an Amazon Virtual Private Cloud (VPC) using private IP space, while maintaining network separation between the public and private environments. Virtual interfaces can be reconfigured at any time to meet your changing needs.
-
-
-### Transit Gateway
-
-AWS Transit Gateway is a service that enables customers to connect their Amazon Virtual Private Clouds (VPCs) and their on-premises networks to a single gateway.
-
-With AWS Transit Gateway, you only have to create and manage a single connection from the central gateway in to each Amazon VPC, on-premises data center, or remote office across your network. Transit Gateway acts as a hub that controls how traffic is routed among all the connected networks which act like spokes. This hub and spoke model significantly simplifies management and reduces operational costs because each network only has to connect to the Transit Gateway and not to every other network. Any new VPC is simply connected to the Transit Gateway and is then automatically available to every other network that is connected to the Transit Gateway. This ease of connectivity makes it easy to scale your network as you grow.
-
 

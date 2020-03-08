@@ -1,5 +1,5 @@
 +++
-title = "TypeScript Note - 1"
+title = "TypeScript: Basic Types"
 description="Basic Types"
 +++
 

@@ -87,7 +87,7 @@ Destination | Target
 * Main Route tables of Subnet Private_Subnet
 
 Destination | Target
------|-------
+------------|---------
 10.0.1.0/16 | local
 2002:0a00:0100:0:0:0:0:0/56 | local
 
