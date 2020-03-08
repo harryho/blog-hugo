@@ -68,10 +68,10 @@ A named profile is a collection of settings and credentials that you can apply t
 
         comm -23  \
         <(aws ec2 describe-security-groups \
-        --profile ad1 --query 'SecurityGroups[*].GroupId' --output text \
+        --profile user1 --query 'SecurityGroups[*].GroupId' --output text \
         | tr '\t' '\n'| sort) \
         <(aws ec2 describe-instances \
-        --profile ad1   --query 'Reservations[*].Instances[*].SecurityGroups[*].GroupId' --output text \
+        --profile user1   --query 'Reservations[*].Instances[*].SecurityGroups[*].GroupId' --output text \
         | tr '\t' '\n'  | sort | uniq)
 
 
