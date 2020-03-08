@@ -15,9 +15,40 @@ A VPC endpoint enables you to privately connect your VPC to supported AWS servic
 
 Endpoints are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between instances in your VPC and services without imposing availability risks or bandwidth constraints on your network traffic.
 
+#### Interface Endpoint
+
 An interface VPC endpoint (interface endpoint) enables you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and Partners in their own VPCs (referred to as endpoint services), and supported AWS Marketplace Partner services.
 
+#### Limits of Interface Endpoint
 
+* For each interface endpoint, you can choose only one subnet per Availability Zone.
+* Interface endpoints support the use of policies for services that support endpoint policies.
+* An interface endpoint supports TCP traffic only.
+* Endpoints are supported within the same Region only. 
+* Endpoints support IPv4 traffic only.
+
+
+#### Gateway Endpoint
+
+A gateway endpoint is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service. The following AWS services are supported:
+
+> Amazon S3
+
+> DynamoDB
+
+#### Limits of Gateway Endpoint
+
+* You cannot use a prefix list ID in an outbound rule in a network ACL to allow or deny outbound traffic to the service specified in an endpoint. If your network ACL rules restrict traffic, you must specify the CIDR block (IP address range) for the service instead. 
+* Endpoints are supported within the same Region only. 
+* Endpoints support IPv4 traffic only.
+* Cannot transfer an endpoint from one VPC to another,
+* Endpoint connections cannot be extended out of a VPC. 
+* Must enable DNS resolution in your VPC, or if you're using your own DNS server, ensure that DNS requests to the required service (such as Amazon S3) are resolved correctly to the IP addresses maintained by AWS. 
+
+
+#### VPC Endpoint Policies
+
+A VPC endpoint policy is an IAM resource policy that you attach to an endpoint when you create or modify the endpoint. If you do not attach a policy when you create an endpoint, AWS attaches a default policy for you that allows full access to the service. 
 
 
 ### VPC Peering
