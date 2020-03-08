@@ -1,6 +1,7 @@
 +++
-title = "AWS Note - 3"
+title = "AWS - CLI "
 description = "AWS CLI & Sample"
+weight=2
 +++
 
 
@@ -15,8 +16,8 @@ A named profile is a collection of settings and credentials that you can apply t
 * `~/.aws/credentials`
 
         [default]
-        aws_access_key_id=AKIAIOSFODNN7EXAMPLE
-        aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+        aws_access_key_id=your_aws_access_key_id
+        aws_secret_access_key=your_aws_secret_access_key
 
 * `~/.aws/config`
 
@@ -29,12 +30,12 @@ A named profile is a collection of settings and credentials that you can apply t
 * `~/.aws/credentials` (Linux / Mac)
 
         [default]
-        aws_access_key_id=AKIAIOSFODNN7EXAMPLE
-        aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+        aws_access_key_id=your_aws_access_key_id
+        aws_secret_access_key=your_aws_secret_access_key
 
         [user1]
-        aws_access_key_id=AKIAI44QH8DHBEXAMPLE
-        aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
+        aws_access_key_id=your_aws_access_key_id
+        aws_secret_access_key=your_aws_secret_access_key
 
 * `~/.aws/config` (Linux & Mac)
 
@@ -53,11 +54,26 @@ A named profile is a collection of settings and credentials that you can apply t
 
 * Get EC2 instances 
 
-        aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro" --query "Reservations[].Instances[].InstanceId"  --profile user1
+        aws ec2 describe-instances \
+        --filters "Name=instance-type,Values=t2.micro" \
+        --query "Reservations[].Instances[].InstanceId"  \
+        --profile user1
 
 * Stop EC2 instance
 
         aws ec2 stop-instances --instance-ids i-1234567890abcdef0
+
+* Find out all unused security group
+
+
+        comm -23  \
+        <(aws ec2 describe-security-groups \
+        --profile ad1 --query 'SecurityGroups[*].GroupId' --output text \
+        | tr '\t' '\n'| sort) \
+        <(aws ec2 describe-instances \
+        --profile ad1   --query 'Reservations[*].Instances[*].SecurityGroups[*].GroupId' --output text \
+        | tr '\t' '\n'  | sort | uniq)
+
 
 #### S3
 

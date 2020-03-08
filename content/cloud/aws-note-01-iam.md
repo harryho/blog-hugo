@@ -1,7 +1,13 @@
 +++
-title = "AWS Note - 1"
+title = "AWS - IAM"
+weight = 1
 description="IAM - Idenity and Acces Management: IAM Identity, Dos & Don'ts, Federation Integration"
 +++
+
+
+## IAM
+
+AWS Identity and Access Management (IAM) enables you to manage access to AWS services and resources securely. Using IAM, you can create and manage AWS users and groups, and use permissions to allow and deny their access to AWS resources.
 
 
 ### Root User
@@ -18,7 +24,7 @@ description="IAM - Idenity and Acces Management: IAM Identity, Dos & Don'ts, Fed
 * Make sure that you turn on multi-factor authentication on the root account. Multi-factor authentication used to be called two-factor authentication. It really just means that we know the password and we have some sort of a token that we will get a number generated. It's something that you might even use your smartphone for. But it now means that I have to know the username and password and I have to have this token that's going to generate a code. We'll see more about how you'll do that later. 
 * Make sure that you've disabled your root access keys. This isn't the interactive login for root, it has to do with how we can access the account programmatically. 
 * Make sure that you rotate the credentials. Just because we say don't log in doesn't mean set the password and then forget it. 
-* Don't share the root user credentials. password. And all that the audit logs show is that root logged in and did the job. Kind of dangerous. So 
+* Don't share the root user credentials. password. And all that the audit logs show is that root logged in and did the job. Kind of dangerous. 
 * Make sure that you create a user that has administrative privileges that's assigned to you and that you know the password only.
 
 
@@ -134,4 +140,8 @@ graph BT
 * Simple Active Directory for smaller, limited use cases.
 * AWS Directory Service for Microsoft Active Directory, it's a mouthful. That's a fully-featured Active Directory. 
 * Active Directory Connector that actually just facilitates or front ends the authentication request. And then the actual authentication is sent back across your VPN to your on-premises.
+
+
+
+## S3
 
