@@ -1,6 +1,7 @@
 +++
 title = "DigitialOcean: Droplet"
 description="Droplet Introduction"
+weight=1
 +++
 
 
