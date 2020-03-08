@@ -1,5 +1,5 @@
 +++
-title = "MySql Note - 3"
+title = "MySql: SP & Func"
 description="MySql Stored Proc  & Function "
 +++
 

@@ -1,5 +1,5 @@
 +++
-title = "MySql Note - 2"
+title = "MySql: DDL"
 description="Introduction of SQL: DDL - Data Definition Language DML - Data Manipulation Language"
 +++
 
