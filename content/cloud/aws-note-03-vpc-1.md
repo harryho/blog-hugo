@@ -1,12 +1,12 @@
 +++
-title = "AWS - VPC part 1"
+title = "AWS: VPC - 1"
 description = "VPC - Virtual Private Cloud: Subnet, Internet Gateway, Virtual Gateway etc. "
 weight=3
 
 +++
 
 
-## VPC Part1
+## VPC Part 1
 
 Amazon Virtual Private Cloud (Amazon VPC) enables you to launch AWS resources into a virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
 
@@ -35,19 +35,19 @@ AWS creates a default VPC for you in each region. The default VPC will include 1
 When you create a VPC, you must specify a range of IPv4 addresses for the VPC in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16. This is the primary CIDR block for your VPC. 
 
 
-### Public subnet
+#### Public subnet
 
 A subnet's traffic is routed to an internet gateway.
 
-### Private subnet
+#### Private subnet
 
 A subnet doesn't have a route an internet gateway.
 
-### VPN-only subnet
+#### VPN-only subnet
 
 A subnet has traffic routed to a virtual private gateway for a Site-to-Site VPN connection.
 
-### Reserved IPs
+#### Reserved IPs
 
 In each subnet CIDR block are not available for you to use, and cannot be assigned to an instance. For example, in a subnet with CIDR block 10.0.1.0/24, the following five IP addresses are reserved:
 

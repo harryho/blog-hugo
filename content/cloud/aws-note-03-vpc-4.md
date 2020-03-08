@@ -1,5 +1,5 @@
 +++
-title = "AWS - VPC part 4"
+title = "AWS : VPC part 4"
 description = "VPC -  "
 weight=6
 draft=true

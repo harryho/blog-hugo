@@ -1,5 +1,5 @@
 +++
-title = "AWS - CLI "
+title = "AWS : CLI "
 description = "AWS CLI & Sample"
 weight=2
 +++

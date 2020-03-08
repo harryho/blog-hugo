@@ -1,5 +1,5 @@
 +++
-title = "AWS - IAM"
+title = "AWS: IAM"
 weight = 1
 description="IAM - Idenity and Acces Management: IAM Identity, Dos & Don'ts, Federation Integration"
 +++
