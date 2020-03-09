@@ -1,6 +1,7 @@
 +++
-title = "DigitialOcean Note - 4"
+title = "DigitialOcean: Lets Encrypt"
 description="Lets Encrypt & Auto renewal"
+weight=4
 +++
 
 > Here I continue to finish the web host setup. The last step of web host setup is to add SSL certificate for each site

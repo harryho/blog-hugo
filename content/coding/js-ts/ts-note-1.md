@@ -1,5 +1,5 @@
 +++
-title = "TypeScript Note - 1"
+title = "TS: Basic Types"
 description="Basic Types"
 +++
 
@@ -38,6 +38,21 @@ In TypeScript, the same types as you would expect in JavaScript are supported, w
         let list: number[] = [1, 2, 3];
         let list: Array<number> = [1, 2, 3];
 
+* Object - object is a type that represents the non-primitive type, i.e. anything that is not number, string, boolean, bigint, symbol, null, or undefined.
+
+        declare function create(o: object | null): void;
+
+        create({ prop: 0 }); // OK
+        create(null); // OK
+
+        create(42); // Error
+        create("string"); // Error
+        create(false); // Error
+        create(undefined); // Error
+
+
+
+### Types in Typescdript 
 
 * Tuple - Tuple types allow you to express an array with a fixed number of elements whose types are known, but need not be the same. 
 
@@ -73,7 +88,8 @@ In TypeScript, the same types as you would expect in JavaScript are supported, w
 
         let o: Object = 4.001;
         console.log(o.valueOf()) // output: 4.001
-        console.log(o.toFixed()) // Error - Property 'toFixed' does not exist on type 'Object'.
+        console.log(o.toFixed()) // Error - Property 'toFixed' does not exist on type    'Object'.
+
 
 * Void - void is a little like the opposite of any: the absence of having any type at all. Declaring variables of type void is not useful because you can only assign null (only if --strictNullChecks is not specified, see next section) or undefined to them.
 
@@ -104,17 +120,6 @@ In TypeScript, the same types as you would expect in JavaScript are supported, w
             }
         }
 
-* Object - object is a type that represents the non-primitive type, i.e. anything that is not number, string, boolean, bigint, symbol, null, or undefined.
-
-        declare function create(o: object | null): void;
-
-        create({ prop: 0 }); // OK
-        create(null); // OK
-
-        create(42); // Error
-        create("string"); // Error
-        create(false); // Error
-        create(undefined); // Error
 
 
 

@@ -1,5 +1,5 @@
 +++
-title = "MySql Note - 3"
+title = "MySql: SP & Func"
 description="MySql Stored Proc  & Function "
 +++
 
@@ -126,7 +126,6 @@ DELIMITER ;
 -- WHERE table_schema = DATABASE() AND table_name = \'TargeTable\' 
 -- AND column_name = \'description\')',
 --  'ALTER TABLE TargeTable DROP COLUMN description');)
-
 
 ```
 

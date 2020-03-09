@@ -1,5 +1,5 @@
 +++
-title = "MySql Note - 4"
+title = "MySql: Schema & Metadata"
 description="Query schema & permission "
 +++
 

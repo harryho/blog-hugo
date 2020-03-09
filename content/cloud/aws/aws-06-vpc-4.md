@@ -1,8 +1,8 @@
 +++
-title = "AWS : VPC part 4"
-description = "VPC -  "
+title = "AWS : VPC - 4"
+description = "VPC - Simple Demo "
 weight=6
-draft=true
+
 +++
 
 
@@ -11,37 +11,54 @@ draft=true
 
 
 
-### Basic demo
+### Simples demo
 
 
 * Diagram of customized VPC - MyDemoVPC with Internet Gatway and VPN connect
 
 {{<mermaid>}}
-graph RL
+graph LR
     InternetGW(Internet Gateway)
     VirtualGW(Virtual Gateway)
     INTER(Internet - Public)
     InternetGW --- INTER
     VirtualGW --- SERVER
     subgraph MyDemoVPC
-        EC2_A(EC2 Instannce A) --- InternetGW
-        EC2_B(EC2 Instannce B) --- InternetGW
-        EC2_E(EC2 Instannce E) --- VirtualGW
-        EC2_F(EC2 Instannce F) --- VirtualGW
+        EC2_A(EC2 Instannce A) 
+        EC2_B(EC2 Instannce B) 
+        EC2_E(EC2 Instannce E) 
+        EC2_F(EC2 Instannce F)
+        EC2_C[(Database Master)]
+        EC2_D[(Database Slave)]
+        MainRouteTable(10.0.0.0/16)
+        PrivSubet(10.0.2.0/24)
+        PubSubnet(10.0.1.0/24)
+        VPNSubnet(10.0.3.0/24)
+        MainRouteTable --- InternetGW
+        MainRouteTable --- NetworkACL
+        NetworkACL --- PubSecGrp
+        NetworkACL --- PrivSecGrp
+        PrivSecGrp --- PrivSubet
+        VPNSubnet --- VirtualGW
+        VPNSubnet --- MainRouteTable
+        PubSecGrp --- PubSubnet
+        subgraph Implied_Router
+            MainRouteTable(10.0.0.0/16)
+        end 
         subgraph Private_Subnet
-             PrivSubet(10.0.2.0/24)
-             EC2_C[(Database Master)]
-             EC2_D[(Database Slave)]
-        end
-        subgraph VPN_Subnet
-             VPNIPv4(10.0.3.0/24)
-             EC2_E
-             EC2_F
+             PrivSubet
+             EC2_C
+             EC2_D
         end
         subgraph Public_Subnet
-            PubIPv4(10.0.1.0/24)
+            PubSubnet
             EC2_A
             EC2_B
+        end
+        subgraph VPN_Subnet
+             VPNSubnet
+             EC2_E
+             EC2_F
         end
     end
     InternetGW
@@ -70,7 +87,7 @@ Destination | Target
 * Main Route tables of Subnet Private_Subnet
 
 Destination | Target
------|-------
+------------|---------
 10.0.1.0/16 | local
 2002:0a00:0100:0:0:0:0:0/56 | local
 
@@ -78,7 +95,7 @@ Destination | Target
 * Route table of Subnet VPN_Subnet
 
 Destination | Target
------|-------
+------------|---------
 10.0.1.0/16 | local
 2002:0a00:0100:0:0:0:0:0/56 | local
 0.0.0.0/0 | VirtualGW

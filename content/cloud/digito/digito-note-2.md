@@ -1,6 +1,7 @@
 +++
-title = "DigitialOcean Note - 2"
+title = "DigitialOcean: Get Started"
 description="User Setup, Security Update & Features"
+weight=2
 +++
 
 ## User Setup

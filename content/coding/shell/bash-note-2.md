@@ -54,7 +54,20 @@ Expression |	Meaning
 
 
 
+#### Samples
 
+* Replace file name from abc-note to abc
+
+```bash
+ls abc-note*
+
+for f in abc-note* ; 
+do 
+    mv -- $f "${f//-note}" 
+done ;
+
+ls abc*
+```
 
 
 

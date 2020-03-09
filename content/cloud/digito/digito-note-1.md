@@ -1,6 +1,7 @@
 +++
-title = "DigitialOcean Note - 1"
+title = "DigitialOcean: Droplet"
 description="Droplet Introduction"
+weight=1
 +++
 
 
@@ -66,6 +67,7 @@ droplet-name | xxx.xxx.xxx.xxx | 10 mins ago |
 ssh -i ~/.ssh/<your_droplet_rsa> root@<xxx.xxx.xxx.xxx>
 ```
 
-#### Congrats, your droplet is up and running
+#### Congrats
 
+* Your droplet is up and running
 * Next we will continue the setup droplet as web server.

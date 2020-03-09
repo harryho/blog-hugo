@@ -1,5 +1,5 @@
 +++
-title = "MySql Note - 2"
+title = "MySql: DDL"
 description="Introduction of SQL: DDL - Data Definition Language DML - Data Manipulation Language"
 +++
 
@@ -50,7 +50,6 @@ SELECT * FROM new_table_a na
 ### Useful temporary table
 
 ```sql
-
 DROP TEMPORARY TABLE IF EXISTS tmp_table; 
 
 CREATE TEMPORARY TABLE tmp_table AS 

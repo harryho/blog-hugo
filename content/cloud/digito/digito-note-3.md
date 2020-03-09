@@ -1,6 +1,7 @@
 +++
-title = "DigitialOcean Note - 3"
+title = "DigitialOcean: First Web Host"
 description="UFW, Nginx & Web Host"
+weight=3
 +++
 
 > Here I contineu to setup SSL certificates for all sites on my web host

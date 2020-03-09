@@ -1,7 +1,7 @@
 +++
 title = "AWS: VPC - 2"
 description = "VPC -  Route table, Security Group, Network ACL"
-weight=3
+weight=4
 +++
 
 

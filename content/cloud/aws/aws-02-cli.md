@@ -68,11 +68,29 @@ A named profile is a collection of settings and credentials that you can apply t
 
         comm -23  \
         <(aws ec2 describe-security-groups \
-        --profile ad1 --query 'SecurityGroups[*].GroupId' --output text \
+        --profile user1 --query 'SecurityGroups[*].GroupId' --output text \
         | tr '\t' '\n'| sort) \
         <(aws ec2 describe-instances \
-        --profile ad1   --query 'Reservations[*].Instances[*].SecurityGroups[*].GroupId' --output text \
+        --profile user1   --query 'Reservations[*].Instances[*].SecurityGroups[*].GroupId' --output text \
         | tr '\t' '\n'  | sort | uniq)
+
+* Find security group by group name 
+
+        aws ec2  describe-security-groups  \
+        --filters Name=group-name,Values=AD1_Web_Pub_SG  --query="SecurityGroups[*].{ID:GroupId,Tags:Tags[*]}" \
+        --profile user1 
+
+* Search security group by tags
+
+        aws ec2  describe-security-groups \
+        --query="SecurityGroups[*].{GroupName:GroupName,ID:GroupId,Tags:Tags[*]}" \
+        --profile user1 | grep "your_group_name"
+
+* Search EC2 by specific tag value
+
+        aws ec2 describe-instances \
+        --profile user1 --filters "Name=tag-value,Values=AD1_DEV_Web_Pub_Host_A"
+
 
 
 #### S3
