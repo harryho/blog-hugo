@@ -75,12 +75,5 @@ fileStream
   .on('end', rowCount => console.log(`Parsed ${rowCount} rows`))
 ```
 
-#### Sample 3
 
-* Transform the csv's delimiter from  "," to "|" , and combine first two columns into one
-
-```js
-
-
-```
 
