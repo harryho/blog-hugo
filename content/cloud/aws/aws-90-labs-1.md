@@ -40,3 +40,10 @@ CAP=
 
 
 ### TODO - Lab 2
+
+* Move EC2 from VPC 1 to VPC 2
+
+```bash
+aws ec2 create-image --instance-id i-04f9dcfadd1767427 --name "NSW_PROD_REDIRECT_Last" --description "NSW_PROD_REDIRECT_Last_Large"
+
+```
