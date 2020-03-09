@@ -14,7 +14,15 @@ AWS has tons of services available on its resources panel. By reading the docume
 * Have an AWS account
 * Install AWS Cli tool
 * Under how to use AWS Cli
-* Most of labs below are tested with AWS Cli
+* Most of labs below are executed with AWS Cli (Version 1)
+
+### Upgrade the AWS Cli to latest version
+
+```bash
+# Mac OS
+pip3 install awscli --upgrade --user
+
+```
 
 ### TODO - Lab 1
 
@@ -24,6 +32,8 @@ AWS has tons of services available on its resources panel. By reading the docume
 * Test the wp
 
 ```
+
+CAP=
 
 
 ```
