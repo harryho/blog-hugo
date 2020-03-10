@@ -18,7 +18,11 @@ draft=true
     - The problelm will never be routing table configuration, due to the default route entry
     - NACL are stateless. To allow certain traffic through it. Inbound and outbound rules both must be allowed. 
 
+* Default VPC & Default Security Group
 
+    - Have an inbound rule that allows all traffic sourced from the security group itself
+    - Have all the outbound traffic allowed by default
+    
 
 ### Scenario 1
 

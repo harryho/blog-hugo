@@ -90,8 +90,8 @@ AWS uses the existing infrastructure of a VPC to create a VPC peering connection
 
 ### VPN Connections
 
-VPN connectivity option |          Description       |
-  -----  |:-----------   |
+VPN connectivity option |   Description 
+  -----  |:-----------
 AWS Site-to-Site VPN |You can create an IPsec VPN connection between your VPC and your remote network. On the AWS side of the Site-to-Site VPN connection, a virtual private gateway provides two VPN endpoints (tunnels) for automatic failover. You configure your customer gateway on the remote side of the Site-to-Site VPN connection. For more information, see the AWS Site-to-Site VPN User Guide, and the AWS Site-to-Site VPN Network Administrator Guide.
 AWS Client VPN 	| AWS Client VPN is a managed client-based VPN service that enables you to securely access your AWS resources in your on-premises network. With AWS Client VPN, you configure an endpoint to which your users can connect to establish a secure TLS VPN session. This enables clients to access resources in AWS or an on-premises from any location using an OpenVPN-based VPN client. For more information, see the AWS Client VPN User Guide.
 AWS VPN CloudHub 	| If you have more than one remote network (for example, multiple branch offices), you can create multiple AWS Site-to-Site VPN connections via your virtual private gateway to enable communication between these networks. For more information, see Providing Secure Communication Between Sites Using VPN CloudHub in the AWS Site-to-Site VPN User Guide.
