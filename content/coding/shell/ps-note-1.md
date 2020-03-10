@@ -39,8 +39,30 @@ description = "Introduction of Powershell "
 ```
 
 
+### Install & Uninstall service
+
+```ps
+# Install service
+New-Service -Name "Your_Service_Name" -BinaryPathName "C:\path_to_your_service\your_service.exe -k netsvcs"
+
+# Uninstall service 
+(Get-WmiObject -Class Win32_Service -Filter "Name='Your_Service_Name'").delete()
+```
 
 
+### Create new login & pass
+
+```ps
+
+$Username = 'domain\username'
+$PassTxt = 'your secret'
+$Password = ConvertTo-SecureString -AsPlainText $PassTxt -Force
+ set-executionpolicy remotesigned; 
+New-LocalUser $Username  -Password $Password -FullName $Username -Description $Username
+Add-LocalGroupMember -Group "Administrators" -Member $Username
+Add-LocalGroupMember -Group "Remote Desktop Users" -Member $Username
+
+```
 
 
 

@@ -33,6 +33,11 @@ Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate
         @restore_db_name='ApplyDirect', 
         @s3_arn_to_restore_from='arn:aws:s3:::db-backup-bucket/database_name_20191221.bak';
 
+* Restore with powershell
+
+        #Copy-S3Object -BucketName 'nsw-prod-s3-sql-backups' -Key NSW_Live-20190531011003.bak -LocalFile L:\Backups\Automated\NSW_Live-20190531011003.bak
+        Restore-SqlDatabase -ServerInstance 'localhost' -Database "NSW_Live" -BackupFile "L:\Backups\Automated\NSW_Live-20190531011003.bak" -ReplaceDatabase -KeepReplication -Verbose 
+
 
 
 
