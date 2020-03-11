@@ -3,19 +3,19 @@ title = "Sql Server Note - 1"
 description="Introduction of MS Sql Server"
 +++
 
+## SQL Server
+
 > Microsoft SQL Server is a relational database management system developed by Microsoft. As a database server, it is a software product with the primary function of storing and retrieving data as requested by other software applications—which may run either on the same computer or on another computer across a network (including the Internet). 
 
 
 
 
-#### Get db/table size or space 
+### Get db/table size or space
 
 * Get db size
 
 ```sql
-
 -- Get database size 
-
 SELECT      sys.databases.name,  
             CONVERT(VARCHAR,SUM(size)*8/1024)+' MB' AS TotalDiskSpaceMB  ,
             CONVERT(VARCHAR,SUM(size)*8/1024/1024)+' GB' AS TotalDiskSpaceGB
@@ -27,7 +27,6 @@ GROUP BY    sys.databases.name
 ORDER BY     TotalDiskSpaceMB
 
 -- Get database space & unallocated space
-
 exec sp_spaceused
 
 -- 
@@ -67,7 +66,7 @@ ORDER BY t.Name;
 
 
 
-#### Get full text search objects
+### Get full text search objects
 
 ```sql
 SELECT 
