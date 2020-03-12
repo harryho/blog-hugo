@@ -102,7 +102,19 @@ ON
 
 ```
 
-### Find the table 
+### Find the table
+
+* Find table by naming pattern
+
+```sql 
+SELECT     distinct	t.name AS 'TableName'
+FROM        sys.columns c
+JOIN        sys.tables  t   ON c.object_id = t.object_id
+WHERE       t.name LIKE '%bk%'
+ORDER BY    TableName;
+```
+
+* Find table by colume name
 
 
 ```sql
