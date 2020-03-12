@@ -145,29 +145,19 @@ EXEC sp_change_users_login 'Auto_Fix', 'your_username', NULL, 'your_password';
 ```sql
 USE [master]
 GO
-CREATE LOGIN [sql_user_id] WITH PASSWORD=N'sql_login_pass', DEFAULT_DATABASE=[Your_Database], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+CREATE LOGIN [sql_user_id] WITH PASSWORD=N'sql_login_pass', 
+DEFAULT_DATABASE=[Your_Database], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
 GO
-use [Your_Database];
-GO
-use [master];
-GO
+
 USE [Your_Database]
 GO
 CREATE USER [sql_user_id] FOR LOGIN [sql_user_id]
 GO
-USE [Your_Database]
-GO
 ALTER USER [sql_user_id] WITH DEFAULT_SCHEMA=[sql_user_id]
-GO
-USE [Your_Database]
 GO
 CREATE SCHEMA [sql_user_id] AUTHORIZATION [sql_user_id]
 GO
-USE [Your_Database]
-GO
 ALTER ROLE [db_datareader] ADD MEMBER [sql_user_id]
-GO
-USE [Your_Database]
 GO
 ALTER ROLE [db_datawriter] ADD MEMBER [sql_user_id]
 GO
