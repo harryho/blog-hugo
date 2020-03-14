@@ -13,7 +13,6 @@ Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate
 
 * Backup database to S3
 
-
         exec msdb.dbo.rds_backup_database 
         @source_db_name='database_name', 
         @s3_arn_to_backup_to='arn:aws:s3:::db-backup-bucket/database_name_20191221.bak', 
@@ -22,12 +21,10 @@ Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate
 
 * Track status
 
-
         exec msdb.dbo.rds_task_status @db_name='database_name'
 
 
 * Restore the database
-
 
         exec msdb.dbo.rds_restore_database 
         @restore_db_name='ApplyDirect', 
@@ -35,8 +32,12 @@ Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate
 
 * Restore with powershell
 
-        #Copy-S3Object -BucketName 'nsw-prod-s3-sql-backups' -Key NSW_Live-20190531011003.bak -LocalFile L:\Backups\Automated\NSW_Live-20190531011003.bak
-        Restore-SqlDatabase -ServerInstance 'localhost' -Database "NSW_Live" -BackupFile "L:\Backups\Automated\NSW_Live-20190531011003.bak" -ReplaceDatabase -KeepReplication -Verbose 
+        #Copy-S3Object -BucketName 'nsw-prod-s3-sql-backups' \ 
+        # -Key NSW_Live-20190531011003.bak \
+        # -LocalFile L:\Backups\Automated\NSW_Live-20190531011003.bak
+        Restore-SqlDatabase -ServerInstance 'localhost' -Database "NSW_Live" \
+        -BackupFile "L:\Backups\Automated\NSW_Live-20190531011003.bak" \
+        -ReplaceDatabase -KeepReplication -Verbose 
 
 
 
