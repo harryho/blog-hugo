@@ -88,7 +88,7 @@ ON
 INNER JOIN
     sys.columns scols
 ON 
-        FT_idx_cols.column_id = scols.column_id
+    FT_idx_cols.column_id = scols.column_id
     AND FT_idx_cols.[object_id] = scols.[object_id]
 INNER JOIN 
     sys.fulltext_catalogs FT_ctlg
