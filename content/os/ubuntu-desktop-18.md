@@ -53,7 +53,7 @@ done
 
 
 if [ -d ~/.zprezto ];then
-    cp  lub18/z* ~/.zprezto/runcoms/
+    cp  ubt18/z* ~/.zprezto/runcoms/
 fi
 
 [[ ! -d ~/.zprezto-contrib ]] && mkdir -p ~/.zprezto-contrib;
