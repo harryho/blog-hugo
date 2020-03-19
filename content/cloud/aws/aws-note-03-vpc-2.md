@@ -73,7 +73,7 @@ Amazon provides Amazon Linux AMIs that are configured to run as NAT instances. T
 * Custom route table of public subnet
 
 Destination | Target 
----|----
+------------ | ----
 10.0.0.0/16 | local
 0.0.0.0/0   | igw-id 
 
@@ -81,7 +81,7 @@ Destination | Target
 * Main route table
 
 Destination | Target
- ----- | ----
+----------- | -------
 10.0.0.0/16 | local
 0.0.0.0/0   | nat-instance-id
 

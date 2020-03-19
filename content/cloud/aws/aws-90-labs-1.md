@@ -31,10 +31,18 @@ pip3 install awscli --upgrade --user
 * Create a wp site with mysql db
 * Test the wp
 
+
 ```
+VPC=<vpc_name>
 
-CAP=
+aws 
 
+
+## Attach IGW
+aws ec2 attach-internet-gateway \
+--vpc-id "vpc-0d6d50e43fbfb23ff" \
+--internet-gateway-id "igw-00da6dd9fc8648a25" \
+--region ap-southeast-2
 
 ```
 
@@ -45,7 +53,6 @@ CAP=
 
 ```bash
 aws ec2 create-image --instance-id i-04f9dcfadd1767427 --name "NSW_PROD_REDIRECT_Last" --description "NSW_PROD_REDIRECT_Last_Large"
-
 
 
 ```

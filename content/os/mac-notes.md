@@ -41,12 +41,25 @@ brew cask install firefox
 
 ```
 
+## Install NVM
+
+```
+brew install nvm
+```
+
+
+* Add following setting to ~/.profile or  ~/.zshrc
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+```
+
 ## Install visual studio code
 
 
 ```
 brew cask install visual-studio-code
-
 
 ```
 

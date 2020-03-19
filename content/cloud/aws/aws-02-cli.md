@@ -63,6 +63,16 @@ A named profile is a collection of settings and credentials that you can apply t
 
         aws ec2 stop-instances --instance-ids i-1234567890abcdef0
 
+* Find out all stopped micro EC2 instancs 
+
+        instances=($(aws ec2 describe-instances \
+        --filters Name=instance-type,Values=t2.micro Name=instance-state-name,Values=stopped \
+        --query "Reservations[].Instances[].InstanceId"  \
+        --profile ad1 --output text ))
+
+        for i in $instances; do echo "$i" ; done;
+
+
 * Find out all unused security group
 
 
@@ -71,7 +81,8 @@ A named profile is a collection of settings and credentials that you can apply t
         --profile user1 --query 'SecurityGroups[*].GroupId' --output text \
         | tr '\t' '\n'| sort) \
         <(aws ec2 describe-instances \
-        --profile user1   --query 'Reservations[*].Instances[*].SecurityGroups[*].GroupId' --output text \
+        --profile user1   --output text \
+        --query 'Reservations[*].Instances[*].SecurityGroups[*].GroupId' \
         | tr '\t' '\n'  | sort | uniq)
 
 * Find security group by group name 
