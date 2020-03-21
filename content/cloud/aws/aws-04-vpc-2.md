@@ -42,7 +42,10 @@ The default security group has inbound and outbound rules when created. The inbo
 
 * A default NACL allows all traffic inbound and outbound.
 * A cutomized NACL blocks/denies all traffic inbound / outbound by default.
-* Can help you block certain ranges of IP address from a large pool(Internet address for instance)
+* A NACL can block certain ranges of IP address from a large pool(Internet address for instance)
+* A network ACL can associate with multiple subnets. However, a subnet can be associated with ONLY ONE network ACL at a time. When you associate a network ACL with a subnet, the previous association is removed.
+
+
 
 ### Security Group vs NACL
 
