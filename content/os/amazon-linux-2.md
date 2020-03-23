@@ -1,7 +1,6 @@
  +++
 date = "2018-12-04T14:59:31+11:00"
 title = "Amazon Linux 2 setup"
-draft = false
 +++
 
 ## Amazon Linux 2
@@ -105,7 +104,13 @@ sudo cat /var/log/mysql.log | grep "temporary password"
 # Reset root password
 sudo mysql_secure_installation
 
+# Create remote login credentials
 
+CREATE USER 'user_id'@'localhost' IDENTIFIED BY 'your_secret';
+CREATE USER 'user_id'@'%' IDENTIFIED BY 'your_secret';
+
+GRANT ALL ON *.* TO 'user_id'@'localhost';
+GRANT ALL ON *.* TO 'user_id'@'%';
 
 ```
 
