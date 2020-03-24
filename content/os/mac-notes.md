@@ -4,12 +4,11 @@
 date = "2015-07-12T14:59:31+11:00"
 title = "Macbook Notes"
 description = "Environment setup"
-draft = false
 +++
 
 ## Prerequisites
 
-* Mac OS 10.*
+* Mac OS 10.12+
 
 
 ## Ownership issue

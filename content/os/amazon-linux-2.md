@@ -89,19 +89,24 @@ sudo cp /etc/my.cnf /etc/my.cnf.orig
 
 * Use vim to update the data directory 
 
-      datadir=/data/mysql
+   ```bash
+   datadir=/data/mysql
+   ```
 
 #### Start MySql as service
 
 * Install polkit before start the service, otherwise you will get error
 
-
-      sudo yum install polkit
+```bash
+sudo yum install polkit
+```
 
 * Enable & Start mysql
 
-      sudo systemctl enable mysqld.service
-      sudo systemctl start mysqld.service
+```bash
+sudo systemctl enable mysqld.service
+sudo systemctl start mysqld.service
+```
 
 * Find the temporay password created for root in /var/log/mysql.log
 

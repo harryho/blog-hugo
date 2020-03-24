@@ -21,7 +21,6 @@ All actions post installation is to make the Ubuntu Desktop a wonderful toolkit 
 sudo apt install -y git curl
 sudo apt-get install -y apt-transport-https ca-certificates      gnupg-agent
 sudo apt install -y software-properties-common 
-
 ```
 
 ### Install & Setup Zsh
@@ -30,7 +29,6 @@ sudo apt install -y software-properties-common
 
 ```bash
 sudo apt install -y zsh
-
 ```
 
 * Setup Zsh
@@ -178,7 +176,6 @@ mysql>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yo
 
 # Create another admin is highly recommended in production env
 mysql>GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'your_strong_password';
-
 ```
 
 ### Other useful tools
