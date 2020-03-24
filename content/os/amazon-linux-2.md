@@ -10,14 +10,13 @@ Amazon Linux 2 is the next generation of Amazon Linux, a Linux server operating 
 
 ### Package update
 
-
-   sudo yum update
+      sudo yum update
 
 
 ### Get system info
 
-   cat /etc/image-id
-   cat /etc/system-release
+      cat /etc/image-id
+      cat /etc/system-release
 
 
 ### Mount a volume (EBS)
@@ -41,6 +40,7 @@ sudo xfs_growfs -d /data
 ```
 
 ### Auto attached volume
+
 ```bash
 sudo cp /etc/fstab /etc/fstab.orig
 
@@ -62,12 +62,12 @@ sudo umount /data
 sudo mount -a
 
 lsblk
-
 ```
 
 
 ### Install MySql
 
+* Install MySql 5.7
 
 ```bash
 # Add repo
@@ -76,43 +76,56 @@ sudo yum localinstall mysql57-community-release-el7-11.noarch.rpm
 
 # Install mysql
 sudo yum install mysql-community-server
+```
 
+* MySql configuration file sits in /etc/my.cnf
 
-# Update data directory
-# location in Amazon linux 2 is /etc/my.cnf
+* Update data directory 
+
+```bash
 # backup original one
 sudo cp /etc/my.cnf /etc/my.cnf.orig
-
-# Use vim to update the data directory 
-# datadir=/data/mysql
-
-# Install polkit before start the service
-# otherwise you will get error
-sudo yum install polkit
-
-# Enable & Start mysql
-sudo systemctl enable mysqld.service
-sudo systemctl start mysqld.service
-
-
-# Find the temporay password created for root
-sudo cat /var/log/mysql.log | grep "temporary password"
-# output
-# [Note] A temporary password is generated for root@localhost: l<C-eX&GW8?m
-
-
-# Reset root password
-sudo mysql_secure_installation
-
-# Create remote login credentials
-
-CREATE USER 'user_id'@'localhost' IDENTIFIED BY 'your_secret';
-CREATE USER 'user_id'@'%' IDENTIFIED BY 'your_secret';
-
-GRANT ALL ON *.* TO 'user_id'@'localhost';
-GRANT ALL ON *.* TO 'user_id'@'%';
-
 ```
+
+* Use vim to update the data directory 
+
+      datadir=/data/mysql
+
+#### Start MySql as service
+
+* Install polkit before start the service, otherwise you will get error
+
+
+      sudo yum install polkit
+
+* Enable & Start mysql
+
+      sudo systemctl enable mysqld.service
+      sudo systemctl start mysqld.service
+
+* Find the temporay password created for root in /var/log/mysql.log
+
+   ```bash
+   sudo cat /var/log/mysql.log | grep "temporary password"
+   # output
+   # [Note] A temporary password is generated for root@localhost: l<C-eX&GW8?m
+   ```
+
+#### Reset root password
+
+      sudo mysql_secure_installation
+
+#### Create remote login credentials
+
+      CREATE USER 'user_id'@'localhost' IDENTIFIED BY 'your_secret';
+      CREATE USER 'user_id'@'%' IDENTIFIED BY 'your_secret';
+
+      GRANT ALL ON *.* TO 'user_id'@'localhost';
+      GRANT ALL ON *.* TO 'user_id'@'%';
+
+
+
+
 
 
 

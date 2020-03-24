@@ -66,7 +66,8 @@ A named profile is a collection of settings and credentials that you can apply t
 * Find out all stopped micro EC2 instancs 
 
         instances=($(aws ec2 describe-instances \
-        --filters Name=instance-type,Values=t2.micro Name=instance-state-name,Values=stopped \
+        --filters Name=instance-type,Values=t2.micro \
+          Name=instance-state-name,Values=stopped \
         --query "Reservations[].Instances[].InstanceId"  \
         --profile ad1 --output text ))
 
@@ -78,7 +79,8 @@ A named profile is a collection of settings and credentials that you can apply t
 
         comm -23  \
         <(aws ec2 describe-security-groups \
-        --profile user1 --query 'SecurityGroups[*].GroupId' --output text \
+        --profile user1 --query 'SecurityGroups[*].GroupId' \
+        --output text \
         | tr '\t' '\n'| sort) \
         <(aws ec2 describe-instances \
         --profile user1   --output text \
@@ -88,19 +90,21 @@ A named profile is a collection of settings and credentials that you can apply t
 * Find security group by group name 
 
         aws ec2  describe-security-groups  \
-        --filters Name=group-name,Values=AD1_Web_Pub_SG  --query="SecurityGroups[*].{ID:GroupId,Tags:Tags[*]}" \
-        --profile user1 
+          --filters Name=group-name,Values=AD1_Web_Pub_SG  \
+          --query="SecurityGroups[*].{ID:GroupId,Tags:Tags[*]}" \
+          --profile user1 
 
 * Search security group by tags
 
         aws ec2  describe-security-groups \
-        --query="SecurityGroups[*].{GroupName:GroupName,ID:GroupId,Tags:Tags[*]}" \
-        --profile user1 | grep "your_group_name"
+          --query="SecurityGroups[*].{GroupName:GroupName,ID:GroupId,Tags:Tags[*]}" \
+          --profile user1 | grep "your_group_name"
 
 * Search EC2 by specific tag value
 
         aws ec2 describe-instances \
-        --profile user1 --filters "Name=tag-value,Values=AD1_DEV_Web_Pub_Host_A"
+          --filters "Name=tag-value,Values=AD1_DEV_Web_Pub_Host_A" \
+          --profile user1 
 
 
 
@@ -117,7 +121,7 @@ A named profile is a collection of settings and credentials that you can apply t
 
 * Sync everything to curerent directory
 
-        aws s3 sync --profile  user1 s3://your_bucket_name . 
+        aws s3 sync --profile  user1 s3://your_bucket_name .
 
 * Copy local file to S3 bucket
 
