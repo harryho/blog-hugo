@@ -1,14 +1,11 @@
 +++
-title = "AWS : VPC - 5"
+title = "AWS: VPC - 5"
 description = "VPC Peering, Direct Connect, Transit Gateway"
 weight=7
-draft=true
 +++
 
 
 ## VPC Part 5
-
-
 
 
 ### Direct Connect

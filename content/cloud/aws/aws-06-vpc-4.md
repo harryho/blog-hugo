@@ -1,5 +1,5 @@
 +++
-title = "AWS : VPC - 4"
+title = "AWS: VPC - 4"
 description = "VPC - Simple Demo "
 weight=6
 
