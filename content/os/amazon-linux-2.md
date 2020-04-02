@@ -129,6 +129,33 @@ sudo systemctl start mysqld.service
       GRANT ALL ON *.* TO 'user_id'@'%';
 
 
+#### Install AWS CLI 
+
+      # Install aws cli without sudo 
+      curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+      unzip awscli-bundle.zip
+      ./awscli-bundle/install -b ~/bin/aws
+
+      # Configure cli 
+      aws configure
+      AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+      AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      Default region name [None]: region-code
+      Default output format [None]: json
+
+#### Install EKS 
+
+      curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+      sudo mv /tmp/eksctl /usr/local/bin
+      ekstool --version
+
+#### Install kubectl
+
+      curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl
+      chmod +x ./kubectl
+      mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+
+
 
 
 
