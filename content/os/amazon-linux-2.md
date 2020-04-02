@@ -138,8 +138,8 @@ sudo systemctl start mysqld.service
 
       # Configure cli 
       aws configure
-      AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
-      AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      AWS Access Key ID [None]: AKXXXXXXXXXXXXXXXXXXXX
+      AWS Secret Access Key [None]: wJ37hsfSFJSDfhsfihakhfakhfu9763Fhshfsuff
       Default region name [None]: region-code
       Default output format [None]: json
 
