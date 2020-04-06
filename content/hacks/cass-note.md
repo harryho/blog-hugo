@@ -198,13 +198,22 @@ nodetool status
     > select * from courses;
 
 
+### Troubleshoot
 
+* Connection error
 
+        Connection error: Could not connect to localhost:9160
 
+    * Update the configuration - cassandra.yaml
+    * Change the following IP address 
+     
+                - seeds: "xxx.xxx.xxx.xxx"
+              listen_address: xxx.xxx.xxx.xxx
+              broadcast_rpc_address: xxx.xxx.xxx.xxx
 
-
-
-
+    * Restart the cassandra
+    
+            sudo systemctl restart cassandra
 
 
 
