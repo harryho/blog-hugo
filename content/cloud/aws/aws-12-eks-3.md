@@ -134,7 +134,7 @@ Install metrics-server with __curl__ and __jq__
     kubectl apply -f metrics-server-$DOWNLOAD_VERSION/deploy/1.8+/
 
 
-# Horizontal Autoscale Test
+#### Horizontal Autoscale Test
 
 * Install httpd pod
   
@@ -148,5 +148,82 @@ Install metrics-server with __curl__ and __jq__
         kubectl run apache-bench \
             --generator=run-pod/v1 \
             -i --tty --rm --image=httpd \
-            -- ab -n 500000 \
-            -c 99999 http://httpd.default.svc.cluster.local/
+            -- ab -n 900000 \
+            -c 9999 http://httpd.default.svc.cluster.local/
+
+
+### Vertical Pod Autoscaler
+
+The Kubernetes Vertical Pod Autoscaler automatically adjusts the CPU and memory reservations for your pods to help "right size" your applications. This adjustment can improve cluster resource utilization and free up CPU and memory for other pods. This topic helps you to deploy the Vertical Pod Autoscaler to your cluster and verify that it is working.
+
+### Deploy Vertical Autoscaler
+
+Open a terminal window and navigate to a directory where you would like to download the Vertical Pod Autoscaler source code.
+
+* Clone the kubernetes/autoscaler GitHub repository.
+
+        git clone https://github.com/kubernetes/autoscaler.git
+
+* Change to the vertical-pod-autoscaler directory.
+
+        cd autoscaler/vertical-pod-autoscaler/
+
+* (Optional) If you have already deployed another version of the Vertical Pod Autoscaler, remove it with the following command.
+
+        ./hack/vpa-down.sh
+
+* Deploy the Vertical Pod Autoscaler to your cluster with the following command.
+
+        ./hack/vpa-up.sh
+
+* Check Vertical Autoscaler pods
+
+        kubectl get pods -n kube-system | grep vpa
+
+
+
+#### Test Vertical Autoscaler 
+
+* Deploy the hamster.yaml Vertical Pod Autoscaler example with the following command.
+
+        kubectl apply -f examples/hamster.yaml
+
+* Get the pods from the hamster example application.
+
+        kubectl get pods -l app=hamster
+        
+        # Output:
+
+        hamster-c7d89d6db-rglf5   1/1     Running   0          48s
+        hamster-c7d89d6db-znvz5   1/1     Running   0          48s
+
+* Describe one of the pods to view its CPU and memory reservation.
+
+        kubectl describe pod hamster-c7d89d6db-rglf5
+
+* Describe the hamster-vpa resource to view the new recommendation.
+
+        kubectl describe vpa/hamster-vpa
+
+        # Output
+        Status:
+        Conditions:
+            Last Transition Time:  2020-02-11T13:31:48Z
+            Status:                True
+            Type:                  RecommendationProvided
+        Recommendation:
+            Container Recommendations:
+            Container Name:  hamster
+            Lower Bound:
+                Cpu:     530m
+                Memory:  262144k
+            Target:
+                Cpu:     587m
+                Memory:  262144k
+            Uncapped Target:
+                Cpu:     587m
+                Memory:  262144k
+            Upper Bound:
+                Cpu:     1
+                Memory:  500Mi
+
