@@ -11,6 +11,11 @@ The update process consists of Amazon EKS launching new API server nodes with th
 
 ### Kubernete Info
 
+* Get cluster & context info
+        
+        kubectl config get-clusters
+        kubectl config use-context <context-name>
+
 * Get kubernete version 
 
         kubectl version --short

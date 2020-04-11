@@ -1,0 +1,136 @@
++++
+title = "AWS: EKS - 3"
+description = "Update / Upgrade Kubernetes"
+weight=12
++++
+
+
+## EKS - Part 3
+
+### Cluster Autoscaler
+
+The Kubernetes Cluster Autoscaler automatically adjusts the number of nodes in your cluster when pods fail to launch due to lack of resources or when nodes in the cluster are underutilized and their pods can be rescheduled onto other nodes in the cluster.
+
+### Strategy of auto scaling
+
+* Stateful application 
+  
+If you are running a stateful application across multiple Availability Zones that is backed by Amazon EBS volumes and using the Kubernetes Cluster Autoscaler, you should configure multiple node groups, each scoped to a single Availability Zone.
+
+* Other option
+
+Create a single node group that spans multiple Availability Zones.
+
+
+#### single managed node group
+
+Create an Amazon EKS cluster with a single managed node group
+
+    eksctl create cluster --name pg-smng --version 1.15 --managed --asg-access
+
+
+#### Node group for each Availability Zone
+
+Create a cluster with a dedicated managed node group for each Availability Zone
+
+    eksctl create cluster --name pg-ngaz --version 1.15 --without-nodegroup
+
+For each Availability Zone in your cluster, use the following eksctl command to create a node group. 
+
+    eksctl create nodegroup \
+            --cluster pg-ngaz \
+            --node-zones ap-southeast-2a \
+            --name ap-southeast-2a \
+            --asg-access \
+            --node-type t3.medium \
+            --nodes-min 1 --nodes 1 \
+            --nodes-max 3 --managed
+
+
+* Node Group IAM Policy
+
+The Cluster Autoscaler requires the following IAM permissions to make calls to AWS APIs on your behalf. The tool __eksctl__ automatically provides and attaches to your worker node IAM roles, when it creates the node groups.
+
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+                {
+                "Action": [
+                        "autoscaling:DescribeAutoScalingGroups",
+                        "autoscaling:DescribeAutoScalingInstances",
+                        "autoscaling:DescribeLaunchConfigurations",
+                        "autoscaling:DescribeTags",
+                        "autoscaling:SetDesiredCapacity",
+                        "autoscaling:TerminateInstanceInAutoScalingGroup",
+                        "ec2:DescribeLaunchTemplateVersions"
+                ],
+                "Resource": "*",
+                "Effect": "Allow"
+                }
+        ]
+    }
+
+
+#### Deploy Autoscaler
+
+
+Deploy the Cluster Autoscaler to your cluster with the following command.
+
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
+
+Add the cluster-autoscaler.kubernetes.io/safe-to-evict annotation to the deployment with the following command.
+
+    kubectl -n kube-system annotate deployment.apps/cluster-autoscaler cluster-autoscaler.kubernetes.io/safe-to-evict="false"
+
+Edit the Cluster Autoscaler deployment with the following command.
+
+    kubectl -n kube-system edit deployment.apps/cluster-autoscaler  
+
+Edit the cluster-autoscaler container command to replace <YOUR CLUSTER NAME> with your cluster's name, and add the following options.
+
+    --balance-similar-node-groups
+    --skip-nodes-with-system-pods=false
+
+Final change will look like below
+
+    spec:
+      containers:
+      - command:
+        - ./cluster-autoscaler
+        - --v=4
+        - --stderrthreshold=info
+        - --cloud-provider=aws
+        - --skip-nodes-with-local-storage=false
+        - --expander=least-waste
+        - --node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/<YOUR CLUSTER NAME>
+        - --balance-similar-node-groups
+        - --skip-nodes-with-system-pods=false
+
+Set the Cluster Autoscaler image tag
+
+    kubectl -n kube-system set image deployment.apps/cluster-autoscaler cluster-autoscaler=asia.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler:v1.15.6
+
+Log Autoscaler
+
+    kubectl -n kube-system logs -f deployment.apps/cluster-autoscaler
+
+
+### Horizontal Pod Autoscaler
+
+
+The Kubernetes Horizontal Pod Autoscaler automatically scales the number of pods in a deployment, replication controller, or replica set based on that resource's CPU utilization. This can help your applications scale out to meet increased demand or scale in when resources are not needed, thus freeing up your worker nodes for other applications. When you set a target CPU utilization percentage, the Horizontal Pod Autoscaler scales your application in or out to try to meet that target.
+
+
+The Horizontal Pod Autoscaler is a standard API resource in Kubernetes that simply requires that a metrics source (such as the Kubernetes metrics server) is installed on your Amazon EKS cluster to work. 
+
+
+Install metrics-server
+
+    DOWNLOAD_URL=$(curl -Ls "https://api.github.com/repos/kubernetes-sigs/metrics-server/releases/latest" | jq -r .tarball_url)
+    DOWNLOAD_VERSION=$(grep -o '[^/v]*$' <<< $DOWNLOAD_URL)
+    curl -Ls $DOWNLOAD_URL -o metrics-server-$DOWNLOAD_VERSION.tar.gz
+    mkdir metrics-server-$DOWNLOAD_VERSION
+    tar -xzf metrics-server-$DOWNLOAD_VERSION.tar.gz --directory metrics-server-$DOWNLOAD_VERSION --strip-components 1
+    kubectl apply -f metrics-server-$DOWNLOAD_VERSION/deploy/1.8+/
+
+
