@@ -22,14 +22,14 @@ If you are running a stateful application across multiple Availability Zones tha
 Create a single node group that spans multiple Availability Zones.
 
 
-#### single managed node group
+#### Single managed node group
 
 Create an Amazon EKS cluster with a single managed node group
 
     eksctl create cluster --name pg-smng --version 1.15 --managed --asg-access
 
 
-#### Node group for each Availability Zone
+#### Node group per AZ
 
 Create a cluster with a dedicated managed node group for each Availability Zone
 
@@ -124,7 +124,7 @@ The Kubernetes Horizontal Pod Autoscaler automatically scales the number of pods
 The Horizontal Pod Autoscaler is a standard API resource in Kubernetes that simply requires that a metrics source (such as the Kubernetes metrics server) is installed on your Amazon EKS cluster to work. 
 
 
-Install metrics-server
+Install metrics-server with __curl__ and __jq__
 
     DOWNLOAD_URL=$(curl -Ls "https://api.github.com/repos/kubernetes-sigs/metrics-server/releases/latest" | jq -r .tarball_url)
     DOWNLOAD_VERSION=$(grep -o '[^/v]*$' <<< $DOWNLOAD_URL)
@@ -134,3 +134,19 @@ Install metrics-server
     kubectl apply -f metrics-server-$DOWNLOAD_VERSION/deploy/1.8+/
 
 
+# Horizontal Autoscale Test
+
+* Install httpd pod
+  
+        kubectl run httpd \
+        --generator=run-pod/v1 \
+        --image=httpd --requests=cpu=100m \
+        --limits=cpu=200m --expose --port=80
+
+* Run benchmark test
+  
+        kubectl run apache-bench \
+            --generator=run-pod/v1 \
+            -i --tty --rm --image=httpd \
+            -- ab -n 500000 \
+            -c 99999 http://httpd.default.svc.cluster.local/
