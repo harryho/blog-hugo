@@ -57,3 +57,55 @@ The AWS ALB Ingress Controller for Kubernetes is a controller that triggers the 
 
         annotations:
             kubernetes.io/ingress.class: alb
+
+
+* Create an IAM OIDC provider and associate it with your cluster. 
+
+        
+        
+        eksctl utils associate-iam-oidc-provider \
+            --region region-code \
+            --cluster prod \
+            --approve
+
+* Create an IAM policy called ALBIngressControllerIAMPolicy for the ALB Ingress Controller pod that allows it to make calls to AWS APIs on your behalf. 
+
+        aws iam create-policy \
+            --policy-name ALBIngressControllerIAMPolicy \
+            --policy-document https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/iam-policy.json
+
+
+* Create a Kubernetes service account named alb-ingress-controller in the kube-system namespace, a cluster role, and a cluster role binding for the ALB Ingress Controller to use with the following command.
+
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/rbac-role.yaml
+
+
+
+* Deploy the ALB Ingress Controller 
+  
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/alb-ingress-controller.yaml
+
+
+* Add a line for the cluster name after the --ingress-class=alb line.
+  
+        spec:
+        containers:
+        - args:
+            - --ingress-class=alb
+            - --cluster-name=prod
+            - --aws-vpc-id=vpc-03468a8157edca5bd
+            - --aws-region=region-code
+
+* Deploy a sample application
+
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/2048/2048-namespace.yaml
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/2048/2048-deployment.yaml
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/2048/2048-service.yaml
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/2048/2048-ingress.yaml
+
+
+* Log the ingress controller
+
+        kubectl logs -n kube-system   deployment.apps/alb-ingress-controller
+
+
