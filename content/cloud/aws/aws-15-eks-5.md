@@ -2,7 +2,6 @@
 title = "AWS: EKS - 5"
 description = "Monitoring, Analytics"
 weight=15
-draft=true
 +++
 
 
@@ -58,6 +57,49 @@ The Kubernetes API server exposes a number of metrics that are useful for monito
 
 
 ### Kubernetes Dashboard
+
+* Deploy the Kubernetes Metrics Server
+
+* Deploy the Dashboard
+
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
+
+* Create an eks-admin Service Account and Cluster Role Binding
+
+        cat<<EOF | kubectl apply -f -
+        apiVersion: v1
+        kind: ServiceAccount
+        metadata:
+        name: eks-admin
+        namespace: kube-system
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1beta1
+        kind: ClusterRoleBinding
+        metadata:
+        name: eks-admin
+        roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: cluster-admin
+        subjects:
+        - kind: ServiceAccount
+        name: eks-admin
+        namespace: kube-system
+        EOF
+
+* Get login token 
+
+        kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+
+* Start the kubectl proxy
+
+        kubectl proxy
+
+* Access dashboard via browser
+
+         http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login.
+
+* Use token from above to login
 
 
 
