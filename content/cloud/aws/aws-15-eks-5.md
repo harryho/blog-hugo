@@ -22,3 +22,42 @@ The Kubernetes metrics server is an aggregator of resource usage data in your cl
         kubectl get deployment metrics-server -n kube-system
 
 
+
+### Prometheus
+
+
+The Kubernetes API server exposes a number of metrics that are useful for monitoring and analysis. These metrics are exposed internally through a metrics endpoint that refers to the /metrics HTTP API. Like other endpoints, this endpoint is exposed on the Amazon EKS control plane. 
+
+
+#### Deploying Prometheus
+
+
+* Create a Prometheus namespace.
+
+        kubectl create namespace prometheus
+
+* Install __helm__
+
+        ## MAC
+        brew install helm
+
+        ## Linux
+        curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
+        chmod 700 get_helm.sh
+        ./get_helm.sh
+
+* Deploy Prometheus.
+
+        helm install prometheus stable/prometheus \
+                --namespace prometheus \
+                --set alertmanager.persistentVolume.storageClass="gp2",server.persistentVolume.storageClass="gp2"
+
+* Verify that all of the pods in the prometheus namespace are in the READY state.
+
+        kubectl get pods -n prometheus
+
+
+### Kubernetes Dashboard
+
+
+
