@@ -1,8 +1,7 @@
 +++
 title = "AWS: EKS - 4"
 description = "VPC, Networking"
-weight=12
-draft=true
+weight=14
 +++
 
 

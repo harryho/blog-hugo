@@ -1,7 +1,7 @@
 +++
 title = "AWS: EKS - 3"
-description = "Update / Upgrade Kubernetes"
-weight=12
+description = "Cluster Autoscaler, Horizontal Pod Autoscaler, Vertical Pod Autoscaler"
+weight=13
 +++
 
 

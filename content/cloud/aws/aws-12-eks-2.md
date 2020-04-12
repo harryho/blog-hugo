@@ -1,7 +1,7 @@
 +++
 title = "AWS: EKS - 2"
 description = "Update / Upgrade Kubernetes"
-weight=11
+weight=12
 +++
 
 

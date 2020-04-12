@@ -1,7 +1,7 @@
 +++
 title = "AWS: EKS - 1"
 description = "Create a cluster"
-weight=10
+weight=11
 +++
 
 
