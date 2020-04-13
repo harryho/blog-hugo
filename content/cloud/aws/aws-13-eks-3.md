@@ -115,6 +115,11 @@ Log Autoscaler
     kubectl -n kube-system logs -f deployment.apps/cluster-autoscaler
 
 
+Add scale policy 
+
+    
+
+
 ### Horizontal Pod Autoscaler
 
 
