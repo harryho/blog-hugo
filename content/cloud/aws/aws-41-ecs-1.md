@@ -14,8 +14,6 @@ Amazon ECS lets you launch and stop container-based applications with simple API
 Amazon ECS can be used to create a consistent deployment and build experience, manage, and scale batch and Extract-Transform-Load (ETL) workloads, and build sophisticated application architectures on a microservices model. 
 
 
-### 
-
 
 ### Installation 
 

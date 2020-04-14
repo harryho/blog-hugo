@@ -7,9 +7,10 @@ draft="true"
 
 ## ECS - 2
 
+As mentioned before, you can host your tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2) instances that you manage by using the EC2 launch type. 
 
 
-### EC2 
+###  Launcth with EC2 
 
 
 * Create a cluster configuration
