@@ -1,5 +1,5 @@
 +++
-title = "AWS: EKS - 5"
+title = "AWS: EKS - 6"
 description = "Labs"
 weight=16
 
