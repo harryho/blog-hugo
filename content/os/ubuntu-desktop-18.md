@@ -207,7 +207,8 @@ mysql>GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'your_str
     ```
     sudo apt install vlc
     ```
--   - Spotify
+
+    - Spotify
 
     ```bash
     sudo snap install spotify
