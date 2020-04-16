@@ -1,6 +1,6 @@
 +++
 title = "AWS: ECS - 1"
-description = "Getting started"
+description = "Getting started with Fargate"
 draft="true"
 +++
 
@@ -26,7 +26,7 @@ Amazon ECS can be used to create a consistent deployment and build experience, m
         sudo curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
     
 
-### Fargate 
+### Launcth with Fargate 
 
 
 * Create a cluster configuration

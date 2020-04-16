@@ -1,6 +1,6 @@
 +++
 title = "AWS: ECS - 2"
-description = "Getting started"
+description = "Getting started with EC2"
 draft="true"
 +++
 
