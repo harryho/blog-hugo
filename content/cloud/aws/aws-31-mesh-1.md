@@ -12,11 +12,5 @@ AWS App Mesh is a service mesh based on the Envoy proxy that helps you monitor a
 
 
 
-### EC2 with Linux
-
-
-
-### EC2 with Windows 
-
-
+### 
 
