@@ -51,7 +51,6 @@ Amazon ECS can be used to create a consistent deployment and build experience, m
         --ecs-profile pg-far-profile
 
 
-
 * Configure the Security Group. 
 
         # VPC_ID is from command above
@@ -68,7 +67,6 @@ Amazon ECS can be used to create a consistent deployment and build experience, m
 
 * Create a Compose File - docker-compose.yml
 
-
 ```yaml
 version: '3'
 services:
@@ -80,7 +78,7 @@ web:
     driver: awslogs
     options: 
         awslogs-group: pg-far
-        awslogs-region: us-west-2
+        awslogs-region: ap-southeast-2
         awslogs-stream-prefix: web
 ```
 

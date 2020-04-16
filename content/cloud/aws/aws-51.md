@@ -11,9 +11,14 @@ Elastic Load Balancing is regional service. It automatically distributes incomin
 
 ### Application Load Balancer
 
+
+
 #### Layer 7 load balancing (HTTP/HTTPS)
+
 #### Server Name Indication (SNI)
+
 #### IP addresses as targets
+
 #### Lambda functions
 
 

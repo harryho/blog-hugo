@@ -413,7 +413,9 @@ App Mesh proxy route manager – 111345817488.dkr.ecr.us-west-2.amazonaws.com/aw
 
 Update each pod specification in your application to include these containers, as shown in the following example. Once updated, deploy the new specifications to update your services and start using App Mesh with your Kubernetes application. 
 
-The following example shows updating the svcNode1 pod specification, that aligns to the scenario. To complete the scenario, you also need to update the svcNode1v2 and svcNode2 pod specifications by changing the values appropriately. For your own applications, substitute your mesh name and virtual node name for the APPMESH_VIRTUAL_NODE_NAME value, and add a list of ports that your application listens on for the APPMESH_APP_PORTS value. Substitute the Amazon EC2 instance AWS Region for the AWS_REGION value.
+The following example shows updating the svcNode1 pod specification, that aligns to the scenario. To complete the scenario, you also need to update the svcNode1v2 and svcNode2 pod specifications by changing the values appropriately. 
+
+For your own applications, substitute your mesh name and virtual node name for the APPMESH_VIRTUAL_NODE_NAME value, and add a list of ports that your application listens on for the APPMESH_APP_PORTS value. Substitute the Amazon EC2 instance AWS Region for the AWS_REGION value.
 
 Example Kubernetes pod spec
 
