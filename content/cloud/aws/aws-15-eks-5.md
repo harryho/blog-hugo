@@ -65,22 +65,23 @@ Prometheus is an open-source systems monitoring and alerting toolkit originally 
 
 Set the storage class to gp2, admin password, configuring the datasource to point to Prometheus and creating an external load balancer for the service.
 
-        kubectl create namespace grafana
-        helm install grafana stable/grafana \
-        --namespace grafana \
-        --set persistence.storageClassName="gp2" \
-        --set adminPassword='grafana' \
-        --set datasources."datasources\.yaml".apiVersion=1 \
-        --set datasources."datasources\.yaml".datasources[0].name=Prometheus \
-        --set datasources."datasources\.yaml".datasources[0].type=prometheus \
-        --set datasources."datasources\.yaml".datasources[0].url=http://prometheus-server.prometheus.svc.cluster.local \
-        --set datasources."datasources\.yaml".datasources[0].access=proxy \
-        --set datasources."datasources\.yaml".datasources[0].isDefault=true \
-        --set service.type=LoadBalancer
+    kubectl create namespace grafana
+    helm install grafana stable/grafana \
+            --namespace grafana \
+            --set persistence.storageClassName="gp2" \
+            --set adminPassword='grafana' \
+            --set datasources."datasources\.yaml".apiVersion=1 \
+            --set datasources."datasources\.yaml".datasources[0]    name=Prometheus \
+            --set datasources."datasources\.yaml".datasources[0]    type=prometheus \
+            --set datasources."datasources\.yaml".datasources[0]    url=http://prometheus-server.prometheus.svc.cluster.local \
+            --set datasources."datasources\.yaml".datasources[0]    access=proxy \
+            --set datasources."datasources\.yaml".datasources[0]    isDefault=true \
+            --set service.type=LoadBalancer
 
 Get your 'admin' user password 
 
-        kubectl get secret --namespace grafana grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+    kubectl get secret --namespace grafana grafana \
+        -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 
 The Grafana server can be accessed via port 80 on the following DNS name from within your cluster: grafana.grafana.svc.cluster.local
 
@@ -94,21 +95,21 @@ Get the Grafana URL to visit by running these commands in the same shell:
 #### Import dashboard
 
 * Cluster Monitoring Dashboard
-        - Click ’+’ button on left panel and select ‘Import’.
-        - Enter 3119 dashboard id under Grafana.com Dashboard.
-        - Click ‘Load’.
-        - Select ‘Prometheus’ as the endpoint under prometheus data sources drop down.
-        - Click ‘Import’.
+  - Click ’+’ button on left panel and select ‘Import’.
+  - Enter 3119 dashboard id under Grafana.com Dashboard.
+  - Click ‘Load’.
+  - Select ‘Prometheus’ as the endpoint under prometheus data sources drop down.
+  - Click ‘Import’.
 
 
 * Pods Monitoring Dashboard
-        - Click ’+’ button on left panel and select ‘Import’.
-        - Enter 6417 dashboard id under Grafana.com Dashboard.
-        - Click ‘Load’.
-        - Enter Kubernetes Pods Monitoring as the Dashboard name.
-        - Click change to set the Unique identifier (uid).
-        - Select ‘Prometheus’ as the endpoint under prometheus data sources drop down.s
-        - Click ‘Import’.
+  - Click ’+’ button on left panel and select ‘Import’.
+  - Enter 6417 dashboard id under Grafana.com Dashboard.
+  - Click ‘Load’.
+  - Enter Kubernetes Pods Monitoring as the Dashboard name.
+  - Click change to set the Unique identifier (uid).
+  - Select ‘Prometheus’ as the endpoint under prometheus data sources drop down.s
+  - Click ‘Import’.
 
 
 
@@ -119,7 +120,6 @@ Get the Grafana URL to visit by running these commands in the same shell:
 * Deploy the Dashboard
 
         kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
-
 
 
 * Create an eks-admin Service Account and Cluster Role Binding
@@ -155,14 +155,12 @@ EOF
 
         kubectl proxy
 
-
 * Access dashboard via browser
   
         http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login.
 
 
 * Use token from above to login
-
 
 * Expose the dashboard to public
 

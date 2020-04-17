@@ -65,6 +65,7 @@ A service mesh is a logical boundary for network traffic between the services th
 
         aws appmesh create-mesh --mesh-name pgMesh
 
+
   - Create a virtual service with the create-virtual-service command.
 
         aws appmesh create-virtual-service \
@@ -216,7 +217,7 @@ Once all traffic is sent to svcNode1v2, you can deprecate the svcNode1 virtual n
 
 * Create the svcNode1v2 virtual node.
 
-* Create a file named create-virtual-node-servicebv2.json with the following contents:
+* Create a file named create-virtual-node-svcnode1v2.json with the following contents:
 
 ```json
 {
@@ -243,7 +244,7 @@ Once all traffic is sent to svcNode1v2, you can deprecate the svcNode1 virtual n
 
 * Create the virtual node.
 
-        aws appmesh create-virtual-node --cli-input-json file://create-virtual-node-servicebv2.json
+        aws appmesh create-virtual-node --cli-input-json file://create-virtual-node-svcnode1v2.json
 
 * Create the svcNode2 virtual node.
 
