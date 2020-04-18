@@ -25,7 +25,7 @@ weight=13
 
 ## Sample of VBScript file 
 
-```vbs
+```
 Set oFSO = CreateObject("Scripting.FileSystemObject"^)
 Set oInput = oFSO.OpenTextFile(WScript.Arguments(0^), 1^)
 sData = Replace(oInput.ReadAll, "," ^& VbCrLf, VbCrLf^)
@@ -43,8 +43,7 @@ oOutput.Close
 * Run the script
 
 
-```vbs
-
+```
 @if (@X)==(@Y) @end /* Harmless hybrid line that begins a JScript comment
 
 ::************ Documentation ***********
@@ -57,17 +56,17 @@ oOutput.Close
 
 @echo off
 if .%2 equ . (
-  if "%~1" equ "/?" (
-    echo."%~f0"
-    <"%~f0" cscript //E:JScript //nologo "%~f0" "^:::" "" a
-    exit /b 0
-  ) else if /i "%~1" equ "/V" (
-    <"%~f0" cscript //E:JScript //nologo "%~f0" "^::(NEWREPL\.BAT version)" "$1" a
-    exit /b 0
-  ) else (
-    call :err "Insufficient arguments"
-    exit /b 2
-  )
+      if "%~1" equ "/?" (
+        echo."%~f0"
+        <"%~f0" cscript //E:JScript //nologo "%~f0" "^:::" "" a
+        exit /b 0
+      ) else if /i "%~1" equ "/V" (
+        <"%~f0" cscript //E:JScript //nologo "%~f0" "^::(NEWREPL\.BAT version)" "$1" a
+        exit /b 0
+      ) else (
+        call :err "Insufficient arguments"
+        exit /b 2
+      )
 )
 
 cscript //E:JScript //nologo "%~f0" %*
@@ -80,31 +79,31 @@ exit /b
 ************* JScript portion **********/
 var rtn=1;
 try {
-    var env=WScript.CreateObject("WScript.Shell").Environment("Process");
-    var args=WScript.Arguments;
-    var search=args.Item(0);
-    var replace=args.Item(1);
-    var options="g";
-    if (args.length>2) options+=args.Item(2).toLowerCase();
-    var alterations=(options.indexOf("a")>=0);
-    if (alterations) options=options.replace(/a/g,"");
-    if (options.indexOf("v")>=0) {
-        options=options.replace(/v/g,"");
-        search=env(search);
-        replace=env(replace);
-    }
-    var search=new RegExp(search,options);
-    var str1, str2;
+      var env=WScript.CreateObject("WScript.Shell").Environment("Process");
+      var args=WScript.Arguments;
+      var search=args.Item(0);
+      var replace=args.Item(1);
+      var options="g";
+      if (args.length>2) options+=args.Item(2).toLowerCase();
+      var alterations=(options.indexOf("a")>=0);
+      if (alterations) options=options.replace(/a/g,"");
+      if (options.indexOf("v")>=0) {
+          options=options.replace(/v/g,"");
+          search=env(search);
+          replace=env(replace);
+      }
+      var search=new RegExp(search,options);
+      var str1, str2;
 
-      while (!WScript.StdIn.AtEndOfStream) {
-        str1=WScript.StdIn.ReadLine();
-        str2=str1.replace(search,replace);
-        if (!alterations || str1!=str2) WScript.Stdout.WriteLine(str2);
-        if (str1!=str2) rtn=0;
-    }
+        while (!WScript.StdIn.AtEndOfStream) {
+          str1=WScript.StdIn.ReadLine();
+          str2=str1.replace(search,replace);
+          if (!alterations || str1!=str2) WScript.Stdout.WriteLine(str2);
+          if (str1!=str2) rtn=0;
+      }
 } catch(e) {
-  WScript.Stderr.WriteLine("JScript runtime error: "+e.message);
-  rtn=3;
+      WScript.Stderr.WriteLine("JScript runtime error: "+e.message);
+      rtn=3;
 }
 WScript.Quit(rtn);
 

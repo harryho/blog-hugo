@@ -29,7 +29,7 @@ weight=11
     
 **get sub-commands** -- type `net /? `
 
-```dos
+```
     [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |
      HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START | 
      STATISTICS | STOP | TIME | USE | USER | VIEW ]
@@ -65,7 +65,7 @@ weight=11
 
 ### runas 
 
-```dos
+```
 start command prompt as administrator
 runas /user:yourpc\administrator "cmd"
 
@@ -85,14 +85,14 @@ runas /user:yourpc\administrator "cmd /C type \"\">c:\z.txt & \
 
 * Basic usage     
 
-```dos
-REM query all service on the PC -- <yourpcname>
-sc \\<yourpcname> query
+    ```
+    REM query all service on the PC -- <yourpcname>
+    sc \\<yourpcname> query
 
-REM query status of given service 
-sc query <servicename>
-sc query state= all | find "SERVICE_NAME" 
-```
+    REM query status of given service 
+    sc query <servicename>
+    sc query state= all | find "SERVICE_NAME" 
+    ```
 
 * Retrieve service name and state. type parameter can be used twice in some case.
     * state = {active | inactive | all}
@@ -104,23 +104,23 @@ sc query state= all | find "SERVICE_NAME"
     * If you run this inside a batch file, the percent signs (e.g. at %s) need to be doubled.
     * Extra space within option is necessary. e.g. `state= all`
 
-```dos
-REM query all services which are inactive and type are driver and kernel
-sc query state= inactive type= driver type= kernel
+    ```
+    REM query all services which are inactive and type are driver and kernel
+    sc query state= inactive type= driver type= kernel
 
-REM get all services name
-for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s 
+    REM get all services name
+    for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @echo %s 
 
-REM get all services name and state
-for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
-    for /f "tokens=4" %t in ('sc query %s ^| find "STATE" ') 
-        do @echo %s -- %t
-)
-```
+    REM get all services name and state
+    for /f "tokens=2" %s in ('sc query state^= all ^| find "SERVICE_NAME"') do @(
+        for /f "tokens=4" %t in ('sc query %s ^| find "STATE" ') 
+            do @echo %s -- %t
+    )
+    ```
 
 **sc queryex**
 
-```dos
+```
 REM get all services name and pid
 for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
     for /f "tokens=3" %t in ('sc queryex %s ^| find "PID" ') 
@@ -136,7 +136,7 @@ for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
 
 **sc qc**
 
-```dos
+```
 REM get all services name and path
 for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(     
     for /f "tokens=3 delims==:" %t in ('sc qc %s ^| find "BINARY_PATH_NAME" ') 
@@ -146,7 +146,7 @@ for /f "tokens=2" %s in ('sc queryex state^= all ^| find "SERVICE_NAME"') do @(
 
 **sc start/stop**
 
-```dos
+```
 REM start and stop service
 sc start  <servicename>
 
@@ -172,7 +172,7 @@ sc stop  <servicename>
 * FilterName: Status, Imagename,
 * Find process by pid
 
-```dos
+```
 REM get the mysqld process info
 tasklist /v /fo list /fi "imagename eq mysqld.exe"
 
@@ -200,7 +200,7 @@ netstat -ano | find ":80"
 
 * Type the application which is using given port.
 
-```bash
+```
 for /f "tokens=5" %p in ( 'netstat -ano ^| find ":80"') do @(     
     for /f "tokens=1" %s in ( 'tasklist /fi "pid eq %p" ^| find "%p"') do @(
         echo PID:%p -- APP: %s
@@ -212,14 +212,14 @@ for /f "tokens=5" %p in ( 'netstat -ano ^| find ":80"') do @(
 
 **syntax**
 
-```dos
+```
 taskkill [/S system [/U username [/P [password]]]]
          { [/FI filter] [/PID processid | /IM imagename] } [/F] [/T]
 ```
 
 **samples**
 
-```dos
+```
 REM force to stop notepad application and any children processes
 taskkill /F /IM notepad.exe /
 
@@ -241,7 +241,7 @@ taskkill /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM notepad.exe
 
 **schtasks /Query**
 
-```dos
+```
 REM get help info                                                                 
 SCHTASKS /Query /?
 
@@ -288,7 +288,7 @@ It is used to setup a channel between commands pass the data through the command
 
 Actually you have seen many samples from above advanced commands. I just use a very simple one to show you how it works. 
 
-```dos
+```
 REM write some content to a text file all.txt
 echo aaa>all.txt & echo mark aaa >>all.txt & echo mark bbb>>all.txt
 
@@ -296,7 +296,7 @@ echo aaa>all.txt & echo mark aaa >>all.txt & echo mark bbb>>all.txt
 
 ### Check CPU usage
 
-```dos
+```
 wmic cpu get loadpercentage
 @for /f "skip=1" %p in ('wmic cpu get loadpercentage') do @echo %p%
 
