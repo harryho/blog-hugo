@@ -12,12 +12,10 @@ Amazon Linux 2 is the next generation of Amazon Linux, a Linux server operating 
 
       sudo yum update
 
-
 ### Get system info
 
       cat /etc/image-id
       cat /etc/system-release
-
 
 ### Mount a volume (EBS)
 
@@ -64,6 +62,35 @@ sudo mount -a
 lsblk
 ```
 
+
+### Add new user
+
+* Add new user without password
+
+```bash
+sudo adduser new_user 
+
+## Add user without password 
+sudo adduser new_user  --disabled-password
+```
+
+* Switch to new user
+
+```bash
+sudo su - new_user
+```
+
+* Set password for new user
+  
+```bash
+sudo passwd new_user
+```
+
+* Allow the new user to use sudo
+
+```bash
+sudo usermod -aG wheel new_user
+```
 
 ### Install MySql
 
@@ -122,39 +149,45 @@ sudo systemctl start mysqld.service
 
 #### Create remote login credentials
 
-      CREATE USER 'user_id'@'localhost' IDENTIFIED BY 'your_secret';
-      CREATE USER 'user_id'@'%' IDENTIFIED BY 'your_secret';
+```sql
+CREATE USER 'user_id'@'localhost' IDENTIFIED BY 'your_secret';
+CREATE USER 'user_id'@'%' IDENTIFIED BY 'your_secret';
 
-      GRANT ALL ON *.* TO 'user_id'@'localhost';
-      GRANT ALL ON *.* TO 'user_id'@'%';
-
+GRANT ALL ON *.* TO 'user_id'@'localhost';
+GRANT ALL ON *.* TO 'user_id'@'%';
+```
 
 #### Install AWS CLI 
 
-      # Install aws cli without sudo 
-      curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-      unzip awscli-bundle.zip
-      ./awscli-bundle/install -b ~/bin/aws
+```bash
+# Install aws cli without sudo 
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+./awscli-bundle/install -b ~/bin/aws
 
-      # Configure cli 
-      aws configure
-      AWS Access Key ID [None]: AKXXXXXXXXXXXXXXXXXXXX
-      AWS Secret Access Key [None]: wJ37hsfSFJSDfhsfihakhfakhfu9763Fhshfsuff
-      Default region name [None]: region-code
-      Default output format [None]: json
+# Configure cli 
+aws configure
+AWS Access Key ID [None]: AKXXXXXXXXXXXXXXXXXXXX
+AWS Secret Access Key [None]: wJ37hsfSFJSDfhsfihakhfakhfu9763Fhshfsuff
+Default region name [None]: region-code
+Default output format [None]: json
+```
 
 #### Install EKS 
 
-      curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-      sudo mv /tmp/eksctl /usr/local/bin
-      ekstool --version
+```bash
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+ekstool --version
+```
 
 #### Install kubectl
 
-      curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl
-      chmod +x ./kubectl
-      mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
-
+```bash
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+```
 
 
 

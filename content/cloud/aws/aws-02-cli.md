@@ -9,6 +9,20 @@ weight=2
 
 Amazon Virtual Private Cloud (Amazon VPC) enables you to launch AWS resources into a virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
 
+### CLI installation (Version 1)
+
+#### Install Python 3
+
+* Python 2.7 is no longer supported. Please install python3
+
+        sudo yum install python3
+        pip3 --version
+
+* 
+
+
+
+
 ### Profile Setup
 
 A named profile is a collection of settings and credentials that you can apply to a AWS CLI command. When you specify a profile to run a command, the settings and credentials are used to run that command. 
