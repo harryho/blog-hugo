@@ -98,12 +98,7 @@ graph BT
     RDS(Rational Database Service)
     temporay_security_credential-->IAM_User
     IAM_Role --> temporay_security_credential([sts:AssumeRole])
-    subgraph Accuont_2 
-        IAM_Role(IAM Role with IAM Policies attached)
-        IAM_Role --> EC2
-        IAM_Role --> S3
-        IAM_Role --> RDS
-    end
+
    temporay_security_credential;
    subgraph Account_1     
         IAM_User(IAM User or Group ABC)
@@ -111,10 +106,37 @@ graph BT
         IAM_User --> S3
         IAM_User --> RDS
     end 
+    subgraph Accuont_2 
+        IAM_Role(IAM Role with IAM Policies attached)
+        IAM_Role --> EC2
+        IAM_Role --> S3
+        IAM_Role --> RDS
+    end
 {{</mermaid >}}
 
+* Samples:
 
+The role `sts:AssumeRole` will be attached the IAM User or Group
 
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::*:role/<Role_Of_Account1>"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "sts:GetSessionToken",
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 #### SAML
 
