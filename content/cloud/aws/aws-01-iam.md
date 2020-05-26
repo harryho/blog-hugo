@@ -116,7 +116,7 @@ graph BT
 
 * Samples:
 
-The role `sts:AssumeRole` will be attached the IAM User or Group
+The role `sts:AssumeRole` will be attached the IAM User or Group in Account 2
 
 ```json
 {
@@ -126,7 +126,7 @@ The role `sts:AssumeRole` will be attached the IAM User or Group
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
-            "Resource": "arn:aws:iam::*:role/<Role_Of_Account1>"
+            "Resource": "arn:aws:iam::*:role/<Role_Of_Account_1>"
         },
         {
             "Sid": "VisualEditor1",
