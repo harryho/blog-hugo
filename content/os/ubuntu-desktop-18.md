@@ -178,6 +178,37 @@ mysql>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yo
 mysql>GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'your_strong_password';
 ```
 
+
+
+### Install Java
+
+* Install [AdoptOpenJDK](https://adoptopenjdk.net/installation.html#x64_linux-jdk) for Linux
+
+    ```
+    # Download tarball you need
+    # Unzip the tarball
+
+    tar xzf OpenJDK11U-jdk_x64_linux_hotspot_x.y.z.tar.gz
+
+    sudo mv OpenJDK11U-jdk_x64_linux_hotspot_x.y.z.tar.gz  \
+        /usr/lib/jvm/OpenJDK11U-jdk_x64_linux_hotspot_x.y.z
+
+    sudo apt install update-java-alternatives
+
+    # Check alternative JDK 
+    install update-java-alternatives -l
+
+    adoptopenjdk-11-hotspot-amd64  1111   /usr/lib/jvm/adoptopenjdk-11-hotspot-amd64
+    adoptopenjdk-14-hotspot-amd64  1141   /usr/lib/jvm/adoptopenjdk-14-hotspot-amd64
+    adoptopenjdk-8-hotspot-amd64   1081   /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
+
+    # Switch JDK
+    update-java-alternatives -s adoptopenjdk-xx-hotspot-amd64
+
+    ```
+
+
+
 ### Other useful tools
 
 - Office
