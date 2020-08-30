@@ -1,6 +1,6 @@
 +++
 title = "Every IT project involves culture change"
-description="Useful & practical docker practices"
+description="Culture Change"
 draft = true
 +++
 
