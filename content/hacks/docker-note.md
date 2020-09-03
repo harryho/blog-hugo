@@ -1,6 +1,6 @@
 +++
-title = "Docker Practices"
-description="Common docker commands and good practices"
+title = "Useful Docker Practices"
+description="Useful & practical docker practices"
 draft = true
 +++
 
@@ -10,6 +10,14 @@ draft = true
 
 
 ## Base command
+
+### Dockerfile sample - busybox
+
+```dockerfile
+FROM Busybox
+
+
+```
 
 ### build
 
