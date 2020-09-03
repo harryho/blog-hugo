@@ -56,17 +56,19 @@ Expression |	Meaning
 
 #### Samples
 
-* Replace file name from abc-note to abc
+* Replace file name from abc_noteN to abc_N
 
 ```bash
-ls abc-note*
+touch abc_note1 abc_note2 abc_note3
 
-for f in abc-note* ; 
+for f in $(find . -type f -name *abc_note*); 
 do 
-    mv -- $f "${f//-note}" 
+    mv -- $f "${f//note}" 
 done ;
 
 ls abc*
+# expected output
+# abc_1   abc_2   abc_3
 ```
 
 
