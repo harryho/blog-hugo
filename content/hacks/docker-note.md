@@ -42,15 +42,19 @@ docker run -it --rm -d -p 8080:80 --name web -v ~/app:/usr/share/nginx nginx
 
 ### build 
 
-Build an image from a Dockerfile
+Build an image from a Dockerfile. The presence of Dockerfile is mandatory. The file name convention is __Dockerfile__ or **your_customized_filename.Dockerfile**
 
-    $ docker build <path_of_dockerfile>
+    $ docker build <path_of_workspace>
 
 Build an image with tag
 
-    $ docker build -t <image_tag> <path_of_dockerfile>
+    $ docker build <path_of_workspace> -t <image_tag>
 
+Build an image with specific dockerfile
 
+    $ docker build <path_of_workspace> -f  <path_of_dockerfile>
+
+    
 
 ### push 
 
@@ -58,7 +62,7 @@ Build an image with tag
 
 ### scripting
 
-The build & push can be simplified with scripting. I just recap a script from my docker image repository.
+The build & push can be simplified with scripting. Here I recap a script from my other docker repository below.
 
 ```bash
 DOCKER_REPO=$1
@@ -69,9 +73,9 @@ fi
 
 echo docker repo: $DOCKER_REPO
 
-#########################################################################################
+############################################################################
 ## --------------------- Build images  ---------------------------
-#########################################################################################
+############################################################################
 
 build_image() {
     FOLDER=$1
@@ -79,13 +83,14 @@ build_image() {
     for fname in $(ls ${FOLDER}); do
         PREFIX=${fname/".Dockerfile"/""}
         echo ":::: Build ${DOCKER_REPO}:${FOLDER}-${PREFIX}"
-        docker build ${FOLDER} -f "${FOLDER}/${PREFIX}.Dockerfile" -t "${DOCKER_REPO}:${FOLDER}-${PREFIX}"
+        docker build ${FOLDER} -f "${FOLDER}/${PREFIX}.Dockerfile" \
+            -t "${DOCKER_REPO}:${FOLDER}-${PREFIX}"
     done
 }
 
-#########################################################################################
+##############################################################################
 ## --------------------- Push images to docker hub ---------------------------
-#########################################################################################
+##############################################################################
 
 ## alpine basealpined image
 push_image() {
@@ -115,6 +120,8 @@ main() {
 
 main "$@"
 ```
+
+### 2-step build
 
 
 

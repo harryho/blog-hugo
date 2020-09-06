@@ -6,3 +6,4 @@ draft = true
 
 ## Every IT project involves culture change
 
+    
