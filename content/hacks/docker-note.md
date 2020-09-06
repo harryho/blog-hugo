@@ -62,7 +62,7 @@ Build an image with specific dockerfile
 
 ### scripting
 
-The build & push can be simplified with scripting. Here I recap a script from my other docker repository below.
+The build & push can be simplified with  some scripting. Here I recap a script from my other docker repository below.
 
 ```bash
 DOCKER_REPO=$1
@@ -123,7 +123,28 @@ main "$@"
 
 ### 2-step build
 
+For production deployment, usually we just deploy the delivery instead of the full copy of source code. To achieve that, we can the build into 2 steps. The first step is to build the source code. and the second one is to build the deliverable image. 
+
+I recap one docker file from the my repository vue-crm here
 
 
+```dockerfile
+###### Build the App #####
+FROM node:10.19 AS node
+LABEL author="Harry Ho"
+WORKDIR /
+COPY . .
+RUN npm install
+RUN npm run build -- --prod
+
+
+###### Build the Delivery #####
+FROM nginx:alpine
+LABEL author="Harry Ho"
+WORKDIR /var/cache/nginx
+COPY --from=node /dist /usr/share/nginx/html
+COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
+
+```
 
     
