@@ -181,7 +181,7 @@ sudo mv /tmp/eksctl /usr/local/bin
 ekstool --version
 ```
 
-#### Install kubectl
+### Install kubectl
 
 ```bash
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl
