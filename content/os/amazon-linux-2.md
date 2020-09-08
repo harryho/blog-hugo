@@ -157,7 +157,7 @@ GRANT ALL ON *.* TO 'user_id'@'localhost';
 GRANT ALL ON *.* TO 'user_id'@'%';
 ```
 
-#### Install AWS CLI 
+### Install AWS CLI 
 
 ```bash
 # Install aws cli without sudo 
@@ -173,7 +173,7 @@ Default region name [None]: region-code
 Default output format [None]: json
 ```
 
-#### Install EKS 
+### Install EKS 
 
 ```bash
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -189,7 +189,7 @@ chmod +x ./kubectl
 mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
 ```
 
-#### Install EPEL repository
+### Install EPEL repository
 
 ```bash
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
