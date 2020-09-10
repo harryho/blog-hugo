@@ -1,9 +1,3 @@
-+++
-date = "2020-03-24T10:59:31+11:00"
-title = "Windows cmd & hotkey - 2"
-description="A note for everyone who wants to use Command and Hot Key as hacker "
-weight=11
-+++
 
 ### Find the Symmetric Difference
 
