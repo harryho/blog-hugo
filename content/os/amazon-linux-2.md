@@ -192,8 +192,13 @@ mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/
 ### Install EPEL repository
 
 ```bash
+## Amazon Linux 1 / 2
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum update
+
+## Amazon Linux 2
+sudo amazon-linux-extras install epel
+
 ```
 
 
