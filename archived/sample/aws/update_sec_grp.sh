@@ -42,14 +42,6 @@ update_sg() {
 
     echo $PROFILE $SG $OIP $NIP | tee -a $LOG
 
-    # aws ec2 --profile $PROFILE \
-    #     describe-security-groups \
-    #     --output json \
-    #     --group-ids $SGID | jq
-
-    # PERM='[{"IpProtocol":"tcp","FromPort":22,"ToPort":22,"IpRanges":[{"CidrIp":"IP_ADDRESS/32"}]}]'
-    # DESC='[{"IpProtocol":"tcp","FromPort": 22,"ToPort": 22,"IpRanges":[{"CidrIp":"IP_ADDRESS/32","Description": "Harry"}]}]'
-
     PERM=$(get_perm $PROFILE)
     DESC=$(get_desc $PROFILE)
 
@@ -140,12 +132,7 @@ show_ips() {
 }
 
 OIPS=(
-    194.193.177.128
-    194.193.144.183
-    60.241.230.171
-    14.202.125.111
-    202.53.60.219
-    210.185.68.225
+  14.203.89.47
 )
 
 main() {
@@ -170,3 +157,11 @@ main() {
 }
 
 main
+    
+# 194.193.177.128
+# 194.193.144.183
+# 60.241.230.171
+# 14.202.125.111
+# 202.53.60.219
+# 210.185.68.225
+# 14.203.89.47
