@@ -166,9 +166,14 @@ GO
 ### Get Connection Info
 
 ```sql
+
 EXEC sp_who
 GO
 
+EXEC sp_who @loginname='user_id'
+GO
+
+-- Enhanced verssion
 EXEC sp_who2
 GO
 ```
