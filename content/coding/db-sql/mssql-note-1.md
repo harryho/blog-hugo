@@ -162,3 +162,13 @@ GO
 ALTER ROLE [db_datawriter] ADD MEMBER [sql_user_id]
 GO
 ```
+
+### Get Connection Info
+
+```sql
+EXEC sp_who
+GO
+
+EXEC sp_who2
+GO
+```
