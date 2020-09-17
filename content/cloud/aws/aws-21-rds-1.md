@@ -114,6 +114,27 @@ GO
 * You can't reduce the amount of storage for a DB instance after storage has been allocated.
 
 
+### Rename database
+
+* Rename db with built-in stored proc
+
+```sql
+EXEC rdsadmin.dbo.rds_modify_db_name N'<OldName>', N'<NewName>'
+```
+
+* Troubleshoot -The database could not be exclusively locked to perform the operation.
+
+```sql
+# Kill connection
+EXEC sp_who 
+GO
+
+KILL <spid>
+GO
+
+EXEC sp_who 
+GO
+```
 
 
 
