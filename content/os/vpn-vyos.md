@@ -11,6 +11,8 @@ VyOS is a fully open source network OS that runs on a wide range of hardware, vi
 
 ### VyOS on AWS
 
+#### Setup VyOS
+
 * Launch instance with community AMI - VyOS (HVM) 1.x.x
 
 * Customize the setup script 
@@ -36,11 +38,11 @@ set system host-name vyos-vpn
 
 # setting up NAT
 set interfaces ethernet eth0 description 'aws-internal'
-# create dummy ethernet device to represent AEMO-provided private IP
+# create dummy ethernet device to represent REMOTE-provided private IP
 set interfaces dummy dum0 address ${REMOTE_NAT_IP}/32
 set interfaces dummy dum0 description 'remote-vpn-ip'
 # configure SNAT
-set nat source rule 100 description 'Internal to AEMO'
+set nat source rule 100 description 'Internal to REMOTE'
 set nat source rule 100 destination address ${REMOTE_VPN_SUBNET}
 set nat source rule 100 outbound-interface 'any'
 set nat source rule 100 source address ${AWS_NAT_SUBNET}
@@ -97,10 +99,11 @@ show vpn ipsec sa
 
 ```
 
-#### Manual update config
+#### Update VyOS config
+
+* Manual update the key **Your_Remote_Key** or remote IP, e.g. 202.22.20.2
 
 ```
-
 interfaces {
     dummy dum0 {
         address 127.17.12.172/32
@@ -121,7 +124,7 @@ interfaces {
 nat {
     source {
         rule 100 {
-            description "Internal to AEMO"
+            description "Internal to REMOTE"
             destination {
                 address 146.164.46.0/24
             }
@@ -254,4 +257,10 @@ vpn {
         }
     }
 }
+```
+
+* Reboot the VyOS
+
+```
+_vyatta_op_run reboot
 ```
