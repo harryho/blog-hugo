@@ -1,7 +1,7 @@
 +++
 date = "2014-01-10T14:59:31+11:00"
 title = "CentOS 6/7 Multi-Boot Setup"
-decription = "CentOS 6/7 Multi-Boot note"
+description = "CentOS 6/7 Multi-Boot note"
 draft = false
 +++
 

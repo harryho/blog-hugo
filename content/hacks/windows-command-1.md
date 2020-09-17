@@ -86,7 +86,7 @@ Before you start typing any cmd, I want to share a common mistake for most begin
 
 ###  help
 
-* Start command prompt and type `help`. You will get a list of command which you can use, and short decription of each command.
+* Start command prompt and type `help`. You will get a list of command which you can use, and short description of each command.
 * Use help command to see and learn other commands
     ```
     C:\>help

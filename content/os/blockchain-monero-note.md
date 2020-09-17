@@ -1,6 +1,4 @@
 +++
-
-
 date = "2017-08-04T14:59:31+11:00"
 title = "Monero Blockchain notes"
 draft = true
