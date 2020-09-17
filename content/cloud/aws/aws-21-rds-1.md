@@ -97,6 +97,14 @@ EXEC msdb.dbo.rds_restore_database
 GO
 ```
 
+* Check the progress 
+
+```sql
+EXEC msdb.dbo.rds_task_status 
+@db_name='sample_db'
+GO
+```
+
 #### Caveat 
 
 * After you modify the storage size for a DB instance, the status of the DB instance is storage-optimization. The DB instance is fully operational after a storage modification.
