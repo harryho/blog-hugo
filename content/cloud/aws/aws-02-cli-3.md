@@ -40,22 +40,20 @@ __show_sg_ids() {
 }
 
 __get_perm() {
-    PROFILE=$1
-    if [[ $PROFILE == "ssh" ]]; then
+    PROTOCOL=$1
+    if [[ $PROTOCOL == "ssh" ]]; then
         PERM='[{"IpProtocol":"tcp","FromPort":22,"ToPort":22,"IpRanges":[{"CidrIp":"IP_ADDRESS/32"}]}]'
-    elif [[ $PROFILE == "rdp" ]]; then
+    elif [[ $PROTOCOL == "rdp" ]]; then
         PERM='[{"IpProtocol":"tcp","FromPort":3389,"ToPort":3389,"IpRanges":[{"CidrIp":"IP_ADDRESS/32"}]}]'
     fi
-
     echo $PERM
 }
 
 __get_desc() {
-    PROFILE=$1
-
-    if [[ $PROFILE == "ssh" ]]; then
+    PROTOCOL=$1
+    if [[ $PROTOCOL == "ssh" ]]; then
         DESC='[{"IpProtocol":"tcp","FromPort":22,"ToPort":22,"IpRanges":[{"CidrIp":"IP_ADDRESS/32","Description":"Harry"}]}]'
-    elif [[ $PROFILE == "rdp" ]]; then
+    elif [[ $PROTOCOL == "rdp" ]]; then
         DESC='[{"IpProtocol":"tcp","FromPort":3389,"ToPort":3389,"IpRanges":[{"CidrIp":"IP_ADDRESS/32","Description":"Harry"}]}]'
     fi
     echo $DESC
@@ -63,7 +61,6 @@ __get_desc() {
 
 
 __show_ips() {
-    PROFILE=$1
     aws ec2 --profile $PROFILE \
         describe-security-groups \
         --output json \
@@ -71,15 +68,15 @@ __show_ips() {
 }
 
 __update_sg() {
-    PROFILE=$1
+    PROTOCOL=$1
     SGID=$2
     OIP=$3
     NIP=$4
 
     echo $PROFILE $SG $OIP $NIP | tee -a $LOG
 
-    PERM=$(__get_perm $PROFILE)
-    DESC=$(__get_desc $PROFILE)
+    PERM=$(__get_perm $PROTOCOL)
+    DESC=$(__get_desc $PROTOCOL)
 
     OLD_PERM=${PERM/"IP_ADDRESS"/$OIP}
     NEW_PERM=${PERM/"IP_ADDRESS"/$NIP}
@@ -123,7 +120,7 @@ update_rdp_sg() {
     for SG in "${RDP_SG_LIST[@]}"; do
         __update_sg rdp $SG $OIP $NIP
     done
-    __show_ips rdp
+    __show_ips
 }
 
 # Update the rule with SSH 
@@ -139,7 +136,7 @@ update_ssh_sg() {
     for SG in "${SSH_SG_LIST[@]}"; do
         __update_sg ssh $SG $OIP $NIP
     done
-    __show_ips ssh
+    __show_ips
 }
 
 
@@ -148,7 +145,7 @@ main() {
 
     PROFILE=$1
 
-    echo 'profile $PROFILE ' | tee -a $LOG
+    echo "profile $PROFILE " | tee -a $LOG
 
     echo 'You can pass profile name as 1st parameter to overwrite the default setting.'
 
@@ -172,7 +169,13 @@ main $@
 
 ```
 
+* How to use 
+ > ./update_sg.sh <profile_name>
 
+```
+./update_sg.sh profile_A 
+./update_sg.sh profile_B 
+```
 
 
 
