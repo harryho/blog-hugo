@@ -72,29 +72,26 @@ graph LR
 
 ### Integration
 
+* Sender code of sample
 
 ```java
 package email.sample;
 
 // import ....
 
-public class AmazonSESSample {
+public class SesSample {
 
-  static final String FROM = "sender@example.com";
+  static final String FROM = "sender@test.com";
 
-  static final String TO = "recipient@example.com";
-
+  static final String TO = "recipient@test.com";
 
   static final String CONFIGSET = "ConfigSet";
 
   // The subject line for the email.
-  static final String SUBJECT = "Amazon SES test (AWS SDK for Java)";
+  static final String SUBJECT = "SES test";
   
   // The HTML body for the email.
-  static final String HTMLBODY = "<h1>Amazon SES test (AWS SDK for Java)</h1>"
-      + "<p>This email was sent with <a href='https://aws.amazon.com/ses/'>"
-      + "Amazon SES</a> using the <a href='https://aws.amazon.com/sdk-for-java/'>" 
-      + "AWS SDK for Java</a>";
+  static final String HTMLBODY = "SES test"
 
   // The email body for recipients with non-HTML email clients.
   static final String TEXTBODY = "This email was sent through Amazon SES "
@@ -105,32 +102,93 @@ public class AmazonSESSample {
     try {
       AmazonSimpleEmailService client = 
           AmazonSimpleEmailServiceClientBuilder.standard()
-          // Replace US_WEST_2 with the AWS Region you're using for
-          // Amazon SES.
+          // Replace the AWS Region
             .withRegion(Regions.US_WEST_2).build();
       SendEmailRequest request = new SendEmailRequest()
           .withDestination(
               new Destination().withToAddresses(TO))
           .withMessage(new Message()
               .withBody(new Body()
-                  .withHtml(new Content()
-                      .withCharset("UTF-8").withData(HTMLBODY))
                   .withText(new Content()
                       .withCharset("UTF-8").withData(TEXTBODY)))
               .withSubject(new Content()
                   .withCharset("UTF-8").withData(SUBJECT)))
-          .withSource(FROM)
-          // Comment or remove the next line if you are not using a
-          // configuration set
-          .withConfigurationSetName(CONFIGSET);
+          .withSource(FROM);
       client.sendEmail(request);
       System.out.println("Email sent!");
     } catch (Exception ex) {
-      System.out.println("The email was not sent. Error message: " 
-          + ex.getMessage());
+      System.out.println("Error message: " + ex.getMessage());
     }
   }
 }
+
+```
+
+* Sample of SQS code
+
+```java
+// .....
+public class SqsConsumer {
+    
+      public void receive(Object message) throws Exception {
+
+        if (message instanceof CamelMessage) {
+            String body = ((CamelMessage) message).getBodyAs(String.class, camelContext());
+            JsonNode envelope = Json.parse(body);
+            if (envelope.has("Message")) {
+                JsonNode notification = Json.parse(envelope.get("Message").asText());
+                String notificationType = notification.get("notificationType").asText();
+
+                log.debug("Processing email notification: " + notificationType);
+                switch (notification.get("notificationType").asText()) {
+                    case "Received":
+                        received.tell(new EmailActorProtocol.EmailReceived(notification), self());
+                        break;
+                    case "Bounce":
+                        response.tell(new EmailActorProtocol.EmailBounced(notification), self());
+                        break;
+                    case "Delivery":
+                        response.tell(new EmailActorProtocol.EmailDelivered(notification), self());
+                        break;
+                    case "Complaint":
+                        response.tell(new EmailActorProtocol.EmailComplaintReceived(notification), self());
+                        break;
+                    default:
+                        throw new RuntimeException(String.format("Notification type %s not supported", notificationType));
+                }
+            }
+        }
+    }
+}
+
+// EmailActorProtocol 
+// public class EmailActorProtocol {
+//     public interface EmailResponse {
+//     }
+//     @Data
+//     static public class EmailReceived {
+//         private final JsonNode body;
+//     }
+//     @Data
+//     static public class EmailDelivered implements EmailResponse {
+//         private final JsonNode body;
+//     }
+//     @Data
+//     static public class EmailBounced implements EmailResponse {
+//         private final JsonNode body;
+//     }
+//     @Data
+//     static public class EmailComplaintReceived implements EmailResponse {
+//         private final JsonNode body;
+//     }
+//     static public class GetHealth {
+//     }
+//     @Data
+//     static public class Health {
+//         private final boolean healthy;
+//     }
+// }
+
 
 ```
 
