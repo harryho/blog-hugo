@@ -2,7 +2,6 @@
 title = "AWS: SQS,SNS,SES - 2"
 description = "Use Case - SQS, SNS, SES"
 weight=7
-draft=true
 +++
 
 ## Use Case
@@ -81,45 +80,41 @@ package email.sample;
 
 public class SesSample {
 
-  static final String FROM = "sender@test.com";
+    static final String FROM = "sender@test.com";
 
-  static final String TO = "recipient@test.com";
+    static final String TO = "recipient@test.com";
 
-  static final String CONFIGSET = "ConfigSet";
+    static final String CONFIGSET = "ConfigSet";
 
-  // The subject line for the email.
-  static final String SUBJECT = "SES test";
-  
-  // The HTML body for the email.
-  static final String HTMLBODY = "SES test"
+    // The subject line for the email.
+    static final String SUBJECT = "SES test";
 
-  // The email body for recipients with non-HTML email clients.
-  static final String TEXTBODY = "This email was sent through Amazon SES "
-      + "using the AWS SDK for Java.";
+    // The email body for recipients with non-HTML email clients.
+    static final String TEXTBODY = "This email was sent through Amazon SES "
 
-  public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-    try {
-      AmazonSimpleEmailService client = 
-          AmazonSimpleEmailServiceClientBuilder.standard()
-          // Replace the AWS Region
-            .withRegion(Regions.US_WEST_2).build();
-      SendEmailRequest request = new SendEmailRequest()
-          .withDestination(
-              new Destination().withToAddresses(TO))
-          .withMessage(new Message()
-              .withBody(new Body()
-                  .withText(new Content()
-                      .withCharset("UTF-8").withData(TEXTBODY)))
-              .withSubject(new Content()
-                  .withCharset("UTF-8").withData(SUBJECT)))
-          .withSource(FROM);
-      client.sendEmail(request);
-      System.out.println("Email sent!");
-    } catch (Exception ex) {
-      System.out.println("Error message: " + ex.getMessage());
+        try {
+            AmazonSimpleEmailService client = 
+                AmazonSimpleEmailServiceClientBuilder.standard()
+                // Replace the AWS Region
+                    .withRegion(Regions.US_WEST_2).build();
+            SendEmailRequest request = new SendEmailRequest()
+                .withDestination(
+                    new Destination().withToAddresses(TO))
+                .withMessage(new Message()
+                    .withBody(new Body()
+                        .withText(new Content()
+                            .withCharset("UTF-8").withData(TEXTBODY)))
+                    .withSubject(new Content()
+                        .withCharset("UTF-8").withData(SUBJECT)))
+                .withSource(FROM);
+            client.sendEmail(request);
+            System.out.println("Email sent!");
+            } catch (Exception ex) {
+            System.out.println("Error message: " + ex.getMessage());
+        }
     }
-  }
 }
 
 ```
