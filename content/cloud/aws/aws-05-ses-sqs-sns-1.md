@@ -2,7 +2,6 @@
 title = "AWS: SQS,SNS,SES - 1"
 description = "Introduction of SQS, SNS, SES"
 weight=7
-draft=true
 +++
 
 ## SQS
