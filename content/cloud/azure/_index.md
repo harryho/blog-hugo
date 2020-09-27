@@ -1,6 +1,5 @@
 +++
 title = "Azure"
-draft = true
 weight = 3
 +++
 

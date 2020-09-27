@@ -69,11 +69,11 @@ graph LR
     P(Plan)
     R(Ready)
     A(Adopt)
-   subgraph Layer_1
+    subgraph Layer_1
         S-->P
         P-->R
         R-->A
-    end 
+    end
 {{</mermaid >}}
 {{<mermaid>}}
 graph BT

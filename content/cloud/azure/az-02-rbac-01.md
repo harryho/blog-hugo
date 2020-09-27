@@ -1,7 +1,7 @@
 +++
 title = "Azure: RBAC - 1"
 weight = 1
-description="RBAC - Part 1"
+description="Introduction of RBAC"
 
 +++
 
