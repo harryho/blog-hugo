@@ -230,3 +230,45 @@ An operations team focuses on monitoring, repairing, and remediating issues rela
     - Regularly review and accept handoffs from cloud adoption teams.
 
 
+### MVP - team structure
+
+This proven approach is considered a minimum viable product (MVP), because it might not be sustainable. Each team wears many hats, as outlined in the RACI (responsible, accountable, consulted, and informed) charts.
+
+#### Cloud adoption team
+
+This team is accountable for technical solutions, business alignment, project management, and operations for the solutions that are adopted.
+
+#### Cloud governance team
+    
+To balance the cloud adoption team, a cloud governance team is dedicated to ensuring excellence in the solutions that are adopted. The cloud governance team is accountable for platform maturity, platform operations, governance, and automation.
+
+-               |  Cloud adoption team  | Cloud governance team
+--------------------|---------------------|-----------
+Solution delivery	| Accountable|   Consulted
+Business alignment	| Accountable|   Informed
+Change management	| Accountable|   Informed
+Solution operations	| Accountable|    Informed
+Governance	        |  Consulted |   Accountable
+Platform maturity	|  Consulted |   Accountable
+Platform operations	|  Consulted |  Accountable
+Platform automation  | Informed  | Accountable
+
+
+- Accountable:	The one person or team to be held accountable for results and outcomes		
+- Responsible:	Any people or teams who are responsible for contributing to the results and outcomes		
+- Consulted:	People or teams who should be consulted prior to changes being implemented		
+- Informed:	People or teams who should be informed about changes		
+
+
+
+
+
+
+
+
+
+
+
+
+
+

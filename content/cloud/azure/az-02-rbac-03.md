@@ -27,7 +27,6 @@ Privileged Identity Management (PIM) is a service in Azure Active Directory (Azu
 
 Privileged Identity Management provides time-based and approval-based role activation to mitigate the risks of excessive, unnecessary, or misused access permissions on resources that you care about.
 
-
 - Provide just-in-time privileged access to Azure AD and Azure resources
 - Assign time-bound access to resources using start and end dates
 - Require approval to activate privileged roles
