@@ -28,10 +28,6 @@ cd public
 
 git add -A
 
-# Commit changes.
-# set msg="rebuilding site `date`"
-# if  NOT "%1"=="" set msg=%1
-
 msg="rebuilding site $(date)"
 if [ $# -eq 1 ]; then
   msg="$1"

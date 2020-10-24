@@ -39,8 +39,10 @@ demo/
 playground/*
 
 ## public
+public
 public/*
-!/public/.gitkeep
+# !/public/.gitkeep
+
 
 # Mac
 *.DS_Store
@@ -62,3 +64,5 @@ archived/sample/**/*.docx
 
 # Ignroe tutorial section
 *tut/
+
+
