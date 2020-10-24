@@ -75,9 +75,7 @@ The COBIT 5 framework makes a clear distinction between governance and managemen
 
 Governance ensures that stakeholder needs, conditions and options are evaluated to determine balanced, agreed-on enterprise objectives to be achieved; setting direction through prioritisation and decision making; and monitoring performance and compliance against agreed-on direction and objectives.
 
-> In most enterprises, overall governance is the responsibility of the board of directors under the leadership of the
-chairperson. Specific governance responsibilities may be delegated to special organisational structures at an
-appropriate level, particularly in larger, complex enterprises.
+> In most enterprises, overall governance is the responsibility of the board of directors under the leadership of the chairperson. Specific governance responsibilities may be delegated to special organisational structures at an appropriate level, particularly in larger, complex enterprises.
 
 * Management
 
