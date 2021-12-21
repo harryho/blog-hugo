@@ -177,24 +177,26 @@ adoptopenjdk-11.jdk adoptopenjdk-16.jdk adoptopenjdk-8.jdk
 
 ```
 
-* Setup the profile
+#### Switch Java version with alias
+- Add following lines to file .zshrc
+
+```sh
+# Java
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+export JAVA_17_HOME=$(/usr/libexec/java_home -v16)
+
+alias java8='export JAVA_HOME=$JAVA_8_HOME'
+alias java11='export JAVA_HOME=$JAVA_11_HOME'
+alias java17='export JAVA_HOME=$JAVA_16_HOME'
 
 ```
-## java home variable to profile
-echo "export JAVA_8_HOME=$java8_home">>$HOME/.profile
-echo "export JAVA_11_HOME=$java11_home">>$HOME/.profile
 
+- Switch JDK
 
-java8_home=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
-java11_home=/usr/lib/jvm/adoptopenjdk-11-hotspot-amd64
+```sh
+source ~/.zshrc
 
-echo "# Java 8 & 11">>$HOME/.bash_aliases
-echo "alias java8='$java8'">>$HOME/.bash_aliases
-echo "alias java11='$java11'">>$HOME/.bash_aliases
-source $HOME/.bash_aliases
-
-
-## Switch JDK 
 java8
 java -version
 java11 
@@ -202,6 +204,43 @@ java -version
 ```
 
 
+#### Switch Java version with function
+
+- Add following lines to file .zshrc
+
+```sh
+jdk() {
+      if [[ ! -z $1 ]]; then
+        version=$1
+        unset JAVA_HOME;
+        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        java -version
+      else
+        echo Argument version is required. e.g. 1.8, 11, 16
+        echo Example: jdk 1.8  or jdk 11
+      fi
+}
+```
+
+- Switch JDK
+
+```sh
+source ~/.zshrc
+
+jdk
+Argument version is required. e.g. 1.8, 11, 16
+Example: jdk 1.8 or jdk 11
+
+jdk 1.8
+openjdk version "1.8.0_292"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_292-b10)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.292-b10, mixed mode)
+
+jdk 11
+openjdk version "11.0.11" 2021-04-20
+OpenJDK Runtime Environment AdoptOpenJDK-11.0.11+9 (build 11.0.11+9)
+OpenJDK 64-Bit Server VM AdoptOpenJDK-11.0.11+9 (build 11.0.11+9, mixed mode)
+```
 
 
 ### Install Vim plugins
