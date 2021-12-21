@@ -39,7 +39,7 @@ brew list
 ```
 
 
-## Install Zsh Prezto
+### Install Zsh Prezto
 
 - Clone Zsh Prezto
 
@@ -90,7 +90,7 @@ zstyle ':prezto:module:prompt' theme 'steeef'
 ```
 
 
-## Install NVM
+### Install NVM
 
 ```sh
 brew install nvm
