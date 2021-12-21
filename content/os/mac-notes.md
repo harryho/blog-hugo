@@ -2,16 +2,18 @@
 
 
 date = "2015-07-12T14:59:31+11:00"
-title = "Macbook Notes"
+title = "Macbook Notes - Intel X64"
 description = "Environment setup"
 +++
 
-## Prerequisites
+
+### Prerequisites
 
 * Mac OS 10.12+
+* Intel X64 CPU
 
 
-## Ownership issue
+### Ownership issue
 
 * If you have Homebrew or other software installed by someone else, you need to change ownership
 
@@ -23,7 +25,7 @@ sudo chown -R $(whoami) /usr/local/lib
 
 ```
 
-## Install Homebrew 
+### Install Homebrew 
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -34,27 +36,77 @@ brew update
 brew upgrade 
 brew list
 
-## Brew Cask
+```
 
-brew cask install firefox
+
+## Install Zsh Prezto
+
+- Clone Zsh Prezto
+
+```sh
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 ```
+
+- Remove default `zshrc`
+
+```sh
+rm -f ~/.zshrc
+```
+
+- Initialize our Prezto configuration files.
+
+```sh
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+```
+
+- Setup Prezto Style
+
+  - Open up ~/.zpreztorc and find where it says:
+  - change “sorin” to “steeef.”
+
+```sh
+zstyle ':prezto:module:prompt' theme 'steeef'
+```
+  - Add Some Prezto Modules
+
+```sh
+'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'prompt' \
+  'git' \
+  'completion' \
+  'syntax-highlighting' \
+  'history-substring-search'
+```
+
 
 ## Install NVM
 
-```
+```sh
 brew install nvm
 ```
 
 
-* Add following setting to ~/.profile or  ~/.zshrc
+* Add following setting to file `.zshrc`
 
-```
+```sh
+# NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 ```
 
-## Install visual studio code
+### Install visual studio code
 
 
 ```
@@ -62,14 +114,14 @@ brew cask install visual-studio-code
 
 ```
 
-## Install python 3
+### Install python 3
 
 ```
 brew install python@3.x
 ```
 
 
-## Install JDK
+### Install JDK
 
 * Install different version of JDK
 
@@ -120,7 +172,7 @@ java -version
 java11 
 java -version
 ```
-## Install Vim plugins
+### Install Vim plugins
 
 
 ```
@@ -140,7 +192,7 @@ vi
 
 ```
 
-## Install KubeCtl
+### Install KubeCtl
 
 ```
 brew unlink kubernetes-cli
@@ -151,7 +203,7 @@ brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f25e36259e
 
 
 
-## Install Hugo
+### Install Hugo
 
 ```
 ## Version: hugo_extended_0.57.2_macOS-64bit
@@ -160,7 +212,7 @@ cp hugo_X.Y_osx-64bit.tgz
 ```
 
 
-## Install AWS Cli 1.x
+### Install AWS Cli 1.x
 
 ```
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
