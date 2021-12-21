@@ -129,33 +129,53 @@ brew install mysql
 
 
 
-### Install JDK
+### Install JDK 
 
-* Install different version of JDK
+
+* Tap adoptopenjdk to brew
+
+```sh
+brew tap adoptopenjdk/openjdk
+
+brew search openjdk
+==> Formulae
+openjdk                                     openjdk@11                                  openjdk@8                                   openj9                                      openvdb
+
+==> Casks
+adoptopenjdk-jre                     adoptopenjdk11-openj9                adoptopenjdk12-openj9-jre-large      adoptopenjdk14                       adoptopenjdk15-openj9                adoptopenjdk8
+adoptopenjdk-openj9                  adoptopenjdk11-openj9-jre            adoptopenjdk12-openj9-large          adoptopenjdk14-jre                   adoptopenjdk15-openj9-jre            adoptopenjdk8-jre
+adoptopenjdk-openj9-jre              adoptopenjdk11-openj9-jre-large      adoptopenjdk13                       adoptopenjdk14-openj9                adoptopenjdk15-openj9-jre-large      adoptopenjdk8-openj9
+adoptopenjdk-openj9-jre-large        adoptopenjdk11-openj9-large          adoptopenjdk13-jre                   adoptopenjdk14-openj9-jre            adoptopenjdk15-openj9-large          adoptopenjdk8-openj9-jre
+adoptopenjdk-openj9-large            adoptopenjdk12                       adoptopenjdk13-openj9                adoptopenjdk14-openj9-jre-large      adoptopenjdk16                       adoptopenjdk8-openj9-jre-large
+adoptopenjdk10                       adoptopenjdk12-jre                   adoptopenjdk13-openj9-jre            adoptopenjdk14-openj9-large          adoptopenjdk16-jre                   adoptopenjdk8-openj9-large
+adoptopenjdk11                       adoptopenjdk12-openj9                adoptopenjdk13-openj9-jre-large      adoptopenjdk15                       adoptopenjdk16-openj9                adoptopenjdk9
+adoptopenjdk11-jre                   adoptopenjdk12-openj9-jre            adoptopenjdk13-openj9-large          adoptopenjdk15-jre                   adoptopenjdk16-openj9-jre
+```
+
+* Install multiple versions of JDK 
 
 ```
-brew tap AdoptOpenJDK/openjdk
-
-brew cask install <jdk_version>
-
+brew install --cask adoptopenjdk # Latest version is 16
+brew install --cask adoptopenjdk8
+brew install --cask adoptopenjdk11
 ```
 
-Java  Version |	JDK	|JRE
-------|--------|----------
-OpenJDK8 with Hotspot JVM	 | adoptopenjdk8	 | adoptopenjdk8-jre
-OpenJDK8 with OpenJ9 JVM	 | adoptopenjdk8-openj9	 | adoptopenjdk8-openj9-jre
-OpenJDK8 with OpenJ9 JVM, large heap*	 | adoptopenjdk8-openj9-large	 | adoptopenjdk8-openj9-jre-large
-OpenJDK9 with Hotspot JVM	 | adoptopenjdk9	n/a
-OpenJDK10 with Hotspot JVM	 | adoptopenjdk10	n/a
-OpenJDK11 with Hotspot JVM	 | adoptopenjdk11	 | adoptopenjdk11-jre
-OpenJDK11 with OpenJ9 JVM	 | adoptopenjdk11-openj9	 | adoptopenjdk11-openj9-jre
-OpenJDK11 with OpenJ9 JVM, large heap*	 | adoptopenjdk11-openj9-large	 | adoptopenjdk11-openj9-jre-large
-OpenJDK12 with Hotspot JVM	 | adoptopenjdk12	 | adoptopenjdk12-jre
-OpenJDK12 with OpenJ9 JVM	 | adoptopenjdk12-openj9	 | adoptopenjdk12-openj9-jre
-OpenJDK12 with OpenJ9 JVM, large heap*	 | adoptopenjdk12-openj9-large	 | adoptopenjdk12-openj9-jre-large
-OpenJDK13 with Hotspot JVM	 | adoptopenjdk13	 | adoptopenjdk13-jre
-OpenJDK13 with OpenJ9 JVM	 | adoptopenjdk13-openj9	 | adoptopenjdk13-openj9-jre
-OpenJDK13 with OpenJ9 JVM, large heap*	 | adoptopenjdk13-openj9-large	 | adoptopenjdk13-openj9-jre-large
+* LTS version info
+
+Java Version | First Release 		| Next Release 	| End of Availability 
+------|--------|-----------|-----
+Java 8 (LTS) 	 | Mar 2014 	|	jdk8u302 20th Jul 2021 |	At Least May 2026 
+Java 11 (LTS)  |September 2018 | 	jdk-11.0.12 20th Jul 2021 	|At Least Oct 2024
+Java 17 (LTS) 	|Sep 2021 	| jdk-17 14th Sep 2021 |	TBC
+
+
+* Inspect all available JDKs
+
+```
+ls  /Library/Java/JavaVirtualMachines
+adoptopenjdk-11.jdk adoptopenjdk-16.jdk adoptopenjdk-8.jdk
+
+```
 
 * Setup the profile
 
@@ -212,7 +232,7 @@ brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f25e36259e
 
 ```
 
-
+  
 ### Install Hugo
 
 ```
