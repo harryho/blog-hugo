@@ -121,6 +121,14 @@ brew install python@3.x
 ```
 
 
+### Install MySql
+
+```
+brew install mysql
+```
+
+
+
 ### Install JDK
 
 * Install different version of JDK
@@ -172,6 +180,10 @@ java -version
 java11 
 java -version
 ```
+
+
+
+
 ### Install Vim plugins
 
 
@@ -201,21 +213,20 @@ brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f25e36259e
 ```
 
 
-
-
 ### Install Hugo
 
 ```
-## Version: hugo_extended_0.57.2_macOS-64bit
+## Version: hugo_extended_0.54.0_macOS-64bit
 tar -xvzf ~/Downloads/hugo_X.Y_osx-64bit.tgz
 cp hugo_X.Y_osx-64bit.tgz
 ```
 
 
-### Install AWS Cli 1.x
+### Install AWS Cli 2.x
 
 ```
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-unzip awscli-bundle.zip
-sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+curl "https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
 ```
+
+
