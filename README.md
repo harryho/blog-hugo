@@ -7,6 +7,9 @@ Hugo blog repo
 * Commit the markdown files to repo `blog-hugo` by running script the commit.bat. The commit.bat will only commit the markdown files. To commit other files please use git bash or git extension.
 * Deploy posts to harryho.github.io by running script deploy.bat. After that, you can check it via browser.
 
+#### __Hugo version upto 0.54__
+
+> The hugo binaries can be found under folder `archived/hugo`
 
 The theme Docdock has been forked as customized repository 
 
