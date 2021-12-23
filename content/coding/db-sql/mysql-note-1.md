@@ -53,3 +53,17 @@ mysql -u <user_name> -p  -P <port> -h <host_name>
 ```
 
 
+### Add a new user
+
+```sql
+CREATE USER 'user1'@'%' IDENTIFIED BY 'pass1';
+GRANT ALL PRIVILEGES ON * . * TO 'user1'@'%';
+```
+
+
+### Delete a user
+
+```sql
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'user1'@'%';
+DROP USER 'user1'@'%';
+```
