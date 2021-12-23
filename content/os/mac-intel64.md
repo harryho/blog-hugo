@@ -37,8 +37,17 @@ brew upgrade
 brew list
 
 ```
+{{% notice info %}}
+The cask is not longer a brew command from 2021. The command has changed as below
+{{% /notice %}}
 
+```
+# Before 2021
+brew cask install XXXX
 
+# After 2021
+brew install --cask XXXX
+```
 ### Install Zsh Prezto
 
 - Clone Zsh Prezto
@@ -122,6 +131,9 @@ brew install python@3.x
 
 
 ### Install MySql
+{{% notice info %}}
+Only the MySql 5.6 or 5.7 doesn't work well on Mac Big Sur or later. If you need old MySql, please consider to se docker to host mysql db.
+{{% /notice %}}
 
 ```
 brew install mysql
@@ -283,4 +295,35 @@ curl "https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg" -o "AWSCLIV2.pkg"
 sudo installer -pkg AWSCLIV2.pkg -target /
 ```
 
+
+### Use Docker to launch databases
+
+
+- Launch MySql 6.6 with docker
+
+
+```
+docker run -d --name mysql \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=password \
+mysql:5.6.51
+
+```
+
+
+- Access the MySql via bash
+
+```
+docker exec -it mysql bash
+
+# After the bash into the docker container
+mysql -u root -p
+```
+
+- Access the MySql via MySql client
+
+```
+mysql -h 0.0.0.0 \
+      -u root  -p 
+```
 
