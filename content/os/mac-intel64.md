@@ -115,14 +115,6 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 ```
 
-### Install visual studio code
-
-
-```
-brew cask install visual-studio-code
-
-```
-
 ### Install python 3
 
 ```
@@ -294,6 +286,19 @@ cp hugo_X.Y_osx-64bit.tgz
 curl "https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg" -o "AWSCLIV2.pkg"
 sudo installer -pkg AWSCLIV2.pkg -target /
 ```
+
+
+### Install Docker Desktop for mac
+
+- Download & Install [Docker for Mac](https://docs.docker.com/desktop/mac/install/)
+
+- Setup cli completetion for zsh prezto
+
+```
+curl -fLo ~/.zprezto/modules/completion/external/src/_docker \
+https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
+```
+
 
 
 ### Use Docker to launch databases

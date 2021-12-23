@@ -1,5 +1,5 @@
 +++
-title = "MySql: DDL"
+title = "MySql: DDL & DML"
 description="Introduction of SQL: DDL - Data Definition Language DML - Data Manipulation Language"
 +++
 
@@ -68,4 +68,22 @@ UPDATE tableB
 INNER JOIN tableA ON tableB.name = tableA.name
 SET tableB.value = IF(tableA.value > 0, tableA.value, tableB.value)
 WHERE tableA.name = 'Joe'
+```
+
+
+### Delete data
+
+{{% notice tip %}}
+How to avoid error: `You can’t specify target table`
+{{% /notice %}}
+
+```sql
+DELETE FROM TableA
+WHERE id NOT IN (
+    SELECT * FROM (
+        SELECT a.id id FROM TableA a
+        JOIN TableB b ON a.tableb_id = b.id
+    ) as t
+);
+
 ```

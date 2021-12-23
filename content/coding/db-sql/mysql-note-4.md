@@ -54,3 +54,28 @@ WHERE  routine_schema = target_schema
 
 ```
 
+
+### Optimize table after deletion 
+
+
+```sql
+-- Query the table sorted by data free space
+SELECT table_name , data_length, data_free
+FROM information_schema.tables
+WHERE table_schema=@target_schema 
+AND data_free > 0
+ORDER BY data_free DESC
+
+
+-- Get table names which need optimization
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema=@target_schema 
+AND data_free > 0
+ORDER BY data_free DESC
+
+
+-- Optmize table 
+OPTIMIZE TABLE XXXXX
+
+```
