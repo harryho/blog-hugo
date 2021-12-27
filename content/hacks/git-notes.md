@@ -4,7 +4,15 @@ title = "Git Practices"
 description="Useful Git commands  & practices for repository management"
 +++
 
+## Push existing repository to remote
 
+* Update the remote git url
+
+        $ git remote set-url origin [your_new_repo_url] 
+
+* Push it remote branch master/main
+
+        $ git push -uf origin [master/main]
 ## Create a new branch with git 
 
 
