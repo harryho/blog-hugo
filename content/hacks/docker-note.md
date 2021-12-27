@@ -54,8 +54,11 @@ Build an image with specific dockerfile
 
     $ docker build <path_of_workspace> -f  <path_of_dockerfile>
 
-    
+### tag or untag
 
+    $ docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+    
+    $ docker rmi [unwanted_tag]
 ### push 
 
     $ docker push <docker_repo>:<image_tag>
