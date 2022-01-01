@@ -45,6 +45,20 @@ docker run -it -v ${HOME}/.ssh:/root/.ssh mcr.microsoft.com/azure-cli
 az login
 ```
 
+* Show accounts
+
+```
+az account list 
+az account show
+
+```
+
+* Setup default subscription
+
+```
+az account set --sbuscription XXXX-XXXXX-xXXXX-XXX
+```
+
 * Show App Services
 
 ```
