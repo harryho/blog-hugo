@@ -81,7 +81,7 @@ az webapp create --resource-group myAppServicePlan \
 
 ```sh
     cd
-    sudo openssl pkcs12 -inkey /etc/letsencrypt/live/react-az.harry-ho.org/privkey.pem  -in /etc/letsencrypt/live/react-az.harry-ho.org/fullchain.pem -in -export  -out react-az.harry-ho.org.pfx
+    sudo openssl pkcs12 -inkey /etc/letsencrypt/live/sub-domain.domain.com/privkey.pem  -in /etc/letsencrypt/live/sub-domain.domain.com/fullchain.pem -in -export  -out sub-domain.domain.com.pfx
     Enter Export Password:
     Verifying - Enter Export Password:
 ```
@@ -101,8 +101,8 @@ az webapp create --resource-group myAppServicePlan \
     * Add following records in your DNS 
     
     ```
-    sub-domain.domain.com. 1800	IN	CNAME	sub-domain.azurewebsites.net.
-    sub-domain.domain.com. 1800 IN	TXT  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    sub-domain.domain.com. 1800	      IN	CNAME	sub-domain.azurewebsites.net.
+    asuid.sub-domain.domain.com. 1800 IN	TXT  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     ```
 
     * Validate the custom domain 
