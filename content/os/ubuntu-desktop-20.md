@@ -133,6 +133,22 @@ newgrp docker
 docker ps
 ```
 
+#### Add Docker completion to Zsh
+
+* Add the completion to prezto
+
+```sh
+curl -fLo ~/.zprezto/modules/completion/external/src/_docker \
+https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
+
+```
+
+* Add following line to zshrc
+
+```
+autoload -Uz compinit; compinit
+```
+
 
 ### Git
 
@@ -144,3 +160,78 @@ git config credential.helper store
 # OR 
 git config --global credential.helper store	
 ```
+
+
+### Dotnet Core 6 SDK
+
+*  Add the Microsoft package signing key to your list of trusted keys and add the package repository.
+
+```sh
+
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+
+```
+
+* Install the SDK
+
+```sh
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-6.0
+```
+
+
+### Golang 
+
+
+* Download & install the golang tal ball
+
+```sh
+# Download the linux tar ball from golang site
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
+```
+
+
+* Set the Go to PATH on file `.zshrc`
+
+```
+export PATH=$PATH:/usr/local/go/bin
+```
+
+* Verify the version 
+
+```
+go version
+```
+
+
+
+### Rustlang 
+
+* Use universal script
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+
+### Java: OpenJDK
+
+* Install LTS JDK
+
+```sh
+ sudo apt install -y openjdk-8-jdk \
+    openjdk-11-jdk \
+    openjdk-17-jdk
+
+```
+
+* Setup default JDK
+
+```sh
+sudo update-alternatives --config java
+```
+
