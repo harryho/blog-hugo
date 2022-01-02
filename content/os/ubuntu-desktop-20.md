@@ -132,3 +132,15 @@ newgrp docker
 # Test the docker
 docker ps
 ```
+
+
+### Git
+
+#### Set git credential store
+
+
+```sh
+git config credential.helper store	
+# OR 
+git config --global credential.helper store	
+```
