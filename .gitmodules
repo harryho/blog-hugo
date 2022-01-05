@@ -6,3 +6,4 @@
 [submodule "themes/docdock"]
 	path = themes/docdock
 	url = https://github.com/harryho/hugo-theme-docdock.git
+	branch = hho-blog
