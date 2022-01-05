@@ -292,13 +292,18 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 
 - Download & Install [Docker for Mac](https://docs.docker.com/desktop/mac/install/)
 
-- Setup cli completetion for zsh prezto
+- Setup cli completion for zsh prezto
 
 ```
 curl -fLo ~/.zprezto/modules/completion/external/src/_docker \
 https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 ```
 
+- Add following line to zshrc to enable completion
+
+```
+autoload -Uz compinit; compinit
+```
 
 
 ### Use Docker to launch databases
