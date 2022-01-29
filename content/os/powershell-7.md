@@ -341,7 +341,7 @@ oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 - Update user profile
 
 ```powershell
-
+Import-Module -Name Terminal-Icons
 ```
 
 ### Install PSReadLine
