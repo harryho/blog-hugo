@@ -138,15 +138,15 @@ scoop install neovim gcc
 mkdir ~\.config\powershell
 ```
 
+- Create a new profile
+
+```
+nvim ~\.config\powershell\profile.ps1
+```
+
 - Add alias
 
 ```powershell
-# Functions
-function edpf { nvim $env:USERPROFILE\.config\powershell\profile.ps1 }
-function scpf { . $PROFILE }
-function dkpa { docker ps -a }
-function dksa { docker stop -a }
-
 
 # Alias
 Set-Alias vi nvim
@@ -156,6 +156,21 @@ Set-Alias grep findstr
 Set-Alias tig $env:USERPROFILE\app\git\usr\bin\tig.exe
 Set-Alias less $env:USERPROFILE\app\git\usr\bin\less.exe
 
+```
+
+- Update built-in profile
+
+```powershell
+# Get all profiles
+$PROFILE | Get-Member -Type NoteProperty
+
+nvim $PROFILE.CurrentUserCurrentHost
+```
+
+- Update $PROFILE.CurrentUserCurrentHost as below
+
+```
+. $env:USERPROFILE\.config\powershell\profile.ps1 
 ```
 
 
@@ -341,7 +356,11 @@ Install-Module -Name PSReadLine  -AllowPrerelease -Scope CurrentUser -Force -Ski
 - Update user profile
 
 ```powershell
-
+# PSReadLine
+Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineOption -BellStyle None
+Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
+Set-PSReadLineOption -PredictionSource History
 ```
 
 ### FZF
@@ -360,3 +379,5 @@ Install-Module -Name PSFzf -Scope CurrentUser -Force
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 ```
+
+
