@@ -1,6 +1,6 @@
 +++
-title = "F# Namespace, Module & Access Control"
-description = "F# Namespace, Module & Access Control"
+title = "F# Namespace, Module & Import"
+description = "F# Namespace, Module & Open Declaration"
 +++
 
 ## Namespace
@@ -163,7 +163,7 @@ module BananaHelpers =
 
 ## Open Examples
 
-- Example 1
+- Example 1 
 
 ```fsharp 
 // Open a .NET Framework namespace.
@@ -176,6 +176,5 @@ let writeToFile2 filename (text: string) =
   writer.WriteLine(text)
 
 writeToFile2 "file1.txt" "Testing..."
-
 
 ```
