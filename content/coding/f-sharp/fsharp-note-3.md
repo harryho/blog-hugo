@@ -8,6 +8,7 @@ description = "F# Function, Rec Func & Inline Func"
 > Functions are the fundamental unit of program execution in any programming language. As in other languages, an F# function has a name, can have parameters and take arguments, and has a body. F# also supports functional programming constructs such as treating functions as values, using unnamed functions in expressions, composition of functions to form new functions, curried functions, and the implicit definition of functions by way of the partial application of function arguments.
 
 - Syntax
+
 ```fsharp
 // Non-recursive function definition.
 let [inline] function-name parameter-list [ : return-type ] = function-body
