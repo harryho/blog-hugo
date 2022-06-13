@@ -580,22 +580,3 @@ let endingBalance3 = List.foldBack2 (fun elem1 elem2 acc ->
                                 initialBalance2
 printfn "%f" endingBalance3
 ```
-
-
-## Slice
-
-In F#, a slice is a subset of any data type. Slices are similar to indexers, but instead of yielding a single value from the underlying data structure, they yield multiple ones. Slices use the .. operator syntax to select the range of specified indices in a data type.
-
-
-
-## Seq
-
-A sequence is a logical series of elements all of one type. Sequences are particularly useful when you have a large, ordered collection of data but do not necessarily expect to use all of the elements. Individual sequence elements are computed only as required, so a sequence can provide better performance than a list in situations in which not all the elements are used.
-
-
-
-
-## Map
-
-Immutable maps based on binary trees, where keys are ordered by F# generic comparison. By default comparison is the F# structural comparison function or uses implementations of the IComparable interface on key values.
-
