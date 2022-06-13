@@ -446,6 +446,8 @@ The fold and scan operations are like List.iter and List.map in that you invoke 
 ```fsharp
 let sumList list = List.fold (fun acc elem -> acc + elem) 0 list
 printfn "Sum of the elements of list %A is %d." [ 1 .. 3 ] (sumList [ 1 .. 3 ])
+// output
+// Sum of the elements of list [1; 2; 3] is 6.
 
 // The following example computes the average of a list.
 let averageList list = (List.fold (fun acc elem -> acc + float elem) 0.0 list / float list.Length)
@@ -464,10 +466,23 @@ let testList listTest =
 testList [1; 1; 1]
 testList [1; 2; 1]
 testList [1; 2; 3]
+// output
+// List [1; 1; 1] average: 1.000000 stddev: 0.000000
+// List [1; 2; 1] average: 1.333333 stddev: 0.471405
+// List [1; 2; 3] average: 2.000000 stddev: 0.816497
+
+
 
 // List.fold is the same as to List.iter when the accumulator is not used.
 let printList list = List.fold (fun acc elem -> printfn "%A" elem) () list
 printList [0.0; 1.0; 2.5; 5.1 ]
+// output
+// 0.0
+// 1.0
+// 2.5
+// 5.1
+
+
 
 // The following example uses List.fold to reverse a list.
 // The accumulator starts out as the empty list, and the function uses the cons operator
@@ -475,7 +490,8 @@ printList [0.0; 1.0; 2.5; 5.1 ]
 // reversed form of the list.
 let reverseList list = List.fold (fun acc elem -> elem::acc) [] list
 printfn "%A" (reverseList [1 .. 10])
-
+// output
+// [10; 9; 8; 7; 6; 5; 4; 3; 2; 1]
 
 // Use List.fold2 to perform computations over two lists (of equal size) at the same time.
 // Example: Sum the greater element at each list position.
@@ -484,6 +500,9 @@ let sumGreatest list1 list2 = List.fold2 (fun acc elem1 elem2 ->
 
 let sum = sumGreatest [1; 2; 3] [3; 2; 1]
 printfn "The sum of the greater of each pair of elements in the two lists is %d." sum
+// output
+// The sum of the greater of each pair of elements in the two lists is 8.
+
 
 
 // List.fold and List.scan differ in that List.fold returns the final value of 
@@ -509,7 +528,8 @@ let endingBalance = List.fold2 (fun acc elem1 elem2 ->
                                 transactionTypes
                                 transactionAmounts
 printfn "%f" endingBalance
-
+// output 
+// 1205.000000
 
 // For a calculation like summation, List.fold and List.foldBack have the same effect because the result does not depend on the order of traversal. In the following example, List.foldBack is used to add the elements in a list.
 let sumListBack list = List.foldBack (fun elem acc -> acc + elem) list 0
