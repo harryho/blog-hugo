@@ -3,8 +3,6 @@ title = "F# Computations 1"
 description = "F# Computation expressions"
 +++
 
-
-
 ## Computation expressions
 
 Computation expressions in F# provide a convenient syntax for writing computations that can be sequenced and combined using control flow constructs and bindings. Depending on the kind of computation expression, they can be thought of as a way to express monads, monoids, monad transformers, and applicative functors. However, unlike other languages (such as do-notation in Haskell), they are not tied to a single abstraction, and do not rely on macros or other forms of metaprogramming to accomplish a convenient and context-sensitive syntax.

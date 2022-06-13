@@ -269,7 +269,6 @@ match List.tryFind isEven list1d with
 match List.tryFindIndex isEven list1d with
 | Some value -> printfn "The first even value is at position %d." value
 | None -> printfn "There is no even value in the list."
-
 // The output is as follows:
 // The first even value is 22.
 // The first even value is at position 8.
@@ -288,16 +287,15 @@ let list1 = [ 1; 2; 3 ]
 let list2 = [ -1; -2; -3 ]
 let listZip = List.zip list1 list2
 printfn "%A" listZip
-
 // The output is as follows
 // [(1, -1); (2, -2); (3; -3)]
+
 
 // Another version, List.zip3, takes three lists of single elements and produces a 
 // single list of tuples that have three elements. 
 let list3 = [ 0; 0; 0]
 let listZip3 = List.zip3 list1 list2 list3
 printfn "%A" listZip3
-
 // The output is as follows
 // [(1, -1, 0); (2, -2, 0); (3, -3, 0)]
 
@@ -305,19 +303,17 @@ printfn "%A" listZip3
 // ------------------ unzip ---------------------
 
 //  use of List.unzip.
-
 let lists = List.unzip [(1,2); (3,4)]
 printfn "%A" lists
 printfn "%A %A" (fst lists) (snd lists)
-
 // The output is as follows
 // ([1; 3], [2; 4])
 // [1; 3] [2; 4]
 
+
 // use of List.unzip3.
 let listsUnzip3 = List.unzip3 [(1,2,3); (4,5,6)]
 printfn "%A" listsUnzip3
-
 // The output is as follows
 // ([1; 4], [2; 5], [3; 6])
 
@@ -369,37 +365,36 @@ List.iteri2 (fun i x y ->
 let list1 = [1; 2; 3]
 let newList = List.map (fun x -> x + 1) list1
 printfn "%A" newList
-
 // The output is as follows:
 // [2; 3; 4]
+
 
 // use of List.map2.
 let list1 = [1; 2; 3]
 let list2 = [4; 5; 6]
 let sumList = List.map2 (fun x y -> x + y) list1 list2
 printfn "%A" sumList
-
 // The output is as follows
 // [5; 7; 9]
+
 
 // use of List.map3.
 let newList2 = List.map3 (fun x y z -> x + y + z) list1 list2 [2; 3; 4]
 printfn "%A" newList2
-
 // The output is as follows:
 // [7; 10; 13]
+
 
 // use of List.mapi.
 let newListAddIndex = List.mapi (fun i x -> x + i) list1
 printfn "%A" newListAddIndex
-
 // The output is as follows
 // [1; 3; 5]
+
 
 // use of List.mapi2.
 let listAddTimesIndex = List.mapi2 (fun i x y -> (x + y) * i) list1 list2
 printfn "%A" listAddTimesIndex
-
 // The output is as follows
 // [0; 7; 18]
 
@@ -433,7 +428,6 @@ let results = List.choose (fun elem ->
     | elem when isCapitalized elem -> Some(elem + "'s")
     | _ -> None) listWords
 printfn "%A" results
-
 // The output is as follows:
 // ["Rome's"; "Bob's"]
 
@@ -534,18 +528,20 @@ printfn "%f" endingBalance
 // For a calculation like summation, List.fold and List.foldBack have the same effect because the result does not depend on the order of traversal. In the following example, List.foldBack is used to add the elements in a list.
 let sumListBack list = List.foldBack (fun elem acc -> acc + elem) list 0
 printfn "%d" (sumListBack [1; 2; 3])
+// output: 6
+
 
 // For a calculation in which the order of traversal is important, fold and foldBack have different
 // results. For example, replacing fold with foldBack in the listReverse function
 // produces a function that copies the list, rather than reversing it.
 let copyList list = List.foldBack (fun elem acc -> elem::acc) list []
 printfn "%A" (copyList [1 .. 10])
+// output: [1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
 
 
 // The following example returns to the bank account example. This time a new 
 // transaction type is added: an interest calculation. The ending balance now 
 // depends on the order of transactions.
-
 type Transaction2 =
     | Deposit
     | Withdrawal
@@ -566,7 +562,8 @@ let endingBalance2 = List.fold2 (fun acc elem1 elem2 ->
                                 transactionTypes2
                                 transactionAmounts2
 printfn "%f" endingBalance2
-
+// output
+// 1210.020833
 
 // Because foldBack2 processes the lists by starting at end of the list,
 // the interest is calculated first, on the balance of only 200.00.
@@ -579,4 +576,8 @@ let endingBalance3 = List.foldBack2 (fun elem1 elem2 acc ->
                                 transactionAmounts2
                                 initialBalance2
 printfn "%f" endingBalance3
+// output
+// 1205.833333
 ```
+
+
