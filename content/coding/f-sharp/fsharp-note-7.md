@@ -10,17 +10,12 @@ A sequence is a logical series of elements all of one type. Sequences are partic
 
 
 ```fsharp
-
-F#
-
 // Sequence that has an increment.
 seq { 0 .. 10 .. 100 }
-
 
 // uses the -> operator, which allows you to specify an expression 
 // whose value will become a part of the sequence. 
 seq { for i in 1 .. 10 -> i * i }
-
 
 
 // specify the do keyword, with an optional yield that follows:
@@ -91,6 +86,8 @@ let aSequence =
 
 for x in aSequence do
     printfn "%d" x
+// output
+// 1 2 3 5 7 ...47 53 ... 89 97
 
 
 // Following example creates a multiplication table that consists of 
