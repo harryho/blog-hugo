@@ -27,7 +27,7 @@ module [accessibility-modifier] module-name =
 ```
 
 
-## OPen Declaration
+## Open Declaration
 
 > An import declaration specifies a module or namespace whose elements you can reference without using a fully qualified name.
 
