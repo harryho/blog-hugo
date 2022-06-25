@@ -1,6 +1,7 @@
 +++
 title = "F# Collections 2"
 description = "F# List, Seq & Map"
+weight = 5
 +++
 
 ## List

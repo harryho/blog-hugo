@@ -1,6 +1,7 @@
 +++
 title = "F# Collections 3"
 description = "F# Seq, Slice & Map"
+weight = 7
 +++
 
 

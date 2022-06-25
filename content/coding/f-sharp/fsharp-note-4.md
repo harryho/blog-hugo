@@ -1,6 +1,7 @@
 +++
 title = "F# C.U.R.S."
 description = "F# Class, Unions, Record & Structure"
+weight = 4
 +++
 
 ## Class

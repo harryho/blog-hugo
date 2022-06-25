@@ -1,6 +1,7 @@
 +++
 title = "F# Functions"
 description = "F# Function, Rec Func & Inline Func"
+weight = 3
 +++
 
 

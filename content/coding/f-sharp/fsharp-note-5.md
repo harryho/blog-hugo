@@ -1,6 +1,7 @@
 +++
 title = "F# Collections 1"
 description = "F# Array & Slicing"
+weight = 5
 +++
 
 
