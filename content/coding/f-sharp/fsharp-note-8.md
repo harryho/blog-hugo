@@ -1,6 +1,7 @@
 +++
 title = "F# Pattern Matching"
 description = "F# Pattern Matching"
+weight = 8
 +++
 
 

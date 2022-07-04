@@ -1,6 +1,7 @@
 +++
 title = "F# Computations 1"
-description = "F# Computation expressions"
+description = "F# Computation expressions "
+weight = 10
 +++
 
 ## Computation expressions
@@ -182,6 +183,31 @@ comp |> step |> step
 comp |> step |> step |> step |> step
 
 ```
+
+### Translation of expression
+
+Expression|Translation
+-----|------
+{ let binding in cexpr }|let binding in {\| cexpr \|}
+{ let! pattern = expr in cexpr }|builder.Bind(expr, (fun pattern -> {\| cexpr \|}))
+{ do! expr in cexpr }|builder.Bind(expr, (fun () -> {\| cexpr \|}))
+{ yield expr }|builder.Yield(expr)
+{ yield! expr }|builder.YieldFrom(expr)
+{ return expr }|builder.Return(expr)
+{ return! expr }|builder.ReturnFrom(expr)
+{ use pattern = expr in cexpr }|builder.Using(expr, (fun pattern -> {\| cexpr \|}))
+{ use! value = expr in cexpr }|builder.Bind(expr, (fun value -> builder.Using(value, (fun value -> { cexpr }))))
+{ if expr then cexpr0 |}|if expr then { cexpr0 } else builder.Zero()
+{ if expr then cexpr0 else cexpr1 |}|if expr then { cexpr0 } else { cexpr1 }
+{ match expr with \| pattern_i -> cexpr_i }|match expr with \| pattern_i -> { cexpr_i }
+{ for pattern in expr do cexpr }|builder.For(enumeration, (fun pattern -> { cexpr }))
+{ for identifier = expr1 to expr2 do cexpr }|builder.For(enumeration, (fun identifier -> { cexpr }))
+{ while expr do cexpr }|builder.While(fun () -> expr, builder.Delay({ cexpr }))
+{ try cexpr with \| pattern_i -> expr_i }|builder.TryWith(builder.Delay({ cexpr }), (fun value -> match value with \| pattern_i -> expr_i \| exn -> System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(exn).Throw())))
+{ try cexpr finally expr }|builder.TryFinally(builder.Delay( { cexpr }), (fun () -> expr))
+{ cexpr1; cexpr2 }|builder.Combine({ cexpr1 }, { cexpr2 })
+{ other-expr; cexpr }|expr; { cexpr }
+{ other-expr }|expr; builder.Zero()
 
 
 
