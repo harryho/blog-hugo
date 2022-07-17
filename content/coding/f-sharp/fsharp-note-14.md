@@ -1,7 +1,7 @@
 +++
 title = "F# Lazy"
 description = "F# Computation - Lazy expressions"
-weight = 13
+weight = 14
 +++
 
 ## Lazy Expressions
