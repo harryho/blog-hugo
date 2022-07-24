@@ -152,7 +152,7 @@ Title	|	Description
 Computation Expressions	|	Learn about computation expressions in F#, which provide a convenient syntax for writing computations that can be sequenced and combined using control flow constructs and bindings. They can be used to manage data, control, and side effects in functional programs.
 Query Expressions	|	Learn about query expressions, a language feature that implements LINQ for F# and enables you to write queries against a data source or enumerable collection.
 
-### Attributes, Reflection, Quotations and Plain Text Formatting
+### Attributes, Reflection, Quotations and Formatting
 The following table lists articles that describe F# reflective features, including attributes, quotations, nameof, and plain text formatting.
 
 Title	|	Description
