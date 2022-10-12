@@ -126,8 +126,8 @@ iwr -useb get.scoop.sh | iex
 
 ```
 scoop install curl sudo jq 
-scoop install neovim gcc
-
+scoop install neovim gcc 
+scoop install 7zip bat 
 ```
 
 ### User Profile
