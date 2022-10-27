@@ -155,7 +155,6 @@ Set-Alias g git
 Set-Alias grep findstr
 Set-Alias tig $env:USERPROFILE\app\git\usr\bin\tig.exe
 Set-Alias less $env:USERPROFILE\app\git\usr\bin\less.exe
-
 ```
 
 - Update built-in profile
@@ -178,14 +177,10 @@ nvim $PROFILE.CurrentUserCurrentHost
 
 - Installation
 
-```powershell
+  [Please follow latest instruction](https://ohmyposh.dev/docs/migrating)
 
-Install-Module posh-git
-Install-Module oh-my-posh
 
-```
-
-- Create customized theme file `hho.omp.json`
+- Create customized theme file `sample.omp.json`
 
 ```
 {
@@ -325,9 +320,15 @@ Install-Module oh-my-posh
 
 # Prompt
 Import-Module posh-git
-Import-Module oh-my-posh
-$omp_config = "$env:USERPROFILE\hho.omp.json"
+$omp_config = "$env:USERPROFILE\sample.omp.json"
 oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
+```
+
+
+### Posh-Git 
+
+```
+Install-Module posh-git
 ```
 
 ### Terminal Icons
@@ -344,7 +345,13 @@ oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 Import-Module -Name Terminal-Icons
 ```
 
-### Install PSReadLine
+### Z
+
+```
+Install-Module -Name z --Respository SGallery -Force
+```
+
+### PSReadLine
 
 - Installation
 
