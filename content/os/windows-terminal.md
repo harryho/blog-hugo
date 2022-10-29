@@ -13,6 +13,7 @@ description = "Empower Windows with Terminal"
   - Install latest PowerShell (version 7.x) from Windows Store
 - Scoop 
   - [Scoop](https://scoop.sh) can be found here or simply execute the command below
+    
     ```powershell
     Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 
