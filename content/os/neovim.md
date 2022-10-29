@@ -107,7 +107,24 @@ inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
   - Enter command mode and enter `PlugInstall`
 
 
+
+
+
 ### Trouble shooting
+
+#### Fonts
+
+- Mac
+  - Install Nerd fonts 
+    - [Follow the instruction to install Powerline Nerd Font](https://webinstall.dev/nerdfont/)  
+  - Download other fonts, e.g. Caskaydia Cove Nerd Font 
+```
+cd ~/Library/Fonts
+open . 
+# Copy font files to fonts folder
+# Caskaydia Cove Nerd Font Complete Regular.otf
+# Caskaydia Cove Nerd Font Complete Mono Regular.otf
+```
 
 #### coc.nvim 
 
@@ -119,4 +136,12 @@ sudo nvm use 14.19.3
 npm install -g yarn 
 yarn install
 
+```
+
+
+- mac 
+
+```
+cd ~/.local/share/nvim/plugged/coc.nvim
+yarn install
 ```
