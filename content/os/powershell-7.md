@@ -169,7 +169,7 @@ nvim $PROFILE.CurrentUserCurrentHost
 - Update $PROFILE.CurrentUserCurrentHost as below
 
 ```
-. $env:USERPROFILE\.config\powershell\profile.ps1 
+. $env:USERPROFILE\.config\powershell\profile.ps1
 ```
 
 
