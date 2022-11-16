@@ -48,4 +48,11 @@ Bridged | + | + | + | + | +
 NAT | + | Port forward | – | + | Port forward 
 NATservice | + | Port forward | + | + | Port forward
 
+### How to SSH between HOST and VMS
+
+- Enable `password` for SSH
+- Setup network adapter
+  - Adapter 1: Bridghed 
+  - Adapter 2: Host-only network
+
 
