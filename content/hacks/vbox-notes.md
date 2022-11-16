@@ -51,8 +51,13 @@ NATservice | + | Port forward | + | + | Port forward
 ### How to SSH between HOST and VMS
 
 - Enable `password` for SSH
+- Create a new host-only network 
+  - File > Network Manager > Host-only networks
+  - Create a new network `vboxnet0` 
 - Setup network adapter
-  - Adapter 1: Bridghed 
+  - Adapter 1: Bridged Network 
+    - Name: wifi
   - Adapter 2: Host-only network
+    - Name: vboxnet0
 
 
